@@ -1,249 +1,231 @@
-# The Multivac - AI Model Evaluation Dataset
+<p align="center">
+  <h1 align="center">🔮 The Multivac</h1>
+  <p align="center"><strong>10×10 Blind Peer Matrix for AI Model Evaluation</strong></p>
+  <p align="center">Every model answers. Every model judges. No single-judge bias.</p>
+</p>
 
-**A 10×10 peer matrix evaluation dataset for frontier AI model assessment**
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Dataset: Phase 2](https://img.shields.io/badge/Dataset-Phase%202-blue.svg)](./data/)
-
-## Overview
-
-The Multivac is a novel AI evaluation methodology where models evaluate each other in a **10×10 peer matrix**. Each question receives 10 model responses, and each model judges all 9 other responses, creating a comprehensive cross-evaluation matrix of 90 judgments per question.
-
-**Key Innovation**: Unlike human-evaluated benchmarks, The Multivac uses AI-to-AI peer evaluation to measure model performance across diverse capabilities, reducing human bottlenecks while maintaining rigorous standards.
-
-## Dataset Statistics
-
-- **Phase**: Phase 2 (60-question baseline)
-- **Questions**: 60 curated evaluation prompts
-- **Categories**: 6 specialized domains (Code, Reasoning, Analysis, Communication, Meta-Alignment, Edge Cases)
-- **Model Pool**: 10 frontier models per category (category-optimized selection)
-- **Total Evaluations**: 60 questions × 100 judgments = 6,000 model-to-model evaluations
-- **Coverage**: ~5,400 valid peer judgments (self-judgments excluded)
-
-## Methodology
-
-### 10×10 Peer Matrix
-
-For each question:
-1. **Response Generation**: 10 models generate independent responses
-2. **Peer Judging**: Each model evaluates all other responses (9 judgments per judge)
-3. **Scoring**: 5 weighted criteria (correctness 25%, completeness 20%, clarity 20%, depth 20%, usefulness 15%)
-4. **Ranking**: Aggregate scores determine final rankings
-5. **Meta-Analysis**: Judge strictness, agreement rates, and bias detection
-
-### Category-Specific Model Pools
-
-Models are selected per category based on domain expertise:
-- **Code**: Top programming models (SWE-Bench, agentic coding benchmarks)
-- **Reasoning**: Logic, probability, game theory specialists  
-- **Analysis**: Research critique, data quality, competitive analysis
-- **Communication**: Technical writing, explanation, audience adaptation
-- **Meta-Alignment**: Uncertainty calibration, self-critique, honesty
-- **Edge Cases**: Context handling, instruction following, adversarial robustness
-
-### Contamination Resistance
-
-- **Novel questions**: Custom-designed prompts not in training data
-- **Meta-evaluation questions**: Test honesty, not just capability
-- **Adversarial formats**: Unicode edge cases, conflicting instructions
-- **Peer validation**: Cross-model agreement detects gaming
-
-## Repository Structure
-```
-multivac-evaluation/
-├── README.md                  # This file
-├── data/
-│   ├── evaluations/           # 60 evaluation JSONs (one per question)
-│   ├── aggregated.json        # Combined dataset
-│   └── tracker.json           # Cumulative model statistics
-├── analysis/
-│   ├── rankings.csv           # Model rankings per question
-│   ├── judge_bias.csv         # Judge strictness analysis
-│   └── statistics.ipynb       # Analysis notebook (coming soon)
-├── paper/
-│   ├── methodology.md         # Detailed methodology
-│   └── results.md             # Phase 2 findings
-├── scripts/
-│   ├── multivac.py            # Evaluation engine
-│   ├── questions.py           # Question bank
-│   ├── category_loader.py    # Model pool manager
-│   └── aggregate_data.py      # Data aggregation script
-├── .gitignore
-└── LICENSE
-```
-
-## Quick Start
-
-### Viewing Results
-```bash
-# Clone the repository
-git clone https://github.com/themultivac/multivac-evaluation.git
-cd multivac-evaluation
-
-# View aggregated results
-cat data/aggregated.json
-
-# Analyze specific evaluation
-cat data/evaluations/EVAL-*/results.json
-```
-
-### Running Evaluations (Requires API Keys)
-```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Set up API keys
-cp .env.example .env
-# Edit .env with your OPENROUTER_API_KEY and XAI_API_KEY
-
-# Run single evaluation
-python scripts/multivac.py --question-id CODE-001
-
-# List available questions
-python scripts/multivac.py --list-questions
-
-# Interactive mode
-python scripts/multivac.py --interactive
-```
-
-## Data Format
-
-### Evaluation Result Schema
-```json
-{
-  "evaluation_id": "EVAL-20260207-130753",
-  "timestamp": "2026-02-07T13:07:53.252687",
-  "question_id": "META-001",
-  "category": "meta_alignment",
-  "models_used": ["claude_opus", "gemini_3_pro", ...],
-  "responses": [
-    {
-      "model_key": "claude_opus",
-      "model_name": "Claude Opus 4.5",
-      "response": "...",
-      "generation_time_ms": 9381,
-      "tokens_used": 379
-    }
-  ],
-  "judgments": [
-    {
-      "judge_key": "gemini_3_pro",
-      "respondent_key": "claude_opus",
-      "correctness": 10,
-      "completeness": 9,
-      "weighted_score": 9.6,
-      "brief_justification": "..."
-    }
-  ],
-  "rankings": {
-    "claude_opus": {
-      "rank": 1,
-      "average_score": 9.43,
-      "std_dev": 0.51
-    }
-  },
-  "meta_analysis": {
-    "judge_strictness": {...},
-    "strictest_judge": "gpt_codex",
-    "most_lenient_judge": "gemini_3_flash"
-  }
-}
-```
-
-## Key Findings (Phase 2)
-
-### Overall Model Performance
-
-*Full analysis in `paper/results.md`*
-
-**Top Performers by Category:**
-- **Code**: Grok Code Fast 1, Claude Opus 4.5, Gemini 3 Flash
-- **Reasoning**: GPT-OSS-120B, Claude Opus 4.5, DeepSeek V3.2
-- **Meta-Alignment**: GPT-OSS-120B, Grok 4.1 Fast, MiMo-V2-Flash
-
-### Judge Behavior Patterns
-
-- **Strictest Judges**: GPT-5.2-Codex, Claude Opus 4.5 (avg scores: 8.0-8.1/10)
-- **Most Lenient**: Gemini models (avg scores: 9.8-10.0/10)
-- **Agreement Rate**: 67% within 1-point range across judges
-- **Self-Exclusion**: All 600 self-judgments correctly excluded
-
-## Citation
-
-If you use this dataset in your research, please cite:
-```bibtex
-@dataset{multivac2026phase2,
-  title={The Multivac: A 10×10 Peer Matrix Evaluation Dataset for Frontier AI Models},
-  author={Darji, Yash and Patel, Meet},
-  year={2026},
-  month={February},
-  publisher={GitHub},
-  url={https://github.com/themultivac/multivac-evaluation},
-  note={Phase 2: 60-question baseline evaluation}
-}
-```
-
-## Reproducibility
-
-### Verification Steps
-
-1. **Response Consistency**: Re-run evaluations and compare response variance
-2. **Judge Agreement**: Calculate inter-judge reliability (Krippendorff's alpha)
-3. **Contamination Check**: Search training data for question text matches
-4. **Temporal Stability**: Track rankings across weekly re-evaluations
-
-### Known Limitations
-
-- **Temperature Variance**: Models use temperature=0.7 (responses not deterministic)
-- **Judge Bias**: Models may favor responses similar to their own style
-- **Cost Constraints**: Full 10×10 matrix costly (~$0.35/question with OpenRouter)
-- **Prompt Sensitivity**: Small wording changes can affect rankings
-
-## Roadmap
-
-### Phase 3 (Q1 2026)
-- Domain specialization (10 questions each: medical, legal, financial, scientific)
-- Extended model pool (15-20 models per category)
-- Longitudinal tracking (monthly re-evaluation)
-
-### Phase 4 (Q2 2026)
-- Multimodal evaluation (vision, audio)
-- Multi-turn conversation assessment
-- Contamination detection tooling
-
-## Contributing
-
-We welcome contributions! Please see `CONTRIBUTING.md` for guidelines.
-
-**Areas for contribution:**
-- New question categories
-- Analysis scripts (bias detection, agreement matrices)
-- Visualization tools
-- Replication studies
-
-## License
-
-This dataset is released under the [MIT License](LICENSE).
-
-**Code**: MIT License  
-**Data**: CC BY 4.0  
-**Questions**: CC BY 4.0
-
-## Contact
-
-- **Project**: [The Multivac](https://multivac.com)
-- **Authors**: Yash Darji, Meet Patel
-- **Email**: contact@multivac.com
-- **Issues**: [GitHub Issues](https://github.com/themultivac/multivac-evaluation/issues)
-
-## Acknowledgments
-
-- OpenRouter for API access to frontier models
-- xAI for Grok API access
-- Claude, GPT, Gemini, and other model teams for building evaluation-worthy systems
+<p align="center">
+  <a href="https://themultivac.com">Website</a> •
+  <a href="https://themultivac.substack.com">Substack</a> •
+  <a href="https://huggingface.co/spaces/themultivac/leaderboard">Live Leaderboard</a> •
+  <a href="#methodology">Methodology</a> •
+  <a href="#data">Raw Data</a>
+</p>
 
 ---
 
-**Last Updated**: February 7, 2026  
-**Dataset Version**: Phase 2.0  
-**Status**: ✅ Complete (60/60 questions)
+### 📊 Current Stats
+
+| Metric | Value |
+|--------|-------|
+| Total Evaluations | 34+ |
+| Total Judgments | 1,100+ |
+| Models Tested | 20+ |
+| Category Pools | 6 |
+| Cost Per Evaluation | ~$2-3 |
+| Publication | Daily on [Substack](https://themultivac.substack.com) |
+
+---
+
+## The Problem
+
+AI model benchmarks are broken:
+
+- **Contamination**: Models train on test data. Static benchmarks become meaningless over time.
+- **Single-judge bias**: GPT-4 as sole evaluator selects GPT-4-generated responses **87.76%** of the time vs. 47.61% for humans (Zheng et al., NeurIPS 2023).
+- **Gaming**: Meta tested 27 private Llama-4 variants on Chatbot Arena before publishing only the best scores — inflating performance by up to 112% ([Leaderboard Illusion, April 2025](https://arxiv.org/abs/2504.20879)).
+- **Aggregate blindness**: Leaderboard rankings hide category-specific strengths and weaknesses.
+
+As models converge in capability over the next 2-3 years, the question shifts from "which model is best?" to **"which model is best for THIS specific task?"** Category-specific, multi-judge evaluation becomes the decision layer.
+
+## The Solution
+
+<a name="methodology"></a>
+
+### 10×10 Blind Peer Matrix
+
+```
+Question → 10 Models Generate Responses → 10 Models Judge All 10 Responses
+                                          (Self-judgments excluded)
+                                                    ↓
+                                          100 judgments per evaluation
+                                          90 valid (diagonal excluded)
+                                                    ↓
+                                          Rankings + Meta-Analysis
+```
+
+**How it works:**
+
+1. **Fresh question** selected (daily, from 60+ question bank across 6 categories)
+2. **10 category-optimized models** generate responses (blind — no model knows the question is an evaluation)
+3. **Same 10 models judge all 10 responses** — each judge sees only the response text, never the model identity
+4. **Self-judgments excluded** — models cannot rate their own responses (diagonal of the matrix)
+5. **Weighted scoring** across 5 criteria: Correctness (25%), Completeness (20%), Clarity (20%), Depth (20%), Usefulness (15%)
+6. **Meta-analysis**: Judge strictness, agreement rates, sycophancy detection
+
+### Why This Matters
+
+- **No single-judge bias** — consensus of 9 independent judges per response
+- **Fresh questions** — can't be memorized or gamed (new daily, never reused)
+- **Category-specific pools** — code questions evaluated by code-optimized models, not general-purpose
+- **Meta-analysis reveals judge behavior** — which models are strict? Which are lenient? Which show self-preference?
+
+---
+
+## Key Findings
+
+> **No single model dominates across all categories.**
+
+| Task | Winner | Score | Category |
+|------|--------|-------|----------|
+| Sycophancy Resistance | GPT-OSS-120B | 9.88 | Meta/Alignment |
+| Legal Document Analysis | GPT-OSS Legal | 9.85 | Analysis |
+| Async Bug Hunt | Claude Opus 4.5 | 9.49 | Code |
+| Hidden Detail in Long Doc | Grok 4.1 Fast | 9.47 | Edge Cases |
+| Nested JSON Parser | DeepSeek V3.2 | 9.39 | Code |
+| Epistemic Calibration | Gemini 3 Flash | 9.32 | Meta/Alignment |
+
+**Judge behavior analysis:**
+- GPT-OSS-120B is consistently the strictest judge
+- Mistral models tend lenient in scoring
+- Some models rate themselves higher when self-judgment isn't excluded (detected via control runs)
+
+---
+
+## Category Pools (V5)
+
+| Category | Day | Example Models | Focus |
+|----------|-----|----------------|-------|
+| Programming | Mon | Grok Code Fast, Claude Opus, DeepSeek V3.2 | Code quality, debugging, security |
+| Reasoning | Tue | MiMo-V2-Flash, Claude Sonnet, Gemini 3 | Logic, math, causal analysis |
+| Analysis | Wed | GPT-OSS-120B, Claude Opus, MiniMax | Data interpretation, critique |
+| Communication | Thu | GPT-5.2, Claude Opus, Gemini Pro | Writing, persuasion, explanation |
+| Meta/Alignment | Sat | All models | Sycophancy, calibration, honesty |
+| SLMs (<48B) | Fri | Qwen 3 32B, Kimi K2, Gemma 3 27B | Efficiency vs quality |
+
+---
+
+<a name="data"></a>
+
+## Data Access
+
+### 📁 Raw Evaluation Data
+
+Every evaluation is stored as JSON in [`/data`](./data/):
+
+```
+data/
+├── tracker.json                    # Master index of all evaluations
+└── evaluations/
+    ├── EVAL-20260113-CODE-001/
+    │   ├── results.json            # Complete results (responses + judgments + rankings)
+    │   └── report.md               # Human-readable report
+    ├── EVAL-20260114-REASON-001/
+    └── ...
+```
+
+Each `results.json` contains:
+- **Full model responses** (not just scores — you can read exactly what each model said)
+- **Complete 10×10 judgment matrix** (every judge's scores + justifications for every response)
+- **Rankings** with mean, min, max, and standard deviation
+- **Meta-analysis** of judge strictness and agreement
+
+### 🔍 Interactive Leaderboard
+
+- **HuggingFace Spaces**: [huggingface.co/spaces/themultivac/leaderboard](https://huggingface.co/spaces/themultivac/leaderboard)
+- **Website**: [themultivac.com/leaderboard](https://themultivac.com/leaderboard)
+
+---
+
+## Known Limitations
+
+We believe in radical transparency about what this methodology can and cannot measure:
+
+1. **LLM-as-judge concerns**: Multi-judge reduces but does not eliminate the fundamental limitation that LLMs evaluate LLMs. We are working on human correlation studies.
+
+2. **Output alignment vs. reasoning alignment**: The current methodology primarily measures whether a response is correct and well-structured (output quality). It does not yet measure whether the model's *reasoning process* was sound or whether it demonstrated genuine epistemic calibration. V6 will add reasoning alignment as a first-class scoring criterion.
+
+3. **Sample size**: 34 evaluations is a meaningful start but insufficient for high-confidence statistical claims about model ordering. We target 100+ evaluations for the methodology paper.
+
+4. **Cost constraints**: Running 10×10 evaluations costs ~$2-3 each, limiting daily throughput. We prioritize question diversity over volume.
+
+5. **Category pool selection**: Which 10 models appear in each category pool is a human decision that influences rankings. We document selection rationale in each evaluation report.
+
+---
+
+## Technical Stack
+
+- **Language**: Python 3.11+ (asyncio, httpx)
+- **APIs**: OpenRouter (90% of models) + xAI Direct (Grok)
+- **Output**: JSON + Markdown reports
+- **Publication**: Substack (daily) + GitHub (raw data)
+- **Leaderboard**: Gradio on HuggingFace Spaces + DataTables.js on GitHub Pages
+
+---
+
+## Running Your Own Evaluations
+
+```bash
+# Clone
+git clone https://github.com/themultivac/multivac-evaluations.git
+cd multivac-evaluations
+
+# Install
+pip install -r requirements.txt
+
+# Configure
+cp .env.example .env
+# Add your OPENROUTER_API_KEY and XAI_API_KEY
+
+# Run a single evaluation
+python multivac.py --question "Explain quicksort" --category code
+
+# Run a pre-defined question
+python multivac.py --question-id CODE-001
+
+# List all categories and models
+python multivac.py --list-categories
+
+# Interactive mode
+python multivac.py --interactive
+```
+
+---
+
+## Citation
+
+If you use The Multivac data or methodology in your research:
+
+```bibtex
+@misc{multivac2026,
+  title={The Multivac: Blind Peer Matrix Evaluation of Frontier AI Models},
+  author={Darji, Yash},
+  year={2026},
+  url={https://github.com/themultivac/multivac-evaluations}
+}
+```
+
+---
+
+## Roadmap
+
+- [x] Phase 1: Foundation (21 questions, single-judge baseline)
+- [x] Phase 2: 10×10 Peer Matrix (category-specific pools, meta-analysis)
+- [ ] Phase 3: Data Engine (vector store, disagreement extraction, API access)
+- [ ] Phase 4: Fork the Judge (open evaluation framework for custom criteria)
+- [ ] Phase 5: Ship a Model (Multivec-Judge — distilled evaluation model)
+
+---
+
+## Links
+
+- **Website**: [themultivac.com](https://themultivac.com)
+- **Substack**: [themultivac.substack.com](https://themultivac.substack.com)
+- **Leaderboard**: [HuggingFace Spaces](https://huggingface.co/spaces/themultivac/leaderboard)
+- **Twitter/X**: [@themultivac](https://twitter.com/themultivac)
+
+---
+
+<p align="center">
+  <em>One question. All frontier models. Blind peer evaluation. Daily.</em>
+</p>
