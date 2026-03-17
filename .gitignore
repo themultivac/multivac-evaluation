@@ -51,3 +51,21 @@ orchestrator_state.json
 # Temporary files
 *.tmp
 *.temp
+
+# Environment and secrets
+.env
+*.env
+
+# Python
+*.pyc
+__pycache__/
+
+# Orchestrator state
+orchestrator_state.json
+orchestrator_state_backup_*.json
+
+# Logs
+*.log
+
+# Backups
+models_backup_v1/
