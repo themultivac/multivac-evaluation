@@ -12,6 +12,7 @@ Usage:
 
 import asyncio
 import json
+import re
 import os
 import sys
 import argparse
@@ -83,22 +84,18 @@ SCORING = {
 JUDGE_SYSTEM_PROMPT = """You are an expert evaluator for The Multivac AI evaluation system.
 Your task is to objectively score an AI model's response to a question.
 
-Score each criterion from 0-10:
-- correctness: Factual accuracy and logical validity
-- completeness: Thorough coverage of the topic  
-- clarity: Clear, well-structured communication
-- depth: Insightful analysis beyond surface level
-- usefulness: Practical value and actionability
+Score each criterion from 0-10 (integers only, no decimals):
+- correctness: Factual accuracy and logical validity (weight: 25%)
+- completeness: Thorough coverage of the topic (weight: 20%)
+- clarity: Clear, well-structured communication (weight: 20%)
+- depth: Insightful analysis beyond surface level (weight: 20%)
+- usefulness: Practical value and actionability (weight: 15%)
 
-Respond ONLY with valid JSON in this exact format:
-{
-    "correctness": <0-10>,
-    "completeness": <0-10>,
-    "clarity": <0-10>,
-    "depth": <0-10>,
-    "usefulness": <0-10>,
-    "brief_justification": "<1-2 sentence explanation>"
-}"""
+CRITICAL: Respond with ONLY a JSON object. No explanation before or after.
+No markdown formatting. No code fences. Just the raw JSON object.
+
+Required format:
+{"correctness": 8, "completeness": 7, "clarity": 9, "depth": 7, "usefulness": 8, "brief_justification": "Clear and accurate with good depth."}"""
 
 JUDGE_USER_PROMPT_TEMPLATE = """Question asked:
 {question}
@@ -348,6 +345,82 @@ class MultivacEngine:
                 error=str(e)
             )
     
+
+    def _parse_judgment_json(self, raw_text):
+        """Robustly extract judgment scores from model output."""
+        text = raw_text.strip()
+
+        # Strip <think>/<thinking> blocks
+        text = re.sub(r'<think(?:ing)?>[\s\S]*?</think(?:ing)?>', '', text, flags=re.IGNORECASE)
+
+        # Extract from markdown code fences
+        code_block_match = re.search(r'```(?:json)?\s*\n?(\{[\s\S]*?\})\s*\n?```', text)
+        if code_block_match:
+            text = code_block_match.group(1)
+
+        # Find all { ... } blocks
+        json_candidates = []
+        brace_depth = 0
+        start_idx = None
+        for i, ch in enumerate(text):
+            if ch == '{':
+                if brace_depth == 0:
+                    start_idx = i
+                brace_depth += 1
+            elif ch == '}':
+                brace_depth -= 1
+                if brace_depth == 0 and start_idx is not None:
+                    json_candidates.append(text[start_idx:i+1])
+                    start_idx = None
+
+        score_keys = {'correctness', 'completeness', 'clarity', 'depth', 'usefulness'}
+
+        for candidate in json_candidates:
+            try:
+                cleaned = re.sub(r',\s*}', '}', candidate)
+                cleaned = re.sub(r',\s*]', ']', cleaned)
+                parsed = json.loads(cleaned)
+                if isinstance(parsed, dict):
+                    found_keys = score_keys.intersection(set(parsed.keys()))
+                    if len(found_keys) >= 3:
+                        scores = {}
+                        for key in score_keys:
+                            val = parsed.get(key, 0)
+                            try:
+                                val = float(val)
+                            except (ValueError, TypeError):
+                                val = 0.0
+                            scores[key] = max(0.0, min(10.0, val))
+                        justification = parsed.get('brief_justification', '')
+                        if not isinstance(justification, str):
+                            justification = str(justification)
+                        scores['brief_justification'] = justification
+                        return scores
+            except json.JSONDecodeError:
+                continue
+
+        # Regex fallback for inline scores
+        scores = {}
+        for key in score_keys:
+            pattern = rf'{key}\W*[:=]\s*([\d]+(?:\.\d+)?)'
+            match = re.search(pattern, text, re.IGNORECASE)
+            if match:
+                val = float(match.group(1))
+                scores[key] = max(0.0, min(10.0, val))
+
+        if len(scores) >= 3:
+            for key in score_keys:
+                if key not in scores:
+                    scores[key] = 0.0
+            scores['brief_justification'] = ''
+            return scores
+
+        raise ValueError(
+            f"Could not extract scores. "
+            f"Found {len(scores)} of 5 keys. "
+            f"Text preview: {text[:200]}"
+        )
+
     async def _judge_single(
         self, 
         judge_key: str, 
@@ -409,14 +482,24 @@ class MultivacEngine:
             else:
                 raise ValueError(f"Unknown provider: {judge_provider}")
             
-            # Parse JSON response
-            # Handle potential markdown code blocks
-            if "```json" in judgment_text:
-                judgment_text = judgment_text.split("```json")[1].split("```")[0]
-            elif "```" in judgment_text:
-                judgment_text = judgment_text.split("```")[1].split("```")[0]
-            
-            scores = json.loads(judgment_text.strip())
+            # Parse judgment using robust parser
+            try:
+                scores = self._parse_judgment_json(judgment_text)
+            except ValueError as parse_err:
+                return JudgmentScore(
+                    judge_key=judge_key,
+                    judge_name=judge_name,
+                    respondent_key=respondent_key,
+                    respondent_name=respondent_name,
+                    correctness=0,
+                    completeness=0,
+                    clarity=0,
+                    depth=0,
+                    usefulness=0,
+                    weighted_score=0,
+                    brief_justification="",
+                    error=f"parse_failed: {str(parse_err)}"
+                )
             
             # Calculate weighted score
             weights = SCORING["criteria"]
@@ -458,6 +541,28 @@ class MultivacEngine:
                 error=str(e)
             )
     
+
+    def _collect_model_metadata(self, models):
+        """Collect provider and model metadata for eval output."""
+        metadata = {}
+        for model_key in models:
+            config = self._get_model_config(model_key)
+            metadata[model_key] = {
+                "display_name": config.get("display_name", model_key),
+                "model_id": config.get("model_id", "unknown"),
+                "provider": config.get("provider", "unknown"),
+                "context_window": config.get("context_window", 0),
+                "parameters": config.get("parameters", "unknown"),
+                "quantization": "unknown - API provider controls quantization",
+                "inference_settings": {
+                    "generation_temperature": GENERATION_PARAMS["temperature"],
+                    "generation_max_tokens": GENERATION_PARAMS["max_tokens"],
+                    "judgment_temperature": JUDGMENT_PARAMS["temperature"],
+                    "judgment_max_tokens": JUDGMENT_PARAMS["max_tokens"],
+                }
+            }
+        return metadata
+
     async def run_evaluation(
         self, 
         question: str, 
@@ -555,6 +660,7 @@ class MultivacEngine:
         print("📊 PHASE 3: Computing rankings and meta-analysis...")
         rankings = self._compute_rankings(valid_judgments, active_models)
         meta_analysis = self._compute_meta_analysis(all_judgments, active_models)
+        model_metadata = self._collect_model_metadata(active_models)
         
         result = EvaluationResult(
             evaluation_id=evaluation_id,
@@ -571,6 +677,10 @@ class MultivacEngine:
         
         # Save results
         self._save_results(result)
+        # Save model metadata alongside results
+        metadata_path = self.outputs_path / result.evaluation_id / "model_metadata.json"
+        with open(metadata_path, "w") as f:
+            json.dump(model_metadata, f, indent=2)
         self._update_tracker(result)
         
         # Print summary
@@ -582,51 +692,87 @@ class MultivacEngine:
     
     def _compute_rankings(
         self, 
-        judgments: list[JudgmentScore], 
-        models: list[str]
-    ) -> dict:
-        """Compute final rankings from judgment matrix"""
+        judgments, 
+        models
+    ):
+        """
+        Compute final rankings from judgment matrix.
+        
+        80% RULE: A model must have valid scores from at least 80% of
+        possible judges to appear in aggregate rankings.
+        """
+        
+        max_possible_judges = len(models) - 1
+        min_required_judges = max(1, int(max_possible_judges * 0.80))
         
         # Aggregate scores per model
         model_scores = defaultdict(list)
+        model_judges = defaultdict(set)
         
         for j in judgments:
-            if j.weighted_score > 0:  # Skip failed judgments
+            if j.weighted_score > 0:
                 model_scores[j.respondent_key].append(j.weighted_score)
+                model_judges[j.respondent_key].add(j.judge_key)
         
         # Calculate average scores
         rankings = {}
         for model_key in models:
             scores = model_scores.get(model_key, [])
-            if scores:
+            unique_judges = len(model_judges.get(model_key, set()))
+            meets_threshold = unique_judges >= min_required_judges
+            
+            if scores and meets_threshold:
                 rankings[model_key] = {
                     "display_name": self._get_model_display_name(model_key),
                     "average_score": round(sum(scores) / len(scores), 2),
                     "score_count": len(scores),
+                    "unique_judges": unique_judges,
+                    "min_required_judges": min_required_judges,
                     "min_score": round(min(scores), 2),
                     "max_score": round(max(scores), 2),
-                    "std_dev": round(self._std_dev(scores), 2)
+                    "std_dev": round(self._std_dev(scores), 2),
+                    "meets_threshold": True
+                }
+            elif scores and not meets_threshold:
+                rankings[model_key] = {
+                    "display_name": self._get_model_display_name(model_key),
+                    "average_score": round(sum(scores) / len(scores), 2),
+                    "score_count": len(scores),
+                    "unique_judges": unique_judges,
+                    "min_required_judges": min_required_judges,
+                    "min_score": round(min(scores), 2),
+                    "max_score": round(max(scores), 2),
+                    "std_dev": round(self._std_dev(scores), 2),
+                    "meets_threshold": False,
+                    "insufficient_data": True,
+                    "note": f"Only {unique_judges}/{min_required_judges} required judges"
                 }
             else:
                 rankings[model_key] = {
                     "display_name": self._get_model_display_name(model_key),
                     "average_score": 0,
                     "score_count": 0,
+                    "unique_judges": 0,
+                    "min_required_judges": min_required_judges,
+                    "meets_threshold": False,
                     "error": "no_valid_scores"
                 }
         
-        # Add rank positions
-        sorted_models = sorted(
-            rankings.items(), 
-            key=lambda x: x[1].get("average_score", 0), 
+        # Rank ONLY models meeting the 80% threshold
+        rankable = sorted(
+            [(k, v) for k, v in rankings.items() if v.get("meets_threshold", False)],
+            key=lambda x: x[1].get("average_score", 0),
             reverse=True
         )
         
-        for rank, (model_key, data) in enumerate(sorted_models, 1):
+        for rank, (model_key, data) in enumerate(rankable, 1):
             rankings[model_key]["rank"] = rank
         
+        for model_key, data in rankings.items():
+            if "rank" not in data:
+                data["rank"] = None
+        
         return rankings
-    
     def _compute_meta_analysis(
         self, 
         judgments: list[JudgmentScore], 
@@ -688,7 +834,7 @@ class MultivacEngine:
         # Sort by rank
         sorted_rankings = sorted(
             result.rankings.items(),
-            key=lambda x: x[1].get("rank", 999)
+            key=lambda x: x[1].get("rank") or 999
         )
         
         print(f"\n{'Rank':<6} {'Model':<30} {'Score':<8} {'±':<6}")
@@ -752,7 +898,7 @@ class MultivacEngine:
         # Sort by rank
         sorted_rankings = sorted(
             result.rankings.items(),
-            key=lambda x: x[1].get("rank", 999)
+            key=lambda x: x[1].get("rank") or 999
         )
         
         for model_key, data in sorted_rankings:
