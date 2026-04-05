@@ -1,0 +1,44 @@
+{
+  "question_id": "COMM-024",
+  "category": "communication",
+  "question_text": "Rewrite these technical feature descriptions as customer-facing value propositions: (1) 'We use a distributed event-driven architecture with CQRS.' (2) 'Our model achieves 0.94 F1 score on the benchma",
+  "timestamp": "2026-04-03T22:30:27.370198",
+  "judge": "Claude Opus 4.6",
+  "judge_model_id": "anthropic/claude-opus-4.6",
+  "contestants": {
+    "qwen36_plus": {
+      "display_name": "Qwen 3.6 Plus",
+      "model_id": "qwen/qwen3.6-plus:free",
+      "response": "Here\u2019s a direct translation from technical specs to customer-facing value propositions, each focused strictly on the **business impact** and **user experience**:\n\n1. **Original:** `We use a distributed event-driven architecture with CQRS.`  \n   **Value Proposition:** *Stay fast and reliable even during peak usage, with real-time updates that scale seamlessly so your users never experience slowdowns or data delays.*\n\n2. **Original:** `Our model achieves 0.94 F1 score on the benchmark.`  \n   **Value Proposition:** *Make confident decisions with industry-leading accuracy that minimizes costly mistakes and delivers consistently reliable insights you can act on immediately.*\n\n3. **Original:** `Built on Kubernetes with auto-scaling and 99.99% SLA.`  \n   **Value Proposition:** *Keep your service running smoothly around the clock, automatically handling traffic spikes without downtime so you never lose revenue or frustrate customers.*\n\n4. **Original:** `End-to-end encryption with AES-256 and RSA key exchange.`  \n   **Value Proposition:** *Protect your most sensitive data with uncompromising security that keeps it completely private, helping you meet compliance standards and build lasting customer trust.*\n\n5. **Original:** `Sub-100ms p99 latency with edge caching.`  \n   **Value Proposition:** *Deliver a frictionless, instant experience to users anywhere in the world, keeping them engaged and driving higher conversions with zero frustrating wait times.*\n\n**Why this works:** Each statement removes implementation details and answers the customer\u2019s unspoken question: *\u201cWhat does this do for my business, my users, or my bottom line?\u201d* They\u2019re ready for landing pages, sales decks, or executive summaries.",
+      "tokens": 2113,
+      "time_ms": 39245,
+      "judgment": {
+        "usefulness": 10.0,
+        "clarity": 10.0,
+        "depth": 8.0,
+        "correctness": 9.0,
+        "completeness": 9.0,
+        "brief_justification": "All five translations are accurate, well-crafted, and successfully shift from technical jargon to customer-facing value. Each proposition correctly captures the business benefit of the underlying technology. The formatting is clean and immediately usable. The closing summary adds a nice meta-explanation. Minor deduction on depth because the response could have briefly noted the tradeoffs or nuances (e.g., 0.94 F1 is great but context-dependent), but for the stated task this is excellent work.",
+        "weighted_score": 9.15
+      }
+    },
+    "deepseek_v32": {
+      "display_name": "DeepSeek V3.2",
+      "model_id": "deepseek/deepseek-v3.2",
+      "response": "Here are the technical features rewritten as customer-facing value propositions:\n\n**(1) 'We use a distributed event-driven architecture with CQRS.'**\n> Your system stays lightning-fast and reliable, no matter how many users or transactions you add. Updates happen instantly and accurately across your entire platform.\n\n**(2) 'Our model achieves 0.94 F1 score on the benchmark.'**\n> Make decisions with exceptional accuracy. Our AI delivers precise, reliable results you can confidently act on, minimizing costly errors.\n\n**(3) 'Built on Kubernetes with auto-scaling and 99.99% SLA.'**\n> Your service scales seamlessly with demand and is built for unwavering uptime. You get consistent performance during peak loads without worrying about infrastructure.\n\n**(4) 'End-to-end encryption with AES-256 and RSA key exchange.'**\n> Your sensitive data is locked down from start to finish. We ensure that only authorized parties can ever access it, providing a fundamental layer of trust.\n\n**(5) 'Sub-100ms p99 latency with edge caching.'**\n> Experience consistently blazing-fast performance for every user, everywhere. Your content and applications feel instantaneous, no matter where your audience is located.",
+      "tokens": 356,
+      "time_ms": 13482,
+      "judgment": {
+        "usefulness": 9.0,
+        "clarity": 10.0,
+        "depth": 7.0,
+        "correctness": 9.0,
+        "completeness": 8.0,
+        "brief_justification": "All five rewrites accurately translate technical features into customer-facing value propositions, clearly communicating WHY customers should care. The clarity is excellent with clean formatting and accessible language. Depth could be slightly improved\u2014for example, (2) could mention reduced false positives/negatives more concretely, and (4) could reference compliance standards. Overall very practical and well-executed.",
+        "weighted_score": 8.6
+      }
+    }
+  },
+  "winner": "Qwen 3.6 Plus",
+  "margin": 0.55
+}

@@ -38,7 +38,12 @@ from category_loader import (
     get_category_summary
 )
 
-from questions import get_question_by_id, get_questions_by_category
+from questions import get_question_by_id as _get_w1, get_questions_by_category
+from questions_wave2_15032026 import get_wave2_question_by_id as _get_w2
+
+def get_question_by_id(qid):
+    """Search Wave 1, then Wave 2."""
+    return _get_w1(qid) or _get_w2(qid)
 
 # ============================================================
 # CONFIGURATION
@@ -841,7 +846,7 @@ class MultivacEngine:
         print(f"{'─'*6} {'─'*30} {'─'*8} {'─'*6}")
         
         for model_key, data in sorted_rankings:
-            if "error" not in data:
+            if "error" not in data and data.get("rank") is not None:
                 rank = data.get('rank', '?')
                 name = data.get('display_name', model_key)[:28]
                 score = data.get('average_score', 0)
@@ -902,7 +907,7 @@ class MultivacEngine:
         )
         
         for model_key, data in sorted_rankings:
-            if "error" not in data:
+            if "error" not in data and data.get("rank") is not None:
                 lines.append(
                     f"| {data['rank']} | {data['display_name']} | "
                     f"{data['average_score']:.2f} | {data['min_score']:.2f} | "

@@ -1,0 +1,142 @@
+{
+  "qwen3_32b": {
+    "display_name": "Qwen 3 32B",
+    "model_id": "qwen/qwen3-32b",
+    "provider": "openrouter",
+    "context_window": 32768,
+    "parameters": "32B",
+    "quantization": "unknown - API provider controls quantization",
+    "inference_settings": {
+      "generation_temperature": 0.7,
+      "generation_max_tokens": 2048,
+      "judgment_temperature": 0.3,
+      "judgment_max_tokens": 1024
+    }
+  },
+  "kimi_k25": {
+    "display_name": "Kimi K2.5",
+    "model_id": "moonshotai/kimi-k2.5",
+    "provider": "openrouter",
+    "context_window": 262144,
+    "parameters": "32B active / 1T MoE",
+    "quantization": "unknown - API provider controls quantization",
+    "inference_settings": {
+      "generation_temperature": 0.7,
+      "generation_max_tokens": 2048,
+      "judgment_temperature": 0.3,
+      "judgment_max_tokens": 1024
+    }
+  },
+  "nemotron_3_super": {
+    "display_name": "Nemotron 3 Super",
+    "model_id": "nvidia/nemotron-3-super-120b-a12b:free",
+    "provider": "openrouter",
+    "context_window": 262144,
+    "parameters": "12B active / 120B MoE",
+    "quantization": "unknown - API provider controls quantization",
+    "inference_settings": {
+      "generation_temperature": 0.7,
+      "generation_max_tokens": 2048,
+      "judgment_temperature": 0.3,
+      "judgment_max_tokens": 1024
+    }
+  },
+  "qwen3_next_80b": {
+    "display_name": "Qwen3-Next 80B-A3B",
+    "model_id": "qwen/qwen3-next-80b-a3b-instruct:free",
+    "provider": "openrouter",
+    "context_window": 262144,
+    "parameters": "3B active / 80B MoE",
+    "quantization": "unknown - API provider controls quantization",
+    "inference_settings": {
+      "generation_temperature": 0.7,
+      "generation_max_tokens": 2048,
+      "judgment_temperature": 0.3,
+      "judgment_max_tokens": 1024
+    }
+  },
+  "devstral": {
+    "display_name": "Devstral Small",
+    "model_id": "mistralai/devstral-small",
+    "provider": "openrouter",
+    "context_window": 32768,
+    "parameters": "24B",
+    "quantization": "unknown - API provider controls quantization",
+    "inference_settings": {
+      "generation_temperature": 0.7,
+      "generation_max_tokens": 2048,
+      "judgment_temperature": 0.3,
+      "judgment_max_tokens": 1024
+    }
+  },
+  "gemma3_27b": {
+    "display_name": "Gemma 3 27B",
+    "model_id": "google/gemma-3-27b-it",
+    "provider": "openrouter",
+    "context_window": 8192,
+    "parameters": "27B",
+    "quantization": "unknown - API provider controls quantization",
+    "inference_settings": {
+      "generation_temperature": 0.7,
+      "generation_max_tokens": 2048,
+      "judgment_temperature": 0.3,
+      "judgment_max_tokens": 1024
+    }
+  },
+  "llama4_scout": {
+    "display_name": "Llama 4 Scout",
+    "model_id": "meta-llama/llama-4-scout",
+    "provider": "openrouter",
+    "context_window": 131072,
+    "parameters": "17B active / 109B MoE",
+    "quantization": "unknown - API provider controls quantization",
+    "inference_settings": {
+      "generation_temperature": 0.7,
+      "generation_max_tokens": 2048,
+      "judgment_temperature": 0.3,
+      "judgment_max_tokens": 1024
+    }
+  },
+  "granite_40": {
+    "display_name": "Granite 4.0 Micro",
+    "model_id": "ibm-granite/granite-4.0-h-micro",
+    "provider": "openrouter",
+    "context_window": 128000,
+    "parameters": "Micro",
+    "quantization": "unknown - API provider controls quantization",
+    "inference_settings": {
+      "generation_temperature": 0.7,
+      "generation_max_tokens": 2048,
+      "judgment_temperature": 0.3,
+      "judgment_max_tokens": 1024
+    }
+  },
+  "gemma_3n_4b": {
+    "display_name": "Gemma 3n 4B",
+    "model_id": "google/gemma-3n-e4b-it",
+    "provider": "openrouter",
+    "context_window": 32768,
+    "parameters": "4B",
+    "quantization": "unknown - API provider controls quantization",
+    "inference_settings": {
+      "generation_temperature": 0.7,
+      "generation_max_tokens": 2048,
+      "judgment_temperature": 0.3,
+      "judgment_max_tokens": 1024
+    }
+  },
+  "qwen3_8b": {
+    "display_name": "Qwen 3 8B",
+    "model_id": "qwen/qwen3-8b",
+    "provider": "openrouter",
+    "context_window": 32768,
+    "parameters": "8B",
+    "quantization": "unknown - API provider controls quantization",
+    "inference_settings": {
+      "generation_temperature": 0.7,
+      "generation_max_tokens": 2048,
+      "judgment_temperature": 0.3,
+      "judgment_max_tokens": 1024
+    }
+  }
+}

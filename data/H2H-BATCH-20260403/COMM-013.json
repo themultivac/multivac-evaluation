@@ -1,0 +1,44 @@
+{
+  "question_id": "COMM-013",
+  "category": "communication",
+  "question_text": "Two senior engineers are deadlocked: Engineer A wants to use microservices, Engineer B wants to keep the monolith. Both have valid points. Write a decision document that: (1) Steelmans both positions ",
+  "timestamp": "2026-04-03T22:03:37.329900",
+  "judge": "Claude Opus 4.6",
+  "judge_model_id": "anthropic/claude-opus-4.6",
+  "contestants": {
+    "qwen36_plus": {
+      "display_name": "Qwen 3.6 Plus",
+      "model_id": "qwen/qwen3.6-plus:free",
+      "response": "**ENGINEERING ARCHITECTURE DECISION DOCUMENT**\n\n**1. Steelman: Positions & Merits**\n*Engineer A (Microservices):* Prioritizes fault isolation, independent deployment, and technology heterogeneity. As team count and traffic scale, bounded contexts reduce blast radius, enable parallel workstreams, and align architecture with Conway\u2019s Law, preventing organizational bottlenecks and deployment queues.\n*Engineer B (Monolith):* Prioritizes delivery velocity, debugging simplicity, and unified deployment. At current scale, a single deployable artifact eliminates distributed systems overhead (network latency, eventual consistency, service discovery), minimizes infrastructure complexity, and keeps engineers focused on product logic over orchestration.\n\n**2. Underlying Disagreement**\nThe debate isn\u2019t about topology; it\u2019s a tension between *trajectory risk* and *immediate delivery*. Engineer A optimizes for future organizational scale, treating upfront architectural complexity as an insurance policy. Engineer B optimizes for present execution efficiency, treating premature decomposition as an unearned tax on velocity. The core question: does our growth curve and team structure justify paying the distributed systems tax now?\n\n**3. Decision Framework**\nWe will not make a binary architectural call. Instead, we adopt a quarterly evaluation framework:\n\u2022 *Scale Triggers:* Define hard metrics (e.g., deploy frequency, concurrent feature teams, static coupling index) where the monolith demonstrably blocks throughput.\n\u2022 *Domain Boundary Validation:* Map workflows using event storming/DDD. If natural, low-churn seams don\u2019t exist, extraction will produce a distributed monolith.\n\u2022 *Operational Maturity Audit:* Score CI/CD automation, observability, and platform engineering. Microservices multiply infra gaps; monoliths conceal them.\n\u2022 *Complexity vs. Velocity Accounting:* Model the 12-month cost of distributed overhead (MTTR, onboarding, cloud spend) against the gain of independent scaling/releasing.\n\n**4. Recommendation**\nMaintain a **modular monolith** with strict package isolation, contract-first internal APIs, and automated integration testing. Extract a single high-friction capability into an independent service only when Scale Triggers and Operational Maturity thresholds are met. This explicitly trades delayed horizontal scaling and limited technology heterogeneity for sustained delivery velocity, lower operational overhead, and preserved engineering focus. Architecture should follow organizational reality, not precede it.",
+      "tokens": 3024,
+      "time_ms": 50316,
+      "judgment": {
+        "usefulness": 9.0,
+        "clarity": 10.0,
+        "depth": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0,
+        "brief_justification": "Exceptionally well-structured document that hits all four requirements within the word limit. The steelmanning is genuinely fair and avoids strawmanning either position. The identification of the underlying disagreement (trajectory risk vs. immediate delivery velocity) is insightful and precisely articulated. The decision framework is concrete with actionable metrics rather than vague platitudes. The modular monolith recommendation is pragmatic and explicitly acknowledges trade-offs. The writing is dense, precise, and professional. Minor nitpick: could have briefly mentioned team size or org context as a factor in the framework, but the scale triggers implicitly cover this.",
+        "weighted_score": 9.2
+      }
+    },
+    "deepseek_v32": {
+      "display_name": "DeepSeek V3.2",
+      "model_id": "deepseek/deepseek-v3.2",
+      "response": "**Decision Framework: Monolith vs. Microservices**\n\n**1. Steelman of Both Positions**\n\n**Engineer A (Microservices):** Argues for long-term agility and scalability. A decomposed architecture allows teams to own, deploy, and scale services independently, accelerating development velocity as the team grows. It enables technological heterogeneity, allowing us to select the optimal stack for specific domains (e.g., Python for ML, Go for high-throughput services). This approach also promises improved fault isolation; a failure in one function shouldn\u2019t bring down the entire system.\n\n**Engineer B (Monolith):** Advocates for simplicity and near-term delivery speed. A single codebase reduces development complexity, eliminating cross-service coordination, network latency, and distributed data consistency challenges. Operational overhead is drastically lower: one deployment pipeline, one set of logs, and simplified monitoring. For a small team with a well-understood domain, this maximizes productivity and minimizes accidental complexity.\n\n**2. Core Underlying Disagreement**\nThe surface debate is architectural, but the core disagreement is about **risk allocation**. Engineer A prioritizes scaling and adaptability risks, fearing that delayed decomposition will make future splitting prohibitively expensive. Engineer B prioritizes immediate execution and complexity risks, fearing that premature decomposition will cripple current velocity with overhead before the product is proven.\n\n**3. Proposed Decision Framework**\nWe will resolve this by applying a weighted evaluation against our current context:\n\n*   **Business Stage:** Is the product domain stable and validated? (Monolith leans) Or are we scaling rapidly into multiple, distinct business domains? (Microservices leans)\n*   **Team Structure:** Are we a single, co-located team? (Monolith leans) Or multiple teams needing independent deployment and ownership? (Microservices leans)\n*   **Operational Maturity:** Do we have robust CI/CD, service monitoring, and infrastructure automation? (Required for Microservices)\n*   **Incremental Path:** Can we structure the monolith with clear internal boundaries (modular monolith) to defer the \u201csplit\u201d decision without sacrificing code organization?\n\n**4. Recommendation**\nGiven we are a single team with a primary product to validate, **we will begin with a modular monolith**. This explicitly acknowledges the trade-offs: we accept the scalability ceiling and future refactoring cost in exchange for maximum short-term velocity and minimal operational complexity.\n\nHowever, we **mandate** that this monolith be structured with bounded contexts and clean APIs between modules. We will re-evaluate using the above framework every quarter, or upon reaching two clear triggers: 1) The formation of a second, independent product team, or 2) A specific component demonstrably requiring independent scaling or a different technology stack. This path preserves B\u2019s velocity while structurally preparing for A\u2019s eventual decomposition.",
+      "tokens": 663,
+      "time_ms": 33808,
+      "judgment": {
+        "usefulness": 10.0,
+        "clarity": 10.0,
+        "depth": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0,
+        "brief_justification": "Excellent decision document that hits all four requirements precisely. The steelmanning is fair and substantive, the underlying disagreement identification (risk allocation) is insightful and non-obvious, the framework is practical with clear evaluation criteria, and the recommendation explicitly acknowledges trade-offs with concrete triggers for re-evaluation. The modular monolith recommendation is well-reasoned. Writing is crisp, well-structured, and stays within the word limit. Minor deduction on correctness only because the steelman for microservices could have mentioned organizational/Conway's Law arguments more explicitly, and completeness could note data migration challenges.",
+        "weighted_score": 9.35
+      }
+    }
+  },
+  "winner": "DeepSeek V3.2",
+  "margin": 0.15
+}

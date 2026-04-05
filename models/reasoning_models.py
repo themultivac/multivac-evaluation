@@ -8,7 +8,7 @@ Previous version backed up to: models_backup_v1/
 
 MODELS = {
     "gemini_31_pro": {
-        "model_id": "google/gemini-3.1-pro",
+        "model_id": "google/gemini-3.1-pro-preview",
         "display_name": "Gemini 3.1 Pro",
         "provider": "openrouter",
         "category_rank": 1,
@@ -17,8 +17,8 @@ MODELS = {
         "active": True
     },
     "deepseek_v4": {
-        "model_id": "deepseek/deepseek-v4",
-        "display_name": "DeepSeek V4",
+        "model_id": "deepseek/deepseek-chat-v3-0324",
+        "display_name": "DeepSeek V3",
         "provider": "openrouter",
         "category_rank": 2,
         "context_window": 164000,

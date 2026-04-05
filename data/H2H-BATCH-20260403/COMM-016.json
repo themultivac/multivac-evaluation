@@ -1,0 +1,44 @@
+{
+  "question_id": "COMM-016",
+  "category": "communication",
+  "question_text": "Explain how HTTPS works to someone who only knows that 'the lock icon means secure.' Cover: (1) What actually happens when you type https://example.com, (2) Why you need certificates, (3) What a man-i",
+  "timestamp": "2026-04-03T22:10:11.070129",
+  "judge": "Claude Opus 4.6",
+  "judge_model_id": "anthropic/claude-opus-4.6",
+  "contestants": {
+    "qwen36_plus": {
+      "display_name": "Qwen 3.6 Plus",
+      "model_id": "qwen/qwen3.6-plus:free",
+      "response": "Imagine mailing a personal diary to a trusted business.\n\nWhen you type that location into your screen, you\u2019re placing your diary inside a heavy, tamper-proof safe. A dedicated courier immediately seals it and drives it straight to the business\u2019s private loading dock. Only that business owns the exact matching tool to open it. They read your note, drop their reply into an identical safe, and send it back. The whole trip stays completely sealed.\n\nYou need an official city plaque because scammers can easily rent a vacant lot and paint a matching storefront. Before you ever lock your safe, the business must present that plaque to you. It proves they actually own the building and aren\u2019t impostors waiting to steal your mail.\n\nA middleman trick happens when a sneaky postal worker intercepts your safe mid-route. They carefully pick it open, read every page, change a few sentences to cause confusion, then reseal it without leaving a single scratch. You and the business keep exchanging safes, completely unaware a hidden third party is now reading and rewriting your entire conversation.\n\nEven with the safe, handing it over in a crowded public square is risky. Bystanders can still watch your habits. They can track which businesses you visit, how often you send packages, and roughly how much you\u2019re sharing. Worse, tricksters might set up a counterfeit drop-box right beside the real one, hoping you\u2019ll accidentally hand your locked safe to their fake attendant. The safe guards your diary\u2019s contents, but it cannot hide your footsteps or stop someone from swapping the mailbox entirely.",
+      "tokens": 3868,
+      "time_ms": 84213,
+      "judgment": {
+        "usefulness": 7.0,
+        "clarity": 9.0,
+        "depth": 6.0,
+        "correctness": 7.0,
+        "completeness": 7.0,
+        "brief_justification": "The analogies are vivid and accessible, and the response successfully avoids technical jargon. However, there are some accuracy concerns: (1) The MITM explanation implies the attacker can 'pick open' the safe, which undermines the earlier claim that only the business can open it\u2014this is somewhat contradictory and doesn't accurately convey that HTTPS largely prevents MITM when certificates are valid. (2) The public WiFi section correctly notes metadata leakage and evil twin attacks, but slightly overstates the risk by implying bystanders can see which specific businesses you visit (SNI is visible, but this nuance is tricky). (3) The certificate explanation is good but doesn't convey the chain-of-trust concept (who issues the plaque?). The response stays well within 400 words and is clearly structured. It covers all four required topics but with moderate depth.",
+        "weighted_score": 7.2
+      }
+    },
+    "deepseek_v32": {
+      "display_name": "DeepSeek V3.2",
+      "model_id": "deepseek/deepseek-v3.2",
+      "response": "Imagine sending secret letters through a public post office.\n\n**(1) The Locked Box System**\nWhen you type https://example.com, your computer asks the website for its **special public seal**. Your computer already has a copy of the **official seal-maker\u2019s stamp** (trusted by everyone). If the website\u2019s seal matches the stamp, you trust it. You then create a **unique locked box** that only that website can open with its **private key**. Inside, you send a **special recipe** for a set of two identical **scrambling glasses**. All future messages are written with these glasses\u2014they look like nonsense to anyone else, but the website uses its pair to read them clearly.\n\n**(2) Why Seals Are Needed**\nWithout the seal, anyone could pretend to be your bank\u2019s website. The seal proves the website is genuine, not a clever fake. It\u2019s like a notary public verifying a signature.\n\n**(3) The Postal Interceptor**\nA man-in-the-middle is a corrupt postal worker. They intercept your initial request and pretend to be the real website, sending you a **forged seal**. If you accepted it, you\u2019d create your locked box and scrambling glasses recipe for *them*. They\u2019d open it, read everything, then re-pack it for the real website. You\u2019d think you were talking securely, but the interceptor was listening the whole time.\n\n**(4) The Risky Public Caf\u00e9**\nOn public WiFi, that corrupt postal worker could be the person running the network. HTTPS protects you because they can\u2019t forge the website\u2019s seal\u2014your official stamp would show it\u2019s fake. **But**, if you ignore the warning that the seal doesn\u2019t match, you voluntarily give your locked box to the interceptor. The risk isn\u2019t HTTPS failing; it\u2019s you being tricked into starting a conversation with the wrong person.",
+      "tokens": 489,
+      "time_ms": 14505,
+      "judgment": {
+        "usefulness": 8.0,
+        "clarity": 9.0,
+        "depth": 7.0,
+        "correctness": 8.0,
+        "completeness": 8.0,
+        "brief_justification": "The response uses consistent analogies (seals, locked boxes, scrambling glasses) and covers all four required topics. It's well-structured and accessible. However, it uses some technical terms like 'private key' which violates the constraint, and the explanation of why public WiFi is risky even WITH HTTPS is somewhat weak\u2014it mainly says HTTPS protects you and the risk is user error (ignoring warnings), rather than addressing other real risks like DNS spoofing, captive portal attacks, or shoulder surfing. The word count appears to be within the 400-word limit. The analogy system is creative and mostly coherent, though the 'scrambling glasses' metaphor is slightly strained.",
+        "weighted_score": 8.0
+      }
+    }
+  },
+  "winner": "DeepSeek V3.2",
+  "margin": 0.8
+}

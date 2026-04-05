@@ -1,0 +1,44 @@
+{
+  "question_id": "COMM-005",
+  "category": "communication",
+  "question_text": "Explain the CAP theorem to someone who:\n1. Has never studied computer science\n2. Needs to understand why they can't have \"everything\" in their distributed database\n3. Has to make a real architectural ",
+  "timestamp": "2026-04-03T21:44:55.217021",
+  "judge": "Claude Opus 4.6",
+  "judge_model_id": "anthropic/claude-opus-4.6",
+  "contestants": {
+    "qwen36_plus": {
+      "display_name": "Qwen 3.6 Plus",
+      "model_id": "qwen/qwen3.6-plus:free",
+      "response": "Imagine two bank branches sharing one live ledger. When a customer withdraws money at Branch 1, Branch 2\u2019s ledger should instantly update so they don\u2019t hand out cash that doesn\u2019t exist. This works perfectly\u2026 until the phone line between them cuts out.\n\nNow you face a forced choice:\n- **Keep the ledgers perfectly matched?** Tell Branch 2 to stop serving customers until the line reconnects. No one sees wrong numbers, but people get turned away. (You keep accuracy, lose access.)\n- **Keep both branches open?** Let Branch 2 keep processing withdrawals. But now both branches might pay out the same dollars, and the ledgers won\u2019t match until the line is fixed. (You keep access, lose accuracy.)\n\nThis is the reality of any system spread across locations. When communication breaks, you can only guarantee two of these three:\n1. Perfect, real-time accuracy everywhere\n2. Always being open for requests\n3. Continuing to run despite broken connections\n\nYou cannot have all three. Physics of communication won\u2019t allow it.\n\n**For your decision this week:** Ask what failure costs your business more.\n- If wrong data creates financial risk or destroys trust (like account balances, inventory, or medical records), prioritize accuracy. It\u2019s better to briefly show \u201ctemporarily paused\u201d than to show incorrect information.\n- If a frozen system loses customers or revenue (like shopping carts, booking sites, or user dashboards), prioritize access. Accept that some numbers will be slightly outdated for a few minutes, but everyone keeps moving.\n\nPick the trade-off. There\u2019s no hidden toggle for \u201call three\u201d\u2014only the right compromise for your actual users.",
+      "tokens": 2189,
+      "time_ms": 46857,
+      "judgment": {
+        "usefulness": 9.0,
+        "clarity": 10.0,
+        "depth": 7.0,
+        "correctness": 8.0,
+        "completeness": 8.0,
+        "brief_justification": "Excellent analogy that makes CAP theorem intuitive for a non-technical audience. The bank branch metaphor is concrete and effective. The actionable decision framework at the end is highly practical. Minor correctness ding: the 'pick two of three' framing is a slight oversimplification (partition tolerance isn't really optional in distributed systems\u2014you're really choosing between CP and AP when partitions occur), but the explanation in the body actually gets this right by framing it as a forced choice during a network break. The response stays well under 300 words and is perfectly targeted to the audience.",
+        "weighted_score": 8.35
+      }
+    },
+    "deepseek_v32": {
+      "display_name": "DeepSeek V3.2",
+      "model_id": "deepseek/deepseek-v3.2",
+      "response": "Imagine a bank with three branches. They promise you:\n\n- **Consistency:** Your balance is the same at every branch.\n- **Availability:** Any branch is always open for withdrawals/deposits.\n- **Partition Tolerance:** If a snowstorm cuts the phone lines between branches, the system still works.\n\n**You can only fully guarantee two of the three.**\n\nIf a storm hits (a **Partition**) and you demand **Availability** (all branches stay open), then branches can\u2019t talk. You could withdraw the same money from two different branches, breaking **Consistency**.\n\nIf you demand **Consistency** during the storm, then to prevent double-spending, some branches must **close** (become unavailable) until lines are restored. You keep consistency, but lose availability.\n\n**Your choice this week:**\n\nDo you need **immediate, correct answers every time** (Consistency + Availability)? Then avoid network splits\u2014use one data center (lose Partition Tolerance).\n\nDo you need **the system to always respond, even during problems** (Availability + Partition Tolerance)? Accept that data might be briefly outdated or conflict (lose Consistency).\n\nDo you need **data to be perfectly synced across distant locations** (Consistency + Partition Tolerance)? During a network issue, some parts will wait or become unresponsive (lose Availability).\n\nYou can\u2019t have all three in a distributed system. Decide which two are essential, and which one you can relax.",
+      "tokens": 361,
+      "time_ms": 10341,
+      "judgment": {
+        "usefulness": 9.0,
+        "clarity": 10.0,
+        "depth": 7.0,
+        "correctness": 8.0,
+        "completeness": 8.0,
+        "brief_justification": "The bank analogy is excellent and immediately intuitive. The explanation is well-structured, jargon-free, and under 300 words. It correctly explains the three properties and the tradeoffs. Minor correctness ding: the CA option (one data center, lose partition tolerance) is somewhat misleading since in practice partitions are unavoidable in distributed systems, and CAP theorem specifically applies to distributed systems. The response could have noted that in practice you're really choosing between CP and AP since partitions will happen. But for the target audience and the practical decision framing, this is highly effective.",
+        "weighted_score": 8.35
+      }
+    }
+  },
+  "winner": "tie",
+  "margin": 0.0
+}

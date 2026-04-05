@@ -1,0 +1,72 @@
+{
+  "question_id": "COMM-007",
+  "category": "communication",
+  "question_text": "Your CEO asks: \"Can we ship the new AI feature by Friday? The board presentation is Monday.\"\n\nReality: \n- Feature is 60% complete\n- No security review done\n- Test coverage at 20%\n- You estimate 3 more",
+  "timestamp": "2026-04-05T01:07:28.744396",
+  "judge": "Claude Opus 4.6",
+  "contestants": {
+    "gemma4_31b": {
+      "display_name": "Gemma 4 31B",
+      "model_id": "google/gemma-4-31b-it",
+      "response": "\"I completely understand the importance of having this for Monday\u2019s board presentation; we want to showcase the value of this AI feature.\n\nCurrently, the core logic is 60% complete, but we still need to complete the security review and increase test coverage to ensure a stable experience. To ship a production-ready version, I estimate we need three more weeks to avoid critical bugs or security vulnerabilities.\n\nTo meet your goal for Monday, I propose two alternatives:\n\n1. **The 'Demo' Route:** We build a polished, hard-coded prototype or a 'staged' version by Friday. This allows you to present the vision and user flow to the board without risking a live production failure.\n2. **The 'Beta' Route:** We ship a limited, read-only version to a tiny group of internal users for feedback, with a clear disclaimer that it is in alpha.\n\nWhich approach would best support your presentation? I\u2019ll align the team immediately to make it happen.\"",
+      "tokens": 332,
+      "time_ms": 94176,
+      "judgment": {
+        "usefulness": 10.0,
+        "depth": 8.0,
+        "correctness": 9.0,
+        "clarity": 10.0,
+        "completeness": 9.0,
+        "brief_justification": "The response excellently addresses all five requirements: it doesn't just say no, clearly acknowledges the business need, offers two concrete and realistic alternatives, is honest about the 3-week timeline and risks (security, bugs), and maintains a collaborative, supportive tone. The two alternatives (Demo and Beta routes) are practical and well-differentiated. The closing question is a nice touch that empowers the CEO while showing team readiness. Stays well within the 200-word limit. Minor note: could have been slightly more explicit about the specific risks of shipping incomplete (e.g., data exposure), but overall this is a near-ideal response.",
+        "weighted_score": 9.15
+      }
+    },
+    "gemma4_26b_a4b": {
+      "display_name": "Gemma 4 26B-A4B",
+      "model_id": "google/gemma-4-26b-a4b-it",
+      "response": "\"I completely understand the urgency\u2014having this ready for Monday\u2019s board presentation is a huge opportunity to demonstrate our momentum.\n\nTo be transparent about our current status: the feature is about 60% complete. While we can certainly have a functional version ready by Friday, it isn't 'production-ready.' We currently have significant gaps in security reviews and test coverage (20%) that pose a high risk to our user data and system stability if we launch to customers immediately.\n\nI suggest two ways we can approach this for the board:\n\n1.  **The 'Demo' Approach (Recommended):** We prepare a high-fidelity, controlled demo for Monday. This showcases the feature's value and vision to the board without exposing our live environment to technical risk.\n2.  **The 'Internal Beta' Approach:** We ship to a tiny, sandboxed group of internal testers by Friday. This allows us to show real-time usage while we spend the next three weeks hardening the security and stability for a full public launch.\n\nMy priority is ensuring we wow the board while protecting our platform's integrity. Which path aligns best with your vision for the presentation?\"",
+      "tokens": 369,
+      "time_ms": 6501,
+      "judgment": {
+        "usefulness": 10.0,
+        "depth": 8.0,
+        "correctness": 9.0,
+        "clarity": 10.0,
+        "completeness": 9.0,
+        "brief_justification": "The response excellently addresses all five requirements: it doesn't say no, clearly acknowledges the business need, offers two concrete alternatives, is honest about risks (security gaps, 20% test coverage), and maintains a collaborative, respectful tone. The two alternatives are practical and well-differentiated. The closing question is a nice touch for relationship-building. Slightly over the 200-word limit but only marginally. Minor nitpick: could have explicitly stated the 3-week timeline for production readiness more prominently.",
+        "weighted_score": 9.15
+      }
+    },
+    "qwen35_27b": {
+      "display_name": "Qwen 3.5 27B",
+      "model_id": "qwen/qwen3.5-27b",
+      "response": "I understand the board presentation is a critical milestone, and demonstrating progress is essential. However, shipping the AI feature to production by Friday poses unacceptable risks. At 60% completion with only 20% test coverage and no security review, a live release could compromise user data or system stability.\n\nTo meet your Monday deadline safely, I propose two alternatives:\n\n1.  **Executive Demo:** We build a controlled, high-fidelity demo using pre-validated data. This showcases the full vision and value without exposing live systems to risk.\n2.  **Staged Rollout:** We present the roadmap and early internal results, promising a secure GA launch in three weeks.\n\nMy team is fully committed to this launch, but rushing now risks a public failure that could overshadow our success. A polished demo ensures the board sees the potential without inheriting technical debt. Let\u2019s connect briefly today to finalize which path best supports your narrative.",
+      "tokens": 1228,
+      "time_ms": 12829,
+      "judgment": {
+        "usefulness": 10.0,
+        "depth": 8.0,
+        "correctness": 9.0,
+        "clarity": 10.0,
+        "completeness": 9.0,
+        "brief_justification": "Excellent response that hits all five requirements. It acknowledges the business need, is honest about risks without being dismissive, offers two concrete and practical alternatives, and closes with a collaborative tone that maintains the relationship. The language is professional, concise, and well-structured. Minor note: could have been slightly more specific about what the demo would show or what 'early internal results' means, but overall this is a near-ideal answer within the word limit.",
+        "weighted_score": 9.15
+      }
+    }
+  },
+  "winner": "Gemma 4 31B",
+  "ranking": [
+    {
+      "model": "Gemma 4 31B",
+      "score": 9.15
+    },
+    {
+      "model": "Gemma 4 26B-A4B",
+      "score": 9.15
+    },
+    {
+      "model": "Qwen 3.5 27B",
+      "score": 9.15
+    }
+  ]
+}

@@ -1,7 +1,13 @@
 """
 Multivac V5.1 - Small Language Models (<48B) Model Pool
-Updated: March 15, 2026
-Model Version: V2 (March 2026 frontier models)
+Updated: April 3, 2026
+Model Version: V3 (April 2026 - added Nemotron 3 Super, Qwen3-Next, Gemma 3n)
+
+Changes from V2:
+- Added: Nemotron 3 Super (12B active / 120B MoE, free)
+- Added: Qwen3-Next 80B-A3B (3B active / 80B MoE, free)
+- Added: Gemma 3n 4B (Google's mobile-optimized model)
+- Removed: Phi-4 14B, Mistral Nemo 12B, Llama 3.1 8B
 
 Previous version backed up to: models_backup_v1/
 """
@@ -25,13 +31,31 @@ MODELS = {
         "category_rank": 2,
         "active": True
     },
+    "nemotron_3_super": {
+        "model_id": "nvidia/nemotron-3-super-120b-a12b:free",
+        "display_name": "Nemotron 3 Super",
+        "provider": "openrouter",
+        "parameters": "12B active / 120B MoE",
+        "context_window": 262144,
+        "category_rank": 3,
+        "active": True
+    },
+    "qwen3_next_80b": {
+        "model_id": "qwen/qwen3-next-80b-a3b-instruct:free",
+        "display_name": "Qwen3-Next 80B-A3B",
+        "provider": "openrouter",
+        "parameters": "3B active / 80B MoE",
+        "context_window": 262144,
+        "category_rank": 4,
+        "active": True
+    },
     "devstral": {
         "model_id": "mistralai/devstral-small",
         "display_name": "Devstral Small",
         "provider": "openrouter",
         "parameters": "24B",
         "context_window": 32768,
-        "category_rank": 3,
+        "category_rank": 5,
         "active": True
     },
     "gemma3_27b": {
@@ -40,7 +64,7 @@ MODELS = {
         "provider": "openrouter",
         "parameters": "27B",
         "context_window": 8192,
-        "category_rank": 4,
+        "category_rank": 6,
         "active": True
     },
     "llama4_scout": {
@@ -49,16 +73,7 @@ MODELS = {
         "provider": "openrouter",
         "parameters": "17B active / 109B MoE",
         "context_window": 131072,
-        "category_rank": 5,
-        "active": True
-    },
-    "phi4": {
-        "model_id": "microsoft/phi-4",
-        "display_name": "Phi-4 14B",
-        "provider": "openrouter",
-        "parameters": "14B",
-        "context_window": 16384,
-        "category_rank": 6,
+        "category_rank": 7,
         "active": True
     },
     "granite_40": {
@@ -67,7 +82,16 @@ MODELS = {
         "provider": "openrouter",
         "parameters": "Micro",
         "context_window": 128000,
-        "category_rank": 7,
+        "category_rank": 8,
+        "active": True
+    },
+    "gemma_3n_4b": {
+        "model_id": "google/gemma-3n-e4b-it",
+        "display_name": "Gemma 3n 4B",
+        "provider": "openrouter",
+        "parameters": "4B",
+        "context_window": 32768,
+        "category_rank": 9,
         "active": True
     },
     "qwen3_8b": {
@@ -76,24 +100,6 @@ MODELS = {
         "provider": "openrouter",
         "parameters": "8B",
         "context_window": 32768,
-        "category_rank": 8,
-        "active": True
-    },
-    "mistral_nemo": {
-        "model_id": "mistralai/mistral-nemo",
-        "display_name": "Mistral Nemo 12B",
-        "provider": "openrouter",
-        "parameters": "12B",
-        "context_window": 131072,
-        "category_rank": 9,
-        "active": True
-    },
-    "llama31_8b": {
-        "model_id": "meta-llama/llama-3.1-8b-instruct",
-        "display_name": "Llama 3.1 8B",
-        "provider": "openrouter",
-        "parameters": "8B",
-        "context_window": 131072,
         "category_rank": 10,
         "active": True
     },
@@ -105,7 +111,7 @@ CATEGORY_INFO = {
     "display_name": "Small Language Models (<48B)",
     "description": "Open-weight models under 48B parameters for local deployment evaluation",
     "model_count": 10,
-    "version": "v2_march2026"
+    "version": "v3_april2026"
 }
 
 def get_active_models():
