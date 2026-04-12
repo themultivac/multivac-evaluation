@@ -1,0 +1,44 @@
+{
+  "question_id": "COMM-007",
+  "category": "communication",
+  "question_text": "Your CEO asks: \"Can we ship the new AI feature by Friday? The board presentation is Monday.\"\n\nReality: \n- Feature is 60% complete\n- No security review done\n- Test coverage at 20%\n- You estimate 3 more",
+  "timestamp": "2026-04-03T21:48:52.890255",
+  "judge": "Claude Opus 4.6",
+  "judge_model_id": "anthropic/claude-opus-4.6",
+  "contestants": {
+    "qwen36_plus": {
+      "display_name": "Qwen 3.6 Plus",
+      "model_id": "qwen/qwen3.6-plus:free",
+      "response": "I completely understand the urgency. This feature is a strategic highlight for Monday\u2019s board presentation, and I want it to land with maximum impact. \n\nCurrently, we\u2019re at 60% completion with 20% test coverage and zero security review. Releasing to production by Friday would introduce critical vulnerabilities and stability risks that could derail board confidence and delay our official launch.\n\nInstead, I recommend we deliver a polished, sandbox demo for Monday. I\u2019ll deploy a controlled environment with curated test data and guided workflows so you can safely showcase the full capability and roadmap. Meanwhile, the engineering team will complete security hardening, expand testing, and target a production-ready release in three weeks.\n\nI\u2019ll personally own the sandbox build by Thursday and draft your talking points around the rollout timeline, technical milestones, and ROI. Can we sync for 15 minutes tomorrow to lock the demo narrative and ensure you\u2019re fully set for Monday?",
+      "tokens": 1429,
+      "time_ms": 30128,
+      "judgment": {
+        "usefulness": 10.0,
+        "clarity": 10.0,
+        "depth": 8.0,
+        "correctness": 9.0,
+        "completeness": 9.0,
+        "brief_justification": "Excellent response that hits all five requirements. It acknowledges the business need genuinely, is transparent about risks without being alarmist, offers a creative and practical alternative (sandbox demo), provides a concrete timeline, and ends with a collaborative next step. The tone is confident and supportive, maintaining the relationship well. The sandbox demo idea is particularly strong as it directly addresses the board presentation need. Slightly less depth on the specific risks (e.g., could have briefly mentioned regulatory or reputational consequences), but overall this is a near-ideal response within the word limit.",
+        "weighted_score": 9.15
+      }
+    },
+    "deepseek_v32": {
+      "display_name": "DeepSeek V3.2",
+      "model_id": "deepseek/deepseek-v3.2",
+      "response": "I understand the importance of having a strong demo for Monday's board presentation.\n\nWe cannot ship the full, production-ready feature by Friday. It's at 60% completion, lacks a security review, and has low test coverage, posing significant stability and security risks for a live release.\n\nHowever, we can have a compelling **demo version** ready for Friday. This would be a controlled, internal preview showcasing the core functionality on a staging environment. It would be visually complete for presentation purposes while we continue the necessary security and testing work in parallel.\n\nThis approach allows you to demonstrate progress and vision to the board without risking our product's integrity or user trust. The full, hardened release remains on track for ~3 weeks from now.\n\nI recommend we prioritize building that demo slice today. Can we sync this afternoon to align on the exact capabilities to highlight?",
+      "tokens": 280,
+      "time_ms": 15869,
+      "judgment": {
+        "usefulness": 10.0,
+        "clarity": 10.0,
+        "depth": 8.0,
+        "correctness": 9.0,
+        "completeness": 9.0,
+        "brief_justification": "The response excellently addresses all five requirements: it doesn't just say no, clearly acknowledges the business need (board presentation), offers a practical alternative (demo/staging version), is honest about risks (security, stability, test coverage), and maintains a positive, collaborative tone. The suggestion to sync that afternoon is a strong actionable close. It's concise, well-structured, and within the word limit. Minor deduction on depth because it could briefly mention what specific risks a premature launch could cause, but overall this is a near-ideal response.",
+        "weighted_score": 9.15
+      }
+    }
+  },
+  "winner": "tie",
+  "margin": 0.0
+}

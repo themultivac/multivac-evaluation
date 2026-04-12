@@ -1,0 +1,56 @@
+{
+  "batch_id": "H2H-BATCH-20260403",
+  "timestamp": "2026-04-03T23:49:40.727614",
+  "contestants": {
+    "qwen36_plus": {
+      "model_id": "qwen/qwen3.6-plus:free",
+      "display_name": "Qwen 3.6 Plus"
+    },
+    "deepseek_v32": {
+      "model_id": "deepseek/deepseek-v3.2",
+      "display_name": "DeepSeek V3.2"
+    }
+  },
+  "judge": {
+    "model_id": "anthropic/claude-opus-4.6",
+    "display_name": "Claude Opus 4.6"
+  },
+  "total_questions": 150,
+  "wins": {
+    "Qwen 3.6 Plus": 107,
+    "DeepSeek V3.2": 11
+  },
+  "ties": 25,
+  "incomplete": 7,
+  "category_breakdown": {
+    "code": {
+      "Qwen 3.6 Plus": 23,
+      "tie": 5,
+      "DeepSeek V3.2": 2
+    },
+    "reasoning": {
+      "Qwen 3.6 Plus": 21,
+      "DeepSeek V3.2": 3,
+      "incomplete": 4,
+      "tie": 2
+    },
+    "analysis": {
+      "tie": 4,
+      "Qwen 3.6 Plus": 25,
+      "incomplete": 1
+    },
+    "communication": {
+      "Qwen 3.6 Plus": 17,
+      "tie": 10,
+      "DeepSeek V3.2": 3
+    },
+    "meta_alignment": {
+      "tie": 4,
+      "Qwen 3.6 Plus": 21,
+      "DeepSeek V3.2": 3,
+      "incomplete": 2
+    }
+  },
+  "cost": 12.000000000000009,
+  "_batch_dir": "H2H-BATCH-20260403"
+}

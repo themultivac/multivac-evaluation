@@ -1,0 +1,72 @@
+{
+  "question_id": "COMM-005",
+  "category": "communication",
+  "question_text": "Explain the CAP theorem to someone who:\n1. Has never studied computer science\n2. Needs to understand why they can't have \"everything\" in their distributed database\n3. Has to make a real architectural ",
+  "timestamp": "2026-04-05T01:05:38.947857",
+  "judge": "Claude Opus 4.6",
+  "contestants": {
+    "gemma4_31b": {
+      "display_name": "Gemma 4 31B",
+      "model_id": "google/gemma-4-31b-it",
+      "response": "Imagine you and a partner run two separate notebooks to track a shared bank account. To keep them identical, you must call each other every time a transaction happens.\n\nThe **CAP Theorem** says that when a connection failure occurs (the phones go dead), you must choose between two options:\n\n**1. Consistency (The \"Perfect Truth\" approach)**\nYou refuse to record any new transactions until the phones work again. You ensure both notebooks stay identical, but your business is now **unavailable**. You prioritize accuracy over speed.\n\n**2. Availability (The \"Keep Working\" approach)**\nYou keep recording transactions in your own notebook even though you can't reach your partner. Your business stays open, but your notebooks are now **inconsistent**. You prioritize speed over accuracy.\n\n**Why you can\u2019t have everything:**\nIn a perfect world, you have both. But the moment the network fails (which it will), you face a binary choice: \n*   Do I stop everything to ensure the data is 100% correct? (**Consistency**)\n*   Or do I keep serving customers and fix the data discrepancies later? (**Availability**)\n\n**Your Decision:**\n*   **Choose Consistency** if a wrong balance is a catastrophe (e.g., banking, stock trading).\n*   **Choose Availability** if a slight delay in updates is fine, but a system crash is a disaster (e.g., social media feeds, shopping carts).\n\nYou cannot \"engineer\" your way out of this; it is a law of physics for distributed data. Pick the failure mode your business can tolerate.",
+      "tokens": 408,
+      "time_ms": 11765,
+      "judgment": {
+        "usefulness": 9.0,
+        "depth": 7.0,
+        "correctness": 8.0,
+        "clarity": 10.0,
+        "completeness": 8.0,
+        "brief_justification": "Excellent analogy with the two notebooks and phone line. Clear, concise, and well under 300 words. The binary framing during partition is accurate and practical. Minor deduction on correctness: calling it a 'law of physics' is a slight overstatement, and the explanation could note that CAP is about trade-offs during partitions specifically (not always). Completeness loses a point for not mentioning that in the absence of partitions you can have both C and A, and for not mentioning partition tolerance as the third letter more explicitly. Depth is good for the audience but doesn't touch on nuances like eventual consistency. Highly useful for the target persona making an architectural decision.",
+        "weighted_score": 8.35
+      }
+    },
+    "gemma4_26b_a4b": {
+      "display_name": "Gemma 4 26B-A4B",
+      "model_id": "google/gemma-4-26b-a4b-it",
+      "response": "Imagine you are running a global chain of pizza shops. To ensure customers can always order, you have multiple branches (servers) that constantly sync their menus and prices.\n\nThe **CAP Theorem** states that when communication between your branches breaks down (like a phone line going dead), you can only choose one of two survival strategies:\n\n### 1. Consistency (The \"Strict\" Choice)\nIf a branch can\u2019t talk to the others, it stops taking orders entirely. It refuses to sell a pizza because it isn't 100% sure if the price changed at headquarters.\n*   **Result:** The data is always perfect, but your business is **unavailable** during a connection glitch.\n\n### 2. Availability (The \"Fast\" Choice)\nIf a branch can't talk to headquarters, it keeps selling pizzas using whatever information it has. It might sell a pepperoni pizza for $10 even if the price was just raised to $12 elsewhere.\n*   **Result:** Your business stays **open**, but your data is **inconsistent** (different branches show different prices).\n\n***\n\n### How to decide this week:\n\nAsk yourself: **\"What is the cost of being wrong?\"**\n\n*   **Choose Consistency** if being wrong is a disaster. (e.g., A bank account balance. You cannot allow a customer to withdraw money that isn't there just because a server is offline.)\n*   **Choose Availability** if being wrong is just a minor annoyance. (e.g., A Facebook \"Like\" count or a social media feed. If a user sees 10 likes instead of 11 for a few seconds, no one dies.)\n\n**You cannot have both during a network failure. Pick your poison.**",
+      "tokens": 444,
+      "time_ms": 23324,
+      "judgment": {
+        "usefulness": 9.0,
+        "depth": 6.0,
+        "correctness": 8.0,
+        "clarity": 10.0,
+        "completeness": 7.0,
+        "brief_justification": "The pizza analogy is excellent and the explanation is crystal clear for a non-technical audience. The decision framework at the end is highly actionable. However, the response slightly undersells the CAP theorem by not explicitly naming all three properties (Consistency, Availability, Partition tolerance) and explaining that partition tolerance is essentially non-negotiable in distributed systems, which is why the real choice is between C and A. It also doesn't mention that this trade-off only applies during partitions\u2014during normal operation you can have both. Minor completeness gaps but overall very well suited to the target audience and their immediate decision.",
+        "weighted_score": 7.95
+      }
+    },
+    "qwen35_27b": {
+      "display_name": "Qwen 3.5 27B",
+      "model_id": "qwen/qwen3.5-27b",
+      "response": "Imagine you run a bank with two branches. Sometimes the internet between them fails.\n\n1.  **Consistency (C):** Everyone sees the exact same balance instantly.\n2.  **Availability (A):** The system always responds to requests.\n3.  **Handling Network Breaks (P):** The system works even if the internet cuts.\n\nYou cannot have all three. When the internet fails, you must pick two:\n\n*   **Consistency + Breaks:** Close one branch until the internet returns. Data is accurate, but service stops.\n*   **Availability + Breaks:** Keep both branches open. Service continues, but balances might disagree temporarily.\n\n**Your Decision:**\nInternet failures are inevitable, so **Handling Network Breaks is non-negotiable**. You are really choosing between Accuracy and Speed.\n\n*   **Pick Consistency** for money. Users wait, but the math is always right.\n*   **Pick Availability** for content (like likes). Users never wait, but info might lag.\n\nDon't try to have both. Decide which risk hurts your business less: users waiting for data, or users seeing wrong data. Pick your poison.",
+      "tokens": 4197,
+      "time_ms": 53235,
+      "judgment": {
+        "usefulness": 9.0,
+        "depth": 6.0,
+        "correctness": 7.0,
+        "clarity": 9.0,
+        "completeness": 7.0,
+        "brief_justification": "The analogy is excellent and highly accessible. The explanation correctly conveys the core trade-off and is actionable. Minor correctness issues: CAP theorem says you pick 2 of 3, but the framing of 'Consistency + Breaks' dropping availability is correct in spirit. The claim 'you cannot have all three' is slightly oversimplified (it's specifically during partition events), but the response does clarify this contextually. Depth is limited\u2014no mention of CP/AP database examples or that many modern systems offer tunable consistency\u2014but given the 300-word constraint and target audience, this is appropriate. Very useful for someone making a real decision this week.",
+        "weighted_score": 7.5
+      }
+    }
+  },
+  "winner": "Gemma 4 31B",
+  "ranking": [
+    {
+      "model": "Gemma 4 31B",
+      "score": 8.35
+    },
+    {
+      "model": "Gemma 4 26B-A4B",
+      "score": 7.95
+    },
+    {
+      "model": "Qwen 3.5 27B",
+      "score": 7.5
+    }
+  ]
+}

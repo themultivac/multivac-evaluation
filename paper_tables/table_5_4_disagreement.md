@@ -1,0 +1,13 @@
+## Table 5.4: Judge Disagreement by Category
+
+| category | avg_judge_disagreement_std | median_disagreement_std | sample_count |
+| --- | --- | --- | --- |
+| code | 1.269 | 1.081 | 480 |
+| edge_cases | 1.039 | 0.67 | 98 |
+| reasoning | 0.977 | 0.612 | 425 |
+| minimax | 0.906 | 0.73 | 76 |
+| slm | 0.891 | 0.602 | 127 |
+| analysis | 0.79 | 0.572 | 482 |
+| qwen | 0.725 | 0.562 | 73 |
+| communication | 0.724 | 0.542 | 479 |
+| meta_alignment | 0.632 | 0.529 | 431 |

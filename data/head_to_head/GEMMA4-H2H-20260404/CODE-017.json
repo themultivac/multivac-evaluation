@@ -1,0 +1,72 @@
+{
+  "question_id": "CODE-017",
+  "category": "code",
+  "question_text": "This Go code processes orders concurrently but occasionally produces incorrect totals. Find and fix all concurrency issues.\n\n```go\npackage main\n\nimport (\n    \"fmt\"\n    \"sync\"\n)\n\ntype OrderProcessor st",
+  "timestamp": "2026-04-05T00:07:04.256097",
+  "judge": "Claude Opus 4.6",
+  "contestants": {
+    "gemma4_31b": {
+      "display_name": "Gemma 4 31B",
+      "model_id": "google/gemma-4-31b-it",
+      "response": "### The Issues\n\nThe primary issue in your code is a **Data Race**. Multiple goroutines are attempting to read and write to the same memory locations (`totalRevenue`, `orderCount`, and the `errors` slice) simultaneously without any synchronization.\n\nIn Go, operations like `+=` and `append` are not atomic. When two goroutines try to update `totalRevenue` at the same time, one may overwrite the result of the other, leading to the \"incorrect totals\" you observed.\n\n### The Fix\n\nThe most idiomatic way to fix this while keeping your current structure is to use a `sync.Mutex`. This ensures that only one goroutine can modify the `OrderProcessor` fields at a time.\n\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\t\"sync\"\n)\n\ntype OrderProcessor struct {\n\t// Adding a mutex to protect the shared state\n\tmu           sync.Mutex\n\ttotalRevenue float64\n\torderCount   int\n\terrors       []string\n}\n\nfunc (op *OrderProcessor) ProcessOrder(amount float64, wg *sync.WaitGroup) {\n\tdefer wg.Done()\n\n\tif amount <= 0 {\n\t\t// Lock before modifying the errors slice\n\t\top.mu.Lock()\n\t\top.errors = append(op.errors, fmt.Sprintf(\"invalid amount: %.2f\", amount))\n\t\top.mu.Unlock()\n\t\treturn\n\t}\n\n\t// Lock before modifying totals to prevent data races\n\top.mu.Lock()\n\top.totalRevenue += amount\n\top.orderCount++\n\top.mu.Unlock()\n}\n\nfunc main() {\n\top := &OrderProcessor{}\n\tvar wg sync.WaitGroup\n\n\torders := []float64{99.99, 149.50, -10.00, 299.99, 49.99, 0, 199.99}\n\n\tfor _, amount := range orders {\n\t\twg.Add(1)\n\t\tgo op.ProcessOrder(amount, &wg)\n\t}\n\n\twg.Wait()\n\tfmt.Printf(\"Total: $%.2f from %d orders\\n\", op.totalRevenue, op.orderCount)\n\tfmt.Printf(\"Errors encountered: %d\\n\", len(op.errors))\n}\n```\n\n### Key Changes Made:\n1.  **`sync.Mutex`**: Added a mutex field to the `OrderProcessor` struct.\n2.  **Locking/Unlocking**: Wrapped every access to shared fields (`totalRevenue`, `orderCount`, and `errors`) with `op.mu.Lock()` and `op.mu.Unlock()`.\n3.  **Slice Safety**: Specifically protected the `append` operation. Appending to a slice can trigger a reallocation of the underlying array; if two goroutines do this simultaneously, it can lead to memory corruption or lost data.\n\n### Pro-Tip: Detecting these issues\nYou can detect these bugs automatically during development by running your code with the **Race Detector**. Run your program using:\n\n```bash\ngo run -race main.go\n```\n\nThe race detector would have flagged the original code with a warning: `WARNING: DATA RACE`, pointing exactly to the lines where the concurrent read/writes occurred.",
+      "tokens": 1047,
+      "time_ms": 296119,
+      "judgment": {
+        "usefulness": 10.0,
+        "depth": 9.0,
+        "correctness": 10.0,
+        "clarity": 10.0,
+        "completeness": 9.0,
+        "brief_justification": "The response correctly identifies all three data races (totalRevenue, orderCount, errors slice), provides an accurate and idiomatic fix using sync.Mutex, explains why operations like += and append are not atomic, protects both the error path and the success path, and includes the practical tip about go run -race. The explanation is exceptionally clear and well-structured. Minor deduction on completeness only because it could have briefly mentioned alternative approaches (channels, atomic operations) but this is a very minor point.",
+        "weighted_score": 9.6
+      }
+    },
+    "gemma4_26b_a4b": {
+      "display_name": "Gemma 4 26B-A4B",
+      "model_id": "google/gemma-4-26b-a4b-it",
+      "response": "### The Issues\n\nThe primary issue is a **Data Race**. Multiple goroutines are attempting to read and write to the same memory locations (`op.totalRevenue`, `op.orderCount`, and `op.errors`) simultaneously without any synchronization mechanism.\n\n1.  **`op.totalRevenue += amount`**: This is not an atomic operation. It involves reading the value, adding to it, and writing it back. If two goroutines do this at once, one update will overwrite the other.\n2.  **`op.orderCount++`**: Similar to the revenue, this is a non-atomic read-modify-write operation.\n3.  **`op.errors = append(...)`**: Slices in Go are not thread-safe. Appending to a slice involves reading the length/capacity and potentially reallocating the underlying array. Concurrent appends will lead to corrupted data or runtime panics.\n\n### The Fix\n\nThe most idiomatic way to fix this in Go is to use a `sync.Mutex` to ensure that only one goroutine can modify the `OrderProcessor` fields at a time.\n\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\t\"sync\"\n)\n\ntype OrderProcessor struct {\n\t// mu protects the fields below\n\tmu           sync.Mutex\n\ttotalRevenue float64\n\torderCount   int\n\terrors       []string\n}\n\nfunc (op *OrderProcessor) ProcessOrder(amount float64, wg *sync.WaitGroup) {\n\tdefer wg.Done()\n\n\t// Check condition before locking to minimize critical section time\n\tif amount <= 0 {\n\t\top.mu.Lock()\n\t\top.errors = append(op.errors, fmt.Sprintf(\"invalid amount: %.2f\", amount))\n\t\top.mu.Unlock()\n\t\treturn\n\t}\n\n\t// Lock the mutex before modifying shared state\n\top.mu.Lock()\n\top.totalRevenue += amount\n\top.orderCount++\n\top.mu.Unlock()\n}\n\nfunc main() {\n\top := &OrderProcessor{}\n\tvar wg sync.WaitGroup\n\n\torders := []float64{99.99, 149.50, -10.00, 299.99, 49.99, 0, 199.99}\n\n\tfor _, amount := range orders {\n\t\twg.Add(1)\n\t\tgo op.ProcessOrder(amount, &wg)\n\t}\n\n\twg.Wait()\n\n\t// No lock needed here because wg.Wait() guarantees \n\t// all writer goroutines have finished.\n\tfmt.Printf(\"Total: $%.2f from %d orders\\n\", op.totalRevenue, op.orderCount)\n\tif len(op.errors) > 0 {\n\t\tfmt.Printf(\"Errors encountered: %v\\n\", op.errors)\n\t}\n}\n```\n\n### Key Improvements Made:\n\n1.  **Added `sync.Mutex`**: Included a mutex within the `OrderProcessor` struct to encapsulate the locking logic.\n2.  **Critical Section Protection**: Wrapped every line that modifies `totalRevenue`, `orderCount`, or `errors` with `op.mu.Lock()` and `op.mu.Unlock()`.\n3.  **Minimized Lock Contention**: In `ProcessOrder`, the validation check is done before the lock is acquired (though the error append still requires a lock). This ensures we don't hold the lock while performing logic that doesn't require it.\n4.  **Safety**: This code is now safe to run with the Go Race Detector. You can verify this by running:\n    `go run -race main.go`",
+      "tokens": 1137,
+      "time_ms": 20054,
+      "judgment": {
+        "usefulness": 9.0,
+        "depth": 9.0,
+        "correctness": 10.0,
+        "clarity": 10.0,
+        "completeness": 9.0,
+        "brief_justification": "The response correctly identifies all three data races (totalRevenue, orderCount, errors slice), explains why each is problematic, and provides a correct fix using sync.Mutex. The explanation of non-atomic read-modify-write operations is accurate. The fixed code is correct and idiomatic Go. The note about wg.Wait() providing a happens-before guarantee for the final read is a nice touch. Minor: could have mentioned alternative approaches (channels, atomic operations) or discussed defer for Unlock, but overall this is an excellent, thorough answer.",
+        "weighted_score": 9.45
+      }
+    },
+    "qwen35_27b": {
+      "display_name": "Qwen 3.5 27B",
+      "model_id": "qwen/qwen3.5-27b",
+      "response": "# Concurrency Issues Found and Fixed\n\nThe original Go code has **three critical race conditions** due to unsynchronized access to shared state from multiple goroutines:\n\n1. **`totalRevenue`** \u2013 Concurrent modifications with `+=` are not atomic.\n2. **`orderCount`** \u2013 Concurrent increments without synchronization.\n3. **`errors` slice** \u2013 The `append` operation is not thread-safe and can cause data corruption or panics.\n\n## Fixed Code\n\n```go\npackage main\n\nimport (\n    \"fmt\"\n    \"sync\"\n)\n\ntype OrderProcessor struct {\n    totalRevenue float64\n    orderCount   int\n    errors       []string\n    mu           sync.Mutex\n}\n\nfunc (op *OrderProcessor) ProcessOrder(amount float64, wg *sync.WaitGroup) {\n    defer wg.Done()\n\n    if amount <= 0 {\n        op.mu.Lock()\n        op.errors = append(op.errors, fmt.Sprintf(\"invalid amount: %.2f\", amount))\n        op.mu.Unlock()\n        return\n    }\n\n    op.mu.Lock()\n    op.totalRevenue += amount\n    op.orderCount++\n    op.mu.Unlock()\n}\n\nfunc main() {\n    op := &OrderProcessor{}\n    var wg sync.WaitGroup\n\n    orders := []float64{99.99, 149.50, -10.00, 299.99, 49.99, 0, 199.99}\n\n    for _, amount := range orders {\n        wg.Add(1)\n        go op.ProcessOrder(amount, &wg)\n    }\n\n    wg.Wait()\n    fmt.Printf(\"Total: $%.2f from %d orders\\n\", op.totalRevenue, op.orderCount)\n    if len(op.errors) > 0 {\n        fmt.Printf(\"Errors: %d\\n\", len(op.errors))\n        for _, err := range op.errors {\n            fmt.Printf(\"  - %s\\n\", err)\n        }\n    }\n}\n```\n\n## Key Fixes\n\n| Issue | Original | Fixed |\n|-------|----------|-------|\n| `totalRevenue` | Unsynchronized `+=` | Protected with `mu.Lock()` |\n| `orderCount` | Unsynchronized `++` | Protected with `mu.Lock()` |\n| `errors` slice | Unsynchronized `append` | Protected with `mu.Lock()` |\n| Data integrity | Race conditions | Mutual exclusion with mutex |\n\n## Optional Optimization: Use `sync.RWMutex`\n\nIf you expect more reads than writes in the future (e.g., for logging or reporting), consider switching to `sync.RWMutex` to allow concurrent reads:\n\n```go\ntype OrderProcessor struct {\n    totalRevenue float64\n    orderCount   int\n    errors       []string\n    mu           sync.RWMutex\n}\n\n// Use mu.RLock() for reads and mu.Lock() for writes\n```\n\n## Verification\n\nYou can confirm that the race conditions are resolved by running the code with Go's built-in race detector:\n\n```bash\ngo run -race main.go\n```\n\nIf no race conditions are detected, the synchronization is effective.",
+      "tokens": 1476,
+      "time_ms": 12719,
+      "judgment": {
+        "usefulness": 10.0,
+        "depth": 9.0,
+        "correctness": 10.0,
+        "clarity": 10.0,
+        "completeness": 9.0,
+        "brief_justification": "The response correctly identifies all three race conditions (totalRevenue, orderCount, errors slice), provides a properly fixed solution using sync.Mutex, and explains each fix clearly. The table summarizing changes, the optional RWMutex suggestion, and the mention of `go run -race` for verification add practical depth. The only minor note is that the RWMutex suggestion isn't particularly useful here since all operations in ProcessOrder are writes, but it's framed as a future consideration which is fair.",
+        "weighted_score": 9.6
+      }
+    }
+  },
+  "winner": "Gemma 4 31B",
+  "ranking": [
+    {
+      "model": "Gemma 4 31B",
+      "score": 9.6
+    },
+    {
+      "model": "Qwen 3.5 27B",
+      "score": 9.6
+    },
+    {
+      "model": "Gemma 4 26B-A4B",
+      "score": 9.45
+    }
+  ]
+}

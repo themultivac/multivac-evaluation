@@ -1,0 +1,44 @@
+{
+  "question_id": "CODE-001",
+  "category": "code",
+  "question_text": "This Python async function has 3 bugs: a race condition, an unhandled exception, and a resource leak. Find all three and explain why each is problematic.\n\n```python\nimport asyncio\nimport aiohttp\n\nclas",
+  "timestamp": "2026-04-03T16:00:54.809354",
+  "judge": "Claude Opus 4.6",
+  "judge_model_id": "anthropic/claude-opus-4.6",
+  "contestants": {
+    "qwen36_plus": {
+      "display_name": "Qwen 3.6 Plus",
+      "model_id": "qwen/qwen3.6-plus:free",
+      "response": "Here are the three bugs, where they occur, and why each is problematic:\n\n### 1. Resource Leak: `ClientSession` is never closed\n**Location:** `__init__` creates `self.session = aiohttp.ClientSession()`, but there's no corresponding `close()` method or context manager usage.\n**Why it's problematic:** `aiohttp.ClientSession` manages TCP connection pools, background keep-alive tasks, and OS-level sockets. If not explicitly closed, it leaks file descriptors and network resources. Over time, this can exhaust connection limits, cause `Too many open files` errors, and trigger `ResourceWarning: Unclosed client session`. In long-running async applications, this is a critical memory/resource leak.\n**Fix:** Add an `async def close(self): await self.session.close()` method and use the class as an async context manager, or instantiate the session inside an `async with aiohttp.ClientSession() as session:` block.\n\n### 2. Race Condition: Non-atomic cache check-then-act\n**Location:** `fetch_single` checks `if url in self.cache:` then later executes `self.cache[url] = data` after an `await`.\n**Why it's problematic:** `fetch_parallel` runs multiple `fetch_single` coroutines concurrently. Because there's an `await` boundary between the cache check and the cache write, the check-and-update sequence is **not atomic**. If two tasks request the same URL simultaneously, both can pass the `if url in self.cache:` check before either finishes fetching. This results in:\n- Duplicate HTTP requests to the same endpoint (wasting bandwidth and server resources)\n- Cache being overwritten multiple times unnecessarily\n- Defeating the entire purpose of caching under concurrent workloads\n**Fix:** Protect the check-fetch-update sequence with an `asyncio.Lock`, or use a dedicated async caching library like `aiocache` that handles concurrency safely.\n\n### 3. Unhandled Exception: No error handling for network/HTTP/JSON failures\n**Location:** `data = await response.json()` and the implicit assumption that `self.session.get(url)` always succeeds.\n**Why it's problematic:** Network requests are inherently unreliable. This code lacks `try/except` blocks and doesn't call `response.raise_for_status()`. Several failures will crash the coroutine:\n- **HTTP errors:** 4xx/5xx responses aren't checked. `response.json()` may try to parse HTML error pages and raise `aiohttp.ContentTypeError`.\n- **Network failures:** Timeouts, DNS failures, or connection resets raise `aiohttp.ClientError` or `asyncio.TimeoutError`.\n- **Cascade failure:** In `fetch_parallel`, `asyncio.gather()` propagates the first exception and **cancels all other pending tasks** by default. A single bad URL causes the entire batch to fail instead of returning partial results.\n**Fix:** Wrap the fetch logic in `try/except`, call `response.raise_for_status()` before parsing JSON, and use `asyncio.gather(*tasks, return_exceptions=True)` to isolate failures and return partial results gracefully.\n\n---\n**Summary Table:**\n| Bug | Root Cause | Impact |\n|-----|------------|--------|\n| **Resource Leak** | `ClientSession` never closed | Socket/connection exhaustion, memory leaks, runtime warnings |\n| **Race Condition** | Cache check & update split by `await` | Duplicate network requests, wasted resources, broken caching |\n| **Unhandled Exception** | No `try/except` or status check | Single failure crashes entire batch, unpredictable crashes on bad responses |",
+      "tokens": 5275,
+      "time_ms": 98323,
+      "judgment": {
+        "usefulness": 9.0,
+        "clarity": 10.0,
+        "depth": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0,
+        "brief_justification": "All three bugs are correctly identified with accurate explanations. The race condition analysis correctly identifies the check-then-act pattern across await boundaries. The resource leak is precisely identified. The unhandled exception analysis is thorough, covering multiple failure modes including the cascade failure via asyncio.gather. The response includes clear fixes for each issue. Minor nitpick: asyncio.gather does not cancel other tasks by default on exception (it propagates the first exception but doesn't automatically cancel siblings), but the overall point about batch failure is valid. Excellent formatting with summary table.",
+        "weighted_score": 9.2
+      }
+    },
+    "deepseek_v32": {
+      "display_name": "DeepSeek V3.2",
+      "model_id": "deepseek/deepseek-v3.2",
+      "response": "Looking at this code, I found all three bugs:\n\n## 1. **Race Condition**\n**Location**: In `fetch_parallel()` and `fetch_single()` methods\n\n**Problem**: Multiple coroutines fetching the same URL simultaneously could all miss the cache and make duplicate requests.\n\n**Why it's problematic**:\n```python\nasync def fetch_single(self, url):\n    if url in self.cache:           # Line 1: Check cache\n        return self.cache[url]      # Line 2: Return cached value\n    async with self.session.get(url) as response:  # Line 3: Fetch\n        data = await response.json()               # Line 4: Parse\n        self.cache[url] = data      # Line 5: Update cache\n        return data\n```\nIf two coroutines execute Line 1 at nearly the same time before either reaches Line 5, both will think the URL isn't cached and both will make duplicate network requests. This wastes bandwidth and server resources.\n\n## 2. **Unhandled Exception**\n**Location**: In `fetch_data()` and `fetch_single()` methods\n\n**Problem**: `response.json()` can raise exceptions (JSONDecodeError, aiohttp.ClientError, etc.) that aren't caught.\n\n**Why it's problematic**:\n```python\nasync with self.session.get(url) as response:\n    data = await response.json()  # Can fail if response isn't valid JSON\n    self.cache[url] = data\n```\nIf the server returns non-JSON data (HTML error page, empty response, malformed JSON), the entire coroutine will crash. In `fetch_parallel()`, this could cause `asyncio.gather()` to fail completely unless `return_exceptions=True` is used.\n\n## 3. **Resource Leak**\n**Location**: In the `__init__()` method\n\n**Problem**: The `aiohttp.ClientSession()` is never closed.\n\n**Why it's problematic**:\n```python\ndef __init__(self):\n    self.cache = {}\n    self.session = aiohttp.ClientSession()  # Never closed!\n```\n`aiohttp.ClientSession` maintains underlying connections, SSL contexts, and other resources. Without proper cleanup:\n- TCP connections aren't closed properly\n- Memory isn't freed\n- The program might not exit cleanly\n- Could exhaust file descriptors or memory over time\n\n**Proper solution**: The class should either:\n1. Provide a `close()` method and ensure it's called\n2. Use async context manager pattern (`async with DataFetcher() as fetcher:`)\n3. Create sessions per operation instead of at instance level\n\n## Additional Issues (Bonus):\n- `fetch_data()` is redundant with `fetch_parallel()` but less efficient (sequential vs parallel)\n- No timeout on network requests\n- Cache never expires or limits size\n- `fetch_parallel()` calls `fetch_single()` which duplicates `fetch_data()` logic",
+      "tokens": 881,
+      "time_ms": 23284,
+      "judgment": {
+        "usefulness": 9.0,
+        "clarity": 10.0,
+        "depth": 9.0,
+        "correctness": 8.0,
+        "completeness": 9.0,
+        "brief_justification": "All three bugs are correctly identified: the race condition in fetch_parallel/fetch_single with concurrent cache access, the unhandled exception from response.json(), and the resource leak from the unclosed ClientSession. The explanations are thorough with code snippets showing exact locations. The race condition explanation is accurate for asyncio's cooperative multitasking model. The unhandled exception identification is reasonable, though one could also point to missing HTTP status code checks (response.raise_for_status()). Solutions are provided for the resource leak. Bonus observations add extra value. Minor deduction on correctness because the session creation outside of an async context (event loop) could also be flagged as part of the resource leak issue, and the exception analysis could be slightly more precise about which specific exceptions are most likely.",
+        "weighted_score": 8.95
+      }
+    }
+  },
+  "winner": "Qwen 3.6 Plus",
+  "margin": 0.25
+}

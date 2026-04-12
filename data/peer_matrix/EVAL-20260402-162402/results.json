@@ -1,0 +1,214 @@
+{
+  "evaluation_id": "EVAL-20260402-162402",
+  "timestamp": "2026-04-02T16:24:02.016197",
+  "question_id": "REASON-011",
+  "question_text": "A judge tells a prisoner: 'You will be hanged one day next week, but you will not be able to predict the day.' The prisoner reasons that he can't be hanged on Friday (he'd know by Thursday night), then can't be hanged Thursday (he'd know by Wednesday night), and so on, concluding he can't be hanged at all. But on Wednesday, he's hanged \u2014 and is genuinely surprised. What went wrong with his reasoning? Provide a rigorous logical analysis.",
+  "category": "reasoning",
+  "models_used": [
+    "gemini_31_pro",
+    "deepseek_v4",
+    "claude_opus_46",
+    "gpt_5_4",
+    "grok_420",
+    "claude_sonnet_46",
+    "mimo_v2_flash",
+    "gpt_oss_120b",
+    "gemini_25_flash",
+    "minimax_m25"
+  ],
+  "responses": [
+    {
+      "model_key": "gemini_31_pro",
+      "model_name": "Gemini 3.1 Pro",
+      "response": "",
+      "generation_time_ms": 0,
+      "tokens_used": 0,
+      "error": "[Errno -3] Temporary failure in name resolution"
+    },
+    {
+      "model_key": "deepseek_v4",
+      "model_name": "DeepSeek V3",
+      "response": "",
+      "generation_time_ms": 0,
+      "tokens_used": 0,
+      "error": "[Errno -3] Temporary failure in name resolution"
+    },
+    {
+      "model_key": "claude_opus_46",
+      "model_name": "Claude Opus 4.6",
+      "response": "",
+      "generation_time_ms": 0,
+      "tokens_used": 0,
+      "error": "[Errno -3] Temporary failure in name resolution"
+    },
+    {
+      "model_key": "gpt_5_4",
+      "model_name": "GPT-5.4",
+      "response": "",
+      "generation_time_ms": 0,
+      "tokens_used": 0,
+      "error": "[Errno -3] Temporary failure in name resolution"
+    },
+    {
+      "model_key": "grok_420",
+      "model_name": "Grok 4.20",
+      "response": "",
+      "generation_time_ms": 0,
+      "tokens_used": 0,
+      "error": "[Errno -3] Temporary failure in name resolution"
+    },
+    {
+      "model_key": "claude_sonnet_46",
+      "model_name": "Claude Sonnet 4.6",
+      "response": "",
+      "generation_time_ms": 0,
+      "tokens_used": 0,
+      "error": "[Errno -3] Temporary failure in name resolution"
+    },
+    {
+      "model_key": "mimo_v2_flash",
+      "model_name": "MiMo-V2-Flash",
+      "response": "",
+      "generation_time_ms": 0,
+      "tokens_used": 0,
+      "error": "[Errno -3] Temporary failure in name resolution"
+    },
+    {
+      "model_key": "gpt_oss_120b",
+      "model_name": "GPT-OSS-120B",
+      "response": "",
+      "generation_time_ms": 0,
+      "tokens_used": 0,
+      "error": "[Errno -3] Temporary failure in name resolution"
+    },
+    {
+      "model_key": "gemini_25_flash",
+      "model_name": "Gemini 2.5 Flash",
+      "response": "",
+      "generation_time_ms": 0,
+      "tokens_used": 0,
+      "error": "[Errno -3] Temporary failure in name resolution"
+    },
+    {
+      "model_key": "minimax_m25",
+      "model_name": "MiniMax M2.5",
+      "response": "",
+      "generation_time_ms": 0,
+      "tokens_used": 0,
+      "error": "[Errno -3] Temporary failure in name resolution"
+    }
+  ],
+  "judgments": [],
+  "rankings": {
+    "gemini_31_pro": {
+      "display_name": "Gemini 3.1 Pro",
+      "average_score": 0,
+      "score_count": 0,
+      "unique_judges": 0,
+      "min_required_judges": 7,
+      "meets_threshold": false,
+      "error": "no_valid_scores",
+      "rank": null
+    },
+    "deepseek_v4": {
+      "display_name": "DeepSeek V3",
+      "average_score": 0,
+      "score_count": 0,
+      "unique_judges": 0,
+      "min_required_judges": 7,
+      "meets_threshold": false,
+      "error": "no_valid_scores",
+      "rank": null
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "average_score": 0,
+      "score_count": 0,
+      "unique_judges": 0,
+      "min_required_judges": 7,
+      "meets_threshold": false,
+      "error": "no_valid_scores",
+      "rank": null
+    },
+    "gpt_5_4": {
+      "display_name": "GPT-5.4",
+      "average_score": 0,
+      "score_count": 0,
+      "unique_judges": 0,
+      "min_required_judges": 7,
+      "meets_threshold": false,
+      "error": "no_valid_scores",
+      "rank": null
+    },
+    "grok_420": {
+      "display_name": "Grok 4.20",
+      "average_score": 0,
+      "score_count": 0,
+      "unique_judges": 0,
+      "min_required_judges": 7,
+      "meets_threshold": false,
+      "error": "no_valid_scores",
+      "rank": null
+    },
+    "claude_sonnet_46": {
+      "display_name": "Claude Sonnet 4.6",
+      "average_score": 0,
+      "score_count": 0,
+      "unique_judges": 0,
+      "min_required_judges": 7,
+      "meets_threshold": false,
+      "error": "no_valid_scores",
+      "rank": null
+    },
+    "mimo_v2_flash": {
+      "display_name": "MiMo-V2-Flash",
+      "average_score": 0,
+      "score_count": 0,
+      "unique_judges": 0,
+      "min_required_judges": 7,
+      "meets_threshold": false,
+      "error": "no_valid_scores",
+      "rank": null
+    },
+    "gpt_oss_120b": {
+      "display_name": "GPT-OSS-120B",
+      "average_score": 0,
+      "score_count": 0,
+      "unique_judges": 0,
+      "min_required_judges": 7,
+      "meets_threshold": false,
+      "error": "no_valid_scores",
+      "rank": null
+    },
+    "gemini_25_flash": {
+      "display_name": "Gemini 2.5 Flash",
+      "average_score": 0,
+      "score_count": 0,
+      "unique_judges": 0,
+      "min_required_judges": 7,
+      "meets_threshold": false,
+      "error": "no_valid_scores",
+      "rank": null
+    },
+    "minimax_m25": {
+      "display_name": "MiniMax M2.5",
+      "average_score": 0,
+      "score_count": 0,
+      "unique_judges": 0,
+      "min_required_judges": 7,
+      "meets_threshold": false,
+      "error": "no_valid_scores",
+      "rank": null
+    }
+  },
+  "meta_analysis": {
+    "judge_strictness": {},
+    "strictest_judge": null,
+    "most_lenient_judge": null,
+    "total_judgments": 0,
+    "valid_judgments": 0,
+    "self_judgments_excluded": 0,
+    "category": "reasoning",
+    "model_pool_size": 10
+  }
+}

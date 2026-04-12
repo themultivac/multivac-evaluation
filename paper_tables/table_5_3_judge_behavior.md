@@ -1,0 +1,56 @@
+## Table 5.3: Judge Strictness Distribution
+
+| judge_key | judge_name | avg_score_given | median_score_given | std | total_judgments | min_given | max_given |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| nemotron_3_super | Nemotron 3 Super | 3.831 | 4.175 | 2.465 | 8 | 0.4 | 7.85 |
+| kimi_k25 | Kimi K2.5 | 5.545 | 5.75 | 2.433 | 21 | 1.85 | 9.45 |
+| gemma_3n_4b | Gemma 3n 4B | 5.958 | 5.875 | 2.06 | 6 | 3.4 | 8.05 |
+| judge_gpt54 | GPT-5.4 | 6.625 | 7.6 | 2.345 | 63 | 0.65 | 9.4 |
+| gpt_5_4 | GPT-5.4 | 7.187 | 8.0 | 2.215 | 1565 | 0.2 | 10.0 |
+| gpt_codex | GPT-5.2-Codex | 7.454 | 8.45 | 2.14 | 248 | 0.65 | 9.8 |
+| gpt_oss_120b | GPT-OSS-120B | 7.841 | 8.45 | 1.654 | 1773 | 0.2 | 9.8 |
+| grok_code_fast | Grok Code Fast 1 | 7.88 | 9.6 | 3.033 | 88 | 1.0 | 10.0 |
+| claude_opus_46 | Claude Opus 4.6 | 7.982 | 8.6 | 1.982 | 1579 | 0.2 | 10.0 |
+| minimax_m25 | MiniMax M2.5 | 8.095 | 8.55 | 1.613 | 1330 | 0.4 | 10.0 |
+| grok_420 | Grok 4.20 | 8.17 | 8.65 | 1.342 | 1572 | 0.2 | 10.0 |
+| judge_claude_sonnet | Claude Sonnet 4.6 | 8.254 | 8.55 | 1.583 | 63 | 1.2 | 10.0 |
+| claude_sonnet_46 | Claude Sonnet 4.6 | 8.274 | 8.8 | 1.585 | 1558 | 0.2 | 10.0 |
+| claude_opus | Claude Opus 4.5 | 8.338 | 9.0 | 2.14 | 527 | 0.25 | 10.0 |
+| qwen35_27b | Qwen 3.5 27B | 8.379 | 9.175 | 1.791 | 50 | 3.45 | 10.0 |
+| qwen35_9b | Qwen 3.5 9B | 8.382 | 8.8 | 1.252 | 30 | 5.0 | 9.8 |
+| seed_16_flash | Seed 1.6 Flash | 8.398 | 8.6 | 0.877 | 338 | 1.0 | 9.6 |
+| minimax_m1 | MiniMax M1 | 8.412 | 9.125 | 1.895 | 66 | 0.6 | 10.0 |
+| grok_direct | Grok 3 (Direct) | 8.423 | 8.7 | 1.494 | 345 | 0.4 | 9.85 |
+| minimax_m2 | MiniMax M2 | 8.451 | 9.0 | 1.84 | 151 | 1.0 | 10.0 |
+| gemini_31_pro | Gemini 3.1 Pro | 8.451 | 9.25 | 1.855 | 1541 | 0.2 | 10.0 |
+| mistral_nemo | Mistral Nemo 12B | 8.557 | 8.6 | 0.65 | 100 | 5.65 | 10.0 |
+| granite_40 | Granite 4.0 Micro | 8.569 | 8.8 | 0.488 | 121 | 5.0 | 9.25 |
+| gpt_oss_legal | GPT-OSS-120B (Legal) | 8.581 | 8.8 | 0.977 | 63 | 2.0 | 9.25 |
+| qwen35_35b_a3b | Qwen 3.5 35B-A3B | 8.587 | 9.325 | 1.724 | 34 | 3.45 | 10.0 |
+| qwen35_122b_a10b | Qwen 3.5 122B-A10B | 8.596 | 9.2 | 1.594 | 57 | 4.7 | 10.0 |
+| qwen3_32b | Qwen 3 32B | 8.631 | 9.0 | 1.538 | 175 | 2.05 | 10.0 |
+| minimax_m21 | MiniMax M2.1 | 8.635 | 9.8 | 1.994 | 68 | 1.65 | 10.0 |
+| mimo_v2_flash | MiMo-V2-Flash | 8.716 | 9.0 | 1.365 | 1940 | 0.2 | 10.0 |
+| minimax_m27 | MiniMax M2.7 | 8.741 | 9.4 | 1.437 | 66 | 4.9 | 10.0 |
+| qwen35_397b_a17b | Qwen 3.5 397B-A17B | 8.756 | 9.675 | 1.941 | 52 | 2.45 | 10.0 |
+| gemma3_27b | Gemma 3 27B | 8.757 | 9.25 | 1.553 | 113 | 1.0 | 10.0 |
+| claude_sonnet | Claude Sonnet 4.5 | 8.791 | 9.4 | 1.938 | 520 | 0.4 | 10.0 |
+| devstral | Devstral Small | 8.81 | 9.4 | 1.493 | 110 | 2.0 | 10.0 |
+| qwen3_8b | Qwen 3 8B | 8.821 | 9.4 | 1.445 | 172 | 2.85 | 10.0 |
+| llama4_scout | Llama 4 Scout | 8.855 | 9.4 | 1.589 | 110 | 1.0 | 10.0 |
+| glm_4_7 | GLM 4.7 | 8.89 | 9.6 | 1.881 | 142 | 0.2 | 10.0 |
+| gemini_25_flash | Gemini 2.5 Flash | 8.891 | 9.25 | 1.516 | 282 | 1.25 | 10.0 |
+| seed_1_6_flash | Seed 1.6 Flash | 8.929 | 9.0 | 0.961 | 89 | 1.3 | 10.0 |
+| deepseek_v4 | DeepSeek V3 | 8.991 | 9.0 | 0.796 | 1561 | 1.85 | 10.0 |
+| deepseek_v3 | DeepSeek V3.2 | 9.038 | 9.35 | 1.262 | 527 | 0.85 | 10.0 |
+| llama31_8b | Llama 3.1 8B | 9.098 | 9.075 | 0.399 | 104 | 8.0 | 9.8 |
+| minimax_01 | MiniMax-01 | 9.144 | 9.6 | 1.247 | 64 | 1.85 | 10.0 |
+| olmo_think | Olmo 3.1 32B Think | 9.15 | 10.0 | 2.448 | 11 | 1.85 | 10.0 |
+| phi4 | Phi-4 14B | 9.179 | 9.45 | 0.846 | 107 | 4.45 | 10.0 |
+| gemini_3_flash | Gemini 3 Flash Preview | 9.255 | 9.8 | 1.485 | 1367 | 1.0 | 10.0 |
+| gemini_2_5_flash | Gemini 2.5 Flash | 9.475 | 9.8 | 1.218 | 261 | 0.6 | 10.0 |
+| grok_4_1_fast | Grok 4.1 Fast | 9.521 | 9.8 | 0.955 | 356 | 2.15 | 10.0 |
+| gemini_3_pro | Gemini 3 Pro Preview | 9.568 | 10.0 | 1.447 | 185 | 0.45 | 10.0 |
+| qwen3_coder_next | Qwen 3 Coder Next | 9.677 | 10.0 | 0.695 | 62 | 6.85 | 10.0 |
+| mistral_small_creative | Mistral Small Creative | 9.695 | 9.8 | 0.272 | 422 | 7.6 | 10.0 |
+| gemini_2_5_flash_lite | Gemini 2.5 Flash-Lite | 9.765 | 9.8 | 0.254 | 89 | 8.4 | 10.0 |

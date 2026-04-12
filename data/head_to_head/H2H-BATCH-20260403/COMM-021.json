@@ -1,0 +1,44 @@
+{
+  "question_id": "COMM-021",
+  "category": "communication",
+  "question_text": "Write a 60-second elevator pitch for each of these: (1) A startup that uses AI to detect infrastructure defects from drone footage. Audience: a VC partner at a cocktail party. (2) The same startup. Au",
+  "timestamp": "2026-04-03T22:24:11.722987",
+  "judge": "Claude Opus 4.6",
+  "judge_model_id": "anthropic/claude-opus-4.6",
+  "contestants": {
+    "qwen36_plus": {
+      "display_name": "Qwen 3.6 Plus",
+      "model_id": "qwen/qwen3.6-plus:free",
+      "response": "Here are three 60-second pitches, each calibrated for the specific audience, setting, and communication style. Spoken at a natural conversational pace (~140 words/min), each lands right around 55\u201360 seconds.\n\n---\n\n### (1) Audience: VC Partner at a Cocktail Party\n*Context: Casual but high-signal. Focuses on market size, defensibility, traction, and a low-friction ask.*\n\n\"You know how cities and utilities spend billions on manual infrastructure inspections, send crews up ladders, and still miss critical defects until they become emergencies? We built an AI platform that takes standard drone footage and instantly maps out cracks, corrosion, and stress fractures with 95%+ accuracy. It cuts inspection costs by 60%, shrinks reporting from weeks to hours, and turns reactive maintenance into predictive scheduling. The model actually gets smarter with every flight, and we\u2019re already running paid pilots with three mid-sized DOTs with a $1.2M pipeline. We\u2019re positioning as the software layer that sits on top of every commercial drone operator\u2019s workflow in a $10B+ global inspection market. I\u2019d love to send you our one-pager and walk you through our pilot unit economics. What\u2019s the best email to get that to you by tomorrow?\"\n\n---\n\n### (2) Audience: City Infrastructure Manager at a Conference\n*Context: Operational focus. Emphasizes safety, compliance, workflow integration, and risk reduction. Ends with a concrete, low-risk next step.*\n\n\"You\u2019re probably juggling aging assets, stretched budgets, and inspection backlogs that keep you up at night. We built a tool that takes the drone footage your teams or contractors are already capturing and runs it through our AI to automatically flag and prioritize defects\u2014spalling, rebar exposure, hairline cracks, you name it. Instead of weeks of manual photo review, you get a GIS-tagged report in under 24 hours with severity scores that align with DOT reporting standards. It doesn\u2019t replace your engineers; it gives them back 60% of their review time so they can focus on capital planning and actual repairs. We\u2019re SOC 2 compliant, integrate with your existing asset management system, and pilot cities are already cutting follow-up inspection costs by nearly half. I\u2019d love to run a free, no-obligation analysis on one of your upcoming bridge scans. Could we grab 15 minutes next Tuesday to see if it fits your workflow?\"\n\n---\n\n### (3) Audience: Your Grandmother at Thanksgiving Dinner\n*Context: Warm, jargon-free, focused on human impact and safety. Uses a relatable analogy and ends with a family-appropriate, low-pressure next step.*\n\n\"You know how we always worry about bridges, roads, and water towers getting old, and how crews have to climb up in all weather just to check for cracks with clipboards? Well, my company built a kind of digital assistant for drones. Instead of sending people out on ladders or waiting weeks for reports, we just fly a drone over a structure, and our software automatically spots tiny cracks, rust, or wear\u2014kind of like how a doctor uses an X-ray to see what\u2019s going on under the skin. It helps towns fix problems before they become dangerous, saves taxpayer money, and keeps workers out of harm\u2019s way. At the end of the day, it\u2019s just a smarter, safer way to take care of the roads and bridges we all drive and walk on. I actually brought a quick two-minute video on my phone that shows exactly how it works. Want me to pull it up after dessert so you can see it?\"",
+      "tokens": 3033,
+      "time_ms": 62987,
+      "judgment": {
+        "usefulness": 10.0,
+        "clarity": 10.0,
+        "depth": 9.0,
+        "correctness": 9.0,
+        "completeness": 10.0,
+        "brief_justification": "All three pitches are exceptionally well-crafted, natural, and precisely calibrated for their audiences. The VC pitch hits market size, traction, defensibility, and unit economics. The infrastructure manager pitch addresses pain points, compliance, workflow integration, and risk reduction. The grandmother pitch uses a perfect analogy (X-ray), avoids jargon, and focuses on human impact. Each ends with a clear, audience-appropriate next step. The contextual annotations add useful meta-commentary. Word counts are realistic for 60 seconds. Minor quibble: the specific numbers (95% accuracy, $1.2M pipeline, 60% cost reduction) are fabricated but appropriate for a pitch template exercise. Excellent work overall.",
+        "weighted_score": 9.55
+      }
+    },
+    "deepseek_v32": {
+      "display_name": "DeepSeek V3.2",
+      "model_id": "deepseek/deepseek-v3.2",
+      "response": "Of course. Here are three conversational elevator pitches for the same startup, tailored to each audience.\n\n---\n\n### (1) For a VC Partner at a Cocktail Party\n\n**Pitch:**\n\"Right now, cities and utilities spend millions on manual inspections for things like cracked bridges or corroded pipelines. It's slow, expensive, and can be dangerous. We've built an AI platform that analyzes drone footage to automatically detect those defects with 99% accuracy. Think of it as a radiologist for infrastructure. We're already in pilots with two major utilities, cutting their inspection costs by 70% and turning a weeks-long process into hours. The market is massive and ripe for automation. I'd love to send you our one-pager and set up a brief call next week to walk through the numbers.\"\n\n---\n\n### (2) For a City Infrastructure Manager at a Conference\n\n**Pitch:**\n\"I know your team is likely stretched thin, trying to maintain aging assets with limited budgets and manpower. We help cities like yours get ahead of problems. We use drones to capture visual data of roads, bridges, and water towers, and our AI pinpoints issues\u2014from potholes to structural cracks\u2014before they become emergencies. It gives you a prioritized, digital condition report, so you can plan repairs smarter and justify your budget with hard data. We\u2019re working with Springfield and Oakdale, and they\u2019ve extended the life of their assets while reducing inspection costs dramatically. Could I buy you a coffee tomorrow to show you a five-minute demo of their results?\"\n\n---\n\n### (3) For Your Grandmother at Thanksgiving Dinner\n\n**Pitch:**\n\"Grandma, you know how sometimes a road has a big pothole, or on the news they talk about an old bridge needing fixing? Well, my company helps find those problems early, before they get bad or dangerous. We use little flying cameras\u2014like really smart drones\u2014to take pictures of bridges and roads. Then, our special computer program looks at the pictures and can spot a crack the size of a hair! It helps cities fix things faster and cheaper, so everyone's drives are safer. It\u2019s going really well! I\u2019d love to show you some pictures of how it works on my laptop after pie, if you're interested.\"",
+      "tokens": 558,
+      "time_ms": 16965,
+      "judgment": {
+        "usefulness": 9.0,
+        "clarity": 10.0,
+        "depth": 8.0,
+        "correctness": 9.0,
+        "completeness": 9.0,
+        "brief_justification": "All three pitches are well-tailored to their audiences with appropriate tone, vocabulary, and framing. The VC pitch hits market size, traction, and unit economics. The infrastructure manager pitch addresses pain points like budget constraints and aging assets. The grandmother pitch is warm, simple, and relatable. Each ends with a clear, appropriate next step. The only minor quibble is the 99% accuracy claim feels like a placeholder that could undermine credibility, and the fictional city names (Springfield, Oakdale) are fine for illustration but slightly generic. Overall, excellent execution of the prompt.",
+        "weighted_score": 9.0
+      }
+    }
+  },
+  "winner": "Qwen 3.6 Plus",
+  "margin": 0.55
+}

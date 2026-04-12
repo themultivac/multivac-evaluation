@@ -1,0 +1,63 @@
+{
+  "batch_id": "SLM-BATCH-20260315",
+  "completed": 10,
+  "failed": 2,
+  "total_questions": 10,
+  "estimated_cost": 2.0,
+  "duration_minutes": 65.0,
+  "questions_used": [
+    {
+      "id": "SLM-CODE-001",
+      "title": "Distributed Lock Race Condition",
+      "category": "code"
+    },
+    {
+      "id": "SLM-CODE-002",
+      "title": "Fix Go Concurrency Bug",
+      "category": "code"
+    },
+    {
+      "id": "SLM-CODE-003",
+      "title": "SQL Query Optimization",
+      "category": "code"
+    },
+    {
+      "id": "SLM-CODE-004",
+      "title": "Debug Production 502 Errors",
+      "category": "code"
+    },
+    {
+      "id": "SLM-CODE-005",
+      "title": "LRU Cache with TTL",
+      "category": "code"
+    },
+    {
+      "id": "SLM-REASON-001",
+      "title": "Bayesian Medical Diagnosis",
+      "category": "reasoning"
+    },
+    {
+      "id": "SLM-REASON-002",
+      "title": "Simpson's Paradox",
+      "category": "reasoning"
+    },
+    {
+      "id": "SLM-REASON-003",
+      "title": "Decision Under Deep Uncertainty",
+      "category": "reasoning"
+    },
+    {
+      "id": "SLM-REASON-004",
+      "title": "Arrow's Impossibility in Practice",
+      "category": "reasoning"
+    },
+    {
+      "id": "SLM-REASON-005",
+      "title": "Survivorship Bias Analysis",
+      "category": "reasoning"
+    }
+  ],
+  "methodology": "SLM models evaluated on hard frontier questions (same difficulty as GPT-5.4/Claude Opus 4.6 evaluations)",
+  "purpose": "Determine where small open-weight models break vs hold up compared to frontier models on identical tasks",
+  "_batch_dir": "SLM-BATCH-20260315"
+}

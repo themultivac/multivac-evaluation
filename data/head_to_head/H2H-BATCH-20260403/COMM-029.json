@@ -1,0 +1,44 @@
+{
+  "question_id": "COMM-029",
+  "category": "communication",
+  "question_text": "Write UI microcopy for these scenarios: (1) A user tries to delete their account (confirm dialog), (2) A payment fails (error message), (3) The user's free trial ends in 3 days (notification), (4) Sea",
+  "timestamp": "2026-04-03T22:44:14.939412",
+  "judge": "Claude Opus 4.6",
+  "judge_model_id": "anthropic/claude-opus-4.6",
+  "contestants": {
+    "qwen36_plus": {
+      "display_name": "Qwen 3.6 Plus",
+      "model_id": "qwen/qwen3.6-plus:free",
+      "response": "**(1) Delete Account (Confirm Dialog)**  \nJust to be sure: deleting your account is permanent. All your data and history will be gone forever. Cancel or Delete?\n\n**(2) Payment Fails (Error Message)**  \nWe couldn\u2019t process your payment. Double-check your card details or try another method. Still stuck? Our support team is here to help.\n\n**(3) Free Trial Ends in 3 Days (Notification)**  \nHeads up: your free trial wraps up in 3 days. Upgrade now so you don\u2019t lose access to your workspace and saved data.\n\n**(4) Search Returns Zero Results**  \nNo matches found. Try checking your spelling, using fewer keywords, or browsing our categories instead. We\u2019re here if you need help!\n\n**(5) App Loading (5+ seconds)**  \nStill loading\u2026 this is taking a moment longer than usual. We\u2019re gathering everything now. Thanks for hanging tight!\n\n**(6) Just Completed Onboarding (Celebration)**  \nYou\u2019re all set! \ud83c\udf89 Thanks for getting started. Ready to dive in? Tap below to jump straight to your workspace.",
+      "tokens": 2741,
+      "time_ms": 47452,
+      "judgment": {
+        "usefulness": 9.0,
+        "clarity": 10.0,
+        "depth": 7.0,
+        "correctness": 9.0,
+        "completeness": 9.0,
+        "brief_justification": "All six scenarios are addressed with human-sounding, helpful microcopy that stays under or very close to 30 words. The tone is appropriate for each context\u2014serious for deletion, empathetic for payment failure, celebratory for onboarding. Minor nitpick: a couple entries are right at the 30-word boundary, and the depth could be slightly greater with brief rationale for tone/word choices. Overall, excellent practical UX writing.",
+        "weighted_score": 8.8
+      }
+    },
+    "deepseek_v32": {
+      "display_name": "DeepSeek V3.2",
+      "model_id": "deepseek/deepseek-v3.2",
+      "response": "**(1) Account Deletion**  \n\u201cThis will delete your account and all data permanently. Are you sure? This can\u2019t be undone.\u201d\n\n**(2) Payment Failed**  \n\u201cYour payment didn\u2019t go through. Please check your payment details or try a different method.\u201d\n\n**(3) Trial Ending Soon**  \n\u201cYour free trial ends in 3 days. Ready to upgrade and keep your favorite features?\u201d\n\n**(4) Zero Search Results**  \n\u201cNo exact matches. Try a broader search term or browse our popular categories.\u201d\n\n**(5) Extended Loading**  \n\u201cGathering your data\u2014thanks for your patience! This will just take a moment more.\u201d\n\n**(6) Onboarding Complete**  \n\u201cYou\u2019re all set! Get ready to explore everything your new workspace can do. \ud83c\udf89\u201d",
+      "tokens": 269,
+      "time_ms": 13338,
+      "judgment": {
+        "usefulness": 9.0,
+        "clarity": 10.0,
+        "depth": 6.0,
+        "correctness": 9.0,
+        "completeness": 9.0,
+        "brief_justification": "All six scenarios are addressed with concise, human-sounding microcopy under 30 words. The copy is helpful and appropriate for each context. Minor depth limitations: the account deletion dialog could offer a softer alternative (e.g., 'pause' option), the payment error could mention retrying later, and the loading message could be more specific. Overall, solid professional-quality microcopy.",
+        "weighted_score": 8.6
+      }
+    }
+  },
+  "winner": "Qwen 3.6 Plus",
+  "margin": 0.2
+}

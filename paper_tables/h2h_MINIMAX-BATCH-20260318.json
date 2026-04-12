@@ -1,0 +1,59 @@
+{
+  "batch_id": "MINIMAX-BATCH-20260318",
+  "completed": 13,
+  "failed": 0,
+  "total_questions": 13,
+  "question_breakdown": {
+    "standard": 10,
+    "meta": 3
+  },
+  "estimated_cost": 19.5,
+  "duration_minutes": 32.8,
+  "minimax_models": {
+    "minimax_m27": {
+      "name": "MiniMax M2.7",
+      "notes": "Self-evolving. Released March 18, 2026. 56.2% SWE-Pro."
+    },
+    "minimax_m25": {
+      "name": "MiniMax M2.5",
+      "notes": "80.2% SWE-Bench Verified. Office productivity focus."
+    },
+    "minimax_m21": {
+      "name": "MiniMax M2.1",
+      "notes": "10B activated params. Lightweight coding specialist."
+    },
+    "minimax_m2": {
+      "name": "MiniMax M2",
+      "notes": "10B active / 230B total MoE. First M2-series."
+    },
+    "minimax_m1": {
+      "name": "MiniMax M1",
+      "notes": "456B total / 45.9B active MoE. Lightning attention. 1M context."
+    },
+    "minimax_01": {
+      "name": "MiniMax-01",
+      "notes": "456B params, 45.9B active. Hybrid architecture."
+    }
+  },
+  "external_judges": {
+    "judge_claude_sonnet": {
+      "name": "Claude Sonnet 4.6",
+      "notes": "EXTERNAL JUDGE. Strict, consistent calibration."
+    },
+    "judge_gpt54": {
+      "name": "GPT-5.4",
+      "notes": "EXTERNAL JUDGE. Different training lineage."
+    },
+    "judge_gemini": {
+      "name": "Gemini 3.1 Pro",
+      "notes": "EXTERNAL JUDGE. Third family, no MiniMax/Western bias."
+    }
+  },
+  "methodology": {
+    "judging": "External frontier judges (Claude, GPT, Gemini) + MiniMax peer judging. No model judges only itself.",
+    "comparability": "10 of 13 questions identical to Project Qwen for cross-family comparison.",
+    "meta_questions": "3 questions test self-critique, iterative improvement, and recursive optimization \u2014 targeting M2.7's self-evolution claims."
+  },
+  "purpose": "First independent blind evaluation of MiniMax M2.7 (released March 18, 2026). 6 MiniMax models across 4 generations + 3 external frontier judges. Includes 3 meta-reasoning questions testing self-improvement capabilities.",
+  "_batch_dir": "MINIMAX-BATCH-20260318"
+}

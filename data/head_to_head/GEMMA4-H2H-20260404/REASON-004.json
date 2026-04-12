@@ -1,0 +1,72 @@
+{
+  "question_id": "REASON-004",
+  "category": "reasoning",
+  "question_text": "On an island, there are 100 people with blue eyes and 100 people with brown eyes. Everyone can see everyone else's eye color but not their own. There are no mirrors or ways to discover your own eye co",
+  "timestamp": "2026-04-05T00:22:07.836019",
+  "judge": "Claude Opus 4.6",
+  "contestants": {
+    "gemma4_31b": {
+      "display_name": "Gemma 4 31B",
+      "model_id": "google/gemma-4-31b-it",
+      "response": "**The Result:**\nOn the **100th night** after the announcement, all **100 blue-eyed people** will leave the island simultaneously. The brown-eyed people will remain.\n\n### The Logical Chain of Events\n\nThis is a problem of **Common Knowledge**. While everyone already knew that blue-eyed people existed (because they could see 99 or 100 of them), the visitor\u2019s announcement made it \"common knowledge\"\u2014meaning everyone knows that everyone knows that everyone knows (and so on) that there is at least one person with blue eyes.\n\nThe logic follows a mathematical induction pattern:\n\n**Scenario 1: If only 1 person had blue eyes.**\nThe blue-eyed person would look around and see 199 brown-eyed people. Since the visitor said *at least one* person has blue eyes, that person would immediately realize it must be them. They would leave on the **1st night**.\n\n**Scenario 2: If 2 people had blue eyes (Person A and Person B).**\n*   **Night 1:** Person A sees Person B has blue eyes. A thinks, \"If B is the only blue-eyed person, B will leave tonight.\" Person B thinks the same about A.\n*   **Night 2:** When A wakes up and sees that B is still there, A realizes: \"B didn't leave because B saw someone else with blue eyes. Since I only see B, that 'someone else' must be me.\" Person B reaches the same conclusion. Both leave on the **2nd night**.\n\n**Scenario 3: If 3 people had blue eyes (A, B, and C).**\n*   **Night 1:** Everyone sees at least two other blue-eyed people. No one leaves.\n*   **Night 2:** Person A thinks, \"If B and C are the only ones, they should have realized it by now and left tonight (following the logic of Scenario 2).\"\n*   **Night 3:** When A wakes up and sees B and C are still there, A realizes there must be a third person with blue eyes. Since A only sees two, A concludes they are the third. All three leave on the **3rd night**.\n\n### The Final Calculation\nThis pattern continues incrementally. The number of nights it takes for the blue-eyed people to leave corresponds exactly to the number of blue-eyed people on the island.\n\nBecause there are **100 blue-eyed people**, each one spends the first 99 days observing the others. Each person thinks: *\"If there are only 99 blue-eyed people, they will all realize it and leave on the 99th night.\"*\n\nWhen the 100th morning arrives and all 99 other blue-eyed people are still present, every blue-eyed person reaches the same logical conclusion: **\"The only reason those 99 didn't leave is because they are looking at me.\"**\n\nTherefore, all 100 blue-eyed people leave on the **100th night**.\n\n***\n\n**What about the brown-eyed people?**\nThe brown-eyed people see 100 blue-eyed people. They wait for the 100th night. When the blue-eyed people leave, the brown-eyed people are left with no information about their own eye color (they only know they aren't blue), so they remain on the island.",
+      "tokens": 864,
+      "time_ms": 14870,
+      "judgment": {
+        "usefulness": 9.0,
+        "depth": 8.0,
+        "correctness": 9.0,
+        "clarity": 10.0,
+        "completeness": 9.0,
+        "brief_justification": "The response correctly identifies the answer (100th night), builds the inductive chain clearly from base cases, and explains the crucial role of common knowledge. The clarity is exceptional with well-structured scenarios. Minor deductions: the explanation of why common knowledge matters (vs. mere mutual knowledge) could be slightly deeper\u2014it states the distinction but doesn't fully elaborate on why the nested knowledge chain breaks without the announcement. The brown-eyed people explanation is slightly imprecise (they can't definitively rule out having red eyes or any other color, not just blue), but this is a minor point.",
+        "weighted_score": 9.0
+      }
+    },
+    "gemma4_26b_a4b": {
+      "display_name": "Gemma 4 26B-A4B",
+      "model_id": "google/gemma-4-26b-a4b-it",
+      "response": "This is a classic logic puzzle known as the **\"Blue Eyes Paradox.\"** The short answer is: **On the 100th night after the announcement, all 100 blue-eyed people will leave the island simultaneously.**\n\nHere is the precise logical chain of events, explained through the principle of **mathematical induction.**\n\n### The Logical Foundation\nTo understand why it takes 100 days, we must look at how the logic works for smaller numbers.\n\n**Scenario 1: Only 1 person has blue eyes.**\n*   The visitor says, \"At least one person has blue eyes.\"\n*   The blue-eyed person looks around and sees 199 people with brown eyes.\n*   They realize, \"If no one else has blue eyes, then I must be the one the visitor is talking about.\"\n*   **Result:** They leave on the **1st night.**\n\n**Scenario 2: 2 people (A and B) have blue eyes.**\n*   **Day 1:** Person A looks at Person B and thinks, \"If B is the only blue-eyed person, B will leave tonight.\" Person B thinks the same about A.\n*   Midnight 1 passes, and no one leaves.\n*   **Day 2:** Person A wakes up and sees Person B is still there. A realizes: \"If B didn't leave, it's because B saw someone else with blue eyes. Since I only see brown eyes on everyone else, that 'someone else' must be me.\" Person B reaches the same conclusion.\n*   **Result:** Both leave on the **2nd night.**\n\n**Scenario 3: 3 people (A, B, and C) have blue eyes.**\n*   **Day 1 & 2:** Everyone waits to see if the \"2-person scenario\" plays out.\n*   **Day 3:** When A sees that B and C are still there on the morning of the 3rd day, A realizes that the 2-person logic failed because there must be a 3rd person.\n*   **Result:** All three leave on the **3rd night.**\n\n### The 100-Person Conclusion\nFollowing this inductive pattern, the logic scales linearly with the number of blue-eyed people ($n$).\n\n1.  **The Expectation:** Every blue-eyed person sees 99 other blue-eyed people. They each think: *\"If there are only 99 blue-eyed people, they will all leave on the 99th night.\"*\n2.  **The Wait:** For 99 days, nothing happens. Each blue-eyed person is watching the other 99, waiting for them to depart.\n3.  **The Realization:** On the morning of the 100th day, every blue-eyed person wakes up and sees that the 99 people they were watching are **still there.**\n4.  **The Deduction:** \"If there were only 99 blue-eyed people, they would have left last night. Since they are still here, there must be a 100th blue-eyed person. Since I see no one else with blue eyes but them, that 100th person is me.\"\n5.  **The Departure:** All 100 blue-eyed people realize their eye color simultaneously and leave at midnight on the **100th day.**\n\n***\n\n### The \"Common Knowledge\" Crucial Detail\nA common question is: *\"If everyone already knew there were blue-eyed people, what did the visitor actually change?\"*\n\nBefore the visitor spoke, everyone knew there were blue eyes. However, they did not have **Common Knowledge.** \n\nCommon Knowledge means:\n1.  Everyone knows $X$.\n2.  Everyone knows that everyone knows $X$.\n3.  Everyone knows that everyone knows that everyone knows $X$ (and so on, infinitely).\n\nBefore the announcement, a blue-eyed person knew there were blue eyes, and they knew that others knew there were blue eyes. But they did **not** know that *everyone knew that everyone knew that everyone knew...* (down to the 100th level of recursion). The visitor's announcement provides the \"starting gun\" that allows the logical countdown to begin by making the existence of blue eyes a fact that everyone knows everyone else is aware of.",
+      "tokens": 1065,
+      "time_ms": 23795,
+      "judgment": {
+        "usefulness": 9.0,
+        "depth": 9.0,
+        "correctness": 9.0,
+        "clarity": 10.0,
+        "completeness": 9.0,
+        "brief_justification": "The response is highly accurate, walking through the inductive logic correctly from base cases to the 100-person conclusion. The explanation of common knowledge is excellent and addresses the most common point of confusion. The clarity is outstanding with well-structured sections, numbered steps, and bold highlights. A minor nitpick: in Scenario 1, the blue-eyed person sees 199 people total (not all brown-eyed, since there are 100 brown-eyed in the original problem, but in the hypothetical with only 1 blue-eyed person, the count would be different). However, this is a minor inconsistency in the hypothetical setup that doesn't affect the core logic. The depth is strong, particularly the common knowledge section which goes beyond a surface-level answer.",
+        "weighted_score": 9.2
+      }
+    },
+    "qwen35_27b": {
+      "display_name": "Qwen 3.5 27B",
+      "model_id": "qwen/qwen3.5-27b",
+      "response": null,
+      "tokens": 2174,
+      "time_ms": 16755,
+      "judgment": {
+        "usefulness": 0.0,
+        "depth": 0.0,
+        "correctness": 0.0,
+        "clarity": 0.0,
+        "completeness": 0.0,
+        "brief_justification": "The response is 'None' - no answer was provided at all.",
+        "weighted_score": 0.0
+      }
+    }
+  },
+  "winner": "Gemma 4 26B-A4B",
+  "ranking": [
+    {
+      "model": "Gemma 4 26B-A4B",
+      "score": 9.2
+    },
+    {
+      "model": "Gemma 4 31B",
+      "score": 9.0
+    },
+    {
+      "model": "Qwen 3.5 27B",
+      "score": 0.0
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "question_id": "COMM-024",
+  "category": "communication",
+  "question_text": "Rewrite these technical feature descriptions as customer-facing value propositions: (1) 'We use a distributed event-driven architecture with CQRS.' (2) 'Our model achieves 0.94 F1 score on the benchma",
+  "timestamp": "2026-04-05T01:18:27.621610",
+  "judge": "Claude Opus 4.6",
+  "contestants": {
+    "gemma4_31b": {
+      "display_name": "Gemma 4 31B",
+      "model_id": "google/gemma-4-31b-it",
+      "response": "Here are the rewrites, shifting the focus from **technical specifications** (how it works) to **business outcomes** (why it matters).\n\n### 1. Distributed event-driven architecture with CQRS\n*   **Technical focus:** Architecture pattern.\n*   **Customer value:** Scalability, responsiveness, and reliability.\n*   **Value Proposition:** *\"Our platform is built for high-volume growth, ensuring your system remains lightning-fast and responsive even during your busiest traffic spikes, without the risk of system crashes.\"*\n\n### 2. 0.94 F1 score on the benchmark\n*   **Technical focus:** Statistical precision/recall.\n*   **Customer value:** Accuracy, trust, and reduced manual correction.\n*   **Value Proposition:** *\"Experience industry-leading accuracy that you can trust. Our model minimizes costly errors and false alarms, drastically reducing the time your team spends manually correcting mistakes.\"*\n\n### 3. Kubernetes with auto-scaling and 99.99% SLA\n*   **Technical focus:** Infrastructure and uptime percentage.\n*   **Customer value:** Peace of mind, availability, and seamless growth.\n*   **Value Proposition:** *\"Your business never sleeps, and neither do we. Enjoy total peace of mind with a rock-solid guarantee of near-constant availability and a system that automatically grows as your customer base expands.\"*\n\n### 4. End-to-end encryption with AES-256 and RSA key exchange\n*   **Technical focus:** Encryption standards.\n*   **Customer value:** Security, compliance, and data privacy.\n*   **Value Proposition:** *\"Your most sensitive data is locked tight. We use bank-grade security to ensure your information remains private and protected from unauthorized access, keeping you compliant and your customers safe.\"*\n\n### 5. Sub-100ms p99 latency with edge caching\n*   **Technical focus:** Response time and delivery method.\n*   **Customer value:** User experience, retention, and perceived quality.\n*   **Value Proposition:** *\"Deliver an instant, frictionless experience to your users anywhere in the world. By eliminating lag, you'll increase user engagement and prevent the frustration that leads to abandoned carts and lost leads.\"*",
+      "tokens": 607,
+      "time_ms": 128113,
+      "judgment": {
+        "usefulness": 9.0,
+        "depth": 8.0,
+        "correctness": 9.0,
+        "clarity": 10.0,
+        "completeness": 9.0,
+        "brief_justification": "Each rewrite accurately translates the technical feature into a clear, customer-facing value proposition. The three-part structure (technical focus, customer value, value proposition) is well-organized and adds useful context. The propositions correctly identify the 'why' behind each feature. Minor nitpick: some could be slightly more specific (e.g., quantifying the 99.99% SLA as ~52 minutes of downtime per year), and the F1 score rewrite could mention the specific domain context. Overall, excellent clarity, strong practical value, and good depth in connecting features to business outcomes.",
+        "weighted_score": 9.0
+      }
+    },
+    "gemma4_26b_a4b": {
+      "display_name": "Gemma 4 26B-A4B",
+      "model_id": "google/gemma-4-26b-a4b-it",
+      "response": "To turn technical features into value propositions, you must bridge the gap between **what it is** (the mechanism) and **what it does for the user** (the benefit).\n\nHere are the rewrites focused on the \"So What?\" factor:\n\n### 1. The Architecture\n*   **Technical:** \"We use a distributed event-driven architecture with CQRS.\"\n*   **Value Proposition:** **\"Experience seamless, real-time updates without system slowdowns, even during your busiest hours.\"**\n*   *Why the customer cares:* They don't care about CQRS; they care that the app doesn't freeze or lag when they are performing complex tasks or when everyone else is using it at once.\n\n### 2. The Accuracy\n*   **Technical:** \"Our model achieves 0.94 F1 score on the benchmark.\"\n*   **Value Proposition:** **\"Make decisions with confidence using industry-leading accuracy that minimizes costly errors.\"**\n*   *Why the customer cares:* An \"F1 score\" is a math concept. A \"reduction in errors\" is a business outcome. They want to know they can trust the tool to get the job done right the first time.\n\n### 3. The Infrastructure\n*   **Technical:** \"Built on Kubernetes with auto-scaling and 99.99% SLA.\"\n*   **Value Proposition:** **\"Reliable performance you can count on, with a platform that grows instantly to meet your demand without downtime.\"**\n*   *Why the customer cares:* They don't care about orchestration; they care that the service won't crash when they have a sudden surge in users and that they won't lose money due to outages.\n\n### 4. The Security\n*   **Technical:** \"End-to-end encryption with AES-256 and RSA key exchange.\"\n*   **Value Proposition:** **\"Bank-grade security that ensures your most sensitive data remains private and protected from end to end.\"**\n*   *Why the customer cares:* They don't want to learn cryptography; they want peace of mind. Using terms like \"bank-grade\" or \"protected\" translates math into a feeling of safety and compliance.\n\n### 5. The Speed\n*   **Technical:** \"Sub-100ms p99 latency with edge caching.\"\n*   **Value Proposition:** **\"Lightning-fast response times that keep your users engaged and your workflows moving at the speed of thought.\"**\n*   *Why the customer cares:* They don't care about \"p99\" or \"edge nodes.\" They care about \"snappiness.\" Speed equals productivity and user satisfaction; lag equals frustration and lost customers.",
+      "tokens": 710,
+      "time_ms": 5543,
+      "judgment": {
+        "usefulness": 9.0,
+        "depth": 8.0,
+        "correctness": 9.0,
+        "clarity": 10.0,
+        "completeness": 9.0,
+        "brief_justification": "All five rewrites accurately translate technical jargon into customer-facing benefits. The structure is excellent: showing original, rewrite, and a 'why the customer cares' explanation for each. The value propositions are well-crafted and genuinely focus on the WHY rather than the HOW. Minor nitpick: 'bank-grade security' is a somewhat clich\u00e9d phrase, and the depth could be slightly improved by discussing audience segmentation (e.g., B2B vs B2C framing) or providing alternative versions for different customer personas. Overall, highly practical and well-executed.",
+        "weighted_score": 9.0
+      }
+    },
+    "qwen35_27b": {
+      "display_name": "Qwen 3.5 27B",
+      "model_id": "qwen/qwen3.5-27b",
+      "response": "Here are the technical features rewritten as customer-facing value propositions, focusing on business outcomes rather than implementation details:\n\n1.  **Technical:** 'We use a distributed event-driven architecture with CQRS.'\n    **Value Proposition:** \"Ensure your system remains responsive and stable, even during periods of rapid growth or unexpected traffic spikes.\"\n    *(Focus: Scalability and reliability under load)*\n\n2.  **Technical:** 'Our model achieves 0.94 F1 score on the benchmark.'\n    **Value Proposition:** \"Make critical decisions with confidence, backed by highly accurate data that minimizes errors and reduces the need for manual review.\"\n    *(Focus: Trust in results and operational efficiency)*\n\n3.  **Technical:** 'Built on Kubernetes with auto-scaling and 99.99% SLA.'\n    **Value Proposition:** \"Keep your business running without interruption, with infrastructure that automatically adapts to demand and guarantees near-perfect uptime.\"\n    *(Focus: Business continuity and peace of mind)*\n\n4.  **Technical:** 'End-to-end encryption with AES-256 and RSA key exchange.'\n    **Value Proposition:** \"Protect your sensitive data and maintain customer trust with enterprise-grade security that meets the strictest compliance standards.\"\n    *(Focus: Risk reduction and compliance)*\n\n5.  **Technical:** 'Sub-100ms p99 latency with edge caching.'\n    **Value Proposition:** \"Deliver a seamless, lag-free experience to your users regardless of their location, ensuring high engagement and satisfaction.\"\n    *(Focus: User experience and global performance)*",
+      "tokens": 2315,
+      "time_ms": 23287,
+      "judgment": {
+        "usefulness": 9.0,
+        "depth": 8.0,
+        "correctness": 9.0,
+        "clarity": 10.0,
+        "completeness": 9.0,
+        "brief_justification": "All five rewrites accurately translate technical features into customer-facing value propositions, correctly identifying the 'why' behind each feature. The formatting is excellent with clear before/after comparisons and helpful focus tags. The propositions are well-crafted, avoiding jargon while conveying meaningful business outcomes. Minor room for improvement: could have been slightly more specific or varied in tone (e.g., quantifying the uptime as 'less than 1 minute of downtime per year'), and could have offered brief commentary on the general principles of translating features to benefits.",
+        "weighted_score": 9.0
+      }
+    }
+  },
+  "winner": "Gemma 4 31B",
+  "ranking": [
+    {
+      "model": "Gemma 4 31B",
+      "score": 9.0
+    },
+    {
+      "model": "Gemma 4 26B-A4B",
+      "score": 9.0
+    },
+    {
+      "model": "Qwen 3.5 27B",
+      "score": 9.0
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+## Table 5.5: Same-Family Rating Bias
+
+| judge | family | avg_same_family | avg_other_family | same_family_bias | n_same | n_other |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude_sonnet_46 | anthropic | 8.854 | 8.197 | 0.657 | 181 | 1377 |
+| claude_opus_46 | anthropic | 8.562 | 7.907 | 0.655 | 182 | 1397 |
+| gpt_oss_120b | openai | 8.363 | 7.785 | 0.579 | 173 | 1600 |
+| minimax_m25 | unknown | 8.412 | 8.035 | 0.377 | 213 | 1117 |
+| gemini_3_pro | unknown | 9.606 | 9.386 | 0.22 | 153 | 32 |
+| gemini_25_flash | unknown | 9.071 | 8.879 | 0.192 | 17 | 265 |
+| grok_4_1_fast | unknown | 9.559 | 9.387 | 0.172 | 277 | 79 |
+| gpt_codex | unknown | 7.468 | 7.378 | 0.09 | 209 | 39 |
+| gemini_3_flash | unknown | 9.283 | 9.243 | 0.041 | 420 | 947 |
+| grok_direct | unknown | 8.409 | 8.492 | -0.084 | 287 | 58 |
+| gpt_5_4 | openai | 7.082 | 7.2 | -0.118 | 172 | 1393 |
+| gemini_2_5_flash_lite | unknown | 9.738 | 9.86 | -0.122 | 69 | 20 |
+| deepseek_v3 | unknown | 9.002 | 9.202 | -0.2 | 430 | 97 |
+| seed_1_6_flash | unknown | 8.882 | 9.09 | -0.208 | 69 | 20 |
+| claude_opus | unknown | 8.293 | 8.529 | -0.236 | 427 | 100 |
+| gpt_oss_legal | unknown | 8.512 | 8.846 | -0.334 | 50 | 13 |
+| claude_sonnet | unknown | 8.718 | 9.105 | -0.387 | 422 | 98 |
+| glm_4_7 | unknown | 8.841 | 9.275 | -0.434 | 126 | 16 |
+| gemini_2_5_flash | unknown | 9.369 | 9.84 | -0.471 | 202 | 59 |
+| olmo_think | unknown | 8.836 | 9.7 | -0.864 | 7 | 4 |

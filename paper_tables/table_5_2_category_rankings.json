@@ -1,0 +1,909 @@
+{
+  "analysis": [
+    {
+      "model_key": "claude_sonnet",
+      "display_name": "Claude Sonnet 4.5",
+      "avg_score": 9.615,
+      "eval_count": 10,
+      "std": 0.077
+    },
+    {
+      "model_key": "deepseek_v3",
+      "display_name": "DeepSeek V3.2",
+      "avg_score": 9.588,
+      "eval_count": 10,
+      "std": 0.173
+    },
+    {
+      "model_key": "grok_4_1_fast",
+      "display_name": "Grok 4.1 Fast",
+      "avg_score": 9.552,
+      "eval_count": 10,
+      "std": 0.091
+    },
+    {
+      "model_key": "claude_opus",
+      "display_name": "Claude Opus 4.5",
+      "avg_score": 9.49,
+      "eval_count": 10,
+      "std": 0.223
+    },
+    {
+      "model_key": "gemini_2_5_flash",
+      "display_name": "Gemini 2.5 Flash",
+      "avg_score": 9.409,
+      "eval_count": 10,
+      "std": 0.422
+    },
+    {
+      "model_key": "gpt_oss_legal",
+      "display_name": "GPT-OSS-120B (Legal)",
+      "avg_score": 9.351,
+      "eval_count": 10,
+      "std": 0.596
+    },
+    {
+      "model_key": "gpt_5_4",
+      "display_name": "GPT-5.4",
+      "avg_score": 8.925,
+      "eval_count": 39,
+      "std": 0.535
+    },
+    {
+      "model_key": "mimo_v2_flash",
+      "display_name": "MiMo-V2-Flash",
+      "avg_score": 8.894,
+      "eval_count": 49,
+      "std": 0.682
+    },
+    {
+      "model_key": "gemini_3_flash",
+      "display_name": "Gemini 3 Flash Preview",
+      "avg_score": 8.812,
+      "eval_count": 49,
+      "std": 0.61
+    },
+    {
+      "model_key": "grok_420",
+      "display_name": "Grok 4.20",
+      "avg_score": 8.581,
+      "eval_count": 39,
+      "std": 1.635
+    },
+    {
+      "model_key": "minimax_m25",
+      "display_name": "MiniMax M2.5",
+      "avg_score": 8.535,
+      "eval_count": 32,
+      "std": 0.984
+    },
+    {
+      "model_key": "gpt_oss_120b",
+      "display_name": "GPT-OSS-120B",
+      "avg_score": 8.472,
+      "eval_count": 49,
+      "std": 1.281
+    },
+    {
+      "model_key": "gemini_3_pro",
+      "display_name": "Gemini 3 Pro Preview",
+      "avg_score": 8.388,
+      "eval_count": 10,
+      "std": 1.998
+    },
+    {
+      "model_key": "claude_sonnet_46",
+      "display_name": "Claude Sonnet 4.6",
+      "avg_score": 8.345,
+      "eval_count": 39,
+      "std": 1.043
+    },
+    {
+      "model_key": "claude_opus_46",
+      "display_name": "Claude Opus 4.6",
+      "avg_score": 8.334,
+      "eval_count": 39,
+      "std": 1.018
+    },
+    {
+      "model_key": "deepseek_v4",
+      "display_name": "DeepSeek V3",
+      "avg_score": 8.237,
+      "eval_count": 39,
+      "std": 0.963
+    },
+    {
+      "model_key": "gemini_31_pro",
+      "display_name": "Gemini 3.1 Pro",
+      "avg_score": 6.795,
+      "eval_count": 39,
+      "std": 2.157
+    }
+  ],
+  "code": [
+    {
+      "model_key": "grok_code_fast",
+      "display_name": "Grok Code Fast 1",
+      "avg_score": 9.186,
+      "eval_count": 10,
+      "std": 0.285
+    },
+    {
+      "model_key": "grok_direct",
+      "display_name": "Grok 3 (Direct)",
+      "avg_score": 8.935,
+      "eval_count": 10,
+      "std": 0.672
+    },
+    {
+      "model_key": "gpt_codex",
+      "display_name": "GPT-5.2-Codex",
+      "avg_score": 8.79,
+      "eval_count": 10,
+      "std": 1.782
+    },
+    {
+      "model_key": "gpt_5_4",
+      "display_name": "GPT-5.4",
+      "avg_score": 8.71,
+      "eval_count": 40,
+      "std": 0.832
+    },
+    {
+      "model_key": "deepseek_v3",
+      "display_name": "DeepSeek V3.2",
+      "avg_score": 8.676,
+      "eval_count": 10,
+      "std": 0.81
+    },
+    {
+      "model_key": "claude_opus",
+      "display_name": "Claude Opus 4.5",
+      "avg_score": 8.646,
+      "eval_count": 10,
+      "std": 1.212
+    },
+    {
+      "model_key": "claude_sonnet",
+      "display_name": "Claude Sonnet 4.5",
+      "avg_score": 8.608,
+      "eval_count": 10,
+      "std": 1.153
+    },
+    {
+      "model_key": "gemini_3_flash",
+      "display_name": "Gemini 3 Flash Preview",
+      "avg_score": 8.524,
+      "eval_count": 50,
+      "std": 0.647
+    },
+    {
+      "model_key": "grok_420",
+      "display_name": "Grok 4.20",
+      "avg_score": 8.297,
+      "eval_count": 36,
+      "std": 0.805
+    },
+    {
+      "model_key": "gpt_oss_120b",
+      "display_name": "GPT-OSS-120B",
+      "avg_score": 7.918,
+      "eval_count": 39,
+      "std": 1.169
+    },
+    {
+      "model_key": "claude_opus_46",
+      "display_name": "Claude Opus 4.6",
+      "avg_score": 7.782,
+      "eval_count": 40,
+      "std": 1.353
+    },
+    {
+      "model_key": "mimo_v2_flash",
+      "display_name": "MiMo-V2-Flash",
+      "avg_score": 7.69,
+      "eval_count": 40,
+      "std": 1.114
+    },
+    {
+      "model_key": "claude_sonnet_46",
+      "display_name": "Claude Sonnet 4.6",
+      "avg_score": 7.689,
+      "eval_count": 40,
+      "std": 1.423
+    },
+    {
+      "model_key": "deepseek_v4",
+      "display_name": "DeepSeek V3",
+      "avg_score": 7.648,
+      "eval_count": 40,
+      "std": 0.892
+    },
+    {
+      "model_key": "minimax_m25",
+      "display_name": "MiniMax M2.5",
+      "avg_score": 6.568,
+      "eval_count": 26,
+      "std": 1.965
+    },
+    {
+      "model_key": "minimax_m2",
+      "display_name": "MiniMax M2",
+      "avg_score": 6.451,
+      "eval_count": 10,
+      "std": 2.115
+    },
+    {
+      "model_key": "glm_4_7",
+      "display_name": "GLM 4.7",
+      "avg_score": 5.97,
+      "eval_count": 10,
+      "std": 1.589
+    },
+    {
+      "model_key": "gemini_3_pro",
+      "display_name": "Gemini 3 Pro Preview",
+      "avg_score": 5.28,
+      "eval_count": 10,
+      "std": 2.633
+    },
+    {
+      "model_key": "gemini_31_pro",
+      "display_name": "Gemini 3.1 Pro",
+      "avg_score": 4.483,
+      "eval_count": 40,
+      "std": 2.304
+    }
+  ],
+  "communication": [
+    {
+      "model_key": "claude_sonnet",
+      "display_name": "Claude Sonnet 4.5",
+      "avg_score": 9.568,
+      "eval_count": 10,
+      "std": 0.187
+    },
+    {
+      "model_key": "grok_4_1_fast",
+      "display_name": "Grok 4.1 Fast",
+      "avg_score": 9.47,
+      "eval_count": 10,
+      "std": 0.161
+    },
+    {
+      "model_key": "claude_opus",
+      "display_name": "Claude Opus 4.5",
+      "avg_score": 9.432,
+      "eval_count": 10,
+      "std": 0.447
+    },
+    {
+      "model_key": "seed_1_6_flash",
+      "display_name": "Seed 1.6 Flash",
+      "avg_score": 9.425,
+      "eval_count": 10,
+      "std": 0.286
+    },
+    {
+      "model_key": "deepseek_v3",
+      "display_name": "DeepSeek V3.2",
+      "avg_score": 9.355,
+      "eval_count": 10,
+      "std": 0.514
+    },
+    {
+      "model_key": "gemini_2_5_flash",
+      "display_name": "Gemini 2.5 Flash",
+      "avg_score": 9.224,
+      "eval_count": 10,
+      "std": 0.431
+    },
+    {
+      "model_key": "gpt_oss_120b",
+      "display_name": "GPT-OSS-120B",
+      "avg_score": 9.063,
+      "eval_count": 47,
+      "std": 0.413
+    },
+    {
+      "model_key": "mistral_small_creative",
+      "display_name": "Mistral Small Creative",
+      "avg_score": 9.032,
+      "eval_count": 48,
+      "std": 0.495
+    },
+    {
+      "model_key": "grok_420",
+      "display_name": "Grok 4.20",
+      "avg_score": 8.979,
+      "eval_count": 38,
+      "std": 0.631
+    },
+    {
+      "model_key": "gpt_5_4",
+      "display_name": "GPT-5.4",
+      "avg_score": 8.971,
+      "eval_count": 38,
+      "std": 0.422
+    },
+    {
+      "model_key": "claude_sonnet_46",
+      "display_name": "Claude Sonnet 4.6",
+      "avg_score": 8.944,
+      "eval_count": 38,
+      "std": 0.466
+    },
+    {
+      "model_key": "claude_opus_46",
+      "display_name": "Claude Opus 4.6",
+      "avg_score": 8.851,
+      "eval_count": 38,
+      "std": 0.514
+    },
+    {
+      "model_key": "glm_4_7",
+      "display_name": "GLM 4.7",
+      "avg_score": 8.752,
+      "eval_count": 10,
+      "std": 0.755
+    },
+    {
+      "model_key": "mimo_v2_flash",
+      "display_name": "MiMo-V2-Flash",
+      "avg_score": 8.737,
+      "eval_count": 38,
+      "std": 0.563
+    },
+    {
+      "model_key": "deepseek_v4",
+      "display_name": "DeepSeek V3",
+      "avg_score": 8.727,
+      "eval_count": 38,
+      "std": 0.269
+    },
+    {
+      "model_key": "gemini_2_5_flash_lite",
+      "display_name": "Gemini 2.5 Flash-Lite",
+      "avg_score": 8.639,
+      "eval_count": 10,
+      "std": 2.035
+    },
+    {
+      "model_key": "seed_16_flash",
+      "display_name": "Seed 1.6 Flash",
+      "avg_score": 8.538,
+      "eval_count": 38,
+      "std": 0.604
+    },
+    {
+      "model_key": "gemini_31_pro",
+      "display_name": "Gemini 3.1 Pro",
+      "avg_score": 7.777,
+      "eval_count": 38,
+      "std": 0.963
+    }
+  ],
+  "edge_cases": [
+    {
+      "model_key": "grok_4_1_fast",
+      "display_name": "Grok 4.1 Fast",
+      "avg_score": 9.511,
+      "eval_count": 10,
+      "std": 2.599
+    },
+    {
+      "model_key": "grok_direct",
+      "display_name": "Grok 3 (Direct)",
+      "avg_score": 8.839,
+      "eval_count": 10,
+      "std": 1.0
+    },
+    {
+      "model_key": "gpt_codex",
+      "display_name": "GPT-5.2-Codex",
+      "avg_score": 8.824,
+      "eval_count": 10,
+      "std": 0.691
+    },
+    {
+      "model_key": "gemini_3_flash",
+      "display_name": "Gemini 3 Flash Preview",
+      "avg_score": 8.793,
+      "eval_count": 10,
+      "std": 0.859
+    },
+    {
+      "model_key": "claude_sonnet",
+      "display_name": "Claude Sonnet 4.5",
+      "avg_score": 8.777,
+      "eval_count": 10,
+      "std": 0.843
+    },
+    {
+      "model_key": "deepseek_v3",
+      "display_name": "DeepSeek V3.2",
+      "avg_score": 8.712,
+      "eval_count": 10,
+      "std": 1.14
+    },
+    {
+      "model_key": "mimo_v2_flash",
+      "display_name": "MiMo-V2-Flash",
+      "avg_score": 8.651,
+      "eval_count": 10,
+      "std": 1.148
+    },
+    {
+      "model_key": "claude_opus",
+      "display_name": "Claude Opus 4.5",
+      "avg_score": 8.631,
+      "eval_count": 10,
+      "std": 1.105
+    },
+    {
+      "model_key": "gemini_3_pro",
+      "display_name": "Gemini 3 Pro Preview",
+      "avg_score": 7.706,
+      "eval_count": 10,
+      "std": 1.644
+    },
+    {
+      "model_key": "gpt_oss_120b",
+      "display_name": "GPT-OSS-120B",
+      "avg_score": 7.522,
+      "eval_count": 10,
+      "std": 2.854
+    }
+  ],
+  "meta_alignment": [
+    {
+      "model_key": "grok_direct",
+      "display_name": "Grok 3 (Direct)",
+      "avg_score": 10.354,
+      "eval_count": 10,
+      "std": 3.549
+    },
+    {
+      "model_key": "claude_sonnet",
+      "display_name": "Claude Sonnet 4.5",
+      "avg_score": 9.275,
+      "eval_count": 10,
+      "std": 0.272
+    },
+    {
+      "model_key": "deepseek_v3",
+      "display_name": "DeepSeek V3.2",
+      "avg_score": 9.261,
+      "eval_count": 10,
+      "std": 0.357
+    },
+    {
+      "model_key": "claude_opus",
+      "display_name": "Claude Opus 4.5",
+      "avg_score": 9.208,
+      "eval_count": 10,
+      "std": 0.34
+    },
+    {
+      "model_key": "gpt_5_4",
+      "display_name": "GPT-5.4",
+      "avg_score": 9.163,
+      "eval_count": 34,
+      "std": 0.297
+    },
+    {
+      "model_key": "claude_opus_46",
+      "display_name": "Claude Opus 4.6",
+      "avg_score": 9.15,
+      "eval_count": 34,
+      "std": 0.308
+    },
+    {
+      "model_key": "gpt_codex",
+      "display_name": "GPT-5.2-Codex",
+      "avg_score": 9.139,
+      "eval_count": 10,
+      "std": 0.342
+    },
+    {
+      "model_key": "grok_420",
+      "display_name": "Grok 4.20",
+      "avg_score": 9.121,
+      "eval_count": 34,
+      "std": 0.399
+    },
+    {
+      "model_key": "claude_sonnet_46",
+      "display_name": "Claude Sonnet 4.6",
+      "avg_score": 9.068,
+      "eval_count": 34,
+      "std": 0.287
+    },
+    {
+      "model_key": "grok_4_1_fast",
+      "display_name": "Grok 4.1 Fast",
+      "avg_score": 9.006,
+      "eval_count": 9,
+      "std": 0.536
+    },
+    {
+      "model_key": "gemini_3_flash",
+      "display_name": "Gemini 3 Flash Preview",
+      "avg_score": 8.98,
+      "eval_count": 44,
+      "std": 0.344
+    },
+    {
+      "model_key": "mimo_v2_flash",
+      "display_name": "MiMo-V2-Flash",
+      "avg_score": 8.872,
+      "eval_count": 44,
+      "std": 0.862
+    },
+    {
+      "model_key": "deepseek_v4",
+      "display_name": "DeepSeek V3",
+      "avg_score": 8.796,
+      "eval_count": 32,
+      "std": 0.436
+    },
+    {
+      "model_key": "gpt_oss_120b",
+      "display_name": "GPT-OSS-120B",
+      "avg_score": 8.546,
+      "eval_count": 44,
+      "std": 1.538
+    },
+    {
+      "model_key": "gemini_3_pro",
+      "display_name": "Gemini 3 Pro Preview",
+      "avg_score": 8.513,
+      "eval_count": 10,
+      "std": 1.161
+    },
+    {
+      "model_key": "minimax_m25",
+      "display_name": "MiniMax M2.5",
+      "avg_score": 8.244,
+      "eval_count": 30,
+      "std": 1.461
+    },
+    {
+      "model_key": "gemini_31_pro",
+      "display_name": "Gemini 3.1 Pro",
+      "avg_score": 8.085,
+      "eval_count": 32,
+      "std": 1.402
+    }
+  ],
+  "minimax": [
+    {
+      "model_key": "judge_gpt54",
+      "display_name": "GPT-5.4",
+      "avg_score": 9.11,
+      "eval_count": 13,
+      "std": 1.219
+    },
+    {
+      "model_key": "judge_claude_sonnet",
+      "display_name": "Claude Sonnet 4.6",
+      "avg_score": 8.653,
+      "eval_count": 13,
+      "std": 1.686
+    },
+    {
+      "model_key": "minimax_m1",
+      "display_name": "MiniMax M1",
+      "avg_score": 8.47,
+      "eval_count": 9,
+      "std": 1.796
+    },
+    {
+      "model_key": "minimax_m27",
+      "display_name": "MiniMax M2.7",
+      "avg_score": 8.457,
+      "eval_count": 9,
+      "std": 1.274
+    },
+    {
+      "model_key": "minimax_m25",
+      "display_name": "MiniMax M2.5",
+      "avg_score": 8.331,
+      "eval_count": 8,
+      "std": 2.388
+    },
+    {
+      "model_key": "minimax_01",
+      "display_name": "MiniMax-01",
+      "avg_score": 7.987,
+      "eval_count": 13,
+      "std": 1.179
+    },
+    {
+      "model_key": "minimax_m2",
+      "display_name": "MiniMax M2",
+      "avg_score": 7.695,
+      "eval_count": 6,
+      "std": 2.191
+    },
+    {
+      "model_key": "minimax_m21",
+      "display_name": "MiniMax M2.1",
+      "avg_score": 6.863,
+      "eval_count": 7,
+      "std": 2.646
+    }
+  ],
+  "qwen": [
+    {
+      "model_key": "qwen3_32b",
+      "display_name": "Qwen 3 32B",
+      "avg_score": 9.627,
+      "eval_count": 6,
+      "std": 0.239
+    },
+    {
+      "model_key": "qwen35_397b_a17b",
+      "display_name": "Qwen 3.5 397B-A17B",
+      "avg_score": 9.399,
+      "eval_count": 10,
+      "std": 1.065
+    },
+    {
+      "model_key": "qwen35_122b_a10b",
+      "display_name": "Qwen 3.5 122B-A10B",
+      "avg_score": 9.303,
+      "eval_count": 9,
+      "std": 1.182
+    },
+    {
+      "model_key": "qwen35_35b_a3b",
+      "display_name": "Qwen 3.5 35B-A3B",
+      "avg_score": 9.196,
+      "eval_count": 9,
+      "std": 0.893
+    },
+    {
+      "model_key": "qwen35_27b",
+      "display_name": "Qwen 3.5 27B",
+      "avg_score": 9.114,
+      "eval_count": 10,
+      "std": 1.168
+    },
+    {
+      "model_key": "qwen3_8b",
+      "display_name": "Qwen 3 8B",
+      "avg_score": 8.695,
+      "eval_count": 11,
+      "std": 1.231
+    },
+    {
+      "model_key": "qwen3_coder_next",
+      "display_name": "Qwen 3 Coder Next",
+      "avg_score": 8.451,
+      "eval_count": 11,
+      "std": 1.436
+    },
+    {
+      "model_key": "qwen35_9b",
+      "display_name": "Qwen 3.5 9B",
+      "avg_score": 8.194,
+      "eval_count": 7,
+      "std": 1.774
+    }
+  ],
+  "reasoning": [
+    {
+      "model_key": "claude_opus",
+      "display_name": "Claude Opus 4.5",
+      "avg_score": 9.068,
+      "eval_count": 10,
+      "std": 1.074
+    },
+    {
+      "model_key": "gpt_5_4",
+      "display_name": "GPT-5.4",
+      "avg_score": 9.0,
+      "eval_count": 35,
+      "std": 0.541
+    },
+    {
+      "model_key": "gemini_3_flash",
+      "display_name": "Gemini 3 Flash Preview",
+      "avg_score": 8.801,
+      "eval_count": 10,
+      "std": 1.291
+    },
+    {
+      "model_key": "claude_opus_46",
+      "display_name": "Claude Opus 4.6",
+      "avg_score": 8.5,
+      "eval_count": 35,
+      "std": 1.452
+    },
+    {
+      "model_key": "grok_direct",
+      "display_name": "Grok 3 (Direct)",
+      "avg_score": 8.493,
+      "eval_count": 10,
+      "std": 2.006
+    },
+    {
+      "model_key": "gpt_oss_120b",
+      "display_name": "GPT-OSS-120B",
+      "avg_score": 8.458,
+      "eval_count": 41,
+      "std": 1.155
+    },
+    {
+      "model_key": "claude_sonnet",
+      "display_name": "Claude Sonnet 4.5",
+      "avg_score": 8.433,
+      "eval_count": 10,
+      "std": 2.322
+    },
+    {
+      "model_key": "claude_sonnet_46",
+      "display_name": "Claude Sonnet 4.6",
+      "avg_score": 8.424,
+      "eval_count": 35,
+      "std": 1.421
+    },
+    {
+      "model_key": "deepseek_v3",
+      "display_name": "DeepSeek V3.2",
+      "avg_score": 8.352,
+      "eval_count": 10,
+      "std": 2.302
+    },
+    {
+      "model_key": "grok_420",
+      "display_name": "Grok 4.20",
+      "avg_score": 8.261,
+      "eval_count": 35,
+      "std": 1.526
+    },
+    {
+      "model_key": "mimo_v2_flash",
+      "display_name": "MiMo-V2-Flash",
+      "avg_score": 8.058,
+      "eval_count": 45,
+      "std": 1.68
+    },
+    {
+      "model_key": "gemini_2_5_flash",
+      "display_name": "Gemini 2.5 Flash",
+      "avg_score": 7.986,
+      "eval_count": 10,
+      "std": 2.291
+    },
+    {
+      "model_key": "deepseek_v4",
+      "display_name": "DeepSeek V3",
+      "avg_score": 7.71,
+      "eval_count": 35,
+      "std": 1.634
+    },
+    {
+      "model_key": "gemini_25_flash",
+      "display_name": "Gemini 2.5 Flash",
+      "avg_score": 7.631,
+      "eval_count": 35,
+      "std": 1.503
+    },
+    {
+      "model_key": "olmo_think",
+      "display_name": "Olmo 3.1 32B Think",
+      "avg_score": 7.38,
+      "eval_count": 10,
+      "std": 1.977
+    },
+    {
+      "model_key": "minimax_m25",
+      "display_name": "MiniMax M2.5",
+      "avg_score": 7.049,
+      "eval_count": 20,
+      "std": 3.093
+    },
+    {
+      "model_key": "gemini_3_pro",
+      "display_name": "Gemini 3 Pro Preview",
+      "avg_score": 5.722,
+      "eval_count": 10,
+      "std": 2.249
+    },
+    {
+      "model_key": "gemini_31_pro",
+      "display_name": "Gemini 3.1 Pro",
+      "avg_score": 5.374,
+      "eval_count": 35,
+      "std": 2.235
+    }
+  ],
+  "slm": [
+    {
+      "model_key": "qwen3_8b",
+      "display_name": "Qwen 3 8B",
+      "avg_score": 9.328,
+      "eval_count": 14,
+      "std": 0.337
+    },
+    {
+      "model_key": "phi4",
+      "display_name": "Phi-4 14B",
+      "avg_score": 8.924,
+      "eval_count": 13,
+      "std": 0.357
+    },
+    {
+      "model_key": "gemma3_27b",
+      "display_name": "Gemma 3 27B",
+      "avg_score": 8.853,
+      "eval_count": 14,
+      "std": 1.704
+    },
+    {
+      "model_key": "devstral",
+      "display_name": "Devstral Small",
+      "avg_score": 8.739,
+      "eval_count": 14,
+      "std": 0.484
+    },
+    {
+      "model_key": "llama4_scout",
+      "display_name": "Llama 4 Scout",
+      "avg_score": 8.444,
+      "eval_count": 14,
+      "std": 0.778
+    },
+    {
+      "model_key": "mistral_nemo",
+      "display_name": "Mistral Nemo 12B",
+      "avg_score": 8.425,
+      "eval_count": 13,
+      "std": 0.923
+    },
+    {
+      "model_key": "granite_40",
+      "display_name": "Granite 4.0 Micro",
+      "avg_score": 8.314,
+      "eval_count": 14,
+      "std": 1.247
+    },
+    {
+      "model_key": "kimi_k25",
+      "display_name": "Kimi K2.5",
+      "avg_score": 8.265,
+      "eval_count": 13,
+      "std": 1.523
+    },
+    {
+      "model_key": "qwen3_32b",
+      "display_name": "Qwen 3 32B",
+      "avg_score": 8.204,
+      "eval_count": 14,
+      "std": 2.167
+    },
+    {
+      "model_key": "llama31_8b",
+      "display_name": "Llama 3.1 8B",
+      "avg_score": 7.588,
+      "eval_count": 13,
+      "std": 0.943
+    },
+    {
+      "model_key": "nemotron_3_super",
+      "display_name": "Nemotron 3 Super",
+      "avg_score": 5.41,
+      "eval_count": 1,
+      "std": 0
+    },
+    {
+      "model_key": "gemma_3n_4b",
+      "display_name": "Gemma 3n 4B",
+      "avg_score": 3.68,
+      "eval_count": 1,
+      "std": 0
+    }
+  ]
+}

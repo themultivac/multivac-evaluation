@@ -1,0 +1,52 @@
+{
+  "batch_id": "GEMMA4-H2H-20260404",
+  "timestamp": "2026-04-05T01:35:30.090779",
+  "contestants": {
+    "gemma4_31b": {
+      "model_id": "google/gemma-4-31b-it",
+      "display_name": "Gemma 4 31B"
+    },
+    "gemma4_26b_a4b": {
+      "model_id": "google/gemma-4-26b-a4b-it",
+      "display_name": "Gemma 4 26B-A4B"
+    },
+    "qwen35_27b": {
+      "model_id": "qwen/qwen3.5-27b",
+      "display_name": "Qwen 3.5 27B"
+    }
+  },
+  "judge": {
+    "model_id": "anthropic/claude-opus-4.6",
+    "display_name": "Claude Opus 4.6"
+  },
+  "total_questions": 30,
+  "wins": {
+    "Gemma 4 31B": 12,
+    "Qwen 3.5 27B": 14,
+    "Gemma 4 26B-A4B": 4
+  },
+  "category_breakdown": {
+    "code": {
+      "Gemma 4 31B": 3,
+      "Qwen 3.5 27B": 3
+    },
+    "reasoning": {
+      "Qwen 3.5 27B": 5,
+      "Gemma 4 26B-A4B": 1
+    },
+    "analysis": {
+      "Qwen 3.5 27B": 4,
+      "Gemma 4 31B": 2
+    },
+    "communication": {
+      "Gemma 4 31B": 5,
+      "Gemma 4 26B-A4B": 1
+    },
+    "meta_alignment": {
+      "Gemma 4 31B": 2,
+      "Gemma 4 26B-A4B": 2,
+      "Qwen 3.5 27B": 2
+    }
+  },
+  "cost": 4.5
+}

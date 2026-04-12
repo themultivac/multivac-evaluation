@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this dataset or framework, please cite it as below."
+authors:
+  - family-names: "Darji"
+    given-names: "Yash"
+    orcid: "https://orcid.org/0009-0009-6895-842X"
+    email: "yashdarji2378@gmail.com"
+    affiliation: "Independent Researcher"
+title: "The Multivac: Blind Peer Matrix Evaluation of Frontier Language Models"
+version: 1.0.0
+date-released: 2026-04-12
+url: "https://github.com/themultivac/multivac-evaluation"
+repository-code: "https://github.com/themultivac/multivac-evaluation"
+license: MIT
+keywords:
+  - "LLM evaluation"
+  - "peer evaluation"
+  - "multi-judge"
+  - "model comparison"
+  - "benchmark"
+  - "judge disagreement"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Darji"
+      given-names: "Yash"
+      orcid: "https://orcid.org/0009-0009-6895-842X"
+  title: "The Multivac: Blind Peer Matrix Evaluation of Frontier Language Models"
+  year: 2026
+  journal: "arXiv preprint"
+  url: "https://github.com/themultivac/multivac-evaluation"
