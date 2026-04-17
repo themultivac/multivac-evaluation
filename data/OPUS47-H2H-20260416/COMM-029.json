@@ -1,0 +1,104 @@
+{
+  "question_id": "COMM-029",
+  "category": "communication",
+  "question_text": "Write UI microcopy for these scenarios: (1) A user tries to delete their account (confirm dialog), (2) A payment fails (error message), (3) The user's free trial ends in 3 days (notification), (4) Sea",
+  "timestamp": "2026-04-16T19:14:08.546332",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "Here's microcopy for each scenario:\n\n**1. Delete Account Confirmation**\n> Delete your account?\n> This permanently erases your data, history, and settings. We can't undo this\u2014so take a moment if you need one.\n> [Cancel] [Delete forever]\n\n**2. Payment Failed**\n> Your payment didn't go through. This usually means a typo or an issue with your bank. Double-check your card details and give it another try.\n> [Try again]\n\n**3. Trial Ending in 3 Days**\n> Heads up: your free trial ends in 3 days. Pick a plan now to keep everything running smoothly\u2014no interruptions, no lost work.\n> [Choose a plan]\n\n**4. Zero Search Results**\n> Nothing matched \"{query}\". Try different keywords, check for typos, or browse by category instead.\n> [Clear search]\n\n**5. Slow Loading**\n> Still loading\u2026 thanks for hanging in there. Slower connections can take a moment\u2014we're almost done.\n\n**6. Onboarding Complete**\n> You're all set! \ud83c\udf89\n> Everything's ready to go. Jump in and start exploring\u2014we'll be here if you need a hand.\n> [Take me in]",
+      "tokens": 533,
+      "time_ms": 7451
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# UI Microcopy Suite\n\n---\n\n### 1. Account Deletion \u2014 Confirm Dialog\n\n**Heading:** \"We'll miss you \u2014 are you sure?\"\n\n**Body:** This permanently deletes your data, projects, and history. There's no undo.\n\n**[Delete my account]** \u00b7 **[Keep my account]**\n\n---\n\n### 2. Payment Failed \u2014 Error Message\n\n**Heading:** \"Payment didn't go through\"\n\n**Body:** Your card was declined. Double-check your details or try a different payment method. You won't be charged twice.\n\n---\n\n### 3. Trial Ending \u2014 Notification\n\n**Heading:** \"Heads up \u2014 3 days left on your free trial\"\n\n**Body:** Upgrade now to keep everything you've built. Pick a plan and don't lose a beat.\n\n**[See plans \u2192]**\n\n---\n\n### 4. Zero Search Results\n\n**Heading:** \"No results for \"{query}\"\"\n\n**Body:** Check your spelling or try broader keywords. You can also browse categories to find what you need.\n\n---\n\n### 5. Extended Loading (5+ seconds)\n\n**Heading:** \"Still working on it\u2026\"\n\n**Body:** This is taking longer than usual. Thanks for hanging tight \u2014 no need to refresh.\n\n---\n\n### 6. Onboarding Complete \u2014 Celebration \ud83c\udf89\n\n**Heading:** \"You're all set!\"\n\n**Body:** Nice work \u2014 your account is ready to go. We built a few suggestions to get you started.\n\n**[Let's dive in \u2192]**\n\n---\n\n*Design notes: Each stays under 30 words (body only). Tone is warm but direct. CTAs use first-person (\"my\") for destructive actions and encouraging language (\"Let's\") for positive ones \u2014 reducing anxiety where it matters and building momentum where it helps.*",
+      "tokens": 522,
+      "time_ms": 10340
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 7.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.4,
+      "weighted_b": 8.4,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B better satisfies the under-30-words requirement per scenario and is more directly usable as UI microcopy, while remaining clear, human, and helpful. Response A is strong but adds extra design notes and some entries may exceed the limit when heading and body are considered together."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 7.0,
+        "clarity": 8.0,
+        "usefulness": 8.0,
+        "completeness": 8.0,
+        "correctness": 8.0
+      },
+      "scores_b": {
+        "depth": 9.0,
+        "clarity": 9.0,
+        "usefulness": 9.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 7.8,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B provides a better structure for UI microcopy by explicitly separating headings and body text, and includes valuable design notes that explain the rationale behind the copy.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:16:52.300908"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 8.0,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A is more polished, human-sounding, and consistently adheres to the word limit and tone requirements, with clearer structure and actionable CTAs."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_47": 1,
+    "claude_opus_46": 2
+  },
+  "judges_agree": false
+}

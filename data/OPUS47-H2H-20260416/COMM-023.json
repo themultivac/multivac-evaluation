@@ -1,0 +1,102 @@
+{
+  "question_id": "COMM-023",
+  "category": "communication",
+  "question_text": "A client expects delivery in 2 weeks. Your realistic estimate is 6 weeks. Write: (1) The initial response (don't just say no), (2) A scope negotiation proposal (what CAN you deliver in 2 weeks?), (3) ",
+  "timestamp": "2026-04-16T19:05:01.639013",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Client Communication Package: Timeline Realignment\n\n---\n\n## (1) Initial Response Email\n\n**Subject:** Your 2-Week Timeline \u2014 Let's Talk Options\n\nHi [Client Name],\n\nThank you for the clarity on your 2-week target \u2014 that tells me this matters and moves fast on your end. I want to make sure I give you a straight answer rather than an optimistic one you can't plan around.\n\nAfter reviewing the full scope, a responsible estimate for delivering everything we discussed is **6 weeks**. Delivering the complete package in 2 weeks would force shortcuts in [testing / security review / design QA / integration] that I'm not willing to put your name or mine behind.\n\nHere's the good news: **I don't think you have to wait 6 weeks to get value.** I've mapped out two paths I'd like to walk you through:\n\n- **Option A \u2014 Phased Delivery:** A working, high-priority subset in 2 weeks, with the remainder following in a structured rollout.\n- **Option B \u2014 Full Delivery:** The complete scope on a 6-week plan with clear milestones and visibility the whole way.\n\nCan we grab 20 minutes tomorrow or Thursday? I'll bring both plans so we can decide together what actually serves your goal. If there's a hard external deadline driving the 2 weeks (investor demo, launch event, contractual date), tell me \u2014 that changes what we prioritize.\n\nEither way, I've got you.\n\nBest,\n[Your Name]\n\n---\n\n## (2) Scope Negotiation Proposal \u2014 \"What You Get in 2 Weeks\"\n\n### The 2-Week Minimum Viable Delivery\n\n**Goal:** Put something real, usable, and demonstrable in your hands by Day 14 \u2014 then complete the rest on a predictable schedule.\n\n| Deliver in 2 Weeks (Phase 1) | Defer to Phase 2 (Weeks 3\u20136) |\n|---|---|\n| \u2705 Core functionality / primary user flow | \u23f3 Secondary features & edge-case flows |\n| \u2705 Clean, functional UI on main screens | \u23f3 Polish pass, animations, micro-interactions |\n| \u2705 Working integration with [primary system] | \u23f3 Additional integrations & admin tools |\n| \u2705 Basic QA on happy path | \u23f3 Full test coverage, load/security testing |\n| \u2705 Staging environment you can demo | \u23f3 Production hardening, monitoring, docs |\n\n### Why This Works\n- You have something **real to show stakeholders** in 2 weeks.\n- Users can start generating **feedback that shapes Phase 2**.\n- Nothing is thrown away \u2014 Phase 1 code becomes the production foundation.\n- You avoid the #1 risk of rushed builds: **having to rebuild what was rushed.**\n\n### What I Need From You to Hit Day 14\n1. Final sign-off on Phase 1 scope by end of this week\n2. Access to [systems / credentials / brand assets] within 48 hours\n3. A single decision-maker for quick approvals during the sprint\n\n---\n\n## (3) The 6-Week Project Plan (Full Scope)\n\n### Overview\nA transparent, milestone-driven plan with checkpoints every week so you're never wondering where things stand.\n\n---\n\n### **Week 1 \u2014 Foundation & Architecture**\n**Milestone:** Technical blueprint approved\n- Requirements lockdown and edge-case mapping\n- System architecture & data model\n- Environment setup (dev, staging, production)\n- **Client checkpoint:** 30-min review call (end of week)\n\n### **Week 2 \u2014 Core Build**\n**Milestone:** Primary user flow working end-to-end\n- Core functionality implementation\n- Primary UI screens built\n- First integration wired up\n- **Client checkpoint:** Live demo of core flow\n\n### **Week 3 \u2014 Feature Expansion**\n**Milestone:** Full feature set functional\n- Secondary features & workflows\n- Remaining integrations\n- Admin / back-office tooling\n- **Client checkpoint:** Walkthrough + written status\n\n### **Week 4 \u2014 Polish & UX Pass**\n**Milestone:** Production-quality experience\n- UI refinement, responsive behavior, accessibility\n- Error states, empty states, edge cases\n- Performance optimization\n- **Client checkpoint:** UAT-ready build delivered\n\n### **Week 5 \u2014 QA, Security & Client UAT**\n**Milestone:** All critical issues resolved\n- Full test suite (unit, integration, end-to-end)\n- Security review & penetration check\n- **Your team runs UAT** \u2014 we fix everything found\n- **Client checkpoint:** UAT sign-off\n\n### **Week 6 \u2014 Launch Readiness & Handoff**\n**Milestone:** Live in production\n- Production deployment & monitoring\n- Documentation & training materials\n- Handoff session with your team\n- **Final delivery:** Go-live + 7-day post-launch support window\n\n---\n\n### Communication Cadence\n- **Mondays:** Weekly plan (what's shipping this week)\n- **Thursdays:** Live demo or recorded walkthrough\n- **Anytime:** Slack/email \u2014 response within 4 business hours\n- **Shared dashboard:** Live status of every task, always\n\n### Risk Buffer\nThis plan includes a **3-day internal buffer** for unknowns. If we hit none of them, you get the project early. If we hit one, we stay on schedule. You'll know immediately if anything threatens the timeline \u2014 no surprises in Week 6.\n\n---\n\n**Bottom line:** You set a high bar, and I respect that. My job is to deliver work you'd put your name on \u2014 and to tell you the truth about what that takes. Let's pick the path and start Monday.",
+      "tokens": 2030,
+      "time_ms": 31854
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Managing the Timeline Expectation Gap\n\n---\n\n## Part 1: The Initial Response\n\n**Subject: Re: Project Timeline \u2014 Thoughts & Path Forward**\n\nHi Sarah,\n\nThank you for sharing the full scope of what you're envisioning \u2014 I can see why there's urgency on this, and I appreciate you bringing us in to make it happen.\n\nI want to be straightforward with you because I think that's what makes this partnership work.\n\nI've spent the morning with my team breaking down every deliverable you outlined, and I want to make sure we're aligned on something important: **if we compress this into 2 weeks, we'd be handing you something I'm not comfortable putting my name on \u2014 and more importantly, something that won't perform the way you need it to.**\n\nHere's what I mean specifically:\n\n- The integration with your existing CRM alone requires API testing and data migration validation that, done hastily, creates downstream problems that cost 3\u20134x more to fix after launch\n- The custom reporting dashboard needs at least two feedback cycles with your stakeholders to actually be useful (not just functional)\n- Skipping proper QA doesn't save time \u2014 it relocates it to your team's plate as bug reports and workarounds\n\n**What I can do is offer you two paths forward** \u2014 one that gets meaningful, usable work in your hands within your 2-week window, and a full delivery plan that gets everything done right in about 6 weeks.\n\nI'd love 20 minutes on a call to walk you through both options. Are you available tomorrow between 10 and 2?\n\nI'm not here to pad timelines. I'm here to protect your launch.\n\nBest,\nJames\n\n---\n\n## Part 2: The Scope Negotiation Proposal\n\n### \"Phase 1 Sprint\" \u2014 What We CAN Deliver in 2 Weeks\n\n**The Principle:** Identify the highest-impact, highest-visibility components and deliver them fully \u2014 not everything partially.\n\n---\n\n**To the client:**\n\nSarah,\n\nHere's what I'm proposing. Rather than a diluted version of everything, we deliver a **fully functional Phase 1** that gives your team (and your stakeholders) something real to work with in 2 weeks.\n\n#### \u2705 Included in the 2-Week Sprint\n\n| Deliverable | Why This First | Status at Week 2 |\n|---|---|---|\n| Core user-facing portal | This is what your customers see; it's your credibility piece | Fully functional, tested, live |\n| User authentication & permissions | Security can't be \"added later\" safely | Production-ready |\n| Primary workflow (submit \u2192 review \u2192 approve) | Covers ~70% of daily use cases | End-to-end working |\n| Mobile-responsive design | Your users are 60% mobile per your analytics | Fully responsive |\n| Basic analytics dashboard | Gives leadership something to see on day one | Key metrics, 5 core reports |\n\n#### \ud83d\udd1c Moved to Weeks 3\u20136 (Phase 2)\n\n| Deliverable | Why It Needs More Time | Impact of Waiting |\n|---|---|---|\n| CRM integration (Salesforce) | Requires API sandbox testing + data mapping with your team | Team continues current manual process for 4 more weeks |\n| Advanced reporting & custom dashboards | Needs stakeholder input cycles to build what's actually useful | Basic dashboard covers immediate needs |\n| Automated email/notification system | Requires trigger logic, template design, deliverability testing | Manual notifications as interim |\n| Role-based workflow customization | Complex permissions logic, needs UAT | Standard workflow covers 70% of cases |\n| Data migration (legacy system) | Risk-intensive; needs validation and rollback planning | Run parallel systems briefly |\n\n#### What This Gets You\n\n- **A live, working product in 2 weeks** you can demo to stakeholders and begin onboarding users with\n- **No technical debt** \u2014 everything delivered in Phase 1 is production-quality, not a prototype\n- **Proof of momentum** \u2014 if you need to show progress to leadership or a board, this is a real launch, not a mockup\n- **A clean foundation** \u2014 Phase 2 builds on top of Phase 1 without rework\n\n#### What I Need From You to Make the 2-Week Sprint Work\n\n1. **Stakeholder sign-off on Phase 1 scope by Thursday** \u2014 changes after kickoff will push the date\n2. **A designated point of contact** available for daily 15-minute check-ins (async is fine)\n3. **Brand assets, copy, and login credentials** for staging environments by Friday\n4. **Decision-makers available** for two 30-minute review sessions (end of Week 1 and end of Week 2)\n\n> **My commitment:** If you greenlight this by Thursday, I will personally guarantee the Phase 1 deliverables are live and functional within 14 calendar days.\n\n---\n\n## Part 3: The Full 6-Week Project Plan\n\n### Complete Project Timeline with Milestones\n\n---\n\n```\nPHASE 1: \"THE SPRINT\"                          PHASE 2: \"THE BUILD-OUT\"\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501                    \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nWeek 1    Week 2    Week 3    Week 4    Week 5    Week 6\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n  \ud83d\udfe2        \ud83d\udfe2        \ud83d\udd35        \ud83d\udd35        \ud83d\udd35        \ud83d\udfe3\nSprint    Sprint    Build     Build    Polish    Launch\n  1         2       + Test   + Test    + QA      Full\n```\n\n---\n\n#### \ud83d\udcc5 WEEK 1 \u2014 Foundation & Core Build\n**Theme: \"Get the engine running\"**\n\n| Day | Activity | Owner | Deliverable |\n|-----|----------|-------|-------------|\n| Mon | Project kickoff call; confirm Phase 1 scope | Joint | Signed scope document |\n| Mon\u2013Tue | Environment setup, CI/CD pipeline, repo structure | Dev team | Staging environment live |\n| Tue\u2013Wed | UI/UX implementation \u2014 core portal screens | Dev + Design | Clickable front-end |\n| Wed\u2013Thu | Authentication system, user roles (basic) | Dev team | Login/registration working |\n| Thu\u2013Fri | Primary workflow: submit \u2192 review \u2192 approve | Dev team | End-to-end flow functional |\n| Fri | **\u2b50 Milestone: Internal demo of working prototype** | James \u2192 Sarah | Video walkthrough + staging link |\n\n**Client checkpoint:** 30-min review Friday \u2192 feedback collected for Week 2 adjustments.\n\n---\n\n#### \ud83d\udcc5 WEEK 2 \u2014 Phase 1 Completion & Soft Launch\n**Theme: \"Make it real\"**\n\n| Day | Activity | Owner | Deliverable |\n|-----|----------|-------|-------------|\n| Mon | Incorporate Week 1 feedback; responsive design polish | Dev + Design | Revised UI |\n| Tue | Basic analytics dashboard (5 core reports) | Dev team | Dashboard functional |\n| Wed | QA testing \u2014 cross-browser, mobile, edge cases | QA | Bug report + fixes |\n| Thu | Performance optimization, security review | Dev + QA | Load tested, pen tested |\n| Fri | **\u2b50 MILESTONE: PHASE 1 LIVE DEPLOYMENT** | Full team | Production launch |\n\n**Deliverables handed to client:**\n- \u2705 Live production URL\n- \u2705 Admin credentials + user setup guide\n- \u2705 Known limitations document (what's coming in Phase 2)\n- \u2705 30-minute training walkthrough for Sarah's team\n\n> \ud83c\udfaf **This is your \"2-week deliverable.\" It's real. It works. It's live.**\n\n---\n\n#### \ud83d\udcc5 WEEK 3 \u2014 CRM Integration & Data Architecture\n**Theme: \"Connect the systems\"**\n\n| Day | Activity | Owner | Deliverable |\n|-----|----------|-------|-------------|\n| Mon | Salesforce API sandbox setup; field mapping workshop with Sarah's team | Dev + Client | Data mapping document |\n| Tue\u2013Wed | API integration build \u2014 bidirectional sync | Dev team | Staging integration working |\n| Thu | Legacy data audit; migration plan drafted | Dev + Data | Migration plan + risk assessment |\n| Fri | **\u2b50 Milestone: CRM integration demo in staging** | James \u2192 Sarah | Working sync demonstrated |\n\n**Client checkpoint:** Review integration logic, confirm field mappings are correct.\n\n---\n\n#### \ud83d\udcc5 WEEK 4 \u2014 Advanced Features & Data Migration\n**Theme: \"Add the power\"**\n\n| Day | Activity | Owner | Deliverable |\n|-----|----------|-------|",
+      "tokens": 2148,
+      "time_ms": 47841
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 7.0,
+        "completeness": 6.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 7.2,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A fully addresses all three requested parts with a complete 6-week plan, clear scope negotiation, and strong client-facing tone. Response B is strong in tone and specificity but is incomplete because the project plan is cut off and does not fully deliver the requested timeline."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 5.0,
+        "correctness": 8.0,
+        "completeness": 4.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 6.75,
+      "weighted_b": 8.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A was cut off mid-sentence during Week 4, failing to deliver the requested 6-week plan. Response B provided a complete, well-structured, and highly actionable template that perfectly addressed all constraints."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 10.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.35,
+      "weighted_b": 7.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A is more detailed, actionable, and client-centered, with a fully fleshed-out project plan and specific deliverables."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

@@ -1,0 +1,102 @@
+{
+  "question_id": "ANALYSIS-023",
+  "category": "analysis",
+  "question_text": "A company wants to acquire a startup for $50M. The startup claims $5M ARR growing 100% YoY, 85% gross margins, net retention 130%. During due diligence, you discover: (1) 40% of revenue is from a sing",
+  "timestamp": "2026-04-16T18:32:16.773448",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Real Valuation Analysis\n\n## Adjusting the Claimed Metrics\n\n**True ARR Calculation:**\n- Claimed ARR: $5M\n- Implementation fees are typically 15-25% of contract value and are NOT recurring\n- Adjusted ARR: ~$3.75-4.25M (assume $4M)\n\n**Growth Rate Reality Check:**\n- 100% YoY growth often decelerates sharply at scale\n- With customer concentration, growth is fragile\n- Realistic forward growth: 50-70%, not 100%\n\n**Net Retention of 130%:**\n- Likely inflated by the one whale customer expanding\n- Excluding top customer, NRR probably 105-115%\n- Still decent but not elite\n\n## Valuation Framework\n\nAt $50M on $5M claimed ARR = **10x ARR multiple**\n\n**Adjusted valuation considering risks:**\n\n| Factor | Adjustment |\n|--------|-----------|\n| True ARR ($4M vs $5M) | -20% |\n| Customer concentration (40% one customer) | -25-30% discount |\n| Key person risk (3/5 engineers) | -15-20% discount |\n| Growth sustainability uncertainty | -10% |\n\n**Fair valuation range: $22-30M** (5.5-7.5x true ARR)\n\nIf forced to pay closer to ask, structure heavily with contingencies.\n\n## Deal Terms to Protect the Acquirer\n\n### 1. Structure the Purchase Price\n- **Upfront: $25-30M** (50-60% of ask)\n- **Earnout: $15-20M** tied to:\n  - True recurring revenue milestones (12, 24 months)\n  - Retention of whale customer for 24+ months\n  - Net revenue retention thresholds\n\n### 2. Customer Concentration Protection\n- **Material Adverse Change (MAC) clause** if whale customer churns pre-close\n- **Escrow 25-30%** of purchase price for 18-24 months tied to customer retention\n- Price adjustment mechanism if whale reduces spend >20%\n\n### 3. Key Employee Retention\n- **Retention packages** for the 3 engineers: new 4-year vesting on 30-50% of their payout\n- **Reverse vesting** on founder equity (24-36 months)\n- **Non-competes and non-solicits** (where enforceable)\n- Walk-away right if 2+ key engineers don't sign retention agreements pre-close\n\n### 4. Representations & Warranties\n- Specific reps on:\n  - ARR definition excluding one-time fees\n  - Customer contracts and notice periods\n  - No pending churn/downgrade discussions\n- **R&W insurance** with 10-15% indemnity basket\n- Extended survival period (24-36 months) for revenue reps\n\n### 5. Working Capital & True-Up\n- Post-close audit of actual recurring revenue\n- **Purchase price true-up** if ARR <$3.5M at close\n- Indemnification for misrepresented metrics\n\n### 6. Due Diligence Conditions Before Close\n- Direct reference calls with top 5 customers\n- Review of all customer contracts for assignment/change-of-control clauses\n- Technical diligence on codebase dependencies on departing engineers\n\n## Bottom Line\n\nThe $50M ask is aggressive given the red flags. Counter with **$28M upfront + $17M earnout** structured around the specific risks, or walk. The customer concentration alone typically warrants a 25%+ discount \u2014 combined with inflated ARR and key-person risk, this deal needs significant restructuring, not just price negotiation.",
+      "tokens": 1343,
+      "time_ms": 21751
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Startup Acquisition: Due Diligence Deep Dive\n\n## Deconstructing the Claimed Metrics\n\n### What They Claim vs. Reality\n\n```\nCLAIMED METRICS                    ADJUSTED REALITY\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nARR:        $5.0M                  \u2192 ~$3.0-3.5M (true recurring)\nGrowth:     100% YoY               \u2192 ~50-70% (normalized)\nGross Margin: 85%                  \u2192 ~78-82% (reallocation)\nNet Retention: 130%                \u2192 ~105-115% (ex-concentration)\nImplied Multiple: 10x ARR          \u2192 Should be 4-6x true ARR\n```\n\n---\n\n## Issue #1: Revenue Concentration \u2014 Single Customer = 40%\n\n### Why This Is Critical\n\n```\nRevenue Breakdown:\n  Customer A (single):  $2.0M  (40%) \u2190 EXTREME RISK\n  Remaining customers:  $3.0M  (60%)\n\nScenarios if Customer A churns:\n  ARR drops to:         $3.0M\n  Growth narrative:     DESTROYED\n  Valuation impact:     -40% to -60%\n\nQuestions to investigate:\n  - Is Customer A's contract up for renewal? When?\n  - Is Customer A a related party or investor?\n  - Was Customer A acquired through normal sales or a special deal?\n  - What's Customer A's own financial health?\n  - Are there contractual minimums or can they scale down?\n```\n\n### Herfindahl-Hirschman Index (Revenue Concentration)\n\n```\nIf 40% is one customer and remaining 60% spread across, say, 30 customers:\n\nHHI = (40)\u00b2 + 30 \u00d7 (2)\u00b2 = 1,600 + 120 = 1,720\n\nHHI > 1,500 = HIGHLY CONCENTRATED (by DOJ standards for markets,\n                                     analogous principle applies)\n\nHealthy SaaS company HHI: typically 200-600\nThis startup: 1,720 \u2014 very fragile revenue base\n```\n\n---\n\n## Issue #2: ARR Includes One-Time Implementation Fees\n\n### Reconstructing True ARR\n\n```\nReported \"ARR\":                          $5.0M\n\nEstimated implementation fee breakdown:\n  - Typical SaaS impl fees: 15-30% of first-year deal value\n  - If they're CALLING it ARR, likely blended into contracts\n  \nConservative estimate:\n  One-time impl fees recognized:         -$750K to -$1.5M\n  Professional services misclassified:   -$200K to -$500K\n                                         \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTRUE RECURRING REVENUE:                  $3.0M \u2014 $4.0M\n  (midpoint estimate: $3.5M)\n\nWHY THIS MATTERS:\n  - Implementation fees don't repeat \u2192 inflated growth rate\n  - Gross margins on impl are typically 20-40%, not 85%\n  - Blended \"85% gross margin\" is actually masking:\n      Software margin:  ~90%\n      Services margin:  ~25-35%\n      True blended:     ~78-82%\n```\n\n### Recalculating Growth Rate\n\n```\nYear 1 \"ARR\": $2.5M (claimed, also likely included impl fees)\nYear 2 \"ARR\": $5.0M (claimed 100% growth)\n\nIf Year 1 had ~$500K impl fees \u2192 true recurring was $2.0M\nIf Year 2 has ~$1.2M impl fees \u2192 true recurring is $3.8M\n\nActual recurring growth: $2.0M \u2192 $3.8M = 90% \n  (still good, but this is BEST CASE)\n\nIf impl fees were higher in Y2 (scaling = more implementations):\n  True recurring growth could be 50-70%\n```\n\n---\n\n## Issue #3: Engineering Team Flight Risk\n\n### The Talent Cliff\n\n```\nENGINEERING TEAM:\n  Total engineers:     5\n  At-risk (unvested):  3  (60% of engineering talent)\n  \nTypical unvested equity scenarios post-acquisition:\n  - Acquirer replaces with new vesting \u2192 may not be equivalent\n  - Engineers see acquisition as liquidity event, leave after minimum stay\n  - If deal is structured as acqui-hire, this IS the asset\n\nCOST TO REPLACE 3 ENGINEERS:\n  Recruiting costs:        $60K-$150K (per engineer)\n  Ramp-up time:           6-12 months per engineer\n  Lost productivity:       $300K-$600K equivalent\n  Institutional knowledge: UNQUANTIFIABLE but massive for 5-person team\n  \n  Total replacement risk:  $500K - $1.5M direct\n                          + 12-18 month product roadmap delay\n                          + risk of architectural knowledge loss\n\nKEY QUESTION: What do these 3 engineers actually own?\n  - Core architecture?\n  - Key customer integrations?\n  - The Customer A relationship/customization?\n```\n\n---\n\n## Revised Valuation Analysis\n\n### Method 1: Adjusted Multiple on True ARR\n\n```\nTrue Recurring Revenue:           $3.5M (midpoint estimate)\n\nComparable SaaS multiples at this stage:\n  Healthy metrics, diversified:   8-12x ARR\n  \nDISCOUNT FACTORS:\n  Customer concentration (40%):   -30% to -40%\n  Overstated metrics (trust):     -10% to -15%  \n  Key-person risk (engineers):    -10% to -15%\n  Small scale (<$5M ARR):         -10%\n                                  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n  Cumulative discount:            -60% to -80% off premium multiple\n\nAdjusted multiple: 8x \u00d7 (1 - 0.65) = 2.8x  \u2192  round to 3-4x\n\nVALUATION RANGE: $3.5M \u00d7 3-4x = $10.5M \u2014 $14.0M\n```\n\n### Method 2: Risk-Adjusted DCF (Simplified)\n\n```\nScenario Analysis (3-year horizon):\n\nBULL CASE (20% probability):\n  - Customer A stays, team stays, growth continues at 70%\n  - Year 3 ARR: $3.5M \u2192 $5.9M \u2192 $10.1M \u2192 $17.2M\n  - Exit/terminal value at 8x: $137M\n  - NPV at 25% discount: ~$56M\n\nBASE CASE (45% probability):\n  - Customer A stays but doesn't grow, 1 engineer leaves\n  - Growth slows to 40%, some churn\n  - Year 3 ARR: $3.5M \u2192 $4.5M \u2192 $5.8M \u2192 $7.2M\n  - Terminal value at 6x: $43M\n  - NPV at 25% discount: ~$22M\n\nBEAR CASE (25% probability):\n  - Customer A churns, 2 engineers leave\n  - Near-zero growth, firefighting mode\n  - Year 3 ARR: $3.5M \u2192 $2.8M \u2192 $2.5M \u2192 $2.5M\n  - Terminal value at 3x: $7.5M\n  - NPV at 25% discount: ~$3M\n\nDISASTER CASE (10% probability):\n  - Customer A churns, 3 engineers leave, product stalls\n  - Effectively a write-off\n  - NPV: ~$0\n\nPROBABILITY-WEIGHTED VALUE:\n  (0.20 \u00d7 $56M) + (0.45 \u00d7 $22M) + (0.25 \u00d7 $3M) + (0.10 \u00d7 $0)\n  = $11.2M + $9.9M + $0.75M + $0\n  = $21.9M\n```\n\n### Method 3: Acqui-Hire Floor Valuation\n\n```\nIf the technology and team are the real assets:\n\n  5 engineers \u00d7 $1.5M-$2.5M acqui-hire value = $7.5M-$12.5M\n  Technology/IP value (if defensible):          $2M-$5M\n  Customer relationships (ex-concentration):    $2M-$4M\n                                                \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n  Asset-based floor:                            $11.5M-$21.5M\n```\n\n### Valuation Summary\n\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550",
+      "tokens": 2164,
+      "time_ms": 45185
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 9.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 7.0,
+        "usefulness": 9.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.0,
+      "weighted_b": 8.15,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is clearer, more practical, and better tailored to the specific ask on valuation and protective deal terms. Response A has strong analytical depth, but it is overly speculative in places and less directly actionable."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 8.0,
+        "usefulness": 4.0,
+        "correctness": 8.0,
+        "completeness": 3.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 6.2,
+      "weighted_b": 8.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A cuts off abruptly and completely fails to answer the second half of the prompt regarding deal terms. Response B provides a comprehensive, well-structured answer addressing both the adjusted valuation and specific protective deal terms."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 10.0,
+        "usefulness": 9.0,
+        "correctness": 8.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 8.95,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B provided more comprehensive analysis, including detailed metrics deconstruction, HHI calculation, multiple valuation methods (DCF, acqui-hire floor), and deeper exploration of each risk, offering superior completeness and depth."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

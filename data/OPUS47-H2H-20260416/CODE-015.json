@@ -1,0 +1,101 @@
+{
+  "question_id": "CODE-015",
+  "category": "code",
+  "question_text": "Build a production-ready WebSocket chat server in Python using asyncio. Requirements: support multiple rooms, handle disconnections gracefully, implement message history (last 100 messages per room), ",
+  "timestamp": "2026-04-16T17:20:26.812307",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Production-Ready WebSocket Chat Server\n\nHere's a complete implementation with all the requested features:\n\n```python\n\"\"\"\nProduction-ready WebSocket chat server with rooms, history, rate limiting, and heartbeat.\n\nDependencies:\n    pip install websockets\n\nRun:\n    python chat_server.py\n\"\"\"\n\nimport asyncio\nimport json\nimport logging\nimport time\nimport uuid\nfrom collections import defaultdict, deque\nfrom dataclasses import dataclass, field, asdict\nfrom typing import Optional\n\nimport websockets\nfrom websockets.server import WebSocketServerProtocol\nfrom websockets.exceptions import ConnectionClosed\n\n# ---------------------------------------------------------------------------\n# Configuration\n# ---------------------------------------------------------------------------\nHOST = \"0.0.0.0\"\nPORT = 8765\nMAX_HISTORY = 100                  # messages stored per room\nRATE_LIMIT_MESSAGES = 5            # messages\nRATE_LIMIT_WINDOW = 1.0            # per seconds\nMAX_MESSAGE_SIZE = 4096            # bytes\nHEARTBEAT_INTERVAL = 20            # seconds between pings\nHEARTBEAT_TIMEOUT = 10             # seconds to wait for pong\nMAX_USERNAME_LEN = 32\nMAX_ROOM_LEN = 64\n\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s [%(levelname)s] %(name)s: %(message)s\",\n)\nlog = logging.getLogger(\"chat\")\n\n\n# ---------------------------------------------------------------------------\n# Data models\n# ---------------------------------------------------------------------------\n@dataclass\nclass ChatMessage:\n    id: str\n    room: str\n    user: str\n    content: str\n    timestamp: float\n    type: str = \"message\"\n\n    def to_json(self) -> str:\n        return json.dumps(asdict(self))\n\n\n@dataclass\nclass Client:\n    ws: WebSocketServerProtocol\n    username: str\n    room: Optional[str] = None\n    # Sliding-window rate limiter \u2013 deque of recent message timestamps\n    recent_msgs: deque = field(default_factory=lambda: deque(maxlen=RATE_LIMIT_MESSAGES))\n\n    @property\n    def id(self) -> str:\n        return f\"{self.username}@{self.ws.remote_address}\"\n\n\n# ---------------------------------------------------------------------------\n# Chat server state\n# ---------------------------------------------------------------------------\nclass ChatServer:\n    def __init__(self):\n        # room_name -> set[Client]\n        self.rooms: dict[str, set[Client]] = defaultdict(set)\n        # room_name -> deque[ChatMessage]\n        self.history: dict[str, deque] = defaultdict(lambda: deque(maxlen=MAX_HISTORY))\n        # All connected clients\n        self.clients: set[Client] = set()\n        # Lock to serialize room mutations\n        self._lock = asyncio.Lock()\n\n    # ------------------------------------------------------------------ helpers\n    async def _send(self, client: Client, payload: dict) -> None:\n        \"\"\"Safely send JSON payload to a client.\"\"\"\n        try:\n            await client.ws.send(json.dumps(payload))\n        except ConnectionClosed:\n            pass\n        except Exception as e:\n            log.warning(\"Failed to send to %s: %s\", client.id, e)\n\n    async def _send_error(self, client: Client, message: str) -> None:\n        await self._send(client, {\"type\": \"error\", \"message\": message})\n\n    async def _broadcast(self, room: str, payload: dict, exclude: Optional[Client] = None) -> None:\n        \"\"\"Broadcast payload to everyone in room.\"\"\"\n        data = json.dumps(payload)\n        members = list(self.rooms.get(room, set()))\n        tasks = []\n        for member in members:\n            if member is exclude:\n                continue\n            tasks.append(self._safe_send_raw(member, data))\n        if tasks:\n            await asyncio.gather(*tasks, return_exceptions=True)\n\n    async def _safe_send_raw(self, client: Client, data: str) -> None:\n        try:\n            await client.ws.send(data)\n        except ConnectionClosed:\n            pass\n        except Exception as e:\n            log.warning(\"Broadcast failed for %s: %s\", client.id, e)\n\n    # ---------------------------------------------------------------- rate limit\n    def _check_rate_limit(self, client: Client) -> bool:\n        \"\"\"Return True if client is under the rate limit.\"\"\"\n        now = time.monotonic()\n        rq = client.recent_msgs\n        # Drop timestamps older than window\n        while rq and now - rq[0] > RATE_LIMIT_WINDOW:\n            rq.popleft()\n        if len(rq) >= RATE_LIMIT_MESSAGES:\n            return False\n        rq.append(now)\n        return True\n\n    # ------------------------------------------------------------------- rooms\n    async def join_room(self, client: Client, room: str) -> None:\n        async with self._lock:\n            if client.room == room:\n                return\n            if client.room:\n                await self._leave_room_locked(client)\n            self.rooms[room].add(client)\n            client.room = room\n\n        log.info(\"%s joined %s\", client.id, room)\n\n        # Send history\n        history = list(self.history.get(room, []))\n        await self._send(client, {\n            \"type\": \"history\",\n            \"room\": room,\n            \"messages\": [asdict(m) for m in history],\n        })\n\n        # Notify others\n        await self._broadcast(room, {\n            \"type\": \"system\",\n            \"room\": room,\n            \"message\": f\"{client.username} joined the room\",\n            \"timestamp\": time.time(),\n        }, exclude=client)\n\n    async def _leave_room_locked(self, client: Client) -> None:\n        \"\"\"Must be called with self._lock held.\"\"\"\n        room = client.room\n        if not room:\n            return\n        self.rooms[room].discard(client)\n        if not self.rooms[room]:\n            # Clean up empty rooms; keep history for a while if desired\n            del self.rooms[room]\n        client.room = None\n\n        # Broadcast outside of lock\n        asyncio.create_",
+      "tokens": 2160,
+      "time_ms": 20365
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# Production-Ready WebSocket Chat Server\n\n## Project Structure\n\n```\nwebsocket_chat/\n\u251c\u2500\u2500 server.py          # Main server entry point\n\u251c\u2500\u2500 chat/\n\u2502   \u251c\u2500\u2500 __init__.py\n\u2502   \u251c\u2500\u2500 models.py      # Data models\n\u2502   \u251c\u2500\u2500 room.py        # Room management\n\u2502   \u251c\u2500\u2500 rate_limiter.py # Rate limiting logic\n\u2502   \u251c\u2500\u2500 connection.py  # Connection/client management\n\u2502   \u2514\u2500\u2500 protocol.py    # Message protocol handling\n\u251c\u2500\u2500 config.py          # Configuration\n\u251c\u2500\u2500 requirements.txt\n\u2514\u2500\u2500 test_client.py     # Test client for demonstration\n```\n\n## config.py\n\n```python\n\"\"\"Server configuration with sensible defaults.\"\"\"\nfrom dataclasses import dataclass, field\n\n\n@dataclass(frozen=True)\nclass ServerConfig:\n    host: str = \"0.0.0.0\"\n    port: int = 8765\n\n    # Room settings\n    max_history_per_room: int = 100\n    max_rooms: int = 50\n    max_room_name_length: int = 64\n\n    # Rate limiting: token bucket\n    rate_limit_messages: int = 5       # tokens (messages)\n    rate_limit_window_seconds: float = 1.0  # per this many seconds\n\n    # Heartbeat / keepalive\n    heartbeat_interval_seconds: float = 15.0\n    heartbeat_timeout_seconds: float = 45.0  # disconnect if no pong in this time\n\n    # Connection limits\n    max_message_size_bytes: int = 4096\n    max_username_length: int = 32\n    max_connections_per_ip: int = 10\n\n    # Graceful shutdown\n    shutdown_timeout_seconds: float = 10.0\n```\n\n## chat/models.py\n\n```python\n\"\"\"Data models for the chat system.\"\"\"\nfrom __future__ import annotations\n\nimport time\nimport uuid\nfrom dataclasses import dataclass, field\nfrom enum import Enum\nfrom typing import Any\n\n\nclass MessageType(str, Enum):\n    # Client -> Server\n    JOIN = \"join\"\n    LEAVE = \"leave\"\n    CHAT = \"chat\"\n    PONG = \"pong\"\n    LIST_ROOMS = \"list_rooms\"\n    HISTORY = \"history\"\n\n    # Server -> Client\n    SYSTEM = \"system\"\n    ERROR = \"error\"\n    PING = \"ping\"\n    ROOM_LIST = \"room_list\"\n    CHAT_HISTORY = \"chat_history\"\n    USER_JOINED = \"user_joined\"\n    USER_LEFT = \"user_left\"\n    CHAT_MESSAGE = \"chat_message\"\n\n\n@dataclass\nclass ChatMessage:\n    \"\"\"A single chat message stored in history.\"\"\"\n    id: str = field(default_factory=lambda: uuid.uuid4().hex[:12])\n    room: str = \"\"\n    username: str = \"\"\n    content: str = \"\"\n    timestamp: float = field(default_factory=time.time)\n\n    def to_dict(self) -> dict[str, Any]:\n        return {\n            \"id\": self.id,\n            \"room\": self.room,\n            \"username\": self.username,\n            \"content\": self.content,\n            \"timestamp\": self.timestamp,\n        }\n\n\n@dataclass\nclass ClientInfo:\n    \"\"\"Tracks per-connection state.\"\"\"\n    client_id: str = field(default_factory=lambda: uuid.uuid4().hex[:16])\n    username: str = \"\"\n    current_room: str | None = None\n    ip_address: str = \"\"\n    connected_at: float = field(default_factory=time.time)\n    last_pong: float = field(default_factory=time.time)\n    authenticated: bool = False\n```\n\n## chat/rate_limiter.py\n\n```python\n\"\"\"Token-bucket rate limiter per client.\"\"\"\nfrom __future__ import annotations\n\nimport asyncio\nimport time\nfrom dataclasses import dataclass, field\n\n\n@dataclass\nclass TokenBucket:\n    \"\"\"Token bucket for a single client.\"\"\"\n    max_tokens: int\n    refill_rate: float          # tokens per second\n    tokens: float = field(init=False)\n    last_refill: float = field(init=False)\n\n    def __post_init__(self) -> None:\n        self.tokens = float(self.max_tokens)\n        self.last_refill = time.monotonic()\n\n    def consume(self) -> bool:\n        \"\"\"Try to consume one token. Returns True if allowed.\"\"\"\n        now = time.monotonic()\n        elapsed = now - self.last_refill\n        self.tokens = min(self.max_tokens, self.tokens + elapsed * self.refill_rate)\n        self.last_refill = now\n\n        if self.tokens >= 1.0:\n            self.tokens -= 1.0\n            return True\n        return False\n\n    @property\n    def retry_after(self) -> float:\n        \"\"\"Seconds until next token is available.\"\"\"\n        if self.tokens >= 1.0:\n            return 0.0\n        return (1.0 - self.tokens) / self.refill_rate\n\n\nclass RateLimiter:\n    \"\"\"Manages per-client rate limiting with automatic cleanup.\"\"\"\n\n    def __init__(self, max_tokens: int, window_seconds: float) -> None:\n        self._max_tokens = max_tokens\n        self._refill_rate = max_tokens / window_seconds\n        self._buckets: dict[str, TokenBucket] = {}\n        self._lock = asyncio.Lock()\n        self._cleanup_interval = 300.0  # clean up stale buckets every 5 min\n\n    def _get_bucket(self, client_id: str) -> TokenBucket:\n        if client_id not in self._buckets:\n            self._buckets[client_id] = TokenBucket(\n                max_tokens=self._max_tokens,\n                refill_rate=self._refill_rate,\n            )\n        return self._buckets[client_id]\n\n    async def is_allowed(self, client_id: str) -> tuple[bool, float]:\n        \"\"\"Check if client can send a message.\n\n        Returns:\n            (allowed, retry_after_seconds)\n        \"\"\"\n        async with self._lock:\n            bucket = self._get_bucket(client_id)\n            allowed = bucket.consume()\n            return allowed, bucket.retry_after\n\n    async def remove_client(self, client_id: str) -> None:\n        async with self._lock:\n            self._buckets.pop(client_id, None)\n\n    async def cleanup_stale(self, max_age: float = 600.0) -> None:\n        \"\"\"Remove buckets for clients that haven't been seen in max_age seconds.\"\"\"\n        async with self._lock:\n            now = time.monotonic()\n            stale = [\n                cid for cid, bucket in self._buckets.items()\n                if (now - bucket.last_refill) > max_age\n            ]\n            for cid in stale:\n                del self._buckets[cid]\n```\n\n## chat/room.py\n\n```python\n\"\"\"Chat room management with message history.\"\"\"\nfrom __future__ import annotations\n\nimport asyncio\nimport logging\nfrom collections import deque\nfrom dataclasses import dataclass, field\nfrom typing import TYPE_CHECKING, Any\n\nfrom .models import ChatMessage, MessageType\n\nif TYPE_CHECKING:\n    import websockets.asyncio.server\n\nlogger = logging.getLogger(__name__)\n\n\n@dataclass\nclass Room:\n    \"\"\"A single chat room.\"\"\"\n    name: str\n    max_history: int = 100\n    history: deque[ChatMessage] = field(init=False)\n    members: dict[str, \"websockets.asyncio.server.ServerConnection\"] = field(\n        default_factory=dict\n    )\n    _lock: asyncio.Lock = field(default_factory=asyncio.Lock, repr=False)\n\n    def __post_init__(self) -> None:\n        self.history = deque(maxlen=self.max_history)\n\n    @property\n    def member_count(self) -> int:\n        return len(self.members)\n\n    @property\n    def usernames(self) -> list[str]:\n        return list(self.members.keys())\n\n    async def add_member(\n        self,\n        username: str,\n        ws: \"websockets.asyncio.server.ServerConnection\",\n    ) -> list[dict[str, Any]]:\n        \"\"\"Add a",
+      "tokens": 2121,
+      "time_ms": 26588
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 6.0,
+        "depth": 5.0,
+        "usefulness": 2.0,
+        "correctness": 3.0,
+        "completeness": 2.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 5.0,
+        "usefulness": 4.0,
+        "correctness": 4.0,
+        "completeness": 4.0
+      },
+      "weighted_a": 3.65,
+      "weighted_b": 4.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is also incomplete, but it provides a more substantial single-file implementation covering rooms, history, rate limiting, and some error-handling structure. Response A is heavily truncated earlier and lacks a usable server implementation."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 6.0,
+        "usefulness": 5.0,
+        "correctness": 7.0,
+        "completeness": 4.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 6.0,
+        "usefulness": 3.0,
+        "correctness": 6.0,
+        "completeness": 2.0
+      },
+      "weighted_a": 5.9,
+      "weighted_b": 4.95,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses were cut off due to length limits, but Response A managed to include much more of the actual WebSocket server logic, whereas Response B spent too much time on boilerplate, configuration, and directory structures, failing to implement the core server loop."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 9.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 6.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 7.0,
+        "usefulness": 9.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.05,
+      "weighted_b": 8.15,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is more complete and directly usable, providing a full, runnable implementation, while Response A is well-structured but cuts off mid-code, making it less immediately practical."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

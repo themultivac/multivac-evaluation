@@ -1,0 +1,102 @@
+{
+  "question_id": "CODE-030",
+  "category": "code",
+  "question_text": "Design a GraphQL schema for a social media platform with users, posts, comments, likes, and follows. Address: N+1 query problem with DataLoader pattern, cursor-based pagination, proper input validatio",
+  "timestamp": "2026-04-16T17:40:26.117591",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# GraphQL Social Media Platform Schema & Implementation\n\nA production-grade design addressing the hardest problems: N+1 queries, cursor pagination, validation, rate limiting, and subscriptions.\n\n## 1. Schema Definition (SDL)\n\n```graphql\n# ============ Scalars & Directives ============\nscalar DateTime\nscalar Cursor\n\ndirective @auth(requires: Role = USER) on FIELD_DEFINITION\ndirective @rateLimit(\n  max: Int!\n  window: Int!  # seconds\n  message: String\n) on FIELD_DEFINITION\ndirective @constraint(\n  minLength: Int\n  maxLength: Int\n  pattern: String\n) on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION\n\nenum Role { USER MODERATOR ADMIN }\nenum PostVisibility { PUBLIC FOLLOWERS PRIVATE }\nenum SortOrder { NEWEST OLDEST POPULAR }\n\n# ============ Core Types ============\ntype User {\n  id: ID!\n  username: String!\n  displayName: String!\n  bio: String\n  avatarUrl: String\n  createdAt: DateTime!\n\n  # Relations (all use DataLoader internally)\n  posts(first: Int = 20, after: Cursor, sort: SortOrder = NEWEST): PostConnection!\n  followers(first: Int = 20, after: Cursor): UserConnection!\n  following(first: Int = 20, after: Cursor): UserConnection!\n\n  # Aggregates (batched via DataLoader)\n  postCount: Int!\n  followerCount: Int!\n  followingCount: Int!\n\n  # Viewer-contextual fields\n  isFollowedByViewer: Boolean!\n  isFollowingViewer: Boolean!\n}\n\ntype Post {\n  id: ID!\n  author: User!              # DataLoader batched\n  content: String!\n  mediaUrls: [String!]!\n  visibility: PostVisibility!\n  createdAt: DateTime!\n  editedAt: DateTime\n\n  comments(first: Int = 20, after: Cursor): CommentConnection!\n  likes(first: Int = 20, after: Cursor): LikeConnection!\n\n  commentCount: Int!\n  likeCount: Int!\n  isLikedByViewer: Boolean!\n}\n\ntype Comment {\n  id: ID!\n  post: Post!\n  author: User!\n  content: String!\n  createdAt: DateTime!\n  replyTo: Comment\n  replyCount: Int!\n  likeCount: Int!\n  isLikedByViewer: Boolean!\n}\n\ntype Like {\n  id: ID!\n  user: User!\n  post: Post\n  comment: Comment\n  createdAt: DateTime!\n}\n\n# ============ Relay-style Connections ============\ntype PageInfo {\n  hasNextPage: Boolean!\n  hasPreviousPage: Boolean!\n  startCursor: Cursor\n  endCursor: Cursor\n}\n\ntype PostEdge { cursor: Cursor!, node: Post! }\ntype PostConnection {\n  edges: [PostEdge!]!\n  pageInfo: PageInfo!\n  totalCount: Int!\n}\n\ntype UserEdge { cursor: Cursor!, node: User! }\ntype UserConnection {\n  edges: [UserEdge!]!\n  pageInfo: PageInfo!\n  totalCount: Int!\n}\n\ntype CommentEdge { cursor: Cursor!, node: Comment! }\ntype CommentConnection {\n  edges: [CommentEdge!]!\n  pageInfo: PageInfo!\n  totalCount: Int!\n}\n\ntype LikeEdge { cursor: Cursor!, node: Like! }\ntype LikeConnection {\n  edges: [LikeEdge!]!\n  pageInfo: PageInfo!\n  totalCount: Int!\n}\n\n# ============ Inputs ============\ninput CreatePostInput {\n  content: String! @constraint(minLength: 1, maxLength: 5000)\n  mediaUrls: [String!] = []\n  visibility: PostVisibility = PUBLIC\n}\n\ninput CreateCommentInput {\n  postId: ID!\n  content: String! @constraint(minLength: 1, maxLength: 1000)\n  replyToId: ID\n}\n\ninput FeedFilter {\n  authorIds: [ID!]\n  since: DateTime\n  onlyFollowing: Boolean = false\n}\n\n# ============ Queries ============\ntype Query {\n  me: User @auth\n  user(id: ID, username: String): User\n  post(id: ID!): Post\n\n  feed(\n    first: Int = 20\n    after: Cursor\n    filter: FeedFilter\n  ): PostConnection!\n    @auth\n    @rateLimit(max: 60, window: 60)\n\n  search(\n    query: String! @constraint(minLength: 2, maxLength: 100)\n    first: Int = 20\n    after: Cursor\n  ): PostConnection! @rateLimit(max: 30, window: 60)\n}\n\n# ============ Mutations ============\ntype Mutation {\n  createPost(input: CreatePostInput!): Post!\n    @auth @rateLimit(max: 10, window: 60, message: \"Too many posts\")\n\n  deletePost(id: ID!): Boolean! @auth\n\n  createComment(input: CreateCommentInput!): Comment!\n    @auth @rateLimit(max: 30, window: 60)\n\n  likePost(postId: ID!): Post! @auth @rateLimit(max: 100, window: 60)\n  unlikePost(postId: ID!): Post! @auth\n\n  followUser(userId: ID!): User! @auth @rateLimit(max: 50, window: 300)\n  unfollowUser(userId: ID!): User! @auth\n}\n\n# ============ Subscriptions ============\ntype Subscription {\n  postAdded(authorId: ID): Post!           # Follows or specific user\n  commentAdded(postId: ID!): Comment!\n  postLiked(postId: ID!): LikeEvent!\n  notificationReceived: Notification! @auth\n}\n\ntype LikeEvent {\n  post: Post!\n  user: User!\n  lik",
+      "tokens": 2162,
+      "time_ms": 20253
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# Social Media Platform - Complete GraphQL Schema & Implementation\n\n## Schema Definition\n\n```graphql\n# schema.graphql\n\n# \u2500\u2500\u2500 Scalars \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nscalar DateTime\nscalar Cursor\nscalar URL\nscalar EmailAddress\n\n# \u2500\u2500\u2500 Enums \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nenum PostVisibility {\n  PUBLIC\n  FRIENDS_ONLY\n  PRIVATE\n}\n\nenum NotificationType {\n  NEW_FOLLOWER\n  POST_LIKED\n  POST_COMMENTED\n  MENTION\n}\n\nenum ReportReason {\n  SPAM\n  HARASSMENT\n  INAPPROPRIATE_CONTENT\n  MISINFORMATION\n}\n\nenum SortOrder {\n  NEWEST\n  OLDEST\n  MOST_LIKED\n  MOST_COMMENTED\n  TRENDING\n}\n\n# \u2500\u2500\u2500 Interfaces \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\ninterface Node {\n  id: ID!\n}\n\ninterface Timestamped {\n  createdAt: DateTime!\n  updatedAt: DateTime!\n}\n\n# \u2500\u2500\u2500 Connection Types (Cursor-Based Pagination) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\ntype PageInfo {\n  hasNextPage: Boolean!\n  hasPreviousPage: Boolean!\n  startCursor: Cursor\n  endCursor: Cursor\n  totalCount: Int!\n}\n\ntype UserConnection {\n  edges: [UserEdge!]!\n  pageInfo: PageInfo!\n}\n\ntype UserEdge {\n  node: User!\n  cursor: Cursor!\n  followedAt: DateTime  # contextual edge data for follower connections\n}\n\ntype PostConnection {\n  edges: [PostEdge!]!\n  pageInfo: PageInfo!\n}\n\ntype PostEdge {\n  node: Post!\n  cursor: Cursor!\n}\n\ntype CommentConnection {\n  edges: [CommentEdge!]!\n  pageInfo: PageInfo!\n}\n\ntype CommentEdge {\n  node: Comment!\n  cursor: Cursor!\n}\n\ntype NotificationConnection {\n  edges: [NotificationEdge!]!\n  pageInfo: PageInfo!\n}\n\ntype NotificationEdge {\n  node: Notification!\n  cursor: Cursor!\n}\n\n# \u2500\u2500\u2500 Core Types \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\ntype User implements Node & Timestamped {\n  id: ID!\n  username: String!\n  email: EmailAddress!           # only visible to self\n  displayName: String!\n  bio: String\n  avatarUrl: URL\n  coverPhotoUrl: URL\n  isVerified: Boolean!\n  isOnline: Boolean!\n  lastSeenAt: DateTime\n\n  # Relationships (all paginated)\n  posts(\n    first: Int\n    after: Cursor\n    last: Int\n    before: Cursor\n    sortBy: SortOrder = NEWEST\n    visibility: PostVisibility\n  ): PostConnection!\n\n  followers(first: Int, after: Cursor, last: Int, before: Cursor): UserConnection!\n  following(first: Int, after: Cursor, last: Int, before: Cursor): UserConnection!\n\n  # Computed fields\n  followerCount: Int!\n  followingCount: Int!\n  postCount: Int!\n\n  # Relationship to viewer\n  isFollowedByViewer: Boolean!\n  isFollowingViewer: Boolean!\n  isBlockedByViewer: Boolean!\n\n  createdAt: DateTime!\n  updatedAt: DateTime!\n}\n\ntype Post implements Node & Timestamped {\n  id: ID!\n  author: User!\n  content: String!\n  mediaUrls: [URL!]!\n  visibility: PostVisibility!\n  tags: [String!]!\n\n  # Relationships\n  comments(\n    first: Int\n    after: Cursor\n    last: Int\n    before: Cursor\n    sortBy: SortOrder = NEWEST\n  ): CommentConnection!\n\n  likes(first: Int, after: Cursor): UserConnection!\n\n  # Computed\n  likeCount: Int!\n  commentCount: Int!\n  shareCount: Int!\n  isLikedByViewer: Boolean!\n  isBookmarkedByViewer: Boolean!\n\n  # Thread support\n  parentPost: Post\n  replyCount: Int!\n\n  createdAt: DateTime!\n  updatedAt: DateTime!\n}\n\ntype Comment implements Node & Timestamped {\n  id: ID!\n  author: User!\n  post: Post!\n  parentComment: Comment          # for nested replies\n  content: String!\n  \n  replies(first: Int, after: Cursor): CommentConnection!\n  \n  likeCount: Int!\n  replyCount: Int!\n  isLikedByViewer: Boolean!\n  depth: Int!                     # nesting level (max 3)\n\n  createdAt: DateTime!\n  updatedAt: DateTime!\n}\n\ntype Like implements Node {\n  id: ID!\n  user: User!\n  post: Post\n  comment: Comment\n  createdAt: DateTime!\n}\n\ntype Notification implements Node {\n  id: ID!\n  type: NotificationType!\n  recipient: User!\n  actor: User!\n  post: Post\n  comment: Comment\n  message: String!\n  isRead: Boolean!\n  createdAt: DateTime!\n}\n\n# \u2500\u2500\u2500 Input Types with Validation Rules \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\ninput CreateUserInput {\n  username: String!       # @constraint(minLength: 3, maxLength: 30, pattern: \"^[a-zA-Z0-9_]+$\")\n  email: EmailAddress!\n  displayName: String!    # @constraint(minLength: 1, maxLength: 50)\n  bio: String             # @constraint(maxLength: 500)\n  avatarUrl: URL\n}\n\ninput UpdateUserInput {\n  displayName: String     # @constraint(minLength: 1, maxLength: 50)\n  bio: String             # @constraint(maxLength: 500)\n  avatarUrl: URL\n  coverPhotoUrl: URL\n}\n\ninput CreatePostInput {\n  content: String!        # @constraint(minLength: 1, maxLength: 5000)\n  mediaUrls: [URL!]       # @constraint(maxItems: 10)\n  visibility: PostVisibility = PUBLIC\n  tags: [String!]         # @constraint(maxItems: 20)\n  parentPostId: ID        # for replies/threads\n}\n\ninput UpdatePostInput {\n  content: String         # @constraint(minLength: 1, maxLength: 5000)\n  visibility: PostVisibility\n  tags: [String!]\n}\n\ninput CreateCommentInput {\n  postId: ID!\n  parentCommentId: ID     # for nested replies\n  content: String!        # @constraint(minLength: 1, maxLength: 2000)\n}\n\ninput FeedInput {\n  first: Int = 20\n  after: Cursor\n  includeReposts: Boolean = true\n}\n\ninput SearchInput {\n  query: String!          # @constraint(minLength: 2, maxLength: 100)\n  first: Int = 20\n  after: Cursor\n}\n\ninput ReportInput {\n  targetId: ID!\n  reason: ReportReason!\n  description: String     # @constraint(maxLength: 1000)\n}\n\n# \u2500\u2500\u2500 Query \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\ntype Query {\n  # Node interface for refetching\n  node(id: ID!): Node\n\n  # User queries\n  me: User!\n  user(id: ID, username: String): User\n  searchUsers(input: SearchInput!): UserConnection!\n  suggestedUsers(first: Int = 10): UserConnection!\n\n  # Post queries\n  post(id: ID!): Post\n  feed(input: FeedInput!): PostConnection!\n  trending(first: Int = 20, after: Cursor): PostConnection!\n  searchPosts(input: SearchInput!): PostConnection!\n  explore(first: Int = 20, after: Cursor, tags: [String!]): PostConnection!\n\n  # Notifications\n  notifications(\n    first: Int = 20\n    after: Cursor\n    unreadOnly: Boolean = false\n  ): NotificationConnection!\n  unreadNotificationCount: Int!\n}\n\n# \u2500\u2500\u2500 Mutation \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+      "tokens": 2122,
+      "time_ms": 25140
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 6.0,
+        "depth": 4.0,
+        "usefulness": 3.0,
+        "correctness": 3.0,
+        "completeness": 4.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 5.0,
+        "usefulness": 5.0,
+        "correctness": 5.0,
+        "completeness": 5.0
+      },
+      "weighted_a": 4.0,
+      "weighted_b": 5.4,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses are incomplete and truncated, but Response B better addresses the requested concerns with explicit directives for rate limiting, auth, validation, subscriptions, and mentions DataLoader usage more directly. Response A has broader schema coverage but fails to include the requested resolver implementations and key operational details, and it is also cut off mid-mutation section."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 6.0,
+        "correctness": 7.0,
+        "completeness": 5.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 6.0,
+        "usefulness": 5.0,
+        "correctness": 7.0,
+        "completeness": 4.0
+      },
+      "weighted_a": 6.65,
+      "weighted_b": 6.1,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses cut off before providing the requested resolver implementations, but Response A successfully included schema definitions for rate limiting, input validation directives, and subscriptions, addressing more of the prompt's constraints."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 9.2,
+      "weighted_b": 7.6,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A is more comprehensive, detailed, and addresses all requested aspects with greater depth and specificity."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

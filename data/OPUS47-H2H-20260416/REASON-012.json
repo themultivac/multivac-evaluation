@@ -1,0 +1,104 @@
+{
+  "question_id": "REASON-012",
+  "category": "reasoning",
+  "question_text": "A disease affects 1 in 10,000 people. A test for the disease is 99% sensitive (true positive rate) and 99.5% specific (true negative rate). A patient tests positive. (1) What is the probability they h",
+  "timestamp": "2026-04-16T17:43:00.477838",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Disease Testing Probability Analysis\n\n## Setup\n- Prevalence: P(D) = 0.0001\n- Sensitivity: P(+|D) = 0.99\n- Specificity: P(\u2212|\u00acD) = 0.995, so false positive rate P(+|\u00acD) = 0.005\n\n## (1) Probability of Disease Given One Positive Test\n\nUsing Bayes' theorem:\n\n$$P(D|+) = \\frac{P(+|D)P(D)}{P(+|D)P(D) + P(+|\u00acD)P(\u00acD)}$$\n\n$$P(D|+) = \\frac{0.99 \\times 0.0001}{0.99 \\times 0.0001 + 0.005 \\times 0.9999}$$\n\n$$= \\frac{0.000099}{0.000099 + 0.0049995} = \\frac{0.000099}{0.0050985} \\approx 0.0194$$\n\n**\u2248 1.94%** \u2014 Despite testing positive, there's only about a 2% chance of having the disease.\n\n**Intuition:** In 1,000,000 people, ~100 have the disease (99 test positive), while ~999,900 don't (4,999 falsely test positive). Positives: 99 true vs. 4,999 false.\n\n## (2) Two Independent Positive Tests\n\nUpdate using posterior from test 1 as prior for test 2: P(D) = 0.0194.\n\n$$P(D|++) = \\frac{0.99 \\times 0.0194}{0.99 \\times 0.0194 + 0.005 \\times 0.9806}$$\n\n$$= \\frac{0.01921}{0.01921 + 0.00490} = \\frac{0.01921}{0.02411} \\approx 0.797$$\n\n**\u2248 79.7%** \u2014 Two positives dramatically shifts the probability.\n\n**Shortcut (likelihood ratios):** LR+ = 0.99/0.005 = 198. Prior odds = 1/9999. Posterior odds after two tests = (1/9999) \u00d7 198\u00b2 \u2248 3.92, giving P \u2248 0.797. \u2713\n\n## (3) Critique of the Doctor's Reasoning\n\nThe statement **\"you almost certainly have it\"** commits the **base rate fallacy** (prosecutor's fallacy):\n\n1. **Confuses P(+|D) with P(D|+)**: The test's 99% sensitivity describes how often sick people test positive, NOT how often positive people are sick.\n\n2. **Ignores prevalence**: When a disease is rare, false positives vastly outnumber true positives even with a highly accurate test. Here, false positives outnumber true positives ~50:1.\n\n3. **Correct statement**: \"Your positive test raises your risk roughly 200-fold, but because the disease is rare, the probability you have it is only ~2%. We should confirm with additional testing.\"\n\n4. **Clinical harm**: Acting on a single screening test can lead to unnecessary anxiety, invasive confirmatory procedures, or harmful treatment.\n\n## (4) Protocol Design for PPV > 95%\n\n**Goal:** P(D|positive protocol) > 0.95\n\n### Option A: Sequential Independent Testing\nWith each positive test, multiply odds by LR+ = 198.\n\n| # Positive tests | Posterior odds | PPV |\n|---|---|---|\n| 1 | 0.0198 | 1.94% |\n| 2 | 3.92 | 79.7% |\n| 3 | 776 | 99.87% |\n\n**Two positives \u2192 80%** (insufficient). **Three independent positives \u2192 99.87%** (exceeds 95%). \u2713\n\n### Option B: Targeted Population (Raise Prior)\nTest only people with symptoms or risk factors where prevalence is higher. If prevalence rises to 1 in 100:\n- Single test PPV = (0.99 \u00d7 0.01)/(0.99 \u00d7 0.01 + 0.005 \u00d7 0.99) \u2248 **66.7%**\n- Two positives \u2192 PPV \u2248 **99.6%** \u2713\n\n### Recommended Protocol\n1. **Screen** only individuals with elevated pre-test probability (symptoms, exposure, risk factors).\n2. **Confirm** any positive result with an independent confirmatory test (ideally a different assay to ensure independence and reduce correlated errors).\n3. **Require two positives** before diagnosis; a third test or gold-standard assay for borderline cases.\n4. **Counsel patients** on PPV, not just sensitivity/specificity.\n\n### Key Caveat\n\"Independence\" of tests is an idealization. If both tests share a failure mode (e.g., cross-reacting antibody), correlated false positives reduce the true PPV. Using **different test methodologies** for confirmation is essential.\n\n## Summary Table\n\n| Scenario | PPV |\n|---|---|\n| 1 test, general population | 1.94% |\n| 2 tests, general population | 79.7% |\n| 3 tests, general population | 99.87% |\n| 1 test, high-risk (1%) population | 66.7% |\n| 2 tests, high-risk population | 99.6% |",
+      "tokens": 1838,
+      "time_ms": 15249
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Bayesian Analysis of Medical Testing\n\n## Setup and Definitions\n\nLet me define the key parameters:\n\n- **Prevalence:** P(D) = 1/10,000 = 0.0001\n- **Sensitivity:** P(+|D) = 0.99 (true positive rate)\n- **Specificity:** P(-|\u00acD) = 0.995, so P(+|\u00acD) = 0.005 (false positive rate)\n\n---\n\n## (1) Probability After One Positive Test\n\n**Applying Bayes' Theorem:**\n\n$$P(D|+) = \\frac{P(+|D) \\cdot P(D)}{P(+|D) \\cdot P(D) + P(+|\\neg D) \\cdot P(\\neg D)}$$\n\n**Calculating the denominator P(+):**\n\n$$P(+) = (0.99)(0.0001) + (0.005)(0.9999)$$\n$$P(+) = 0.000099 + 0.004999 = 0.005098$$\n\n**Posterior probability:**\n\n$$P(D|+) = \\frac{0.000099}{0.005098} \\approx 0.01942$$\n\n$$\\boxed{P(D|+) \\approx 1.94\\%}$$\n\n**Intuitive explanation with natural frequencies (per 1,000,000 people):**\n\n| | Test Positive | Test Negative | Total |\n|---|---|---|---|\n| **Diseased** | 99 | 1 | 100 |\n| **Healthy** | 4,999 | 994,901 | 999,900 |\n| **Total** | **5,098** | 994,902 | 1,000,000 |\n\nOf 5,098 positive results, only 99 actually have the disease. The **false positives overwhelm the true positives** because the healthy population is so much larger.\n\n---\n\n## (2) Probability After Two Independent Positive Tests\n\n**Method: Sequential Bayesian updating**\n\nAfter the first positive test, the posterior becomes the new prior:\n- P(D) after first test = 0.01942\n\nNow apply Bayes' theorem again with this updated prior:\n\n$$P(D|++) = \\frac{P(+|D) \\cdot P(D|+_1)}{P(+|D) \\cdot P(D|+_1) + P(+|\\neg D) \\cdot P(\\neg D|+_1)}$$\n\n$$P(D|++) = \\frac{(0.99)(0.01942)}{(0.99)(0.01942) + (0.005)(0.98058)}$$\n\n$$= \\frac{0.019226}{0.019226 + 0.004903} = \\frac{0.019226}{0.024129}$$\n\n$$\\boxed{P(D|++) \\approx 79.7\\%}$$\n\n**Verification via direct calculation:**\n\n$$P(D|++) = \\frac{P(+|D)^2 \\cdot P(D)}{P(+|D)^2 \\cdot P(D) + P(+|\\neg D)^2 \\cdot P(\\neg D)}$$\n\n$$= \\frac{(0.99)^2(0.0001)}{(0.99)^2(0.0001) + (0.005)^2(0.9999)} = \\frac{0.00009801}{0.00009801 + 0.00002500} = \\frac{0.00009801}{0.00012301} \\approx 79.7\\% \\checkmark$$\n\n**Key insight:** The second test is dramatically more informative because the prior has shifted. The likelihood ratio compounds multiplicatively.\n\n---\n\n## (3) Critique of the Doctor's Reasoning\n\nThe doctor's statement *\"You tested positive, so you almost certainly have it\"* commits the **base rate fallacy** \u2014 one of the most well-documented errors in probabilistic reasoning.\n\n### Specific Errors:\n\n**1. Confusing P(+|D) with P(D|+)**\nThis is the **prosecutor's fallacy** (or transposed conditional). The doctor implicitly reasons:\n> \"The test is 99% accurate, so a positive result means 99% chance of disease.\"\n\nBut P(+|D) = 0.99 tells us nothing directly about P(D|+) without considering prevalence.\n\n**2. Ignoring the base rate**\nWith prevalence of 0.01%, even a highly specific test produces far more false positives than true positives in absolute numbers. The actual probability is only **~1.94%**, meaning the patient **almost certainly does NOT have the disease** \u2014 the exact opposite of the doctor's claim.\n\n**3. Neglecting the asymmetry of populations**\nFor every 1 true positive, there are approximately **50 false positives**. The doctor fails to recognize that the massive healthy population generates noise that swamps the signal.\n\n### Why This Matters Clinically:\n\n- **Psychological harm:** Unnecessary anxiety, depression, life-altering decisions based on false confidence\n- **Physical harm:** Invasive confirmatory procedures, unnecessary treatment with side effects\n- **Economic harm:** Costly follow-up testing, insurance implications\n- **Ethical harm:** Violation of informed consent \u2014 the patient cannot make rational decisions with distorted probability information\n\n### What the Doctor Should Say:\n\n> *\"Your test came back positive, but given how rare this disease is, there's still only about a 2% chance you actually have it. I'd like to run a second independent test to get a much clearer picture. This is standard procedure \u2014 most people who test positive on the first test turn out to be fine.\"*\n\n---\n\n## (4) Testing Protocol Achieving >95% Positive Predictive Value\n\n### Design Goal:\nAchieve PPV = P(D|all tests positive) > 0.95\n\n### Analysis of Required Testing Stages:\n\nThe **likelihood ratio** for each positive test is:\n\n$$LR_+ = \\frac{P(+|D)}{P(+|\\neg D)} = \\frac{0.99}{0.005} = 198$$\n\nThe **prior odds** are:\n\n$$O_{prior} = \\frac{P(D)}{P(\\neg D)} = \\frac{0.0001}{0.9999} \\approx \\frac{1}{9999}$$\n\nAfter *n* independent positive tests, the posterior odds are:\n\n$$O_{posterior} = O_{prior} \\times (LR_+)^n = \\frac{1}{9999} \\times 198^n$$\n\nFor PPV > 0.95, we need posterior odds > 19 (since 19/20 = 0.95):\n\n$$\\frac{198^n}{9999} > 19$$\n\n$$198^n > 189,981$$\n\n- **n = 1:** 198 / 9,999 = 0.0198 \u2192 PPV \u2248 1.94% \u2717\n- **n = 2:** 39,204 / 9,999 = 3.92 \u2192 PPV \u2248 79.7% \u2717\n- **n = 3:** 7,762,392 / 9,999 = 776.3 \u2192 PPV \u2248 99.87% \u2713\n\n### Recommended Protocol:\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         THREE-STAGE SEQUENTIAL PROTOCOL      \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                             \u2502\n\u2502  STAGE 1: Initial Screening                 \u2502\n\u2502  \u251c\u2500 Test all indicated patients             \u2502\n\u2502  \u251c\u2500 Negative \u2192 Report negative (done)       \u2502\n\u2502  \u2514\u2500 Positive \u2192 Proceed to Stage 2           \u2502\n\u2502     Prior: 0.01% \u2192 Posterior: ~1.94%        \u2502\n\u2502                                             \u2502\n\u2502  STAGE 2: Confirmatory Test                 \u2502\n\u2502  \u251c\u2500 Independent test (different method      \u2502\n\u2502  \u2502   or different sample if possible)       \u2502\n\u2502  \u251c\u2500 Negative \u2192 Report negative (done)       \u2502\n\u2502  \u2514\u2500 Positive \u2192 Proceed to Stage 3           \u2502\n\u2502     Prior: 1.94% \u2192 Posterior: ~79.7%        \u2502\n\u2502                                             \u2502\n\u2502  STAGE 3: Definitive Confirmation           \u2502\n\u2502  \u251c\u2500 Third independent test (ideally         \u2502\n\u2502",
+      "tokens": 2172,
+      "time_ms": 34546
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 9.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 10.0,
+        "depth": 9.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 8.45,
+      "weighted_b": 9.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is slightly more accurate and complete, and it directly answers all four parts with a practical protocol, key caveats about test independence, and a concise structure. Response A is strong but appears truncated in the protocol section and is therefore less complete and slightly less useful."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 9.0,
+        "clarity": 10.0,
+        "usefulness": 9.0,
+        "completeness": 10.0,
+        "correctness": 10.0
+      },
+      "scores_b": {
+        "depth": 9.0,
+        "clarity": 9.0,
+        "usefulness": 7.0,
+        "completeness": 7.0,
+        "correctness": 10.0
+      },
+      "weighted_a": 9.65,
+      "weighted_b": 8.55,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provides a complete, well-structured answer with excellent practical caveats, whereas Response B gets cut off at the end.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:19:01.170819"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 10.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.45,
+      "weighted_b": 8.05,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provides superior depth with detailed explanations, intuitive natural frequency tables, thorough critique of reasoning, and a more structured protocol design."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

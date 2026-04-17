@@ -1,0 +1,101 @@
+{
+  "question_id": "ANALYSIS-011",
+  "category": "analysis",
+  "question_text": "A SaaS startup shares these metrics: MRR $50K, growth 15% month-over-month, CAC $500, LTV $2,400, churn 5% monthly, burn rate $200K/month, runway 8 months. (1) Is this business healthy? (2) Calculate ",
+  "timestamp": "2026-04-16T18:13:57.762919",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# SaaS Startup Analysis\n\n## (1) Is this business healthy? **No.**\n\nSurface metrics look exciting (15% MoM growth, 4.8:1 LTV:CAC), but the fundamentals are broken:\n\n- **5% monthly churn = 46% annual churn.** They lose nearly half their customers every year. This is consumer-grade churn, not SaaS.\n- **Runway of 8 months with $200K burn** means they need to raise again almost immediately \u2014 weak negotiating position.\n- **Burn multiple: $200K burn / ~$7.5K net new MRR = 26x.** Anything above 3x is considered bad. This is catastrophic.\n- Growth is outrunning retention. They're filling a leaky bucket.\n\n## (2) LTV:CAC Ratio and Why It's Misleading\n\n**Stated LTV:CAC = $2,400 / $500 = 4.8:1** (looks great; benchmark is 3:1)\n\n**Why it's misleading:**\n\nThe LTV calculation assumes customers stick around long enough to pay back $2,400. Let's check:\n\n- At 5% monthly churn, average customer lifetime = 1 / 0.05 = **20 months**\n- For LTV of $2,400 over 20 months, ARPU must be **$120/month**\n\nBut here's the problem:\n- **Discounting matters.** Money in month 20 is worth less than money today. Real (discounted) LTV is materially lower.\n- **Churn compounds.** After 12 months, only 54% of a cohort remains. After 24 months, 29%.\n- **CAC payback period = $500 / $120 = 4.2 months.** Acceptable, but they lose the customer 16 months later.\n- The \"LTV\" assumes retention behavior that SaaS at this churn rate rarely actually delivers \u2014 late-stage customers churn too.\n\nThe honest framing: they recover CAC, make modest profit per customer, then lose the customer before compounding value kicks in. **True economic LTV:CAC is closer to 2:1 or worse once you properly discount and account for gross margin.**\n\n## (3) Viable Churn Rate\n\nBenchmarks for healthy SaaS:\n- **B2B SMB SaaS:** <2% monthly churn\n- **B2B Mid-Market:** <1% monthly\n- **B2B Enterprise:** <0.5% monthly\n\n**Minimum viability threshold: ~2% monthly churn**\n\nAt 2% churn:\n- Average lifetime: 50 months (vs. 20)\n- LTV at same $120 ARPU: $6,000\n- LTV:CAC: 12:1\n- Customers compound instead of leaking\n\n**Ideal target: <1.5% monthly** \u2014 this is where SaaS becomes a truly great business model with net revenue retention >100%.\n\n## (4) Would I Invest at $20M? **No.**\n\n**Valuation check:**\n- $50K MRR = $600K ARR\n- $20M valuation = **33x ARR** \u2014 priced like a best-in-class company\n\n**Why I'd pass:**\n\n1. **The price assumes problems don't exist.** 33x ARR requires elite retention. They have consumer-app retention.\n\n2. **Runway problem creates leverage against them, not for me.** 8 months means they're raising in ~4 months. Why buy at $20M now when they'll likely need a bridge or down round?\n\n3. **The growth is suspect.** 15% MoM growth with 5% churn means gross new MRR additions are massive relative to net \u2014 they're spending heavily to outrun the leak. When they slow paid acquisition, growth collapses.\n\n4. **Product-market fit is unproven.** High churn is the #1 signal of weak PMF. You don't fix 5% monthly churn with more sales \u2014 it's a product problem.\n\n**What would change my mind:**\n- Valuation at $6\u20138M (10\u201313x ARR, reflecting risk)\n- Evidence churn is improving cohort-over-cohort (e.g., recent cohorts at 2-3%)\n- A clear product thesis for *why* churn will drop\n- 18+ months runway at current burn, or a credible path to cutting burn in half\n\n**Bottom line:** Growth without retention is a treadmill. This is a product-fix investment disguised as a growth-stage round, priced as if it were neither.",
+      "tokens": 1584,
+      "time_ms": 16628
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# SaaS Startup Deep Dive Analysis\n\n## (1) Is This Business Healthy?\n\n**No. This business is critically unhealthy despite the attractive headline growth number.**\n\nLet me walk through why by examining the tension between the metrics:\n\n**The Good:**\n- 15% MoM growth is exceptional (would be ~5x annual if sustained)\n- LTV:CAC appears reasonable at first glance\n\n**The Fatal Problems:**\n\n```\nMonthly Economics:\n  Revenue:        $50,000\n  Burn Rate:      $200,000\n  Monthly Loss:   -$150,000\n  Runway:         8 months\n\n  Gross Margin Implied: Revenue covers only 25% of costs\n```\n\n**The core issue:** They're growing 15% monthly but burning 4x their revenue. That growth is almost certainly being *purchased* through unsustainable spending, and the 5% monthly churn means they're filling a leaky bucket with expensive water.\n\n**The churn problem is existential:** At 5% monthly churn, they lose ~40% of customers annually. This means roughly half their growth effort just replaces churned customers rather than driving net expansion.\n\n---\n\n## (2) LTV:CAC Ratio \u2014 And Why It's Misleading\n\n### The Stated Calculation\n\n```\nLTV:CAC = $2,400 / $500 = 4.8x\n\nIndustry benchmark: 3x+ is considered \"good\"\nSo 4.8x looks healthy... but it's NOT.\n```\n\n### Why This Number Is Misleading at 5% Monthly Churn\n\n**Let's reverse-engineer what LTV = $2,400 actually implies:**\n\n```\nLTV = ARPU / Churn Rate (simplified)\n\nIf churn = 5% monthly:\n  Average customer lifetime = 1 / 0.05 = 20 months\n  Implied ARPU = LTV / Lifetime = $2,400 / 20 = $120/month\n```\n\n**Problem #1: The LTV calculation likely uses wrong assumptions**\n\nThe $2,400 LTV figure is probably calculated using either:\n- An *aspirational* churn rate (not the actual 5%)\n- A gross margin that doesn't reflect true costs\n- Expansion revenue assumptions that haven't materialized\n\n**Let's calculate the REAL LTV at 5% monthly churn:**\n\n```\nRealistic LTV Calculation:\n  ARPU:                    $120/month (derived above)\n  Monthly churn:           5%\n  Assumed gross margin:    ~75% (typical SaaS)\n\n  LTV = (ARPU \u00d7 Gross Margin) / Churn\n  LTV = ($120 \u00d7 0.75) / 0.05\n  LTV = $90 / 0.05\n  LTV = $1,800\n\n  REAL LTV:CAC = $1,800 / $500 = 3.6x\n```\n\n**Problem #2: Time-value of money is ignored**\n\n```\nCAC is paid TODAY ($500 upfront)\nLTV is collected over 20 MONTHS\n\nApplying even a modest discount rate (say 10% annually):\n  NPV of LTV \u2248 $1,580\n\n  Adjusted LTV:CAC \u2248 3.16x \u2014 barely passing the 3x threshold\n```\n\n**Problem #3: CAC is almost certainly understated**\n\n```\nCurrent monthly spend:      $200,000\nCurrent MRR:                $50,000\nMRR last month (at 15% growth): ~$43,478\nNew MRR this month:         $6,522\nNew customers this month:   $6,522 / $120 \u2248 54 customers\n\nBUT \u2014 they also lost customers:\n  Customers last month:     $43,478 / $120 \u2248 362\n  Churned at 5%:            ~18 customers\n  So gross new customers:   54 + 18 = 72\n\nBlended CAC (all costs):    $200,000 / 72 = $2,778\nEven sales & marketing only (say 40% of burn): $80,000 / 72 = $1,111\n\nFully-loaded LTV:CAC might be as low as:\n  $1,800 / $2,778 = 0.65x  \u2190 DEEPLY UNPROFITABLE\n  $1,800 / $1,111 = 1.62x  \u2190 Still below viability\n```\n\n**This is why the stated 4.8x is misleading \u2014 the real ratio is likely between 1.6x and 3.2x depending on assumptions, and possibly below 1x on a fully-loaded basis.**\n\n---\n\n## (3) At What Churn Rate Does This Business Become Viable?\n\nViability requires satisfying multiple constraints simultaneously. Let me model this:\n\n### Constraint 1: LTV:CAC \u2265 3x (minimum for SaaS viability)\n\n```\nLTV:CAC \u2265 3\n(ARPU \u00d7 Gross Margin) / (Churn \u00d7 CAC) \u2265 3\n($120 \u00d7 0.75) / (Churn \u00d7 $500) \u2265 3\n\n$90 / (Churn \u00d7 $500) \u2265 3\n$90 \u2265 Churn \u00d7 $1,500\nChurn \u2264 6% monthly\n\nThey're at 5%, so this BARELY passes \u2014 but only using\nthe stated $500 CAC, which we showed is likely understated.\n```\n\n### Constraint 2: Net Revenue Retention Must Enable Compounding\n\n```\nFor a SaaS business to compound value:\n  Net Revenue Retention (NRR) should be > 100%\n\n  Currently: NRR = 1 - 5% = 95% monthly = ~54% annually\n  (assuming no expansion revenue)\n\n  This means: every annual cohort retains only 54% of its\n  revenue after one year. CATASTROPHIC.\n\n  For NRR \u2265 100% annually with no expansion revenue:\n    Monthly churn \u2264 0% \u2014 impossible without expansion\n\n  For NRR \u2265 100% with, say, 3% monthly expansion revenue:\n    Net monthly churn = gross churn - expansion = needs to be \u2264 0%\n    Gross churn \u2264 3%\n```\n\n### Constraint 3: CAC Payback \u2264 12 Months\n\n```\nCAC Payback = CAC / (ARPU \u00d7 Gross Margin)\n$500 / ($120 \u00d7 0.75) = $500 / $90 = 5.6 months \u2713\n\nThis actually passes \u2014 but only if customers SURVIVE\n5.6 months. At 5% monthly churn:\n  P(surviving 6 months) = (0.95)^6 = 73.5%\n\n  Adjusted payback: 5.6 / 0.735 = 7.6 months \u2014 still OK\n```\n\n### Constraint 4: Growth Must Outpace Churn for Path to Profitability\n\n```\nCurrent unit economics at scale (hypothetical break-even):\n  Need enough customers that revenue covers $200K burn\n\n  At $120 ARPU: need ~2,222 customers (assuming 75% margin)\n    Actually: 2,222 \u00d7 $120 \u00d7 0.75 = $200K \u2713\n\n  Current customers: ~417 ($50K / $120)\n  At 5% monthly churn, monthly customer loss: ~111 at 2,222 scale\n  Must acquire 111 customers/month JUST to maintain\n  At $500 CAC = $55,500/month just for replacement\n\n  This is technically feasible but leaves very little room for error.\n```\n\n### The Viability Threshold\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502          CHURN VIABILITY ANALYSIS                     \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 Monthly Churn\u2502  Assessment                           \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502    5.0%      \u2502  CURRENT \u2014 Not viable                 \u2502\n\u2502              \u2502  54% annual retention, leaky bucket    \u2502\n\u2502    4.0%      \u2502  Still problematic                     \u2502\n\u2502              \u2502  61% annual retention                  \u2502\n\u2502    3.0%      \u2502  MINIMUM VIABLE with",
+      "tokens": 2184,
+      "time_ms": 43292
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 8.0,
+        "usefulness": 6.0,
+        "correctness": 5.0,
+        "completeness": 6.0
+      },
+      "weighted_a": 8.35,
+      "weighted_b": 6.35,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more coherent, complete, and practically useful. Response B has some good analytical depth, but it is incomplete/truncated and includes weaker or questionable assumptions/calculations, reducing overall reliability."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 7.0,
+        "usefulness": 4.0,
+        "correctness": 8.0,
+        "completeness": 4.0
+      },
+      "weighted_a": 9.2,
+      "weighted_b": 6.2,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A answers all parts of the prompt thoroughly and accurately, whereas Response B cuts off mid-sentence and completely misses the fourth question."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 9.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 8.6,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more concise, clearer in its direct answers and actionable conclusions, and provides superior practical investment reasoning with sharper insights on valuation and product-market fit."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

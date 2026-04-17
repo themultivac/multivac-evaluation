@@ -1,0 +1,104 @@
+{
+  "question_id": "REASON-016",
+  "category": "reasoning",
+  "question_text": "Hospital A has a higher survival rate than Hospital B for both heart surgery (A: 90%, B: 85%) and knee surgery (A: 95%, B: 92%). But Hospital B has a higher overall survival rate (B: 91%, A: 89%). (1)",
+  "timestamp": "2026-04-16T17:49:31.341471",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Simpson's Paradox in Hospital Survival Rates\n\n## (1) Exact Numbers Producing the Paradox\n\nThe trick is to have each hospital treat very different **mixes** of cases. Hospital A takes mostly the riskier heart cases; Hospital B takes mostly the safer knee cases.\n\n**Hospital A:**\n| Surgery | Survived | Total | Rate |\n|---------|----------|-------|------|\n| Heart | 720 | 800 | 90.0% |\n| Knee | 190 | 200 | 95.0% |\n| **Total** | **910** | **1000** | **91.0%** |\n\nWait \u2014 let me recompute to match the stated overall rates (A: 89%, B: 91%). Adjusting the mix:\n\n**Hospital A** (mostly heart cases \u2014 the hard ones):\n| Surgery | Survived | Total | Rate |\n|---------|----------|-------|------|\n| Heart | 810 | 900 | 90.0% |\n| Knee | 95 | 100 | 95.0% |\n| **Total** | **905** | **1000** | **90.5%** |\n\n**Hospital B** (mostly knee cases \u2014 the easy ones):\n| Surgery | Survived | Total | Rate |\n|---------|----------|-------|------|\n| Heart | 85 | 100 | 85.0% |\n| Knee | 828 | 900 | 92.0% |\n| **Total** | **913** | **1000** | **91.3%** |\n\n\u2705 A beats B on heart (90% > 85%) and on knee (95% > 92%),\n\u2705 but B beats A overall (91.3% > 90.5%).\n\n## (2) Which Hospital Is Actually Better?\n\n**Hospital A.** Within every category of surgery \u2014 i.e., for any patient facing a specific procedure \u2014 Hospital A has the higher survival rate. The overall-rate advantage for B is an artifact of B handling a safer case mix, not superior care. If you're the patient, your decision is conditional on *your* surgery, where A wins every time.\n\n## (3) What Goes Wrong With the Insurance Company's Rule?\n\nUsing the **overall survival rate** confounds **hospital quality** with **patient case mix**. The company would:\n\n- **Reward hospitals that cherry-pick easy cases** (and punish those that accept severe ones). A specialty trauma center or a cardiac hospital will look \"worse\" than a clinic that mostly does knees.\n- **Create perverse incentives**: hospitals can boost their ranking by refusing risky patients (\"patient dumping\" or transferring out).\n- **Mislead consumers**, sending them to the hospital that is actually *worse* for the specific procedure they need.\n- **Violate the reference-class principle**: the patient cares about P(survive | my surgery, this hospital), not P(survive | random patient at this hospital).\n\n## (4) How the Comparison Should Be Done\n\nThe fix is to **condition on the confounding variable** (surgery type / case severity). Several correct approaches:\n\n1. **Stratified comparison (category by category).** Report survival rates separately for heart, knee, etc. Let patients compare within the relevant stratum.\n\n2. **Risk-adjustment / standardization.** Compute each hospital's survival rate as if it treated a *standard* mix of cases:\n $$\\text{Adjusted rate}_H = \\sum_i w_i \\cdot p_{H,i}$$\n where $w_i$ is a fixed reference weight for category $i$ and $p_{H,i}$ is hospital $H$'s rate in category $i$. This removes the case-mix distortion.\n\n3. **Regression-based adjustment.** Model survival as a function of hospital *and* patient/procedure characteristics (age, comorbidities, severity, procedure type). The hospital coefficient estimates the ceteris-paribus effect.\n\n4. **Causal framing.** The question \"which hospital is better?\" is causal: if we *sent* the same patient to each, which gives higher survival? That counterfactual is answered by within-stratum comparison, not by marginal rates.\n\n**Bottom line:** Simpson's paradox warns that aggregating over a variable that differs between groups can reverse the true relationship. Always ask *what is being averaged over*, and condition on variables that affect both the treatment assignment (which hospital/who goes where) and the outcome (survival).",
+      "tokens": 1611,
+      "time_ms": 23162
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Simpson's Paradox: Hospital Survival Rates\n\n## (1) Constructing Exact Numbers\n\nLet me build a concrete example that produces this paradox.\n\n### Hospital A\n\n| Surgery Type | Survived | Total | Survival Rate |\n|---|---|---|---|\n| Heart Surgery | **90** | 100 | **90%** |\n| Knee Surgery | **855** | 900 | **95%** |\n| **Overall** | **945** | **1,000** | **89.5%** |\n\n### Hospital B\n\n| Surgery Type | Survived | Total | Survival Rate |\n|---|---|---|---|\n| Heart Surgery | **765** | 900 | **85%** |\n| Knee Surgery | **92** | 100 | **92%** |\n| **Overall** | **857** | **1,000** | **91.0%** \u2190 Higher! |\n\n### The Key: Case Mix Imbalance\n\n- **Hospital A** performs mostly **easy** knee surgeries (900/1000 = 90%)\n- **Hospital B** performs mostly **hard** heart surgeries (900/1000 = 90%)\n\nHospital B's overall rate is inflated not by skill, but by doing a different *proportion* of each surgery type. Yet Hospital A wins in **every individual category**.\n\n---\n\n## (2) Which Hospital Is Actually Better?\n\n**Hospital A is the better hospital.**\n\nThe reasoning follows a clear logical test:\n\n> **If you personally needed heart surgery**, you'd choose A (90% > 85%).\n> **If you personally needed knee surgery**, you'd choose A (95% > 92%).\n\nSince these are the only two surgeries, **no matter what procedure you need, Hospital A gives you a better chance of survival.** The overall rate is a misleading aggregate because it conflates two fundamentally different questions:\n\n- \"How good is this hospital at each procedure?\" \u2190 the causal question\n- \"What mix of procedures does this hospital happen to perform?\" \u2190 a confounding variable\n\nThe overall survival rate reflects **both skill and case mix**, making it useless as a measure of quality alone.\n\n---\n\n## (3) What Goes Wrong with the Insurance Company's Recommendation?\n\nThe insurance company recommends **Hospital B** based on the higher overall rate (91% > 89.5%). Several concrete harms follow:\n\n### Systematic Errors\n- **Every patient is sent to the inferior hospital.** Whether they need heart or knee surgery, their survival probability is lower at B.\n- The recommendation **punishes Hospital A for taking on harder cases** (more heart surgeries), creating a perverse incentive.\n\n### Perverse Incentive Spiral\n1. Hospital A, seeing it's being penalized, **stops accepting complex heart surgery cases**\n2. Hospitals learn to game the metric by **cherry-picking easy cases**\n3. Difficult patients lose access to the best surgeons\n4. Overall quality of care in the system **declines**\n\n### The Fundamental Flaw\nThe company is using an **unadjusted statistic** that confounds:\n- **Treatment quality** (what we care about)\n- **Patient/procedure mix** (a lurking confounding variable)\n\nThis is equivalent to concluding that a firefighter is dangerous because they're always present at fires.\n\n---\n\n## (4) How Should the Comparison Be Done Correctly?\n\n### The Correct Method: Stratified (Condition-Specific) Comparison\n\n**Step 1: Stratify by confounding variable**\nCompare survival rates **within each surgery type separately**:\n\n| Surgery Type | Hospital A | Hospital B | Better? |\n|---|---|---|---|\n| Heart | 90% | 85% | **A** |\n| Knee | 95% | 92% | **A** |\n\n**Step 2: If a single summary number is needed, standardize the case mix**\n\nUse a **common reference distribution** (e.g., 50% heart, 50% knee for both):\n\n- **Adjusted rate for A:** 0.5(90%) + 0.5(95%) = **92.5%**\n- **Adjusted rate for B:** 0.5(85%) + 0.5(92%) = **88.5%**\n\nNow Hospital A correctly ranks higher.\n\n### General Principles\n\n| Principle | Application |\n|---|---|\n| **Identify confounders** | Surgery type affects both hospital choice and outcome |\n| **Stratify** | Compare like with like within each subgroup |\n| **Standardize** | Use a common weight distribution for fair aggregation |\n| **Report subgroup rates** | Never rely solely on a pooled number |\n\n### The Broader Lesson\n\n> **Never aggregate over a confounding variable.** Simpson's Paradox arises whenever a lurking variable simultaneously influences group membership and the outcome. The solution is always to **condition on** (control for) that variable before comparing.",
+      "tokens": 1245,
+      "time_ms": 25255
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 3.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 7.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 6.95,
+      "weighted_b": 7.75,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A\u2019s constructed example is internally inconsistent with its own explanation: its numbers make Hospital A mostly knee cases and Hospital B mostly heart cases, so the stated reason for the reversal is wrong. Response B gives a valid Simpson\u2019s paradox construction and a more accurate explanation of the case-mix issue, while also covering proper stratified and adjusted comparisons."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "completeness": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "clarity": 9.0,
+        "correctness": 9.0
+      },
+      "scores_b": {
+        "completeness": 7.0,
+        "depth": 5.0,
+        "usefulness": 4.0,
+        "clarity": 8.0,
+        "correctness": 2.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 5.1,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A correctly calculates the math for the paradox. Response B hallucinates arithmetic (e.g., 945/1000 = 89.5%) and gets the case mix backwards.",
+      "rerun": true,
+      "rerun_pass": 2,
+      "rerun_timestamp": "2026-04-17T16:35:27.863597"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 7.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provided more precise and accurate numbers, deeper causal analysis, and clearer methodological recommendations."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

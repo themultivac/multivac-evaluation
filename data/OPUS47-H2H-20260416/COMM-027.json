@@ -1,0 +1,104 @@
+{
+  "question_id": "COMM-027",
+  "category": "communication",
+  "question_text": "Your team has a recurring 1-hour meeting with 8 people to 'sync on project status.' Convert it into: (1) An async status update template (max 5 fields), (2) Clear criteria for when a sync meeting IS n",
+  "timestamp": "2026-04-16T19:10:50.190535",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Meeting Optimization Plan\n\n## (1) Async Status Update Template\n\nPosted in shared channel (Slack/Teams/Notion) by EOD every Monday & Thursday. 5-field max:\n\n| Field | Guidance | Word Limit |\n|---|---|---|\n| **1. Shipped** | What I completed since last update (with links) | 50 words |\n| **2. Shipping** | What I'm working on next + target date | 30 words |\n| **3. Blockers** | What's stuck + who/what I need (tag the person) | 30 words |\n| **4. Confidence** | \ud83d\udfe2 On track / \ud83d\udfe1 At risk / \ud83d\udd34 Off track (one sentence why) | 20 words |\n| **5. FYI** | Anything others should know (optional) | 20 words |\n\n**Rule:** If no one comments/reacts within 24 hrs, it's acknowledged.\n\n---\n\n## (2) When a Sync Meeting IS Needed\n\nCall a sync **only** if \u22651 of these is true:\n\n- **Decision required** from multiple stakeholders that can't resolve in thread within 24 hrs\n- **Cross-functional dependency conflict** (e.g., two workstreams colliding)\n- **Scope/timeline change** affecting \u22653 people\n- **Ambiguity or disagreement** visible in async thread (>5 back-and-forth replies unresolved)\n- **Kickoff or retro** for a defined phase\n- **Sensitive topic** (people, performance, conflict) unsuitable for writing\n\nIf none apply \u2192 no meeting. Post async, move on.\n\n---\n\n## (3) 15-Minute Standup Format (Tuesday & Thursday)\n\n**Attendees:** Only those with active dependencies (not all 8 by default)\n**Facilitator rotates weekly. Timer visible.**\n\n| Time | Segment |\n|---|---|\n| 0:00\u20132:00 | **Red flags only** \u2014 anyone \ud83d\udd34 from async? Quick triage or schedule follow-up |\n| 2:00\u201310:00 | **Blocker round-robin** \u2014 each person: 1 blocker, 1 ask (60 sec max) |\n| 10:00\u201313:00 | **This week's critical path** \u2014 what MUST ship; who owns what |\n| 13:00\u201315:00 | **Parking lot & action items** \u2014 assign owners + deadlines; end on time |\n\n**Rules:**\n- No status recitation (it's in async)\n- Deep-dive discussions \u2192 side meeting with only relevant people\n- Hard stop at 15:00\n\n---\n\n## Time Savings Calculation\n\n**Before:** 1 hr \u00d7 8 people \u00d7 4 weeks = **32 person-hours/month**\n\n**After:**\n- 2 standups/week \u00d7 0.25 hr \u00d7 8 people \u00d7 4 weeks = 16 person-hours\n- Async writing: ~10 min \u00d7 2\u00d7/week \u00d7 8 people \u00d7 4 weeks = 10.7 person-hours\n- **Total: ~26.7 person-hours/month**\n\nWait \u2014 that's not much savings. Let's optimize further: **standups with only 5 relevant attendees on average** (per rule above):\n\n- 2 \u00d7 0.25 \u00d7 5 \u00d7 4 = 10 person-hours\n- Async: 10.7 person-hours\n- **Total new cost: ~20.7 person-hours/month**\n\n### \ud83d\udcb0 Savings\n\n| Metric | Value |\n|---|---|\n| Time saved | **32 \u2212 20.7 = 11.3 person-hours/month** |\n| Annualized | **~136 person-hours/year** |\n| Cost saved (@ $75/hr fully loaded, typical mid-level IC) | **~$848/month / ~$10,200/year** |\n| Cost saved (@ $125/hr, senior/mixed team) | **~$1,413/month / ~$17,000/year** |\n\n**Hidden wins** (not in the math):\n- Context-switching reduction (each meeting ~23 min of additional productivity lost per person \u2014 Microsoft research)\n- Searchable written record replaces forgotten verbal updates\n- Introverts and remote/async team members contribute more equally\n- Real number is likely **2\u20133\u00d7 the headline savings** when focus recovery is included\n\n---\n\n**Implementation tip:** Run this as a 4-week trial. Keep the old meeting on the calendar as a safety net but mark it \"optional \u2014 only if criteria met.\" Track how many times anyone actually calls it. Usually: \u22641.",
+      "tokens": 1581,
+      "time_ms": 15685
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Meeting Optimization: From 1-Hour Sync to Async-First System\n\n---\n\n## Part 1: Async Status Update Template\n\n**Delivered via Slack/Teams or project tool every Monday & Thursday by 10am**\n\n```\n\ud83d\udccb ASYNC STATUS UPDATE \u2014 [Name] \u2014 [Date]\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n1. \u2705 DONE SINCE LAST UPDATE\n   \u2192 [2-3 bullet points of completed work]\n\n2. \ud83d\udd04 WORKING ON NOW\n   \u2192 [Current focus + expected completion]\n\n3. \ud83d\udea7 BLOCKED / NEEDS INPUT\n   \u2192 [Specific blocker + WHO you need + by WHEN]\n\n4. \u26a1 KEY DECISIONS MADE OR NEEDED\n   \u2192 [Any decisions that affect others' work]\n\n5. \ud83d\udcc5 NEXT MILESTONE\n   \u2192 [Your next deliverable + target date]\n```\n\n**Rules:**\n- Each field: 1-3 sentences max. If you're writing paragraphs, you need a meeting.\n- Everyone reads all updates before noon. React with \u2705 to confirm.\n- Blockers get addressed in-thread within 2 hours by the tagged person.\n\n---\n\n## Part 2: Criteria for When a Synchronous Meeting IS Needed\n\nCall a sync meeting **only** when at least one of these is true:\n\n### Definitely Meet\n| Trigger | Why Async Fails |\n|---|---|\n| **Cross-team dependency conflict** \u2014 two+ workstreams are colliding and trade-offs must be negotiated | Requires real-time negotiation and compromise |\n| **Ambiguous or high-stakes decision** \u2014 multiple valid options with significant consequences, no clear owner | Back-and-forth async creates delays and misalignment |\n| **Interpersonal tension or misalignment** \u2014 tone in async threads is deteriorating or people are talking past each other | Nuance and empathy require voice/face |\n| **New scope or major pivot** \u2014 the project direction is fundamentally changing and everyone needs shared context simultaneously | Async creates fragmented understanding |\n| **Post-mortem / retrospective** \u2014 something went wrong and the team needs to process it together | Requires psychological safety and real-time dialogue |\n\n### Do NOT Meet\n- Status is \"everything on track\" \u2192 async update is sufficient\n- One person needs info from one other person \u2192 DM or thread\n- FYI announcements \u2192 write a memo\n- \"It would be nice to discuss...\" without a specific decision \u2192 write a proposal first, then decide if discussion is needed\n\n**The Litmus Test:** *\"Can I write a 2-paragraph proposal and get thumbs-up/down from the right people in a thread?\"* If yes, don't meet.\n\n---\n\n## Part 3: 15-Minute Standup Format (Twice Weekly, When Triggered)\n\n**When:** Tuesday & Thursday, 10:30am (after async updates are read)\n**Who:** Only people with blockers, decisions, or cross-dependencies. Others are *invited but not required.*\n\n```\n\u23f1\ufe0f 15-MINUTE SYNC STANDUP \u2014 AGENDA\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n[0:00 - 1:00] \ud83c\udfaf FRAME (Facilitator)\n   \"Here are the 2-3 items from async updates that\n    need real-time discussion today.\"\n   (Facilitator pre-selects from async updates BEFORE the meeting)\n\n[1:00 - 10:00] \ud83d\udea7 BLOCKERS & DECISIONS (max 3 items)\n   For each item (3 min max):\n   \u2192 Person states the problem in 30 seconds\n   \u2192 Relevant people discuss\n   \u2192 End with: DECISION, ACTION + OWNER, or \"take offline with [names]\"\n\n[10:00 - 13:00] \ud83d\udd17 CROSS-DEPENDENCY CHECK\n   \"Does anyone's plan for this week affect someone else's work\n    in a way that isn't reflected in the async updates?\"\n\n[13:00 - 15:00] \ud83d\udccc RECAP & CLOSE (Facilitator)\n   \u2192 Read back decisions and action items\n   \u2192 Post summary to async channel within 5 minutes\n```\n\n**Hard Rules:**\n- No status reporting (that's what the async update is for)\n- Facilitator rotates weekly\n- If no blockers surfaced in async \u2192 **cancel the meeting that day**\n- Anyone who doesn't have a relevant blocker/dependency can skip with no stigma\n\n---\n\n## Part 4: Time & Cost Savings Calculation\n\n### Before: The Old Way\n```\nFrequency:        5x per week (daily 1-hour sync)\nDuration:         1 hour\nAttendees:        8 people\nMonthly weeks:    4.3 (average)\n\nTOTAL:  5 \u00d7 1hr \u00d7 8 people \u00d7 4.3 weeks = 172 person-hours/month\n```\n\n### After: The New Way\n```\nAsync updates:    ~10 min to write + ~15 min to read others\n                  = 25 min/person \u00d7 8 people \u00d7 8x/month (twice weekly \u00d7 4.3)\n                  \u2248 27 person-hours/month\n\nSync standups:    15 min \u00d7 ~6 attendees (avg, since not all need to attend)\n                  \u00d7 8.6x/month (twice weekly \u00d7 4.3)\n                  \u2248 13 person-hours/month\n\nTOTAL AFTER:      27 + 13 = 40 person-hours/month\n```\n\n### The Savings\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                                                   \u2502\n\u2502   BEFORE:          172 person-hours/month         \u2502\n\u2502   AFTER:            40 person-hours/month         \u2502\n\u2502                    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500          \u2502\n\u2502   SAVED:           132 person-hours/month         \u2502\n\u2502                                                   \u2502\n\u2502   That's a 77% reduction in meeting time.         \u2502\n\u2502                                                   \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### Approximate Salary Cost Savings\n\n| Assumption | Low Estimate | Mid Estimate | High Estimate |\n|---|---|---|---|\n| **Avg fully-loaded hourly cost** | $50/hr (junior/mid) | $75/hr (mid/senior) | $100/hr (senior/lead) |\n| **Monthly savings** | **$6,600** | **$9,900** | **$13,200** |\n| **Annual savings** | **$79,200** | **$118,800** | **$158,400** |\n\n> *Fully-loaded = salary + benefits + overhead, typically 1.3-1.5x base salary. A $130K/yr employee costs roughly $75/hr fully loaded.*\n\n### Hidden Savings Not Calculated Above\n\n| Factor | Impact |\n|---|---|\n| **Context switching** | Each meeting interrupts ~30 min of deep work before and after. That's potentially another 80+ hours of *productive focus time* recovered monthly. |\n| **Meeting recovery time** | Research suggests it takes 23 minutes to regain deep focus after an interruption (UC Irvine). |\n| **Decision velocity** | Blockers get addressed in 2 hours via async threads instead of \"let's discuss tomorrow in the sync.\" |\n| **Documentation** | Async updates create a searchable paper trail. The old meeting created... nothing unless someone took notes. |\n\n---\n\n## Implementation Rollout\n\n| Week | Action |\n|---|---|\n| **Week 1** | Introduce async template. Keep all 5 meetings but shorten to 30 min. |\n| **Week 2** | Drop to 3 sync meetings/week. Use async on the other days. |\n| **Week 3** | Drop to 2 sync meetings/week (Tue/Thu). Apply 15-min standup format. |\n| **Week 4** | Retrospective: What's working? Adjust. Start canceling standups when no blockers exist. |\n\n**The goal isn't zero meetings. It's zero *unnecessary* meetings.**",
+      "tokens": 2090,
+      "time_ms": 46114
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 5.0,
+        "correctness": 3.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 6.1,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A directly matches the prompt and calculates savings from the stated baseline. Response B misreads the scenario as a daily 1-hour meeting, leading to dramatically incorrect time and cost savings despite otherwise strong structure."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "completeness": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "clarity": 9.0,
+        "correctness": 9.0
+      },
+      "scores_b": {
+        "completeness": 9.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "clarity": 9.0,
+        "correctness": 7.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 7.95,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A realistically assumes a weekly meeting and insightfully notes that async replacements only save time if attendees are reduced, showing superior depth and practical logic.",
+      "rerun": true,
+      "rerun_pass": 2,
+      "rerun_timestamp": "2026-04-17T16:34:18.032157"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 8.2,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provided a more precise and actionable async template, clearer meeting criteria, a more focused standup format, and a realistic, well-explained time savings calculation that directly addressed the original meeting frequency, while Response B's calculation incorrectly assumed daily meetings."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

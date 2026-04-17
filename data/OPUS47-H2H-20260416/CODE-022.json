@@ -1,0 +1,102 @@
+{
+  "question_id": "CODE-022",
+  "category": "code",
+  "question_text": "Implement the OAuth 2.0 Authorization Code flow with PKCE (Proof Key for Code Exchange) from scratch in Python. Include: code verifier/challenge generation, authorization URL construction, token excha",
+  "timestamp": "2026-04-16T17:30:37.300661",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# OAuth 2.0 Authorization Code Flow with PKCE\n\n## Why PKCE Prevents Authorization Code Interception\n\nIn the traditional Authorization Code flow, a malicious app on the same device (e.g., one that registered the same custom URI scheme, or a network-level attacker) could intercept the authorization code returned via redirect. The attacker could then exchange that code for tokens at the token endpoint.\n\n**PKCE solves this** by binding the authorization request to the token exchange:\n\n1. The client generates a random secret (`code_verifier`) and sends only its hash (`code_challenge`) with the authorization request.\n2. The authorization server stores the `code_challenge` alongside the issued code.\n3. When exchanging the code for tokens, the client must present the original `code_verifier`.\n4. The server recomputes the hash and compares it to the stored `code_challenge`.\n\nEven if an attacker intercepts the authorization code, they **cannot exchange it** without the `code_verifier`, which never leaves the legitimate client. This is critical for public clients (mobile apps, SPAs) that cannot safely store a client secret.\n\n## Implementation\n\n```python\n\"\"\"\noauth_pkce.py - OAuth 2.0 Authorization Code + PKCE client from scratch.\n\"\"\"\nimport base64\nimport hashlib\nimport json\nimport os\nimport secrets\nimport time\nimport urllib.parse\nimport urllib.request\nimport webbrowser\nfrom dataclasses import dataclass, asdict\nfrom http.server import BaseHTTPRequestHandler, HTTPServer\nfrom pathlib import Path\nfrom typing import Optional\n\nfrom cryptography.fernet import Fernet\n\n\n# ---------- PKCE primitives ----------\n\ndef generate_code_verifier(length: int = 64) -> str:\n    \"\"\"\n    RFC 7636 \u00a74.1: code_verifier = high-entropy random string,\n    43\u2013128 chars from [A-Z] / [a-z] / [0-9] / \"-\" / \".\" / \"_\" / \"~\".\n    \"\"\"\n    if not 43 <= length <= 128:\n        raise ValueError(\"code_verifier length must be 43..128\")\n    # token_urlsafe produces URL-safe base64 (no padding) -> matches allowed charset\n    return secrets.token_urlsafe(length)[:length]\n\n\ndef generate_code_challenge(verifier: str) -> str:\n    \"\"\"\n    RFC 7636 \u00a74.2: code_challenge = BASE64URL-ENCODE(SHA256(code_verifier))\n    with padding stripped.\n    \"\"\"\n    digest = hashlib.sha256(verifier.encode(\"ascii\")).digest()\n    return base64.urlsafe_b64encode(digest).rstrip(b\"=\").decode(\"ascii\")\n\n\n# ---------- Secure token storage (encrypted at rest) ----------\n\n@dataclass\nclass TokenSet:\n    access_token: str\n    token_type: str\n    expires_at: float          # absolute epoch seconds\n    refresh_token: Optional[str] = None\n    scope: Optional[str] = None\n    id_token: Optional[str] = None\n\n    @classmethod\n    def from_response(cls, data: dict) -> \"TokenSet\":\n        return cls(\n            access_token=data[\"access_token\"],\n            token_type=data.get(\"token_type\", \"Bearer\"),\n            expires_at=time.time() + int(data.get(\"expires_in\", 3600)),\n            refresh_token=data.get(\"refresh_token\"),\n            scope=data.get(\"scope\"),\n            id_token=data.get(\"id_token\"),\n        )\n\n    def is_expired(self, leeway: int = 30) -> bool:\n        return time.time() >= (self.expires_at - leeway)\n\n\nclass EncryptedTokenStore:\n    \"\"\"\n    Stores tokens symmetrically encrypted with Fernet (AES-128-CBC + HMAC-SHA256).\n    The key is kept in a separate file with 0600 perms. For real apps, use the\n    OS keychain (macOS Keychain, Windows DPAPI, libsecret) via `keyring`.\n    \"\"\"\n\n    def __init__(self, path: str = \"~/.oauth_tokens.enc\", key_path: str = \"~/.oauth_tokens.key\"):\n        self.path = Path(path).expanduser()\n        self.key_path = Path(key_path).expanduser()\n        self._fernet = Fernet(self._load_or_create_key())\n\n    def _load_or_create_key(self) -> bytes:\n        if self.key_path.exists():\n            return self.key_path.read_bytes()\n        key = Fernet.generate_key()\n        self.key_path.write_bytes(key)\n        os.chmod(self.key_path, 0o600)\n        return key\n\n    def save(self, tokens: TokenSet) -> None:\n        blob = self._fernet.encrypt(json.dumps(asdict(tokens)).encode())\n        self.path.write_bytes(blob)\n        os.chmod(self.path, 0o600)\n\n    def load(self) -> Optional[TokenSet]:\n        if not self.path.exists():\n            return None\n        try:\n            data = json.loads(self._fernet.decrypt(self.path.read_bytes()))\n            return TokenSet(**data)\n        except Exception:\n            return None\n\n    def clear(self) -> None:\n        if self.path.exists():\n            self.path.unlink()\n\n\n# ---------- Loopback redirect handler ----------\n\nclass _CallbackHandler(BaseHTTPRequestHandler):\n    result: dict = {}\n\n    def do_GET(self):\n        qs = urllib.parse.urlparse(self.path).query\n        self.__class__.result = dict(urllib.parse.parse_qsl(qs))\n        self.send_response(200)\n        self.send_header(\"Content-Type\", \"text/html\")\n        self.end_headers()\n        self.wfile.write(b\"<h1>You may close this window.</h1>\")\n\n    def log_message(self, *_):  # silence\n        pass\n\n\ndef _wait_for_callback(port: int, timeout: int = 300) -> dict:\n    server = HTTPServer((\"127.0.0.1\", port), _CallbackHandler)\n    server.timeout = timeout\n    server.handle_request()\n    return _CallbackHandler.result\n\n\n# ---------- OAuth client",
+      "tokens": 2167,
+      "time_ms": 22162
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# OAuth 2.0 Authorization Code Flow with PKCE - Complete Implementation\n\n## Why PKCE Prevents Authorization Code Interception Attacks\n\nBefore diving into code, let's understand the attack and defense:\n\n```\nWITHOUT PKCE (Vulnerable):\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\n  Client App              Auth Server              Malicious App\n      \u2502                        \u2502                        \u2502\n      \u2502\u2500\u2500\u2500\u2500 Auth Request \u2500\u2500\u2500\u2500\u2500>\u2502                        \u2502\n      \u2502                        \u2502                        \u2502\n      \u2502<\u2500\u2500 Auth Code (redirect)\u2502                        \u2502\n      \u2502         \u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n      \u2502         \u2551 INTERCEPTED! \u2502  Malicious app registers\u2502\n      \u2502         \u2551              \u2502  same custom URI scheme \u2502\n      \u2502         \u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550>\u2502               \u2502\n      \u2502                        \u2502        \u2502\u2500\u2500 Token Req \u2500>\u2502\n      \u2502                        \u2502        \u2502  (stolen code)\u2502\n      \u2502                        \u2502<\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518               \u2502\n      \u2502                        \u2502\u2500\u2500\u2500\u2500 Access Token \u2500\u2500\u2500\u2500\u2500>\u2502\n      \u2502                        \u2502        ATTACK SUCCESS! \u2502\n\n\nWITH PKCE (Protected):\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\n  Client App              Auth Server              Malicious App\n      \u2502                        \u2502                        \u2502\n      \u2502 Generate:              \u2502                        \u2502\n      \u2502  verifier = random()   \u2502                        \u2502\n      \u2502  challenge = SHA256(verifier)                   \u2502\n      \u2502                        \u2502                        \u2502\n      \u2502\u2500\u2500 Auth Req + challenge>\u2502                        \u2502\n      \u2502                        \u2502  (server stores        \u2502\n      \u2502                        \u2502   challenge)           \u2502\n      \u2502<\u2500\u2500 Auth Code (redirect)\u2502                        \u2502\n      \u2502         \u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n      \u2502         \u2551 INTERCEPTED! \u2502                        \u2502\n      \u2502         \u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550>\u2502               \u2502\n      \u2502                        \u2502        \u2502\u2500\u2500 Token Req \u2500>\u2502\n      \u2502                        \u2502        \u2502  (stolen code \u2502\n      \u2502                        \u2502        \u2502   but NO      \u2502\n      \u2502                        \u2502        \u2502   verifier!)  \u2502\n      \u2502                        \u2502<\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518               \u2502\n      \u2502                        \u2502\u2500\u2500\u2500\u2500 REJECTED! \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500>\u2502\n      \u2502                        \u2502                        \u2502\n      \u2502\u2500\u2500 Token Req + verifier>\u2502  SHA256(verifier)      \u2502\n      \u2502   (has the verifier!)  \u2502  == stored challenge?  \u2502\n      \u2502                        \u2502  \u2713 YES                 \u2502\n      \u2502<\u2500\u2500\u2500\u2500\u2500 Access Token \u2500\u2500\u2500\u2500\u2502                        \u2502\n      \u2502     LEGITIMATE CLIENT  \u2502                        \u2502\n      \u2502     GETS THE TOKEN     \u2502                        \u2502\n\nKEY INSIGHT: The code_verifier never leaves the client until the token\nexchange. The attacker has the auth code but NOT the verifier, so they\ncannot complete the exchange. The binding between the authorization\nrequest and token request is cryptographic.\n```\n\n## Complete Implementation\n\n```python\n\"\"\"\nOAuth 2.0 Authorization Code Flow with PKCE\nComplete implementation with secure token storage.\n\"\"\"\n\nimport hashlib\nimport base64\nimport secrets\nimport json\nimport time\nimport os\nimport re\nimport threading\nimport logging\nfrom dataclasses import dataclass, field, asdict\nfrom typing import Optional\nfrom urllib.parse import urlencode, urlparse, parse_qs\nfrom http.server import HTTPServer, BaseHTTPRequestHandler\nfrom pathlib import Path\n\n# In production, use: pip install cryptography requests\n# For this implementation, we use stdlib + minimal dependencies\nimport urllib.request\nimport urllib.error\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\n\n# ============================================================================\n# PART 1: PKCE - Code Verifier and Challenge Generation\n# ============================================================================\n\nclass PKCE:\n    \"\"\"\n    PKCE (Proof Key for Code Exchange) implementation per RFC 7636.\n    \n    The security of PKCE relies on:\n    1. code_verifier: A cryptographically random string (43-128 chars)\n    2. code_challenge: SHA256 hash of the verifier (sent in auth request)\n    3. The verifier is only sent during token exchange, never exposed in\n       browser redirects or URL fragments that could be intercepted.\n    \"\"\"\n    \n    # RFC 7636 Section 4.1: code_verifier has min 43, max 128 characters\n    MIN_VERIFIER_LENGTH = 43\n    MAX_VERIFIER_LENGTH = 128\n    DEFAULT_VERIFIER_LENGTH = 64  # Good balance of security and practicality\n    \n    # Unreserved characters per RFC 7636 Section 4.1\n    # ABNF: unreserved = ALPHA / DIGIT / \"-\" / \".\" / \"_\" / \"~\"\n    UNRESERVED_CHARSET = (\n        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~'\n    )\n    \n    @staticmethod\n    def generate_code_verifier(length: int = DEFAULT_VERIFIER_LENGTH) -> str:\n        \"\"\"\n        Generate a cryptographically random code verifier.\n        \n        RFC 7636 Section 4.1:\n        - MUST use unreserved characters [A-Z] / [a-z] / [0-9] / \"-\" / \".\" / \"_\" / \"~\"\n        - Minimum length of 43 characters\n        - Maximum length of 128 characters\n        - MUST have enough entropy (use cryptographic randomness)\n        \n        We use secrets.token_urlsafe() which generates URL-safe base64,\n        then validate it meets RFC requirements.\n        \n        Alternative approach: secrets.choice() from the unreserved charset\n        provides exactly the right character set.\n        \"\"\"\n        if not (PKCE.MIN_VERIFIER_LENGTH <= length <= PKCE.MAX_VERIFIER_LENGTH):\n            raise ValueError(\n                f\"Verifier length must be between {PKCE.MIN_VERIFIER_LENGTH} \"\n                f\"and {PKCE.MAX_VERIFIER_LENGTH}, got {length}\"\n            )\n        \n        # Method 1 (Preferred): Use secrets.token_urlsafe and trim\n        # This gives us [A-Za-z0-9_-] which is a subset of unreserved chars\n        # Each base64 char encodes 6 bits of entropy\n        # 64 chars \u00d7 6 bits = 384 bits of entropy (far exceeds minimum)\n        \n        # We need ceil(length * 6/8) = ceil(length * 0.75) random bytes\n        # token_urlsafe(n) produces ceil(n * 4/3) characters\n        num_bytes = (length * 3) // 4 + 1  # Slightly over-generate\n        verifier = secrets.token_urlsafe(num_bytes)[:length]\n        \n        # Verify: token_urlsafe uses [A-Za-z0-9_-], all valid unreserved chars\n        assert all(c in PKCE.UNRESERVED_CHARSET for c in verifier), \\\n            \"Generated verifier contains invalid characters\"\n        \n        return verifier\n    \n    @staticmethod\n    def generate_code_verifier_charset(length: int = DEFAULT_VERIFIER_LENGTH) -> str:\n        \"\"\"\n        Alternative: Generate verifier by sampling from the full unreserved charset.\n        This uses the complete set of allowed characters.\n        \"\"\"\n        if not (PKCE.MIN_VERIFIER_LENGTH <= length <= PKCE.MAX_VERIFIER_LENGTH):\n            raise ValueError(\n                f\"Verifier length must be between {PKCE.MIN_VERIFIER_LENGTH} \"\n                f\"and {PKCE.MAX_VERIFIER_LENGTH}, got {length}\"\n            )\n        \n        return ''.join(\n            secrets.choice(PKCE.UNRESERVED_CHARSET) for _ in range(length)\n        )\n    \n    @staticmethod\n    def generate_code_challenge(code_verifier: str, method: str = 'S256') -> str:\n        \"\"\"\n        Generate the code challenge from the code verifier.\n        \n        RFC 7636 Section 4.2:\n        - S256: code_challenge = BASE64URL(SHA256(ASCII(code_verifier)))\n        - plain: code",
+      "tokens": 2121,
+      "time_ms": 32267
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 4.0,
+        "usefulness": 4.0,
+        "correctness": 6.0,
+        "completeness": 3.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 6.0,
+        "usefulness": 6.0,
+        "correctness": 7.0,
+        "completeness": 5.0
+      },
+      "weighted_a": 4.9,
+      "weighted_b": 6.45,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B provides a more complete and clearer implementation outline with stronger PKCE explanation, while Response A is cut off earlier and omits major required parts like authorization URL construction, token exchange, refresh flow, and a finished secure storage example."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 2.0,
+        "correctness": 8.0,
+        "completeness": 2.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 5.0,
+        "correctness": 8.0,
+        "completeness": 5.0
+      },
+      "weighted_a": 5.7,
+      "weighted_b": 6.75,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses were cut off, but Response B provided significantly more of the requested implementation, including secure token storage and the callback handler, whereas Response A spent too much time on ASCII art and comments before cutting off."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 9.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 8.6,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more correct, clearer, and directly useful with a complete, runnable implementation. Response B, while more detailed in explanation, contains a critical error in its PKCE challenge generation code (incomplete function) and is less polished."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_46": 1,
+    "claude_opus_47": 2
+  },
+  "judges_agree": false
+}

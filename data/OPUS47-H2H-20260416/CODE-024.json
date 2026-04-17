@@ -1,0 +1,103 @@
+{
+  "question_id": "CODE-024",
+  "category": "code",
+  "question_text": "Implement an HTTP/1.1 server from raw TCP sockets in Python (no http.server, no frameworks). Support: GET and POST methods, proper header parsing, chunked transfer encoding, keep-alive connections, st",
+  "timestamp": "2026-04-16T17:33:29.093802",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "```python\n\"\"\"\nHTTP/1.1 server implemented from raw TCP sockets.\nSupports: GET, POST, chunked transfer encoding, keep-alive,\nstatic file serving, 404 handling, and graceful error handling.\n\"\"\"\n\nimport socket\nimport threading\nimport os\nimport sys\nimport mimetypes\nimport urllib.parse\nfrom datetime import datetime, timezone\n\n\n# ---------------------------------------------------------------------------\n# Exceptions\n# ---------------------------------------------------------------------------\nclass HTTPError(Exception):\n    def __init__(self, status, message=\"\"):\n        self.status = status\n        self.message = message\n        super().__init__(f\"{status}: {message}\")\n\n\n# ---------------------------------------------------------------------------\n# Request parsing helpers\n# ---------------------------------------------------------------------------\ndef recv_until(sock_file, delimiter=b\"\\r\\n\\r\\n\", max_bytes=65536):\n    \"\"\"Read from a socket file until `delimiter` is found or limit hit.\"\"\"\n    buf = b\"\"\n    while delimiter not in buf:\n        chunk = sock_file.read1(4096) if hasattr(sock_file, \"read1\") else sock_file.read(4096)\n        if not chunk:\n            break\n        buf += chunk\n        if len(buf) > max_bytes:\n            raise HTTPError(431, \"Request Header Fields Too Large\")\n    return buf\n\n\ndef parse_request_line(line):\n    parts = line.split()\n    if len(parts) != 3:\n        raise HTTPError(400, \"Malformed request line\")\n    method, target, version = parts\n    if not version.startswith(\"HTTP/\"):\n        raise HTTPError(400, \"Bad HTTP version\")\n    return method.upper(), target, version\n\n\ndef parse_headers(header_block):\n    \"\"\"Parse header block (bytes) into a case-insensitive dict.\"\"\"\n    headers = {}\n    lines = header_block.split(b\"\\r\\n\")\n    for raw in lines:\n        if not raw:\n            continue\n        if b\":\" not in raw:\n            raise HTTPError(400, \"Malformed header\")\n        name, _, value = raw.partition(b\":\")\n        name = name.strip().decode(\"iso-8859-1\").lower()\n        value = value.strip().decode(\"iso-8859-1\")\n        if name in headers:\n            headers[name] += \", \" + value\n        else:\n            headers[name] = value\n    return headers\n\n\ndef read_chunked_body(rfile, max_size=10 * 1024 * 1024):\n    \"\"\"Read a chunked-encoded body from the buffered reader.\"\"\"\n    body = bytearray()\n    while True:\n        size_line = rfile.readline()\n        if not size_line:\n            raise HTTPError(400, \"Unexpected EOF in chunked body\")\n        # ignore chunk extensions after ';'\n        size_hex = size_line.split(b\";\", 1)[0].strip()\n        try:\n            size = int(size_hex, 16)\n        except ValueError:\n            raise HTTPError(400, \"Invalid chunk size\")\n        if size == 0:\n            # consume trailing headers until blank line\n            while True:\n                line = rfile.readline()\n                if line in (b\"\\r\\n\", b\"\\n\", b\"\"):\n                    break\n            break\n        chunk = rfile.read(size)\n        if len(chunk) != size:\n            raise HTTPError(400, \"Truncated chunk\")\n        body.extend(chunk)\n        # consume trailing CRLF after chunk\n        crlf = rfile.read(2)\n        if crlf != b\"\\r\\n\":\n            raise HTTPError(400, \"Missing CRLF after chunk\")\n        if len(body) > max_size:\n            raise HTTPError(413, \"Payload Too Large\")\n    return bytes(body)\n\n\n# ---------------------------------------------------------------------------\n# Request / Response objects\n# ---------------------------------------------------------------------------\nclass Request:\n    def __init__(self, method, target, version, headers, body):\n        self.method = method\n        self.target = target\n        self.version = version\n        self.headers = headers\n        self.body = body\n        parsed = urllib.parse.urlsplit(target)\n        self.path = urllib.parse.unquote(parsed.path)\n        self.query = urllib.parse.parse_qs(parsed.query)\n\n\nclass Response:\n    STATUS_TEXT = {\n        200: \"OK\",\n        201: \"Created\",\n        204: \"No Content\",\n        301: \"Moved Permanently\",\n        302: \"Found\",\n        304: \"Not Modified\",\n        400: \"Bad Request\",\n        403: \"Forbidden\",\n        404: \"Not Found\",\n        405: \"Method Not Allowed\",\n        413: \"Payload Too Large\",\n        414: \"URI Too Long\",\n        431: \"Request Header Fields Too Large\",\n        500: \"Internal Server Error\",\n        501: \"Not Implemented\",\n        505: \"HTTP Version Not Supported\",\n    }\n\n    def __init__(self, status=200, body=b\"\", headers=None):\n        self.status = status\n        if isinstance(body, str):\n            body = body.encode(\"utf-8\")\n        self.body = body\n        self.headers = {} if headers is None else dict(headers)\n\n    def to_bytes(self, keep_alive=True, http_version=\"HTTP/1.1\", head=False):\n        reason = self.STATUS_TEXT.get(self.status, \"OK\")\n        hdrs = dict(self.headers)\n        hdrs.setdefault(\"Content-Length\", str(len(self.body)))\n        hdrs.setdefault(\"Content-Type\", \"text/plain; charset=utf-8\")\n        hdrs[\"Date\"] = datetime.now(timezone.utc).strftime(\"%a, %d %b %Y %H:%M:%S GMT\")\n        hdrs[\"Server\"] = \"RawPySocketHTTP/0.1\"\n        hdrs[\"Connection\"] = \"keep-alive\" if keep_alive else \"close\"\n\n        status_line = f\"{http_version} {self.status} {reason}\\r\\n\"\n        header_lines = \"\".join(f\"{k}: {v}\\r\\n\" for k, v in hdrs.items())\n        head_bytes = (status_line + header_lines + \"\\r\\n\").encode(\"iso-8859-1\")\n        if head:\n            return head_bytes\n        return head_bytes + self.",
+      "tokens": 2159,
+      "time_ms": 12154
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# HTTP/1.1 Server from Raw TCP Sockets\n\n## Implementation\n\n```python\n#!/usr/bin/env python3\n\"\"\"\nHTTP/1.1 server built from raw TCP sockets.\nSupports: GET, POST, header parsing, chunked transfer encoding,\nkeep-alive connections, static file serving, and 404 handling.\n\"\"\"\n\nimport socket\nimport threading\nimport os\nimport mimetypes\nimport json\nimport logging\nimport signal\nimport sys\nfrom datetime import datetime, timezone\nfrom pathlib import Path\nfrom typing import Optional\nfrom urllib.parse import unquote, urlparse\n\n# Configure logging\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s [%(threadName)s] %(levelname)s: %(message)s\",\n)\nlogger = logging.getLogger(__name__)\n\n\nclass HTTPRequest:\n    \"\"\"Parsed HTTP request object.\"\"\"\n\n    def __init__(self):\n        self.method: str = \"\"\n        self.path: str = \"\"\n        self.query_string: str = \"\"\n        self.version: str = \"\"\n        self.headers: dict[str, str] = {}\n        self.body: bytes = b\"\"\n        self.raw_path: str = \"\"\n        self.is_valid: bool = False\n        self.error_code: int = 0\n        self.error_message: str = \"\"\n\n    def header(self, name: str, default: str = \"\") -> str:\n        \"\"\"Case-insensitive header lookup.\"\"\"\n        return self.headers.get(name.lower(), default)\n\n    @property\n    def content_length(self) -> int:\n        try:\n            return int(self.header(\"content-length\", \"0\"))\n        except ValueError:\n            return 0\n\n    @property\n    def is_chunked(self) -> bool:\n        return \"chunked\" in self.header(\"transfer-encoding\", \"\").lower()\n\n    @property\n    def keep_alive(self) -> bool:\n        \"\"\"Determine if connection should be kept alive.\"\"\"\n        connection = self.header(\"connection\", \"\").lower()\n        if self.version == \"HTTP/1.1\":\n            # HTTP/1.1 defaults to keep-alive unless \"close\" is specified\n            return connection != \"close\"\n        else:\n            # HTTP/1.0 defaults to close unless \"keep-alive\" is specified\n            return connection == \"keep-alive\"\n\n    def __repr__(self) -> str:\n        return f\"<HTTPRequest {self.method} {self.path} {self.version}>\"\n\n\nclass HTTPResponse:\n    \"\"\"HTTP response builder.\"\"\"\n\n    STATUS_PHRASES = {\n        200: \"OK\",\n        201: \"Created\",\n        204: \"No Content\",\n        301: \"Moved Permanently\",\n        304: \"Not Modified\",\n        400: \"Bad Request\",\n        403: \"Forbidden\",\n        404: \"Not Found\",\n        405: \"Method Not Allowed\",\n        408: \"Request Timeout\",\n        411: \"Length Required\",\n        413: \"Payload Too Large\",\n        414: \"URI Too Long\",\n        500: \"Internal Server Error\",\n        501: \"Not Implemented\",\n        505: \"HTTP Version Not Supported\",\n    }\n\n    def __init__(self, status_code: int = 200, version: str = \"HTTP/1.1\"):\n        self.status_code = status_code\n        self.version = version\n        self.headers: dict[str, str] = {}\n        self.body: bytes = b\"\"\n        self._chunked = False\n\n        # Default headers\n        self.headers[\"Server\"] = \"RawPythonHTTP/1.1\"\n        self.headers[\"Date\"] = self._format_date()\n\n    @staticmethod\n    def _format_date() -> str:\n        \"\"\"Format date per HTTP spec (RFC 7231).\"\"\"\n        now = datetime.now(timezone.utc)\n        return now.strftime(\"%a, %d %b %Y %H:%M:%S GMT\")\n\n    def set_body(self, body: bytes | str, content_type: str = \"text/html; charset=utf-8\"):\n        \"\"\"Set response body with appropriate headers.\"\"\"\n        if isinstance(body, str):\n            body = body.encode(\"utf-8\")\n        self.body = body\n        self.headers[\"Content-Type\"] = content_type\n        self.headers[\"Content-Length\"] = str(len(body))\n        # Remove chunked encoding if we're setting a concrete body\n        self.headers.pop(\"Transfer-Encoding\", None)\n        self._chunked = False\n\n    def set_chunked(self, content_type: str = \"text/html; charset=utf-8\"):\n        \"\"\"Enable chunked transfer encoding.\"\"\"\n        self._chunked = True\n        self.headers[\"Transfer-Encoding\"] = \"chunked\"\n        self.headers[\"Content-Type\"] = content_type\n        self.headers.pop(\"Content-Length\", None)\n\n    def set_keep_alive(self, keep_alive: bool):\n        \"\"\"Set connection keep-alive header.\"\"\"\n        if keep_alive:\n            self.headers[\"Connection\"] = \"keep-alive\"\n            self.headers[\"Keep-Alive\"] = \"timeout=30, max=100\"\n        else:\n            self.headers[\"Connection\"] = \"close\"\n\n    def build_header_bytes(self) -> bytes:\n        \"\"\"Build the response status line + headers as bytes.\"\"\"\n        phrase = self.STATUS_PHRASES.get(self.status_code, \"Unknown\")\n        lines = [f\"{self.version} {self.status_code} {phrase}\"]\n        for key, value in self.headers.items():\n            lines.append(f\"{key}: {value}\")\n        lines.append(\"\")  # blank line before body\n        lines.append(\"\")\n        return \"\\r\\n\".join(lines).encode(\"utf-8\")\n\n    def build(self) -> bytes:\n        \"\"\"Build complete response bytes (headers + body).\"\"\"\n        return self.build_header_bytes() + self.body\n\n    @staticmethod\n    def build_chunk(data: bytes) -> bytes:\n        \"\"\"Build a single chunk for chunked transfer encoding.\"\"\"\n        if not data:\n            return b\"0\\r\\n\\r\\n\"  # terminal chunk\n        size = hex(len(data))[2:]\n        return f\"{size}\\r\\n\".encode() + data + b\"\\r\\n\"\n\n\nclass RequestParser:\n    \"\"\"\n    Parses raw bytes from a socket into an HTTPRequest.\n    Handles incremental reading, chunked decoding, etc.\n    \"\"\"\n\n    MAX_REQUEST_LINE = 8192\n    MAX_HEADER_SIZE = 32768\n    MAX_HEADERS_COUNT = 100\n    MAX_BODY_SIZE = 10 * 1024 * 1024  # 10 MB\n\n    def __init__(self, conn: socket.socket, timeout: float = 30.0):\n        self.conn = conn\n        self.timeout = timeout\n        self._buffer = b\"\"\n\n    def _recv(self, size: int = 4096) -> bytes:\n        \"\"\"Receive data from socket with timeout handling.\"\"\"\n        self.conn.settimeout(self.timeout)\n        try:\n            data = self.conn.recv(size)\n            return data\n        except socket.timeout:\n            raise TimeoutError(\"Socket read timed out\")\n        except (ConnectionResetError, BrokenPipeError, OSError):\n            return b\"\"\n\n    def _read_until(self, delimiter: bytes, max_size: int) -> Optional[bytes]:\n        \"\"\"\n        Read from socket until delimiter is found or max_size exceeded.\n        Returns the data up to and including the delimiter, or None on failure.\n        \"\"\"\n        while delimiter not in self._buffer:\n            if len(self._buffer) > max_size:\n                return None\n            chunk = self._recv()\n            if not chunk:\n                return None  # Connection closed\n            self._buffer += chunk\n        idx = self._buffer.index(delimiter) + len(delimiter)\n        result = self._buffer[:idx]\n        self._buffer = self._buffer[idx:]\n        return result\n\n    def _read_exact(self, size: int) -> Optional[bytes]:\n        \"\"\"Read exactly `size` bytes from the socket.\"\"\"\n        while len(self._buffer) < size:\n            chunk = self._recv()\n            if not chunk:\n                return None\n            self._buffer += chunk\n        result = self._buffer[:size]\n        self._buffer = self._buffer[size:]\n        return result\n\n    def parse(self",
+      "tokens": 2120,
+      "time_ms": 27922
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 6.0,
+        "depth": 4.0,
+        "usefulness": 2.0,
+        "correctness": 3.0,
+        "completeness": 2.0
+      },
+      "scores_b": {
+        "clarity": 6.0,
+        "depth": 3.0,
+        "usefulness": 2.0,
+        "correctness": 3.0,
+        "completeness": 2.0
+      },
+      "weighted_a": 3.45,
+      "weighted_b": 3.25,
+      "ab_winner": "TIE",
+      "contestant_winner": "tie",
+      "brief_justification": "Both responses are incomplete code snippets that cut off before delivering a working server. Response A shows a somewhat richer architecture and more planned features, while Response B includes some concrete parsing logic, but neither fully implements the requested HTTP/1.1 server."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 6.0,
+        "usefulness": 3.0,
+        "correctness": 6.0,
+        "completeness": 3.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 4.0,
+        "correctness": 8.0,
+        "completeness": 4.0
+      },
+      "weighted_a": 5.15,
+      "weighted_b": 6.4,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses are severely truncated, but Response B manages to include the actual implementation for parsing headers and decoding chunked bodies before cutting off, whereas Response A gets stuck in boilerplate class definitions."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 7.0,
+        "correctness": 7.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 7.2,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provides a more complete, production-ready, and well-structured implementation with proper classes, robust parsing, timeout handling, and chunked encoding support, while Response B is incomplete and less thorough."
+    }
+  },
+  "winner_aggregate": "tie",
+  "judge_votes": {
+    "tie": 1,
+    "claude_opus_47": 1,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

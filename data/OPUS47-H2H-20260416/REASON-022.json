@@ -1,0 +1,102 @@
+{
+  "question_id": "REASON-022",
+  "category": "reasoning",
+  "question_text": "For each claim, determine if it's causal or correlational, and design an experiment to test causality: (1) 'Learning a musical instrument improves math scores.' (2) 'Countries with more Nobel laureate",
+  "timestamp": "2026-04-16T17:59:28.513959",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Analyzing Four Claims: Causal vs. Correlational\n\n## (1) \"Learning a musical instrument improves math scores\"\n\n**Type:** Stated causally, but typically supported only by correlational evidence.\n\n**Experiment:** Randomized controlled trial. Recruit ~300 students with similar baseline math scores. Randomly assign to three groups: (a) music instruction, (b) an active control (e.g., visual arts, equal time/engagement), (c) no intervention. Measure math scores pre- and post- after 1\u20132 years. Random assignment breaks self-selection.\n\n**Confounders:**\n- **Socioeconomic status** \u2014 wealthier families afford lessons *and* better schools.\n- **Parental involvement/conscientiousness** \u2014 parents who enroll kids in music also supervise homework.\n- (Bonus: baseline IQ, school quality.)\n\n---\n\n## (2) \"Countries with more Nobel laureates consume more chocolate per capita\"\n\n**Type:** Purely correlational \u2014 a famous example of ecological correlation, almost certainly spurious.\n\n**Experiment:** You cannot randomize nations' chocolate intake. The best test is at the individual level: randomly assign adults to daily chocolate (flavanol dose) vs. placebo for several years, measuring cognitive performance or research productivity. National-level causation is untestable.\n\n**Confounders:**\n- **National wealth (GDP)** \u2014 rich countries have both chocolate budgets and research infrastructure.\n- **Education system quality / R&D investment** \u2014 drives Nobel output independently.\n- (Bonus: Western/European cultural bias in Nobel selection.)\n\n---\n\n## (3) \"Code reviews reduce bugs\"\n\n**Type:** Causal claim; testable but rarely tested rigorously.\n\n**Experiment:** Within a company, randomly assign incoming pull requests (or developer teams) to \"review required\" vs. \"no review\" conditions for a fixed period. Track defect rates in production over 6\u201312 months, controlling for module complexity. Blocked randomization by project keeps comparisons fair.\n\n**Confounders:**\n- **Developer experience** \u2014 senior devs write cleaner code *and* review more.\n- **Code complexity** \u2014 simple code gets both fewer bugs and quicker reviews.\n- (Bonus: test coverage, deadline pressure.)\n\n---\n\n## (4) \"Remote workers are more productive\"\n\n**Type:** Causal claim; evidence is mostly observational and self-selected.\n\n**Experiment:** Bloom et al. (2015) did this at Ctrip: volunteers were *randomly assigned* to work from home or the office for 9 months, with standardized productivity metrics (calls handled, quality scores). Replicate with random assignment, objective output measures, and equal-length treatment.\n\n**Confounders:**\n- **Self-selection** \u2014 people who *choose* remote work differ in discipline, role type, commute length.\n- **Job type** \u2014 knowledge/individual tasks suit remote; collaborative tasks don't.\n- (Bonus: home environment quality, managerial style.)\n\n---\n\n## Key Takeaways\n\n| Claim | Can truly randomize? | Biggest threat |\n|---|---|---|\n| Music \u2192 math | Yes | Self-selection |\n| Chocolate \u2192 Nobels | No (country level) | GDP confound |\n| Reviews \u2192 bugs | Yes | Developer skill |\n| Remote \u2192 productivity | Yes | Job type, self-selection |\n\nThe recurring lesson: **random assignment** is what converts a correlation into a causal test, and an **active control group** (not just \"nothing\") rules out attention/effort effects.",
+      "tokens": 1323,
+      "time_ms": 20718
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Analyzing Causal vs. Correlational Claims & Designing Experiments\n\n## Claim 1: \"Learning a musical instrument improves math scores.\"\n\n**Classification: CAUSAL** \u2014 The word \"improves\" explicitly asserts that one thing *causes* a change in another.\n\n### Experiment Design\n**Randomized Controlled Trial:**\n- Recruit 300 students of similar age and baseline math ability\n- **Randomly assign** to: (A) weekly structured instrument lessons for one academic year, (B) an equivalent time spent in a non-musical activity (e.g., visual art class \u2014 controls for \"extra enrichment\" time), (C) no additional activity\n- Measure math scores via standardized tests at baseline, midpoint, and endpoint\n- Compare group differences using pre/post analysis\n\n### Key Confounders\n1. **Socioeconomic status** \u2014 Families who can afford music lessons may also afford tutoring, books, and environments conducive to academic success. SES independently predicts both music access *and* math performance.\n2. **Self-discipline / conscientiousness** \u2014 Children who choose and persist with an instrument may already possess traits (patience, practice habits) that also drive math achievement. The trait causes both, not one causing the other.\n3. **Parental involvement** \u2014 Parents who enroll children in music may be more engaged in education generally, monitoring homework and providing academic support.\n\n---\n\n## Claim 2: \"Countries with more Nobel laureates consume more chocolate per capita.\"\n\n**Classification: CORRELATIONAL** \u2014 This describes a *co-occurrence* between two national-level variables. No mechanism or directionality is asserted (though it's often presented tongue-in-cheek to illustrate spurious correlation).\n\n### Experiment Design\n**This is extremely difficult to test causally at the country level, but a modified approach:**\n\n**Individual-level RCT:**\n- Recruit 500 graduate-level researchers across multiple institutions\n- **Randomly assign** to: (A) daily controlled chocolate consumption (50g/day) for 2 years, (B) placebo that looks/tastes similar but lacks cocoa flavanols\n- **Double-blind** the assignment\n- Measure cognitive performance, research output quality (publications, citations, peer-rated innovation) as proxies for \"Nobel-level\" achievement\n- This tests the underlying *implied* causal mechanism: chocolate \u2192 cognitive enhancement \u2192 elite achievement\n\n**Why the original correlation likely isn't causal:**\nThe country-level data is essentially an ecological correlation with n \u2248 23 countries \u2014 a textbook example of **ecological fallacy**.\n\n### Key Confounders\n1. **National wealth (GDP per capita)** \u2014 Wealthy nations can afford both luxury food consumption (chocolate) *and* robust research infrastructure (universities, labs, funding) that produces laureates.\n2. **Climate / geography** \u2014 Northern European countries have both high chocolate consumption (cultural/climate-driven comfort food) and historically well-funded academic institutions. Climate correlates with both variables independently.\n3. **Educational infrastructure and research funding** \u2014 Countries with strong university systems produce more Nobel-caliber research, and these same developed nations tend to have higher consumption of imported luxury goods.\n\n---\n\n## Claim 3: \"Code reviews reduce bugs.\"\n\n**Classification: CAUSAL** \u2014 \"Reduce\" implies that introducing code reviews *causes* a decrease in bugs.\n\n### Experiment Design\n**Randomized Controlled Trial within a software organization:**\n- Identify 40 comparable development teams working on similar-complexity projects\n- **Randomly assign** teams to: (A) mandatory peer code review before every merge, (B) no code review (direct merge, business as usual)\n- Standardize other practices (testing frameworks, coding standards, deployment pipeline)\n- Measure: bug count per 1,000 lines of code, severity of bugs, production incidents over 6 months\n- **Crossover design** (after 6 months, switch conditions) to control for team-level differences\n\n### Key Confounders\n1. **Developer experience and skill level** \u2014 Senior teams may both adopt code reviews voluntarily *and* write fewer bugs. Teams that already do reviews may simply be better engineering organizations.\n2. **Code complexity and project type** \u2014 Teams working on more critical/complex systems are more likely to institute reviews *and* have different bug profiles. The type of work drives both the practice and the outcome.\n3. **Overall engineering culture** \u2014 Teams with code reviews may also have better testing, documentation, CI/CD practices, and communication. The review itself may not be the active ingredient \u2014 it's a marker of a mature engineering culture.\n\n---\n\n## Claim 4: \"Remote workers are more productive.\"\n\n**Classification: CAUSAL (implied)** \u2014 This implies that the condition of working remotely *causes* higher productivity, though it's often stated in a way that could be read as correlational (\"are\" rather than \"makes them\"). The practical interpretation is almost always causal.\n\n### Experiment Design\n**Randomized Controlled Trial (modeled on Bloom et al., 2015 \u2014 Ctrip study):**\n- Partner with a large company where roles are equivalent and remote-compatible\n- From volunteers willing to work either way, **randomly assign** 250 employees to: (A) fully remote for 9 months, (B) continue in-office\n- Measure productivity via objective metrics appropriate to role (e.g., calls handled, code shipped, cases resolved, revenue generated)\n- Also measure: hours worked, self-reported satisfaction, attrition\n- Control for role type, tenure, and baseline performance\n\n**Critical design note:** Only randomizing among *volunteers* avoids the ethical problem of forcing remote work but introduces a selection issue (results generalize only to people open to both arrangements).\n\n### Key Confounders\n1. **Self-selection bias** \u2014 People who *choose* remote work may be more self-motivated, disciplined, and introverted \u2014 traits that independently predict productivity. You're measuring the person, not the environment.\n2. **Job type and task nature** \u2014 Roles amenable to remote work (writing, coding, data analysis) may be inherently more measurable and individually driven, inflating apparent productivity compared to collaborative in-office roles that are harder to quantify.\n3. **Home environment and life circumstances** \u2014 Workers with dedicated home offices, no young children, and supportive living situations will perform differently than those in cramped, distracting environments. \"Remote\" is not a uniform treatment.\n\n---\n\n## Summary Table\n\n| Claim | Classification | Gold-Standard Test | Core Threat to Validity |\n|-------|---------------|-------------------|------------------------|\n| Music \u2192 Math | **Causal** | RCT with active control | SES and self-selection |\n| Nobel \u2194 Chocolate | **Correlational** | Individual RCT on cognition (proxy) | National wealth (ecological fallacy) |\n| Code Reviews \u2192 Fewer Bugs | **Causal** | Randomized team crossover trial | Engineering culture bundling |\n| Remote \u2192 Productive | **Causal (implied)** | RCT among volunteers | Self-selection and environment heterogeneity |\n\n**The overarching lesson:** The gap between correlation and causation is *bridged by random assignment*. When we can't randomize (as in country-level chocolate data), we should be most skeptical. When the claim uses causal language (\"improves,\" \"reduces\"), we should demand experimental or quasi-experimental evidence before accepting it.",
+      "tokens": 1779,
+      "time_ms": 42852
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 8.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 8.95,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B is slightly stronger overall because it classifies each claim by the language of the claim itself, provides fuller experimental designs and confounder explanations, and offers more nuanced methodological detail. Response A is excellent, but its first classification is less directly aligned with the prompt\u2019s wording."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 10.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 10.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B provides more detailed and insightful explanations for the confounders and experimental designs, demonstrating greater depth and clarity."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 9.0,
+      "ab_winner": "TIE",
+      "contestant_winner": "tie",
+      "brief_justification": "Both responses are equally excellent in all criteria, providing accurate, thorough, clear, insightful, and actionable analyses."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 2,
+    "tie": 1
+  },
+  "judges_agree": false
+}

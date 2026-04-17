@@ -1,0 +1,101 @@
+{
+  "question_id": "CODE-019",
+  "category": "code",
+  "question_text": "Implement a Bloom filter from scratch (no libraries) with the following: configurable false positive rate, optimal hash function count calculation, serialization/deserialization, a counting variant th",
+  "timestamp": "2026-04-16T17:26:23.779642",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Bloom Filter Implementation from Scratch\n\n## Mathematical Foundation\n\n### False Positive Rate Derivation\n\nGiven:\n- `n` = number of inserted elements\n- `m` = size of bit array\n- `k` = number of hash functions\n\n**Step 1: Probability a specific bit is NOT set by one hash function of one element:**\n$$P(\\text{bit not set}) = 1 - \\frac{1}{m}$$\n\n**Step 2: Probability a specific bit is NOT set after `k` hashes of one element:**\n$$\\left(1 - \\frac{1}{m}\\right)^k$$\n\n**Step 3: Probability a specific bit is NOT set after inserting `n` elements (all `kn` hash operations):**\n$$\\left(1 - \\frac{1}{m}\\right)^{kn}$$\n\n**Step 4: Probability a specific bit IS set:**\n$$1 - \\left(1 - \\frac{1}{m}\\right)^{kn}$$\n\n**Step 5: A false positive occurs when all `k` bits for a non-member query are set:**\n$$P(\\text{FP}) = \\left[1 - \\left(1 - \\frac{1}{m}\\right)^{kn}\\right]^k$$\n\n**Step 6: Using the identity** $\\lim_{m \\to \\infty}(1 - 1/m)^m = e^{-1}$:\n$$P(\\text{FP}) \\approx \\left(1 - e^{-kn/m}\\right)^k$$\n\n### Optimal k Derivation\n\nMinimize $f(k) = (1 - e^{-kn/m})^k$. Take log: $g(k) = k \\ln(1 - e^{-kn/m})$.\n\nTaking $\\frac{dg}{dk} = 0$ yields:\n$$k^* = \\frac{m}{n} \\ln 2$$\n\n### Optimal m given target false positive rate p\n\nSubstituting $k^* = (m/n)\\ln 2$ back:\n$$p = (1/2)^{k^*} = (1/2)^{(m/n)\\ln 2}$$\n\nSolving for m:\n$$m = -\\frac{n \\ln p}{(\\ln 2)^2}$$\n\n---\n\n## Implementation\n\n```python\nimport math\nimport hashlib\nimport struct\nimport json\nimport base64\n\n\nclass BloomFilter:\n    \"\"\"Standard Bloom filter with configurable false positive rate.\"\"\"\n\n    def __init__(self, capacity, error_rate=0.01):\n        if not (0 < error_rate < 1):\n            raise ValueError(\"error_rate must be in (0, 1)\")\n        if capacity <= 0:\n            raise ValueError(\"capacity must be positive\")\n\n        self.capacity = capacity\n        self.error_rate = error_rate\n\n        # Optimal m: -n * ln(p) / (ln 2)^2\n        self.num_bits = max(1, int(math.ceil(\n            -capacity * math.log(error_rate) / (math.log(2) ** 2)\n        )))\n        # Optimal k: (m/n) * ln 2\n        self.num_hashes = max(1, int(round(\n            (self.num_bits / capacity) * math.log(2)\n        )))\n\n        # Bit array stored as bytearray (8 bits per byte)\n        self.num_bytes = (self.num_bits + 7) // 8\n        self.bit_array = bytearray(self.num_bytes)\n        self.count = 0  # Items added\n\n    def _hashes(self, item):\n        \"\"\"\n        Kirsch-Mitzenmacher double hashing:\n        h_i(x) = (h1(x) + i * h2(x)) mod m\n        Proven to have same asymptotic FP rate as k independent hashes.\n        \"\"\"\n        if isinstance(item, str):\n            data = item.encode('utf-8')\n        elif isinstance(item, bytes):\n            data = item\n        else:\n            data = str(item).encode('utf-8')\n\n        digest = hashlib.sha256(data).digest()\n        h1 = int.from_bytes(digest[:8], 'big')\n        h2 = int.from_bytes(digest[8:16], 'big')\n\n        for i in range(self.num_hashes):\n            yield (h1 + i * h2) % self.num_bits\n\n    def _set_bit(self, idx):\n        self.bit_array[idx >> 3] |= (1 << (idx & 7))\n\n    def _get_bit(self, idx):\n        return (self.bit_array[idx >> 3] >> (idx & 7)) & 1\n\n    def add(self, item):\n        for idx in self._hashes(item):\n            self._set_bit(idx)\n        self.count += 1\n\n    def __contains__(self, item):\n        return all(self._get_bit(idx) for idx in self._hashes(item))\n\n    def current_false_positive_rate(self):\n        \"\"\"Compute actual current FP rate: (1 - e^(-kn/m))^k\"\"\"\n        if self.count == 0:\n            return 0.0\n        exp_term = math.exp(-self.num_hashes * self.count / self.num_bits)\n        return (1 - exp_term) ** self.num_hashes\n\n    def memory_stats(self):\n        \"\"\"Return detailed memory usage statistics.\"\"\"\n        bits_per_item = self.num_bits / self.capacity\n        fill_ratio = sum(bin(b).count('1') for b in self.bit_array) / self.num_bits\n        return {\n            'num_bits': self.num_bits,\n            'num_bytes': self.num_bytes,\n            'num_hashes': self.num_hashes,\n            'capacity': self.capacity,\n            'items_inserted': self.count,\n            'target_fp_rate': self.error_rate,\n            'theoretical_fp_rate': self.current_false_positive_rate(),\n            'bits_per_item': round(bits_per_item, 2),\n            'fill_ratio': round(fill_ratio, 4),\n            'memory_kb': round(self.num_bytes / 1024, 3),\n        }\n\n    # --- Serialization ---\n    def serialize(self):\n        \"\"\"Binary serialization format:\n           [magic(4)] [version(1)] [num_bits(8)] [num_hashes(4)]\n           [capacity(8)] [error_rate(8 double)] [count(8)] [bit_array]\n        \"\"\"\n        header = struct.p",
+      "tokens": 2151,
+      "time_ms": 14064
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# Bloom Filter Implementation from Scratch\n\n## Mathematical Proof of False Positive Rate\n\n```\nMATHEMATICAL PROOF OF FALSE POSITIVE RATE\n==========================================\n\nA Bloom filter uses a bit array of m bits and k hash functions.\nWhen inserting n elements, we need to derive the false positive probability.\n\nSTEP 1: Probability a single bit is NOT set by one hash function after one insertion\n    P(bit=0 | 1 hash, 1 element) = 1 - 1/m\n\nSTEP 2: Probability a single bit is NOT set after inserting n elements with k hash functions\n    Each insertion applies k hash functions, each independently selecting a position.\n    Total hash applications = kn\n    \n    P(bit=0) = (1 - 1/m)^(kn)\n\nSTEP 3: Using the limit identity: lim(m\u2192\u221e) (1 - 1/m)^m = e^(-1)\n    Therefore: (1 - 1/m)^(kn) = ((1 - 1/m)^m)^(kn/m) \u2248 e^(-kn/m)\n    \n    So: P(bit=0) \u2248 e^(-kn/m)\n    And: P(bit=1) \u2248 1 - e^(-kn/m)\n\nSTEP 4: False positive occurs when ALL k hash positions are set for a non-member\n    Since hash functions are independent:\n    \n    P(false positive) = P(bit=1)^k = (1 - e^(-kn/m))^k\n\n    \u2234  fp = (1 - e^(-kn/m))^k                    ... (\u2605)\n\nSTEP 5: OPTIMAL NUMBER OF HASH FUNCTIONS\n    To minimize fp, take the natural log:\n        ln(fp) = k \u00b7 ln(1 - e^(-kn/m))\n    \n    Let p = e^(-kn/m), so k = -(m/n)\u00b7ln(p)\n    Then: ln(fp) = -(m/n)\u00b7ln(p)\u00b7ln(1-p)\n    \n    By AM-GM inequality or calculus (d/dp = 0):\n        d/dp [ln(p)\u00b7ln(1-p)] = ln(1-p)/p + ln(p)\u00b7(-1/(1-p)) = 0\n        \n    This gives: (1-p)\u00b7ln(1-p) = -p\u00b7ln(p)\n    By symmetry, this is satisfied when p = 1/2.\n    \n    Therefore: e^(-kn/m) = 1/2\n              k_opt = (m/n) \u00b7 ln(2)                ... (\u2605\u2605)\n\nSTEP 6: OPTIMAL BIT ARRAY SIZE given desired false positive rate fp\n    Substituting k_opt into (\u2605):\n        fp = (1/2)^k = (1/2)^((m/n)\u00b7ln2)\n        ln(fp) = -(m/n)\u00b7(ln2)\u00b2\n        m = -n\u00b7ln(fp) / (ln2)\u00b2                    ... (\u2605\u2605\u2605)\n\nQED: These three starred equations form the complete mathematical foundation.\n```\n\n## Implementation\n\n```python\n\"\"\"\nBloom Filter Implementation from Scratch\n\nFeatures:\n- Standard Bloom filter with configurable false positive rate\n- Optimal hash function count calculation  \n- Counting Bloom filter variant supporting deletion\n- Serialization/deserialization (JSON + binary)\n- Memory usage statistics\n- No external libraries (only stdlib)\n\"\"\"\n\nimport math\nimport struct\nimport json\nimport hashlib\nimport array\nfrom typing import Any, Optional, Tuple\n\n\nclass BitArray:\n    \"\"\"Memory-efficient bit array using Python's array module.\"\"\"\n\n    def __init__(self, size: int):\n        self.size = size\n        # Use unsigned long long (8 bytes each) for storage\n        self._num_words = (size + 63) // 64\n        # 'Q' = unsigned long long (8 bytes)\n        self._data = array.array('Q', [0]) * self._num_words\n\n    def set_bit(self, index: int) -> None:\n        word_idx = index >> 6       # index // 64\n        bit_idx = index & 63        # index % 64\n        self._data[word_idx] |= (1 << bit_idx)\n\n    def clear_bit(self, index: int) -> None:\n        word_idx = index >> 6\n        bit_idx = index & 63\n        self._data[word_idx] &= ~(1 << bit_idx)\n\n    def get_bit(self, index: int) -> bool:\n        word_idx = index >> 6\n        bit_idx = index & 63\n        return bool(self._data[word_idx] & (1 << bit_idx))\n\n    def count_ones(self) -> int:\n        \"\"\"Population count across all bits.\"\"\"\n        count = 0\n        for word in self._data:\n            # Brian Kernighan's algorithm\n            w = word\n            while w:\n                w &= w - 1\n                count += 1\n        return count\n\n    def to_bytes(self) -> bytes:\n        return self._data.tobytes()\n\n    @classmethod\n    def from_bytes(cls, data: bytes, size: int) -> 'BitArray':\n        ba = cls.__new__(cls)\n        ba.size = size\n        ba._num_words = (size + 63) // 64\n        ba._data = array.array('Q')\n        ba._data.frombytes(data)\n        return ba\n\n    def memory_bytes(self) -> int:\n        return self._num_words * 8\n\n\nclass HashGenerator:\n    \"\"\"\n    Generates k independent hash values using the enhanced double hashing technique.\n\n    Based on Kirsch & Mitzenmacher (2004):\n        h_i(x) = h1(x) + i*h2(x) + i\u00b2 (mod m)\n\n    This provides the same theoretical guarantees as k fully independent\n    hash functions while only computing two base hashes.\n    \"\"\"\n\n    @staticmethod\n    def _hash_pair(item: bytes) -> Tuple[int, int]:\n        \"\"\"Generate two independent 64-bit hashes from a single item.\"\"\"\n        # Use MD5 (128 bits) split into two 64-bit hashes\n        # MD5 is fine here \u2014 we need uniformity, not cryptographic security\n        digest = hashlib.md5(item).digest()\n        h1 = struct.unpack('<Q', digest[:8])[0]\n        h2 = struct.unpack('<Q', digest[8:])[0]\n        return h1, h2\n\n    @staticmethod\n    def get_indices(item: Any, num_hashes: int, bit_size: int) -> list:\n        \"\"\"Generate k hash indices for an item.\"\"\"\n        # Normalize item to bytes\n        if isinstance(item, str):\n            item_bytes = item.encode('utf-8')\n        elif isinstance(item, int):\n            item_bytes = str(item).encode('utf-8')\n        elif isinstance(item, bytes):\n            item_bytes = item\n        else:\n            item_bytes = repr(item).encode('utf-8')\n\n        h1, h2 = HashGenerator._hash_pair(item_bytes)\n\n        indices = []\n        for i in range(num_hashes):\n            # Enhanced double hashing with quadratic term for better independence\n            combined = (h1 + i * h2 + i * i) % bit_size\n            indices.append(combined)\n        return indices\n\n\nclass BloomFilter:\n    \"\"\"\n    Standard Bloom filter with configurable false positive rate.\n\n    Parameters\n    ----------\n    expected_items : int\n        Expected number of items to insert (n).\n    fp_rate : float\n        Desired false positive probability (0 < fp < 1).\n    \"\"\"\n\n    def __init__(self, expected_items: int, fp_rate: float = 0.01):\n        if expected_items <= 0:\n            raise ValueError(\"expected_items must be positive\")\n        if not (0 < fp_rate < 1):\n            raise ValueError(\"fp_rate must be between 0 and 1 exclusive\")\n\n        self.expected_items = expected_items\n        self.fp_rate = fp_rate\n\n        # Optimal bit array size: m = -n\u00b7ln(p) / (ln2",
+      "tokens": 2112,
+      "time_ms": 31904
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 6.0,
+        "depth": 7.0,
+        "usefulness": 3.0,
+        "correctness": 5.0,
+        "completeness": 3.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 6.0,
+        "usefulness": 5.0,
+        "correctness": 7.0,
+        "completeness": 5.0
+      },
+      "weighted_a": 4.9,
+      "weighted_b": 6.3,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is clearer and more practically useful, with a more complete visible implementation and correct core formulas. Response A has a stronger derivation, but its implementation is cut off earlier and does not visibly deliver all requested features."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 6.0,
+        "correctness": 8.0,
+        "completeness": 5.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 2.0,
+        "correctness": 8.0,
+        "completeness": 2.0
+      },
+      "weighted_a": 6.9,
+      "weighted_b": 5.7,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses were cut off due to length limits, but Response A managed to implement the core Bloom filter logic and memory statistics, making it significantly more complete and useful than Response B."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 8.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.65,
+      "weighted_b": 8.35,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provided a more rigorous, step-by-step mathematical proof and a more complete, production-ready implementation with serialization and memory stats, though Response B was also strong with additional features like a BitArray class."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

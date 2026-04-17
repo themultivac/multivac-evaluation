@@ -1,0 +1,104 @@
+{
+  "question_id": "ANALYSIS-013",
+  "category": "analysis",
+  "question_text": "A mobile app shows: DAU 100K (up 50%), WAU 200K (up 20%), MAU 500K (up 10%), D1 retention 40%, D7 retention 15%, D30 retention 5%, Session length 8min (down 20%), Sessions/day 2.1 (up 30%). The PM say",
+  "timestamp": "2026-04-16T18:16:44.101295",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Breaking Down the \"We're Growing Fast\" Claim\n\n## (1) What Story Does the Data Actually Tell?\n\nThe PM is reading the top of the funnel and ignoring the bottom. Here's the real story:\n\n**Acquisition is booming, retention is broken.**\n\n- DAU up 50%, WAU up 20%, MAU up 10% \u2192 growth is **front-loaded**. New users are pouring in but not sticking around long enough to lift WAU/MAU proportionally.\n- D1 40% \u2192 D7 15% \u2192 D30 5% is a **steep retention cliff**. You're losing 62% of users between Day 1 and Day 7, and 87% by Day 30.\n- This is a **leaky bucket**: marketing/virality is filling the top faster than users churn out, which masks the retention problem in aggregate numbers.\n\nIf acquisition slows for any reason (ad budget, seasonality, channel saturation), DAU will collapse.\n\n## (2) What's Concerning About DAU/MAU?\n\nDAU/MAU = 100K/500K = **0.20 (20%)**\n\n- This means the average user opens the app ~6 days per month.\n- Benchmarks: social/messaging apps hit 50%+; \"sticky\" consumer apps are 20%+; this is borderline.\n- More concerning: DAU grew 50% while MAU grew only 10%. The **ratio is rising artificially** because of the new-user surge \u2014 those users are active today (inflating DAU) but will likely churn out of MAU next month given the D30 of 5%.\n- In 30 days, today's DAU spike will become tomorrow's MAU decline. The \"stickiness\" is an illusion.\n\n## (3) Why Might Session Length Drop as Sessions Increase?\n\nSeveral possibilities, ranked by likelihood:\n\n1. **Behavior shift toward quick-check usage** \u2014 users are popping in for notifications, feeds, or specific tasks rather than deep engagement. Often a sign the core value moved to lightweight loops (push-driven).\n2. **New user composition** \u2014 a flood of new, less-engaged users take shorter sessions while exploring. This averages down session length.\n3. **Product changes fragmenting sessions** \u2014 e.g., a push notification strategy, or faster load/task completion that artificially splits one session into many (8 min \u00d7 2.1 = 16.8 min/day, vs. previously 10 min \u00d7 1.6 = 16 min \u2014 **total time is nearly flat**).\n4. **Degraded experience** \u2014 bugs, ads, or friction forcing users to bounce and return.\n\nThe key insight: **total daily time \u2248 unchanged**. Engagement isn't growing; it's being chopped into more pieces.\n\n## (4) The One Metric to Focus On: **D7 Retention**\n\nWhy D7 over the alternatives:\n- **D1 (40%)** measures onboarding/first impression \u2014 decent and a lagging signal of habit.\n- **D30 (5%)** is too slow a feedback loop to iterate on.\n- **D7 (15%)** is the sweet spot: it captures whether users form a **return habit**, and it's the strongest leading indicator of long-term retention and LTV.\n\nWith a D7 of 15%, no amount of acquisition will produce sustainable growth \u2014 you're renting users, not earning them. Fix D7 via core-loop improvements (activation milestones, notification strategy, early value delivery), and every other metric \u2014 MAU, DAU/MAU, LTV, CAC payback \u2014 improves automatically.\n\n**Bottom line to the PM:** You're not growing fast \u2014 you're acquiring fast. Those are different problems, and one of them is hiding the other.",
+      "tokens": 1379,
+      "time_ms": 13646
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Dissecting the \"We're Growing Fast\" Narrative\n\n## (1) The Real Story This Data Tells\n\nThe PM is confusing **acquisition momentum with product health**. Let me reconstruct what's actually happening.\n\n**The optimistic surface:**\n- DAU growing 50% \u2014 looks fantastic in a slide deck\n- Sessions per day up 30% \u2014 people are opening the app more\n\n**The uncomfortable reality underneath:**\n\n```\nFunnel Decay Analysis:\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nDAU growth:  +50%   \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\nWAU growth:  +20%   \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\nMAU growth:  +10%   \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\n\nGrowth is decelerating at each wider time window.\nThis means: people TRY the app but DON'T STAY.\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\nRetention Cascade:\nDay 1:   40% \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591  (mediocre)\nDay 7:   15% \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591  (poor)\nDay 30:   5% \u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591  (alarming)\n\nYou lose 62.5% of retained users between D1 and D7.\nYou lose 66.7% of remaining users between D7 and D30.\n```\n\n**The actual story:** This is a **leaky bucket being filled by a firehose**. Probably driven by a marketing spend spike, a viral moment, or a feature launch generating curiosity. The underlying product is failing to convert trial into habit.\n\n---\n\n## (2) The DAU/MAU Ratio Problem\n\nThis is one of the most important diagnostic ratios in consumer apps.\n\n```\nYour DAU/MAU = 100K / 500K = 0.20 (20%)\n\nWhat this means conceptually:\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nOn any given day, only 1 in 5 monthly users shows up.\n\nIndustry Benchmarks (approximate):\n  Facebook/Instagram:  ~50-60%  (daily habit)\n  Good consumer app:   ~25-30%  (strong engagement)\n  \u27a4 YOUR APP:          ~20%     (casual/declining)\n  Struggling app:      ~10-15%  (utility or dying)\n  \n\"Stickiness\" = how much your product is a daily habit\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n```\n\n**But here's the deeper concern \u2014 the ratio is likely *declining*:**\n\nThink about the math. DAU is up 50%, MAU is up only 10%. If this trend continues:\n\n```\nCurrent:   DAU/MAU = 100K/500K = 20.0%\n\nBut wait \u2014 this seems like the ratio is IMPROVING, right?\nNot necessarily. Here's why:\n\nThe DAU spike could be driven by:\n  - New users in their first 1-3 days (honeymoon period)\n  - A feature/notification driving short-term opens\n  - Marketing campaign creating temporary surge\n\nIf you stripped out users acquired in the last 30 days\nand looked at MATURE cohort DAU/MAU, it's probably\nsignificantly below 20%.\n```\n\n**The critical question:** What's the DAU/MAU of users who were already in your MAU *last month*? If that number is flat or declining while headline DAU rises, you're masking churn with acquisition \u2014 the classic growth trap.\n\n**Why this matters strategically:**\n- Low stickiness means you're vulnerable to any disruption in acquisition channels\n- CAC will eventually rise as you exhaust easy-to-reach audiences\n- Monetization suffers because infrequent users generate less revenue\n- You're building on sand\n\n---\n\n## (3) Why Session Length Decreases as Sessions Increase\n\nThis is actually the **least alarming** signal in the dataset, and there are several plausible explanations ranging from benign to concerning.\n\n### Benign Explanations\n\n**a) Task fragmentation (potentially healthy)**\n```\nBefore:  2 sessions \u00d7 10 min = 20 min total daily engagement\nAfter:   2.1 sessions \u00d7 8 min = 16.8 min total daily engagement\n\nHmm \u2014 total engagement actually DROPPED from 20 to 16.8 min.\nThat's a ~16% decline in total daily time. NOT benign.\n```\n\nWait \u2014 let me recalculate. This actually matters a lot.\n\n```\nTOTAL DAILY ENGAGEMENT:\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nBefore: ~1.6 sessions/day \u00d7 ~10 min = ~16 min/day\nAfter:   2.1 sessions/day \u00d7   8 min = 16.8 min/day\n\nActually roughly flat. The \"before\" sessions/day was:\n  2.1 / 1.3 = ~1.6 (if sessions up 30%)\n  1.6 \u00d7 10 min = 16 min\n  \nSo total engagement is roughly STABLE despite all the \n\"growth.\" Users aren't giving you more of their time.\n```\n\n**b) Composition shift (most likely explanation)**\n```\nYour user base now contains a much higher proportion \nof NEW users (because DAU +50% with poor retention).\n\nNew users typically have:\n  \u2713 More sessions (exploring, notifications still on)\n  \u2713 Shorter sessions (haven't found deep value yet)\n  \u2713 Lower intent (curiosity-driven, not habit-driven)\n\nThis is a SIMPSON'S PARADOX risk:\n  - Veteran session length might be stable or growing\n  - New user session length might be very short\n  - Blended average drops because new users dominate\n```\n\n**c) Notification/growth hack driven opens**\n```\nIf you're driving re-engagement through push notifications:\n  User gets notification \u2192 opens app \u2192 glances \u2192 closes\n  \n  This creates: \u2191 sessions/day + \u2193 session length\n  \n  It looks like engagement but it's actually INTERRUPTION.\n  These sessions have low value to user and to business.\n```\n\n### Concerning Explanations\n\n**d) Content/value exhaustion**\n```\nUsers come back (sessions up) but find less value each time\n(session length down). They're checking but not engaging deeply.\nThis is a precursor pattern to full churn.\n\nBehavioral sequence:\n  Long invested sessions \u2192 Quick check-ins \u2192 Skipped days \u2192 Gone\n```\n\n**How to differentiate:** Segment session length by cohort age. If D30+ users are maintaining session length, it's composition shift. If even mature users are shortening sessions, you have a value delivery problem.\n\n---\n\n## (4) The One Metric I'd Focus On\n\n### **D7 Retention of Recent Cohorts \u2014 specifically the week-over-week trend**\n\nNot D1. Not DAU. Not session metrics. **D7 retention, tracked by weekly cohort.**\n\nHere's my reasoning:\n\n```\nWhy not DAU?\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nDAU is an OUTPUT metric. It's the sum of acquisition + retention.\nIt tells you the scoreboard, not what play to run.\nYou can inflate it with spend. It masks composition problems.\n\nWhy not D1 retention?\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nD1 (40%) is about first impression \u2014 onboarding, initial hook.\nIt's important but it's not where your biggest leak is.\nYour D1\u2192D7 drop (40%\u219215%) means you lose 62.5% of \nD1-retained users by D7. THAT'S your crisis.\n\nWhy not D30 retention?\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501",
+      "tokens": 2195,
+      "time_ms": 46210
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 6.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 7.45,
+      "weighted_b": 8.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is more complete and clearer, directly answers all four parts, and avoids the truncation/incomplete ending present in Response A while maintaining strong analytical depth and practical focus."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 9.0,
+        "clarity": 9.0,
+        "usefulness": 9.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "scores_b": {
+        "depth": 8.0,
+        "clarity": 7.0,
+        "usefulness": 5.0,
+        "completeness": 4.0,
+        "correctness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 6.55,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provides a complete, well-structured, and highly insightful analysis. Response B contains good insights but cuts off abruptly at the end, making it incomplete.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:12:54.951035"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.6,
+      "weighted_b": 8.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B provided superior depth and completeness, with detailed funnel analysis, cohort reasoning, and strategic implications, while maintaining equal correctness and usefulness."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

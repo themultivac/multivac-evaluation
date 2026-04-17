@@ -1,0 +1,102 @@
+{
+  "question_id": "CODE-025",
+  "category": "code",
+  "question_text": "Implement an LRU cache with per-key TTL (time-to-live) support. Requirements: O(1) get/put, thread-safe, lazy expiration (don't use background threads), configurable max size, eviction callback, and c",
+  "timestamp": "2026-04-16T17:34:33.947352",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# LRU Cache with Per-Key TTL\n\nA production-quality implementation of a thread-safe LRU cache with per-key TTL support.\n\n## Implementation\n\n```python\nimport threading\nimport time\nfrom collections import OrderedDict\nfrom dataclasses import dataclass\nfrom typing import Any, Callable, Hashable, Optional, Tuple\n\n\n@dataclass\nclass CacheStats:\n    \"\"\"Statistics for cache operations.\"\"\"\n    hits: int = 0\n    misses: int = 0\n    expirations: int = 0  # Entries removed due to TTL expiry\n    evictions: int = 0    # Entries removed due to capacity\n    \n    @property\n    def total_requests(self) -> int:\n        return self.hits + self.misses\n    \n    @property\n    def hit_rate(self) -> float:\n        total = self.total_requests\n        return self.hits / total if total > 0 else 0.0\n    \n    def snapshot(self) -> \"CacheStats\":\n        return CacheStats(self.hits, self.misses, self.expirations, self.evictions)\n\n\nclass _Entry:\n    \"\"\"Internal cache entry with value and expiration time.\"\"\"\n    __slots__ = (\"value\", \"expires_at\")\n    \n    def __init__(self, value: Any, expires_at: Optional[float]):\n        self.value = value\n        self.expires_at = expires_at  # None means no TTL (never expires)\n    \n    def is_expired(self, now: float) -> bool:\n        return self.expires_at is not None and now >= self.expires_at\n\n\n# Reason eviction occurred\nEvictionReason = str  # \"expired\" | \"capacity\" | \"replaced\" | \"manual\"\n\nEvictionCallback = Callable[[Hashable, Any, EvictionReason], None]\n\n\nclass LRUCacheTTL:\n    \"\"\"\n    Thread-safe LRU cache with per-key TTL support.\n    \n    Features:\n    - O(1) get/put operations (amortized).\n    - Thread-safe via a single RLock.\n    - Lazy expiration: expired entries are purged on access.\n    - Configurable max size with LRU eviction.\n    - Optional per-key TTL; falls back to default_ttl; None means no expiry.\n    - Eviction callback invoked on any removal (expired, capacity, replaced, manual).\n    - Hit/miss statistics.\n    \n    Thread-safety: a single RLock guards all mutable state. The eviction\n    callback is invoked *outside* the lock to avoid re-entrancy issues and\n    to allow user code to call back into the cache safely.\n    \"\"\"\n    \n    def __init__(\n        self,\n        max_size: int,\n        default_ttl: Optional[float] = None,\n        on_evict: Optional[EvictionCallback] = None,\n        time_func: Callable[[], float] = time.monotonic,\n    ):\n        if max_size <= 0:\n            raise ValueError(\"max_size must be positive\")\n        if default_ttl is not None and default_ttl <= 0:\n            raise ValueError(\"default_ttl must be positive or None\")\n        \n        self._max_size = max_size\n        self._default_ttl = default_ttl\n        self._on_evict = on_evict\n        self._time = time_func\n        \n        self._data: \"OrderedDict[Hashable, _Entry]\" = OrderedDict()\n        self._lock = threading.RLock()\n        self._stats = CacheStats()\n    \n    # ---- Public API ----\n    \n    def get(self, key: Hashable, default: Any = None) -> Any:\n        \"\"\"Return the cached value for `key`, or `default` if missing/expired.\"\"\"\n        evicted: list[Tuple[Hashable, Any, EvictionReason]] = []\n        with self._lock:\n            entry = self._data.get(key)\n            now = self._time()\n            if entry is None:\n                self._stats.misses += 1\n                return default\n            if entry.is_expired(now):\n                del self._data[key]\n                self._stats.expirations += 1\n                self._stats.misses += 1\n                evicted.append((key, entry.value, \"expired\"))\n                self._fire_callbacks(evicted)\n                return default\n            # Hit: move to MRU position.\n            self._data.move_to_end(key)\n            self._stats.hits += 1\n            return entry.value\n        # (callbacks fired above if needed)\n    \n    def put(\n        self,\n        key: Hashable,\n        value: Any,\n        ttl: Optional[float] = -1,  # sentinel: use default_ttl\n    ) -> None:\n        \"\"\"\n        Insert/update `key`. \n        - ttl=-1 (default): use cache's default_ttl.\n        - ttl=None: no expiration.\n        - ttl>0: seconds until expiration.\n        \"\"\"\n        effective_ttl = self._default_ttl if ttl == -1 else ttl\n        if effective_ttl is not None and effective_ttl <= 0:\n            raise ValueError(\"ttl must be positive or None\")\n        \n        now = self._time()\n        expires_at = now + effective_ttl if effective_ttl is not None else None\n        \n        evicted: list[Tuple[Hashable, Any, EvictionReason]] = []\n        with self._lock:\n            # Replacement case\n            if key in self._data:\n                old = self._data[key]\n                evicted.append((key, old.value, \"replaced\"))\n                self._data[key] = _Entry(value, expires_at)\n                self._data.move_to_end(key)\n            else:\n                self._data[key] = _Entry(value, expires_at)\n            \n            # Enforce capacity (evict expired first, then LRU).\n            self._purge_expired_locked(now, evicted)\n            while len(self._data) > self._max_size:\n                old_key, old_entry = self._data.popitem(last=False)  # LRU\n                self._stats.evictions += 1\n                evicted.append((old_key, old_entry.value, \"capacity\"))\n        \n        self._fire_callbacks(evicted)\n    \n    def delete(self, key: Hashable) -> bool:\n        \"\"\"Remove `key`. Returns True if it was present (and not expired).\"\"\"\n        evicted: list[Tuple[Hashable, Any, EvictionReason]] = []\n        with self._lock:\n            entry = self._data.pop(key, None)\n            if entry is None:\n                self._fire_call",
+      "tokens": 2151,
+      "time_ms": 20830
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# LRU Cache with Per-Key TTL Support\n\n## Implementation\n\n```python\n\"\"\"\nLRU Cache with per-key TTL support.\n\nFeatures:\n- O(1) get/put operations\n- Thread-safe via reentrant lock\n- Lazy expiration (no background threads)\n- Configurable max size\n- Eviction callback\n- Cache hit/miss statistics\n\"\"\"\n\nimport threading\nimport time\nfrom collections import OrderedDict\nfrom dataclasses import dataclass, field\nfrom typing import Any, Callable, Dict, Hashable, Optional, Tuple\n\n\n@dataclass\nclass CacheEntry:\n    \"\"\"Represents a single cache entry with value and expiration metadata.\"\"\"\n    key: Hashable\n    value: Any\n    expire_at: Optional[float] = None  # None means no expiration\n\n    def is_expired(self, now: Optional[float] = None) -> bool:\n        if self.expire_at is None:\n            return False\n        if now is None:\n            now = time.monotonic()\n        return now >= self.expire_at\n\n\n@dataclass\nclass CacheStats:\n    \"\"\"Thread-safe cache statistics.\"\"\"\n    _hits: int = 0\n    _misses: int = 0\n    _evictions: int = 0\n    _expirations: int = 0\n    _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)\n\n    @property\n    def hits(self) -> int:\n        with self._lock:\n            return self._hits\n\n    @property\n    def misses(self) -> int:\n        with self._lock:\n            return self._misses\n\n    @property\n    def evictions(self) -> int:\n        with self._lock:\n            return self._evictions\n\n    @property\n    def expirations(self) -> int:\n        with self._lock:\n            return self._expirations\n\n    @property\n    def hit_rate(self) -> float:\n        with self._lock:\n            total = self._hits + self._misses\n            return self._hits / total if total > 0 else 0.0\n\n    @property\n    def total_requests(self) -> int:\n        with self._lock:\n            return self._hits + self._misses\n\n    def record_hit(self) -> None:\n        with self._lock:\n            self._hits += 1\n\n    def record_miss(self) -> None:\n        with self._lock:\n            self._misses += 1\n\n    def record_eviction(self) -> None:\n        with self._lock:\n            self._evictions += 1\n\n    def record_expiration(self) -> None:\n        with self._lock:\n            self._expirations += 1\n\n    def reset(self) -> None:\n        with self._lock:\n            self._hits = 0\n            self._misses = 0\n            self._evictions = 0\n            self._expirations = 0\n\n    def snapshot(self) -> Dict[str, Any]:\n        \"\"\"Return a consistent snapshot of all stats.\"\"\"\n        with self._lock:\n            total = self._hits + self._misses\n            return {\n                \"hits\": self._hits,\n                \"misses\": self._misses,\n                \"evictions\": self._evictions,\n                \"expirations\": self._expirations,\n                \"hit_rate\": self._hits / total if total > 0 else 0.0,\n                \"total_requests\": total,\n            }\n\n\n# Sentinel for missing values (distinct from None)\n_MISSING = object()\n\n\nclass LRUCache:\n    \"\"\"\n    Thread-safe LRU Cache with per-key TTL support.\n\n    Uses an OrderedDict for O(1) access and LRU ordering.\n    Expiration is handled lazily on access \u2014 no background threads.\n\n    Args:\n        max_size: Maximum number of entries in the cache. Must be >= 1.\n        default_ttl: Default TTL in seconds for entries without explicit TTL.\n                     None means entries don't expire by default.\n        on_evict: Optional callback called as on_evict(key, value, reason)\n                  when an entry is removed. reason is one of:\n                  'evicted' (LRU eviction), 'expired', 'replaced', 'deleted'.\n        time_func: Function returning current time (for testing). Defaults\n                   to time.monotonic.\n    \"\"\"\n\n    def __init__(\n        self,\n        max_size: int = 128,\n        default_ttl: Optional[float] = None,\n        on_evict: Optional[Callable[[Hashable, Any, str], None]] = None,\n        time_func: Optional[Callable[[], float]] = None,\n    ):\n        if max_size < 1:\n            raise ValueError(f\"max_size must be >= 1, got {max_size}\")\n        if default_ttl is not None and default_ttl <= 0:\n            raise ValueError(f\"default_ttl must be positive, got {default_ttl}\")\n\n        self._max_size = max_size\n        self._default_ttl = default_ttl\n        self._on_evict = on_evict\n        self._time_func = time_func or time.monotonic\n\n        # OrderedDict provides O(1) move_to_end and popitem\n        self._cache: OrderedDict[Hashable, CacheEntry] = OrderedDict()\n        self._lock = threading.RLock()  # Reentrant to allow callback re-entry\n        self._stats = CacheStats()\n\n    @property\n    def max_size(self) -> int:\n        return self._max_size\n\n    @property\n    def stats(self) -> CacheStats:\n        return self._stats\n\n    def __len__(self) -> int:\n        \"\"\"Return count of non-expired entries (may trigger lazy cleanup).\"\"\"\n        with self._lock:\n            self._evict_expired()\n            return len(self._cache)\n\n    def __contains__(self, key: Hashable) -> bool:\n        \"\"\"Check if key exists and is not expired. Does NOT count as hit/miss.\"\"\"\n        with self._lock:\n            entry = self._cache.get(key)\n            if entry is None:\n                return False\n            now = self._time_func()\n            if entry.is_expired(now):\n                self._remove_entry(key, \"expired\")\n                return False\n            return True\n\n    def get(self, key: Hashable, default: Any = None) -> Any:\n        \"\"\"\n        Get value by key. Returns default if not found or expired.\n\n        Counts as hit or miss for statistics.\n        Moves accessed key to most-recently-used position.\n\n        Args:\n            key: Cache key.\n            default: Value to return if key not found.\n\n        Returns:\n            Cached value or default.\n        \"\"\"\n        with self._lock:\n            entry = self._cache.get(key)\n\n            if entry is None:\n                self._stats.record_miss()\n                return default\n\n            now = self._time_func()\n            if entry.is_expired(now):\n                self._remove_entry(key, \"expired\")\n                self._stats.record_miss()\n                return default\n\n            # Move to end (most recently used)\n            self._cache.move_to_end(key)\n            self._stats.record_hit()\n            return entry.value\n\n    def peek(self, key: Hashable, default: Any = None) -> Any:\n        \"\"\"\n        Get value without updating LRU order or recording stats.\n\n        Useful for inspection without side effects.\n        \"\"\"\n        with self._lock:\n            entry = self._cache.get(key)\n            if entry is None:\n                return default\n            now = self._time_func()\n            if entry.is_expired(now):\n                self._remove_entry(key, \"expired\")\n                return default\n            return entry.value\n\n    def put(self, key: Hashable, value: Any, ttl: Optional[float] = _MISSING) -> None:\n        \"\"\"\n        Insert or update a cache entry.\n\n        Args:\n            key: Cache key.\n            value: Value to cache.\n            ttl: Time-to-live in seconds. None means no expiration.\n                 If not specified, uses the cache's default_ttl.\n        \"\"\"\n        # Resolve TTL\n        if ttl is _MISSING:\n            effective_ttl = self._default_ttl\n        else:\n            effective_ttl =",
+      "tokens": 2121,
+      "time_ms": 24097
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 4.0,
+        "depth": 3.0,
+        "usefulness": 1.0,
+        "correctness": 2.0,
+        "completeness": 2.0
+      },
+      "scores_b": {
+        "clarity": 5.0,
+        "depth": 4.0,
+        "usefulness": 2.0,
+        "correctness": 3.0,
+        "completeness": 3.0
+      },
+      "weighted_a": 2.45,
+      "weighted_b": 3.45,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Both responses are incomplete and cut off before delivering a full implementation or tests, but Response B provides a more coherent structure, fuller API design, and clearer thread-safety/statistics approach before truncation."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 6.0,
+        "correctness": 8.0,
+        "completeness": 4.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 6.0,
+        "usefulness": 5.0,
+        "correctness": 7.0,
+        "completeness": 3.0
+      },
+      "weighted_a": 6.9,
+      "weighted_b": 5.9,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses were cut off due to length limits, but Response A managed to complete the core get and put methods, and demonstrated better thread-safety design by executing eviction callbacks outside of the lock."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 7.6,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provides a more complete, well-structured implementation with thorough documentation, proper thread-safe statistics, and handles edge cases better, while Response B is cut off and less polished."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 2,
+    "claude_opus_47": 1
+  },
+  "judges_agree": false
+}

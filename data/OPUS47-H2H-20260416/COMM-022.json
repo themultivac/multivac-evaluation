@@ -1,0 +1,103 @@
+{
+  "question_id": "COMM-022",
+  "category": "communication",
+  "question_text": "Rewrite these release notes to be actually useful to users:\n\nOriginal: 'v2.4.1 - Bug fixes and performance improvements. Updated dependencies. Refactored authentication module. Fixed issue #4521.'\n\nWr",
+  "timestamp": "2026-04-16T19:02:47.978094",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Release Notes v2.4.1 \u2014 Three Versions\n\n---\n\n## 1. For End Users (Non-Technical)\n\n**What's new in v2.4.1**\n\n- **Faster, smoother experience:** The app loads quicker and feels more responsive, especially on older devices.\n- **Login reliability:** We fixed a bug where some users were unexpectedly logged out or saw \"session expired\" errors (issue #4521). Signing in should now be more stable.\n- **Behind-the-scenes improvements:** We updated the technology the app relies on to keep things secure and up to date.\n\n**What you need to do:** Nothing \u2014 just update the app. If you were previously logged out unexpectedly, that should stop happening.\n\n---\n\n## 2. For Developers Integrating Our API\n\n**v2.4.1 \u2014 Changelog**\n\n**Changed**\n- **Authentication module refactored.** Internal implementation only \u2014 the public API contract (endpoints, request/response shapes, token format, expiry behavior) is unchanged. No client-side changes required.\n- **Dependencies updated.** Notably [list specific libs, e.g., `jsonwebtoken`, `axios`]. Review your lockfiles if you're pinning transitively.\n\n**Fixed**\n- **Issue #4521:** Token refresh could fail intermittently when two requests hit the refresh endpoint within ~100ms, returning a 401 instead of a valid token. Now handled with request coalescing.\n\n**Performance**\n- Average auth-endpoint latency reduced ~30% (p95).\n\n**Action required:**\n- **None for most integrations.** Just update the SDK/client to `2.4.1`.\n- If you implemented custom retry logic to work around #4521, you can safely remove it.\n- If you pin transitive dependencies, re-run `npm audit` / `pip check` after upgrading.\n\n**Breaking changes:** None.\n\n---\n\n## 3. For the Internal Team\n\n**v2.4.1 \u2014 Internal Release Notes**\n\n**Auth module refactor (PR #4487)**\n- Extracted token validation into `AuthService.validateToken()` \u2014 single source of truth. Removed three duplicated validation paths across `middleware/`, `routes/user.js`, and the WebSocket handler.\n- Added request coalescing for `/refresh` via a keyed promise cache (5s TTL). This is what actually fixed #4521.\n- Test coverage on the auth module is now 94% (up from 71%). See `tests/auth/` for new edge cases \u2014 reuse these patterns.\n\n**Dependency updates**\n- `jsonwebtoken` \u2192 9.0.2 (addresses CVE-2022-23529)\n- `axios` \u2192 1.6.5\n- `[other]` \u2192 [version]\n- Full diff in `package-lock.json`. Flag: `node-fetch` is now a transitive dep of two packages \u2014 consider consolidating in v2.5.\n\n**#4521 post-mortem summary**\n- Root cause: race condition on concurrent token refresh, not a backend issue as originally triaged.\n- Detected in production for ~3 weeks before reproduction. See `docs/postmortems/4521.md`.\n- Action item: add synthetic monitoring for concurrent-refresh scenarios (owner: @platform-team, due next sprint).\n\n**What you need to do:**\n- **On-call:** watch error rates on `/auth/*` for 48 hours post-deploy. Baseline in Datadog dashboard \"Auth v2.4.1.\"\n- **Frontend team:** you can delete the client-side refresh-retry hack in `useAuth.ts` (lines 112\u2013140). Ticket: #4602.\n- **QA:** regression suite for auth flows has been updated; please re-baseline screenshots.\n- **Docs team:** no external doc changes needed \u2014 API surface is unchanged.\n\n**Rollback plan:** `v2.4.0` tag is pinned; revert via standard deploy pipeline. No DB migrations in this release.",
+      "tokens": 1442,
+      "time_ms": 23110
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Release Notes v2.4.1 \u2014 Three Ways\n\n---\n\n## Version 1: For End Users\n\n### What's New in v2.4.1\n\n**Logging in is now faster and more reliable.**\nWe fixed a bug where some users were being randomly logged out during long sessions. If you've experienced getting kicked back to the login screen in the middle of your work, that's now fixed. You don't need to do anything \u2014 this is already live.\n\n**The app should feel snappier overall.**\nWe made behind-the-scenes improvements that reduce load times, especially on slower connections. Pages that previously took a few seconds to load should now feel noticeably faster.\n\n**Do you need to do anything?** No. Just keep using the app as usual. If you were affected by the logout bug, it should no longer occur. If it does, contact support@example.com.\n\n---\n\n## Version 2: For Developers Using Our API\n\n### v2.4.1 \u2014 Release Notes\n\n**Authentication module rewrite \u2014 action may be required.**\nWe refactored the authentication module to address token refresh race conditions (related: GitHub issue #4521). The fix changes how expired tokens are handled during concurrent requests.\n\n**What changed specifically:**\n- Token refresh now uses a mutex lock to prevent duplicate refresh calls\n- Expired token responses return `401` with a new `error_code: \"TOKEN_EXPIRED_RETRY\"` instead of the previous generic `AUTH_FAILED`\n- Refresh endpoint (`/auth/refresh`) now accepts an optional `request_id` parameter for idempotency\n\n**What this means for you:**\n- If you're handling `401` responses, check for the new error code\n- If you're making concurrent authenticated requests, you no longer need to implement your own deduplication logic for token refreshes\n- The old error code still works but is **deprecated and will be removed in v3.0**\n\n**Dependency updates:**\n- Updated `jsonwebtoken` from 9.1.0 \u2192 9.2.1 (security patch for CVE-2024-XXXX)\n- Updated `redis` client from 4.5.0 \u2192 4.6.2\n\n**What you need to do:**\n1. Review any custom retry logic around `401` responses\n2. Test your token refresh flow, especially under concurrent load\n3. No SDK changes required if you're on SDK v2.x \u2014 the new behavior is backward compatible\n\n---\n\n## Version 3: For the Internal Team\n\n### v2.4.1 Retro + What Shipped\n\n**Context:** This patch addresses the session drop-off spike we saw starting March 12. Root cause was the token refresh race condition Priya identified in #4521 \u2014 when two API calls hit the auth middleware at the same time with an expired token, both triggered a refresh, and the second one invalidated the first, logging the user out.\n\n**What shipped:**\n- **Auth module refactor (Priya, Jake):** Added mutex lock around token refresh. New `TOKEN_EXPIRED_RETRY` error code for clearer client-side handling. Old `AUTH_FAILED` code deprecated, removal slated for v3.0. *This was the big one.*\n- **Dependency bumps (Jake):** `jsonwebtoken` bumped to patch the HMAC verification bypass (CVE-2024-XXXX \u2014 low severity for us since we use RSA, but let's not leave it). Redis client bumped to fix the connection pool leak we were seeing in staging.\n- **Perf improvements (Sam):** Redis query batching on the session lookup path. p95 auth latency dropped from ~220ms to ~140ms in staging. Monitoring in Datadog dashboard \"Auth Service v2.4.\"\n\n**What to watch:**\n- Monitor `auth.token_refresh.duplicate_attempts` metric \u2014 should drop to near zero\n- Monitor `auth.token_refresh.mutex_timeout` \u2014 new metric, alert threshold set at >50/min\n- Customer support has been briefed on the logout fix; expect related tickets to drop within a week\n\n**What still needs to happen:**\n- Update public API docs to reflect new error code (Sara \u2014 in progress, ETA Friday)\n- Backport the `jsonwebtoken` bump to the v1.x maintenance branch (Jake \u2014 next sprint)\n- Close out #4521 once we confirm the fix holds in prod for 48 hours",
+      "tokens": 1111,
+      "time_ms": 28955
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 10.0,
+        "correctness": 8.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 5.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.1,
+      "weighted_b": 7.25,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A better matches the prompt and is more careful about unsupported claims, especially by marking API changes as internal/no breaking changes and explicitly answering what changed, why it matters, and what to do for all three audiences. Response B is clear and useful, but it invents more specific breaking/behavioral API changes and dependency details not supported by the original notes."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "depth": 9.0,
+        "clarity": 9.0,
+        "usefulness": 9.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "scores_b": {
+        "depth": 9.0,
+        "clarity": 10.0,
+        "usefulness": 10.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 9.35,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both models brilliantly recognized that 'users' could mean different audiences and provided tailored versions. Response B's formatting is slightly more standard for changelogs, and its internal notes include highly realistic elements like a rollback plan and specific team action items.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:16:14.912101"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 10.0,
+      "weighted_b": 8.0,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A perfectly tailors each version to its audience with precise, actionable details, no contradictions, and superior clarity and depth."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

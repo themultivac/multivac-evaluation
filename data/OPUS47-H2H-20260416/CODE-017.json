@@ -1,0 +1,104 @@
+{
+  "question_id": "CODE-017",
+  "category": "code",
+  "question_text": "This Go code processes orders concurrently but occasionally produces incorrect totals. Find and fix all concurrency issues.\n\n```go\npackage main\n\nimport (\n    \"fmt\"\n    \"sync\"\n)\n\ntype OrderProcessor st",
+  "timestamp": "2026-04-16T17:22:58.590376",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Concurrency Issues Analysis\n\nThe code has **data races** on three shared fields (`totalRevenue`, `orderCount`, `errors`) accessed concurrently without synchronization. Multiple goroutines read-modify-write these fields simultaneously, causing lost updates and incorrect totals.\n\n## Issues Found\n\n1. **`op.totalRevenue += amount`** \u2014 Non-atomic read-modify-write on a shared float64\n2. **`op.orderCount++`** \u2014 Non-atomic increment on a shared int\n3. **`op.errors = append(op.errors, ...)`** \u2014 Concurrent slice append can lose entries or corrupt the slice header\n\n## Fix: Use a Mutex\n\nA `sync.Mutex` is the cleanest fix here because `float64` can't use `sync/atomic` directly, and we need to protect the slice append too.\n\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\t\"sync\"\n)\n\ntype OrderProcessor struct {\n\tmu           sync.Mutex\n\ttotalRevenue float64\n\torderCount   int\n\terrors       []string\n}\n\nfunc (op *OrderProcessor) ProcessOrder(amount float64, wg *sync.WaitGroup) {\n\tdefer wg.Done()\n\n\tif amount <= 0 {\n\t\top.mu.Lock()\n\t\top.errors = append(op.errors, fmt.Sprintf(\"invalid amount: %.2f\", amount))\n\t\top.mu.Unlock()\n\t\treturn\n\t}\n\n\top.mu.Lock()\n\top.totalRevenue += amount\n\top.orderCount++\n\top.mu.Unlock()\n}\n\nfunc main() {\n\top := &OrderProcessor{}\n\tvar wg sync.WaitGroup\n\n\torders := []float64{99.99, 149.50, -10.00, 299.99, 49.99, 0, 199.99}\n\n\tfor _, amount := range orders {\n\t\twg.Add(1)\n\t\tgo op.ProcessOrder(amount, &wg)\n\t}\n\n\twg.Wait()\n\n\top.mu.Lock()\n\tfmt.Printf(\"Total: $%.2f from %d orders\\n\", op.totalRevenue, op.orderCount)\n\tif len(op.errors) > 0 {\n\t\tfmt.Printf(\"Errors: %v\\n\", op.errors)\n\t}\n\top.mu.Unlock()\n}\n```\n\n## Key Changes\n\n| Change | Reason |\n|---|---|\n| Added `sync.Mutex` field | Protects all shared state |\n| Lock around `totalRevenue += amount` and `orderCount++` | Prevents lost updates on concurrent increments |\n| Lock around `errors = append(...)` | Prevents slice header corruption and lost error entries |\n| Lock around final read in `main` | Establishes a happens-before relationship; `wg.Wait()` technically provides this, but locking is explicit and safe |\n\n## Verification\n\nRun with the race detector to confirm the fix:\n\n```\ngo run -race main.go\n```\n\nWithout the mutex, `-race` reports data races on all three fields. With the fix, it runs clean and produces deterministic totals (e.g., `Total: $799.46 from 5 orders`).\n\n## Alternative: Channel-Based Design\n\nFor higher throughput or a more idiomatic Go style, you could funnel orders through a channel to a single aggregator goroutine \u2014 eliminating locks entirely. The mutex approach is simpler and correct for this scale.",
+      "tokens": 1552,
+      "time_ms": 7933
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Concurrency Bug Analysis\n\n## Issues Identified\n\nThe `OrderProcessor` struct fields are accessed concurrently by multiple goroutines **without any synchronization**. This causes data races on three shared resources:\n\n1. **`totalRevenue`** \u2014 concurrent read-modify-write (`+=`) can lose updates\n2. **`orderCount`** \u2014 concurrent read-modify-write (`++`) can lose updates\n3. **`errors`** \u2014 concurrent `append` to a slice can corrupt memory or lose entries\n\nAll three are classic **race conditions** where goroutines interleave their reads and writes unpredictably.\n\n### Example of How the Race Manifests\n\n```\nGoroutine A: reads totalRevenue = 0.00\nGoroutine B: reads totalRevenue = 0.00    \u2190 stale read\nGoroutine A: writes totalRevenue = 99.99\nGoroutine B: writes totalRevenue = 149.50  \u2190 overwrites A's update!\n                                            (should be 249.49)\n```\n\n## Fixed Code\n\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\t\"sync\"\n)\n\ntype OrderProcessor struct {\n\tmu           sync.Mutex    // protects all fields below\n\ttotalRevenue float64\n\torderCount   int\n\terrors       []string\n}\n\nfunc (op *OrderProcessor) ProcessOrder(amount float64, wg *sync.WaitGroup) {\n\tdefer wg.Done()\n\n\top.mu.Lock()         // acquire lock before ANY access to shared state\n\tdefer op.mu.Unlock() // release lock when function returns\n\n\tif amount <= 0 {\n\t\top.errors = append(op.errors, fmt.Sprintf(\"invalid amount: %.2f\", amount))\n\t\treturn\n\t}\n\n\top.totalRevenue += amount\n\top.orderCount++\n}\n\nfunc main() {\n\top := &OrderProcessor{}\n\tvar wg sync.WaitGroup\n\n\torders := []float64{99.99, 149.50, -10.00, 299.99, 49.99, 0, 199.99}\n\n\tfor _, amount := range orders {\n\t\twg.Add(1)\n\t\tgo op.ProcessOrder(amount, &wg)\n\t}\n\n\twg.Wait()\n\n\t// Safe to read without lock here \u2014 all goroutines are done (wg.Wait returned)\n\tfmt.Printf(\"Total: $%.2f from %d orders\\n\", op.totalRevenue, op.orderCount)\n\tif len(op.errors) > 0 {\n\t\tfmt.Printf(\"Errors: %v\\n\", op.errors)\n\t}\n}\n```\n\n## What Changed and Why\n\n| Change | Reason |\n|---|---|\n| Added `sync.Mutex` to `OrderProcessor` | Provides mutual exclusion for shared state |\n| `Lock()`/`Unlock()` wraps **all** field access in `ProcessOrder` | Ensures only one goroutine modifies `totalRevenue`, `orderCount`, or `errors` at a time |\n| Lock placed **before** the `amount <= 0` check | The `errors` slice is also shared state \u2014 the early-return path needs protection too |\n| No lock in `main` after `wg.Wait()` | After `Wait()` returns, all goroutines have finished \u2014 there's a **happens-before** guarantee, so reading without a lock is safe |\n\n## Verification\n\nRun with Go's race detector to confirm the fix:\n\n```bash\ngo run -race main.go\n```\n\nBefore the fix: `WARNING: DATA RACE` on all three fields. After the fix: clean output with deterministic totals.",
+      "tokens": 1188,
+      "time_ms": 15613
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 8.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 9.25,
+      "weighted_b": 8.55,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A is more precise and technically accurate, especially in explaining that wg.Wait() already makes the final reads safe without extra locking. Response B is good, but its claim that float64 cannot use sync/atomic is inaccurate in modern Go, and its rationale for locking after Wait is weaker."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "completeness": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "clarity": 10.0,
+        "correctness": 10.0
+      },
+      "scores_b": {
+        "completeness": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "clarity": 9.0,
+        "correctness": 8.0
+      },
+      "weighted_a": 9.45,
+      "weighted_b": 8.4,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provides cleaner, more idiomatic Go code using defer, and correctly notes that locking after wg.Wait() is unnecessary due to happens-before guarantees.",
+      "rerun": true,
+      "rerun_pass": 2,
+      "rerun_timestamp": "2026-04-17T16:33:52.760229"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 10.0,
+      "weighted_b": 8.25,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provided a more thorough and precise analysis, correctly noting that the lock must be acquired before any shared state access (including the early return path), and offered a cleaner, more idiomatic solution with defer. Response B's solution was correct but less elegant, with redundant lock/unlock calls and an unnecessary lock in main after wg.Wait()."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 3
+  },
+  "judges_agree": true
+}

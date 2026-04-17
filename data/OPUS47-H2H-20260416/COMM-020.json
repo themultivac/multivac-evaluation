@@ -1,0 +1,101 @@
+{
+  "question_id": "COMM-020",
+  "category": "communication",
+  "question_text": "Write day-one onboarding documentation for a new engineer joining your team. Include: (1) How to set up the dev environment (step by step, assume macOS), (2) Architecture overview (what talks to what ",
+  "timestamp": "2026-04-16T18:59:33.330539",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Welcome to the Team! \ud83c\udf89\n\nFirst off \u2014 we're genuinely glad you're here. This doc is designed so you can't get stuck. If you do get stuck, that's a bug in this doc, and fixing it will be part of your first week (more on that below).\n\nPlan for today: ~2 hours of setup, ~1 hour of reading, then lunch with your onboarding buddy. Don't try to understand everything today. You won't, and that's fine.\n\n---\n\n## 1. Dev Environment Setup (macOS)\n\nBudget ~90 minutes. Grab coffee. If any step fails, **stop and ping #eng-help** \u2014 don't bash your head against it.\n\n### Step 1: The basics\n\n```bash\n# Install Homebrew (the macOS package manager)\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n\n# After it finishes, follow the \"Next steps\" it prints to add brew to your PATH.\n# On Apple Silicon, it'll tell you to add /opt/homebrew/bin to your PATH.\n```\n\n### Step 2: Core tools\n\n```bash\nbrew install git gh node@20 python@3.11 postgresql@15 redis docker docker-compose\nbrew install --cask visual-studio-code  # or your editor of choice\n```\n\n### Step 3: GitHub access\n\n```bash\ngh auth login\n# Choose: GitHub.com \u2192 HTTPS \u2192 Authenticate with browser\n```\n\nAsk your onboarding buddy to add you to the `eng` team in GitHub. Once you're in:\n\n```bash\nmkdir -p ~/code && cd ~/code\ngh repo clone <org>/api\ngh repo clone <org>/web\ngh repo clone <org>/infra\n```\n\n### Step 4: Secrets\n\nWe use 1Password for shared secrets. Your buddy will share the **Engineering** vault with you. Then:\n\n```bash\nbrew install --cask 1password-cli\nop signin\n```\n\nPull the dev env files:\n\n```bash\ncd ~/code/api && op read \"op://Engineering/api-dev-env/.env\" > .env\ncd ~/code/web && op read \"op://Engineering/web-dev-env/.env.local\" > .env.local\n```\n\n**Never commit `.env` files.** They're gitignored, but still \u2014 double-check before every push.\n\n### Step 5: Start the stack\n\nWe use Docker Compose for local Postgres + Redis, and run the app services natively for fast reloads.\n\n```bash\ncd ~/code/api\ndocker compose up -d           # starts postgres + redis\nnpm install\nnpm run db:migrate\nnpm run db:seed                # gives you realistic test data\nnpm run dev                    # API on :4000\n```\n\nIn a second terminal:\n\n```bash\ncd ~/code/web\nnpm install\nnpm run dev                    # Web on :3000\n```\n\nOpen http://localhost:3000 and log in with `dev@example.com` / `password123`. If you see the dashboard, **you're done**. \ud83c\udf89\n\n### Step 6: Verify\n\nRun the smoke tests:\n\n```bash\ncd ~/code/api && npm run test:smoke\n```\n\nAll green? Ship it. Something red? See section 4.\n\n---\n\n## 2. Architecture Overview\n\nHere's the 10,000-foot view. Don't memorize this \u2014 just know where things live.\n\n```\n                \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n                \u2502   Cloudflare  \u2502  \u2190 DNS, CDN, WAF\n                \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                        \u2502\n             \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n             \u25bc                     \u25bc\n      \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510        \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n      \u2502   web      \u2502        \u2502   api      \u2502\n      \u2502 (Next.js)  \u2502\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25b6\u2502 (Node/TS)  \u2502\n      \u2502  Vercel    \u2502        \u2502  Fly.io    \u2502\n      \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518        \u2514\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                                  \u2502\n              \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n              \u25bc                   \u25bc                   \u25bc\n        \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510        \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510        \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n        \u2502 Postgres \u2502        \u2502  Redis   \u2502        \u2502   S3     \u2502\n        \u2502 (RDS)    \u2502        \u2502(ElastiC.)\u2502        \u2502 (uploads)\u2502\n        \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518        \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518        \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n              \u25b2\n              \u2502\n        \u250c\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2510\n        \u2502 workers  \u2502  \u2190 background jobs (BullMQ)\n        \u2502 (Node)   \u2502\n        \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n**Why it's shaped this way:**\n\n- **Web \u2194 API split** \u2014 the frontend is stateless and cacheable on Vercel's edge; the API holds all business logic and is the single source of truth. This keeps auth, validation, and rate limiting in one place.\n- **Postgres is the database of record.** If it's not in Postgres, it doesn't really exist. Redis is a cache and job queue \u2014 treat it as disposable.\n- **Workers run async jobs** (emails, exports, webhooks) so API requests stay fast. Jobs are enqueued via Redis.\n- **S3 for blobs** \u2014 never store user uploads on the app servers. They're ephemeral.\n- **Cloudflare in front** because it gives us free DDoS protection and edge caching for static assets.\n\nKey repos:\n- `api` \u2014 REST + some GraphQL. Express + Prisma.\n- `web` \u2014 Next.js 14 app router.\n- `workers` \u2014 lives inside `api` under `/workers` (shares models).\n- `infra` \u2014 Terraform for everything cloud. Don't touch without a pairing session.\n\n---\n\n## 3. Deployment Process\n\n**TL;DR: merge to `main` \u2192 it's in production in ~8 minutes.** Trust the pipeline; it's good.\n\n### The flow\n\n1. Create a branch: `git checkout -b your-name/short-description`\n2. Open a PR. CI runs: lint, typecheck, unit tests, integration tests.\n3. Get **one approval** from anyone on the team. (Two for infra changes.)\n4. Merge. GitHub Actions:\n   - Builds Docker images\n   - Runs DB migrations against staging\n   - Deploys to staging\n   - Runs smoke tests against staging\n   - If green, auto-promotes to production (canary: 10",
+      "tokens": 2190,
+      "time_ms": 29486
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Welcome to the Team, Engineer! \ud83c\udf89\n\n**Last updated:** June 2025\n**Maintained by:** The Platform Team\n**Reading time:** ~25 minutes (but you'll reference this for weeks \u2014 bookmark it)\n\n---\n\n> **A note before we begin:** We wrote this doc because we remember what Day One feels like \u2014 exciting, overwhelming, and full of \"Am I supposed to know this?\" moments. You're not supposed to know any of this yet. That's the whole point of this document. Go at your own pace. Ask questions early and often. Nobody here judges a question; we judge suffering in silence.\n\n---\n\n## Table of Contents\n\n1. [Dev Environment Setup](#1-dev-environment-setup)\n2. [Architecture Overview](#2-architecture-overview)\n3. [Deployment Process](#3-deployment-process)\n4. [Where to Ask for Help](#4-where-to-ask-for-help)\n5. [Your First Task](#5-your-first-task)\n\n---\n\n## 1. Dev Environment Setup\n\n**Goal:** By the end of this section, you'll have the entire application running locally and will have made a trivial test change to prove it works.\n\n**Estimated time:** 60\u201390 minutes (mostly waiting for things to install)\n\n### Prerequisites Checklist\n\nBefore you start, confirm you have:\n\n- [ ] Your company MacBook (Apple Silicon or Intel \u2014 we'll handle both)\n- [ ] Your GitHub account added to the `acme-eng` organization (check: can you see [this repo](https://github.com/acme-eng/monorepo)? If not, message `#it-help` on Slack)\n- [ ] 1Password team vault access (your manager should have sent the invite)\n- [ ] VPN credentials from the IT welcome email\n\n> **Stuck already?** That's fine. Message your onboarding buddy (you should have been introduced via email). If you don't have a buddy assigned yet, drop a message in `#team-platform` and say \"I'm new and need a buddy!\" \u2014 someone will claim you within minutes.\n\n---\n\n### Step 1: Install Core Tools\n\nOpen Terminal (Cmd + Space \u2192 type \"Terminal\") and run these one at a time.\n\n```bash\n# Install Homebrew (the macOS package manager)\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n```\n\n**After installation, Homebrew will print a \"Next steps\" message.** It will tell you to run two commands to add Homebrew to your PATH. **Actually run those commands.** They look something like:\n\n```bash\necho 'eval \"$(/opt/homebrew/bin/brew shellenv)\"' >> ~/.zprofile\neval \"$(/opt/homebrew/bin/brew shellenv)\"\n```\n\nVerify it worked:\n\n```bash\nbrew --version\n# Expected output: Homebrew 4.x.x\n```\n\nNow install everything else:\n\n```bash\n# Git (newer than the macOS default)\nbrew install git\n\n# Node.js via version manager (we use mise, not nvm)\nbrew install mise\n\n# Docker\nbrew install --cask docker\n\n# Our infrastructure tools\nbrew install postgresql@16 redis awscli jq\n\n# Code editor (if you prefer something else, skip this)\nbrew install --cask visual-studio-code\n```\n\nNow configure `mise` to manage our runtime versions:\n\n```bash\n# Add mise to your shell\necho 'eval \"$(mise activate zsh)\"' >> ~/.zshrc\nsource ~/.zshrc\n\n# Install the Node version we use (mise reads .tool-versions from the repo)\nmise install node@20\nmise use --global node@20\n```\n\nVerify everything:\n\n```bash\nnode --version    # Should be v20.x.x\nnpm --version     # Should be 10.x.x\ngit --version     # Should be 2.x.x\ndocker --version  # Should be Docker 2x.x.x (open Docker Desktop first!)\npsql --version    # Should be 16.x\n```\n\n> \u26a0\ufe0f **Docker Desktop must be running** (not just installed). Open it from Applications, accept the terms, and let it start. You'll see a whale icon in your menu bar when it's ready.\n\n---\n\n### Step 2: Clone the Repo and Install Dependencies\n\n```bash\n# Create a workspace directory (optional but keeps things tidy)\nmkdir -p ~/code && cd ~/code\n\n# Clone the monorepo\ngit clone git@github.com:acme-eng/monorepo.git\ncd monorepo\n```\n\n**If the clone fails with a permission error**, you need to set up SSH keys:\n\n```bash\n# Generate a new SSH key\nssh-keygen -t ed25519 -C \"your.name@acme.com\"\n\n# Start the SSH agent\neval \"$(ssh-agent -s)\"\n\n# Add your key\nssh-add ~/.ssh/id_ed25519\n\n# Copy the public key to clipboard\npbcopy < ~/.ssh/id_ed25519.pub\n```\n\nThen go to [GitHub \u2192 Settings \u2192 SSH Keys \u2192 New SSH Key](https://github.com/settings/ssh/new), paste, save, and try the clone again.\n\nNow install dependencies:\n\n```bash\n# We use npm workspaces across the monorepo\nnpm install\n\n# This will take 2-4 minutes. Good time to get coffee. \u2615\n```\n\n---\n\n### Step 3: Set Up Local Environment Variables\n\n```bash\n# Copy the example env file\ncp .env.example .env.local\n```\n\nNow open `.env.local` in your editor. You need to fill in a few secrets:\n\n```bash\n# Open in VS Code (or your preferred editor)\ncode .env.local\n```\n\nThe file will look like this:\n\n```env\n# === Database ===\nDATABASE_URL=postgresql://localhost:5432/acme_dev\n\n# === Redis ===\nREDIS_URL=redis://localhost:6379\n\n# === Auth (get these from 1Password \u2192 \"Dev Environment\" vault) ===\nAUTH0_CLIENT_ID=<paste from 1Password>\nAUTH0_CLIENT_SECRET=<paste from 1Password>\nAUTH0_DOMAIN=<paste from 1Password>\n\n# === AWS (for local S3 emulation) ===\nAWS_ACCESS_KEY_ID=local-dev\nAWS_SECRET_ACCESS_KEY=local-dev\nAWS_REGION=us-east-1\n\n# === Feature Flags ===\nLAUNCHDARKLY_SDK_KEY=<paste from 1Password>\n\n# === Third-party APIs (use sandbox keys) ===\nSTRIPE_SECRET_KEY=<paste from 1Password>\nSENDGRID_API_KEY=<paste from 1Password>\n```\n\n> \ud83d\udd11 **Where to find these values:** Open 1Password, look for a vault called **\"Engineering - Dev Environment\"**. There's a single entry called **\"Local Dev Secrets\"** with every value you need. If you can't see this vault, message `#it-help`.\n\n---\n\n### Step 4: Start Local Services\n\n```bash\n# Start PostgreSQL and Redis via Docker Compose\ndocker compose up -d\n\n# Verify they're running\ndocker compose ps\n# You should see: postgres, redis, localstack \u2014 all \"running\"\n```\n\nNow set up the database:\n\n```bash\n# Run migrations\nnpm run db:migrate\n\n# Seed with test data\nnpm run db:seed\n\n# Expected output: \"Seeded 42 users, 156 projects, 1,203 tasks\"\n```\n\n---\n\n### Step 5: Start the Application\n\n```bash\n# Start all services in development mode\nnpm run dev\n```\n\nYou should see output like:\n\n```\n[api]     \u2713 API server running on http://localhost:3001\n[web]     \u2713 Web app running on http://localhost:3000\n[worker]  \u2713 Background worker connected to Redis\n```\n\n**Open your browser to [http://localhost:3000](http://localhost:3000)**\n\nYou should see a login page. Use these test credentials:\n\n```\nEmail:    dev@acme-test.com\nPassword: (in 1Password \u2192 \"Local Dev Secrets\" \u2192 \"Test User Password\")\n```\n\n> \ud83c\udf89 **If you see a dashboard with fake project data, congratulations \u2014 your dev environment is working!**\n\n---\n\n### Step 6: Verify Your Setup with a Trivial Change\n\nLet's make sure the full feedback loop works:\n\n```bash\n# Open this file\ncode packages/web/src/components/Header.tsx\n```\n\nFind the line that says:\n\n```tsx\n<h1>Acme Dashboard</h1>\n```\n\nChange it to:",
+      "tokens": 2152,
+      "time_ms": 40936
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 4.0,
+        "usefulness": 4.0,
+        "correctness": 4.0,
+        "completeness": 5.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 7.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 4.8,
+      "weighted_b": 7.55,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is more complete across the requested sections, provides a coherent architecture and deployment flow, and remains practical and warm. Response A is cut off during setup and omits major requested content."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 6.0,
+        "usefulness": 5.0,
+        "correctness": 9.0,
+        "completeness": 3.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 9.0,
+        "completeness": 6.0
+      },
+      "weighted_a": 6.6,
+      "weighted_b": 7.9,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses were cut off, but Response B covered significantly more of the requested sections, including an excellent architecture diagram and explanation, making it much more complete and useful."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 7.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more complete, clearer, and more actionable with better architecture and deployment details."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

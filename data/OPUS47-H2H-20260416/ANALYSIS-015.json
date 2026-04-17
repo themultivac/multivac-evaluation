@@ -1,0 +1,101 @@
+{
+  "question_id": "ANALYSIS-015",
+  "category": "analysis",
+  "question_text": "Analyze these two social media posts about the same event and determine which is likely disinformation:\n\nPost A: 'BREAKING: Major tech company laying off 10,000. Stock crashes 15%. Insider sources say",
+  "timestamp": "2026-04-16T18:19:56.399767",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Analysis of Two Social Media Posts\n\n## Post A: \"BREAKING: Major tech company laying off 10,000...\"\n\n**(1) Verifiable claims:**\n- 10,000 layoffs (checkable via company announcement/SEC filings)\n- Stock crashed 15% (checkable via market data)\n- CEO plans to flee the country (effectively unverifiable \u2014 based on anonymous \"insider sources\")\n\n**(2) Emotional manipulation techniques:**\n- \"BREAKING\" \u2014 urgency/FOMO trigger\n- Vague attribution (\"insider sources say\") \u2014 unfalsifiable but authoritative-sounding\n- \"Flee the country\" \u2014 evokes criminality and panic imagery\n- Hashtags #corruption #scandal \u2014 frames the event as wrongdoing before evidence is presented\n- Omits context (no reason given for layoffs, no company name)\n\n**(3) Credibility signals:**\n- No named company\n- No named sources\n- No link to primary reporting\n- Dramatic, round numbers without citation\n- Combines one potentially verifiable but exaggerated figure (stock drop) with a sensational unverifiable claim\n\n## Post B: \"TechCorp announced workforce reduction of 10,000...\"\n\n**(1) Verifiable claims:**\n- TechCorp announcement of 10,000 reductions\n- Stock down 3% after-hours\n- Stated reason: AI pivot\n- All are checkable via press release, market data, and company statements\n\n**(2) Emotional manipulation techniques:**\n- Minimal \u2014 neutral business-reporting tone\n- Note: \"restructuring\" and \"pivot to AI\" are corporate euphemisms that could *downplay* impact on workers. Not manipulation toward panic, but potentially toward complacency.\n\n**(3) Credibility signals:**\n- Names the company\n- Specifies timing (after-hours)\n- Attributes stated rationale to the company itself\n- Numbers are precise and internally consistent\n\n## Assessment\n\n**Post A shows strong disinformation markers**: anonymous sourcing, sensational unverifiable claim (CEO fleeing), inflated stock figure (15% vs. 3%), and preemptive framing via hashtags.\n\n**Post B reads like straight reporting**, though it should not be mistaken for complete \u2014 it reflects the company's framing.\n\n## Information Needed to Resolve Ambiguity\n\n1. **Primary sources:** Company press release, SEC 8-K filing\n2. **Market data:** Actual stock movement at a specified time window\n3. **Independent reporting:** Coverage from established financial outlets (Reuters, Bloomberg, WSJ)\n4. **CEO status:** Public statements, scheduled appearances, any actual legal filings\n5. **Post A's \"insider sources\":** Any corroborating named source or documentary evidence\n6. **Timing of posts:** Which came first? Post A may have preceded confirmed data; Post B may reflect later, verified information\n\n**Bottom line:** The discrepancy in stock figures alone (15% vs. 3%) is decisive \u2014 one is factually wrong. Combined with anonymous sourcing and the \"flee the country\" claim, Post A is very likely disinformation or at minimum reckless rumor-spreading. But verify before concluding \u2014 Post B's corporate framing should also be scrutinized, not accepted uncritically.",
+      "tokens": 1326,
+      "time_ms": 11084
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Disinformation Analysis: Comparative Assessment\n\n## Post A: Deep Analysis\n\n### Verifiable Claims\n- **\"Major tech company laying off 10,000\"** \u2014 Verifiable against official filings and credible news reports. Note: deliberately vague about *which* company, making verification harder by design.\n- **\"Stock crashes 15%\"** \u2014 Directly checkable against market data. This is a specific, falsifiable number.\n- **\"CEO plans to flee the country\"** \u2014 Attributed to unnamed \"insider sources,\" making it effectively **unverifiable by the reader**.\n\n### Emotional Manipulation Techniques\n- **\"BREAKING\"** \u2014 Creates urgency and bypasses critical thinking\n- **\"crashes\"** vs. neutral \"declined\" \u2014 Catastrophizing language\n- **\"flee the country\"** \u2014 Implies criminality without evidence, triggering fear and outrage\n- **Hashtags #corruption #scandal** \u2014 Frame interpretation *before* the reader can evaluate facts, essentially telling you what to feel\n- **Escalation structure** \u2014 Each sentence raises stakes: layoffs \u2192 crash \u2192 criminal flight. This is a narrative funnel designed to make the fabricated claim feel like a logical conclusion of the real ones.\n\n### Source Credibility Signals\n- No named company, no named source, no link to reporting\n- Mixes plausibly true claims with an extraordinary unverified claim\n- Uses the credibility of checkable facts to **launder** the uncheckable one\n\n---\n\n## Post B: Deep Analysis\n\n### Verifiable Claims\n- **\"TechCorp\"** \u2014 Named entity, immediately searchable\n- **\"10,000 positions\"** \u2014 Checkable against company announcements and SEC filings\n- **\"Stock down 3% in after-hours\"** \u2014 Precise, verifiable against market data\n- **\"pivot to AI development\"** \u2014 Checkable against company statements, earnings calls\n\n### Emotional Manipulation Techniques\n- **Largely absent.** Language is neutral and descriptive\n- \"Workforce reduction\" is arguably **corporate euphemism**, which is its own form of framing \u2014 but this is standard business reporting language, not emotional manipulation\n- No hashtags directing emotional interpretation\n\n### Source Credibility Signals\n- Specific, named company enables verification\n- Attributes reasoning to the company itself (transparent sourcing)\n- Measured tone consistent with factual reporting norms\n- All claims are independently checkable\n\n---\n\n## Comparative Verdict\n\n**Post A is very likely disinformation**, and it uses a specific, well-documented technique:\n\n**The \"two truths and a lie\" structure.** It anchors with claims that are *approximately* true (layoffs happened, stock declined) but distorts their magnitude (3% becomes 15%), then uses that established credibility to smuggle in a fabricated, inflammatory claim (CEO fleeing). The vagueness about which company is strategic \u2014 it prevents quick debunking while preserving shareability.\n\nPost B may have its own limitations (corporate framing, incomplete picture), but it provides **the tools for its own verification**, which is a hallmark of good-faith communication.\n\n---\n\n## Information That Would Resolve Ambiguity\n\nTo move from \"likely\" to \"confirmed\" disinformation, you would need the following:\n\n1. **Actual stock movement data** \u2014 Did it drop 3% or 15%? This alone likely settles the factual reliability question.\n2. **The company's official press release or SEC filing** \u2014 Confirms layoff numbers and stated rationale.\n3. **Any on-record source** for the \"flee the country\" claim \u2014 Almost certainly none exists.\n4. **Post origin and propagation data** \u2014 Was Post A from a verified journalist, an anonymous account, or a coordinated network? Posting history and amplification patterns matter enormously.\n5. **Timing analysis** \u2014 Was Post A published *before* official announcements? If so, it may be designed to manipulate markets (a potentially illegal motive that explains the distortions).\n\n---\n\n## The Broader Lesson\n\nThe most effective disinformation is **never 100% false**. It parasitizes real events, distorts proportions, and adds fabricated details that serve a narrative. The critical thinking skill isn't just asking \"is this true or false\" but rather asking **\"which specific claims here are verified, and which am I being asked to accept on trust?\"**",
+      "tokens": 1146,
+      "time_ms": 26124
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B is slightly stronger in depth and analytical framing, especially in explaining the disinformation pattern and adding source-propagation/timing considerations, while remaining equally accurate and useful."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 10.0,
+        "depth": 10.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.65,
+      "weighted_b": 9.65,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B provided a deeper analysis of the disinformation tactics, such as the 'escalation structure' and 'fact laundering', making it more insightful and educational."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.6,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B provided deeper structural analysis (e.g., 'two truths and a lie' technique, narrative funnel) and more comprehensive resolution steps, while maintaining equal clarity and usefulness."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 3
+  },
+  "judges_agree": true
+}

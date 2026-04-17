@@ -1,0 +1,104 @@
+{
+  "question_id": "REASON-029",
+  "category": "reasoning",
+  "question_text": "During WWII, analysts studied bullet holes on returning bombers to decide where to add armor. They found most damage on the wings and fuselage, almost none on the engines. Their recommendation: armor ",
+  "timestamp": "2026-04-16T18:10:29.651129",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Wald's Insight and Survivorship Bias\n\n## (1) Wald's Reasoning\n\nThe analysts were only looking at **bombers that returned**. Planes hit in the engines didn't come back \u2014 they crashed. The bullet holes on returning planes showed where a bomber could be hit *and still survive*.\n\nWald's recommendation: **armor the engines** (and other areas with few holes on returning planes), because damage there was fatal. The absence of holes in those regions on survivors was evidence, not of safety, but of lethality.\n\nThe deeper principle: when your data comes only from survivors, the *missing* data is the most informative.\n\n## (2) Five Modern Examples\n\n1. **Startup success advice.** \"Drop out of college like Zuckerberg/Gates/Jobs.\" We never interview the thousands of dropouts now working retail. The base rate of dropout-to-billionaire is near zero.\n\n2. **Mutual fund performance.** Funds that blow up get quietly liquidated or merged. The \"average fund return\" published by a fund family only includes funds that survived \u2014 inflating performance by 1\u20132% annually (called \"incubation bias\").\n\n3. **\"Habits of highly successful CEOs.\"** Books profile Bezos, Musk, etc., and extract traits like \"extreme risk tolerance\" or \"sleep 4 hours.\" Plenty of failed CEOs had identical traits \u2014 and bankrupted their companies. We just don't write books about them.\n\n4. **A/B test reporting in product teams.** Teams publish the experiments that \"worked.\" The graveyard of null or negative results never gets written up, creating an illusion that the product team's intuitions are well-calibrated.\n\n5. **GitHub/open-source \"best practices.\"** We study architectures of famous repos (Kubernetes, React). We don't study the millions of abandoned repos that used the same patterns and went nowhere. Pattern \u2260 cause of success.\n\nBonus: **VC pattern-matching** (\"founders who look like Zuck\"), **backtested trading strategies** (survivors of data mining), **\"lessons from unicorns\"** generally.\n\n## (3) Why \"100 Successful Startups All Did X\" Is Worthless\n\nThe analysis answers the wrong question. It tells you:\n\n> P(did X | succeeded) = high\n\nBut what you actually need for a decision is:\n\n> P(succeeded | did X)\n\nBy Bayes' rule, these differ by the base rate. If 95% of *all* startups do X \u2014 successful and failed alike \u2014 then X has zero predictive power. You'd get the same 100/100 result whether X causes success, is irrelevant, or even mildly hurts.\n\n**What the analysis is missing:**\n\n- **A failure group.** How many failed startups also did X? If it's also ~100%, X is just \"what startups do.\"\n- **A base rate.** What fraction of the general startup population does X?\n- **Causal direction.** Did X cause success, or did success enable X? (Successful startups can afford fancy offices, strong cultures, generous benefits \u2014 these are *consequences*, not causes.)\n- **Confounders.** Maybe well-funded startups both do X and succeed \u2014 funding is the real variable.\n\n**The correct study design** is a case-control comparison: take successful and failed startups matched on stage/sector, and compare rates of X. If 90% of successes and 30% of failures did X, that's a real signal. If it's 90% vs. 88%, the bestseller was noise dressed as wisdom.\n\nThis is why most \"what successful X do\" books are, strictly speaking, storytelling \u2014 they're sampling on the dependent variable.",
+      "tokens": 1323,
+      "time_ms": 25005
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Abraham Wald & Survivorship Bias\n\n## 1. Wald's Reasoning\n\nThe military was committing a profound logical error: **they were only examining planes that survived**.\n\nWald's insight was elegantly simple:\n\n- The bullet holes on returning bombers showed where a plane **could be hit and still fly home**\n- The engines had no damage on returning planes **not because engines weren't hit**, but because **planes hit in the engines never came back**\n- The missing bullet holes represented the **missing planes** \u2014 the ones lying destroyed on the ground\n- Therefore, you should armor precisely where you **don't** see damage on survivors: **the engines**\n\nThe core principle: **the data you can't see (because it didn't survive) is often more important than the data you can.**\n\n---\n\n## 2. Five Modern Examples of Survivorship Bias in Business/Tech\n\n### Example 1: \"Drop Out Like Gates and Zuckerberg\"\nTech media glorifies college dropouts who became billionaires. You never hear about the **millions of dropouts who failed**, because they never became famous enough to study. The visible sample (Gates, Zuckerberg, Dell) is catastrophically unrepresentative of dropout outcomes.\n\n### Example 2: App Store \"Success Stories\"\nApple and Google showcase apps that went from garage projects to millions in revenue. This obscures the reality that **roughly 99% of apps generate negligible revenue**. Failed apps get delisted, abandoned, and become literally invisible in the data. Aspiring developers see only the survivors on the charts.\n\n### Example 3: \"Amazon Survived the Dot-Com Crash, So the Bubble Wasn't That Bad\"\nPeople point to Amazon, eBay, and Google as proof that the late-1990s internet thesis was correct. This ignores **Pets.com, Webvan, Kozmo, eToys, Boo.com**, and hundreds of other companies that were destroyed. The survivors reshaped our memory of the era, making the bubble seem more rational than it was.\n\n### Example 4: VC Fund Performance Reporting\nVenture capital firms report returns from their **surviving, successful funds**. Funds that performed terribly often quietly close, stop reporting, or get excluded from databases. Industry return figures are systematically inflated because the failures disappear from the dataset. Cambridge Associates and others have documented this \"backfill bias\" extensively.\n\n### Example 5: \"Our Legacy System Has Run for 20 Years \u2014 Old Technology Is Superior\"\nCompanies point to ancient COBOL systems or monolithic architectures still running as evidence that older approaches are more reliable. But you're only seeing the systems **that happened to survive**. The thousands of legacy systems that collapsed, were abandoned, or caused catastrophic failures aren't around to be observed. This creates a false impression that old automatically means robust.\n\n---\n\n## 3. Why \"100 Successful Startups All Did X\" Is Worthless\n\nThis is perhaps the most pervasive analytical failure in business thinking. Here's why it's meaningless:\n\n### The Fundamental Problem\n\nFinding a common trait among **winners only** tells you nothing about whether that trait **caused** winning. To know if X matters, you must answer a question this study **cannot answer**:\n\n> *Did failed startups also do X?*\n\n### A Concrete Illustration\n\nSuppose your study finds: \"All 100 successful startups had a strong company culture.\"\n\nThere are four possible realities:\n\n| | **Did X** | **Didn't do X** |\n|---|---|---|\n| **Succeeded** | 100 (you studied these) | 0 |\n| **Failed** | ??? (you didn't look) | ??? (you didn't look) |\n\n**Scenario A:** 10,000 failed startups also had strong culture \u2192 X is essentially meaningless, or even a *negative* signal (since the failure rate among X-doers is 99%).\n\n**Scenario B:** 0 failed startups had strong culture \u2192 X might genuinely matter.\n\nWithout the bottom row, you literally cannot distinguish between these scenarios. **The study has zero inferential power.**\n\n### Why This Keeps Happening\n\n- **It's narratively satisfying.** \"Here are 10 things winners do\" is a compelling story. \"Here's a regression analysis with controls\" is not.\n- **Failures are invisible.** Dead startups don't write blog posts, give TED talks, or appear in databases.\n- **Confirmation bias compounds it.** Readers who already do X feel validated; those who don't feel motivated. The book sells either way.\n- **It mimics rigor.** \"We studied 100 companies\" sounds empirical. The sample size isn't the problem \u2014 the **sample selection** is.\n\n### What You'd Actually Need\n\nA proper analysis requires:\n1. **A control group** of failed startups studied with equal rigor\n2. **Base rates** \u2014 how common is X among all startups, regardless of outcome?\n3. **Multivariate controls** \u2014 maybe X correlates with funding level, which is the actual causal factor\n4. **Prospective design** \u2014 ideally, track startups *before* you know the outcome\n\n### The Blunt Summary\n\nStudying only survivors and generalizing to everyone is like surveying lottery winners, finding they all bought tickets, and concluding that **buying lottery tickets is a wealth-building strategy**. Technically true that all winners bought tickets. Catastrophically misleading as advice.\n\n---\n\n**The deepest lesson of Wald's insight:** the most important information is often carried by the things you **cannot observe** \u2014 the planes that didn't return, the companies that didn't survive, the apps that were never downloaded. Rigorous thinking requires actively searching for what's **missing** from your data, not just analyzing what's in front of you.",
+      "tokens": 1441,
+      "time_ms": 37641
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 10.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 9.6,
+      "weighted_b": 9.65,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both are excellent and correct, but Response A is slightly stronger on depth and practical inferential framing, especially its Bayes/base-rate explanation and sharper case-control guidance."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 8.0,
+        "clarity": 9.0,
+        "usefulness": 8.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "scores_b": {
+        "depth": 9.0,
+        "clarity": 10.0,
+        "usefulness": 9.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 8.65,
+      "weighted_b": 9.2,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B's use of a 2x2 matrix and the lottery ticket analogy made the explanation of the logical fallacy exceptionally clear and intuitive. Its examples were also slightly more detailed.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:20:38.110472"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 10.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 10.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 9.45,
+      "weighted_b": 9.45,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provided more precise and actionable examples (e.g., mutual fund incubation bias, GitHub best practices) and a clearer Bayesian explanation for the startup analysis, with slightly greater depth and practical insight."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

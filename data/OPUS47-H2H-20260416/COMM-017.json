@@ -1,0 +1,102 @@
+{
+  "question_id": "COMM-017",
+  "category": "communication",
+  "question_text": "Write performance review feedback for three scenarios: (1) A high performer you want to retain who's been showing signs of burnout. (2) A mid-level performer who has great ideas but poor execution and",
+  "timestamp": "2026-04-16T18:54:18.054390",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Performance Review Feedback: Three Scenarios\n\n---\n\n## 1. High Performer Showing Signs of Burnout\n\n**Overall Summary:**\nYou've had another exceptional year. Your contributions to [project/initiative] delivered measurable impact, and the team continues to look to you as a steady, capable leader. I want to be direct about something else I've observed, though: you've been carrying a heavy load, and I've noticed signs that the pace is catching up with you \u2014 shorter fuse in meetings, responses coming late at night, a drop in the energy you usually bring. I'm raising this not as a criticism, but because I value you and want to keep you here and thriving for the long term.\n\n**Strength: Judgment Under Pressure**\nWhen things get complicated or ambiguous, you consistently make the right call. On [specific example], you navigated competing priorities and landed on a solution that balanced speed with quality. That kind of judgment is rare and hard to develop.\n\n**Growth Area: Sustainable Pacing and Boundaries**\nYour output is strong, but I'd rather have 80% of your best for five more years than 110% for one. In the next quarter, I'd like us to work together on: (1) identifying 2\u20133 things you can hand off or deprioritize, (2) establishing clearer off-hours boundaries (no Slack after 7pm, real vacation time), and (3) defining what \"enough\" looks like on projects so you're not over-investing. I'll back you publicly on these changes.\n\n**Commitment from Me:** I'll push back on new requests coming your way and help you say no. Let's check in monthly on how this is feeling.\n\n---\n\n## 2. Mid-Level Performer: Great Ideas, Poor Execution\n\n**Overall Summary:**\nYou bring real creative horsepower to this team. Some of the best ideas we've pursued this year originated with you. But strong ideas without reliable follow-through create a gap between your potential and your impact \u2014 and that gap is what's holding you back from the next level. I want to be honest with you about it because I think it's closable.\n\n**Strength: Creative and Strategic Thinking**\nYou see around corners. Your proposal for [specific initiative] reframed a problem the rest of us had been stuck on, and your instinct for what customers actually need is sharp. Teams need people who can imagine what isn't there yet \u2014 you're that person.\n\n**Growth Area: Delivery and Deadline Discipline**\nThis year, you missed [X] deadlines on [specific projects], and in two cases the team had to scramble to cover. The issue isn't capability \u2014 it's execution systems. Specifically: breaking work into smaller milestones, flagging risk earlier (not the day something is due), and protecting focus time from the next shiny idea. I'd like you to pick one current project and run it with a weekly milestone check-in with me for the next two months. I'll treat it as coaching, not surveillance \u2014 the goal is to build the muscle, not to monitor you.\n\n**What Success Looks Like in 6 Months:** You ship on time, you flag slippage at least a week in advance, and your great ideas actually land in users' hands.\n\n---\n\n## 3. Underperformer Who Is Kind and Well-Liked\n\n**Overall Summary:**\nI want to start by saying something true: you make this team better as a place to work. People trust you, you support your colleagues, and you bring a generosity that matters. I also have to be honest with you, because you deserve honesty: your output this year has not met the bar for this role, and I would be doing you a disservice if I softened that. I want to be clear about where the gap is, what improvement looks like, and how I'll support you \u2014 and I also want you to have a clear picture so you can make informed decisions about your career.\n\n**Strength: Collaborative Presence and Team Trust**\nYou're the person colleagues go to when they're stuck or frustrated. You listen well, you give thoughtful input, and you've helped onboard [specific people] in a way that made them feel welcomed. That's a real contribution and not one I take for granted.\n\n**Growth Area: Core Deliverables and Technical Output**\nConcretely: [specific examples \u2014 e.g., your project on X came in significantly behind expected quality, your work on Y required substantial rework, your throughput is roughly half of peers at your level]. Over the next 90 days, I'd like to see: (1) [specific, measurable output goal], (2) [specific skill development \u2014 a course, pairing with a senior teammate, etc.], and (3) weekly 1:1s with me where we review work in progress.\n\n**Being Straight With You:** This is a formal improvement period. If we see meaningful progress, we keep building. If we don't, we'll need to have a harder conversation about whether this role is the right fit for you \u2014 and if it isn't, I'll help you think about what might be. I'm telling you this now, plainly, because you deserve the chance to respond to real information, not vague signals.\n\n---\n\n### Principles Underlying All Three\n\n- **Lead with truth, delivered with care.** Compassion isn't softening the message; it's respecting the person enough to be clear.\n- **Be specific.** \"Great work\" and \"needs improvement\" are both useless without examples.\n- **Name one strength and one growth area.** More than that dilutes focus.\n- **Make the growth area actionable.** What, by when, measured how, supported by whom.\n- **State your own commitments.** Feedback is a two-way contract, not a verdict.",
+      "tokens": 1880,
+      "time_ms": 33811
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Performance Review Feedback: Three Scenarios\n\n---\n\n## Scenario 1: High Performer Showing Signs of Burnout\n\n**Employee: \"Sarah Chen\" \u2014 Senior Product Designer, 4 years with the company**\n\n---\n\n**Overall Rating: Exceeds Expectations**\n\nSarah, I want to start by saying something I don't think I say often enough: the quality and impact of your work this year has been exceptional. Your redesign of the onboarding flow directly contributed to a 22% improvement in new user activation, and the design system documentation you created \u2014 largely on your own initiative \u2014 has become the reference standard for the entire product org. You are, without question, one of the most talented and impactful people on this team.\n\nI also want to be honest about something I've been observing, because I think you deserve that honesty.\n\nOver the past two quarters, I've noticed a pattern that concerns me \u2014 not because of your output, which remains strong, but because I care about your sustainability and well-being on this team. You've been the first to volunteer for every high-urgency project. You pulled three consecutive late weeks during the Q3 launch. You cancelled your PTO in August. And in our last two 1:1s, when I asked how you were doing, you gave me answers that were about the *work* but not about *you*. I've also noticed you've been less vocal in brainstorms \u2014 something that's unusual for someone who typically brings the most creative energy in the room.\n\nI want to be direct: I am not worried about your performance. I am worried about losing you \u2014 either because you burn out and leave, or because the version of you that does your best, most creative work gets buried under an unsustainable pace. Neither of those outcomes is acceptable to me.\n\n**Key Strength: Ownership and Excellence Under Pressure**\nYou have a rare ability to take ambiguous, high-stakes problems and drive them to outcomes that are both beautiful and measurable. The onboarding redesign is a case study in this. You navigated conflicting stakeholder input, tight timelines, and shifting requirements, and you delivered something that genuinely moved a business metric. That combination of design craft and strategic thinking is not common, and it's one of the reasons you're so critical to this team.\n\n**Growth Area: Protecting Your Capacity and Saying No**\nYour growth edge this year isn't about doing more or doing better. It's about learning to protect the conditions that allow your best work to happen. Specifically, I'd like us to work together on:\n\n- **Setting a hard limit of two concurrent high-priority projects.** I will help enforce this, and I need you to flag it when you feel the line being crossed \u2014 even if the request is coming from me.\n- **Taking your PTO. Non-negotiably.** I'd like you to schedule at least one full week off in Q1, and I'm going to check in on this.\n- **Practicing selective volunteering.** Before raising your hand for the next fire drill, I want you to ask: *\"Am I the only person who can do this, or am I just the person most willing to?\"* If it's the latter, let someone else grow into it.\n\nI want to be clear that this is not a soft suggestion. I consider this a real development priority \u2014 not because you're failing, but because the thing that makes you exceptional is also the thing that puts you most at risk. The best version of your career here is a long one, and I want to help you build that.\n\nI'd like us to revisit this together monthly, not as a check-up, but as a genuine conversation about how you're doing. You've earned a tremendous amount of trust and goodwill on this team. I'm asking you to extend some of that same generosity to yourself.\n\n---\n\n## Scenario 2: Mid-Level Performer with Great Ideas but Poor Execution\n\n**Employee: \"Marcus Rivera\" \u2014 Marketing Manager, 2 years with the company**\n\n---\n\n**Overall Rating: Meets Some Expectations**\n\nMarcus, I want to give you a review that's genuinely useful to you, which means I'm going to be both honest about where you're struggling and specific about what I think you're capable of \u2014 because I do believe there's a significant gap between where you are right now and where you could be.\n\nLet me start with what's real and what's good.\n\n**Key Strength: Strategic and Creative Thinking**\nYou are one of the strongest strategic thinkers on the marketing team. That is not flattery \u2014 it's an observation backed by specific evidence. Your pitch for the community-led growth campaign in Q2 was the most original and well-reasoned proposal we reviewed all quarter. Your competitive analysis during the rebrand was something our VP of Marketing cited directly in her board presentation. When we're in a room trying to figure out *what* to do and *why*, you consistently elevate the conversation. You see patterns other people miss, and you're not afraid to challenge assumptions. That's a genuinely valuable skill.\n\nHere's where I need to be direct with you.\n\n**The gap between your ideas and your delivery has become a serious problem, and it's undermining the impact you could be having.**\n\nI want to walk through specifics, because I think you deserve concrete examples rather than vague impressions:\n\n- The community-led growth campaign \u2014 your idea, your pitch, your buy-in from leadership \u2014 launched **three weeks late** and without two of the four content assets that were in the original plan. The abbreviated version performed moderately, but we'll never know what the full version could have done.\n- The Q3 email nurture sequence was due September 1. I received the first draft on September 14, after two check-ins where you told me it was \"almost there.\" When it arrived, it was strong \u2014 but the two-week delay meant we missed the product launch window it was designed to support.\n- You've missed or been late to four of our last six project milestone dates. In three of those cases, I learned about the delay less than 48 hours before the deadline.\n\nI want to be clear about why this matters: it's not about rigid adherence to dates for the sake of process. It's that **your ideas need execution to have impact**, and right now, the execution gap is causing your colleagues to hesitate before partnering with you on projects. I've heard this directly from two cross-functional partners. That's a trust problem, and it's solvable \u2014 but only if we name it.\n\n**Growth Area: Execution Discipline and Proactive Communication**\nI don't think this is a laziness problem or a capability problem. Based on our conversations, I think what's happening is a combination of: (1) you take on the creative and strategic parts of a project immediately but delay the operational and detail-oriented parts because they energize you less, and (2) when you realize you're behind, you try to close the gap alone instead of flagging it early. Does that feel accurate? I'd genuinely like your perspective.\n\nHere's what I'd like us to put in place for Q1:\n\n1. **Milestone mapping for every project you own.** Within 48 hours of kicking off a project, I'd like you to share a simple backward plan with key dates. We'll review it together. This isn't about micromanagement \u2014 it's about making the path from idea to delivery visible so we can catch slippage early.\n\n2. **A \"yellow light\" rule.** If at any point you think a deadline is at risk \u2014 even if you think you *might* be able to recover \u2014 I need you to tell me immediately. I will never penalize you for an early flag. I will always be concerned about a late surprise. This is a trust-building behavior, and I need to see it consistently.\n\n3. **Partnering you with Jamie on the Q1 product launch campaign.** Jamie is exceptional at project management and operational sequencing. I want you to lead the strategy and creative direction, and I want you to learn from how she structures the execution side. This isn't a demotion \u2014 it's a deliberate pairing designed to help you build the muscle you're missing.\n\nMarcus, I believe you have the raw talent to be one of the top performers on this team. I'm not saying that to soften the message \u2014 I'm saying it because it makes the current gap more frustrating, not less. The ideas are there. The strategic instinct is there. What's missing is the discipline to bring those ideas to life reliably, and the communication habits to keep your team and your partners informed when things shift.\n\nI take some responsibility here too. I think I've been too hands-off in assuming that strong thinking would naturally translate into strong delivery, and I should have intervened with structure and support earlier. I'm committing to being a more active partner in this with you going forward.\n\nI'd like us to check in on these specific commitments biweekly. I need to see meaningful, measurable improvement in on-time delivery and proactive communication over the next quarter. I'm confident you can do this, and I'm here to help \u2014 but I want to be transparent that this is an area where continued difficulty will affect future performance ratings and growth opportunities.\n\nLet's talk about this together. I want to hear your reaction",
+      "tokens": 2149,
+      "time_ms": 55501
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 7.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.05,
+      "weighted_b": 8.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B fully covers all three requested scenarios with honest, compassionate, and actionable feedback, while Response A is detailed and strong but appears incomplete because the third scenario is missing and the second is cut off."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 5.0,
+        "correctness": 8.0,
+        "completeness": 4.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 7.15,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A successfully addressed all three scenarios, whereas Response B cut off abruptly and completely missed the third scenario."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 9.2,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B is more thorough, with richer detail, deeper psychological insight, and stronger actionable commitments, while maintaining equal clarity and usefulness."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

@@ -1,0 +1,101 @@
+{
+  "question_id": "COMM-025",
+  "category": "communication",
+  "question_text": "Write rejection emails for: (1) A job candidate after a final-round interview who was strong but not selected. (2) A vendor whose proposal didn't meet requirements. (3) A customer requesting a feature",
+  "timestamp": "2026-04-16T19:07:25.375400",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Three Rejection Emails\n\n---\n\n## 1. Job Candidate (Post Final-Round)\n\n**Subject:** Our decision \u2014 and a genuine thank you, Maya\n\nHi Maya,\n\nI wanted to reach out personally rather than let this sit in a queue. After a lot of discussion, we've decided to move forward with another candidate for the Senior Product Designer role.\n\nThis was genuinely hard. Your portfolio walkthrough \u2014 especially the way you reframed the onboarding problem at Lattice as a trust issue rather than a UX one \u2014 stuck with the whole panel. Priya mentioned it again in our debrief yesterday. In the end, the candidate we chose had deeper experience with the specific B2B procurement workflows we're rebuilding next quarter, and that tipped a close decision.\n\nI want to be honest: \"close decision\" isn't a platitude here. If a second similar role opens up in the next six to nine months (which is plausible given our roadmap), I'd like to come back to you directly before we post it publicly. Would that be okay?\n\nThank you for the four hours you gave us, the prep that was clearly behind it, and for being gracious throughout. I'm rooting for you.\n\nBest,\nDaniel\n\n---\n\n## 2. Vendor Proposal\n\n**Subject:** Re: Proposal for Q2 logistics integration\n\nHi Reza,\n\nThanks for the detailed proposal your team sent over on the 14th, and for the follow-up call last Tuesday. I appreciate how quickly you turned around the revised pricing after our initial conversation.\n\nWe've decided not to move forward with Helix Freight for this engagement. Two things drove the decision:\n\n1. **SLA coverage.** We need 24/7 incident response with a one-hour acknowledgment window, and your current tier offers next-business-day. I understand the premium tier closes that gap, but it pushed the total outside our approved budget.\n2. **EDI compatibility.** Our warehouse system runs on an older ANSI X12 variant, and your integration team flagged that custom mapping would add 8\u201310 weeks to implementation. We can't absorb that timeline before our peak season.\n\nNeither of these is a judgment on the quality of what you proposed \u2014 it's genuinely a fit issue for this specific project. If Helix expands its mid-tier SLA coverage or builds out legacy EDI support, I'd welcome another conversation. We re-evaluate logistics partners every 18 months, and I'd be happy to keep you on the shortlist for the next cycle.\n\nThanks again for the work you put in.\n\nRegards,\nJanelle Okafor\nDirector of Operations\n\n---\n\n## 3. Customer Feature Request\n\n**Subject:** Re: Bulk CSV import for recurring invoices\n\nHi Tom,\n\nThanks for the thoughtful write-up on the bulk CSV import idea \u2014 and especially for attaching the sample workflow from your accounting team. That kind of detail is genuinely useful and it's why I wanted to reply myself rather than send a form response.\n\nI have to be straight with you: we've decided not to build this, at least not in the foreseeable roadmap.\n\nHere's the honest reasoning. We looked at the request across our customer base and found that most accounts hitting the problem you described are power users managing 200+ recurring invoices \u2014 which is a small slice of our users but a meaningful slice of our revenue, so we took it seriously. The build itself isn't the hard part; the ongoing support cost is. CSV imports generate a long tail of edge-case failures (encoding issues, malformed dates, partial imports), and our current support team isn't structured to absorb that. Expanding the team to support it would require raising prices in ways our smaller customers have told us clearly they can't absorb.\n\nWhat I can offer:\n\n- Our API supports recurring invoice creation in batches. If your team has any engineering capacity, I can introduce you to our developer advocate, Sam, who has written a Python script for exactly this use case with two other customers.\n- If you'd be open to it, I'd like to add you to a small advisory group we're forming for our power-user tier. We're considering a separate plan later this year that *would* include tools like this, and your input would shape it.\n\nI know this isn't the answer you wanted. I appreciate that you've been with us for three years and that you've been generous with feedback the whole time. Please keep sending it.\n\nBest,\nPriya Raman\nHead of Product",
+      "tokens": 1555,
+      "time_ms": 28711
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Three Rejection Emails\n\n## 1. Job Candidate \u2014 Final Round\n\n**Subject: Update on the Senior Product Designer Role**\n\nHi Mariana,\n\nThank you for the time and thought you put into the final round last Thursday. Your portfolio walkthrough of the healthcare onboarding redesign was genuinely one of the strongest presentations we've seen \u2014 the way you mapped accessibility constraints against business KPIs showed exactly the kind of thinking we value.\n\nAfter a lot of deliberation, we've decided to move forward with another candidate. I want to be straightforward about what tipped the decision: the role evolved during our search toward heavier design-systems work at the component library level, and the other finalist had deeper specific experience building and maintaining token-based systems at scale. This wasn't a gap in your ability \u2014 it was a shift in our immediate need.\n\nI don't say this as a courtesy: I've asked our recruiting team to flag your profile for the UX lead role we're scoping for Q3, which aligns much more closely with the strategic, research-driven strengths you demonstrated. If you're open to that, I'll make sure you hear from us early.\n\nIn the meantime, if a reference or a LinkedIn recommendation from me would be useful in your search, I'm happy to provide one. I mean that.\n\nWarmly,\nDavid Chen\nVP of Product, Lumen Health\n\n---\n\n## 2. Vendor Proposal\n\n**Subject: Re: CloudBridge Implementation Proposal \u2014 Decision Update**\n\nHi Tom\u00e1s,\n\nI appreciate the detail your team put into the revised proposal, especially the phased migration timeline. It was clear you did real homework on our legacy architecture rather than submitting something off the shelf, and that stood out.\n\nWe've decided not to move forward, and I want to share the specific reasoning because I think it's more useful than a vague \"we went another direction.\"\n\nTwo requirements ended up being decisive. First, our compliance team needed the data residency guarantees to cover all three of our EU processing regions, and the proposal addressed Frankfurt and Dublin but left Amsterdam dependent on a roadmap commitment rather than current capability. Second, the SLA structure for Tier 1 incident response came in at four hours, and our regulatory obligation is 90 minutes \u2014 the gap there was larger than we could bridge contractually.\n\nThe integration approach you proposed for our Salesforce environment was actually stronger than what we saw from other vendors, and your team's communication throughout the process was excellent.\n\nIf the data residency expansion lands and the SLA tiers shift, I'd genuinely welcome a future conversation. We're re-evaluating infrastructure partnerships annually, and our next review window opens in March. You're welcome to reach back out then.\n\nThank you again for the effort \u2014 it wasn't wasted on us even if the timing didn't work.\n\nBest regards,\nPriya Kapoor\nDirector of IT Operations, Vantage Financial\n\n---\n\n## 3. Customer Feature Request\n\n**Subject: Re: Request for Multi-Currency Support in Reporting**\n\nHi James,\n\nThank you for the detailed write-up on multi-currency reporting \u2014 and for including those screenshots of the workaround you've been building in spreadsheets. That context was genuinely helpful in understanding the pain point, and I shared it with our product team directly.\n\nAfter evaluating this against our roadmap, I want to be honest with you: we've decided not to build native multi-currency support in the reporting module. I'd rather explain why than leave you guessing.\n\nOur reporting engine currently processes all calculations in a single base currency by design. Adding real-time conversion would require rebuilding the aggregation layer in a way that would introduce latency and rounding-variance issues for the majority of our users who operate in one currency. We explored a simplified version \u2014 static exchange rates applied at export \u2014 but in testing, it produced numbers that diverged enough from actual financials that we felt it would create more problems than it solved. We weren't comfortable shipping something half-right for a use case this important.\n\nWhat I *can* point you toward: our API now supports pulling raw transaction data with currency metadata intact, which means tools like Power BI or Metabase can handle the conversion logic on their end with full control over rate sources and rounding rules. Our solutions engineer, Anika, has helped a few other customers with similar setups \u2014 I've cc'd her here, and she's happy to walk you through it if that's useful.\n\nYour feedback also surfaced something we *are* acting on: better documentation for multi-entity workarounds, which ships next month.\n\nI realize this isn't the answer you were hoping for, and I don't take it lightly that you've built your workflow around us. If your needs shift in a direction where we're not keeping up, I'd rather know and try to help than have you quietly outgrow us.\n\nThanks for pushing us on this, James. It makes the product better even when the answer is no.\n\nBest,\nRachel Mori\nHead of Product, Ledgerline",
+      "tokens": 1196,
+      "time_ms": 32650
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 9.4,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B is slightly stronger overall: all three emails feel personal and specific, the reasons are candid without being harsh, and it consistently leaves the door open with especially actionable next steps. Response A is also strong, but B has a bit more polish and practical usefulness."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 10.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 10.0,
+      "weighted_b": 9.65,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provided slightly more sophisticated and realistic technical justifications in its rejections, demonstrating exceptional depth."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 10.0,
+      "weighted_b": 8.6,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A was more thorough, personalized, and actionable, with superior depth and clarity in each scenario."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 3
+  },
+  "judges_agree": true
+}

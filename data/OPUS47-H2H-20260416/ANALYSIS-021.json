@@ -1,0 +1,101 @@
+{
+  "question_id": "ANALYSIS-021",
+  "category": "analysis",
+  "question_text": "You receive a job offer: $150K base, $50K RSUs/year, $20K signing bonus. The company's Glassdoor shows similar roles at $140K-$180K. You have a competing offer at $165K base, no RSUs. (1) Calculate to",
+  "timestamp": "2026-04-16T18:28:32.646557",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Job Offer Analysis\n\n## (1) 4-Year Total Compensation Calculation\n\n**Offer A: $150K base + $50K RSUs/yr + $20K signing**\n\nAssumptions: RSUs granted annually (or as a 4-year grant vesting 25%/yr), 10% annual appreciation on vested shares, 3% annual base raises.\n\n| Year | Base (3% raise) | RSU Vest Value* | Signing |\n|------|----------------|-----------------|---------|\n| 1 | $150,000 | $50,000 | $20,000 |\n| 2 | $154,500 | $55,000 | \u2014 |\n| 3 | $159,135 | $60,500 | \u2014 |\n| 4 | $163,909 | $66,550 | \u2014 |\n| **Total** | **$627,544** | **$232,050** | **$20,000** |\n\n*Assumes each year's vested RSUs appreciate 10% by vest date (standard modeling assumption).\n\n**Offer A Total: ~$879,594**\n\n**Offer B: $165K base, no RSUs**\n\n| Year | Base (3% raise) |\n|------|----------------|\n| 1 | $165,000 |\n| 2 | $169,950 |\n| 3 | $175,049 |\n| 4 | $180,300 |\n| **Total** | **$690,299** |\n\n**Offer A beats Offer B by ~$189,000 over 4 years** \u2014 but RSU value is *at risk* (stock could drop, you could leave before vesting).\n\n---\n\n## (2) Non-Financial Factors\n\n**Risk & stability**\n- RSU vesting cliff (typically 1 year) \u2014 leaving early forfeits equity\n- Is the company public or private? Private RSUs are illiquid\n- Stock volatility and sector outlook\n\n**Career trajectory**\n- Role scope, title, promotion velocity\n- Manager quality (often the #1 predictor of happiness)\n- Team caliber \u2014 who will you learn from?\n\n**Lifestyle**\n- Remote/hybrid/onsite, commute\n- WLH expectations, on-call load, PTO culture\n- Parental leave, healthcare, 401k match\n\n**Strategic value**\n- Which role sets up your *next* job better?\n- Industry growth, technical stack relevance\n- Company reputation on resume\n\n**Culture fit** \u2014 gut check from interviews, Glassdoor reviews on management\n\n---\n\n## (3) Counter-Offer Email\n\n**Subject: Re: Offer \u2014 [Your Name]**\n\nHi [Recruiter/Hiring Manager],\n\nThank you again for the offer \u2014 I'm genuinely excited about the opportunity to join [Company] and work with [specific person/team]. The [specific aspect: mission, product, team] is exactly the kind of problem I want to be solving.\n\nI want to be transparent as I work through my decision. I'm holding a competing offer with a base of $165K, and based on my research (Glassdoor shows similar roles at [Company] ranging up to $180K), I believe there's room to align the offer closer to the value I'll bring from day one.\n\nWould the team consider the following adjustments?\n\n- **Base salary: $170K** \u2014 splits the difference between the competing offer and the upper band of your published range\n- **Signing bonus: $30K** \u2014 to offset the unvested equity I'm leaving on the table at my current role\n- **RSU grant: $50K/year unchanged** \u2014 I'm fully bought into the long-term upside here\n\nI want to be clear: [Company] is my first choice. If we can get closer on base and signing, I'm ready to sign and give notice this week. Happy to hop on a quick call if that's easier.\n\nThanks for advocating for me through this process.\n\nBest,\n[Your Name]\n\n---\n\n### Why this email works\n\n- **Anchors high but defensibly** \u2014 $170K is between competing offer and top of published band\n- **Uses leverage without threats** \u2014 names the competing number once, doesn't ultimatum\n- **Signals commitment** \u2014 \"first choice\" + \"ready to sign this week\" de-risks the ask for the recruiter\n- **Gives multiple dials** \u2014 base, signing, RSUs \u2014 so they can say yes to *something*\n- **Justifies each ask** \u2014 market data, unvested equity, day-one value\n- **Preserves relationship** \u2014 warm tone, credits the team\n\n**Realistic outcome:** Expect to land somewhere around **$162-168K base + $25K signing**, keeping RSUs. Recruiters rarely pull offers over professional, data-backed counters \u2014 they pull them over entitled or aggressive ones.",
+      "tokens": 1636,
+      "time_ms": 25684
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Comprehensive Job Offer Analysis & Negotiation Strategy\n\n## Part 1: 4-Year Total Compensation Comparison\n\n### Offer A: $150K Base + RSUs + Signing Bonus\n\n**Base Salary (assuming no raises for clean comparison):**\n- 4 years \u00d7 $150,000 = **$600,000**\n\n**RSUs with 10% Annual Appreciation:**\n\nThe key here is understanding vesting timing and when appreciation accrues.\n\n| Year | Grant Value | Appreciation Factor | Value at Vest | Cumulative RSU |\n|------|-----------|-------------------|--------------|----------------|\n| 1 | $50,000 | 1.00 (just granted) | $50,000 | $50,000 |\n| 2 | $50,000 | 1.10 (Y1 grant appreciated) + new grant | $55,000 + $50,000 | $155,000 |\n| 3 | $50,000 | Y1\u21921.21, Y2\u21921.10, Y3\u21921.00 | $60,500 + $55,000 + $50,000 | $320,500 |\n| 4 | $50,000 | Y1\u21921.331, Y2\u21921.21, Y3\u21921.10, Y4\u21921.00 | $66,550 + $60,500 + $55,000 + $50,000 | $552,550 |\n\n**Wait \u2014 let me recalculate this more carefully.**\n\nAssuming $50K in RSUs are granted each year and vest immediately (simplest model), and each grant appreciates 10% per year after vesting:\n\n**Year 1 grant ($50K):** Appreciated value by end of each year:\n- End Y1: $50,000\n- End Y2: $55,000\n- End Y3: $60,500\n- End Y4: $66,550\n\n**Year 2 grant ($50K):**\n- End Y2: $50,000\n- End Y3: $55,000\n- End Y4: $60,500\n\n**Year 3 grant ($50K):**\n- End Y3: $50,000\n- End Y4: $55,000\n\n**Year 4 grant ($50K):**\n- End Y4: $50,000\n\n**Total RSU value realized over 4 years (value at time of vesting each year):**\nIf we count the income as it vests: $50K + $50K + $50K + $50K = **$200,000 in taxable RSU income**\n\n**Unrealized appreciation on held shares by end of Year 4:**\n$66,550 + $60,500 + $55,000 + $50,000 = **$232,050** (total portfolio value)\n\nFor a clean comparison, I'll use two methods:\n\n**Method A \u2014 Income received (compensation recognized at vest):**\n\n| Component | 4-Year Total |\n|-----------|-------------|\n| Base Salary | $600,000 |\n| RSU Income (at vest) | $200,000 |\n| Signing Bonus | $20,000 |\n| **Total Recognized Compensation** | **$820,000** |\n\n**Method B \u2014 Total economic value (including appreciation on held shares):**\n\n| Component | 4-Year Total |\n|-----------|-------------|\n| Base Salary | $600,000 |\n| RSU Portfolio Value (end Y4) | $232,050 |\n| Signing Bonus | $20,000 |\n| **Total Economic Value** | **$852,050** |\n\n---\n\n### Offer B: $165K Base, No RSUs\n\n| Component | 4-Year Total |\n|-----------|-------------|\n| Base Salary | $660,000 |\n| RSUs | $0 |\n| Signing Bonus | $0 |\n| **Total Compensation** | **$660,000** |\n\n---\n\n### Head-to-Head Comparison\n\n```\n                          Offer A         Offer B        Difference\n                          -------         -------        ----------\n4-Year Cash Income:       $620,000        $660,000       B wins by $40K\n4-Year Total (at vest):   $820,000        $660,000       A wins by $160K\n4-Year Total (w/ growth): $852,050        $660,000       A wins by $192K\n\nAnnual Effective Comp:    $205,000/yr     $165,000/yr    A wins by $40K/yr\nMonthly Cash Flow:        $12,500/mo      $13,750/mo     B wins by $1,250/mo\n```\n\n### Critical Nuances Most People Miss\n\n**Tax implications:**\n- RSUs are taxed as ordinary income at vest, meaning you owe taxes on $50K/year without receiving cash\n- At a ~35% marginal rate, that's ~$17,500/year in tax on illiquid compensation\n- Signing bonus is also taxed, often withheld at supplemental rate (22% federal)\n- Net signing bonus \u2248 $14,000-$15,600\n\n**Liquidity-adjusted comparison:**\n- If the company is **public**: RSUs can be sold at vest \u2192 functionally equivalent to cash\n- If the company is **private**: RSUs are essentially monopoly money until an IPO/acquisition \u2014 discount their value by 50-70% for risk\n\n**If private company (risk-adjusted):**\n\n| Scenario | Offer A Value | Offer B Value |\n|----------|--------------|--------------|\n| Company succeeds (40% probability) | $852,050 | $660,000 |\n| Company stagnates (35% probability) | $620,000 | $660,000 |\n| Company fails (25% probability) | $620,000 | $660,000 |\n| **Expected Value** | **$712,820** | **$660,000** |\n\nThe gap narrows significantly when you account for risk.\n\n---\n\n## Part 2: Non-Financial Factors That Should Affect the Decision\n\n### Tier 1 \u2014 Career Trajectory Factors\n\n**1. Role scope and title**\n- Will one role give you broader responsibilities?\n- Does one title position you better for your *next* job?\n- Managing people vs. individual contributor path alignment\n\n**2. Learning velocity**\n- Which environment will teach you more in 2-3 years?\n- Quality of the people you'll work alongside (you become the average of your team)\n- Exposure to problems at scale vs. greenfield challenges\n\n**3. Manager quality**\n- Research consistently shows your direct manager is the #1 predictor of job satisfaction\n- Did you meet your would-be manager? What's their reputation?\n- Ask: \"Can I speak with someone who reports to [manager name]?\"\n\n**4. Company trajectory**\n- Is the company growing (creating new roles and promotions) or contracting?\n- Market position: leader, challenger, or declining?\n- For Offer A specifically: what's the realistic RSU upside? 10% is conservative for a rocketship, optimistic for a mature company\n\n**5. Brand value on resume**\n- Does one company name open more doors than the other?\n- Industry perception matters for your next negotiation\n\n### Tier 2 \u2014 Lifestyle and Sustainability Factors\n\n**6. Work-life boundaries**\n- Average working hours (ask employees, not recruiters)\n- On-call expectations, weekend work culture\n- PTO policy AND actual PTO usage (many unlimited PTO companies average fewer days taken)\n\n**7. Location and commute**\n- Remote/hybrid/in-office requirements\n- Commute time is unpaid work \u2014 30 min/day \u00d7 250 days = 125 hours/year\n- Cost of living differences if relocation is involved\n\n**8. Benefits deep-dive**\n\n| Benefit | Can Represent | Annual Value |\n|---------|--------------|-------------|\n| Health insurance (family) | Premium difference | $5,000-$15,000 |\n| 401(k) match | e.g., 50% up to 6% | $4,500-$9,750 |\n| Parental leave | If relevant | Significant |\n| Professional development budget | Conferences, courses | $2,000-$10,000 |\n| Equity refresh grants | Additional RSUs in Y2+ | Variable |\n\n**9. Team and culture**\n- Glassdoor reviews: look at patterns in negative reviews, not just the star rating\n- Engineering culture, deployment practices, technical debt tolerance\n- Diversity of the team and leadership\n- How does the company handle disagreement?\n\n**10. Stability and risk tolerance**\n-",
+      "tokens": 2170,
+      "time_ms": 40383
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 7.0,
+        "usefulness": 9.0,
+        "correctness": 7.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 6.0,
+        "depth": 8.0,
+        "usefulness": 6.0,
+        "correctness": 5.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 7.9,
+      "weighted_b": 6.35,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is clearer, more actionable, and includes a strong counter-offer email. Response B has useful nuance but contains calculation confusion and does not fully deliver the requested email."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 7.0,
+        "usefulness": 4.0,
+        "correctness": 7.0,
+        "completeness": 4.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 5.95,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A completed all parts of the prompt, including the highly practical counter-offer email, whereas Response B cut off prematurely and completely missed the third requirement."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 8.0,
+        "usefulness": 10.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 6.0,
+        "depth": 10.0,
+        "usefulness": 9.0,
+        "correctness": 7.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 9.15,
+      "weighted_b": 8.3,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A was clearer, more actionable, and correctly modeled the RSU appreciation, while Response B was overly complex and contained calculation errors."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

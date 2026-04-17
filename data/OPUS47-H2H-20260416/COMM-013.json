@@ -1,0 +1,102 @@
+{
+  "question_id": "COMM-013",
+  "category": "communication",
+  "question_text": "Two senior engineers are deadlocked: Engineer A wants to use microservices, Engineer B wants to keep the monolith. Both have valid points. Write a decision document that: (1) Steelmans both positions ",
+  "timestamp": "2026-04-16T18:49:13.969489",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Architecture Decision Document: Microservices vs. Monolith\n\n## 1. Steelmanning Both Positions\n\n**Engineer A (Microservices):** Independent deployability reduces blast radius and coordination overhead as teams grow. Services can scale, fail, and evolve independently. Technology heterogeneity allows the right tool per problem. Clear service boundaries force explicit contracts, which often exposes hidden coupling that a monolith silently tolerates. For organizations anticipating team growth or divergent scaling needs, the architectural investment pays compounding dividends.\n\n**Engineer B (Monolith):** A well-structured monolith offers transactional integrity, simpler debugging, lower operational overhead, and faster local development. Most \"microservices benefits\" require mature platform investment (observability, service mesh, CI/CD, on-call rotations) that small teams cannot afford. Premature decomposition creates distributed monoliths\u2014all the complexity of microservices with none of the independence. Modular monoliths capture 80% of the benefit at 20% of the cost.\n\n## 2. The Actual Underlying Disagreement\n\nThe surface argument is about *architecture*. The real disagreement is about **three implicit predictions**:\n\n1. **Team trajectory:** Will we have enough teams within 12\u201318 months that coordination cost on a shared codebase exceeds distributed-systems cost?\n2. **Operational maturity:** Do we have (or can we fund) the platform capabilities microservices *require* to not become a liability?\n3. **Domain stability:** Are our service boundaries well-understood enough to carve, or are we still discovering the domain?\n\nNeither engineer is wrong about architecture. They disagree about **where we are on these three axes**\u2014and that disagreement is empirical, not philosophical.\n\n## 3. Decision Framework\n\nRather than choosing an architecture, evaluate against these gates:\n\n| Dimension | Stay Monolith If\u2026 | Extract Service If\u2026 |\n|---|---|---|\n| **Team topology** | <3 teams touching the code | \u22653 teams with frequent merge conflicts or release coordination |\n| **Scaling profile** | Uniform load across features | One subsystem has distinct scaling/latency/availability needs |\n| **Domain clarity** | Boundaries still shifting | Bounded context stable for 6+ months |\n| **Operational readiness** | No dedicated platform capacity | Observability, CI/CD, on-call maturity exists |\n| **Failure isolation** | Shared failure acceptable | A subsystem's failure must not cascade |\n\n**Rule:** Extraction requires *at least three* gates to clear. Default is monolith.\n\n## 4. Recommendation\n\n**Adopt a modular monolith now, with a documented extraction pathway.**\n\nEnforce module boundaries via package structure, dependency rules, and explicit internal APIs\u2014as if each module were a future service. This preserves optionality: we get monolith simplicity today and incur the microservices cost only when a specific module earns it by clearing the gates above.\n\n**Trade-offs we accept:**\n- We forgo early infrastructure investment that *would* pay off if we scale faster than expected.\n- Refactoring module boundaries in-process is easier than across services, but we may discover boundaries were wrong and pay migration cost later.\n- Engineer A's concern about \"hidden coupling\" is real; we mitigate via architectural fitness functions (dependency linting, module tests) but not eliminate it.\n\n**Revisit trigger:** When any single module clears three gates, or team count exceeds four, re-open this document.",
+      "tokens": 1335,
+      "time_ms": 14023
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Architecture Decision Document: Microservices vs. Monolith\n\n**Date:** [Date] | **Status:** Proposed | **Stakeholders:** Engineering Team\n\n---\n\n## 1. Steelmanning Both Positions\n\n**The Case for Microservices (Engineer A)**\n\nOur monolith is becoming a deployment bottleneck. A single failing module causes full-system outages. Teams step on each other during releases. Microservices would let teams deploy independently, scale hot services individually, and choose the right tool per problem domain. As we grow the team, service boundaries will reduce coordination overhead and let us move faster.\n\n**The Case for Keeping the Monolith (Engineer B)**\n\nOur current system works. Microservices introduce distributed systems problems we don't yet have: network failures, data consistency challenges, observability complexity, and a steep DevOps overhead. We're a team of [N], and microservices require operational maturity we haven't built. Most \"monolith problems\" are actually code organization problems solvable with better module boundaries. A well-structured monolith will outperform a poorly-implemented microservices architecture every time.\n\n---\n\n## 2. The Actual Underlying Disagreement\n\nThe surface argument is about architecture. The real disagreement is about **organizational readiness and risk tolerance**.\n\nEngineer A is optimizing for **future scale** \u2014 betting that the cost of migrating later exceeds the cost of migrating now. Engineer B is optimizing for **present velocity** \u2014 betting that premature distribution will slow the team down more than the monolith's current pain points.\n\nThere is also an unspoken disagreement about **operational capability**: can this team reliably run a distributed system today? The answer to that question matters more than which architecture is theoretically superior.\n\n---\n\n## 3. Decision Framework\n\nRather than choosing an architecture in the abstract, evaluate against these criteria:\n\n| Question | Favors Monolith | Favors Microservices |\n|---|---|---|\n| How many independent teams need to deploy simultaneously? | 1\u20132 | 3+ |\n| Do we have production-grade CI/CD, observability, and container orchestration? | No | Yes |\n| Are our domain boundaries well-understood and stable? | No / shifting | Yes / clear |\n| Is the primary pain deployment coupling or code complexity? | Code complexity | Deployment coupling |\n| What is our acceptable operational cost increase? | Low | Moderate-to-high |\n\n**Score honestly.** If most answers fall in one column, the decision makes itself.\n\n---\n\n## 4. Recommendation\n\n**Start with a modular monolith. Extract surgically.**\n\nEnforce strict module boundaries within the monolith \u2014 separate domains by module with clear internal APIs and no shared mutable state. This captures 70% of microservices' organizational benefits without the operational tax.\n\nSimultaneously, invest in the infrastructure prerequisites: containerization, CI/CD per module, structured logging, distributed tracing. This builds the operational muscle that microservices will eventually demand.\n\nThen extract the **first service only when a specific module has a genuinely different scaling, deployment, or technology need** \u2014 not before.\n\n**What we gain:** Immediate improvement in code organization; a clear, low-risk on-ramp to microservices if and when the criteria above are met.\n\n**What we sacrifice:** We delay independent deployability and per-service scaling. If growth accelerates faster than expected, we may face a compressed migration timeline under pressure.\n\nThis is not a permanent decision. It is a reversible first step that preserves optionality while respecting current constraints. Revisit in [6 months] with data.",
+      "tokens": 926,
+      "time_ms": 23065
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 10.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 9.35,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B more directly satisfies the prompt by identifying the underlying disagreement as empirical predictions, offering a clearer decision framework with explicit gates, and ending with a nuanced recommendation that acknowledges concrete trade-offs and revisit triggers."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 10.0,
+      "weighted_b": 8.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provides a deeper, more nuanced analysis of the underlying disagreement and a more rigorous, actionable decision framework."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 8.25,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A more thoroughly addresses all four required document components with greater clarity, actionable detail, and a balanced recommendation that explicitly acknowledges trade-offs."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

@@ -1,0 +1,101 @@
+{
+  "question_id": "REASON-013",
+  "category": "reasoning",
+  "question_text": "Sleeping Beauty is told: 'We'll flip a coin. If heads, we wake you once (Monday). If tails, we wake you twice (Monday and Tuesday) with memory erased between wakings. Each time you wake, we'll ask: wh",
+  "timestamp": "2026-04-16T17:44:30.110644",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# The Sleeping Beauty Problem\n\n## (1) The Answer\n\nThere is no settled answer. Philosophers remain genuinely divided, though the **thirder position (1/3)** is probably the majority view among decision theorists and Bayesians, while the **halfer position (1/2)** has strong defenders appealing to conditionalization principles. The disagreement is substantive, not merely verbal\u2014it reflects deeper disputes about self-locating belief.\n\n## (2) Rigorous Arguments for Both\n\n### The Thirder Argument (P(Heads) = 1/3)\n\n**Frequency/long-run argument.** Run the experiment N times with N large. Expected awakenings:\n- Heads-Monday: N/2\n- Tails-Monday: N/2  \n- Tails-Tuesday: N/2\n\nTotal awakenings: 3N/2. Of these, only N/2 occur in Heads-worlds. Upon waking, Beauty knows she is in *some* awakening. By the Principal Principle applied to the uniform distribution over awakenings (justified by indifference among subjectively indistinguishable epistemic situations):\n\n$$P(\\text{Heads} \\mid \\text{awake}) = \\frac{N/2}{3N/2} = \\frac{1}{3}$$\n\n**Elga's argument (2000).** Let H1 = Heads & Monday, T1 = Tails & Monday, T2 = Tails & Tuesday.\n- Conditional on Tails, Monday and Tuesday awakenings are subjectively symmetric: P(T1|Tails) = P(T2|Tails), so P(T1) = P(T2).\n- If Beauty learned it was Monday, the coin becomes a fair coin yet to be (effectively) decided between H1 and T1, so P(H1|Monday) = P(T1|Monday) = 1/2, giving P(H1) = P(T1).\n- Therefore P(H1) = P(T1) = P(T2) = 1/3, and P(Heads) = 1/3.\n\n**Dutch book argument.** If Beauty uses credence 1/2 on heads, she can be forced to accept bets that lose money in expectation across repeated trials. Credence 1/3 corresponds to fair betting odds.\n\n### The Halfer Argument (P(Heads) = 1/2)\n\n**No new information.** Beauty knew *before* the experiment that she would wake up at least once. Upon waking, she learns nothing she didn't already know with certainty. By conditionalization:\n\n$$P(\\text{Heads} \\mid \\text{awake}) = P(\\text{Heads}) = 1/2$$\n\nChanging credence requires evidence; \"I am awake\" is not evidence because P(awake | Heads) = P(awake | Tails) = 1.\n\n**Lewis's version.** Beauty's prior on Heads is 1/2. The proposition \"I am awake now\" has probability 1 in every possible outcome of the experiment. Conditionalizing on a probability-1 proposition cannot shift credence. Thus 1/2 is the unique rational answer preserving standard Bayesian updating.\n\n**The thirder conflates questions.** \"What fraction of awakenings occur in Heads-worlds?\" (answer: 1/3) is different from \"What is the probability this coin toss landed heads?\" (answer: 1/2). The coin is fair; doubling Beauty's interviews doesn't bias the coin.\n\n## (3) The 1-vs-1,000,000 Variant\n\nHere the positions diverge dramatically.\n\n**Thirder answer:**\n$$P(\\text{Heads}) = \\frac{1}{1 + 1{,}000{,}000} = \\frac{1}{1{,}000{,}001} \\approx 10^{-6}$$\n\nBeauty, upon waking, should be nearly certain the coin landed tails. If offered a bet at even odds that the coin was heads, refusing is overwhelmingly rational.\n\n**Halfer answer:** Still 1/2. The coin is fair; the number of interviews is causally downstream of the toss and provides no evidence about it.\n\n**Why this case sharpens intuitions:** The halfer must bite a serious bullet. Imagine Beauty is offered $1 if she correctly guesses the coin. Over many trials, guessing \"tails\" every time yields near-certain winnings (she gets paid once per heads-run and a million times per tails-run, if each waking counts). The halfer may respond that this conflates *betting strategy* (which depends on how payoffs aggregate over wakings) with *credence* (which tracks the objective chance of the toss).\n\nThis is essentially the structure of anthropic reasoning puzzles like the Doomsday Argument and Presumptuous Philosopher: does finding yourself in a large reference class of observers count as evidence that large reference classes are more likely? The thirder says yes (Self-Indication Assumption); the halfer says no.\n\n## Summary\n\n| Position | P(H) standard | P(H) with 1M | Key principle |\n|----------|---------------|--------------|---------------|\n| Halfer | 1/2 | 1/2 | Strict conditionalization; no new info |\n| Thirder | 1/3 | ~1/10\u2076 | Self-locating evidence; indifference over awakenings |\n\nMy own view: the thirder position is more defensible, primarily because of the betting/frequency arguments in the amplified case\u2014a credence of 1/2 that the coin landed heads when you're in one of a million tails-awakenings seems untenable. But the halfer correctly identifies that this requires non-standard treatment of self-locating belief, which remains philosophically unresolved.",
+      "tokens": 2033,
+      "time_ms": 30344
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# The Sleeping Beauty Problem: A Rigorous Analysis\n\n## Setting the Stage\n\nThis problem has generated genuine philosophical disagreement since it was formalized by Adam Elga (2000) and resisted by David Lewis (2001). The disagreement persists because both sides are rigorous\u2014they simply answer *different questions* while using the same word \"credence.\"\n\n---\n\n## (1) My Assessment\n\nThe **thirder position (1/3)** is correct under the standard interpretation of the question being asked, but the halfer position is not *wrong*\u2014it answers a different, also legitimate question. The distinction turns on what \"credence\" is supposed to track.\n\n---\n\n## (2) Rigorous Arguments for Both Positions\n\n### The Thirder Position (P(Heads) = 1/3)\n\n**Argument from centered-world reasoning (Elga 2000):**\n\nWhen Beauty awakens, she is uncertain about *two* things: the coin result and *what day it is*. Her epistemic state is an indexical (self-locating) uncertainty. There are three possible *centered worlds* (situations she might be in):\n\n| Situation | Coin | Day |\n|-----------|------|---------|\n| H-Monday | Heads | Monday |\n| T-Monday | Tails | Monday |\n| T-Tuesday | Tails | Tuesday |\n\n**Step 1:** When Beauty wakes on Monday (before any information distinguishes the days), she should assign:\n\n$$P(\\text{H-Monday}) = P(\\text{T-Monday})$$\n\nby a symmetry argument: if she were told \"it is Monday,\" heads and tails are equally likely (the coin is fair and Monday wakings happen regardless).\n\n**Step 2:** She should also assign:\n\n$$P(\\text{T-Monday}) = P(\\text{T-Tuesday})$$\n\nby a symmetry argument: if she were told \"the coin landed tails,\" she has no evidence distinguishing Monday from Tuesday (her experiences are identical, memory is erased).\n\n**Step 3:** Since these three exhaustive, mutually exclusive possibilities must sum to 1:\n\n$$P(\\text{H-Monday}) + P(\\text{T-Monday}) + P(\\text{T-Tuesday}) = 1$$\n\nWith the two equalities above:\n\n$$P(\\text{H-Monday}) = P(\\text{T-Monday}) = P(\\text{T-Tuesday}) = \\frac{1}{3}$$\n\nTherefore: $P(\\text{Heads}) = P(\\text{H-Monday}) = \\frac{1}{3}$.\n\n**Argument from expected betting payoffs:**\n\nIf Beauty bets $1 on heads each time she's awakened:\n- If heads: she bets once, wins $1.\n- If tails: she bets twice, loses $2.\n\nFair odds require $P(\\text{Heads}) = 1/3$ to break even. More precisely, if she wagers at odds $r : (1-r)$ on heads each waking:\n\n$$E[\\text{payoff}] = \\frac{1}{2}(1 \\cdot (1-r)) + \\frac{1}{2}(2 \\cdot (-r)) = \\frac{1-r}{2} - r = \\frac{1-3r}{2}$$\n\nThis is zero when $r = 1/3$.\n\n**Argument from long-run frequency:**\n\nRepeat the experiment 10,000 times. There will be \u22485,000 heads-experiments (5,000 wakings) and \u22485,000 tails-experiments (10,000 wakings). Of 15,000 total wakings, 5,000 are heads-wakings. The fraction is 1/3.\n\n---\n\n### The Halfer Position (P(Heads) = 1/2)\n\n**Argument from no new evidence (Lewis 2001):**\n\nBefore being put to sleep, Beauty knows the coin is fair: $P(\\text{Heads}) = 1/2$. Upon waking, what new *evidence* has she received? She knew with certainty she would be awakened (this happens regardless of the coin outcome). Since she has learned nothing she didn't already know, by Bayesian conditionalization:\n\n$$P_{\\text{wake}}(\\text{Heads}) = P_{\\text{prior}}(\\text{Heads}) = \\frac{1}{2}$$\n\nUpdating requires evidence with different likelihoods under the two hypotheses. But $P(\\text{I am awake now} \\mid \\text{Heads}) = 1$ and $P(\\text{I am awake now} \\mid \\text{Tails}) = 1$. No update occurs.\n\n**Argument from the nature of objective chance:**\n\nThe coin is fair. Full stop. Beauty has no information about any physical process that could make heads more or less likely. Credence about *objective, non-indexical facts about the world* should track the known chance: 1/2. The number of times you *ask someone* about an event doesn't change the event's probability. Asking \"did it rain yesterday?\" twice doesn't make rain less likely.\n\n**Argument against the thirder's betting framework:**\n\nThe betting argument is misleading because it conflates *number of bets* with *probability*. Under tails, Beauty is forced to bet twice, so of course the expected loss is higher. This is a feature of the *payoff structure* (more exposure under tails), not the probability. If we modify the bet so that total stakes are fixed\u2014e.g., Beauty's Monday bet counts and Tuesday's doesn't, or each bet is worth $1/n$ where $n$ is the number of wakings\u2014then fair odds restore $P = 1/2$.\n\n**Formal halfer framework (double-halfer variant):**\n\n$$P(\\text{Heads}) = 1/2, \\quad P(\\text{Monday} \\mid \\text{Heads}) = 1, \\quad P(\\text{Monday} \\mid \\text{Tails}) = 1/2$$\n\nThis gives:\n$$P(\\text{Monday}) = P(\\text{Mon}|\\text{H})P(\\text{H}) + P(\\text{Mon}|\\text{T})P(\\text{T}) = 1 \\cdot \\frac{1}{2} + \\frac{1}{2} \\cdot \\frac{1}{2} = \\frac{3}{4}$$\n\nAnd by Bayes' theorem: $P(\\text{Heads} \\mid \\text{Monday}) = \\frac{1/2}{3/4} = \\frac{2}{3}$\n\nThis is internally consistent but requires accepting that being told \"it's Monday\" *raises* confidence in heads (from 1/2 to 2/3), which many find counterintuitive.\n\n---\n\n## The Core Disagreement: What Is the Question?\n\nThe debate ultimately reduces to a disagreement about **how self-locating credence works**:\n\n| | Thirder | Halfer |\n|---|---------|--------|\n| **What \"credence\" tracks** | Rational betting odds per waking | Degree of belief about the objective world-state |\n| **Unit of analysis** | *Experiences* (centered worlds) | *Experiments* (possible worlds) |\n| **Key principle** | Indifference over centered possibilities | Bayesian conditionalization on non-indexical propositions |\n| **Treats duplication as** | Creating genuinely new epistemic possibilities | Repeating the same observation |\n\n---\n\n## (3) The Million-Waking Variant\n\n**Setup:** Heads \u2192 1 waking. Tails \u2192 1,000,000 wakings.\n\n### Thirder answer: P(Heads) = 1/1,000,001\n\nThere are 1,000,001 centered possibilities (1 heads-waking + 1,000,000 tails-wakings). By the same symmetry arguments:\n\n$$P(\\text{Heads}) = \\frac{1}{1{,}000{,}001} \\approx 0.0001\\%$$\n\n### Halfer answer: P(Heads) = 1/2\n\nNothing changes. The coin is still fair, and Beauty still learns nothing upon waking that she didn't already know.\n\n### Why this variant is philosophically revealing\n\nThe million-waking case sharpens the intuitive stakes dramatically:\n\n**For thirders**, this feels right: if you wake up and there are a million tails-wakings but only one heads-waking, you *should* be almost certain it's tails. This mirrors anthropic reasoning\u2014if a theory predicts vastly more observers-like-you, you should favor that theory. It connects to the **Self-Indication Assumption (SIA)**: the mere fact that you exist",
+      "tokens": 2191,
+      "time_ms": 43375
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 7.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 7.6,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more complete, cleaner, and more practically useful. Response B is strong but is truncated at the end and includes a misleading characterization that the sides simply answer different questions, reducing overall correctness and completeness."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 9.0,
+        "usefulness": 7.0,
+        "correctness": 9.0,
+        "completeness": 6.0
+      },
+      "weighted_a": 8.85,
+      "weighted_b": 7.9,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provides a complete and well-structured answer, whereas Response B cuts off mid-sentence at the very end."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.85,
+      "weighted_b": 7.85,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provided a more thorough and balanced analysis, clearly distinguishing both positions and effectively using the million-waking variant to illustrate the debate's stakes."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

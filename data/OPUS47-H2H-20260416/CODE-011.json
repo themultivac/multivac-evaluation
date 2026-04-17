@@ -1,0 +1,104 @@
+{
+  "question_id": "CODE-011",
+  "category": "code",
+  "question_text": "This distributed lock implementation has a subtle race condition that can cause two processes to hold the lock simultaneously. Find the bug and fix it.\n\n```python\nimport redis\nimport time\nimport uuid\n",
+  "timestamp": "2026-04-16T17:15:26.430075",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Distributed Lock Race Conditions\n\nThis implementation has **two critical race conditions** that can cause multiple processes to hold the lock simultaneously.\n\n## Bug #1: Non-atomic `SETNX` + `EXPIRE`\n\n```python\nif self.redis.setnx(self.lock_name, self.token):\n    self.redis.expire(self.lock_name, self.timeout)  # \u26a0\ufe0f Separate operation\n    return True\n```\n\nIf a process crashes (or is killed, network fails, GC pauses) **between** `SETNX` and `EXPIRE`, the lock has no TTL and becomes a **permanent deadlock**. No other process can ever acquire it.\n\n## Bug #2: Non-atomic check-and-delete in `release()`\n\n```python\nif self.redis.get(self.lock_name) == self.token:\n    self.redis.delete(self.lock_name)  # \u26a0\ufe0f Lock may have expired & been re-acquired\n```\n\nDangerous timeline:\n1. Process A acquires lock with `timeout=10`.\n2. Process A does `GET` \u2192 sees its own token \u2705\n3. Process A pauses (GC, context switch, slow network) for >10s.\n4. Lock expires; Process B acquires it with a new token.\n5. Process A resumes and runs `DELETE` \u2192 **deletes Process B's lock!**\n6. Process C now acquires the lock \u2192 **B and C both hold it simultaneously.**\n\n## Bug #3 (bonus): Not safe if `get()` returns bytes\n\n`redis-py` returns `bytes` by default, so `self.redis.get(...) == self.token` (a `str`) is always `False`, meaning the lock is never released by this code \u2014 it only goes away via TTL expiry.\n\n---\n\n## Correct Implementation\n\nUse `SET` with `NX` and `EX` flags (atomic) for acquisition, and a **Lua script** for atomic compare-and-delete on release:\n\n```python\nimport redis\nimport time\nimport uuid\n\nclass DistributedLock:\n    # Atomic check-token-then-delete\n    RELEASE_SCRIPT = \"\"\"\n    if redis.call(\"get\", KEYS[1]) == ARGV[1] then\n        return redis.call(\"del\", KEYS[1])\n    else\n        return 0\n    end\n    \"\"\"\n\n    # Atomic check-token-then-extend (for lock renewal)\n    EXTEND_SCRIPT = \"\"\"\n    if redis.call(\"get\", KEYS[1]) == ARGV[1] then\n        return redis.call(\"pexpire\", KEYS[1], ARGV[2])\n    else\n        return 0\n    end\n    \"\"\"\n\n    def __init__(self, redis_client, lock_name, timeout=10):\n        self.redis = redis_client\n        self.lock_name = f\"lock:{lock_name}\"\n        self.timeout = timeout\n        self.token = str(uuid.uuid4())\n        self._release = self.redis.register_script(self.RELEASE_SCRIPT)\n        self._extend = self.redis.register_script(self.EXTEND_SCRIPT)\n\n    def acquire(self, blocking=True, retry_delay=0.1, max_wait=None):\n        start = time.monotonic()\n        while True:\n            # Atomic: set only if not exists, with TTL in one round trip\n            if self.redis.set(\n                self.lock_name,\n                self.token,\n                nx=True,\n                ex=self.timeout,\n            ):\n                return True\n            if not blocking:\n                return False\n            if max_wait is not None and (time.monotonic() - start) >= max_wait:\n                return False\n            time.sleep(retry_delay)\n\n    def release(self):\n        # Atomic compare-and-delete via Lua\n        return bool(self._release(keys=[self.lock_name], args=[self.token]))\n\n    def extend(self, additional_ms=None):\n        \"\"\"Renew TTL if we still own the lock. Prevents expiry during long work.\"\"\"\n        ttl_ms = additional_ms if additional_ms is not None else self.timeout * 1000\n        return bool(self._extend(keys=[self.lock_name], args=[self.token, ttl_ms]))\n\n    def __enter__(self):\n        self.acquire()\n        return self\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        self.release()\n```\n\n### Key fixes\n\n| Bug | Fix |\n|---|---|\n| Non-atomic SETNX+EXPIRE | `SET key value NX EX timeout` \u2014 one atomic command |\n| Non-atomic GET+DEL | Lua script runs atomically inside Redis |\n| Bytes vs str comparison | Lua compares raw bytes inside Redis; no client-side mismatch |\n| Lock expires mid-work | `extend()` lets long operations renew their lease safely |\n\n## Caveats for Production\n\nEven this implementation is only safe on a **single Redis node**. Pitfalls remain:\n\n1. **Clock drift / GC pauses longer than TTL** \u2014 you can still lose the lock without knowing. Always treat critical sections as possibly-concurrent and use fencing tokens (monotonic counter) when the protected resource supports them (see Martin Kleppmann's [critique of Redlock](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)).\n2. **Redis failover** \u2014 if the master crashes after `SET` but before replication, a replica is promoted without the lock, and another client can acquire it. Use [Redlock](https://redis.io/docs/manual/patterns/distributed-locks/) across independent masters, or better, a consensus-based system (etcd, ZooKeeper, Consul) when correctness truly matters.\n3. **Don't pick `timeout` blindly** \u2014 it must exceed your worst-case critical section, or use `extend()` with a watchdog thread (as Redisson does in Java).\n\nFor most Python apps, prefer the battle-tested `redis.lock.Lock` that ships with `redis-py`, which implements essentially the pattern above.",
+      "tokens": 2292,
+      "time_ms": 17298
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# Race Condition in Distributed Lock\n\n## The Bugs\n\nThere are **two critical race conditions** in this implementation:\n\n### Bug 1: Non-Atomic Acquire (`SETNX` + `EXPIRE`)\n\n```python\n# These are TWO separate commands \u2014 not atomic\nif self.redis.setnx(self.lock_name, self.token):  # Step 1: set the key\n    self.redis.expire(self.lock_name, self.timeout)  # Step 2: set expiry\n```\n\n**What can go wrong:** If the process crashes between `SETNX` and `EXPIRE`, the lock is held **forever** with no TTL. No other process can ever acquire it \u2014 a permanent deadlock.\n\n### Bug 2: Non-Atomic Release (GET + DELETE)\n\n```python\n# These are TWO separate commands \u2014 not atomic\nif self.redis.get(self.lock_name) == self.token:  # Step 1: check owner\n    self.redis.delete(self.lock_name)               # Step 2: delete\n```\n\n**What can go wrong \u2014 step by step:**\n\n```\nTimeline:\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nProcess A: GET lock:foo \u2192 returns \"token-A\" \u2713 (it's mine!)\n                \u2502\n                \u2502  \u23f0 Lock expires naturally (TTL runs out)\n                \u2502\nProcess B:      \u2502  SETNX lock:foo \"token-B\" \u2192 succeeds \u2713\n                \u2502  (B now holds the lock legitimately)\n                \u2502\nProcess A: DELETE lock:foo \u2192 deletes B's lock! \ud83d\udca5\n                \u2502\nProcess C:      \u2502  SETNX lock:foo \"token-C\" \u2192 succeeds \u2713\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nResult: Both Process B and Process C think they hold the lock.\n```\n\n### Bug 3: Token Reuse Across Calls\n\nThe token is generated in `__init__`, so if the same `DistributedLock` object calls `acquire()` twice (or is reused), it uses the same token \u2014 making ownership checks meaningless.\n\n---\n\n## Fixed Implementation\n\n```python\nimport redis\nimport time\nimport uuid\n\n\nclass DistributedLock:\n    \"\"\"\n    Correct single-instance distributed lock using Redis.\n    \n    Follows the algorithm described in the Redis documentation:\n    https://redis.io/docs/manual/patterns/distributed-locks/\n    \"\"\"\n    \n    # Lua script for atomic release: check-and-delete in one operation\n    # This runs on the Redis server \u2014 no other command can interleave.\n    RELEASE_SCRIPT = \"\"\"\n    if redis.call(\"GET\", KEYS[1]) == ARGV[1] then\n        return redis.call(\"DEL\", KEYS[1])\n    else\n        return 0\n    end\n    \"\"\"\n    \n    # Lua script for atomic extend: check-and-reset-TTL\n    EXTEND_SCRIPT = \"\"\"\n    if redis.call(\"GET\", KEYS[1]) == ARGV[1] then\n        return redis.call(\"PEXPIRE\", KEYS[1], ARGV[2])\n    else\n        return 0\n    end\n    \"\"\"\n    \n    def __init__(self, redis_client: redis.Redis, lock_name: str, timeout: int = 10):\n        self.redis = redis_client\n        self.lock_name = f\"lock:{lock_name}\"\n        self.timeout = timeout\n        self.token = None  # Generated fresh on each acquire\n        \n        # Pre-register Lua scripts (Redis caches the compiled script)\n        self._release_script = self.redis.register_script(self.RELEASE_SCRIPT)\n        self._extend_script = self.redis.register_script(self.EXTEND_SCRIPT)\n    \n    def acquire(self, blocking: bool = True, retry_interval: float = 0.1,\n                max_wait: float = None) -> bool:\n        \"\"\"\n        Acquire the lock.\n        \n        Args:\n            blocking: If False, return immediately if lock unavailable.\n            retry_interval: Seconds between retry attempts.\n            max_wait: Maximum seconds to wait (None = wait forever).\n            \n        Returns:\n            True if lock acquired, False otherwise.\n        \"\"\"\n        # Fresh token for each acquisition \u2014 critical for correctness\n        self.token = str(uuid.uuid4())\n        deadline = time.monotonic() + max_wait if max_wait else None\n        \n        while True:\n            # SET with NX and EX is a SINGLE atomic command.\n            # This replaced the old SETNX + EXPIRE two-step.\n            # \n            # Equivalent to: SET lock_name token NX EX timeout\n            #   NX = only set if Not eXists\n            #   EX = set Expiry in seconds\n            acquired = self.redis.set(\n                self.lock_name,\n                self.token,\n                nx=True,          # only set if key doesn't exist\n                ex=self.timeout   # set expiration atomically\n            )\n            \n            if acquired:\n                return True\n            \n            if not blocking:\n                self.token = None\n                return False\n            \n            # Check if we've exceeded our patience\n            if deadline and time.monotonic() >= deadline:\n                self.token = None\n                return False\n            \n            time.sleep(retry_interval)\n    \n    def release(self) -> bool:\n        \"\"\"\n        Release the lock atomically.\n        \n        Uses a Lua script to ensure GET + DELETE happen as one\n        atomic operation on the Redis server. No other command\n        can execute between the check and the delete.\n        \n        Returns:\n            True if lock was released, False if we didn't own it.\n        \"\"\"\n        if self.token is None:\n            raise RuntimeError(\"Cannot release a lock that was never acquired\")\n        \n        # Lua script executes atomically on the Redis server\n        result = self._release_script(\n            keys=[self.lock_name],\n            args=[self.token]\n        )\n        \n        self.token = None\n        return bool(result)\n    \n    def extend(self, additional_time: int = None) -> bool:\n        \"\"\"\n        Extend the lock TTL (only if we still own it).\n        \n        Useful for long-running operations that might exceed\n        the original timeout.\n        \"\"\"\n        if self.token is None:\n            raise RuntimeError(\"Cannot extend a lock that was never acquired\")\n        \n        timeout_ms = (additional_time or self.timeout) * 1000\n        \n        result = self._extend_script(\n            keys=[self.lock_name],\n            args=[self.token, timeout_ms]\n        )\n        \n        return bool(result)\n    \n    # \u2500\u2500 Context manager support \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    \n    def __enter__(self):\n        if not self.acquire():\n            raise RuntimeError(f\"Failed to acquire lock: {self.lock_name}\")\n        return self\n    \n    def __exit__(self, exc_type, exc_val, exc_tb):\n        self.release()\n        return False  # Don't suppress exceptions\n\n\n# \u2500\u2500 Demo showing correct usage \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\ndef demonstrate_race_condition():\n    \"\"\"\n    Visualization of why the original code was broken.\n    \"\"\"\n    \n    print(\"\"\"\n    \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n    \u2502              ORIGINAL CODE \u2014 RACE CONDITION                 \u2502\n    \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n    \u2502                                                             \u2502\n    \u2502  BUG 1: acquire() \u2014 crash between SETNX and EXPIRE         \u2502\n    \u2502                                                             \u2502\n    \u2502  Process A:  SETNX key token-A  \u2192 OK                       \u2502\n    \u2502  Process A:  \ud83d\udca5 CRASHES HERE                                \u2502\n    \u2502  (EXPIRE never runs \u2192 lock held forever \u2192 deadlock)         \u2502\n    \u2502                                                             \u2502\n    \u2502  FIX: SET key token-A NX EX 10  (single atomic command)    \u2502\n    \u2502                                                             \u2502\n    \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n    \u2502                                                             \u2502\n    \u2502  BUG 2: release() \u2014 interleaving between GET and DELETE     \u2502\n    \u2502                                                             \u2502\n    \u2502  Process A",
+      "tokens": 2295,
+      "time_ms": 32051
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.25,
+      "weighted_b": 9.25,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is more complete and production-aware, with a correct atomic fix, clearer caveats about Redis semantics and failover, and fewer extraneous or unfinished sections than Response A."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 9.0,
+        "clarity": 10.0,
+        "usefulness": 10.0,
+        "completeness": 10.0,
+        "correctness": 10.0
+      },
+      "scores_b": {
+        "depth": 7.0,
+        "clarity": 8.0,
+        "usefulness": 6.0,
+        "completeness": 5.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 9.8,
+      "weighted_b": 7.15,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provides a complete, highly accurate answer with excellent depth regarding Redis lock caveats. Response B cuts off abruptly at the end.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:13:20.681499"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 8.6,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provides a more thorough analysis, includes a detailed timeline visualization of the race condition, addresses token reuse as an additional bug, and offers a more comprehensive implementation with better error handling and context manager support."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

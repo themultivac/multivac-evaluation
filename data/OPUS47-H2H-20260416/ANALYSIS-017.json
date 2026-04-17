@@ -1,0 +1,102 @@
+{
+  "question_id": "ANALYSIS-017",
+  "category": "analysis",
+  "question_text": "A pharmaceutical company reports: 'Our drug reduced hospitalization by 50% (p < 0.001). 2% of patients in the treatment group were hospitalized vs 4% in the control group.' (1) Calculate the absolute ",
+  "timestamp": "2026-04-16T18:22:14.818294",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Analysis of the Pharmaceutical Claim\n\n## (1) Absolute Risk Reduction and NNT\n\n- **Relative Risk Reduction (RRR)**: (4% \u2212 2%) / 4% = **50%** \u2713 (their claim)\n- **Absolute Risk Reduction (ARR)**: 4% \u2212 2% = **2 percentage points (0.02)**\n- **Number Needed to Treat (NNT)**: 1 / 0.02 = **50**\n\n**Interpretation**: You must treat 50 patients to prevent 1 hospitalization. The \"50% reduction\" headline is technically true but rhetorically misleading \u2014 the absolute benefit is modest.\n\n## (2) Is n = 200 Sufficient for p < 0.001?\n\nLet's check. Assume 100 per arm: 2 hospitalizations (treatment) vs 4 (control).\n\nUsing Fisher's exact test on 2/100 vs 4/100:\n- Expected p-value \u2248 **0.68** (not significant at all)\n\nEven a chi-squared approximation gives p \u2248 0.41. **The claim of p < 0.001 is implausible** with these numbers. To achieve p < 0.001 with a 2% vs 4% difference, you'd need roughly **~3,000+ patients per arm**.\n\n**Red flag**: Either the sample size is wrong, the event counts are wrong, or the p-value is misreported (possibly from a different endpoint or model). This warrants serious scrutiny.\n\n## (3) Problem with No-Treatment Control (vs. Placebo)\n\nUsing an untreated control instead of a placebo control introduces several biases:\n\n- **Placebo effect not controlled**: Patients knowing they receive treatment may report/experience better outcomes psychosomatically.\n- **Likely unblinded**: If patients and clinicians know who's treated, assessment of subjective outcomes (even hospitalization decisions) is biased.\n- **Hawthorne effect**: Treated patients may behave differently (better adherence to other health measures).\n- **Differential dropout/engagement**: Untreated patients may seek other care or leave the trial.\n\nThe apparent 2% benefit could be partially or entirely attributable to these non-pharmacological effects rather than the drug itself.\n\n## (4) Should the Drug Be Approved?\n\n**Not on this evidence.** Risk-benefit analysis:\n\n| Metric | Value |\n|---|---|\n| NNT (benefit) | 50 |\n| NNH (harm, if side effects \u2260 control) | ~12.5 |\n| Harm-to-benefit ratio | **~4:1** |\n\n**For every 1 hospitalization prevented, ~4 patients experience side effects.**\n\nAdditional concerns:\n- Statistical claim appears **mathematically inconsistent** with the sample size\n- **No placebo control** undermines causal attribution\n- Severity of side effects unspecified (mild nausea \u2260 serious adverse events)\n- Baseline hospitalization rate (4%) is low, limiting population-level impact\n- No data on mortality, quality of life, or long-term outcomes\n\n**Verdict**: Require (a) a larger, placebo-controlled, double-blind trial, (b) clarification of the statistical discrepancy, (c) detailed side-effect severity data, and (d) consideration of the condition's severity before approval. The current presentation is a textbook example of how relative risk framing can oversell marginal benefits.",
+      "tokens": 1325,
+      "time_ms": 20985
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Critical Analysis of Pharmaceutical Trial Claims\n\n## (1) Absolute Risk Reduction and NNT\n\nThe company highlights the **relative risk reduction (RRR)** of 50%, which sounds dramatic. Let's calculate the more informative absolute measures:\n\n### Absolute Risk Reduction (ARR)\n\n$$ARR = CER - EER = 0.04 - 0.02 = 0.02 = 2\\%$$\n\nWhere:\n- **CER** (Control Event Rate) = 4% = 0.04\n- **EER** (Experimental Event Rate) = 2% = 0.02\n\n### Number Needed to Treat (NNT)\n\n$$NNT = \\frac{1}{ARR} = \\frac{1}{0.02} = 50$$\n\n### Interpretation\n\n| Metric | Value | Impression |\n|---|---|---|\n| Relative Risk Reduction | 50% | Sounds very impressive |\n| Absolute Risk Reduction | 2% | Much more modest |\n| NNT | 50 | **Must treat 50 patients to prevent 1 hospitalization** |\n\n> **Key insight:** The 50% RRR is technically correct but deeply misleading. When baseline risk is already low (4%), even a tiny absolute change produces a large relative change. This is a classic example of **relative risk inflation** \u2014 a well-known tactic in pharmaceutical marketing.\n\n---\n\n## (2) Statistical Power Analysis: Is n = 200 Sufficient?\n\n### Setting Up the Power Calculation\n\nWith 200 patients (presumably 100 per group), we need to test whether this sample size can reliably detect a difference between proportions of 0.04 and 0.02.\n\n### Using the formula for comparing two proportions:\n\nThe required sample size per group for detecting a difference between two proportions:\n\n$$n = \\frac{\\left(Z_{\\alpha/2}\\sqrt{2\\bar{p}(1-\\bar{p})} + Z_{\\beta}\\sqrt{p_1(1-p_1) + p_2(1-p_2)}\\right)^2}{(p_1 - p_2)^2}$$\n\nWhere:\n- $p_1 = 0.04$, $p_2 = 0.02$\n- $\\bar{p} = \\frac{p_1 + p_2}{2} = 0.03$\n- $Z_{\\alpha/2} = 3.29$ (for $p < 0.001$ two-sided, i.e., $\\alpha = 0.001$)\n- $Z_{\\beta} = 0.84$ (for 80% power)\n\n### Calculating\n\n**Numerator components:**\n\n$$Z_{\\alpha/2}\\sqrt{2\\bar{p}(1-\\bar{p})} = 3.29\\sqrt{2(0.03)(0.97)} = 3.29\\sqrt{0.0582} = 3.29 \\times 0.2412 = 0.7936$$\n\n$$Z_{\\beta}\\sqrt{p_1(1-p_1) + p_2(1-p_2)} = 0.84\\sqrt{0.04(0.96) + 0.02(0.98)} = 0.84\\sqrt{0.0384 + 0.0196}$$\n$$= 0.84\\sqrt{0.058} = 0.84 \\times 0.2408 = 0.2023$$\n\n$$\\text{Numerator} = (0.7936 + 0.2023)^2 = (0.9959)^2 = 0.9918$$\n\n**Denominator:**\n\n$$(p_1 - p_2)^2 = (0.02)^2 = 0.0004$$\n\n### Required sample size per group:\n\n$$n = \\frac{0.9918}{0.0004} = 2{,}480 \\text{ per group}$$\n\n### Total required: ~4,960 patients\n\n### Actual power with n = 100 per group\n\nWe can back-calculate the actual power. With only 100 per group, the expected number of events:\n- Control group: $100 \\times 0.04 = 4$ events\n- Treatment group: $100 \\times 0.02 = 2$ events\n\nWe're comparing **4 events vs. 2 events** \u2014 an absurdly small number for reliable inference.\n\n### Contingency table reality check:\n\n| | Hospitalized | Not Hospitalized | Total |\n|---|---|---|---|\n| Treatment | 2 | 98 | 100 |\n| Control | 4 | 96 | 100 |\n\n**Fisher's exact test** on this table yields $p \\approx 0.68$ \u2014 **nowhere near** $p < 0.001$.\n\n### Verdict\n\n$$\\boxed{n = 200 \\text{ is grossly insufficient. The claimed } p < 0.001 \\text{ is essentially impossible with these numbers.}}$$\n\n| Assessment | Detail |\n|---|---|\n| Required sample | ~4,960 for 80% power at \u03b1 = 0.001 |\n| Available sample | 200 (4% of what's needed) |\n| Expected events | Only 6 total hospitalizations |\n| Actual p-value (Fisher's exact) | \u2248 0.68 |\n| Claimed p-value | < 0.001 |\n\n**Possible explanations for the discrepancy:**\n- **p-hacking** (testing multiple endpoints, reporting the best)\n- **Data fabrication**\n- Misreported sample size or event rates\n- The p-value refers to a *different* outcome than hospitalization\n- Post-hoc subgroup analysis presented as primary result\n\n---\n\n## (3) No-Treatment Control vs. Placebo Control\n\nThe use of a no-treatment control (instead of placebo) introduces several critical biases:\n\n### The Placebo Effect Problem\n\n```\n                    Drug Effect (what we want to measure)\n                    \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\nNo treatment        Placebo response    True pharmacological effect\nbaseline            (psychological +    (biochemical mechanism)\n                     behavioral)\n```\n\nWithout a placebo control, the observed effect is:\n\n$$\\text{Observed effect} = \\underbrace{\\text{Pharmacological effect}}_{\\text{what matters}} + \\underbrace{\\text{Placebo effect}}_{\\text{confound}}$$\n\nWe **cannot separate** these components.\n\n### Specific Biases Introduced\n\n**\u2460 Hawthorne Effect (Observer/Attention Bias)**\n- Treatment group patients receive attention, monitoring, and care\n- Control group patients receive *nothing*\n- Differences may reflect attention, not the drug\n\n**\u2461 Patient Behavior Changes (Performance Bias)**\n- Patients *knowing* they receive treatment may:\n  - Adhere better to general health practices\n  - Feel more optimistic (psychoneuroimmunological effects)\n  - Report symptoms differently\n- Patients knowing they're in the control group may:\n  - Seek outside treatment (**contamination**)\n  - Feel demoralized (**resentful demoralization**)\n  - Drop out at higher rates\n\n**\u2462 Assessment Bias (Detection Bias)**\n- If clinicians know who received treatment, hospitalization decisions may be influenced\n- A physician might hospitalize an untreated patient \"to be safe\" but send a treated patient home\n- **Without double-blinding, this is a major threat**\n\n**\u2463 Nocebo Effect in Controls**\n- Control patients who know they received nothing may experience worse outcomes purely from negative expectations\n\n### Why This Matters for Hospitalization Specifically\n\nHospitalization is a **clinical decision**, not a pure biological outcome. It involves:\n- Physician judgment (influenced by knowledge of treatment status)\n- Patient reporting of symptoms (influenced by expectations)\n- Threshold decisions that are inherently subjective\n\n> **Gold standard:** Double-blind, placebo-controlled RCT \u2014 where neither patients nor clinicians know group assignment, and both groups receive identical-appearing interventions.\n\n### Summary of Design Flaws\n\n| Threat | Severity | Direction of Bias |\n|---|---|---|\n| Placebo effect | High | Inflates apparent drug benefit |\n| Hawthorne effect | High | Inflates apparent drug benefit |\n| Assessment bias | High | Inflates apparent drug benefit |\n| Resentful demoralization | Moderate | Inflates apparent drug benefit |\n| Contamination | Moderate | Could go either direction |",
+      "tokens": 2178,
+      "time_ms": 38638
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 9.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.6,
+      "weighted_b": 8.65,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Both responses correctly computed ARR=2% and NNT=50 and identified the statistical implausibility of p<0.001 with only 200 patients. Response B was more complete and deeper, especially on sample size/power and control-group bias, though it was slightly less concise."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 6.0,
+        "correctness": 9.0,
+        "completeness": 5.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 7.55,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A completely failed to answer part 4 of the prompt. Response B answered all parts accurately, including a very insightful risk-benefit analysis comparing NNT to NNH for part 4."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 10.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.4,
+      "weighted_b": 8.0,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A demonstrated superior depth with detailed power calculations and bias analysis, greater completeness in addressing all question parts thoroughly, and higher correctness in statistical rigor."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 2,
+    "claude_opus_47": 1
+  },
+  "judges_agree": false
+}

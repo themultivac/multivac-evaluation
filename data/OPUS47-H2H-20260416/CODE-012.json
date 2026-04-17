@@ -1,0 +1,104 @@
+{
+  "question_id": "CODE-012",
+  "category": "code",
+  "question_text": "Implement a production-ready circuit breaker pattern in Python. It should support three states (closed, open, half-open), configurable failure thresholds, automatic recovery with exponential backoff, ",
+  "timestamp": "2026-04-16T17:16:59.094577",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Production-Ready Circuit Breaker Pattern\n\nHere's a comprehensive implementation of the circuit breaker pattern with all the requested features:\n\n```python\n\"\"\"\nProduction-ready circuit breaker implementation.\n\nSupports:\n- Three states: CLOSED, OPEN, HALF_OPEN\n- Configurable failure thresholds and time windows\n- Automatic recovery with exponential backoff\n- Full async support\n- Metrics collection\n- Thread-safe and async-safe\n\"\"\"\n\nfrom __future__ import annotations\n\nimport asyncio\nimport functools\nimport logging\nimport random\nimport threading\nimport time\nfrom collections import deque\nfrom dataclasses import dataclass, field\nfrom enum import Enum\nfrom typing import Any, Callable, Deque, Optional, Tuple, Type, TypeVar, Union\n\nlogger = logging.getLogger(__name__)\n\nT = TypeVar(\"T\")\n\n\n# ---------------------------------------------------------------------------\n# Exceptions\n# ---------------------------------------------------------------------------\nclass CircuitBreakerError(Exception):\n    \"\"\"Base exception for circuit breaker.\"\"\"\n\n\nclass CircuitOpenError(CircuitBreakerError):\n    \"\"\"Raised when a call is attempted while the circuit is open.\"\"\"\n\n\n# ---------------------------------------------------------------------------\n# State & Configuration\n# ---------------------------------------------------------------------------\nclass CircuitState(str, Enum):\n    CLOSED = \"closed\"\n    OPEN = \"open\"\n    HALF_OPEN = \"half_open\"\n\n\n@dataclass\nclass CircuitBreakerConfig:\n    \"\"\"Circuit breaker configuration.\"\"\"\n\n    # Number of failures within the rolling window to trip the breaker\n    failure_threshold: int = 5\n    # Rolling window (seconds) within which failures are counted\n    failure_window: float = 60.0\n    # Number of consecutive successes in HALF_OPEN required to close\n    success_threshold: int = 2\n    # Base recovery timeout (seconds) - first OPEN -> HALF_OPEN wait\n    recovery_timeout: float = 30.0\n    # Maximum recovery timeout cap (seconds)\n    max_recovery_timeout: float = 600.0\n    # Exponential backoff multiplier applied each time HALF_OPEN trial fails\n    backoff_multiplier: float = 2.0\n    # Random jitter factor (0..1). 0.1 = +/- 10%\n    jitter: float = 0.1\n    # Exceptions that are considered failures. Defaults to Exception.\n    expected_exceptions: Tuple[Type[BaseException], ...] = (Exception,)\n    # Exceptions that should be re-raised without counting as failures\n    excluded_exceptions: Tuple[Type[BaseException], ...] = ()\n    # Per-call timeout for async functions (None = no timeout)\n    call_timeout: Optional[float] = None\n    # Max concurrent trial calls in HALF_OPEN\n    half_open_max_calls: int = 1\n\n\n# ---------------------------------------------------------------------------\n# Metrics\n# ---------------------------------------------------------------------------\n@dataclass\nclass CircuitBreakerMetrics:\n    \"\"\"Thread-safe metrics collection.\"\"\"\n\n    total_calls: int = 0\n    successful_calls: int = 0\n    failed_calls: int = 0\n    rejected_calls: int = 0       # Calls rejected because circuit was OPEN\n    timeout_calls: int = 0\n    state_transitions: int = 0\n    last_failure_time: Optional[float] = None\n    last_success_time: Optional[float] = None\n    opened_count: int = 0\n    current_state: CircuitState = CircuitState.CLOSED\n    _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)\n\n    def snapshot(self) -> dict:\n        with self._lock:\n            return {\n                \"total_calls\": self.total_calls,\n                \"successful_calls\": self.successful_calls,\n                \"failed_calls\": self.failed_calls,\n                \"rejected_calls\": self.rejected_calls,\n                \"timeout_calls\": self.timeout_calls,\n                \"state_transitions\": self.state_transitions,\n                \"opened_count\": self.opened_count,\n                \"last_failure_time\": self.last_failure_time,\n                \"last_success_time\": self.last_success_time,\n                \"current_state\": self.current_state.value,\n                \"failure_rate\": (\n                    self.failed_calls / self.total_calls\n                    if self.total_calls else 0.0\n                ),\n            }\n\n\n# ---------------------------------------------------------------------------\n# Circuit Breaker\n# ---------------------------------------------------------------------------\nclass CircuitBreaker:\n    \"\"\"\n    A circuit breaker that protects a resource from cascading failures.\n\n    Usage (sync):\n        cb = CircuitBreaker(\"my-service\")\n        result = cb.call(some_function, arg1, kwarg=value)\n\n    Usage (async):\n        result = await cb.call_async(async_func, arg1)\n\n    As a decorator:\n        @cb\n        async def fetch(...): ...\n    \"\"\"\n\n    def __init__(\n        self,\n        name: str = \"default\",\n        config: Optional[CircuitBreakerConfig] = None,\n    ) -> None:\n        self.name = name\n        self.config = config or CircuitBreakerConfig()\n        self.metrics = CircuitBreakerMetrics()\n\n        self._state: CircuitState = CircuitState.CLOSED\n        self._failures: Deque[float] = deque()\n        self._consecutive_successes: int = 0\n        self._half_open_in_flight: int = 0\n        self._current_recovery_timeout: float = self.config.recovery_timeout\n        self._opened_at: Optional[float] = None\n\n        # Separate locks for sync/async contexts\n        self._lock = threading.RLock()\n        self._async_lock = asyncio.Lock()\n\n    # ---------------- Public properties ----------------\n    @property\n    def state(self) -> CircuitState:\n        with self._lock:\n            self._maybe_transition_to_half_open()\n            return self._state\n\n    def get_metrics(self) -> dict:\n        return self.metrics.snapshot()\n\n    ",
+      "tokens": 2147,
+      "time_ms": 12557
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# Production-Ready Circuit Breaker Pattern in Python\n\n```python\n\"\"\"\nProduction-ready Circuit Breaker Pattern implementation with:\n- Three states: CLOSED, OPEN, HALF-OPEN\n- Configurable failure thresholds and recovery timeouts\n- Exponential backoff for recovery attempts\n- Full async support\n- Metrics collection and reporting\n- Thread-safety for sync usage\n- Decorator and context manager interfaces\n\"\"\"\n\nfrom __future__ import annotations\n\nimport asyncio\nimport enum\nimport functools\nimport logging\nimport threading\nimport time\nfrom collections import deque\nfrom dataclasses import dataclass, field\nfrom typing import (\n    Any,\n    Awaitable,\n    Callable,\n    Deque,\n    Dict,\n    Generic,\n    Optional,\n    Set,\n    Tuple,\n    Type,\n    TypeVar,\n    Union,\n)\n\nlogger = logging.getLogger(__name__)\n\nT = TypeVar(\"T\")\n\n\n# \u2500\u2500\u2500 Exceptions \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass CircuitBreakerError(Exception):\n    \"\"\"Base exception for circuit breaker errors.\"\"\"\n\n    def __init__(self, circuit_breaker: \"CircuitBreaker\", *args: Any) -> None:\n        super().__init__(*args)\n        self.circuit_breaker = circuit_breaker\n\n\nclass CircuitOpenError(CircuitBreakerError):\n    \"\"\"Raised when a call is attempted while the circuit is OPEN.\"\"\"\n\n    def __init__(self, circuit_breaker: \"CircuitBreaker\", remaining: float) -> None:\n        super().__init__(\n            circuit_breaker,\n            f\"Circuit '{circuit_breaker.name}' is OPEN. \"\n            f\"Retry after {remaining:.1f}s.\",\n        )\n        self.remaining_timeout = remaining\n\n\n# \u2500\u2500\u2500 States \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass CircuitState(enum.Enum):\n    CLOSED = \"closed\"\n    OPEN = \"open\"\n    HALF_OPEN = \"half-open\"\n\n\n# \u2500\u2500\u2500 Metrics \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n@dataclass\nclass CircuitBreakerMetrics:\n    \"\"\"Collects and exposes circuit breaker operational metrics.\"\"\"\n\n    total_calls: int = 0\n    total_successes: int = 0\n    total_failures: int = 0\n    total_rejected: int = 0  # calls rejected while OPEN\n    total_state_transitions: int = 0\n    consecutive_failures: int = 0\n    consecutive_successes: int = 0\n    last_failure_time: Optional[float] = None\n    last_success_time: Optional[float] = None\n    last_state_change_time: Optional[float] = None\n    current_state: CircuitState = CircuitState.CLOSED\n    recovery_attempts: int = 0  # number of times we entered HALF-OPEN\n\n    # Sliding window for failure-rate calculation\n    _window_size: int = field(default=100, repr=False)\n    _outcomes: Deque[bool] = field(\n        default_factory=lambda: deque(maxlen=100), repr=False\n    )\n    # Latency tracking (last N calls)\n    _latencies: Deque[float] = field(\n        default_factory=lambda: deque(maxlen=100), repr=False\n    )\n    # State transition history: (timestamp, from_state, to_state)\n    state_history: Deque[Tuple[float, CircuitState, CircuitState]] = field(\n        default_factory=lambda: deque(maxlen=50), repr=False\n    )\n\n    def record_success(self, latency: float) -> None:\n        self.total_calls += 1\n        self.total_successes += 1\n        self.consecutive_successes += 1\n        self.consecutive_failures = 0\n        self.last_success_time = time.monotonic()\n        self._outcomes.append(True)\n        self._latencies.append(latency)\n\n    def record_failure(self, latency: float) -> None:\n        self.total_calls += 1\n        self.total_failures += 1\n        self.consecutive_failures += 1\n        self.consecutive_successes = 0\n        self.last_failure_time = time.monotonic()\n        self._outcomes.append(False)\n        self._latencies.append(latency)\n\n    def record_rejected(self) -> None:\n        self.total_calls += 1\n        self.total_rejected += 1\n\n    def record_state_change(\n        self, from_state: CircuitState, to_state: CircuitState\n    ) -> None:\n        now = time.monotonic()\n        self.total_state_transitions += 1\n        self.last_state_change_time = now\n        self.current_state = to_state\n        self.state_history.append((now, from_state, to_state))\n        if to_state == CircuitState.HALF_OPEN:\n            self.recovery_attempts += 1\n\n    @property\n    def failure_rate(self) -> float:\n        \"\"\"Failure rate over the sliding window (0.0 \u2013 1.0).\"\"\"\n        if not self._outcomes:\n            return 0.0\n        return sum(1 for o in self._outcomes if not o) / len(self._outcomes)\n\n    @property\n    def avg_latency(self) -> float:\n        if not self._latencies:\n            return 0.0\n        return sum(self._latencies) / len(self._latencies)\n\n    @property\n    def p99_latency(self) -> float:\n        if not self._latencies:\n            return 0.0\n        sorted_lat = sorted(self._latencies)\n        idx = int(len(sorted_lat) * 0.99)\n        return sorted_lat[min(idx, len(sorted_lat) - 1)]\n\n    def snapshot(self) -> Dict[str, Any]:\n        \"\"\"Return a JSON-serialisable snapshot of all metrics.\"\"\"\n        return {\n            \"total_calls\": self.total_calls,\n            \"total_successes\": self.total_successes,\n            \"total_failures\": self.total_failures,\n            \"total_rejected\": self.total_rejected,\n            \"consecutive_failures\": self.consecutive_failures,\n            \"consecutive_successes\": self.consecutive_successes,\n            \"failure_rate\": round(self.failure_rate, 4),\n            \"avg_latency_s\": round(self.avg_latency, 6),\n            \"p99_latency_s\": round(self.p99_latency, 6),\n            \"state\": self.current_state.value,\n            \"recovery_attempts\": self.recovery_attempts,\n            \"total_state_transitions\": self.total_state_transitions,\n        }\n\n    def reset(self) -> None:\n        self.consecutive_failures = 0\n        self.consecutive_successes = 0\n        self._outcomes.clear()\n\n\n# \u2500\u2500\u2500 Listeners / Hooks \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass CircuitBreakerListener:\n    \"\"\"Override any of these hooks to react to circuit breaker events.\"\"\"\n\n    def on_state_change(\n        self,\n        cb: \"CircuitBreaker\",\n        from_state: CircuitState,\n        to_state: CircuitState,\n    ) -> None: ...\n\n    def on_success(self, cb: \"CircuitBreaker\", latency: float) -> None: ...\n\n    def on_failure(\n        self, cb: \"CircuitBreaker\", exception: BaseException, latency: float\n    ) -> None: ...\n\n    def on_call_rejected(self, cb: \"CircuitBreaker\") -> None: ...\n\n\nclass LoggingListener(CircuitBreakerListener):\n    \"\"\"Built-in listener that logs state transitions and events.\"\"\"\n\n    def on_state_change(self, cb, from_state, to_state):\n        logger.warning(\n            \"Circuit '%s' state: %s \u2192 %s (failures=%d)\",\n            cb.name,\n            from_state.value,\n            to_state.value,\n            cb.metrics.consecutive_failures,\n        )\n\n    def on_failure(self, cb, exception, latency):\n        logger.debug(\n            \"Circuit '%s' recorded",
+      "tokens": 2114,
+      "time_ms": 25374
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 6.0,
+        "depth": 3.0,
+        "usefulness": 2.0,
+        "correctness": 3.0,
+        "completeness": 2.0
+      },
+      "scores_b": {
+        "clarity": 5.0,
+        "depth": 4.0,
+        "usefulness": 3.0,
+        "correctness": 3.0,
+        "completeness": 3.0
+      },
+      "weighted_a": 3.25,
+      "weighted_b": 3.6,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Both responses are incomplete and cut off before providing a full production-ready implementation or usage example, but Response B includes more substantive design elements such as richer metrics, listener hooks, and clearer state/error modeling."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 5.0,
+        "clarity": 8.0,
+        "usefulness": 2.0,
+        "completeness": 2.0,
+        "correctness": 6.0
+      },
+      "scores_b": {
+        "depth": 7.0,
+        "clarity": 8.0,
+        "usefulness": 2.0,
+        "completeness": 2.0,
+        "correctness": 6.0
+      },
+      "weighted_a": 4.8,
+      "weighted_b": 5.2,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Both responses unfortunately cut off before implementing the core logic of the circuit breaker. However, Response B provided a more robust and production-ready foundation, including sliding window metrics, latency tracking (p99), and an event listener architecture.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:13:31.809882"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 8.0,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provides a more complete, production-ready implementation with all requested features fully implemented and explained, including proper async support and metrics collection, while Response B is incomplete and lacks full code."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 2,
+    "claude_opus_47": 1
+  },
+  "judges_agree": false
+}

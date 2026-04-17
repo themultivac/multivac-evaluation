@@ -1,0 +1,104 @@
+{
+  "question_id": "REASON-019",
+  "category": "reasoning",
+  "question_text": "You must choose between three investments. Investment A returns 10% with 90% probability, -50% with 10% probability. Investment B returns 5% with certainty. Investment C returns 100% with 20% probabil",
+  "timestamp": "2026-04-16T17:54:58.472501",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Investment Analysis\n\n## Setup\n- **A:** +10% @ 90%, \u221250% @ 10%\n- **B:** +5% certain\n- **C:** +100% @ 20%, 0% @ 80%\n\n---\n\n## (1) Ranking by Expected Value\n\n- **E[A]** = 0.9(0.10) + 0.1(\u22120.50) = 0.09 \u2212 0.05 = **+4.0%**\n- **E[B]** = **+5.0%**\n- **E[C]** = 0.2(1.00) + 0.8(0) = **+20.0%**\n\n**Ranking: C > B > A**\n\n---\n\n## (2) Ranking by Kelly Criterion (log-utility, full-wealth bet)\n\nKelly maximizes E[ln(1+r)]:\n\n- **A:** 0.9 ln(1.10) + 0.1 ln(0.50) = 0.9(0.0953) + 0.1(\u22120.6931) = 0.0858 \u2212 0.0693 = **+0.0165**\n- **B:** ln(1.05) = **+0.0488**\n- **C:** 0.2 ln(2.0) + 0.8 ln(1.0) = 0.2(0.6931) = **+0.1386**\n\n**Ranking: C > B > A** (same order, but A barely survives \u2014 it has a massive 50% drawdown risk)\n\nNote: If C had *any* probability of total loss, ln(0) = \u2212\u221e would make it uninvestable under full-Kelly. The 0% floor (not \u2212100%) is what saves it.\n\n---\n\n## (3) $10,000 \u2014 Entire Savings\n\n**Yes, this changes the answer dramatically. Choose B.**\n\nWith all your savings at stake, utility is sharply concave near zero. Key considerations EV ignores:\n- **A's 10% chance of \u221250%** means a 1-in-10 chance of losing $5,000 \u2014 potentially catastrophic if this is rent, emergencies, food.\n- **C's 80% chance of 0%** means four out of five times you make nothing while inflation erodes your money; opportunity cost is real.\n- **B's +5%** is guaranteed \u2014 covers inflation, preserves optionality.\n\nWhen wealth \u2248 subsistence, **marginal utility of losses >> marginal utility of gains**. You should not play expected-value games when downside variance threatens your ability to function.\n\n**Choose B.**\n\n---\n\n## (4) $10,000,000\n\n**Yes, it changes again. Now C becomes attractive** (for a reasonable fraction of wealth).\n\nAt $10M, losing even $5M from A or \"wasting\" $10M on C's 80% zero outcome doesn't threaten survival. You're deep in the linear region of utility \u2014 your consumption needs are met regardless of outcome. Now you can afford to:\n- Chase the **+20% EV of C**\n- Diversify across many C-like bets to harvest their expectation\n\nOptimal play: allocate most wealth to B (or similar safe assets), a meaningful slice to C. Avoid A \u2014 it's dominated (lower EV than B, higher risk).\n\n---\n\n## General Principle\n\n> **Expected value is the correct criterion only when outcomes are small relative to your wealth. As stakes approach your total wealth, the correct criterion shifts toward maximizing expected *logarithmic* utility (Kelly), which penalizes ruin infinitely.**\n\nFormally, utility U(W) is approximately linear for small \u0394W/W and concave for large \u0394W/W. Equivalently:\n\n$$E[\\Delta U] \\approx U'(W)\\cdot E[\\Delta W] + \\tfrac{1}{2}U''(W)\\cdot \\text{Var}(\\Delta W)$$\n\nThe variance term is negligible when wealth is large relative to the bet, and dominant when wealth is small. This is why:\n\n- **Casinos** (huge bankroll, small bets per player) \u2192 play pure EV\n- **Individuals with savings** (bet \u2248 wealth) \u2192 play Kelly or safer\n- **Insurance exists**: buyers pay negative-EV premiums because avoiding ruin is worth more than the expected loss; insurers accept them because their wealth makes each policy \"small.\"\n\n**The same gamble is rational or irrational depending on the size of your bankroll.**",
+      "tokens": 1562,
+      "time_ms": 23218
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Investment Analysis: Expected Value, Kelly Criterion, and Context\n\n## Setup\n\n| Investment | Outcomes | Expected Value |\n|---|---|---|\n| A | +10% (p=0.9), -50% (p=0.1) | ? |\n| B | +5% (p=1.0) | ? |\n| C | +100% (p=0.2), 0% (p=0.8) | ? |\n\n---\n\n## (1) Ranking by Expected Value\n\nExpected value is the probability-weighted arithmetic mean of returns.\n\n**Investment A:**\nE[R] = 0.9(0.10) + 0.1(-0.50) = 0.09 - 0.05 = **+4.0%**\n\n**Investment B:**\nE[R] = 1.0(0.05) = **+5.0%**\n\n**Investment C:**\nE[R] = 0.2(1.00) + 0.8(0.00) = **+20.0%**\n\n### Ranking: C (+20%) > B (+5%) > A (+4%)\n\nThis is the ranking a naive expected-value maximizer would use. But expected value is the correct criterion **only** for one-shot bets with linear utility \u2014 assumptions that rarely hold.\n\n---\n\n## (2) Ranking by the Kelly Criterion\n\nThe Kelly criterion maximizes the **expected logarithm of wealth**, which is equivalent to maximizing the long-run geometric growth rate. This is the correct criterion for repeated bets where you reinvest wealth.\n\nThe key quantity is the **expected log-growth rate**:\n\n$$g = E[\\ln(1 + R)]$$\n\n**Investment A:**\n$$g_A = 0.9 \\ln(1.10) + 0.1 \\ln(0.50)$$\n$$g_A = 0.9(0.09531) + 0.1(-0.69315)$$\n$$g_A = 0.08578 - 0.06931 = +0.01646 \\approx +1.65\\%$$\n\n**Investment B:**\n$$g_B = 1.0 \\cdot \\ln(1.05) = +0.04879 \\approx +4.88\\%$$\n\n**Investment C:**\n$$g_C = 0.2 \\ln(2.00) + 0.8 \\ln(1.00)$$\n$$g_C = 0.2(0.69315) + 0.8(0) = +0.13863 \\approx +13.86\\%$$\n\n### Ranking: C (+13.86%) > B (+4.88%) > A (+1.65%)\n\n### Why A collapses under Kelly\n\nInvestment A looked close to B under expected value (4% vs 5%), but under Kelly it's **dramatically worse** (1.65% vs 4.88%). The reason: that 10% chance of losing half your wealth is devastating to compound growth. After ten rounds of repeated play, you'd expect to hit that -50% outcome once, which alone cuts your cumulative wealth in half \u2014 wiping out years of the modest +10% gains.\n\n### Why C survives under Kelly\n\nInvestment C's 0% return (not a loss!) in the bad case means $\\ln(1+0) = 0$: it contributes nothing negative. The 80% of the time you earn nothing, you simply tread water. The 20% of the time you double, you get a massive boost. No ruin risk means the geometric mean stays high.\n\n**Key insight:** Kelly penalizes **variance that crosses below zero** (losses), not variance per se. C has high variance but no downside. A has moderate variance but catastrophic downside.\n\n---\n\n## (3) With $10,000 \u2014 Your Entire Savings\n\n**Yes, this changes the answer substantially.**\n\nWith $10,000 as your *entire* savings, you must consider something neither expected value nor Kelly fully capture: **ruin aversion** and the **non-linear utility of survival**.\n\n### The problem with Kelly at subsistence wealth\n\nThe Kelly criterion assumes:\n- You can play infinitely many rounds\n- You have no minimum wealth threshold for survival\n- Utility is purely about long-run growth\n\nBut with $10,000 as your total savings:\n\n- **A 50% loss = $5,000 gone.** If you need that money for rent, medical expenses, or emergencies, this could be catastrophic. The real-world cost of going from $10,000 to $5,000 is not captured by logarithmic utility \u2014 it may involve eviction, debt, or inability to meet basic needs.\n- **C's 80% chance of 0% return** means you forgo any growth most of the time. If inflation is positive, you're losing real purchasing power 80% of the time. But you never lose nominal principal.\n- **B's guaranteed 5%** means $500 with certainty. No risk of ruin. No opportunity cost anxiety.\n\n### The correct framework: utility with a subsistence threshold\n\nWhen wealth is near a **ruin boundary** $W_{min}$ below which outcomes are catastrophic, rational agents become *more risk-averse than log utility predicts*. The effective utility function develops a sharp concavity near $W_{min}$:\n\n$$U(W) \\to -\\infty \\text{ as } W \\to W_{min}$$\n\n### Revised ranking at $10,000:\n\n**B > C > A**\n\n- **B** is optimal because the guaranteed return protects against any possibility of loss when you cannot afford loss.\n- **C** is acceptable \u2014 you never lose principal, and occasionally double.\n- **A** is unacceptable \u2014 a 10% chance of losing $5,000 when $10,000 is everything you have is a potential life catastrophe, regardless of the expected value.\n\n---\n\n## (4) With $10,000,000\n\n**Yes, it changes again \u2014 back toward the Kelly/EV rankings.**\n\nWith $10 million:\n\n- **A's worst case:** lose $5,000,000, leaving $5,000,000. This is painful but not catastrophic \u2014 you're still wealthy by any standard. The ruin boundary is nowhere near.\n- **C's best case:** gain $10,000,000. The upside is transformative even for someone already wealthy.\n- **B's guaranteed 5%:** $500,000. Safe, but you're already safe.\n\nAt high wealth, your utility function approaches log utility (or even becomes closer to linear), because:\n1. No outcome puts you near subsistence\n2. You can afford to play repeatedly\n3. The law of large numbers has room to operate\n4. You can diversify across all three simultaneously\n\n### Revised ranking at $10,000,000:\n\n**C > B > A** (the Kelly ranking reasserts itself)\n\nAnd in fact, with $10M, the *optimal* strategy is likely a **fractional Kelly allocation** \u2014 splitting capital across investments, perhaps heavily weighting C, with some in B for stability, and minimal or no allocation to A.\n\n---\n\n## (5) The General Principle\n\n### The Wealth-Dependent Risk Hierarchy\n\nThe correct criterion for evaluating risky investments is **not fixed** \u2014 it is a function of the ratio of your wealth to your ruin threshold:\n\n$$\\text{Risk capacity} = f\\left(\\frac{W - W_{min}}{W_{min}}\\right)$$\n\nThis generates a **hierarchy of decision criteria** based on wealth level:\n\n| Wealth Regime | Ratio $W/W_{min}$ | Optimal Criterion | Behavior |\n|---|---|---|---|\n| **Subsistence** | \u2248 1 | Minimax / safety-first | Avoid any possibility of loss; choose certainty |\n| **Moderate** | ~2\u201310\u00d7 | Conservative Kelly (fractional) | Maximize log-growth but with reduced bet sizes |\n| **Wealthy** | ~10\u2013100\u00d7 | Full Kelly | Maximize geometric growth rate |\n| **Extremely wealthy** | >100\u00d7 | Expected Value | Can absorb variance; arithmetic mean dominates |\n\n### Stated as a principle:\n\n> **As the ratio of wealth to the ruin threshold increases, the optimal decision criterion migrates from minimax (pure safety) \u2192 risk-averse utility maximization \u2192 Kelly (log utility) \u2192 expected value (risk-neutral).**\n\n### Why this is true \u2014 the mathematical intuition:\n\nConsider a general CRRA (constant relative risk aversion) utility function:\n\n$$U(W) = \\frac{W^{1-\\gamma}}{1-\\gamma}$$\n\nwhere $\\gamma$ is the coefficient of relative risk aversion.\n\n- At $\\gamma = 0$: risk-neutral, maximize expected value\n- At $\\gamma = 1$",
+      "tokens": 2182,
+      "time_ms": 45939
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 7.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 6.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 7.95,
+      "weighted_b": 7.15,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more complete and coherent overall, and unlike Response B it is not cut off mid-explanation. Both compute EV and expected log growth correctly, but A provides a cleaner final principle and more usable guidance despite some overstatements about wealth-dependent choice."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 9.0,
+        "clarity": 10.0,
+        "usefulness": 9.0,
+        "completeness": 10.0,
+        "correctness": 10.0
+      },
+      "scores_b": {
+        "depth": 9.0,
+        "clarity": 9.0,
+        "usefulness": 8.0,
+        "completeness": 5.0,
+        "correctness": 10.0
+      },
+      "weighted_a": 9.65,
+      "weighted_b": 8.3,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provides a complete, accurate, and well-structured analysis, whereas Response B cuts off mid-sentence at the end.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:19:54.075774"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 10.0,
+      "weighted_b": 8.25,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provided a more thorough, mathematically detailed, and insightful analysis, including explicit calculations, deeper explanations of Kelly criterion implications, a clear wealth-dependent risk hierarchy, and a well-structured general principle."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

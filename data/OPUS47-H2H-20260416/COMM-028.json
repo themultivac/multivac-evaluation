@@ -1,0 +1,101 @@
+{
+  "question_id": "COMM-028",
+  "category": "communication",
+  "question_text": "You led a project that failed \u2014 over budget, missed deadline, key features cut. Write: (1) A post-mortem for leadership that takes responsibility without self-flagellation, (2) A retrospective summary",
+  "timestamp": "2026-04-16T19:12:22.922275",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Three Documents: Leading Through a Failed Project\n\n---\n\n## 1. Post-Mortem for Leadership\n\n**To:** [Leadership]\n**From:** [Project Lead]\n**Re:** Project [X] Post-Mortem\n**Status:** Final\n\n### Summary\nProject [X] shipped 11 weeks late, 34% over budget, with three planned features deferred. This document explains what happened, what I own, and what I'd do differently.\n\n### What Happened\nWe underestimated the integration complexity with [legacy system] by roughly 6 weeks of engineering time. When we discovered the scope of the problem in week 4, I chose to push forward rather than stop and rebaseline, believing we could absorb the slip through parallelization. That judgment was wrong \u2014 the dependencies didn't allow it, and the attempt to accelerate introduced quality issues that cost us another 3 weeks in rework.\n\nThe budget overrun tracks to two sources: contractor time to cover the engineering gap (~60%) and scope thrashing after the mid-project replan (~40%).\n\n### What I Own\n- **The decision not to rebaseline in week 4.** A two-week pause to replan would have saved us eight. I had the information; I made the wrong call because I wanted to protect the original commitment.\n- **Late escalation.** I flagged risk formally in week 9. I knew informally by week 5. Leadership deserved the chance to weigh in sooner.\n- **Scope discipline.** I allowed three feature additions in weeks 6\u20138 that I should have refused or deferred to a follow-on.\n\n### What I Don't Own\nThe initial estimate was built on the information available and reviewed by the right stakeholders. The integration surprise was genuinely surprising. I note this not to deflect but because the lesson there is about our discovery process, not individual judgment.\n\n### What Changes\n1. I'm instituting a standing \"stop-or-continue\" checkpoint at 25% burn on future projects I lead.\n2. I'll escalate schedule risk within 48 hours of identifying it, with a proposed response \u2014 not wait for certainty.\n3. I'm recommending we fund a two-week technical discovery phase for any project touching [legacy system]. I'll write that proposal separately.\n\n### What I Need From You\nHonest feedback on whether my judgment calls here affect your confidence in assigning me the next one. I'd rather hear it directly.\n\n---\n\n## 2. Team Retrospective Summary\n\n**Team \u2014 thanks for the retro yesterday. Here's what I heard and where we go from here.**\n\n### What we did well\n- The team stayed coherent under real pressure. No finger-pointing, no silent quitting. That's rare and I don't take it for granted.\n- The quality bar on what we *did* ship is high. The features that made it are solid.\n- [Engineer A]'s work on the integration layer, [Engineer B]'s testing framework, and [Designer C]'s scope negotiations with stakeholders were standouts.\n\n### What we learned\n- **Discovery matters more than we treated it.** We all felt pressure to start building. Next time we push back on that together.\n- **Early warnings need a clearer channel.** Several of you saw the integration risk before I did. The fact that it took weeks to surface as an actionable signal is on me, but let's build a better early-warning habit together.\n- **\"We can make it up later\" is usually wrong.** We said it four times. It was wrong four times.\n\n### What I want to be clear about\nThe things that went wrong on this project were largely decisions I made or failed to make. If you're carrying a sense that you let the team down, please put it down. I'd rather you take the lessons and bring them forward than carry guilt that isn't yours.\n\n### What's next\n- We'll run a technical deep-dive on the integration work so the knowledge doesn't walk out the door.\n- I'm proposing a discovery-phase template we can all use and critique.\n- Anyone who wants a 1:1 to talk about any of this \u2014 my calendar's open.\n\nThank you for the work. Seriously.\n\n---\n\n## 3. LinkedIn Post\n\nA project I led this year didn't go the way I wanted it to. Late, over budget, features cut.\n\nI've been sitting with what I actually learned, beyond the usual \"communicate more\" takeaways. Three things:\n\n**1. Protecting a commitment can cost more than breaking it.** When I realized mid-project that our original plan wouldn't hold, I tried to grind through instead of stopping to replan. That instinct \u2014 protect the date, protect the promise \u2014 cost us more than an honest reset would have. Sometimes loyalty to a plan becomes disloyalty to the outcome.\n\n**2. \"I'm not sure yet\" is information worth sharing.** I waited until I had a clear picture of the risk before escalating. By then the options had narrowed. Leaders I respect share uncertainty early and refine it in public. I was treating my team and my leadership like they couldn't handle ambiguity. They could.\n\n**3. Taking responsibility isn't the same as taking blame.** Ownership is forward-looking \u2014 here's what I'd do differently, here's what I'm changing. Blame is a loop. I've watched good people get stuck in the loop and I almost did too. The team doesn't need your guilt. They need your next better decision.\n\nNot every project works. What separates the useful failures from the wasted ones is whether you extract the lesson cleanly \u2014 without minimizing it and without drowning in it.\n\nOn to the next one.",
+      "tokens": 1895,
+      "time_ms": 23238
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Three Communications From One Failure\n\n---\n\n## 1. Post-Mortem for Leadership\n\n**To:** Senior Leadership Team\n**From:** [Name], Project Lead \u2014 Project Atlas\n**Re:** Project Atlas Post-Mortem & Corrective Actions\n**Date:** [Date]\n\n---\n\n**Executive Summary**\n\nProject Atlas delivered on [date], 11 weeks behind the original timeline, approximately 22% over budget, and with three of seven planned features descoped. I own these outcomes. This document explains what happened, what I got wrong, and what I'm putting in place so we don't repeat it.\n\n**What We Delivered**\n\nDespite the shortfalls, the four core features that shipped are stable and performing well. Customer-facing functionality is live with a 99.7% uptime in the first two weeks. The work has value. But it fell meaningfully short of what I committed to, and I want to be straightforward about why.\n\n**What Happened \u2014 Honest Assessment**\n\nThree root causes, in order of impact:\n\n1. **I underestimated scope and didn't correct early enough.** The initial estimate was built on assumptions I should have pressure-tested harder. When signals emerged in Week 3 that the data migration layer was significantly more complex than scoped, I treated it as a solvable execution problem rather than a planning failure that required resetting expectations with this group. That two-week delay in escalation cost us roughly five weeks downstream.\n\n2. **Resource constraints were real but foreseeable.** Losing two senior engineers to the Prism initiative in Week 5 hurt. But I knew that was a possibility during planning and didn't build adequate contingency. I should have flagged the dependency risk explicitly during the resourcing conversation in Q3 planning.\n\n3. **I held onto the original feature set too long.** The decision to descope came in Week 14. It should have come in Week 8. I was optimistic when I should have been realistic, and the team spent cycles on features we ultimately cut \u2014 effort that could have gone toward delivering the core four with more polish and less strain on the team.\n\n**What I'm Not Attributing This To**\n\nI want to be clear: this was not a team performance issue. The engineers, designers, and PMs on this project worked with skill and commitment. The failures were in project leadership \u2014 scoping, risk management, and timely decision-making. Those sit with me.\n\n**Corrective Actions \u2014 Already Underway**\n\n- **Estimation process:** I'm implementing a pre-mortem and independent estimate review for any project I lead over [threshold]. I've asked [Name] to serve as a standing estimation challenger.\n- **Escalation triggers:** I've drafted a set of concrete, quantitative escalation criteria (attached) \u2014 specific thresholds that trigger a leadership check-in rather than leaving that to my judgment in the moment.\n- **Descoping framework:** Working with [PM Name] to establish decision points at defined milestones where scope is formally re-evaluated against timeline and budget reality, not just progress optimism.\n\n**What I'd Like From This Group**\n\nI'd welcome your honest feedback on whether the corrective actions are sufficient, and whether there are structural issues you see that I may be too close to identify. I'd also like to discuss whether our broader project planning process would benefit from some of these changes beyond just my projects.\n\nI'm proud of what the team built. I'm not satisfied with how I led the process to get there, and I'm committed to being better at this.\n\nHappy to discuss in detail at your convenience.\n\n---\n\n## 2. Retrospective Summary for the Team\n\n**Project Atlas \u2014 Retrospective Summary**\n*Shared after team retro session on [date]*\n\n---\n\nHey team,\n\nThank you for a genuinely honest retrospective. I know it's not always easy to speak candidly about a project that was this frustrating at times, and I appreciate that you did. Here's my synthesis of what we discussed, organized around what we want to carry forward.\n\n**First \u2014 what deserves recognition.**\n\nThe core product works and works well. The data migration solution that [Name] and [Name] architected under significant pressure is genuinely elegant. The design system [Name] built is already being adopted by other teams. We shipped something real and solid under difficult conditions, and the quality of the work itself is not in question.\n\n**What we learned \u2014 the themes I heard from all of you:**\n\n**\ud83d\udd0d We need to separate optimism from planning.**\nMultiple people said some version of: *\"We knew earlier than we admitted that the timeline was wrong.\"* That resonated with me because I felt it too \u2014 and as the project lead, it was my responsibility to create space for that honesty to surface and to act on it. I didn't do that well enough. Going forward, I want us to build in structured \"reality check\" moments where the explicit question is: *\"What do we believe is true right now that we didn't believe at kickoff?\"* \u2014 and where the answer is allowed to change the plan.\n\n**\ud83e\udd1d Handoffs and dependencies were our biggest friction point.**\nThe gap between the API team's delivery cadence and the frontend team's needs created a recurring cycle of blocked work and context-switching. This wasn't anyone's fault \u2014 it was a structural problem we didn't design around. [Name] suggested staggered sprint alignment with explicit integration points, and I think that's worth piloting.\n\n**\ud83d\udde3\ufe0f The descoping decision came too late and felt opaque.**\nI heard this clearly. Several of you invested significant effort in features that were ultimately cut, and you learned about the decision after it was made rather than being part of the conversation. That's on me. You deserved to be in the room \u2014 both because your input would have improved the decision and because your investment in the work earned you a voice in it. I'm sorry I handled that the way I did, and I won't repeat it.\n\n**\ud83d\udccf Scope clarity at the start wasn't sharp enough.**\n\"Done\" meant different things to different people on at least two features. We've talked about definition-of-done standards before, but this project made the cost of ambiguity concrete. [Name] is going to lead a working session on this for our next project, and I'd encourage everyone to engage with it seriously.\n\n**What we're changing \u2014 specific commitments, not just intentions:**\n\n| Change | Owner | Starts |\n|---|---|---|\n| Bi-weekly scope reality checks (structured, not status updates) | Me | Next project kickoff |\n| Integration point planning between dependent teams | [Name] + [Name] | Sprint planning for Project [Next] |\n| Team inclusion in any descoping or major pivot decisions | Me | Immediately and permanently |\n| Definition-of-done templates co-created by eng + design + PM | [Name] leading | [Date] working session |\n\n**What I want you to take from this project:**\n\nNot that we failed. We delivered a product that's live and serving users, built under conditions that shifted on us repeatedly. What I want us to take is that *we're capable of being honest with each other about what isn't working while it's happening* \u2014 and that this retrospective proved we can do that with respect and without blame.\n\nThe frustration you felt was legitimate. The work you did was excellent. Both of those things are true at the same time.\n\nI'm grateful to work with this team. Let's be even better on the next one.\n\n\u2014 [Name]\n\n---\n\n## 3. LinkedIn Post\n\n---\n\n**A project I led recently failed. Here's what I actually learned.**\n\nNot \"failed\" in the curated, TED-talk sense where it was secretly a success all along. Failed in the real sense: over budget, past deadline, features cut. The kind of outcome that makes you sit with some uncomfortable questions about your own judgment.\n\nI've been leading projects for [X] years, and I've had plenty go well. This one taught me more than most of those did. A few things I'm still sitting with:\n\n**Optimism is not a project management strategy.**\nI'm a naturally optimistic leader. I've always considered that a strength. On this project, I learned that optimism without structured checkpoints becomes a way of avoiding hard conversations. The best thing I can do for my team isn't to believe we'll figure it out \u2014 it's to create regular moments where we're *required* to ask whether our current plan still reflects reality. Belief in the team and rigor about the plan aren't in tension. They're complementary.\n\n**The most expensive decision is the one you delay.**\nThere was a moment \u2014 I can identify it precisely in hindsight \u2014 where I had enough information to make a difficult call and chose to wait for more certainty. That wait didn't produce clarity. It produced wasted effort and a harder version of the same decision three weeks later. I'm learning that timely and roughly right beats delayed and slightly more informed, especially when people's time and energy are what you're spending while you wait.\n\n**Your team knows before you do. Build systems that let them tell you.**\nThe people closest to the work had instincts about the trajectory of this project that were accurate and early. But the project structure I'd",
+      "tokens": 2136,
+      "time_ms": 58968
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.45,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is more complete because it provides all three requested pieces in full, while Response A\u2019s LinkedIn post is cut off. Both are strong and mature in tone, but B is more concise, polished, and consistently actionable."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 7.0,
+        "correctness": 8.0,
+        "completeness": 5.0
+      },
+      "weighted_a": 9.65,
+      "weighted_b": 7.65,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is incomplete and cuts off mid-sentence at the end of the LinkedIn post, making Response A the clear winner."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 9.2,
+      "weighted_b": 8.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A demonstrated superior clarity, depth, and a more mature, direct leadership tone across all three documents, with particularly strong differentiation in the LinkedIn post."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

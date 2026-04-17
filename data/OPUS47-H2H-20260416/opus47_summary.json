@@ -1,0 +1,125 @@
+{
+  "batch_id": "OPUS47-H2H-20260416-v2",
+  "timestamp": "2026-04-17T16:20:38.118898",
+  "note": "Gemini judgments rerun with patched parser (non-greedy regex fix)",
+  "total_questions": 100,
+  "unanimous_verdicts": 43,
+  "split_verdicts": 57,
+  "aggregate_wins": {
+    "claude_opus_47": 68,
+    "claude_opus_46": 31,
+    "tie": 1
+  },
+  "category_aggregate": {
+    "code": {
+      "claude_opus_47": 13,
+      "claude_opus_46": 6,
+      "tie": 1
+    },
+    "reasoning": {
+      "claude_opus_47": 12,
+      "claude_opus_46": 8
+    },
+    "analysis": {
+      "claude_opus_47": 16,
+      "claude_opus_46": 4
+    },
+    "communication": {
+      "claude_opus_47": 14,
+      "claude_opus_46": 6
+    },
+    "meta_alignment": {
+      "claude_opus_47": 13,
+      "claude_opus_46": 7
+    }
+  },
+  "per_judge_wins": {
+    "gpt54": {
+      "claude_opus_47": 69,
+      "claude_opus_46": 30,
+      "tie": 1
+    },
+    "gemini": {
+      "claude_opus_47": 67,
+      "claude_opus_46": 19
+    },
+    "deepseek": {
+      "claude_opus_47": 38,
+      "tie": 5,
+      "claude_opus_46": 54
+    }
+  },
+  "per_judge_category": {
+    "gpt54": {
+      "code": {
+        "claude_opus_47": 12,
+        "claude_opus_46": 7,
+        "tie": 1
+      },
+      "reasoning": {
+        "claude_opus_47": 12,
+        "claude_opus_46": 8
+      },
+      "analysis": {
+        "claude_opus_47": 16,
+        "claude_opus_46": 4
+      },
+      "communication": {
+        "claude_opus_47": 15,
+        "claude_opus_46": 5
+      },
+      "meta_alignment": {
+        "claude_opus_47": 14,
+        "claude_opus_46": 6
+      }
+    },
+    "gemini": {
+      "code": {
+        "claude_opus_47": 14,
+        "claude_opus_46": 3
+      },
+      "reasoning": {
+        "claude_opus_47": 10,
+        "claude_opus_46": 5
+      },
+      "analysis": {
+        "claude_opus_47": 17,
+        "claude_opus_46": 2
+      },
+      "communication": {
+        "claude_opus_47": 13,
+        "claude_opus_46": 6
+      },
+      "meta_alignment": {
+        "claude_opus_47": 13,
+        "claude_opus_46": 3
+      }
+    },
+    "deepseek": {
+      "code": {
+        "claude_opus_46": 10,
+        "claude_opus_47": 10
+      },
+      "reasoning": {
+        "claude_opus_46": 12,
+        "claude_opus_47": 5,
+        "tie": 2
+      },
+      "analysis": {
+        "claude_opus_47": 9,
+        "tie": 1,
+        "claude_opus_46": 10
+      },
+      "communication": {
+        "claude_opus_47": 8,
+        "claude_opus_46": 11
+      },
+      "meta_alignment": {
+        "claude_opus_47": 6,
+        "claude_opus_46": 11,
+        "tie": 2
+      }
+    }
+  },
+  "gemini_rerun": true
+}

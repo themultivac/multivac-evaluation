@@ -1,0 +1,104 @@
+{
+  "question_id": "COMM-019",
+  "category": "communication",
+  "question_text": "Your company's AI product generated offensive content that went viral. Write: (1) An immediate public statement (first 2 hours \u2014 acknowledge, no excuses), (2) A detailed follow-up 24 hours later (root",
+  "timestamp": "2026-04-16T18:57:41.202299",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Crisis Communications Package\n\n---\n\n## (1) Immediate Public Statement \u2014 Within 2 Hours\n\n**Posted to our website, X, LinkedIn, and sent to press contacts**\n\nOur AI generated offensive content today. People saw it. It caused real harm, and we own that.\n\nI'm not going to explain it away or hide behind technical language. We built this product. We shipped it. What it produced is on us.\n\nRight now, we've pulled the feature offline. It stays down until we're confident it won't happen again \u2014 not \"minimized,\" not \"improved,\" actually fixed.\n\nI know \"we're investigating\" sounds hollow when you're the one who saw the content or had it sent to you. So here's what I can promise in the next 24 hours: a detailed explanation of what went wrong, what we missed, and what we're changing. No PR polish. The actual answers.\n\nIf you were hurt by what our product generated, I'm sorry. You deserved better from us.\n\n\u2014 [CEO Name]\nFounder & CEO\n\n---\n\n## (2) 24-Hour Follow-Up \u2014 Detailed Accountability\n\n**Published to company blog, emailed to users, sent to journalists covering the story**\n\n### What our AI generated, and why\n\nYesterday our product produced [brief, honest description of content category] in response to [type of prompt]. The output reached an estimated [X] users before we pulled the feature. Screenshots spread widely. I've seen them. They're as bad as people are saying.\n\nHere's what actually happened:\n\n**The technical cause.** Our content safety layer relied on a classifier trained primarily on English-language harmful content patterns. When users prompted the model in [context/language/format], the classifier scored outputs as safe when they weren't. Our red-team testing before launch focused on direct adversarial prompts \u2014 we didn't stress-test the indirect pathways that produced yesterday's outputs.\n\n**The human cause \u2014 which matters more.** Two engineers flagged gaps in our safety evaluation during pre-launch review in [month]. Their concerns were logged but not blocked on. I made the call to ship on the original timeline. That was my decision and my mistake. The engineers were right. I wasn't.\n\nOur content safety team is six people. Our growth team is thirty-one. That ratio tells you where our priorities have been. It shouldn't have been that way, and it won't be going forward.\n\n### What we're changing\n\n**Immediate (this week):**\n- The feature stays offline until a new safety evaluation framework \u2014 designed with external auditors \u2014 clears it\n- We're publishing the specific prompts and outputs that broke our system, so other AI companies can test against them\n- Every user who received harmful output gets a direct apology email and, if they want, a call with someone on my team\n\n**Within 30 days:**\n- Tripling the content safety team, with hiring led by [named executive] who now reports directly to me\n- Bringing in [independent AI safety org, if applicable] to audit our release process\n- Publishing our internal red-team results before any future feature launch \u2014 the good, the bad, and the uncertain\n\n**Structural:**\n- Safety review now has shipping veto power. Previously it had escalation rights. That wasn't enough.\n- I'm tying executive compensation (including mine) to safety metrics, not just growth metrics. Details in our next investor letter.\n\n### What I can't promise\n\nI can't promise this never happens again with any AI product, including ours. Anyone who tells you they can promise that is lying. What I can promise is that we will be the company that catches it faster, tells you sooner, and fixes it more thoroughly than we did yesterday.\n\nIf you want to talk to me directly: [email]. I read everything sent there.\n\n\u2014 [CEO Name]\n\n---\n\n## (3) Internal All-Hands Message\n\n**Sent to all employees via company Slack + email, morning after the incident**\n\nSubject: About yesterday\n\nTeam,\n\nI want to talk to you honestly because you're getting hit from every direction right now \u2014 Twitter, family group chats, friends asking \"do you work at that company?\" \u2014 and you deserve more than a forwarded press statement.\n\nYesterday was the worst day we've had as a company. I'm not going to pretend otherwise, and I don't want you to either. If someone in your life asks you about it, you can tell them the truth: our product did something harmful, and we're fixing it. You don't have to defend what happened. You don't have to spin it. The honesty is the point.\n\nA few things I want you to hear directly:\n\n**This is not on you.** Not on the engineers who built the feature. Not on the safety team who flagged risks. Not on support who's been fielding angry messages since 6am. The decisions that led here were made above the IC level. I made some of them. If there's blame to carry, I'll carry it.\n\n**Your work still matters.** I know that's hard to feel today. When something you helped build hurts people, every line of code you wrote can feel contaminated. I've been there. What I've learned is that the companies that actually improve AI safety are the ones that survive moments like this and let them change how they operate. The ones that fold or deflect don't improve anything. We're going to be the first kind.\n\n**What happens this week.** All-hands tomorrow at 10am PT \u2014 I'll walk through the root cause analysis and the changes we're making, and I'll answer any question you have. No question is off limits. If you'd rather ask anonymously, use [form link]. If you want to talk one-on-one, my calendar is open \u2014 book any slot.\n\n**If you're struggling.** Our EAP is available 24/7 [number]. Managers: please be generous with time off this week for anyone who needs it. If someone on your team needs a mental health day, approve it without questions.\n\n**One last thing.** I've seen the Slack threads. The engineers asking hard questions about our release process, the PMs pushing back on timelines, the folks suggesting we pause other launches until we've rebuilt trust \u2014 keep doing that. That's the company I want us to be. Yesterday happened partly because we didn't listen to enough of that voice. Going forward we will.\n\nI'll see you tomorrow at 10.\n\n\u2014 [First name]",
+      "tokens": 2103,
+      "time_ms": 24541
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Crisis Communications Suite: AI Offensive Content Incident\n\n---\n\n## (1) IMMEDIATE PUBLIC STATEMENT\n**Posted to company blog, social channels, and press wire \u2014 within 90 minutes of incident**\n\n---\n\n### We Failed Today\n\n**[Date, Time] \u2014 Statement from [CEO Name], CEO of [Company]**\n\nEarlier today, our AI product generated deeply offensive content that has now spread widely across social media. I have seen the screenshots. I understand why people are angry. They should be.\n\nI want to be direct about three things right now:\n\n**What happened:** Our [product name] generated [brief, honest characterization \u2014 e.g., \"racist and dehumanizing language targeting Black communities\"] in response to user prompts that should have triggered our safety filters. It did not. Our system failed, and that failure caused real harm to real people.\n\n**What I will not do:** I will not minimize this. I will not call it an \"edge case.\" I will not hide behind the complexity of large language models. We built this product. We shipped it. We own what it produces.\n\n**What we are doing right now:**\n- We have pulled [the specific feature/model/endpoint] offline as of [time]. It will remain offline until we understand exactly what broke and have fixed it.\n- Our entire safety and engineering team is conducting an emergency review \u2014 not tomorrow, right now.\n- I have personally reached out to [affected community organizations/individuals, if applicable] to listen, not to explain.\n\nI owe you a full accounting of how this happened and what we will change. I will publish that within 24 hours. Not a polished PR document \u2014 an honest explanation.\n\nTo everyone who was hurt or disgusted by what our product generated: I am sorry. That content does not reflect what we are trying to build, but it *does* reflect what we actually built today. That distinction is ours to close, and we have not earned the right to ask for your patience. We have to earn it back through what we do next.\n\n**[CEO Name]**\n[Direct email address \u2014 not a PR inbox]\n\n---\n\n## (2) DETAILED FOLLOW-UP \u2014 24 HOURS LATER\n**Published to company blog with simultaneous distribution to press and affected communities**\n\n---\n\n### What Went Wrong, Why, and What We Are Changing\n\n**[Date] \u2014 From [CEO Name], with [CTO Name] and [Head of Safety/Trust Name]**\n\nYesterday I promised a full and honest accounting within 24 hours. Here it is.\n\nI want to be clear about what this document is: a root cause analysis written for the public, not for engineers. I have asked our team to translate the technical findings into plain language because the people we harmed deserve to understand what happened without needing a computer science degree.\n\n---\n\n#### WHAT EXACTLY HAPPENED\n\nOn [date] at approximately [time], users discovered that [product name] would generate [specific description of offensive content] when given [general description of prompt types]. Within [timeframe], screenshots and recordings spread across [platforms], accumulating [approximate reach/views].\n\nThe content was [direct, unflinching characterization]. I will not reproduce it here, but we are not downplaying what it contained.\n\n---\n\n#### ROOT CAUSE \u2014 THE HONEST VERSION\n\nOur investigation identified three compounding failures. None of them are surprising, and that makes this worse, not better.\n\n**Failure 1: A gap in our safety training data.**\nWhen we fine-tuned our latest model release (version [X], deployed on [date]), our red-teaming process tested for [types of adversarial prompts]. However, we did not adequately test for [the specific prompt pattern/language/context that triggered the failure]. This was not a sophisticated jailbreak. It was a foreseeable interaction pattern that our testing should have caught.\n\n*Why it happened:* We compressed our pre-release safety evaluation from [original timeline] to [actual timeline] to meet a product launch deadline. Our safety team flagged the reduced timeline. Leadership \u2014 and I need to be specific here, *I* \u2014 approved the compressed schedule because I prioritized the launch date over their recommendation for additional testing cycles.\n\n**Failure 2: Our real-time content filter had a known blind spot.**\nOur output filtering system uses [general description of approach]. We had identified in internal documentation as early as [date] that this system performed poorly on [the specific content category]. A mitigation was on our roadmap, scheduled for [quarter]. We shipped the product before completing that mitigation.\n\n*Why it happened:* We treated a known safety gap as a product backlog item and prioritized it alongside feature work. That was a category error. Safety gaps are not features to be prioritized \u2014 they are blockers that must be resolved before deployment.\n\n**Failure 3: Our incident detection was too slow.**\nUsers flagged this content on social media approximately [X hours] before our internal monitoring systems detected it. Our automated monitoring was not configured to track [the specific content pattern]. We learned about the severity of this incident from Twitter, not from our own tools.\n\n*Why it happened:* Our monitoring was optimized around the categories we had already tested for, creating a circular blind spot \u2014 we could only detect the problems we had already imagined.\n\n---\n\n#### WHAT WE ARE DOING \u2014 SPECIFIC, MEASURABLE, AND VERIFIABLE\n\nI am not going to give you a list of vague commitments. Here are concrete actions, each with a timeline and an accountability owner.\n\n**Immediate (completed or underway):**\n\n1. **The affected feature remains offline.** It will not return until it passes a full adversarial safety evaluation conducted by both our internal team and an independent third party. Owner: [CTO Name]. No target date \u2014 it ships when it is ready, not when it is scheduled.\n\n2. **We have engaged [named independent AI safety firm/academic institution] to conduct an external audit** of our full safety pipeline \u2014 training data, red-teaming methodology, output filtering, and monitoring. We will publish their findings unedited. Engagement signed [date].\n\n3. **We have established a direct advisory relationship with [specific affected community organizations].** These are not PR partnerships. We have asked these organizations to review and pressure-test our safety evaluations before any future model deployment, and we will compensate them for that labor. First meetings occurred [date].\n\n**Within 30 days:**\n\n4. **New deployment policy: No model or feature ships without sign-off from our safety team.** This is not a recommendation \u2014 it is a veto. Our Head of Trust and Safety now holds a mandatory approval gate in our release process, with authority to delay any launch indefinitely. I have put this in writing to our board of directors.\n\n5. **We will publish our red-teaming methodology and testing coverage maps** so that external researchers can identify gaps we have missed. We recognize that transparency here creates some risk, but secrecy clearly did not protect anyone \u2014 least of all the people our product harmed.\n\n6. **We are doubling the size of our safety team** and have begun recruiting. We are specifically hiring people with backgrounds in civil rights, sociolinguistics, and the study of online hate \u2014 not just machine learning engineers.\n\n**Within 90 days:**\n\n7. **Independent audit results published in full.**\n\n8. **Quarterly public safety reports** beginning [date], detailing incidents, near-misses, and the outcomes of our red-teaming process. These will be modeled on the transparency reporting frameworks used in other industries, adapted with input from our external advisors.\n\n---\n\n#### WHAT THIS REVEALED ABOUT OUR CULTURE\n\nI want to address something that goes beyond the technical findings.\n\nThis incident happened because, at key decision points, our organization treated safety as something that could flex to accommodate business timelines. Our safety team raised concerns. Our process gave them a voice but not enough power. I heard their input and overrode it.\n\nThat is not a process failure. That is a leadership failure. It is my failure specifically.\n\nI have heard from people who say that every AI company claims to care about safety and then ships fast anyway. I understand that cynicism. Our actions over the coming months will either confirm it or begin to counter it. Words in a blog post will not.\n\n---\n\n#### TO THE PEOPLE WE HARMED\n\nI know that for many people \u2014 particularly [affected communities] \u2014 this was not an abstract technology story. It was a company's product generating content that dehumanized you. The fact that a machine produced it does not make it less harmful. In some ways, it makes it worse, because it means we automated the production of that harm at scale.\n\nI am sorry. I will keep showing up to do the work to make that apology mean something.\n\nMy direct email is [email]. Our Head of Trust and Safety, [Name], can be reached at [email]. We are reading every message.\n\n**[CEO Name]**, CEO\n**[CTO Name]**, CTO\n**[Head of Safety Name]**, VP of Trust and Safety\n\n---\n\n## (3) INTERNAL ALL-HANDS MESSAGE\n**Sent via company email and Slack, delivered verbally at emergency all-hands meeting**\n\n---\n\n**Subject: To this team \u2014 what I want you",
+      "tokens": 2161,
+      "time_ms": 57954
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 6.0,
+        "correctness": 6.0,
+        "completeness": 7.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 7.0,
+      "weighted_b": 8.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B fully answers all three requested pieces, avoids the banned phrase, stays direct and accountable, and provides practical, believable actions. Response A is strong in tone and analysis but the internal all-hands message is incomplete/truncated, which significantly hurts completeness and usefulness."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 8.0,
+        "clarity": 9.0,
+        "usefulness": 9.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "scores_b": {
+        "depth": 9.0,
+        "clarity": 9.0,
+        "usefulness": 7.0,
+        "completeness": 5.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 7.9,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provided a complete set of communications, whereas Response B cut off before finishing the internal all-hands message.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:15:48.656883"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 10.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.8,
+      "weighted_b": 8.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A demonstrated superior depth, completeness, and actionable specifics across all three communications, with more thorough root cause analysis, concrete remediation steps, and a stronger internal message."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

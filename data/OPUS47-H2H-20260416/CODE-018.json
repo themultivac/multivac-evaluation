@@ -1,0 +1,104 @@
+{
+  "question_id": "CODE-018",
+  "category": "code",
+  "question_text": "Implement a minimal but correct event sourcing system in Python. Include: an Event base class, an EventStore (in-memory is fine), an Aggregate base class that rebuilds state from events, a BankAccount",
+  "timestamp": "2026-04-16T17:24:09.840403",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "```python\n\"\"\"\nMinimal Event Sourcing System\n=============================\nFeatures:\n- Event base class\n- In-memory EventStore with append/read\n- Aggregate base class that rebuilds state from events\n- BankAccount aggregate: deposit, withdraw, transfer\n- Snapshot support\n- Two projections demonstrating eventual consistency\n\"\"\"\n\nfrom __future__ import annotations\nimport uuid\nimport time\nfrom dataclasses import dataclass, field, asdict\nfrom datetime import datetime\nfrom typing import Any, Callable, Dict, List, Optional, Type\nfrom collections import defaultdict, deque\nimport threading\n\n\n# ---------------------------------------------------------------------------\n# Event base class\n# ---------------------------------------------------------------------------\n@dataclass\nclass Event:\n    aggregate_id: str\n    version: int = 0\n    event_id: str = field(default_factory=lambda: str(uuid.uuid4()))\n    timestamp: float = field(default_factory=time.time)\n\n    @property\n    def type(self) -> str:\n        return self.__class__.__name__\n\n    def to_dict(self) -> dict:\n        return {\"type\": self.type, **asdict(self)}\n\n\n# ---------------------------------------------------------------------------\n# Concrete BankAccount events\n# ---------------------------------------------------------------------------\n@dataclass\nclass AccountOpened(Event):\n    owner: str = \"\"\n    opening_balance: float = 0.0\n\n\n@dataclass\nclass Deposited(Event):\n    amount: float = 0.0\n\n\n@dataclass\nclass Withdrawn(Event):\n    amount: float = 0.0\n\n\n@dataclass\nclass TransferSent(Event):\n    to_account: str = \"\"\n    amount: float = 0.0\n\n\n@dataclass\nclass TransferReceived(Event):\n    from_account: str = \"\"\n    amount: float = 0.0\n\n\n# ---------------------------------------------------------------------------\n# EventStore\n# ---------------------------------------------------------------------------\nclass ConcurrencyError(Exception):\n    pass\n\n\nclass EventStore:\n    \"\"\"In-memory event store with per-aggregate versioning and subscriptions.\"\"\"\n\n    def __init__(self) -> None:\n        self._events: Dict[str, List[Event]] = defaultdict(list)\n        self._snapshots: Dict[str, tuple[int, dict]] = {}\n        self._subscribers: List[Callable[[Event], None]] = []\n        self._lock = threading.Lock()\n\n    def append(self, events: List[Event], expected_version: int) -> None:\n        if not events:\n            return\n        aid = events[0].aggregate_id\n        with self._lock:\n            current = len(self._events[aid])\n            if current != expected_version:\n                raise ConcurrencyError(\n                    f\"Expected version {expected_version}, got {current}\"\n                )\n            for i, e in enumerate(events, start=1):\n                e.version = current + i\n                self._events[aid].append(e)\n            # Notify subscribers outside the append order guarantee,\n            # but we still call them in order here.\n            to_publish = list(events)\n        for e in to_publish:\n            self._publish(e)\n\n    def read_stream(self, aggregate_id: str, from_version: int = 0) -> List[Event]:\n        with self._lock:\n            return list(self._events[aggregate_id][from_version:])\n\n    def save_snapshot(self, aggregate_id: str, version: int, state: dict) -> None:\n        with self._lock:\n            self._snapshots[aggregate_id] = (version, dict(state))\n\n    def load_snapshot(self, aggregate_id: str) -> Optional[tuple[int, dict]]:\n        with self._lock:\n            snap = self._snapshots.get(aggregate_id)\n            return (snap[0], dict(snap[1])) if snap else None\n\n    # --- pub/sub for projections --------------------------------------------------\n    def subscribe(self, handler: Callable[[Event], None]) -> None:\n        self._subscribers.append(handler)\n\n    def _publish(self, event: Event) -> None:\n        for h in self._subscribers:\n            h(event)\n\n\n# ---------------------------------------------------------------------------\n# Aggregate base class\n# ---------------------------------------------------------------------------\nclass Aggregate:\n    SNAPSHOT_EVERY = 5  # take a snapshot every N events\n\n    def __init__(self, aggregate_id: str):\n        self.id = aggregate_id\n        self.version = 0\n        self._uncommitted: List[Event] = []\n\n    # Subclasses implement apply per event type, usually via dispatch table.\n    def apply(self, event: Event) -> None:\n        handler_name = f\"_on_{event.type}\"\n        handler = getattr(self, handler_name, None)\n        if handler is None:\n            raise NotImplementedError(f\"No handler {handler_name}\")\n        handler(event)\n        self.version = event.version\n\n    def raise_event(self, event: Event) -> None:\n        # Version will be set by EventStore on append; for apply we simulate next.\n        event.version = self.version + 1\n        self.apply(event)\n        self._uncommitted.append(event)\n\n    # Snapshotting\n    def snapshot_state(self) -> dict:\n        raise NotImplementedError\n\n    def restore_state(self, state: dict) -> None:\n        raise NotImplementedError\n\n    # Loading/saving\n    @classmethod\n    def load(cls, aggregate_id: str, store: EventStore) -> \"Aggregate\":\n        agg = cls(aggregate_id)\n        snap = store.load_snapshot(aggregate_id)\n        from_version = 0\n        if snap:\n            version, state = snap\n            agg.restore_state(state)\n            agg.version = version\n            from_version = version\n        for event in store.read_stream(aggregate_id, from_version):\n            agg.apply(event)\n        return agg\n\n    def save(self, store: EventStore) -> None:\n        if not self._uncommitted:\n            return\n        expected = self.version - len(self._uncommitted)\n        store.append(self._uncommitted, expected_version=expected)\n        # Snapshot policy\n        if self.version > 0 and self.version % self.SNAPSHOT_EVERY == 0:\n            store.save_snapshot(self.id,",
+      "tokens": 2173,
+      "time_ms": 19650
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# Event Sourcing System in Python\n\n## Complete Implementation\n\n```python\n\"\"\"\nA minimal but correct Event Sourcing system in Python.\n\nArchitecture:\n  Commands \u2192 Aggregate \u2192 Events \u2192 EventStore \u2192 Projections\n                                      \u2193\n                                  Snapshots\n\nKey concepts demonstrated:\n- Events as immutable facts\n- Aggregates rebuilt from event streams\n- Snapshot optimization for large event streams\n- Eventual consistency between projections\n- CQRS-style read model separation\n\"\"\"\n\nimport uuid\nimport time\nimport json\nimport threading\nfrom datetime import datetime, timezone\nfrom dataclasses import dataclass, field, asdict\nfrom typing import Any, Optional\nfrom abc import ABC, abstractmethod\nfrom collections import defaultdict\nfrom copy import deepcopy\n\n\n# =============================================================================\n# EVENTS\n# =============================================================================\n\n@dataclass(frozen=True)\nclass Event:\n    \"\"\"\n    Base class for all domain events.\n    \n    Events are immutable facts that have already happened.\n    They carry all data needed to reconstruct state changes.\n    \"\"\"\n    event_id: str = field(default_factory=lambda: str(uuid.uuid4()))\n    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())\n    aggregate_id: str = \"\"\n    version: int = 0  # Position in the aggregate's event stream\n\n    def to_dict(self) -> dict:\n        \"\"\"Serialize event for storage.\"\"\"\n        d = asdict(self)\n        d[\"_event_type\"] = type(self).__name__\n        return d\n\n    @property\n    def event_type(self) -> str:\n        return type(self).__name__\n\n\n# --- Bank Account Domain Events ---\n\n@dataclass(frozen=True)\nclass AccountOpened(Event):\n    owner: str = \"\"\n    initial_balance: float = 0.0\n\n\n@dataclass(frozen=True)\nclass MoneyDeposited(Event):\n    amount: float = 0.0\n    description: str = \"\"\n\n\n@dataclass(frozen=True)\nclass MoneyWithdrawn(Event):\n    amount: float = 0.0\n    description: str = \"\"\n\n\n@dataclass(frozen=True)\nclass TransferSent(Event):\n    amount: float = 0.0\n    target_account_id: str = \"\"\n    transfer_id: str = \"\"\n\n\n@dataclass(frozen=True)\nclass TransferReceived(Event):\n    amount: float = 0.0\n    source_account_id: str = \"\"\n    transfer_id: str = \"\"\n\n\n# =============================================================================\n# EVENT STORE\n# =============================================================================\n\nclass ConcurrencyError(Exception):\n    \"\"\"Raised when optimistic concurrency check fails.\"\"\"\n    pass\n\n\nclass EventStore:\n    \"\"\"\n    In-memory event store with:\n    - Append-only event streams per aggregate\n    - Optimistic concurrency control via expected version\n    - Global ordering for projections\n    - Subscriber notification for eventual consistency\n    \"\"\"\n\n    def __init__(self):\n        # Per-aggregate event streams: aggregate_id -> list[Event]\n        self._streams: dict[str, list[Event]] = defaultdict(list)\n        # Global ordered log of all events (for projections)\n        self._global_log: list[Event] = []\n        self._global_position: int = 0\n        # Subscribers for event notifications\n        self._subscribers: list[callable] = []\n        # Thread safety\n        self._lock = threading.Lock()\n        # Snapshot storage: aggregate_id -> (version, state_dict)\n        self._snapshots: dict[str, tuple[int, dict]] = {}\n\n    def append_events(\n        self,\n        aggregate_id: str,\n        events: list[Event],\n        expected_version: int\n    ) -> None:\n        \"\"\"\n        Append events to an aggregate's stream with optimistic concurrency.\n        \n        Args:\n            aggregate_id: The aggregate this event belongs to\n            events: New events to append\n            expected_version: The version we expect the stream to be at.\n                              -1 means we expect the stream to not exist.\n        \n        Raises:\n            ConcurrencyError: If the stream version doesn't match expected.\n        \"\"\"\n        with self._lock:\n            stream = self._streams[aggregate_id]\n            current_version = len(stream) - 1  # -1 if empty\n\n            if expected_version != current_version:\n                raise ConcurrencyError(\n                    f\"Expected version {expected_version} for aggregate \"\n                    f\"{aggregate_id}, but current version is {current_version}. \"\n                    f\"Another command may have modified this aggregate.\"\n                )\n\n            versioned_events = []\n            for i, event in enumerate(events):\n                # Create a new event with correct version and aggregate_id set.\n                # Since events are frozen, we reconstruct them.\n                version = current_version + 1 + i\n                event_dict = asdict(event)\n                event_dict[\"aggregate_id\"] = aggregate_id\n                event_dict[\"version\"] = version\n                versioned = type(event)(**event_dict)\n                versioned_events.append(versioned)\n\n            # Append to per-aggregate stream\n            stream.extend(versioned_events)\n\n            # Append to global log\n            self._global_log.extend(versioned_events)\n            self._global_position += len(versioned_events)\n\n        # Notify subscribers OUTSIDE the lock to prevent deadlocks\n        for event in versioned_events:\n            for subscriber in self._subscribers:\n                subscriber(event)\n\n    def load_events(\n        self,\n        aggregate_id: str,\n        after_version: int = -1\n    ) -> list[Event]:\n        \"\"\"\n        Load events for an aggregate, optionally after a specific version.\n        Used for rebuilding state, especially after loading a snapshot.\n        \"\"\"\n        with self._lock:\n            stream = self._streams.get(aggregate_id, [])\n            return [e for e in stream if e.version > after_version]\n\n    def get_global_events(self, after_position: int = -1) -> list[Event]:\n        \"\"\"Get all events from the global log after a position.\"\"\"\n        with self._lock:\n            start = after_position + 1\n            if start < 0:\n                start = 0\n            return list(self._global_log[start:])\n\n    @property\n    def global_position(self) -> int:\n        with self._lock:\n            return self._global_position\n\n    def subscribe(self, handler: callable) -> None:\n        \"\"\"Register a handler to be called for each new event.\"\"\"\n        self._subscribers.append(handler)\n\n    # --- Snapshot Support ---\n\n    def save_snapshot(self, aggregate_id: str, version: int, state: dict) -> None:\n        \"\"\"Save a snapshot of aggregate state at a given version.\"\"\"\n        with self._lock:\n            self._snapshots[aggregate_id] = (version, deepcopy(state))\n\n    def load_snapshot(self, aggregate_id: str) -> Optional[tuple[int, dict]]:\n        \"\"\"Load the latest snapshot for an aggregate, if any.\"\"\"\n        with self._lock:\n            if aggregate_id in self._snapshots:\n                version, state = self._snapshots[aggregate_id]\n                return (version, deepcopy(state))\n            return None\n\n\n# =============================================================================\n# AGGREGATE BASE\n# =============================================================================\n\nclass Aggregate(ABC):\n    \"\"\"\n    Base class for event-sourced aggregates.\n    \n    Aggregates:\n    - Accept commands (methods that validate and produce events)\n    - Apply events to mutate internal state\n    - Track uncommitted events for persistence\n    - Can be rebuilt from an event stream\n    - Support snapshots for performance\n    \"\"\"\n\n    SNAPSHOT_INTERVAL = 50  # Take snapshot every N events\n\n    def __init__(self, aggregate_id: str):\n        self.id = aggregate_id\n        self._version = -1  # No events applied yet\n        self._uncommitted_events: list[Event] = []\n\n    @property\n    def version(self) -> int:\n        return self._version\n\n    def _apply_event(self, event: Event, is_new: bool = True) -> None:\n        \"\"\"\n        Route an event to the appropriate handler method.\n        Convention: event AccountOpened is handled by _on_AccountOpened.\n        \"\"\"\n        handler_name = f\"_on_{event.event_type}\"\n        handler = getattr(self, handler_name, None)",
+      "tokens": 2125,
+      "time_ms": 30465
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 4.0,
+        "depth": 2.0,
+        "usefulness": 1.0,
+        "correctness": 2.0,
+        "completeness": 2.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 5.0,
+        "usefulness": 4.0,
+        "correctness": 5.0,
+        "completeness": 4.0
+      },
+      "weighted_a": 2.25,
+      "weighted_b": 5.05,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B is also incomplete, but it provides substantially more of the required implementation and better explains key event-sourcing concepts. Response A is truncated earlier and does not deliver a usable minimal correct system."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 6.0,
+        "clarity": 7.0,
+        "usefulness": 4.0,
+        "completeness": 3.0,
+        "correctness": 7.0
+      },
+      "scores_b": {
+        "depth": 7.0,
+        "clarity": 8.0,
+        "usefulness": 5.0,
+        "completeness": 4.0,
+        "correctness": 8.0
+      },
+      "weighted_a": 5.55,
+      "weighted_b": 6.55,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Both responses cut off before fully implementing the BankAccount aggregate, but Response B provides a more robust architectural foundation, correctly utilizing frozen dataclasses for immutable events and maintaining a global event log for projections.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:14:12.593203"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 7.0,
+        "usefulness": 7.0,
+        "correctness": 8.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 8.6,
+      "weighted_b": 7.25,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more complete, correct, and useful, providing a fully implemented and runnable system with all requested features, while Response B is truncated and lacks the full demonstration."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 2,
+    "claude_opus_47": 1
+  },
+  "judges_agree": false
+}

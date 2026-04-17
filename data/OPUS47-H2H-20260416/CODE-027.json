@@ -1,0 +1,102 @@
+{
+  "question_id": "CODE-027",
+  "category": "code",
+  "question_text": "Implement a JSON Schema validator from scratch that supports: type validation (string, number, integer, boolean, array, object, null), required fields, minimum/maximum for numbers, minLength/maxLength",
+  "timestamp": "2026-04-16T17:36:56.086931",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "```python\n\"\"\"\nJSON Schema Validator (from scratch)\n\nSupports:\n- type: string, number, integer, boolean, array, object, null (single or list)\n- required (list of property names)\n- minimum / maximum (numbers)\n- minLength / maxLength (strings)\n- pattern (regex for strings)\n- enum (list of allowed values)\n- properties (nested object schemas)\n- items (array item schema, or list of schemas for tuple validation)\n- minItems / maxItems (arrays) [bonus]\n- additionalProperties (bool or schema) [bonus]\n\"\"\"\n\nimport re\n\n\nclass ValidationError(Exception):\n    def __init__(self, message, path=\"\"):\n        self.message = message\n        self.path = path\n        super().__init__(self._format())\n\n    def _format(self):\n        loc = self.path if self.path else \"<root>\"\n        return f\"At {loc}: {self.message}\"\n\n\n# ---- Type checking helpers ----\n\n_TYPE_CHECKS = {\n    \"string\":  lambda v: isinstance(v, str),\n    \"number\":  lambda v: isinstance(v, (int, float)) and not isinstance(v, bool),\n    \"integer\": lambda v: isinstance(v, int) and not isinstance(v, bool),\n    \"boolean\": lambda v: isinstance(v, bool),\n    \"array\":   lambda v: isinstance(v, list),\n    \"object\":  lambda v: isinstance(v, dict),\n    \"null\":    lambda v: v is None,\n}\n\n\ndef _check_type(value, type_spec):\n    if isinstance(type_spec, list):\n        return any(_TYPE_CHECKS[t](value) for t in type_spec if t in _TYPE_CHECKS)\n    if type_spec in _TYPE_CHECKS:\n        return _TYPE_CHECKS[type_spec](value)\n    return False\n\n\ndef _join_path(path, key):\n    if isinstance(key, int):\n        return f\"{path}[{key}]\"\n    return f\"{path}.{key}\" if path else key\n\n\n# ---- Core validator ----\n\nclass JSONSchemaValidator:\n    def __init__(self, schema):\n        self.schema = schema\n        self.errors = []\n\n    def validate(self, instance, collect_all=False):\n        \"\"\"\n        Validate instance against schema.\n        If collect_all is True, returns list of errors (empty if valid).\n        Otherwise raises ValidationError on first failure.\n        \"\"\"\n        self.errors = []\n        self._collect = collect_all\n        self._validate(instance, self.schema, \"\")\n        if collect_all:\n            return self.errors\n        return True\n\n    def is_valid(self, instance):\n        try:\n            self.validate(instance, collect_all=False)\n            return True\n        except ValidationError:\n            return False\n\n    def _fail(self, msg, path):\n        err = ValidationError(msg, path)\n        if self._collect:\n            self.errors.append(err)\n        else:\n            raise err\n\n    def _validate(self, value, schema, path):\n        if not isinstance(schema, dict):\n            self._fail(\"Schema must be an object\", path)\n            return\n\n        # type\n        if \"type\" in schema:\n            if not _check_type(value, schema[\"type\"]):\n                self._fail(\n                    f\"expected type {schema['type']}, got {type(value).__name__}\",\n                    path,\n                )\n                # no need to continue most checks if type is wrong, but continue to surface more errors when collecting\n                if not self._collect:\n                    return\n\n        # enum\n        if \"enum\" in schema:\n            if value not in schema[\"enum\"]:\n                self._fail(f\"value {value!r} not in enum {schema['enum']}\", path)\n\n        # numbers\n        if isinstance(value, (int, float)) and not isinstance(value, bool):\n            if \"minimum\" in schema and value < schema[\"minimum\"]:\n                self._fail(f\"{value} is less than minimum {schema['minimum']}\", path)\n            if \"maximum\" in schema and value > schema[\"maximum\"]:\n                self._fail(f\"{value} is greater than maximum {schema['maximum']}\", path)\n\n        # strings\n        if isinstance(value, str):\n            if \"minLength\" in schema and len(value) < schema[\"minLength\"]:\n                self._fail(\n                    f\"string length {len(value)} < minLength {schema['minLength']}\",\n                    path,\n                )\n            if \"maxLength\" in schema and len(value) > schema[\"maxLength\"]:\n                self._fail(\n                    f\"string length {len(value)} > maxLength {schema['maxLength']}\",\n                    path,\n                )\n            if \"pattern\" in schema:\n                try:\n                    if re.search(schema[\"pattern\"], value) is None:\n                        self._fail(\n                            f\"string {value!r} does not match pattern {schema['pattern']!r}\",\n                            path,\n                        )\n                except re.error as e:\n                    self._fail(f\"invalid regex pattern: {e}\", path)\n\n        # objects\n        if isinstance(value, dict):\n            self._validate_object(value, schema, path)\n\n        # arrays\n        if isinstance(value, list):\n            self._validate_array(value, schema, path)\n\n    def _validate_object(self, value, schema, path):\n        # required\n        for req in schema.get(\"required\", []):\n            if req not in value:\n                self._fail(f\"missing required property '{req}'\", path)\n\n        properties = schema.get(\"properties\", {})\n        additional = schema.get(\"additionalProperties\", True)\n\n        for key, val in value.items():\n            sub_path = _join_path(path, key)\n            if key in properties:\n                self._validate(val, properties[key], sub_path)\n            else:\n                if additional is False:\n                    self._fail(f\"additional property '{key}' not allowed\", path)\n                elif isinstance(additional, dict):\n                    self._validate(val, additional, sub_path)\n                # if True, allow\n\n        if \"minProperties\" in schema and len(value) < schema[\"minProperties\"]:\n            self._fail(\n                f\"object has {len(value)} properties, minimum {schema['minProperties']}\",\n                path,\n            )\n        if \"maxProperties\" in schema and len(value) > schema[\"maxProperties\"]:\n            self._fail(\n                f\"object has {len(value)} properties, maximum {schema['maxProperties']}\",\n                path,\n            )\n\n    def _validate_array(self",
+      "tokens": 2155,
+      "time_ms": 12251
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# JSON Schema Validator from Scratch\n\n```python\n\"\"\"\nA JSON Schema validator implemented from scratch without external libraries.\nSupports: type validation, required fields, min/max for numbers, minLength/maxLength\nfor strings, pattern (regex), enum, nested objects, array items validation, and more.\n\"\"\"\n\nimport re\nimport json\nfrom typing import Any\n\n\nclass ValidationError:\n    \"\"\"Represents a single validation error with path context.\"\"\"\n\n    def __init__(self, message: str, path: str = \"\"):\n        self.message = message\n        self.path = path\n\n    def __str__(self):\n        if self.path:\n            return f\"At '{self.path}': {self.message}\"\n        return self.message\n\n    def __repr__(self):\n        return f\"ValidationError({self!s})\"\n\n    def __eq__(self, other):\n        if isinstance(other, ValidationError):\n            return self.message == other.message and self.path == other.path\n        return NotImplemented\n\n\nclass ValidationResult:\n    \"\"\"Collects validation errors and provides a clean interface for results.\"\"\"\n\n    def __init__(self):\n        self.errors: list[ValidationError] = []\n\n    @property\n    def is_valid(self) -> bool:\n        return len(self.errors) == 0\n\n    def add_error(self, message: str, path: str = \"\"):\n        self.errors.append(ValidationError(message, path))\n\n    def merge(self, other: \"ValidationResult\"):\n        self.errors.extend(other.errors)\n\n    def __str__(self):\n        if self.is_valid:\n            return \"Valid\"\n        lines = [f\"Invalid - {len(self.errors)} error(s):\"]\n        for err in self.errors:\n            lines.append(f\"  - {err}\")\n        return \"\\n\".join(lines)\n\n    def __repr__(self):\n        return f\"ValidationResult(valid={self.is_valid}, errors={len(self.errors)})\"\n\n\nclass JsonSchemaValidator:\n    \"\"\"\n    JSON Schema validator supporting a substantial subset of JSON Schema Draft 7.\n\n    Supported keywords:\n        - type (string, number, integer, boolean, array, object, null)\n        - required\n        - properties, additionalProperties\n        - items (single schema and tuple validation)\n        - additionalItems\n        - minimum, maximum, exclusiveMinimum, exclusiveMaximum, multipleOf\n        - minLength, maxLength, pattern\n        - minItems, maxItems, uniqueItems\n        - minProperties, maxProperties\n        - enum, const\n        - allOf, anyOf, oneOf, not\n        - if/then/else\n        - $ref (internal references only)\n        - default (stored but not applied)\n    \"\"\"\n\n    # Mapping from JSON Schema type names to Python types\n    TYPE_MAP = {\n        \"string\": str,\n        \"number\": (int, float),\n        \"integer\": int,\n        \"boolean\": bool,\n        \"array\": list,\n        \"object\": dict,\n        \"null\": type(None),\n    }\n\n    def __init__(self, schema: dict):\n        if not isinstance(schema, dict):\n            raise TypeError(f\"Schema must be a dict, got {type(schema).__name__}\")\n        self.schema = schema\n        self._root_schema = schema  # Keep reference for $ref resolution\n\n    def validate(self, instance: Any) -> ValidationResult:\n        \"\"\"Validate an instance against the schema. Returns a ValidationResult.\"\"\"\n        result = ValidationResult()\n        self._validate(instance, self.schema, result, path=\"$\")\n        return result\n\n    def is_valid(self, instance: Any) -> bool:\n        \"\"\"Quick check: returns True if instance is valid against the schema.\"\"\"\n        return self.validate(instance).is_valid\n\n    # -------------------------------------------------------------------------\n    # Core dispatcher\n    # -------------------------------------------------------------------------\n\n    def _validate(self, instance: Any, schema: dict, result: ValidationResult, path: str):\n        \"\"\"Recursively validate `instance` against `schema`, accumulating errors.\"\"\"\n\n        # Boolean schemas (JSON Schema allows true/false as schemas)\n        if isinstance(schema, bool):\n            if not schema:\n                result.add_error(\"Schema is 'false'; no value is valid\", path)\n            return\n\n        if not isinstance(schema, dict):\n            result.add_error(f\"Invalid schema type: {type(schema).__name__}\", path)\n            return\n\n        # Empty schema validates everything\n        if not schema:\n            return\n\n        # Handle $ref first (it replaces the current schema context)\n        if \"$ref\" in schema:\n            resolved = self._resolve_ref(schema[\"$ref\"])\n            if resolved is None:\n                result.add_error(f\"Could not resolve $ref: {schema['$ref']}\", path)\n                return\n            self._validate(instance, resolved, result, path)\n            return\n\n        # --- Type validation ---\n        if \"type\" in schema:\n            self._validate_type(instance, schema[\"type\"], result, path)\n\n        # --- Enum validation ---\n        if \"enum\" in schema:\n            self._validate_enum(instance, schema[\"enum\"], result, path)\n\n        # --- Const validation ---\n        if \"const\" in schema:\n            self._validate_const(instance, schema[\"const\"], result, path)\n\n        # --- Numeric validations ---\n        if isinstance(instance, (int, float)) and not isinstance(instance, bool):\n            self._validate_numeric(instance, schema, result, path)\n\n        # --- String validations ---\n        if isinstance(instance, str):\n            self._validate_string(instance, schema, result, path)\n\n        # --- Array validations ---\n        if isinstance(instance, list):\n            self._validate_array(instance, schema, result, path)\n\n        # --- Object validations ---\n        if isinstance(instance, dict):\n            self._validate_object(instance, schema, result, path)\n\n        # --- Composition keywords ---\n        if \"allOf\" in schema:\n            self._validate_all_of(instance, schema[\"allOf\"], result, path)\n\n        if \"anyOf\" in schema:\n            self._validate_any_of(instance, schema[\"anyOf\"], result, path)\n\n        if \"oneOf\" in schema:\n            self._validate_one_of(instance, schema[\"oneOf\"], result, path)\n\n        if \"not\" in schema:\n            self._validate_not(instance, schema[\"not\"], result, path)\n\n        # --- Conditional: if/then/else ---\n        if \"if\" in schema:\n            self._validate_if_then_else(instance, schema, result, path)\n\n    # -------------------------------------------------------------------------\n    # Type validation\n    # -------------------------------------------------------------------------\n\n    def _validate_type(self, instance: Any, type_spec: Any, result: ValidationResult, path: str):\n        \"\"\"Validate the 'type' keyword. Supports a single type string or a list of types.\"\"\"\n        if isinstance(type_spec, list):\n            # Union type: instance must match at least one\n            if not any(self._check_type(instance, t) for t in type_spec):\n                actual = self._get_json_type(instance)\n                result.add_error(\n                    f\"Expected type to be one of {type_spec}, got '{actual}'\", path\n                )\n        elif isinstance(type_spec, str):\n            if not self._check_type(instance, type_spec):\n                actual = self._get_json_type(instance)\n                result.add_error(\n                    f\"Expected type '{type_spec}', got '{actual}'\", path\n                )\n\n    def _check_type(self, instance: Any, type_name: str) -> bool:\n        \"\"\"Check if instance matches the given JSON Schema type name.\"\"\"\n        if type_name not in self.TYPE_MAP:\n            return False\n\n        # Special handling: in JSON Schema, booleans are NOT integers/numbers\n        if type_name in (\"integer\", \"number\") and isinstance(instance, bool):\n            return False\n\n        if type_name == \"integer\":\n            # Accept floats that are whole numbers (e.g., 1.0)\n            if isinstance(instance, float):\n                return instance == int(instance) and not (\n                    instance == float(\"inf\") or instance == float(\"-inf\") or instance != instance\n                )\n            return isinstance(instance, int)\n\n        if type_name == \"number\":\n            return isinstance(instance, (int, float))\n\n        expected = self.TYPE_MAP[type_name]\n        return isinstance(instance, expected)\n\n    def _get_json_type(",
+      "tokens": 2118,
+      "time_ms": 26179
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 4.0,
+        "usefulness": 2.0,
+        "correctness": 4.0,
+        "completeness": 3.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 5.0,
+        "usefulness": 3.0,
+        "correctness": 6.0,
+        "completeness": 4.0
+      },
+      "weighted_a": 4.1,
+      "weighted_b": 5.15,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B is also incomplete, but it covers more of the requested validator design and remains more substantial overall. Response A is truncated before the array validation implementation and therefore fails to deliver the requested solution."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 6.0,
+        "usefulness": 2.0,
+        "correctness": 5.0,
+        "completeness": 2.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 6.0,
+        "usefulness": 5.0,
+        "correctness": 7.0,
+        "completeness": 6.0
+      },
+      "weighted_a": 4.75,
+      "weighted_b": 6.5,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses were truncated, but Response B managed to implement almost all the requested features before cutting off, whereas Response A spent too much time on boilerplate and implemented very few of the actual validation rules."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 6.0,
+        "depth": 5.0,
+        "usefulness": 6.0,
+        "correctness": 7.0,
+        "completeness": 6.0
+      },
+      "weighted_a": 8.4,
+      "weighted_b": 6.05,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more complete, correct, and usable, with a fully implemented validator and clear examples. Response B is incomplete and contains syntax errors."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_46": 1,
+    "claude_opus_47": 2
+  },
+  "judges_agree": false
+}

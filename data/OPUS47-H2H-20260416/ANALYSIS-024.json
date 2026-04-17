@@ -1,0 +1,105 @@
+{
+  "question_id": "ANALYSIS-024",
+  "category": "analysis",
+  "question_text": "A quantitative trading firm backtests a strategy: 15% annual return, Sharpe ratio 2.1, max drawdown 8%. They want to go live. (1) What could go wrong between backtest and live trading? List at least 5",
+  "timestamp": "2026-04-16T18:33:44.099456",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Quantitative Strategy: Backtest to Live Trading Analysis\n\n## (1) Risks Between Backtest and Live Trading\n\n**1. Overfitting / Selection Bias**\nThe strategy may be curve-fit to historical noise. With 200 parameter combinations, some will look great by chance alone.\n\n**2. Market Impact & Slippage**\nBacktests typically assume execution at mid-price or close. Real orders move markets, especially in less liquid instruments. A 15% return can easily become 8% after realistic slippage.\n\n**3. Transaction Costs Underestimation**\nCommissions, exchange fees, borrowing costs (for shorts), and bid-ask spreads compound quickly in high-turnover strategies.\n\n**4. Regime Change**\nThe backtest covers 5 years of specific market conditions (volatility, rates, correlations). Live trading may encounter structurally different regimes (e.g., 2020 COVID shock, 2022 rate hikes).\n\n**5. Data Issues in Backtest**\n- **Survivorship bias** (delisted stocks excluded)\n- **Look-ahead bias** (using data not available at decision time)\n- **Point-in-time errors** (restated fundamentals)\n- **Corporate actions** handled incorrectly\n\n**6. Latency & Execution Infrastructure**\nSignal-to-fill delays, partial fills, order rejections, and broker outages don't exist in backtests.\n\n**7. Capacity Constraints**\nStrategy returns may degrade rapidly as AUM increases due to alpha decay.\n\n**8. Behavioral/Operational Risk**\nTraders overriding signals during drawdowns; bugs in live code vs. research code.\n\n---\n\n## (2) Probability of Overfitting\n\nUsing the **Deflated Sharpe Ratio** framework (Bailey & L\u00f3pez de Prado):\n\n**Setup:**\n- N = 200 trials\n- Observed Sharpe (SR) = 2.1\n- Sample length T \u2248 5 \u00d7 252 = 1,260 days (annualized SR)\n\n**Expected Maximum Sharpe under null hypothesis (no skill):**\n$$E[\\max SR] \\approx \\sqrt{\\frac{2\\ln N}{T}} \\cdot \\sigma_{SR}$$\n\nWith N=200 trials, the expected max Sharpe from pure luck (using the extreme value approximation):\n$$E[\\max SR_{null}] \\approx (1-\\gamma)\\Phi^{-1}(1-1/N) + \\gamma \\Phi^{-1}(1-1/(N\\cdot e))$$\n\nwhere \u03b3 \u2248 0.5772 (Euler-Mascheroni).\n\nPlugging in: \u03a6\u207b\u00b9(0.995) \u2248 2.576, \u03a6\u207b\u00b9(0.9982) \u2248 2.91\n$$E[\\max SR_{null}] \\approx 0.423 \\cdot 2.576 + 0.577 \\cdot 2.91 \\approx 2.77$$\n\nThis is the expected max Sharpe **in the sample**. Annualized over T=1260 with SR variance \u2248 (1+SR\u00b2/2)/T:\n$$\\sigma_{SR} \\approx \\sqrt{(1 + 2.1^2/2)/1260} \\approx 0.056$$\n\n**Expected spurious annualized Sharpe:** \u2248 2.77 \u00d7 0.056 \u00d7 \u221a252 \u2248 **2.47**\n\n**Interpretation:** An observed Sharpe of 2.1 is actually **below** the expected maximum from 200 random trials. \n\n**Probability of overfitting \u2248 60\u201370%** \u2014 the observed performance is **not statistically distinguishable from luck** given the multiple testing.\n\n**Deflated Sharpe p-value** \u2248 0.3\u20130.4 (fails standard significance)\n\n> \u26a0\ufe0f **Conclusion:** The backtest is likely overfit. True out-of-sample Sharpe expectation is probably 0.7\u20131.2, not 2.1.\n\n---\n\n## (3) Live Testing Protocol\n\n### Phase 1: Paper Trading (Weeks 1\u20134)\n- **Capital at risk:** $0\n- Run strategy on live market data with simulated fills\n- **Validate:** Signal generation matches research code, infrastructure stability\n- **Kill criteria:** >5% deviation from backtest on same data\n\n### Phase 2: Minimum Viable Capital (Weeks 5\u201312)\n- **Capital:** 1\u20132% of intended allocation (e.g., $50k of $5M)\n- **Goal:** Measure real slippage, fills, costs\n- **Metrics tracked:**\n  - Implementation shortfall per trade\n  - Actual vs. expected fill rates\n  - Realized costs vs. modeled costs\n\n### Phase 3: Statistical Validation (Weeks 13\u201326)\n- **Capital:** 10% of target\n- **Pre-register** success criteria:\n  - Live Sharpe within 1 SD of deflated backtest Sharpe\n  - Drawdown not exceeding 1.5\u00d7 backtest max DD\n  - At least 50 independent trades for statistical power\n\n### Phase 4: Gradual Scale-Up\n- Increase to 25% \u2192 50% \u2192 100% over 3\u20136 months\n- **At each step:** verify no capacity degradation\n\n### Kill Switches (Automated)\n| Trigger | Action |\n|---------|--------|\n| Drawdown > 12% (1.5\u00d7 backtest max) | Halt trading |\n| Live Sharpe < 0.5 after 100 trades | Pause, review |\n| Daily loss > 3% | Intraday stop |\n| Correlation with backtest < 0.3 | Investigate |\n\n### Position Sizing with Kelly Fraction\nUse **fractional Kelly (\u00bc Kelly)** based on **deflated** statistics, not raw backtest:\n$$f^* = \\frac{1}{4} \\cdot \\frac{\\mu_{deflated}}{\\sigma^2}$$\n\n### Ongoing Controls\n- **A/B testing:** Keep backtest simulation running in parallel; alert on divergence\n- **Monthly performance attribution** vs. expected\n- **Quarterly",
+      "tokens": 2215,
+      "time_ms": 33989
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# From Backtest to Live Trading: Comprehensive Risk Analysis\n\n## Part 1: What Could Go Wrong \u2014 Critical Risks\n\n### The Backtest-to-Live Gap\n\nThe reported metrics (15% return, 2.1 Sharpe, 8% max drawdown) look excellent on paper. Here are the risks that can destroy this performance in live trading:\n\n**Risk 1: Overfitting / Data Snooping Bias**\nTesting 200 parameter combinations on 5 years of data virtually guarantees that the \"best\" parameter set captures noise, not signal. The strategy has been optimized to explain the past, not predict the future.\n\n**Risk 2: Transaction Cost Underestimation**\nBacktests typically use idealized execution assumptions:\n- **Slippage**: Market impact of your own orders moving prices against you\n- **Spread costs**: Using mid-price instead of bid-ask reality\n- **Latency**: Assuming instantaneous fills when real execution takes milliseconds to seconds\n- A strategy showing 15% return can easily become 5% or negative once realistic costs are applied\n\n**Risk 3: Survivorship and Look-Ahead Bias**\n- **Survivorship bias**: If the universe of instruments excludes delisted stocks, bankruptcies, or failed products, returns are inflated\n- **Look-ahead bias**: Using data that wouldn't have been available at the time of the simulated trade (e.g., revised economic figures, rebalanced index compositions applied retroactively)\n\n**Risk 4: Regime Change / Non-Stationarity**\nThe 5-year window may represent a specific market regime (e.g., low-volatility bull market, QE environment). When the regime shifts:\n- Correlations break down\n- Volatility structure changes\n- Mean-reversion strategies fail in trending markets and vice versa\n- The statistical relationships the strategy exploits may simply cease to exist\n\n**Risk 5: Liquidity Illusion**\nBacktests assume you can trade at historical volumes. In reality:\n- Your orders consume liquidity and move markets\n- Historical volume may not be available when your strategy needs it\n- During stress events (when drawdown protection matters most), liquidity evaporates\n- Capacity constraints mean the strategy may work at $1M but fail at $100M\n\n**Risk 6: Crowding Risk**\nIf the signal is based on well-known factors or patterns, many firms may be running similar strategies. This creates:\n- Compressed returns as more capital chases the same edge\n- Correlated unwinding during stress (the \"quant quake\" phenomenon, as seen in August 2007)\n\n**Risk 7: Infrastructure and Operational Risk**\n- Exchange connectivity failures\n- Data feed errors or delays\n- Order management system bugs\n- Position reconciliation errors\n- Risk limit breaches due to software errors\n\n---\n\n## Part 2: Probability of Overfitting \u2014 Quantitative Analysis\n\n### The Multiple Testing Problem\n\nThis is a direct application of the **multiple comparisons problem** in statistics.\n\n**Setup:**\n- $N = 200$ parameter combinations tested\n- $T = 5$ years of data\n- Null hypothesis $H_0$: The strategy has no genuine edge (true return \u2264 risk-free rate)\n- We observe at least one combination with impressive metrics\n\n### Method 1: Bonferroni-Style Analysis\n\nIf we require significance at $\\alpha = 0.05$ for a single test, the probability of finding at least one \"significant\" result by chance among 200 independent tests:\n\n$$P(\\text{at least one false positive}) = 1 - (1 - \\alpha)^N$$\n\n$$P = 1 - (1 - 0.05)^{200} = 1 - (0.95)^{200}$$\n\n$$P = 1 - e^{200 \\ln(0.95)} = 1 - e^{200 \\times (-0.05129)} = 1 - e^{-10.26}$$\n\n$$\\boxed{P \\approx 1 - 0.0000351 \\approx 99.996\\%}$$\n\nThis means it is virtually **certain** that at least one parameter set would appear significant by pure chance.\n\n### Method 2: Deflated Sharpe Ratio (Harvey, Liu, and Zhu; Bailey and L\u00f3pez de Prado)\n\nThe observed Sharpe ratio must be adjusted for the number of trials. The **minimum Sharpe ratio** that would be statistically significant given multiple testing:\n\n$$SR_{\\text{min}} = \\sqrt{V[\\hat{SR}]} \\cdot \\left[(1-\\gamma)\\Phi^{-1}\\left(1 - \\frac{\\alpha}{N}\\right) + \\gamma \\cdot \\Phi^{-1}\\left(1 - \\frac{\\alpha}{N} \\cdot e^{-1}\\right)\\right]$$\n\nUsing the simplified approximation from Bailey & L\u00f3pez de Prado (2014):\n\n$$SR_{\\text{min}} \\approx \\sqrt{\\frac{V[\\hat{SR}]}{T}} \\cdot Z_{\\alpha/N}$$\n\nWhere:\n- $V[\\hat{SR}] \\approx \\frac{1}{T}\\left(1 + \\frac{\\text{skew} \\cdot SR}{2} + \\frac{(\\text{kurt}-3)}{4}SR^2\\right)$ but simplifying to $V[\\hat{SR}] \\approx 1/T$ for near-normal returns\n- Standard error of Sharpe: $SE(SR) \\approx \\frac{1}{\\sqrt{T}} = \\frac{1}{\\sqrt{5}} \\approx 0.447$ (annualized, with T in years)\n- Bonferroni-corrected significance level: $\\alpha_{\\text{adj}} = \\frac{0.05}{200} = 0.00025$\n- Required z-score: $Z_{0.00025} \\approx 3.48$\n\n$$SR_{\\text{min}} \\approx 0.447 \\times 3.48 \\approx 1.56$$\n\n**The observed Sharpe of 2.1 exceeds the minimum of 1.56**, which suggests the strategy *may* have genuine signal even after correction.\n\n### Method 3: Probability of Overfitting via Combinatorial Symmetric Cross-Validation (CSCV)\n\nBailey et al. (2015) propose directly estimating the **Probability of Backtest Overfitting (PBO)**:\n\nFor a strategy development process with:\n- $N = 200$ trials\n- $T = 5$ years \u2248 1,260 trading days\n\nPartition the data into $S = 16$ subsets. Form all $\\binom{16}{8} = 12,870$ combinations of in-sample/out-of-sample splits. For each:\n1. Select the best strategy in-sample\n2. Measure its rank out-of-sample\n3. PBO = fraction of times the best IS strategy performs below median OOS\n\n**Empirical research suggests** that with 200 trials on 5 years of data, PBO typically falls in the range of **30\u201350%** for strategies with Sharpe ~2.\n\n### Synthesis and Final Estimate\n\n| Method | Result | Interpretation |\n|--------|--------|----------------|\n| Naive false positive rate | 99.996% | At least one combo looks good by chance |\n| Deflated Sharpe Ratio | SR_obs (2.1) > SR_min (1.56) | Survives correction \u2014 encouraging |\n| Estimated PBO (CSCV) | ~30\u201350% | Meaningful risk of overfitting |\n| Effective degrees of freedom* | Reduced if params correlated | True N may be 30\u201380, not 200 |\n\n*If many parameter combinations are highly correlated (e.g., moving average 49 vs 50), the effective number of independent tests is much less than 200.\n\n### Conclusion for Part 2\n\n$$\\boxed{P(\\text{overfitting}) \\approx 30\\%-50\\%}$$\n\nThe strategy shows enough strength (Sharpe 2.1) to potentially survive multiple-testing correction, but with 200 combinations tested, there is a **substantial 30-50% probability** that the observed outperformance is primarily due to overfitting. This is far too high to deploy capital without rigorous out-of-sample validation.\n\n---\n\n## Part 3: Live Testing Protocol \u2014 Staged Capital Deployment\n\n### Design Philosophy\n**\"Fail fast, fail cheap, scale only with evidence.\"**\n\nThe protocol uses a **gated escalation framework** where each stage must pass",
+      "tokens": 2171,
+      "time_ms": 42044
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 6.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 5.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 7.35,
+      "weighted_b": 6.85,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A gives a more balanced and technically grounded treatment of overfitting risk and lists risks more comprehensively. Response B includes several questionable statistical calculations and overstates precision. Both are incomplete on the live-testing protocol, but A is overall stronger."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "completeness": 7.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "clarity": 8.0,
+        "correctness": 8.0
+      },
+      "scores_b": {
+        "completeness": 8.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "clarity": 9.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 7.8,
+      "weighted_b": 8.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B provides a more realistic assessment of the deflated Sharpe ratio and includes a highly actionable live testing protocol before the cutoff.",
+      "rerun": true,
+      "rerun_pass": 2,
+      "rerun_timestamp": "2026-04-17T16:33:14.593597"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 7.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provided more precise, actionable calculations for overfitting probability and a detailed, phased live testing protocol with specific metrics and kill switches, demonstrating superior depth and practical usefulness."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_46": 1,
+    "claude_opus_47": 2
+  },
+  "judges_agree": false
+}

@@ -1,0 +1,104 @@
+{
+  "question_id": "COMM-021",
+  "category": "communication",
+  "question_text": "Write a 60-second elevator pitch for each of these: (1) A startup that uses AI to detect infrastructure defects from drone footage. Audience: a VC partner at a cocktail party. (2) The same startup. Au",
+  "timestamp": "2026-04-16T19:01:09.272857",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Three Elevator Pitches\n\n## (1) To a VC Partner at a Cocktail Party\n\n\"Quick question\u2014did you know U.S. cities spend about $200 billion a year inspecting bridges, roads, and pipelines, mostly with guys on ladders holding clipboards? It's slow, dangerous, and they miss things. We're fixing that.\n\nWe built an AI platform that analyzes drone footage of infrastructure and flags defects\u2014cracks, corrosion, structural fatigue\u2014with 94% accuracy, in hours instead of weeks. One pilot with a mid-size utility cut their inspection costs by 60% and caught two critical failures their human team missed.\n\nWe're at $1.2M ARR, growing 20% month-over-month, and we just signed our third Fortune 500 utility. Raising a Series A to scale the sales team before our competitors wake up.\n\nI'd love 20 minutes on your calendar next week\u2014can I grab your card?\"\n\n---\n\n## (2) To a City Infrastructure Manager at a Conference\n\n\"Hey, I caught your panel earlier\u2014the point about deferred maintenance really resonated. I run a company that might actually help with that.\n\nWe use AI to analyze drone footage of bridges, roads, retaining walls\u2014basically anything you're responsible for inspecting. Instead of sending a crew out for a week, you fly a drone for an hour and our system gives you a prioritized report: what's critical, what's watch-list, what's fine. It integrates with the asset management systems most cities already use, and it creates a defensible paper trail for FHWA compliance.\n\nPhoenix used us on 400 miles of roadway last year and reallocated about $3M in maintenance budget because they finally had objective data on what actually needed fixing first.\n\nI don't want to sell you anything today\u2014but could I set up a 30-minute demo next month with your team? I'll come to you.\"\n\n---\n\n## (3) To Your Grandmother at Thanksgiving Dinner\n\n\"So Grandma, you know how every time you drive over that old bridge on Route 9 you say a little prayer? There's a real reason for that\u2014nobody actually checks those bridges very often, because it's expensive and kind of dangerous. Someone has to climb up there with a clipboard.\n\nWell, my company uses those little flying cameras\u2014drones\u2014to take pictures of bridges and roads. And then we built a computer program that's really smart at looking at the pictures and spotting cracks or rust, the stuff that means something's wrong. Kind of like how your doctor reads an X-ray, but for bridges.\n\nIt means cities can check on things more often, catch problems early, and hopefully nobody gets hurt. That's what I've been working on for the last two years.\n\nNow\u2014pass me the mashed potatoes and tell me about your bridge club drama. I've been waiting all week for the update.\"",
+      "tokens": 1058,
+      "time_ms": 19800
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Three Elevator Pitches for \"SkyScope AI\"\n\n---\n\n## Pitch 1: To the VC Partner at a Cocktail Party\n\n\"So you know how every few years you hear about a bridge collapsing or a water main exploding, and everyone says, 'How did nobody catch that?' The ugly truth is that infrastructure inspection in this country is still basically a guy with a clipboard and a flashlight. It's slow, it's inconsistent, and there's a massive backlog \u2014 we're talking trillions in deferred maintenance.\n\nThat's what we're solving at SkyScope. We fly standard commercial drones over bridges, roads, pipelines \u2014 any infrastructure \u2014 and our AI analyzes the footage to detect cracks, corrosion, deformation, things a human inspector might miss or take weeks to catalog. We do it in hours, at about a tenth of the cost.\n\nHere's what gets exciting from a business perspective: we're not selling drones. We're selling the intelligence layer \u2014 a SaaS model with recurring revenue. Municipalities subscribe, and every inspection cycle deepens our dataset, which makes the AI smarter, which makes us harder to replace. Classic data moat.\n\nWe launched eight months ago, we've got contracts with three mid-size cities and a regional DOT, ARR just crossed $600K, and we're growing about 30% month over month. We're raising a Series A to expand into utilities and scale our sales team.\n\nI'd love to send you our deck and maybe grab 30 minutes with you next week. Can I get your email?\"\n\n---\n\n## Pitch 2: To the City Infrastructure Manager at a Conference\n\n\"Hi \u2014 I couldn't help but overhear your panel earlier about the inspection backlog you're dealing with. That resonated because that's exactly the problem we work on every day.\n\nI'm with SkyScope. What we do is pretty straightforward: we take drone footage of your bridges, roads, retaining walls \u2014 whatever you need assessed \u2014 and run it through our AI platform. It flags defects, categorizes them by severity, and generates reports that map directly to federal condition rating standards. So your team isn't spending three days inspecting one bridge and writing it up manually. You're getting consistent, documented assessments in a fraction of the time.\n\nThe part our city partners tell us they love most is the prioritization. Because we're analyzing everything with the same model, you get an apples-to-apples comparison across your entire asset portfolio. So when you're going to council to fight for budget, you've got hard data showing *this* bridge needs attention now, *that* one can wait two years. It takes the politics out of it.\n\nWe're already working with Dayton, Chattanooga, and a couple of others your size, and the results have been really strong \u2014 one city found a critical defect in a pedestrian overpass that their last manual inspection had missed entirely.\n\nWould it be helpful if I set up a short demo with you and your engineering team? I could show you exactly what the output looks like using a real inspection we did. Here's my card \u2014 what does your calendar look like in the next couple weeks?\"\n\n---\n\n## Pitch 3: To Your Grandmother at Thanksgiving Dinner\n\n\"Okay, so you know how sometimes you see on the news that a road caved in, or a bridge is suddenly closed because it's falling apart? That happens because it's really hard to keep track of all the bridges and roads and pipes a city has. They're supposed to send people out to check on all of it, but there aren't enough inspectors, and honestly, a lot of it just doesn't get looked at often enough.\n\nSo what my company does is \u2014 you know drones, right? Those little flying things with cameras? We fly those over bridges and roads, and then we have a really smart computer program that looks at all the video and spots the problems. Like, it can see a crack forming in a bridge, or a road starting to buckle, before it becomes dangerous. Think of it like... if your doctor could look at an X-ray and instantly spot every single thing wrong, and then rank them from 'fix this tomorrow' to 'keep an eye on it.' We do that, but for roads and bridges.\n\nIt means cities can fix things *before* they become emergencies, which keeps people safer and actually saves a ton of money.\n\nI really love it, Grandma. I feel like I'm working on something that actually matters.\n\nActually \u2014 you said your friend Dorothy is on the town council, right? I would love an introduction. Maybe over coffee sometime? I think we could really help a town like yours.\"",
+      "tokens": 1126,
+      "time_ms": 31363
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 7.0,
+        "usefulness": 7.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 7.85,
+      "weighted_b": 8.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B better matches all three audiences, stays conversational, and includes clear next steps for each pitch. It is slightly stronger on practicality and audience-specific tailoring, especially for the grandmother version, where Response A misses the requested clear next step."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 8.0,
+        "clarity": 9.0,
+        "usefulness": 8.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "scores_b": {
+        "depth": 9.0,
+        "clarity": 9.0,
+        "usefulness": 9.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 8.65,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Both models correctly extrapolated the cut-off prompt based on common variations of this task. Response B's pitches were slightly stronger, incorporating highly specific and realistic angles for each persona (e.g., mentioning a 'data moat' to the VC, 'budget politics' to the city manager, and hilariously asking Grandma for a warm intro to the town council).",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:16:03.805270"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 9.2,
+      "weighted_b": 8.65,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A was slightly more natural, conversational, and tailored to each audience with clearer next steps."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 2,
+    "claude_opus_47": 1
+  },
+  "judges_agree": false
+}

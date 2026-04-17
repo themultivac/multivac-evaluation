@@ -1,0 +1,104 @@
+{
+  "question_id": "CODE-028",
+  "category": "code",
+  "question_text": "Your Node.js API is responding with 502 errors under load. Here's the relevant code and infrastructure:\n\n- Express.js API behind an Nginx reverse proxy\n- Connection pool to PostgreSQL (max 20 connecti",
+  "timestamp": "2026-04-16T17:37:52.265756",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# The Problem: Connection Leak + Pool Exhaustion\n\n## Bug #1: Client Never Released\n\nYour code checks out a client from the pool but **never releases it back**. If `query()` throws, or even on success, the client stays checked out forever. After 20 requests that hit an error (or sometimes even on success depending on GC), your pool is dead.\n\n## Bug #2: Capacity Math Doesn't Work\n\n- Pool max: **20 connections**\n- Traffic: **200 req/s**\n- Query + network time: ~50ms\n\nAt 200 req/s with 50ms queries, you need ~10 concurrent connections *when healthy*. But once latency creeps up (Postgres under load, a slow query, network blip), each request holds a connection longer. At 150ms per query you need 30 connections \u2014 you're already over the limit, requests queue, timeouts fire, cascading failure.\n\n## The Fix\n\n```javascript\napp.get('/api/users/:id', async (req, res, next) => {\n  try {\n    // pool.query() auto-acquires and releases a client\n    const result = await pool.query(\n      'SELECT * FROM users WHERE id = $1',\n      [req.params.id]\n    );\n    if (!result.rows[0]) return res.status(404).json({ error: 'Not found' });\n    res.json(result.rows[0]);\n  } catch (err) {\n    next(err);\n  }\n});\n```\n\nIf you need `pool.connect()` (for transactions), always use `try/finally`:\n\n```javascript\napp.post('/api/transfer', async (req, res, next) => {\n  const client = await pool.connect();\n  try {\n    await client.query('BEGIN');\n    await client.query('UPDATE accounts SET balance = balance - $1 WHERE id = $2', [amount, from]);\n    await client.query('UPDATE accounts SET balance = balance + $1 WHERE id = $2', [amount, to]);\n    await client.query('COMMIT');\n    res.json({ ok: true });\n  } catch (err) {\n    await client.query('ROLLBACK').catch(() => {});\n    next(err);\n  } finally {\n    client.release(); // CRITICAL \u2014 runs even on error\n  }\n});\n```\n\n## Pool Configuration\n\n```javascript\nconst pool = new Pool({\n  max: 50,                      // Size for p99 concurrency, not average\n  idleTimeoutMillis: 30000,\n  connectionTimeoutMillis: 2000, // Fail fast instead of hanging 30s\n  statement_timeout: 5000,       // Kill slow queries at PG level\n  query_timeout: 5000,\n});\n\npool.on('error', (err) => {\n  console.error('Unexpected pool error', err);\n});\n```\n\n## The Connection Pool Exhaustion Pattern\n\nThis is a classic feedback loop:\n\n1. **Trigger**: Traffic spike, slow query, or downstream DB latency increases request duration\n2. **Accumulation**: Each in-flight request holds a pool slot longer than usual\n3. **Saturation**: All 20 slots occupied; new requests call `pool.connect()` and *wait*\n4. **Queueing**: Waiting requests hold the Node event loop context, sockets, memory\n5. **Timeout cascade**: Nginx's upstream timeout (default 60s) or your `connectionTimeoutMillis` fires \u2192 `ETIMEDOUT`\n6. **502 from Nginx**: Upstream failed or closed connection \u2192 Bad Gateway\n7. **Retry amplification**: Clients retry, adding *more* load to an already-saturated system\n8. **Death spiral**: System can't recover until traffic drops \u2014 pool stays pinned at 100%\n\nThe `\"too many clients already\"` error is Postgres's side of the same story: it has a hard `max_connections` (usually 100). If you run multiple app instances each with `max: 20`, you can exceed PG's limit.\n\n## Additional Hardening\n\n1. **Cap Postgres connections**: Total app instances \u00d7 pool max **< PG max_connections - 10** (leave room for admin)\n2. **Add a circuit breaker** (e.g., `opossum`) so failing DB calls fail fast instead of queueing\n3. **Use PgBouncer** in transaction-pooling mode if you have many app instances \u2014 multiplexes thousands of client connections onto a small PG connection pool\n4. **Add a request timeout in Express** so slow requests don't stack up:\n   ```javascript\n   app.use((req, res, next) => {\n     res.setTimeout(10000, () => res.status(503).end());\n     next();\n   });\n   ```\n5. **Monitor pool metrics**: `pool.totalCount`, `pool.idleCount`, `pool.waitingCount` \u2014 alert when `waitingCount > 0` for sustained periods\n\nThe one-line TL;DR: **always release clients in `finally`, and prefer `pool.query()` when you don't need a dedicated connection.**",
+      "tokens": 1907,
+      "time_ms": 24802
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Diagnosing and Fixing the 502 Errors Under Load\n\n## The Critical Bug: Connection Pool Exhaustion\n\nThe code has a **connection leak** \u2014 it acquires a connection from the pool but **never releases it back**. Every single request permanently consumes a pool connection until the process crashes or restarts.\n\n```javascript\n// \u274c BROKEN: Connection is NEVER released\napp.get('/api/users/:id', async (req, res) => {\n  const client = await pool.connect();  // Acquires connection #1, #2, #3...\n  const result = await client.query('SELECT * FROM users WHERE id = $1', [req.params.id]);\n  res.json(result.rows[0]);\n  // client is never released \u2014 it's GONE from the pool forever\n});\n```\n\n## The Exhaustion Timeline\n\n```\nPool capacity: 20 connections\n\nRequest #1   \u2192 connect() \u2192 pool: 19 available (1 leaked)\nRequest #2   \u2192 connect() \u2192 pool: 18 available (2 leaked)\n...\nRequest #20  \u2192 connect() \u2192 pool:  0 available (20 leaked)\nRequest #21  \u2192 connect() \u2192 BLOCKS, waiting for a connection that will NEVER return\n                          \u2192 Nginx times out after 60s \u2192 502 Bad Gateway\n\nAt 200 req/s, pool exhausts in ~100ms (20 connections / 200 req/s)\n```\n\n```\nTimeline visualization:\n\n0ms        100ms                              60,000ms\n|-----------|----------------------------------|\n 20 requests   All subsequent requests queued    Nginx timeout \u2192 502\n exhaust pool  waiting on pool.connect()         for ALL queued requests\n```\n\n## The Fix: Three Levels of Improvement\n\n### Level 1: Immediate Fix \u2014 Release Connections Properly\n\n```javascript\n// \u2705 FIXED: Always release with try/finally\napp.get('/api/users/:id', async (req, res) => {\n  const client = await pool.connect();\n  try {\n    const result = await client.query(\n      'SELECT * FROM users WHERE id = $1',\n      [req.params.id]\n    );\n    res.json(result.rows[0]);\n  } catch (err) {\n    res.status(500).json({ error: 'Internal server error' });\n  } finally {\n    client.release();  // \u2190 ALWAYS returns connection to pool, even on error\n  }\n});\n```\n\n### Level 2: Better \u2014 Use pool.query() for Single Queries\n\n```javascript\n// \u2705 BETTER: pool.query() auto-acquires AND auto-releases\napp.get('/api/users/:id', async (req, res) => {\n  try {\n    const result = await pool.query(\n      'SELECT * FROM users WHERE id = $1',\n      [req.params.id]\n    );\n\n    if (result.rows.length === 0) {\n      return res.status(404).json({ error: 'User not found' });\n    }\n\n    res.json(result.rows[0]);\n  } catch (err) {\n    console.error('Query failed:', err);\n    res.status(500).json({ error: 'Internal server error' });\n  }\n});\n```\n\n`pool.query()` internally does `connect \u2192 query \u2192 release` \u2014 it's impossible to leak.\n\n### Level 3: Production-Grade \u2014 Full Resilience\n\n```javascript\nimport pg from 'pg';\nconst { Pool } = pg;\n\n// \u2500\u2500 Pool Configuration \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nconst pool = new Pool({\n  host: process.env.DB_HOST,\n  port: 5432,\n  database: process.env.DB_NAME,\n  user: process.env.DB_USER,\n  password: process.env.DB_PASSWORD,\n\n  // Connection limits\n  max: 20,                          // Max pool size\n  min: 5,                           // Keep 5 idle connections warm\n  idleTimeoutMillis: 30000,         // Close idle connections after 30s\n  connectionTimeoutMillis: 5000,    // Fail fast if can't connect in 5s (don't hang)\n\n  // Prevent leaked connections from staying checked out forever\n  allowExitOnIdle: false,\n\n  // Statement timeout \u2014 kill long-running queries\n  statement_timeout: 10000,         // 10s max query time\n});\n\n// \u2500\u2500 Pool Monitoring \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\npool.on('error', (err) => {\n  console.error('Unexpected pool error on idle client:', err);\n  // Don't crash \u2014 the pool will remove the broken connection\n});\n\npool.on('connect', () => {\n  console.debug(`Pool: new connection (total: ${pool.totalCount}, idle: ${pool.idleCount}, waiting: ${pool.waitingCount})`);\n});\n\n// Health metrics endpoint\napp.get('/health/db', async (req, res) => {\n  res.json({\n    total: pool.totalCount,     // All connections (active + idle)\n    idle: pool.idleCount,       // Available connections\n    waiting: pool.waitingCount, // Requests queued waiting for a connection\n  });\n});\n\n// \u2500\u2500 Middleware: Connection Timeout Safety Net \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nconst withDbClient = (handler) => {\n  return async (req, res, next) => {\n    let client;\n    let released = false;\n\n    const safeRelease = () => {\n      if (!released) {\n        released = true;\n        client.release();\n      }\n    };\n\n    try {\n      client = await pool.connect();\n\n      // Safety net: release if response finishes without explicit release\n      res.on('finish', safeRelease);\n      res.on('close', safeRelease);   // Client disconnected early\n\n      req.dbClient = client;\n      await handler(req, res, next);\n    } catch (err) {\n      if (err.message?.includes('timeout')) {\n        res.status(503).json({ error: 'Database temporarily unavailable' });\n      } else {\n        next(err);\n      }\n    } finally {\n      safeRelease();\n    }\n  };\n};\n\n// \u2500\u2500 Routes Using the Middleware \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n// Simple queries \u2014 use pool.query() directly\napp.get('/api/users/:id', async (req, res) => {\n  try {\n    const result = await pool.query(\n      'SELECT * FROM users WHERE id = $1',\n      [req.params.id]\n    );\n\n    if (result.rows.length === 0) {\n      return res.status(404).json({ error: 'User not found' });\n    }\n\n    res.json(result.rows[0]);\n  } catch (err) {\n    console.error('Query failed:', err);\n    res.status(500).json({ error: 'Internal server error' });\n  }\n});\n\n// Multi-query transactions \u2014 use the middleware for manual client control\napp.post('/api/users/:id/transfer', withDbClient(async (req, res) => {\n  const { dbClient } = req;\n\n  await dbClient.query('BEGIN');\n  try {\n    await dbClient.query(\n      'UPDATE accounts SET balance = balance - $1 WHERE user_id = $2',\n      [req.body.amount, req.params.id]\n    );\n    await dbClient.query(\n      'UPDATE accounts SET balance = balance + $1 WHERE user_id = $2',\n      [req.body.amount, req.body.toUserId]\n    );\n    await dbClient.query('COMMIT');\n    res.json({ success: true });\n  } catch (err) {\n    await dbClient.query('ROLLBACK');\n    throw err;\n  }\n}));\n\n// \u2500\u2500 Graceful Shutdown \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nprocess.on('SIGTERM', async () => {\n  console.log('Shutting down gracefully...');\n  await pool.end();  // Wait for active queries to finish, then close all connections\n  process.exit(0);\n});\n```\n\n## Nginx Tuning to Complement the Fix\n\n```nginx\nupstream node_api {\n    server 127.0.0.1:3000;\n    keepalive 32;           # Reuse connections to Node\n}\n\nserver {\n    location /api/ {\n        proxy_pass http://node_api;\n\n        # Timeout",
+      "tokens": 2249,
+      "time_ms": 31068
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.2,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is more accurate overall, especially in explaining both the client leak and the concurrency/capacity dynamics. It clearly describes the exhaustion feedback loop, correctly notes Postgres max_connections across instances, and gives a concise, practical fix without speculative or unnecessary details."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 9.0,
+        "clarity": 9.0,
+        "usefulness": 9.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "scores_b": {
+        "depth": 8.0,
+        "clarity": 8.0,
+        "usefulness": 7.0,
+        "completeness": 6.0,
+        "correctness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 7.45,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provides a comprehensive, deep analysis of the connection pool exhaustion problem and offers excellent architectural solutions. Response B is good but gets cut off at the end, making it incomplete.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:14:48.506114"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.8,
+      "weighted_b": 8.4,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provides a more thorough, detailed, and actionable diagnosis with comprehensive fixes, including a clear timeline visualization, three levels of solutions, production-grade code, and Nginx tuning, while Response B is correct but less complete and deep."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

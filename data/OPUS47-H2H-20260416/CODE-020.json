@@ -1,0 +1,103 @@
+{
+  "question_id": "CODE-020",
+  "category": "code",
+  "question_text": "Refactor this 'working but unmaintainable' code into clean, testable, well-structured code. Explain every design decision.\n\n```python\ndef process(data, mode, flag1=False, flag2=True, output_type='json",
+  "timestamp": "2026-04-16T17:27:43.179057",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Refactored Code\n\nLet me walk through a clean refactor. I'll start with the finished code, then explain every decision.\n\n## The Refactored Code\n\n```python\nfrom __future__ import annotations\n\nimport csv\nimport io\nimport json\nfrom abc import ABC, abstractmethod\nfrom dataclasses import dataclass, asdict\nfrom enum import Enum\nfrom typing import Iterable, Protocol\n\n\n# ---------- Domain types ----------\n\nclass ItemType(str, Enum):\n    A = \"A\"\n    B = \"B\"\n\n\nclass Status(str, Enum):\n    HIGH = \"high\"\n    ADJUSTED = \"adjusted\"\n    NORMAL = \"normal\"\n    DISCOUNTED = \"discounted\"\n    SKIP = \"skip\"\n    VALIDATED = \"validated\"\n    ERROR = \"error\"\n\n\n@dataclass(frozen=True)\nclass Item:\n    id: str\n    value: float\n    type: str | None = None\n\n    @classmethod\n    def from_dict(cls, raw: dict) -> \"Item\":\n        return cls(\n            id=raw[\"id\"],\n            value=float(raw.get(\"value\", 0)),\n            type=raw.get(\"type\"),\n        )\n\n\n@dataclass(frozen=True)\nclass Result:\n    id: str\n    val: float\n    status: Status\n\n    def to_dict(self) -> dict:\n        return {\"id\": self.id, \"val\": self.val, \"status\": self.status.value}\n\n\n# ---------- Configuration ----------\n\n@dataclass(frozen=True)\nclass FastModeConfig:\n    \"\"\"Explicit, named configuration instead of opaque boolean flags.\"\"\"\n    apply_type_a_markup: bool = False   # was flag1\n    keep_high_values_unadjusted: bool = True  # was flag2\n    skip_unknown_types: bool = False    # was (flag1 and flag2) for unknown types\n\n    # Business constants that were hidden as magic numbers\n    type_a_markup: float = 1.10\n    type_b_discount: float = 0.95\n    high_value_threshold: float = 100.0\n    high_value_adjustment: float = 0.90\n\n\n# ---------- Processors (Strategy pattern) ----------\n\nclass Processor(Protocol):\n    def process(self, item: Item) -> Result | None: ...\n\n\nclass FastProcessor:\n    def __init__(self, config: FastModeConfig | None = None):\n        self.config = config or FastModeConfig()\n\n    def process(self, item: Item) -> Result | None:\n        if item.type == ItemType.A.value:\n            return self._process_type_a(item)\n        if item.type == ItemType.B.value:\n            return self._process_type_b(item)\n        return self._process_unknown(item)\n\n    def _process_type_a(self, item: Item) -> Result:\n        cfg = self.config\n        val = item.value * cfg.type_a_markup if cfg.apply_type_a_markup else item.value\n\n        if val <= cfg.high_value_threshold:\n            return Result(item.id, val, Status.NORMAL)\n        if cfg.keep_high_values_unadjusted:\n            return Result(item.id, val, Status.HIGH)\n        return Result(item.id, val * cfg.high_value_adjustment, Status.ADJUSTED)\n\n    def _process_type_b(self, item: Item) -> Result:\n        return Result(item.id, item.value * self.config.type_b_discount, Status.DISCOUNTED)\n\n    def _process_unknown(self, item: Item) -> Result | None:\n        if self.config.skip_unknown_types:\n            return Result(item.id, 0, Status.SKIP)\n        return None  # silently drop \u2014 explicit None makes this visible\n\n\nclass CarefulProcessor:\n    def process(self, item: Item) -> Result:\n        try:\n            if item.value < 0:\n                raise ValueError(\"negative value\")\n            return Result(item.id, item.value, Status.VALIDATED)\n        except (ValueError, TypeError):\n            return Result(item.id, 0, Status.ERROR)\n\n\n# ---------- Serializers (Strategy pattern) ----------\n\nclass Serializer(ABC):\n    @abstractmethod\n    def serialize(self, results: list[Result]) -> str | list[Result]: ...\n\n\nclass JSONSerializer(Serializer):\n    def serialize(self, results: list[Result]) -> str:\n        return json.dumps([r.to_dict() for r in results])\n\n\nclass CSVSerializer(Serializer):\n    def serialize(self, results: list[Result]) -> str:\n        buf = io.StringIO()\n        writer = csv.writer(buf)\n        for r in results:\n            writer.writerow([r.id, r.val, r.status.value])\n        return buf.getvalue().rstrip(\"\\n\")\n\n\nclass RawSerializer(Serializer):\n    def serialize(self, results: list[Result]) -> list[Result]:\n        return results\n\n\n# ---------- Orchestrator ----------\n\nclass Pipeline:\n    def __init__(self, processor: Processor, serializer: Serializer):\n        self.processor = processor\n        self.serializer = serializer\n\n    def run(self, data: Iterable[dict]):\n        results: list[Result] = []\n        for raw in data:\n            item = Item.from_dict(raw)\n            result = self.processor.process(item)\n            if result is not None:\n                results.append(result)\n        return self.serializer.serialize(results)\n\n\n# ---------- Thin backwards-compatible facade (optional) ----------\n\ndef process(data, mode, flag1=False, flag2=True, output_type=\"json\"):\n    \"\"\"Preserves the original public signature for existing callers.\"\"\"\n    if mode == \"fast\":\n        processor: Processor = FastProcessor(\n            FastModeConfig(\n                apply_type_a_markup=flag1,\n                keep_high_values_unadjusted=flag2,\n                skip_unknown_types=(flag1 and flag2),\n            )\n        )\n    elif mode == \"careful\":\n        processor = CarefulProcessor()\n    else:\n        raise ValueError(f\"Unknown mode: {mode}\")\n\n    serializers = {\n        \"json\": JSONSerializer(),\n        \"csv\": CSVSerializer(),\n        \"raw\": RawSerializer(),\n    }\n    serializer = serializers.get(output_type, RawSerializer())\n    ",
+      "tokens": 2615,
+      "time_ms": 20038
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# Refactoring: From Unmaintainable to Clean Architecture\n\n## Analysis of Problems in the Original Code\n\nBefore writing a single line, let me catalog what's wrong:\n\n1. **God function** \u2014 one function handles processing logic, business rules, validation, AND output formatting\n2. **Boolean flag arguments** \u2014 `flag1`, `flag2` are cryptic; they signal the function does too many things\n3. **String-typed mode dispatch** \u2014 `mode` as a string invites typos and makes extension require modifying the function body (violates Open/Closed Principle)\n4. **Deeply nested conditionals** \u2014 up to 5 levels of indentation; hard to trace any single path\n5. **Bare `except`** \u2014 swallows all exceptions including `KeyboardInterrupt`, `SystemExit`\n6. **Inline import** \u2014 `import json` buried inside the function\n7. **No type hints, no docstrings, no named concepts** \u2014 the business logic is invisible\n8. **Untestable** \u2014 you can't test pricing logic without also testing serialization\n\n---\n\n## The Refactored Code\n\n```python\n\"\"\"\nItem processing pipeline with pluggable processing strategies and output formatters.\n\nDesign Decisions:\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n1. Strategy Pattern for processing modes \u2192 eliminates mode-string dispatch\n2. Dataclasses for configuration       \u2192 replaces cryptic boolean flags\n3. Dedicated formatter layer            \u2192 separates processing from serialization\n4. Pure functions where possible        \u2192 enables easy unit testing\n5. Explicit exception handling          \u2192 no bare excepts, clear error semantics\n\"\"\"\n\nfrom __future__ import annotations\n\nimport json\nfrom abc import ABC, abstractmethod\nfrom dataclasses import dataclass\nfrom enum import Enum, auto\nfrom typing import Any\n\n\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# 1. DOMAIN MODELS\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# Design Decision: Replace raw dicts with typed structures.\n# This catches key-typo bugs at construction time, enables IDE\n# autocompletion, and makes the data flow self-documenting.\n\nclass Status(Enum):\n    \"\"\"All possible result statuses \u2014 prevents typo-based bugs like 'nomral'.\"\"\"\n    HIGH = \"high\"\n    ADJUSTED = \"adjusted\"\n    NORMAL = \"normal\"\n    DISCOUNTED = \"discounted\"\n    SKIPPED = \"skip\"\n    VALIDATED = \"validated\"\n    ERROR = \"error\"\n\n\n@dataclass(frozen=True)\nclass ProcessedItem:\n    \"\"\"\n    Immutable result of processing a single item.\n\n    frozen=True because results shouldn't be mutated after creation \u2014\n    this makes the pipeline easier to reason about and thread-safe.\n    \"\"\"\n    id: str\n    value: float\n    status: Status\n\n    def to_dict(self) -> dict[str, Any]:\n        return {\"id\": self.id, \"val\": self.value, \"status\": self.status.value}\n\n\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# 2. PROCESSING CONFIGURATION\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# Design Decision: Replace flag1/flag2 booleans with a named\n# configuration object. Callers now write:\n#     FastProcessingConfig(apply_premium=True, cap_high_values=False)\n# instead of:\n#     process(data, 'fast', flag1=True, flag2=False)\n# The meaning is immediately obvious at every call site.\n\n@dataclass(frozen=True)\nclass FastProcessingConfig:\n    \"\"\"Configuration specific to fast-mode processing.\"\"\"\n    apply_premium: bool = False        # was 'flag1' \u2014 applies 1.1x multiplier to type-A items\n    cap_high_values: bool = True       # was 'flag2' \u2014 when False, reduces high values by 10%\n    skip_unknown_types: bool = False   # derived: original skipped unknowns only when BOTH flags were True\n\n    @classmethod\n    def from_legacy_flags(cls, flag1: bool, flag2: bool) -> FastProcessingConfig:\n        \"\"\"\n        Bridge method for backward compatibility during migration.\n        Lets existing callers migrate incrementally.\n        \"\"\"\n        return cls(\n            apply_premium=flag1,\n            cap_high_values=flag2,\n            skip_unknown_types=flag1 and flag2,\n        )\n\n\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# 3. PROCESSING STRATEGIES (Strategy Pattern)\n# \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# Design Decision: Each processing mode is its own class.\n# - Adding a new mode = adding a new class (Open/Closed Principle)\n# - Each strategy can be tested in complete isolation\n# - No string-based dispatch; the type system enforces correctness\n\nclass ItemProcessor(ABC):\n    \"\"\"Interface for all processing strategies.\"\"\"\n\n    @abstractmethod\n    def process_item(self, item: dict[str, Any]) -> ProcessedItem | None:\n        \"\"\"\n        Process a single item. Returns None if the item should be excluded.\n\n        Design Decision: returning None (rather than a sentinel ProcessedItem)\n        makes \"skip this item\" semantics explicit and keeps the result list clean.\n        \"\"\"\n        ...\n\n\nclass FastProcessor(ItemProcessor):\n    \"\"\"\n    High-throughput processor with type-based business rules.\n\n    Each item type's logic is in its own method \u2014 if type-C items are\n    added tomorrow, you add one method and one elif branch. Better yet,\n    you could use a registry dict, but I'm keeping it readable here.\n    \"\"\"\n\n    def __init__(self, config: FastProcessingConfig | None = None) -> None:\n        self.config = config or FastProcessingConfig()\n\n    def process_item(self, item: dict[str, Any]) -> ProcessedItem | None:\n        item_type = item.get(\"type\")\n\n        if item_type == \"A\":\n            return self._process_type_a(item)\n        elif item_type == \"B\":\n            return self._process_type_b(item)\n        else:\n            return self._process_unknown(item)\n\n    def _process_type_a(self, item: dict[str, Any]) -> ProcessedItem:\n        \"\"\"\n        Type-A: optionally apply premium, then classify by threshold.\n\n        Design Decision: extracted from the nested if/else tree.\n        Each branch is now a clear, linear code path.\n        \"\"\"\n        value = item[\"value\"]\n\n        if self.config.apply_premium:\n            value *= 1.1\n\n        if value > 100:\n            return self._handle_high_value(item[\"id\"], value)\n\n        return ProcessedItem(id=item[\"id\"], value=value, status=Status.NORMAL)\n\n    def _handle_high_value(self, item_id: str, value: float) -> ProcessedItem:\n        \"\"\"\n        Design Decision: this was the deepest nesting point in the original.\n        Extracting it makes the two outcomes (keep vs. adjust) parallel and obvious.\n        \"\"\"\n        if self.config.cap_high_values:\n            return ProcessedItem(id=item_id, value=value, status=Status.HIGH)\n\n        adjusted_value = value * 0.9\n        return ProcessedItem(id=item_id, value=adjusted_value, status=Status.ADJUSTED)\n\n    def _process_type_b(self, item: dict[str, Any]) -> ProcessedItem:\n        \"\"\"Type-B: flat 5% discount.\"\"\"\n        discounted = item[\"value\"] * 0.95\n        return ProcessedItem(id=item[\"id\"], value=discounted, status=Status.DISCOUNTED)\n\n    def _process_unknown(self, item: dict[str, Any]) -> ProcessedItem | None:\n        \"\"\"Unknown types: skip if configured, otherwise exclude entirely.\"\"\"\n        if self.config.skip_unknown_types:\n            return ProcessedItem(id=item[\"id\"], value=0, status=Status.SKIPPED)\n        return None  # excluded from results\n\n\nclass CarefulProcessor(ItemProcessor):\n    \"\"\"\n    Validation-focused processor with explicit error handling.\n\n    Design Decision: catch ValueError specifically, not bare except.\n    The original bare except would swallow KeyboardInterrupt, SystemExit,\n    and memory errors \u2014 a classic Python antipattern.\n    \"\"\"\n\n    def process_item(self, item: dict[str, Any]) -> ProcessedItem:\n        item_id = item.get(\"id\", \"unknown\")\n\n        try:\n            value = float(item.get(\"value\", 0))",
+      "tokens": 2551,
+      "time_ms": 36344
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 6.0,
+        "usefulness": 3.0,
+        "correctness": 4.0,
+        "completeness": 3.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 7.0,
+        "correctness": 7.0,
+        "completeness": 6.0
+      },
+      "weighted_a": 4.65,
+      "weighted_b": 7.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is substantially more complete and usable: it presents a coherent refactor with domain models, configuration, processors, serializers, and backward-compatible facade. Response A has good analysis and design rationale, but the code is truncated and therefore incomplete and not practically usable."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "depth": 7.0,
+        "clarity": 8.0,
+        "usefulness": 5.0,
+        "completeness": 4.0,
+        "correctness": 7.0
+      },
+      "scores_b": {
+        "depth": 8.0,
+        "clarity": 9.0,
+        "usefulness": 8.0,
+        "completeness": 7.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 6.3,
+      "weighted_b": 8.25,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B provides a much more complete refactoring, including the orchestrator, serializers, and a backward-compatible facade, whereas Response A cuts off midway through the processors.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:14:23.115282"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.8,
+      "weighted_b": 8.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provides a more complete, production-ready solution with superior architectural depth, including a full pipeline, proper serializers, and a backward-compatible facade, while Response B is insightful but less fully implemented."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

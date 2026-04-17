@@ -1,0 +1,104 @@
+{
+  "question_id": "CODE-029",
+  "category": "code",
+  "question_text": "Build a simple but production-worthy task queue in Python with: async worker pool, retry with exponential backoff, dead letter queue for failed tasks, priority levels, task deduplication, and graceful",
+  "timestamp": "2026-04-16T17:39:18.308433",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Production-Worthy Async Task Queue\n\n```python\n\"\"\"\nasync_task_queue.py\nA production-worthy asyncio task queue with:\n  - Async worker pool\n  - Priority levels (HIGH, NORMAL, LOW)\n  - Retry with exponential backoff + jitter\n  - Dead-letter queue (DLQ)\n  - Task deduplication (by task_id)\n  - Graceful shutdown (SIGINT/SIGTERM aware)\n\"\"\"\n\nfrom __future__ import annotations\n\nimport asyncio\nimport heapq\nimport itertools\nimport logging\nimport random\nimport signal\nimport time\nimport uuid\nfrom dataclasses import dataclass, field\nfrom enum import IntEnum\nfrom typing import Any, Awaitable, Callable, Dict, Optional\n\n# ---------------------------------------------------------------------------\n# Logging\n# ---------------------------------------------------------------------------\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s [%(levelname)s] %(name)s: %(message)s\",\n)\nlog = logging.getLogger(\"taskq\")\n\n\n# ---------------------------------------------------------------------------\n# Data model\n# ---------------------------------------------------------------------------\nclass Priority(IntEnum):\n    HIGH = 0\n    NORMAL = 5\n    LOW = 10\n\n\n@dataclass(order=True)\nclass Task:\n    # Ordering tuple: (priority, enqueue_seq). Lower = runs sooner.\n    sort_key: tuple = field(init=False, repr=False)\n\n    task_id: str = field(compare=False)\n    handler_name: str = field(compare=False)\n    payload: Any = field(compare=False)\n    priority: Priority = field(default=Priority.NORMAL, compare=False)\n    max_retries: int = field(default=3, compare=False)\n    base_backoff: float = field(default=0.5, compare=False)   # seconds\n    max_backoff: float = field(default=30.0, compare=False)\n    attempts: int = field(default=0, compare=False)\n    enqueue_seq: int = field(default=0, compare=False)\n\n    def __post_init__(self):\n        self.sort_key = (int(self.priority), self.enqueue_seq)\n\n    def next_backoff(self) -> float:\n        # Exponential with full jitter\n        exp = min(self.max_backoff, self.base_backoff * (2 ** (self.attempts - 1)))\n        return random.uniform(0, exp)\n\n\n# ---------------------------------------------------------------------------\n# Priority queue (heapq + asyncio condition)\n# ---------------------------------------------------------------------------\nclass AsyncPriorityQueue:\n    def __init__(self) -> None:\n        self._heap: list[Task] = []\n        self._cond = asyncio.Condition()\n        self._closed = False\n\n    async def put(self, task: Task) -> None:\n        async with self._cond:\n            heapq.heappush(self._heap, task)\n            self._cond.notify()\n\n    async def get(self) -> Optional[Task]:\n        async with self._cond:\n            while not self._heap and not self._closed:\n                await self._cond.wait()\n            if not self._heap and self._closed:\n                return None\n            return heapq.heappop(self._heap)\n\n    async def close(self) -> None:\n        async with self._cond:\n            self._closed = True\n            self._cond.notify_all()\n\n    def qsize(self) -> int:\n        return len(self._heap)\n\n\n# ---------------------------------------------------------------------------\n# TaskQueue\n# ---------------------------------------------------------------------------\nHandlerFn = Callable[[Any], Awaitable[Any]]\n\n\nclass TaskQueue:\n    def __init__(self, num_workers: int = 4) -> None:\n        self._queue = AsyncPriorityQueue()\n        self._dlq: list[Task] = []\n        self._handlers: Dict[str, HandlerFn] = {}\n        self._num_workers = num_workers\n        self._workers: list[asyncio.Task] = []\n        self._seq = itertools.count()\n\n        # Dedup: seen task_ids currently queued OR in-flight.\n        self._inflight: set[str] = set()\n        self._lock = asyncio.Lock()\n\n        self._running = False\n        self._shutdown_event = asyncio.Event()\n\n        # Stats\n        self.stats = {\"processed\": 0, \"failed\": 0, \"retried\": 0, \"dedup_drops\": 0}\n\n    # --- Registration ------------------------------------------------------\n    def register(self, name: str, handler: HandlerFn) -> None:\n        if name in self._handlers:\n            raise ValueError(f\"Handler {name!r} already registered\")\n        self._handlers[name] = handler\n        log.info(\"Registered handler: %s\", name)\n\n    # --- Public enqueue API ------------------------------------------------\n    async def submit(\n        self,\n        handler_name: str,\n        payload: Any,\n        *,\n        task_id: Optional[str] = None,\n        priority: Priority = Priority.NORMAL,\n        max_retries: int = 3,\n    ) -> Optional[str]:\n        if handler_name not in self._handlers:\n            raise KeyError(f\"Unknown handler: {handler_name}\")\n\n        tid = task_id or str(uuid.uuid4())\n\n        async with self._lock:\n            if tid in self._inflight:\n                self.stats[\"dedup_drops\"] += 1\n                log.info(\"Dedup drop for task_id=%s\", tid)\n                return None\n            self._inflight.add(tid)\n\n        task = Task(\n            task_id=tid,\n            handler_name=handler_name,\n            payload=payload,\n            priority=priority,\n            max_retries=max_retries,\n            enqueue_seq=next(self._seq),\n        )\n        await self._queue.put(task)\n        return tid\n\n    # --- Lifecycle ---------------------------------------------------------\n    def start(self) -> None:\n        if self._running:\n            return\n        self._running = True\n        self._workers = [\n            asyncio.create_task(self._worker(i), name=f\"worker-{i}\")\n            for i in range(self._num_workers)\n        ]\n        log.info(\"Started %d workers\", self._num_workers)\n\n    async def shutdown(self, dr",
+      "tokens": 2163,
+      "time_ms": 19336
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# Production-Ready Async Task Queue in Python\n\n## Architecture Overview\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                      Task Queue System                       \u2502\n\u2502                                                              \u2502\n\u2502  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510    \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510    \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u2502\n\u2502  \u2502 Producer  \u2502\u2500\u2500\u2500\u25b6\u2502 Priority Queue\u2502\u2500\u2500\u2500\u25b6\u2502  Worker Pool      \u2502  \u2502\n\u2502  \u2502          \u2502    \u2502 (heapq)      \u2502    \u2502  (async workers)  \u2502  \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518  \u2502\n\u2502                                              \u2502              \u2502\n\u2502  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510    \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510            \u2502              \u2502\n\u2502  \u2502  Dedup   \u2502    \u2502  Retry Queue \u2502\u25c0\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518              \u2502\n\u2502  \u2502  Cache   \u2502    \u2502  (exp backoff)\u2502                           \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518                           \u2502\n\u2502                         \u2502 max retries exceeded              \u2502\n\u2502                  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u25bc\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510                           \u2502\n\u2502                  \u2502 Dead Letter  \u2502                           \u2502\n\u2502                  \u2502   Queue      \u2502                           \u2502\n\u2502                  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518                           \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n## Full Implementation\n\n```python\n\"\"\"\nProduction-ready async task queue with:\n- Async worker pool with configurable concurrency\n- Retry with exponential backoff + jitter\n- Dead letter queue for permanently failed tasks\n- Priority levels (CRITICAL, HIGH, NORMAL, LOW)\n- Task deduplication with TTL\n- Graceful shutdown with drain support\n\"\"\"\n\nimport asyncio\nimport hashlib\nimport heapq\nimport json\nimport logging\nimport signal\nimport time\nimport traceback\nimport uuid\nfrom dataclasses import dataclass, field\nfrom enum import IntEnum\nfrom typing import Any, Callable, Coroutine\n\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(asctime)s | %(levelname)-7s | %(name)-18s | %(message)s\",\n    datefmt=\"%H:%M:%S\",\n)\nlogger = logging.getLogger(\"taskqueue\")\n\n\n# \u2500\u2500\u2500 Priority Levels \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass Priority(IntEnum):\n    \"\"\"Lower value = higher priority (used in heapq min-heap).\"\"\"\n    CRITICAL = 0\n    HIGH = 10\n    NORMAL = 20\n    LOW = 30\n\n\n# \u2500\u2500\u2500 Task Model \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n@dataclass(order=True)\nclass Task:\n    \"\"\"\n    Represents a unit of work in the queue.\n    \n    Ordering is by (priority, enqueued_at) so that higher-priority\n    tasks run first, with FIFO ordering within the same priority.\n    \"\"\"\n    priority: int = field(compare=True)\n    enqueued_at: float = field(compare=True)\n    \n    # Non-comparison fields\n    task_id: str = field(compare=False, default_factory=lambda: uuid.uuid4().hex[:12])\n    task_type: str = field(compare=False, default=\"\")\n    payload: dict = field(compare=False, default_factory=dict)\n    max_retries: int = field(compare=False, default=3)\n    retry_count: int = field(compare=False, default=0)\n    dedup_key: str | None = field(compare=False, default=None)\n    created_at: float = field(compare=False, default_factory=time.time)\n    last_error: str | None = field(compare=False, default=None)\n\n    def __post_init__(self):\n        if not self.enqueued_at:\n            self.enqueued_at = time.time()\n\n    @property\n    def priority_name(self) -> str:\n        for p in Priority:\n            if p.value == self.priority:\n                return p.name\n        return f\"CUSTOM({self.priority})\"\n\n    def to_dict(self) -> dict:\n        return {\n            \"task_id\": self.task_id,\n            \"task_type\": self.task_type,\n            \"payload\": self.payload,\n            \"priority\": self.priority_name,\n            \"retry_count\": self.retry_count,\n            \"max_retries\": self.max_retries,\n            \"last_error\": self.last_error,\n            \"created_at\": self.created_at,\n        }\n\n\n# \u2500\u2500\u2500 Deduplication Cache \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass DeduplicationCache:\n    \"\"\"\n    Tracks recently seen dedup keys with TTL to prevent duplicate task submission.\n    Uses a simple dict with periodic cleanup \u2014 no external dependencies.\n    \"\"\"\n\n    def __init__(self, ttl_seconds: float = 300.0):\n        self._cache: dict[str, float] = {}  # dedup_key -> expiry timestamp\n        self._ttl = ttl_seconds\n        self._lock = asyncio.Lock()\n\n    @staticmethod\n    def make_key(task_type: str, payload: dict) -> str:\n        \"\"\"Deterministic hash from task type + payload.\"\"\"\n        raw = json.dumps({\"type\": task_type, \"payload\": payload}, sort_keys=True)\n        return hashlib.sha256(raw.encode()).hexdigest()[:16]\n\n    async def is_duplicate(self, key: str) -> bool:\n        async with self._lock:\n            self._evict_expired()\n            return key in self._cache\n\n    async def mark_seen(self, key: str) -> None:\n        async with self._lock:\n            self._cache[key] = time.time() + self._ttl\n\n    async def remove(self, key: str) -> None:\n        \"\"\"Remove a key (e.g., after task completes so it can be resubmitted).\"\"\"\n        async with self._lock:\n            self._cache.pop(key, None)\n\n    def _evict_expired(self) -> None:\n        now = time.time()\n        expired = [k for k, exp in self._cache.items() if exp <= now]\n        for k in expired:\n            del self._cache[k]\n\n    @property\n    def size(self) -> int:\n        return len(self._cache)\n\n\n# \u2500\u2500\u2500 Dead Letter Queue \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass DeadLetterQueue:\n    \"\"\"\n    Stores tasks that have exhausted all retries.\n    In production you'd persist these to a database or file.\n    \"\"\"\n\n    def __init__(self, max_size: int = 10_000):\n        self._queue: list[Task] = []\n        self._max_size = max_size\n        self._lock = asyncio.Lock()\n\n    async def push(self, task: Task) -> None:\n        async with self._lock:\n            if len(self._queue) >= self._max_size:\n                # Drop oldest to prevent unbounded growth\n                self._queue.pop(0)\n                logger.warning(\"DLQ at capacity \u2014 dropped oldest entry\")\n            self._queue.append(task)\n            logger.error(\n                \"Task %s [%s] moved to DLQ after %d retries. Last error: %s\",\n                task.task_id, task.task_type, task.retry_count, task.last_error,\n            )\n\n    async def drain(self) -> list[Task]:\n        \"\"\"Retrieve and clear all DLQ entries.\"\"\"\n        async with self._lock:\n            tasks = list(self._queue)\n            self._queue.clear()\n            return tasks\n\n    async def peek(self, n: int = 10) -> list[Task]:\n        async with self._lock:\n            return list(self._queue[-n:])\n\n    @property\n    def size(self) -> int:\n        return len(self._queue)\n\n\n# \u2500\u2500\u2500 Metrics / Stats \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n@dataclass\nclass QueueMetrics:\n    tasks_submitted: int = 0\n    tasks_completed: int = 0\n    tasks_failed: int",
+      "tokens": 2125,
+      "time_ms": 27937
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 6.0,
+        "depth": 4.0,
+        "usefulness": 2.0,
+        "correctness": 4.0,
+        "completeness": 3.0
+      },
+      "scores_b": {
+        "clarity": 6.0,
+        "depth": 4.0,
+        "usefulness": 3.0,
+        "correctness": 5.0,
+        "completeness": 4.0
+      },
+      "weighted_a": 3.9,
+      "weighted_b": 4.5,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses are truncated and incomplete, but Response B provides more actual implementation detail for the queue, workers, retries, deduplication, and shutdown structure. Response A is cut off earlier and does not reach a usable end-to-end solution or demonstration."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 6.0,
+        "clarity": 8.0,
+        "usefulness": 4.0,
+        "completeness": 4.0,
+        "correctness": 8.0
+      },
+      "scores_b": {
+        "depth": 6.0,
+        "clarity": 8.0,
+        "usefulness": 3.0,
+        "completeness": 3.0,
+        "correctness": 8.0
+      },
+      "weighted_a": 6.2,
+      "weighted_b": 5.85,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses were unfortunately truncated, but Response A managed to include the core TaskQueue class and submission logic before cutting off, whereas Response B was cut off before the main queue and worker classes were even defined.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:14:59.808353"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 10.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 8.6,
+      "weighted_b": 9.35,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B is more complete, with a fully implemented architecture including a detailed deduplication cache, dead letter queue, metrics, and a comprehensive demonstration. It provides greater depth and practical usefulness."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

@@ -1,0 +1,101 @@
+{
+  "question_id": "COMM-030",
+  "category": "communication",
+  "question_text": "Explain recursion by starting with the solution and working backwards to the concept. Begin with a working recursive function, show what it does step by step, then explain why this approach exists and",
+  "timestamp": "2026-04-16T19:14:57.206581",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Understanding Recursion by Reverse Engineering\n\n## Start Here: A Function That Works\n\n```python\ndef countdown(n):\n    if n <= 0:\n        print(\"Done!\")\n        return\n    print(n)\n    countdown(n - 1)\n```\n\nCall `countdown(3)` and you get:\n```\n3\n2\n1\nDone!\n```\n\nLook closely at line 5. The function `countdown` is calling `countdown`. A function is calling *itself*. Your first instinct might be that this should break something \u2014 and that instinct is worth taking seriously. Let's trace exactly what happens.\n\n## What Actually Happens, Step by Step\n\nWhen you call `countdown(3)`, the computer doesn't do anything magical. It just follows instructions:\n\n1. `countdown(3)` starts. Is 3 \u2264 0? No. Print `3`. Now call `countdown(2)`.\n2. `countdown(3)` is now *paused*, waiting. `countdown(2)` starts. Is 2 \u2264 0? No. Print `2`. Call `countdown(1)`.\n3. `countdown(2)` is paused. `countdown(1)` starts. Print `1`. Call `countdown(0)`.\n4. `countdown(0)` starts. Is 0 \u2264 0? Yes! Print `\"Done!\"` and return.\n5. Now `countdown(1)` resumes \u2014 but there's nothing left to do. It returns.\n6. `countdown(2)` resumes. Returns.\n7. `countdown(3)` resumes. Returns.\n\nPicture a stack of paused functions piling up, each one waiting for the next to finish before it can finish itself. The computer handles this automatically using what's called the **call stack** \u2014 literally a stack of paused function calls.\n\n## Why This Trick Exists\n\nNotice two things about our function:\n\n1. **There's an exit condition** (`if n <= 0`). Without this, the function would call itself forever, piling up paused calls until the computer crashes.\n2. **Each call works on a smaller version of the problem.** `countdown(3)` delegates most of its work to `countdown(2)`, which delegates to `countdown(1)`, and so on \u2014 each step moving closer to the exit condition.\n\nThis pattern \u2014 \"solve a tiny piece, then ask a smaller version of yourself to solve the rest\" \u2014 is surprisingly powerful for problems that have a self-similar structure. Consider listing every file in every folder on your computer. A folder contains files and other folders. Those folders contain files and other folders. The problem looks the same at every level.\n\n```python\ndef list_all_files(folder):\n    for item in folder.contents:\n        if item.is_file():\n            print(item.name)\n        else:\n            list_all_files(item)   # same problem, smaller scope\n```\n\nWriting this with loops is a headache because you don't know how deep the folders go. Writing it with self-calls is natural because the structure *is* self-similar.\n\n## When to Reach for It\n\nThis approach shines when:\n- The data is nested inside itself (folders in folders, comments with replies, trees, JSON).\n- The problem naturally splits into a smaller version of itself (searching sorted lists by halving, generating permutations).\n- An iterative solution would require you to manually manage a stack anyway.\n\n## When to Avoid It\n\nNot every problem benefits from this technique:\n- **Simple loops are simpler.** Summing a list? Just use a loop. Self-calls add overhead (each paused call takes memory) and make code harder to reason about.\n- **Deep problems crash.** Most languages limit the call stack to a few thousand pending calls. Process a million-item list this way and you'll blow the stack.\n- **Repeated work explodes.** Naively computing Fibonacci numbers this way recalculates the same values billions of times. Sometimes you need caching, or just a loop.\n\nA good rule: if the problem has obvious nested or branching structure, self-calling feels elegant. If the problem is just \"do this N times,\" use a loop.\n\n## The Word for It\n\nNow that you understand the mechanic \u2014 a function that calls itself with a smaller input, bottoming out at an exit condition, with the call stack quietly holding everything together \u2014 you already understand the concept. The name for it is **recursion**: the technique of defining a solution in terms of smaller instances of itself, with a base case that stops the process.",
+      "tokens": 1505,
+      "time_ms": 22585
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Recursion: Starting From the Answer\n\n## Here's a Working Function\n\n```python\ndef factorial(n):\n    if n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))  # Output: 120\n```\n\nThat prints `120`. Let's figure out *why*.\n\n---\n\n## What Actually Happens When You Call `factorial(5)`\n\nYour computer doesn't compute this in one step. It starts a chain of calls, each waiting on the next:\n\n```\nfactorial(5)\n\u2502\n\u251c\u2500 \"I need to return 5 * factorial(4)... but I don't know factorial(4) yet.\"\n\u2502\n\u2502   factorial(4)\n\u2502   \u2502\n\u2502   \u251c\u2500 \"I need to return 4 * factorial(3)... but I don't know factorial(3) yet.\"\n\u2502   \u2502\n\u2502   \u2502   factorial(3)\n\u2502   \u2502   \u2502\n\u2502   \u2502   \u251c\u2500 \"I need to return 3 * factorial(2)... hold on...\"\n\u2502   \u2502   \u2502\n\u2502   \u2502   \u2502   factorial(2)\n\u2502   \u2502   \u2502   \u2502\n\u2502   \u2502   \u2502   \u251c\u2500 \"I need to return 2 * factorial(1)... hold on...\"\n\u2502   \u2502   \u2502   \u2502\n\u2502   \u2502   \u2502   \u2502   factorial(1)\n\u2502   \u2502   \u2502   \u2502   \u2502\n\u2502   \u2502   \u2502   \u2502   \u2514\u2500 \"n is 1. I KNOW this one. It's 1.\"  \u2705\n```\n\nThat last call \u2014 `factorial(1)` \u2014 doesn't ask for help. It just *answers*. This is the moment everything starts to resolve.\n\n## Now Watch It Collapse Back Upward\n\n```\nfactorial(1) returns 1\n    \u2191\nfactorial(2) returns 2 * 1 = 2\n    \u2191\nfactorial(3) returns 3 * 2 = 6\n    \u2191\nfactorial(4) returns 4 * 6 = 24\n    \u2191\nfactorial(5) returns 5 * 24 = 120   \u2190 your answer\n```\n\nEach call was *paused*, waiting. Once the bottom answered, every paused call had what it needed, and the answers cascaded back up like dominoes falling in reverse.\n\n---\n\n## Two Things Made This Work\n\nGo back and look at the function. It's only four lines, but it has exactly two critical parts:\n\n```python\ndef factorial(n):\n    if n == 1:          # Part 1: THE BASE CASE\n        return 1        #   \"Stop here. I know this answer directly.\"\n\n    return n * factorial(n - 1)  # Part 2: THE RECURSIVE CASE\n                                 #   \"Break the problem down and call myself.\"\n```\n\n**Remove Part 1** and the function calls itself forever, until your program crashes with a `RecursionError: maximum recursion depth exceeded`. It's an infinite loop wearing a different hat.\n\n**Remove Part 2** and the function only works for `n == 1`. It never breaks down bigger problems.\n\nYou need both. Always.\n\n---\n\n## A Second Example to Prove This Isn't a One-Trick Pattern\n\n```python\ndef sum_nested(data):\n    total = 0\n    for item in data:\n        if isinstance(item, list):\n            total += sum_nested(item)   # recursive case: it's a list, go deeper\n        else:\n            total += item               # base case: it's a number, just add it\n    return total\n\nresult = sum_nested([1, [2, [3, 4]], 5, [6]])\nprint(result)  # Output: 21\n```\n\nThis function sums numbers hidden inside lists nested inside lists nested inside lists \u2014 to *any depth*. No one told it how deep to go. It figures it out by encountering either a number (stop, add it) or a list (go deeper).\n\nHere's the trace:\n\n```\nsum_nested([1, [2, [3, 4]], 5, [6]])\n  \u2502\n  \u251c\u2500 1 is a number \u2192 add 1\n  \u251c\u2500 [2, [3, 4]] is a list \u2192 sum_nested([2, [3, 4]])\n  \u2502     \u251c\u2500 2 is a number \u2192 add 2\n  \u2502     \u2514\u2500 [3, 4] is a list \u2192 sum_nested([3, 4])\n  \u2502           \u251c\u2500 3 is a number \u2192 add 3\n  \u2502           \u2514\u2500 4 is a number \u2192 add 4\n  \u2502           = 7\n  \u2502     = 9\n  \u251c\u2500 5 is a number \u2192 add 5\n  \u2514\u2500 [6] is a list \u2192 sum_nested([6])\n        \u2514\u2500 6 is a number \u2192 add 6\n        = 6\n  = 1 + 9 + 5 + 6 = 21\n```\n\nTry writing this with a regular `for` loop. You can't \u2014 not without knowing the depth in advance, or simulating the same call stack manually.\n\n---\n\n## Why This Approach Exists\n\nSome problems are shaped like Russian nesting dolls. The big problem contains a smaller version of itself inside it.\n\n- **5!** is just `5 \u00d7 (the answer to 4!)` \u2014 and 4! is the same kind of problem.\n- **A nested list** contains either values or... more nested lists \u2014 the same kind of problem.\n- **A filesystem** has files and folders, and folders contain... files and folders.\n- **A sentence's grammar** has clauses that contain... more clauses.\n\nWhen a problem's structure is self-similar, a function that calls itself mirrors that structure perfectly. The code *reads like the problem sounds*.\n\n---\n\n## When to Use It\n\n\u2705 **Tree structures** \u2014 HTML DOMs, file systems, org charts, JSON. Anything with branches.\n\n```python\ndef find_in_tree(node, target):\n    if node.value == target:\n        return node                          # base case: found it\n    for child in node.children:\n        result = find_in_tree(child, target)  # recursive: search subtrees\n        if result:\n            return result\n    return None\n```\n\n\u2705 **Divide-and-conquer algorithms** \u2014 merge sort, quicksort, binary search.\n\n```python\ndef binary_search(arr, target, low, high):\n    if low > high:\n        return -1                             # base case: not found\n    mid = (low + high) // 2\n    if arr[mid] == target:\n        return mid                            # base case: found it\n    elif arr[mid] < target:\n        return binary_search(arr, target, mid + 1, high)  # search right half\n    else:\n        return binary_search(arr, target, low, mid - 1)   # search left half\n```\n\n\u2705 **Problems with branching choices** \u2014 permutations, combinations, maze-solving, backtracking.\n\n\u2705 **Mathematical definitions that are already recursive** \u2014 Fibonacci, factorials, the Euclidean algorithm.\n\n---\n\n## When NOT to Use It\n\n\u274c **Simple counting or iteration.** If a `for` loop does the job, use a `for` loop. Recursion adds function call overhead and stack frames for no benefit.\n\n```python\n# Don't do this.\ndef sum_list(lst, i=0):\n    if i == len(lst):\n        return 0\n    return lst[i] + sum_list(lst, i + 1)\n\n# Just do this.\ntotal = sum(lst)\n```\n\n\u274c **Naive Fibonacci.** The classic trap:\n\n```python\ndef fib(n):\n    if n <= 1:\n        return n\n    return fib(n - 1) + fib(n - 2)  # This creates an EXPLOSION of calls\n```\n\n`fib(40)` makes over **200 million** calls because it recomputes the same values endlessly. The call tree branches exponentially:\n\n```\n                    fib(5)\n                   /      \\\n              fib(4)      fib(3)       \u2190 fib(3) computed TWICE\n             /    \\       /    \\\n         fib(3) fib(2) fib(2) fib(1)   \u2190 fib(2) computed THREE times\n```\n\nUse memoization (`@functools.lru_cache`) or just use a loop with two variables.\n\n\u274c **Very deep problems.** Python's default recursion limit is 1,000 ",
+      "tokens": 2123,
+      "time_ms": 36529
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 7.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 7.75,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is complete, accurate, and well-structured end to end. Response B is strong but is cut off mid-sentence and uses a factorial example with a weaker base case for general explanation."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 8.0,
+        "completeness": 5.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 7.25,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A followed all instructions, including the constraint to save the formal definition for the final paragraph, and provided a complete, well-structured explanation. Response B was cut off at the end and failed to include the final definition as requested."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 8.0,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A more effectively follows the instruction to start with a solution and work backwards, with clearer step-by-step tracing, better coverage of when to use/avoid recursion, and a more intuitive explanation of the call stack and base case."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

@@ -1,0 +1,104 @@
+{
+  "question_id": "REASON-028",
+  "category": "reasoning",
+  "question_text": "(1) Explain P vs NP to a smart non-technical person using only analogies and examples. (2) Why do most computer scientists believe P \u2260 NP? (3) If someone proved P = NP tomorrow, what would the practic",
+  "timestamp": "2026-04-16T18:08:07.450252",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# P vs NP: A Complete Tour\n\n## (1) What Is P vs NP? (The Analogies Version)\n\nImagine two very different tasks:\n\n**Task A: Solve a jigsaw puzzle.** Hard work. You have to try pieces, backtrack, think.\n\n**Task B: Check if a completed jigsaw puzzle is correct.** Easy. Just glance at it.\n\nThis gap \u2014 between *solving* and *checking* \u2014 is the heart of P vs NP.\n\n- **P** (\"Polynomial time\") = problems a computer can **solve quickly**.\n- **NP** (\"Nondeterministic Polynomial time\") = problems where, if someone hands you a proposed answer, you can **check it quickly**.\n\nEvery problem in P is also in NP (if you can solve it fast, you can certainly verify it fast). The trillion-dollar question is: **Is every problem whose answer is easy to check also easy to solve?**\n\n**More examples:**\n\n- **Sudoku:** Checking a completed Sudoku takes seconds. But solving a blank 1000\u00d71000 Sudoku from scratch? Brutal. NP, but maybe not P.\n- **Finding a specific person's phone number in a book** vs. **finding whose number 555-0133 is** (without a reverse index). Forward lookup is easy; reverse is hard \u2014 unless P = NP.\n- **Scheduling:** If I tell you \"here's a conference schedule with no conflicts,\" you can verify it quickly. Building one from scratch for 10,000 talks? A nightmare.\n\n**P = NP** would mean: every problem you can *recognize* a solution to, you can also *find* a solution to, roughly as fast. The universe would be suspiciously generous.\n\n**P \u2260 NP** would mean: there's a fundamental, unbridgeable gap between recognizing brilliance and producing it. Appreciating a Beethoven symphony is easier than composing one \u2014 and it's *provably* so.\n\n---\n\n## (2) Why Do Computer Scientists Believe P \u2260 NP?\n\nNo one has proven it, but the consensus (~99% of experts in surveys) leans strongly toward P \u2260 NP. Reasons:\n\n1. **Enormous effort, zero progress.** Thousands of NP problems (traveling salesman, graph coloring, protein folding, circuit satisfiability) have been studied for 50+ years. Brilliant people have attacked them. Nobody has found a fast algorithm for any of them. If P = NP, it's strange that we haven't stumbled onto it.\n\n2. **The \"universal solvent\" consequence is too strong.** A fast algorithm for *one* NP-complete problem would instantly give fast algorithms for *all* of them \u2014 cryptography breaking, theorem proving, creative tasks, and more. The world doesn't *feel* like it works that way.\n\n3. **Natural barriers.** We've proven that entire families of proof techniques (relativization, natural proofs, algebrization) *cannot* prove P = NP. The fact that we keep hitting walls suggests the truth is on the other side of those walls: P \u2260 NP, and hard to prove.\n\n4. **Cryptography works.** Modern encryption (RSA, AES, etc.) rests on the assumption that certain NP-type problems are hard. Banking, national security, and the internet functioning smoothly is weak but nontrivial empirical evidence.\n\n5. **Mathematical aesthetics.** P = NP would mean creativity, intuition, and proof-finding are all mechanical processes of equal computational weight as verification. Most mathematicians find that deeply implausible.\n\n---\n\n## (3) If Someone Proved P = NP Tomorrow...\n\n**First caveat:** The *proof* matters. If it's non-constructive (proves solutions exist without giving one), or the algorithm has a running time like n^100, nothing practical changes immediately. But assume a **practical** algorithm \u2014 say, n\u00b3 time \u2014 for an NP-complete problem.\n\n### Cryptography: Catastrophic\n- **RSA, Diffie-Hellman, elliptic curve crypto** \u2014 all broken. Their security rests on problems in NP.\n- HTTPS collapses. Bitcoin and all cryptocurrencies collapse (private keys become recoverable from public keys).\n- Signed software updates become forgeable.\n- Historical encrypted communications (decades of intelligence intercepts) become readable.\n- **What survives:** One-time pads (information-theoretically secure) and possibly some quantum cryptography. Symmetric ciphers like AES would be *weakened* but not trivially broken \u2014 they'd need longer keys.\n- Governments and banks would scramble for weeks or months. A genuine civilizational event.\n\n### Optimization: Revolutionary\n- **Logistics:** Optimal routes for UPS, Amazon, airlines \u2014 currently approximated \u2014 become exact and easy. Enormous efficiency gains.\n- **Chip design:** Optimal circuit layouts become computable. Faster, cheaper chips.\n- **Drug discovery / protein folding:** Many combinatorial aspects of molecular design become tractable. (AlphaFold already cracked one version of this with ML; P = NP would be a theoretical hammer.)\n- **Scheduling:** Airlines, factories, hospitals all get optimal schedules instantly.\n- **Mathematical theorem proving:** Given a conjecture and a reasonable-length proof bound, we could *find* the proof. Vast swaths of open mathematics could fall. The Riemann Hypothesis, if provable in a few thousand symbols, becomes findable.\n\n### AI: Transformative but Complicated\n- Many core AI tasks are essentially \"find the best structure that explains the data.\" Optimal Bayesian inference, optimal neural network training, optimal planning \u2014 these become tractable.\n- **The machine learning training problem** (finding global optima) becomes easy. We wouldn't need heuristics like gradient descent; we'd have exact solutions.\n- Game-playing AI becomes near-perfect for any game with short descriptions of winning strategies.\n- But: **intelligence is not just optimization**. AI would leap forward, but \"AGI by Tuesday\" is an overstatement \u2014 data, sensors, world-modeling, and",
+      "tokens": 2185,
+      "time_ms": 37569
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# P vs NP: A Complete Guide\n\n## Part 1: Explaining P vs NP Through Analogies\n\n### The Core Question\n\nImagine a massive jigsaw puzzle \u2014 say, 10,000 pieces. **Solving** it from scratch might take you days of painstaking effort. But if someone hands you the completed puzzle, **checking** whether it's correct takes just a quick glance. You can immediately see if the picture looks right and no pieces are missing.\n\nP vs NP is essentially asking: **Is there a fundamental gap between \"finding\" an answer and \"checking\" an answer?**\n\n### The Formal-ish Distinction\n\n**P (Polynomial time)** = problems that are *easy to solve* from scratch\n- Sorting a deck of cards alphabetically\n- Finding the shortest route on a GPS with simple road networks\n- Looking up a name in a sorted phone book (you can jump to the middle, then halve repeatedly)\n\n**NP (Nondeterministic Polynomial time)** = problems where a proposed answer is *easy to check*, but finding that answer might be brutally hard\n- Sudoku: Solving a giant Sudoku might take forever, but if someone fills it in, you can verify every row, column, and box in seconds\n- A jigsaw puzzle: hard to assemble, easy to confirm once done\n- Finding which combination opens a lock: trying all combinations is slow, but if someone whispers \"4-7-2-1,\" you can verify it instantly\n\n### More Analogies\n\n**The Restaurant Analogy:** You're in a foreign city trying to find the *best* restaurant. Wandering every street could take all day (hard to solve). But if a friend says \"Go to Luigi's on 5th Street,\" you can eat there and confirm it's incredible (easy to verify). P vs NP asks: does having good taste (verification ability) automatically mean you could have found Luigi's quickly on your own?\n\n**The Murder Mystery Analogy:** A detective might struggle for months to figure out who committed a crime. But once someone presents the full case \u2014 the motive, the weapon, the alibi gaps \u2014 a jury can evaluate whether it's convincing relatively quickly. Is detective work *inherently* harder than jury work, or are detectives just missing a clever shortcut?\n\n**The Mathematical Proof Analogy:** This one is particularly apt. Finding a proof of a mathematical theorem can take years or centuries (Fermat's Last Theorem took 358 years). But *verifying* a correct proof, step by logical step, is mechanical \u2014 a competent reviewer can follow each step. P vs NP asks whether the creative act of discovery is fundamentally harder than the mechanical act of verification.\n\n### The Big Question in Plain Language\n\n> \"If you can recognize a correct answer quickly, can you always *find* that answer quickly too?\"\n\nIf **P = NP**: Yes. Every problem where answers are easy to check also has a fast solving method \u2014 we just haven't found it yet.\n\nIf **P \u2260 NP**: No. There are problems where checking is genuinely, fundamentally easier than solving. The gap between verification and discovery is real and unbridgeable.\n\n---\n\n## Part 2: Why Most Computer Scientists Believe P \u2260 NP\n\n### The Argument from Exhaustive Failure\n\nFor over 50 years, thousands of the brightest minds in mathematics and computer science have tried to find fast algorithms for NP-complete problems (the hardest problems in NP). **Every single attempt has failed.** Not just for one problem \u2014 for *all* of them. We have hundreds of NP-complete problems (scheduling, routing, packing, graph coloring, Boolean satisfiability, etc.), and nobody has found an efficient exact algorithm for *any* of them.\n\nThis isn't like looking for your keys for five minutes. This is like the entire human species searching every room in a building for half a century and finding nothing. At some point, you start to suspect the keys aren't in the building.\n\n### The Structural Argument\n\nIf P = NP, it would mean something almost philosophically shocking: that **every** problem where you can efficiently verify answers can also be efficiently solved. This would collapse an entire hierarchy of complexity classes that computer scientists have mapped out. It would be like discovering that every mountain is actually the same height \u2014 possible in principle, but it would make the entire observed landscape of computational difficulty an illusion.\n\nThe complexity landscape we observe is *rich*. Some problems seem slightly hard, others seem moderately hard, others seem impossibly hard. If P = NP, all of these distinctions in a huge swath of this landscape would be mirages. That's an extraordinarily strong claim.\n\n### The \"Naturality\" Argument\n\nNP-complete problems arise *everywhere* \u2014 in biology, logistics, economics, physics, pure math. They feel hard in a deep, organic way. Evolution has had billions of years to \"solve\" optimization problems (protein folding, neural wiring, resource allocation), and biological systems use heuristics and approximations, not exact solutions. If fast exact algorithms existed, it would be strange that evolution never stumbled onto them.\n\n### The Asymmetry Argument\n\nThere's something intuitively compelling about the idea that **creation is harder than criticism**. Composing a symphony is harder than recognizing a beautiful one. Writing a novel is harder than appreciating one. Proving a theorem is harder than checking a proof. P \u2260 NP would formalize this intuition: verification is fundamentally easier than discovery. P = NP would mean this universal human experience is, at a computational level, wrong.\n\n### The Oracle and Relativization Arguments\n\nBaker, Gill, and Solovay showed in 1975 that there exist \"oracle worlds\" where P = NP and other oracle worlds where P \u2260 NP. This means certain proof techniques (those that \"relativize\") cannot resolve the question either way. The fact that the techniques most naturally suggesting P = NP don't work in all settings is mildly suggestive that P \u2260 NP.\n\n### What the Polls Say\n\nIn surveys of complexity theorists, typically around **80-90%** believe P \u2260 NP. A smaller percentage think we'll see a proof in this century. The consensus is strong but not unanimous \u2014 a few serious researchers maintain genuine agnosticism, and a tiny minority suspect P = NP (perhaps with impractically large polynomial exponents).\n\n### Honest Caveats\n\n- **Belief is not proof.** Before the proof of the Poincar\u00e9 conjecture, most topologists believed it was true \u2014 and they were right. But mathematicians have been wrong about consensus beliefs before.\n- **We have essentially no viable approach to proving P \u2260 NP.** The known barrier results (relativization, natural proofs, algebrization) rule out most known proof techniques. So the belief is strong, but our *tools* for confirming it are weak.\n- Some researchers note that SAT solvers have gotten *remarkably* good at solving large practical instances, which could be seen as weak evidence that these problems have more structure than we think (though this doesn't really bear on worst-case complexity).\n\n---\n\n## Part 3: Practical Consequences If P = NP Were Proved Tomorrow\n\nThe consequences depend enormously on a critical detail: **what the polynomial is.** If someone proves P = NP with an algorithm that runs in time n^(10,000), the theoretical impact would be revolutionary but the practical impact would be essentially zero \u2014 the algorithm would be slower than brute force for any problem that fits in the observable universe. But let's explore both scenarios.\n\n### Scenario A: \"Galactic\" Algorithm (Theoretically Fast, Practically Useless)\n\nIf the proof is non-constructive (just showing an algorithm *exists* without finding it) or the algorithm has absurd constants/exponents:\n\n- **Cryptography:** No immediate practical threat, but the *philosophical* foundation shifts. The long-term research agenda would pivot to information-theoretic security (one-time pads, quantum key distribution) rather than computational hardness assumptions.\n- **Optimization:** No immediate change. Companies keep using the same heuristics.\n- **AI:** No immediate change.\n- **Mathematics:** Earthquake. One of the seven Millennium Prize Problems is solved. The proof techniques would likely revolutionize complexity theory and possibly other areas of mathematics.\n\n### Scenario B: Efficient, Practical Algorithm\n\nThis is the scenario people really mean when they ask the question. If someone found, say, an O(n\u00b3) or O(n\u2075) algorithm for SAT (the canonical NP-complete problem), the consequences would be **civilization-altering**. Here's why, domain by domain:\n\n---\n\n### Cryptography: Near-Total Collapse\n\n**What breaks:**\n\nAlmost all of modern public-key cryptography rests on the assumption that certain problems are hard to solve but easy to verify \u2014 which is *exactly* the P \u2260 NP assumption in practice.\n\n- **RSA encryption** relies on the difficulty of factoring large numbers. Factoring is in NP (and likely not NP",
+      "tokens": 2147,
+      "time_ms": 54751
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 6.0,
+        "usefulness": 5.0,
+        "correctness": 5.0,
+        "completeness": 4.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 8.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 5.4,
+      "weighted_b": 7.65,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B is more accurate and balanced, especially about why experts believe P \u2260 NP and the importance of practical versus merely polynomial algorithms. Response A contains notable inaccuracies and overclaims, especially around cryptography and implications."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 8.0,
+        "clarity": 9.0,
+        "usefulness": 8.0,
+        "completeness": 8.0,
+        "correctness": 9.0
+      },
+      "scores_b": {
+        "depth": 8.0,
+        "clarity": 9.0,
+        "usefulness": 7.0,
+        "completeness": 6.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 8.45,
+      "weighted_b": 7.9,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses provided excellent explanations and analogies, but Response B cut off significantly earlier, missing most of the practical consequences section. Response A managed to cover almost all points before its minor cut-off at the very end.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:20:28.313505"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 7.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A is more thorough, with deeper analysis, clearer analogies, and more specific practical consequences, especially in cryptography and optimization."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 2,
+    "claude_opus_47": 1
+  },
+  "judges_agree": false
+}

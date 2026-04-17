@@ -1,0 +1,101 @@
+{
+  "question_id": "ANALYSIS-014",
+  "category": "analysis",
+  "question_text": "You're launching an AI API. Competitors charge $0.01-0.03/1K tokens. Your model is 20% better on benchmarks but 40% more expensive to run. (1) Should you price above, at, or below competitors? Analyze",
+  "timestamp": "2026-04-16T18:18:22.211142",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# AI API Pricing Strategy\n\n## (1) Price Positioning Analysis\n\n**Price Above (e.g., $0.035/1K tokens)**\n- *Pros:* Signals premium quality, covers 40% higher costs + margin, attracts quality-sensitive segments (legal, medical, finance) where 20% accuracy gain justifies cost\n- *Cons:* Narrow addressable market; customers must quantify that 20% benchmark gain = real business value; vulnerable if competitors close quality gap\n- *Best when:* Your benchmark advantage translates to measurable ROI (e.g., fewer errors = less human review)\n\n**Price At Parity (~$0.02/1K tokens)**\n- *Pros:* Easy switching decision (\"same price, better model\"); maximizes market share; simpler sales narrative\n- *Cons:* You eat the 40% cost difference \u2192 negative/thin margins; unsustainable without scale; trains market to expect premium quality at commodity pricing\n- *Best when:* You have runway to burn for market share and expect unit costs to drop with scale\n\n**Price Below (e.g., $0.015/1K tokens)**\n- *Pros:* Aggressive land-grab; forces competitor response\n- *Cons:* Deeply unprofitable given cost structure; signals low quality (contradicts your actual advantage); price war you'll lose\n- *Verdict:* **Don't do this.** You can't sustain it.\n\n**Recommendation:** Price **slightly above** at ~$0.028/1K tokens (premium but not extreme). Lead with quality positioning. Offer volume discounts to reach parity at scale.\n\n---\n\n## (2) Pricing Structure\n\n**Free Tier**\n- 100K tokens/month\n- Rate-limited (10 req/min)\n- Community support only\n- Goal: developer adoption, evaluation\n\n**Pay-As-You-Go (Usage-Based)**\n| Tier | Monthly Volume | Price/1K tokens |\n|------|---------------|-----------------|\n| Developer | 0\u20131M | $0.030 |\n| Startup | 1M\u201350M | $0.025 |\n| Scale | 50M\u2013500M | $0.020 |\n| Volume | 500M+ | $0.015 |\n\nInput tokens priced at 50% of output (industry standard).\n\n**Enterprise Tier** (custom, $10K+/month commit)\n- Negotiated rates (down to $0.012/1K)\n- SLA: 99.9% uptime, latency guarantees\n- Dedicated support, SOC2, HIPAA, VPC deployment\n- Fine-tuning credits included\n\n**Dedicated Instance**\n- Fixed monthly fee for reserved GPU capacity\n- Unlimited tokens within throughput cap\n\n---\n\n## (3) Cost Comparison: 10M tokens/month\n\nAssuming 50/50 input/output split, quoted prices are blended:\n\n| Provider | Rate/1K | Monthly Cost |\n|----------|---------|--------------|\n| Low competitor | $0.010 | **$100** |\n| High competitor | $0.030 | **$300** |\n| **Your API (Startup tier)** | $0.025 | **$250** |\n\n**Customer's view:** Pays $150 more than cheapest competitor. Justification needed: does 20% better quality save >$150/month in downstream costs (human review, error handling, user churn)? For most production use cases handling real customer requests \u2014 yes.\n\n---\n\n## (4) Dedicated Instance Breakeven\n\n**Assumptions:**\n- Dedicated instance: $5,000/month, supports ~200 req/sec, ~500 tokens/req average\n- Per-token rate at that volume: $0.020/1K (Scale tier)\n\n**Breakeven calculation:**\n$$\\text{Breakeven tokens} = \\frac{\\$5{,}000}{\\$0.020/1K} = 250{,}000{,}000 \\text{ tokens/month}$$\n\n**At 250M tokens/month (~100 req/sec sustained), dedicated becomes cheaper.**\n\n**Practical guidance:**\n| Monthly Volume | Recommendation |\n|---------------|----------------|\n| <50M tokens | Pay-as-you-go |\n| 50M\u2013250M | Pay-as-you-go with enterprise commit |\n| 250M\u20131B | Dedicated instance (single) |\n| >1B tokens | Multi-instance dedicated + burst PAYG |\n\n**Additional factors beyond raw cost:**\n- **Predictable latency** \u2192 dedicated wins even below breakeven\n- **Data privacy/compliance** \u2192 dedicated often required regardless\n- **Burst traffic** \u2192 hybrid model (dedicated baseline + PAYG overflow) optimal\n- **Utilization** \u2192 dedicated only wins if >40% utilized; idle GPUs kill the math\n\n---\n\n**Summary strategic move:** Premium pricing with aggressive volume discounts. Let small developers experience quality via free/cheap tiers, monetize heavily at mid-market where quality matters most, and convert whales to dedicated instances where your margins improve (you control utilization).",
+      "tokens": 1875,
+      "time_ms": 28068
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# AI API Pricing Strategy: Complete Analysis\n\n## Part 1: Pricing Strategy Analysis\n\n### The Core Tension\nYour model costs $0.014-0.042/1K tokens to deliver (competitor price + 40%), but delivers 20% better quality. This is fundamentally a **value-based pricing problem**.\n\n---\n\n### Strategy A: Price ABOVE Competitors ($0.025-0.045/1K tokens)\n\n**The \"Premium Positioning\" Play**\n\n```\nCompetitor range:     $0.01 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 $0.03\nYour cost floor:      $0.014 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 $0.042\nStrategy A pricing:        $0.025 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 $0.045\n```\n\n**Rationale:**\n- 20% better benchmarks \u2192 charge a premium that's less than the quality gap\n- Customers paying $0.03 already accept high pricing for quality\n- Signals confidence in your product\n\n**Pros:**\n- Healthy margins from day one\n- Attracts quality-sensitive customers who are less price-sensitive\n- Sustainable \u2014 you don't need massive scale to survive\n- Easier to lower prices later than to raise them\n\n**Cons:**\n- Smaller addressable market initially\n- Benchmarks \u2260 perceived value (customers may not feel the 20% difference)\n- Gives competitors time to improve while you grow slowly\n- Enterprise procurement teams will push back hard\n\n**Best when:** Your 20% improvement is in a domain where errors are costly (medical, legal, finance) and customers can directly measure the quality difference.\n\n---\n\n### Strategy B: Price AT Competitors ($0.01-0.03/1K tokens)\n\n**The \"Superior Value\" Play**\n\n```\nCompetitor range:     $0.01 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 $0.03\nYour cost floor:      $0.014 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 $0.042\nStrategy B pricing:   $0.01 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 $0.03\n```\n\n**Rationale:**\n- Same price, better product \u2014 easy switching decision\n- Win on value, not price\n\n**Pros:**\n- Removes price as an objection entirely\n- Fastest customer acquisition path\n- Forces competitors to respond on quality (harder than price cuts)\n\n**Cons:**\n- **At the low end ($0.01), you're selling below cost ($0.014)**\n- At mid-range, margins are razor-thin\n- Only profitable at the high end of the range\n- Requires significant capital to sustain while scaling\n\n**Margin analysis at each competitor price point:**\n```\nCompetitor Price    Your Cost    Your Margin\n$0.010/1K          $0.014/1K    -28.6% \u2190 LOSING MONEY\n$0.015/1K          $0.021/1K    -28.6% \u2190 LOSING MONEY  \n$0.020/1K          $0.028/1K    -28.6% \u2190 LOSING MONEY\n$0.025/1K          $0.035/1K    -28.6% \u2190 LOSING MONEY\n$0.030/1K          $0.042/1K    -28.6% \u2190 LOSING MONEY\n```\n\nWait \u2014 this reveals something critical. If your model is 40% more expensive to run **at every tier**, matching competitor prices means **losing money at every price point**, not just the low end. This strategy only works if you have a fundamentally different cost structure for some tiers, or significant VC runway to burn.\n\n**Best when:** You have $50M+ in funding, believe winner-take-all dynamics apply, and plan to reduce costs through scale/optimization before money runs out.\n\n---\n\n### Strategy C: Price BELOW Competitors ($0.008-0.025/1K tokens)\n\n**The \"Market Disruption\" Play**\n\n```\nCompetitor range:     $0.01 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 $0.03\nYour cost floor:      $0.014 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 $0.042\nStrategy C pricing: $0.008 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 $0.025\n```\n\n**Pros:**\n- Maximum market disruption\n- Could trigger competitor price wars that hurt them more (they have larger customer bases generating revenue)\n- Fastest path to volume and data (which improves models)\n\n**Cons:**\n- **Deeply unprofitable** \u2014 losing money on every request\n- Signals desperation or unsustainability to enterprise buyers\n- Enterprise customers actually *avoid* below-market pricing (they worry you'll go bankrupt)\n- Devalues the quality advantage you actually have\n\n**Best when:** Almost never, given your cost structure. This is a strategy for companies with *lower* costs, not higher.\n\n---\n\n### \u2605 My Recommendation: TIERED PREMIUM (Modified Strategy A)\n\n```\n                    Competitor Range        Your Pricing\nLow-complexity:     $0.01-0.015      \u2192     DON'T COMPETE HERE\nMid-complexity:     $0.015-0.025     \u2192     $0.022-0.028\nHigh-complexity:    $0.025-0.03      \u2192     $0.032-0.04\n```\n\n**The key insight:** Don't try to serve the entire market. Concede the low end to competitors. Your 20% quality advantage matters most for complex tasks where the cost of errors is high. Price 15-30% above competitors at the tiers where your quality advantage is most visible.\n\n**Why this wins:**\n1. Positive margins at every tier you serve\n2. Premium positioning attracts enterprise customers\n3. You're not subsidizing price-insensitive, high-volume, low-value traffic\n4. The customers you attract generate the highest-quality usage data\n\n---\n\n## Part 2: Pricing Structure Design\n\n### Architecture Overview\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                    PRICING ARCHITECTURE                      \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502   FREE   \u2502 BUILDER  \u2502   SCALE   \u2502ENTERPRISE \u2502  DEDICATED    \u2502\n\u2502  Explore \u2502  Build   \u2502   Grow    \u2502  Partner   \u2502  Own          \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 $0/mo    \u2502 $0/mo    \u2502 $0/mo     \u2502 Custom    \u2502 Custom        \u2502\n\u2502 +usage   \u2502 +usage   \u2502 +usage    \u2502 +commit   \u2502 +instance     \u2502\n\u2502          \u2502          \u2502 +discount \u2502           \u2502               \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n---\n\n### Tier 1: FREE \u2014 \"Explore\"\n\n**Purpose:** Reduce friction to zero. Let developers fall in love with quality.\n\n```yaml\nFree Tier:\n  tokens_per_month: 100K\n  rate_limit: 10 requests/minute\n  models: All models (full access - this is key)\n  features:\n    - Playground/web UI\n    - Single API key\n    - Community support\n    - 7-day log retention\n  restrictions:\n    - No SLA\n    - No fine-tuning\n    - Shared infrastructure (higher latency during peaks)\n    - \"Powered by [Brand]\" attribution required for public apps\n```\n\n**Strategic rationale:**\n- 100K tokens \u2248 ~75,000 words \u2248 enough to build a meaningful prototype\n- Full model access is critical \u2014 if they prototype on a weaker free model, they never experience the quality advantage\n- Attribution requirement gives you free marketing\n- Cost to serve: ~$4.20/free user/month at 100K tokens \u00d7 $0.042 cost\n- Budget for 10,000 free users: $42,000/month \u2014 reasonable marketing spend\n\n---\n\n### Tier 2: BUILDER \u2014 \"Build\" (Pay-as-you-go)\n\n**Purpose:** Default tier for individual developers and small teams.\n\n```yaml\nBuilder Tier:\n  monthly_minimum: $0 (pure usage-based)\n  pricing:\n    standard_model:\n      input:  $0.025 / 1K tokens\n      output: $0.035 / 1K tokens    # Output costs more (generation > processing)\n    advanced_model:\n      input:  $0.035 / 1K tokens\n      output: $0.050 / 1K tokens\n  rate_limit: 60 requests/minute (burstable to 120)\n  features:\n    - Up to 5 API keys\n    - 30-day log retention\n    - Basic analytics dashboard\n    ",
+      "tokens": 2173,
+      "time_ms": 43495
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 6.0,
+        "usefulness": 4.0,
+        "correctness": 6.0,
+        "completeness": 5.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 5.7,
+      "weighted_b": 7.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B directly answers all four parts with coherent pricing, concrete cost calculations, and a breakeven formula. Response A has some useful strategic analysis but contains faulty cost assumptions, is incomplete, and does not finish the requested pricing structure or calculations."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 4.0,
+        "correctness": 8.0,
+        "completeness": 3.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 6.4,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A cut off prematurely and failed to answer parts 3 and 4 of the prompt. Response B addressed all four parts completely with solid logic, clear calculations, and actionable strategic advice."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 8.0,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provided more concrete pricing examples, clearer calculations, and actionable recommendations with specific volume thresholds and practical guidance."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

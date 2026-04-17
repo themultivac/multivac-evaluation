@@ -1,0 +1,103 @@
+{
+  "question_id": "COMM-015",
+  "category": "communication",
+  "question_text": "You're writing the same product announcement for three markets: (1) US tech audience (direct, data-driven, features-first), (2) Japanese enterprise audience (relationship-focused, indirect, hierarchy-",
+  "timestamp": "2026-04-16T18:52:06.025620",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Product Announcement: AI Coding Assistant \u2014 Three Market Versions\n\n---\n\n## Version 1: US Tech Audience\n\n**Ship Code 3x Faster with CodePilot AI**\n\nCodePilot AI is here\u2014and it's the coding assistant that actually keeps up with you.\n\nBuilt on a 70B-parameter model fine-tuned on 2.4 billion lines of production code, CodePilot delivers context-aware suggestions across 40+ languages with 94% acceptance rates in real-world benchmarks. Early adopters at Fortune 500 engineering teams report cutting PR cycle times by 47% and reducing bug density by 31%.\n\nWhat's under the hood:\n- **Sub-200ms latency** on autocomplete, even for multi-file context\n- **Agentic refactoring**\u2014describe the change, review the diff, merge\n- **Native integrations** with VS Code, JetBrains, Neovim, and GitHub\n- **SOC 2 Type II** compliant with zero-retention enterprise mode\n\nNo more context-switching to Stack Overflow. No more boilerplate drudgery. Just clean code, shipped fast.\n\nStarting at $19/dev/month. Enterprise plans with SSO, audit logs, and on-prem deployment available.\n\nFree 14-day trial\u2014no credit card. See it write, test, and deploy a REST API in under 90 seconds.\n\n**Try CodePilot now \u2192** codepilot.ai/start\n\nBuilt by engineers, for engineers. Let's ship.\n\n---\n\n## Version 2: Japanese Enterprise Audience\n\n**\u3054\u6328\u62f6 \u2014 Introducing CodePilot AI to Our Valued Partners**\n\nDear esteemed colleagues,\n\nWe are deeply honored to share news of CodePilot AI, developed through careful collaboration with leading engineering organizations across Japan and around the world.\n\nFor many years, we have listened closely to the challenges faced by development teams\u2014the pressures on senior engineers, the importance of preserving institutional knowledge, and the responsibility of maintaining the highest quality standards. CodePilot AI has been thoughtfully designed in response to these concerns.\n\nDeveloped together with respected enterprise partners through an extensive consultation process, CodePilot AI supports your engineers as a considerate assistant\u2014never replacing the wisdom of your team, but helping each member contribute their best work. The system respects existing team structures, code review practices, and the careful decision-making that defines excellent organizations.\n\nWe recognize that adopting new technology requires trust. For this reason, we offer dedicated onboarding support, Japanese-language documentation, and a long-term partnership relationship with our local team in Tokyo.\n\nWe would be most grateful for the opportunity to discuss how CodePilot AI may support your organization's continued success. Please allow us to arrange a visit at your convenience.\n\n**With sincere respect,**\nThe CodePilot Team \u2014 codepilot.ai/jp\n\n---\n\n## Version 3: German Engineering Audience\n\n**CodePilot AI \u2014 Technical Specifications and Evaluation Data**\n\nCodePilot AI is a code-generation system intended for professional software engineering environments. This announcement provides the technical basis for independent evaluation.\n\n**Architecture:** Transformer-based model, 70B parameters, trained on permissively-licensed source code (full training data provenance documented in technical whitepaper, available on request).\n\n**Verified performance metrics** (independent audit by Fraunhofer IESE, Q2 2024):\n- HumanEval pass@1: 82.3%\n- SWE-bench Verified: 41.7%\n- Median suggestion latency: 187ms (p95: 340ms)\n- False-positive rate on security-sensitive completions: 0.8%\n\n**Compliance and data protection:**\n- DSGVO/GDPR-compliant; data processing agreement available\n- EU-based inference infrastructure (Frankfurt, AWS eu-central-1)\n- Zero-retention mode: no code transmitted to training pipelines\n- ISO 27001 and SOC 2 Type II certified\n- On-premises deployment supported (Kubernetes, air-gapped option)\n\n**Limitations documented transparently:** Performance on domain-specific languages (ABAP, legacy COBOL) remains below general-purpose benchmarks. Model card includes known failure modes.\n\nPricing: 18 \u20ac/developer/month. Enterprise licensing upon request. Source-available SDK under Apache 2.0.\n\nTechnical documentation, benchmark reproducibility scripts, and evaluation licenses: **codepilot.ai/de/technical**\n\nWe welcome rigorous evaluation.",
+      "tokens": 1657,
+      "time_ms": 26540
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Version 1: US Tech Audience\n\n**Ship Code 10x Faster. We Measured.**\n\nIntroducing **CodePilot AI** \u2014 the coding assistant that actually delivers on the hype.\n\nHere's what the numbers show: across our 5,000-developer beta, CodePilot AI cut average development time by 47%, reduced bugs in production by 32%, and handled boilerplate generation with 94.6% first-pass accuracy.\n\n**What's under the hood:**\n- GPT-scale model fine-tuned on 2.1B lines of production code\n- Real-time autocomplete across 40+ languages\n- Context-aware refactoring that understands your entire codebase, not just the open file\n- Native integrations with VS Code, JetBrains, and Neovim \u2014 setup takes 90 seconds\n\nUnlike competitors padding demos with cherry-picked examples, we're publishing our full benchmark suite on GitHub. Test it yourself.\n\nCodePilot AI runs locally or cloud-hosted \u2014 your call, your data. SOC 2 Type II certified. No training on your proprietary code. Ever.\n\n**Pricing is dead simple:** Free for individual developers. Team tier at $29/seat/month. Enterprise with SSO, audit logs, and on-prem deployment available today.\n\nEarly adopters include engineering teams at Stripe, Datadog, and Figma.\n\nStop context-switching to Stack Overflow. Start shipping.\n\n**Try it now at codepilot.ai \u2192**\n\n---\n\n# Version 2: Japanese Enterprise Audience\n\n**\u30b3\u30fc\u30c9\u30d1\u30a4\u30ed\u30c3\u30c8AI \u2014 \u3068\u3082\u306b\u6b69\u3080\u3001\u958b\u767a\u306e\u672a\u6765**\n\n*Reimagining Software Development Through Trusted Partnership*\n\nWe are honored to introduce CodePilot AI, a new AI-powered development assistant created to support the invaluable work of your engineering teams.\n\nWe understand that adopting new technology is a significant decision \u2014 one that reflects on your organization's standards and your team's established expertise. CodePilot AI was designed not to replace the craftsmanship of skilled developers, but to respectfully complement their abilities, handling routine tasks so your talented professionals can focus on the complex, meaningful work that drives your business forward.\n\nThroughout an extensive 18-month consultation process with enterprise partners across Japan, we carefully listened to the priorities that matter most: **data sovereignty**, **seamless integration with existing workflows**, and **long-term reliability**.\n\nCodePilot AI offers complete on-premises deployment, ensuring your proprietary code never leaves your environment. Our dedicated Japan-based support team provides ongoing guidance tailored to your organization's unique needs.\n\nWe would be grateful for the opportunity to arrange a private demonstration for your leadership and engineering teams at your convenience, allowing us to understand your specific requirements and explore how we might contribute to your continued success.\n\n**Please contact our Japan Enterprise Relations team: japan-enterprise@codepilot.ai**\n\n---\n\n# Version 3: German Engineering Audience\n\n**CodePilot AI: Technische Spezifikationen und verifizierbare Leistungsdaten**\n\n*A Coding Assistant Built on Measurable Engineering Rigor \u2014 Not Marketing Promises*\n\nWe will spare you the superlatives. Here is what CodePilot AI does, precisely how it works, and the independently verified data behind every claim.\n\n**Architecture:** Transformer-based model (87B parameters) fine-tuned on 2.1 billion lines of reviewed, licensed production code. Inference latency: 95th percentile at 140ms. All training data sources are documented and auditable.\n\n**Verified Performance (T\u00dcV-audited benchmarks):**\n- Syntactically correct code generation: 94.6% \u00b1 1.2% (n=50,000 tasks)\n- Bug detection recall: 89.3% across C++, Java, Python, Rust\n- False positive rate: 4.1% \u2014 we report this because others conveniently do not\n\n**Data Handling:** Full GDPR compliance. On-premises deployment available. Zero telemetry by default. Your source code is never used for model training \u2014 contractually guaranteed, not merely promised in a blog post.\n\n**Limitations we openly acknowledge:** Performance degrades on codebases below 10,000 lines of context. Domain-specific frameworks require 2\u20133 weeks of fine-tuning. We do not claim \"magic.\"\n\nComplete technical whitepaper and methodology: **docs.codepilot.ai/specifications**\n\nEvaluate it critically. We welcome that.",
+      "tokens": 1112,
+      "time_ms": 28316
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 7.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.15,
+      "weighted_b": 7.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A better adapts tone and structure to all three target markets, especially the Japanese and German versions, and more fully satisfies the localization brief. Response B is solid and somewhat more technically grounded in places, but its Japanese version is less naturally audience-specific and overall it is slightly less tailored."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "depth": 10.0,
+        "clarity": 10.0,
+        "usefulness": 10.0,
+        "completeness": 10.0,
+        "correctness": 10.0
+      },
+      "scores_b": {
+        "depth": 9.0,
+        "clarity": 9.0,
+        "usefulness": 9.0,
+        "completeness": 10.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 10.0,
+      "weighted_b": 9.2,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Both responses brilliantly capture the cultural nuances of the three markets. Response A wins slightly because its Japanese version feels more like a proper B2B product announcement/landing page, whereas Response B's Japanese version reads more like a direct email and mixes English and Japanese awkwardly in the title. Response A's German version also perfectly nails the 'anti-marketing' tone.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:15:16.841759"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.2,
+      "weighted_b": 8.2,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A more precisely tailors each version to the specified audience with superior cultural nuance, deeper technical detail, and stronger actionable calls-to-action."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 3
+  },
+  "judges_agree": true
+}

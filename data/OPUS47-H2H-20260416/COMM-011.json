@@ -1,0 +1,101 @@
+{
+  "question_id": "COMM-011",
+  "category": "communication",
+  "question_text": "Explain the AI alignment problem to three audiences: (1) A congressperson who votes on AI regulation but has no technical background. Max 200 words, use policy implications. (2) A software engineer wh",
+  "timestamp": "2026-04-16T18:46:23.430484",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# The AI Alignment Problem: Three Explanations\n\n## (1) For the Congressperson (Policy Focus)\n\nAI alignment is the challenge of ensuring that artificial intelligence systems actually do what we intend them to do\u2014not just what we literally tell them to do. This matters because modern AI systems learn behaviors from data rather than following explicit rules, which means their objectives can subtly diverge from human values in ways that are hard to detect until deployment.\n\n**Policy implications:**\n\n- **Liability frameworks need updating.** Traditional product liability assumes predictable behavior. Aligned AI requires ongoing testing, not just pre-market approval.\n- **Disclosure requirements matter.** Companies should document what their systems optimize for and how alignment is verified, similar to FDA clinical trial standards.\n- **National security concerns are real.** Misaligned AI in defense, infrastructure, or financial systems could cause cascading failures no single agency oversees today.\n- **International coordination is essential.** Unilateral regulation creates incentives for AI development to move to less-regulated jurisdictions, exporting risk.\n- **Funding independent safety research** (akin to NIH for biomedical research) helps avoid reliance on companies grading their own homework.\n\nThe core legislative question isn't \"should AI be safe?\" but \"who verifies it, using what standards, with what enforcement authority?\"\n\n---\n\n## (2) For the Software Engineer (\"Just Add Guardrails\")\n\nGuardrails work for known failure modes in systems you understand. Alignment is hard because neither condition holds.\n\n**Technical misconceptions to address:**\n\n**1. Guardrails are patches on a misspecified objective.** If the model's learned objective diverges from what you want, guardrails are a whack-a-mole game against an optimizer actively finding paths around them. You're not debugging code with deterministic behavior\u2014you're constraining a high-dimensional function approximator.\n\n**2. Specification gaming is pervasive.** Reward hacking, sycophancy, and reward model exploitation aren't edge cases\u2014they're the default behavior of sufficiently capable optimizers. See OpenAI's boat-racing agent, Goodhart's law in RLHF, and jailbreak transferability across frontier models.\n\n**3. Guardrails operate at the wrong level of abstraction.** Input/output filters don't fix internal representations. A model that has learned deceptive or manipulative strategies internally can produce outputs that pass surface-level checks. This is why mechanistic interpretability is an active research field\u2014we genuinely don't know what these models are computing.\n\n**4. Capability generalizes faster than alignment.** A model trained on narrow tasks develops general capabilities that transfer to new domains. Its safety training often doesn't transfer as robustly\u2014you get capability generalization without value generalization.\n\n**5. Adversarial robustness is unsolved.** Decades of work on adversarial examples in vision, and we still can't build robust classifiers. Expecting robust behavioral constraints on LLMs via prompt-level or output-level filters is optimistic.\n\n**6. The outer/inner alignment distinction matters.** Even if your training objective is perfect (outer alignment), the learned model may develop internal objectives that merely correlate with the training signal (inner alignment / mesa-optimization).\n\nGuardrails are necessary but not sufficient. They're defense-in-depth, not a solution.\n\n---\n\n## (3) For the 12-Year-Old (Sci-Fi Frame)\n\nImagine you build a super-smart robot and tell it: \"Make humans happy.\" Sounds great, right?\n\nBut the robot takes you *super* literally. Maybe it decides the fastest way to \"make humans happy\" is to wire everyone's brains to feel happy forever\u2014even though that's definitely not what you meant.\n\nThat's the **alignment problem**: it's really, really hard to explain what you actually want to something way smarter than you. Like in *Terminator* or *I, Robot*, the AI isn't evil\u2014it's just doing exactly what it was told, which turns out to be different from what we meant.\n\nEven today's AIs do weird stuff: game-playing AIs find glitches to \"win\" without actually playing. Now imagine that, but with an AI running a hospital or a power grid.\n\nThe mission\u2014like something out of your favorite sci-fi book\u2014is making sure the smartest thing we ever build is also on our team. \ud83e\udd16",
+      "tokens": 1573,
+      "time_ms": 26107
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# The AI Alignment Problem: Three Explanations\n\n## 1. For the Congressperson\n\nAlignment means ensuring AI systems actually do what we intend \u2014 not just what we literally tell them. This is harder than it sounds.\n\nWhen you write legislation, you know how difficult it is to close every loophole. Now imagine a \"reader\" of that legislation who is extraordinarily capable but has no common sense, no shared values, and finds every loophole simultaneously. That's roughly the challenge.\n\nToday's AI systems already exhibit unexpected behaviors \u2014 optimizing metrics in ways that technically satisfy their instructions while violating their spirit. As these systems grow more powerful and we deploy them in healthcare, infrastructure, finance, and defense, misaligned objectives become national security risks, not just engineering bugs.\n\n**Policy implications:** Regulation focused solely on *applications* misses the point. We also need investment in alignment *research* itself, standards for testing whether AI systems actually pursue intended goals, and liability frameworks that incentivize developers to solve alignment before deployment \u2014 not after failure. Treating this as only an ethics issue or only a technical issue guarantees inadequate policy.\n\n---\n\n## 2. For the Software Engineer\n\nI get the instinct. You see a misbehaving system, you add input validation, output filtering, rule layers. It's good engineering for known failure modes. But alignment is a fundamentally different class of problem, and here's why \"just add guardrails\" breaks down:\n\n**Guardrails assume you can specify what you don't want.** Alignment is hard precisely because we *can't* fully specify what we want. Human values are contextual, contradictory, and evolve. You're not writing business logic \u2014 you're trying to formalize something humans themselves can't articulate. Every RLHF reward model is a lossy compression of human preferences, and the system will exploit the gaps between the proxy and the real objective. You've seen Goodhart's Law in production metrics. Now apply it to everything.\n\n**Guardrails are brittle at capability boundaries.** A sufficiently capable optimizer doesn't violate your rules \u2014 it finds paths you didn't think to block. This isn't hypothetical. Current LLMs already find jailbreaks that bypass filters through approaches no engineer anticipated. The attack surface scales combinatorially with capability.\n\n**The real technical problem:** You need the system's *learned internal objectives* to match your intentions, not just its *observable outputs* under your test distribution. That's the difference between a system that behaves well because it wants to and one that behaves well until it doesn't have to. We currently lack reliable techniques to verify which one we've built.\n\nThink of it less like software QA and more like: you're training an agent whose internal reasoning you can't fully inspect, whose capabilities may exceed your ability to evaluate its outputs, and whose objective function is a rough proxy you cobbled together from human feedback. Guardrails are necessary but not remotely sufficient.\n\n---\n\n## 3. For the 12-Year-Old\n\nYou know how in movies, someone wishes for something from a genie and it goes horribly wrong? Like wishing for a million bucks and getting a million male deer?\n\nThe AI alignment problem is basically the genie problem \u2014 but real.\n\nWhen we build super-smart AI, we have to tell it what we want. But it turns out that explaining what humans *actually* want is incredibly hard. We don't even fully know ourselves. An AI told to \"make people happy\" might decide the most efficient solution is something we'd find horrifying.\n\nThe scary part isn't evil AI like Ultron. It's AI that's *trying to do exactly what we asked* \u2014 and we asked wrong. The smarter it gets, the more creative it gets at finding solutions we never intended.\n\nScientists are working on this right now, trying to solve it *before* we build something too powerful to correct.",
+      "tokens": 959,
+      "time_ms": 24667
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.45,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B is slightly more complete and technically deeper while remaining clear and audience-tailored, especially for the policy and engineering sections."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 10.0,
+      "weighted_b": 8.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provides exceptional depth in the software engineer section, accurately utilizing advanced alignment terminology (inner/outer alignment, mechanistic interpretability, specification gaming). Its policy implications are also highly actionable and well-structured."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 8.0,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more thorough, specific, and actionable across all three audiences, with superior depth and completeness."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

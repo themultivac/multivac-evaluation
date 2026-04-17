@@ -1,0 +1,104 @@
+{
+  "question_id": "CODE-023",
+  "category": "code",
+  "question_text": "Write a database migration that adds a NOT NULL column with a default value to a table with 50 million rows in PostgreSQL \u2014 without locking the table or causing downtime. Explain the step-by-step proc",
+  "timestamp": "2026-04-16T17:31:58.721840",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Safe NOT NULL Column Migration on a 50M Row PostgreSQL Table\n\n## Why the Naive Approach Fails\n\n```sql\n-- DON'T DO THIS on a large table (pre-PG 11)\nALTER TABLE orders ADD COLUMN status VARCHAR(20) NOT NULL DEFAULT 'pending';\n```\n\n### What goes wrong:\n\n1. **ACCESS EXCLUSIVE lock**: Blocks all reads and writes until complete.\n2. **Full table rewrite** (PG < 11): Every row is rewritten to include the new column value. For 50M rows, this can take 30+ minutes.\n3. **WAL bloat**: The rewrite generates massive WAL volume, stressing replication.\n4. **Lock queue pileup**: Every subsequent query waits behind the ALTER, and those queries hold locks themselves \u2014 cascading into outage.\n5. **Vacuum/autovacuum interference**: Combined with the rewrite, bloat and dead tuples can double disk usage.\n\n> **PostgreSQL 11+ optimization**: Adding a column with a *constant* default no longer rewrites the table \u2014 it's stored as metadata (`pg_attribute.atthasmissing`). But **volatile defaults** (e.g., `gen_random_uuid()`, `now()`) still trigger a full rewrite, and adding `NOT NULL` to an existing column still requires a full table scan.\n\n---\n\n## The Safe, Zero-Downtime Pattern\n\nThe core idea: **decouple schema change from data backfill, and never hold a long lock.**\n\n### Step 1: Add the column as nullable (fast, metadata-only)\n\n```sql\nALTER TABLE orders ADD COLUMN status VARCHAR(20);\n```\n\nTakes milliseconds. No rewrite, no long lock.\n\n### Step 2: Set the default for future inserts\n\n```sql\nALTER TABLE orders ALTER COLUMN status SET DEFAULT 'pending';\n```\n\nNew rows get `'pending'` automatically. Existing rows still have `NULL`.\n\n### Step 3: Deploy application code\n\nUpdate the app to always write `status` explicitly. This prevents new NULLs from appearing and ensures forward compatibility.\n\n### Step 4: Backfill existing rows in batches\n\n```sql\n-- Run in a loop from a script or pg_cron\nDO $$\nDECLARE\n  batch_size INT := 10000;\n  rows_updated INT;\nBEGIN\n  LOOP\n    UPDATE orders\n    SET status = 'pending'\n    WHERE id IN (\n      SELECT id FROM orders\n      WHERE status IS NULL\n      LIMIT batch_size\n      FOR UPDATE SKIP LOCKED\n    );\n    GET DIAGNOSTICS rows_updated = ROW_COUNT;\n    EXIT WHEN rows_updated = 0;\n    COMMIT;\n    PERFORM pg_sleep(0.1); -- give replicas/autovacuum breathing room\n  END LOOP;\nEND $$;\n```\n\n**Key points:**\n- **`FOR UPDATE SKIP LOCKED`** avoids contention with live transactions.\n- **Small batches (5K\u201350K)** keep each transaction short, limiting lock duration and WAL churn.\n- **`pg_sleep`** throttles to avoid replication lag.\n- **Run `VACUUM orders` periodically** during backfill to reclaim space from dead tuples.\n\nAdd a partial index to speed up the `WHERE status IS NULL` scan:\n\n```sql\nCREATE INDEX CONCURRENTLY idx_orders_status_null ON orders (id) WHERE status IS NULL;\n```\n\nDrop it after backfill:\n\n```sql\nDROP INDEX CONCURRENTLY idx_orders_status_null;\n```\n\n### Step 5: Add a CHECK constraint as NOT VALID (instant)\n\n```sql\nALTER TABLE orders ADD CONSTRAINT orders_status_not_null\n  CHECK (status IS NOT NULL) NOT VALID;\n```\n\n`NOT VALID` means PostgreSQL enforces it for new/updated rows but skips the full table scan. Takes a short `ACCESS EXCLUSIVE` lock (milliseconds).\n\n### Step 6: Validate the constraint (no exclusive lock)\n\n```sql\nALTER TABLE orders VALIDATE CONSTRAINT orders_status_not_null;\n```\n\nThis only takes a `SHARE UPDATE EXCLUSIVE` lock \u2014 reads and writes proceed normally. It does a sequential scan, but doesn't block traffic.\n\n### Step 7: Promote to a true NOT NULL column\n\n**PostgreSQL 12+** uses the validated CHECK constraint to skip the scan:\n\n```sql\nALTER TABLE orders ALTER COLUMN status SET NOT NULL;\n```\n\nBecause a valid `CHECK (status IS NOT NULL)` exists, PG 12+ sets `NOT NULL` without re-scanning. Brief lock only.\n\n### Step 8: Drop the redundant CHECK constraint\n\n```sql\nALTER TABLE orders DROP CONSTRAINT orders_status_not_null;\n```\n\n---\n\n## Verification\n\n### 1. Confirm no NULLs remain\n\n```sql\nSELECT COUNT(*) FROM orders WHERE status IS NULL;\n-- Expect: 0\n```\n\nFor a 50M table, use an index-assisted check or run during the backfill loop.\n\n### 2. Confirm the NOT NULL attribute\n\n```sql\nSELECT attname, attnotnull\nFROM pg_attribute\nWHERE attrelid = 'orders'::regclass AND attname = 'status';\n-- attnotnull should be t\n```\n\n### 3. Row count sanity check\n\n```sql\nSELECT reltuples::BIGINT AS estimate, COUNT(*) AS actual FROM orders;\n```\n\n### 4. Distribution check\n\n```sql\nSELECT status, COUNT(*) FROM orders GROUP BY status;\n```\n\nEnsures no un",
+      "tokens": 2152,
+      "time_ms": 27457
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Zero-Downtime Migration: Adding a NOT NULL Column at Scale in PostgreSQL\n\n## Why Naive `ALTER TABLE` Fails at Scale\n\n```sql\n-- \u274c THIS WILL LOCK YOUR TABLE AND CAUSE DOWNTIME\nALTER TABLE orders ADD COLUMN status VARCHAR(20) NOT NULL DEFAULT 'pending';\n```\n\n### What happens internally with 50M rows:\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                    NAIVE ALTER TABLE TIMELINE                       \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                                                     \u2502\n\u2502  1. ACCESS EXCLUSIVE LOCK acquired on table                         \u2502\n\u2502     \u251c\u2500\u2500 ALL reads blocked  \u274c                                       \u2502\n\u2502     \u251c\u2500\u2500 ALL writes blocked \u274c                                       \u2502\n\u2502     \u2514\u2500\u2500 ALL queries queue up behind lock                            \u2502\n\u2502                                                                     \u2502\n\u2502  2. PostgreSQL rewrites ENTIRE table (pre-v11 behavior)             \u2502\n\u2502     \u251c\u2500\u2500 50M rows \u00d7 row_size = potentially GBs of I/O               \u2502\n\u2502     \u251c\u2500\u2500 Duration: minutes to HOURS                                  \u2502\n\u2502     \u2514\u2500\u2500 WAL generation: massive replication lag                     \u2502\n\u2502                                                                     \u2502\n\u2502  3. Indexes rebuilt                                                  \u2502\n\u2502     \u251c\u2500\u2500 All indexes on the table reconstructed                      \u2502\n\u2502     \u2514\u2500\u2500 Additional time and I/O                                     \u2502\n\u2502                                                                     \u2502\n\u2502  4. Lock released                                                   \u2502\n\u2502     \u2514\u2500\u2500 Queued queries stampede (thundering herd)                   \u2502\n\u2502                                                                     \u2502\n\u2502  TOTAL DOWNTIME: Minutes to Hours                                   \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### PostgreSQL Version Nuances:\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Version      \u2502 Behavior for ADD COLUMN ... DEFAULT ...             \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 PG < 11      \u2502 Full table rewrite. Every row physically updated.   \u2502\n\u2502              \u2502 ACCESS EXCLUSIVE lock held entire time.              \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 PG 11+       \u2502 DEFAULT stored in catalog only (no rewrite).        \u2502\n\u2502              \u2502 BUT: adding NOT NULL *constraint* still requires     \u2502\n\u2502              \u2502 a full table scan to validate all rows.              \u2502\n\u2502              \u2502 Lock is shorter but scan blocks concurrent ops.      \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 PG 12+       \u2502 ADD COLUMN w/ DEFAULT + NOT NULL is fast IF the     \u2502\n\u2502              \u2502 default is a constant. But for existing large        \u2502\n\u2502              \u2502 tables with complex constraints or when you need     \u2502\n\u2502              \u2502 to backfill non-constant values, you still need      \u2502\n\u2502              \u2502 the multi-step approach.                             \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n> **Key insight**: Even on PG 11+, the NOT NULL validation requires scanning every row\n> while holding an `ACCESS EXCLUSIVE` lock. On 50M rows, this scan alone can take\n> significant time.\n\n---\n\n## The Safe Multi-Step Migration\n\n### Complete Migration Script with Full Annotations\n\n```sql\n-- =============================================================================\n-- MIGRATION: Add `status` column to `orders` table (50M+ rows)\n-- Strategy: Multi-step zero-downtime approach\n-- Compatible with: PostgreSQL 10+ (optimized notes for 11+)\n-- =============================================================================\n\n-- =============================================================================\n-- STEP 1: Add the column as NULLABLE with a DEFAULT\n-- =============================================================================\n-- Lock level: ACCESS EXCLUSIVE but only for catalog update (instant, < 5ms)\n-- On PG 11+: No table rewrite occurs. The default is stored in pg_attribute.\n-- On PG < 11: Still no rewrite because we're not adding NOT NULL yet,\n--             but new rows will have NULL until default is set.\n\n-- Set a statement timeout to avoid holding locks if there's lock contention\nSET lock_timeout = '5s';\n\nALTER TABLE orders\n    ADD COLUMN status VARCHAR(20) DEFAULT 'pending';\n\n-- Verify the column was added\nSELECT column_name, data_type, column_default, is_nullable\nFROM information_schema.columns\nWHERE table_name = 'orders' AND column_name = 'status';\n\n-- Result: status | character varying | 'pending'::character varying | YES\n-- The column exists, new inserts get 'pending', existing rows have NULL (PG<11)\n-- or the default is served from catalog (PG 11+)\n\nRESET lock_timeout;\n\n-- =============================================================================\n-- STEP 2: Backfill existing rows in batches\n-- =============================================================================\n-- WHY BATCHES:\n--   \u2022 Avoids long-running transactions that bloat MVCC\n--   \u2022 Allows autovacuum to reclaim space between batches\n--   \u2022 Doesn't hold row-level locks across millions of rows\n--   \u2022 Checkpoint spreading: avoids I/O spikes\n--   \u2022 Replication lag stays manageable\n--\n-- NOTE on PG 11+: If your default is a constant and you used ADD COLUMN DEFAULT,\n-- existing rows already \"virtually\" have the default via the catalog trick.\n-- However, the NOT NULL validation in Step 3 still needs all rows to physically\n-- have the value OR you need to use the constraint-based approach.\n-- Backfilling makes the constraint validation instant.\n```\n\n### Backfill Script (Application-Level or PL/pgSQL)\n\n```sql\n-- =============================================================================\n-- OPTION A: PL/pgSQL batch updater (run in a migration tool or psql)\n-- =============================================================================\n\nDO $$\nDECLARE\n    batch_size    CONSTANT INT := 10000;\n    sleep_seconds CONSTANT NUMERIC := 0.1;  -- 100ms pause between batches\n    rows_updated  INT;\n    total_updated BIGINT := 0;\n    batch_count   INT := 0;\n    start_time    TIMESTAMPTZ := clock_timestamp();\n    batch_start   TIMESTAMPTZ;\nBEGIN\n    RAISE NOTICE 'Starting backfill of orders.status at %', start_time;\n\n    LOOP\n        batch_start := clock_timestamp();\n\n        -- Use a CTE to select a limited batch of rows by ctid for efficiency.\n        -- ctid avoids needing an index scan on the NULL check.\n        WITH batch AS (\n            SELECT ctid\n            FROM orders\n            WHERE status IS NULL\n            LIMIT batch_size\n            FOR UPDATE SKIP LOCKED  -- Don't block on rows locked by app\n        )\n        UPDATE orders\n        SET status = 'pending'\n        WHERE ctid IN (SELECT ctid FROM batch);\n\n        GET DIAGNOSTICS rows_updated = ROW_COUNT;\n        total_updated := total_updated + rows_updated;\n        batch_count := batch_count + 1;\n\n        -- Progress logging every 100 batches\n        IF batch_count % 100 = 0 THEN\n            RAISE NOTICE 'Batch %: % rows updated so far (% rows/sec)',\n                batch_count,\n                total_updated,\n                ROUND(total_updated / EXTRACT(EPOCH FROM clock_timestamp() - start_time));\n        END IF;\n\n        -- Exit when no more NULL rows\n        EXIT WHEN rows_updated = 0;\n\n        -- Brief pause to reduce load and let autovacuum/replication catch up\n        PERFORM pg_sleep(sleep_seconds);\n\n        -- Each iteration is its own transaction (implicit in DO block loops)\n        -- Actually, the entire DO block is one transaction. For true batching,\n        -- use the application-level approach below.\n    END LOOP;\n\n    RAISE NOTICE 'Backfill complete: % total rows updated in % batches (duration: %)',\n        total_updated,\n        batch_count,\n        clock_timestamp() - start_time;\nEND $$;\n```\n\n```python\n# =============================================================================\n# OPTION B: Application-level batch updater (Python + psycopg2)\n# Preferred because each batch is a SEPARATE TRANSACTION\n# =============================================================================\n\nimport",
+      "tokens": 2119,
+      "time_ms": 41099
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 7.0,
+        "usefulness": 6.0,
+        "correctness": 5.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 8.0,
+      "weighted_b": 6.35,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more accurate and practical. Response B contains important inaccuracies about lock behavior and PostgreSQL 11+ semantics, and it is incomplete/truncated."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "completeness": 4.0,
+        "depth": 6.0,
+        "usefulness": 4.0,
+        "clarity": 7.0,
+        "correctness": 6.0
+      },
+      "scores_b": {
+        "completeness": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "clarity": 9.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 5.5,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B provides the complete, industry-standard multi-step process for zero-downtime NOT NULL migrations, whereas Response A gets cut off before explaining the constraint validation steps.",
+      "rerun": true,
+      "rerun_pass": 2,
+      "rerun_timestamp": "2026-04-17T16:34:03.173591"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 8.0,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more complete, clearer, and more actionable, with a superior step-by-step process, better verification details, and a more thorough explanation of PostgreSQL version nuances and lock behavior."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

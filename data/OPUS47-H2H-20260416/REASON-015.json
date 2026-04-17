@@ -1,0 +1,102 @@
+{
+  "question_id": "REASON-015",
+  "category": "reasoning",
+  "question_text": "A superintelligent predictor offers you two boxes. Box A is transparent and contains $1,000. Box B is opaque. The predictor has already either put $1,000,000 in Box B (if it predicted you'd take only ",
+  "timestamp": "2026-04-16T17:47:23.196359",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Newcomb's Problem: The Classic Decision Theory Showdown\n\n## The Case for Two-Boxing (Causal Decision Theory)\n\nThe two-boxer reasons as follows: **The predictor has already made its choice.** The money is either in Box B or it isn't\u2014nothing you do now can change what's already sitting inside that opaque box. Your decision cannot reach backward in time to alter its contents.\n\nGiven this, consider the two possible states:\n- **If Box B contains $1M:** Taking both gets you $1,001,000; taking only B gets you $1M. Both-boxing wins by $1,000.\n- **If Box B is empty:** Taking both gets you $1,000; taking only B gets you $0. Both-boxing wins by $1,000.\n\nIn every possible world, two-boxing yields $1,000 more. This is **dominance reasoning**, the hallmark of **Causal Decision Theory (CDT)**. You should choose the act whose *causal consequences* are best. Since your choice now can't cause the box to become full or empty, you might as well grab the extra $1,000.\n\n## The Case for One-Boxing (Evidential Decision Theory)\n\nThe one-boxer looks at expected value based on the predictor's track record:\n- One-boxing: 0.99 \u00d7 $1,000,000 + 0.01 \u00d7 $0 = **$990,000**\n- Two-boxing: 0.99 \u00d7 $1,000 + 0.01 \u00d7 $1,001,000 = **$11,000**\n\nOne-boxing wins by nearly a million dollars. The one-boxer says: \"Look at the people who walked away rich. They're almost all one-boxers. Two-boxers walk away with $1,000. Don't be clever\u2014be rich.\"\n\nThis relies on **Evidential Decision Theory (EDT)**: choose the action that, conditional on your doing it, gives the best expected outcome. Your choosing one box is *strong evidence* the predictor foresaw this and filled Box B\u2014not because you caused it, but because your decision and the prediction share a common cause (the type of reasoner you are).\n\n## A Modern Resolution: Functional Decision Theory\n\n**Functional Decision Theory (FDT)**, developed by Yudkowsky and Soares, offers a compelling third framing. It says: don't ask \"what action should I take?\" but \"what *decision procedure* should I implement?\" The predictor simulated or modeled your decision procedure to make its prediction. So when you deliberate, you're not just choosing an action\u2014you're determining the output of the algorithm the predictor already evaluated.\n\nUnder FDT, you one-box, because the policy \"one-box in Newcomb problems\" reliably produces millionaires, while \"two-box\" reliably produces thousandaires.\n\n## My View\n\n**One-box.** The CDT argument has a seductive logical crispness, but it systematically loses to agents who reason differently. Any decision theory that predictably makes you poorer than an alternative theory\u2014in a problem specified in advance, with full information\u2014is failing at its one job. The two-boxer's \"dominance\" argument presupposes that your decision is independent of the box's contents, but the problem *stipulates* they're correlated at 99%. Ignoring that correlation to preserve a metaphysical intuition about causation costs you $989,000.\n\nThe deepest lesson of Newcomb's problem is that **rationality is about winning, not about following rules that feel locally airtight.** When a decision procedure tells you to do something that foreseeably makes you worse off, the procedure\u2014not reality\u2014is what needs revising.",
+      "tokens": 1309,
+      "time_ms": 15565
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Newcomb's Problem: A Deep Analysis\n\n## The Setup Recapped\n\nA near-perfect predictor (99% accurate) has **already made its prediction and filled the boxes** before you choose. The contents are fixed. You either take just Box B, or both Box A and Box B.\n\n---\n\n## The Case for Two-Boxing (Taking Both)\n\n**Grounding decision theory: Causal Decision Theory (CDT)**\n\nCDT says you should choose the action that *causally produces* the best outcome. Its core reasoning:\n\n- The prediction is **already made**. The money is either in Box B or it isn't. Your choice now cannot reach backward in time to change what's inside.\n- Consider the simple dominance argument: In **every possible state of the world**, taking both boxes gets you $1,000 more than taking one box.\n  - If Box B has $1,000,000 \u2192 both boxes yields $1,001,000 vs. $1,000,000\n  - If Box B is empty \u2192 both boxes yields $1,000 vs. $0\n- Taking both boxes **strictly dominates** taking one box. Dominance reasoning is among the most fundamental principles in decision theory.\n- Your act of choosing doesn't *cause* the prediction to change. Causation doesn't work backward. You're choosing between fixed states, not influencing them.\n\n**Strongest formulation:** \"I'm not choosing what the predictor predicted. I'm choosing what to do *given* a fixed reality. And in every fixed reality, taking both is better.\"\n\nKey proponents: **Robert Nozick** (who formulated the problem), **David Lewis**, **James Joyce**.\n\n---\n\n## The Case for One-Boxing (Taking Only Box B)\n\n**Grounding decision theory: Evidential Decision Theory (EDT)** and, more rigorously, **Functional Decision Theory (FDT)**\n\n### The EDT Argument\nEDT says you should choose the action such that, conditional on performing it, your **expected outcome** is highest.\n\n- If you're the kind of person who one-boxes, the predictor almost certainly predicted that, so Box B almost certainly contains $1,000,000. Expected value: ~$990,000.\n- If you're the kind of person who two-boxes, the predictor almost certainly predicted that, so Box B is almost certainly empty. Expected value: ~$11,000.\n- One-boxing has vastly higher expected value conditional on performing it.\n\n### The FDT Argument (more sophisticated)\nDeveloped by **Eliezer Yudkowsky and Nate Sobell**, FDT reasons about what *decision algorithm* to be running. The key insight:\n\n- The predictor's simulation and your actual decision are **correlated because they share the same logical structure**. The predictor modeled *your decision procedure* \u2014 the same one executing right now.\n- You're not choosing \"after\" the prediction in any meaningful sense. You're choosing what output your decision function produces, and that same function is what the predictor evaluated.\n- The question isn't \"can my choice change the box contents?\" but rather \"what decision procedure, if I commit to it, leads to the best outcomes in worlds with predictors like this?\"\n- An agent running a one-boxing algorithm **systematically wins**. An agent running a two-boxing algorithm **systematically loses**.\n\n**Strongest formulation:** \"The predictor is 99% accurate *because* of the correlation between my decision procedure and its prediction. I can't coherently say 'I'll take both boxes but the predictor probably predicted I'd take one.' If I'm taking both, the predictor almost certainly predicted that \u2014 and I face an empty Box B.\"\n\nKey proponents: **Yudkowsky**, **Arif Ahmed**, **Andy Egan**; empirically, most working decision theorists and philosophers surveyed lean one-box.\n\n---\n\n## The Crux of the Disagreement\n\n| Question | Two-Boxer's Answer | One-Boxer's Answer |\n|---|---|---|\n| Does your choice affect Box B's contents? | No (causal independence) | Not causally, but it's **correlated** \u2014 and that's what matters |\n| What should decision theory track? | Causal consequences of acts | Expected outcomes given the act, or the logical structure linking prediction and decision |\n| Is dominance reasoning decisive? | Yes | No \u2014 dominance reasoning assumes causal independence, but here the \"states\" aren't independent of your choice |\n| What does 99% accuracy mean? | A track record, but irrelevant to *this* fixed decision | Evidence that the correlation is real and exploitable |\n\n---\n\n## My Assessment\n\nThe two-boxing argument has a seductive logical clarity \u2014 strict dominance is a powerful principle. But it proves too much. A committed two-boxer must say: **\"Even if the predictor were 100% accurate \u2014 even if no two-boxer has ever found money in Box B \u2014 I should still take both.\"** At that point, you're defending a principle while reliably walking away with $1,000 instead of $1,000,000.\n\nThe one-boxer's position is that **a good decision theory is one that makes its adherents rich, not one that sounds clever while making them poor**. If you're the sort of agent that two-boxes, predictors model you as such, and you systematically lose. The correlation between your decision procedure and the prediction isn't a coincidence to be ignored \u2014 it's the entire mechanism of the problem.\n\nThis is ultimately a question about **what decision theory is for**: vindicating a notion of rational agency, or winning.",
+      "tokens": 1389,
+      "time_ms": 32463
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 8.0,
+        "correctness": 7.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.45,
+      "weighted_b": 8.35,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A is more factually reliable overall and cleanly maps one-boxing to EDT and two-boxing to CDT while adding FDT without notable errors. Response B is thorough and insightful, but it contains a likely factual mistake by attributing FDT to Yudkowsky and Nate Sobell rather than Soares, which lowers its correctness enough for A to win overall."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 10.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 8.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 9.45,
+      "weighted_b": 8.95,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A correctly identifies the authors of Functional Decision Theory (Yudkowsky and Soares), whereas Response B incorrectly names 'Nate Sobell'. Both provide excellent and deep analyses, but A's perfect factual accuracy makes it the winner."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 9.0,
+      "ab_winner": "TIE",
+      "contestant_winner": "tie",
+      "brief_justification": "Both responses are equally excellent in correctness, completeness, clarity, depth, and usefulness, covering all required aspects thoroughly and insightfully."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "tie": 1
+  },
+  "judges_agree": false
+}

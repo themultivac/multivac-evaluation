@@ -1,0 +1,102 @@
+{
+  "question_id": "CODE-013",
+  "category": "code",
+  "question_text": "This SQL query takes 45 seconds on a table with 10M rows. Rewrite it to run in under 1 second. Explain your optimization strategy.\n\n```sql\nSELECT u.name, u.email, \n       (SELECT COUNT(*) FROM orders ",
+  "timestamp": "2026-04-16T17:18:03.216844",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# SQL Query Optimization\n\n## Problems with the Original Query\n\n1. **Four correlated subqueries** \u2014 each executes once per user row, scanning `orders` repeatedly (N+1 pattern at SQL level)\n2. **Redundant aggregation** \u2014 the same `orders` rows are scanned 4 times per user (COUNT, SUM, MAX, and again in the WHERE)\n3. **Filtering after aggregation** \u2014 `HAVING COUNT(*) > 5` logic is done via subquery, preventing the optimizer from pruning early\n4. **No useful indexes** \u2014 `orders.user_id` has no index, so each subquery does a full table scan (10M rows \u00d7 N users = catastrophic)\n5. **ORDER BY on computed column** forces sorting the full result set\n\n## Optimized Query\n\n```sql\nSELECT u.name, u.email,\n       agg.order_count,\n       agg.total_spent,\n       agg.last_order\nFROM users u\nJOIN (\n    SELECT user_id,\n           COUNT(*)       AS order_count,\n           SUM(amount)    AS total_spent,\n           MAX(created_at) AS last_order\n    FROM orders\n    GROUP BY user_id\n    HAVING COUNT(*) > 5\n) agg ON agg.user_id = u.id\nWHERE u.created_at > '2024-01-01'\nORDER BY agg.total_spent DESC\nLIMIT 100;\n```\n\n### Why this is faster\n- The `orders` table is scanned **once**, aggregating all three metrics in a single pass\n- `HAVING` filters out users with \u22645 orders before the join\n- The join becomes a hash/merge join on indexed keys\n- Only a single sort step on the (now much smaller) aggregated result\n\n## Recommended Indexes\n\n```sql\n-- Critical: enables fast aggregation per user and join on user_id\nCREATE INDEX idx_orders_user_id ON orders(user_id);\n\n-- Better: covering index avoids heap lookups for amount/created_at\nCREATE INDEX idx_orders_user_covering\n    ON orders(user_id) INCLUDE (amount, created_at);\n\n-- Filters the users table to only recent accounts\nCREATE INDEX idx_users_created_at ON users(created_at);\n```\n\nThe covering index is the single biggest win: the aggregation subquery can execute entirely from the index without touching the `orders` heap.\n\n## Further Optimization (if still slow)\n\nIf the aggregated set is still large (millions of active users), push the filter down:\n\n```sql\nWITH recent_users AS (\n    SELECT id, name, email\n    FROM users\n    WHERE created_at > '2024-01-01'\n)\nSELECT ru.name, ru.email,\n       COUNT(*) AS order_count,\n       SUM(o.amount) AS total_spent,\n       MAX(o.created_at) AS last_order\nFROM recent_users ru\nJOIN orders o ON o.user_id = ru.id\nGROUP BY ru.id, ru.name, ru.email\nHAVING COUNT(*) > 5\nORDER BY total_spent DESC\nLIMIT 100;\n```\n\nThis lets the planner aggregate only over orders belonging to the (smaller) recent-users set, rather than aggregating the entire `orders` table first.\n\n## Expected Result\n\n- **Before:** 10M users \u00d7 subquery scans \u2248 45s\n- **After:** 1 index scan + 1 aggregation + 1 hash join \u2192 **typically 100\u2013500ms** depending on how many users have >5 orders since 2024-01-01.\n\n### Verification tip\nRun `EXPLAIN (ANALYZE, BUFFERS)` before/after \u2014 you should see the `Seq Scan on orders` replaced by an `Index Only Scan` and the 4 nested loops collapse into a single `HashAggregate` node.",
+      "tokens": 1583,
+      "time_ms": 17635
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# SQL Query Optimization: From 45s to <1s\n\n## The Problem Analysis\n\nThis query has **4 critical performance killers**:\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502  For EACH row in users (potentially millions):      \u2502\n\u2502                                                     \u2502\n\u2502  \u274c Correlated subquery 1: COUNT(*) from orders     \u2502\n\u2502  \u274c Correlated subquery 2: SUM(amount) from orders  \u2502\n\u2502  \u274c Correlated subquery 3: MAX(created_at) orders   \u2502\n\u2502  \u274c Correlated subquery 4: COUNT(*) again (WHERE)   \u2502\n\u2502                                                     \u2502\n\u2502  = 4 \u00d7 N full scans of the orders table             \u2502\n\u2502  With 10M rows: potentially BILLIONS of row reads   \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n## Optimized Query\n\n```sql\nSELECT \n    u.name,\n    u.email,\n    o_agg.order_count,\n    o_agg.total_spent,\n    o_agg.last_order\nFROM users u\nINNER JOIN (\n    SELECT \n        user_id,\n        COUNT(*)        AS order_count,\n        SUM(amount)     AS total_spent,\n        MAX(created_at) AS last_order\n    FROM orders\n    GROUP BY user_id\n    HAVING COUNT(*) > 5\n) o_agg ON o_agg.user_id = u.id\nWHERE u.created_at > '2024-01-01'\nORDER BY o_agg.total_spent DESC\nLIMIT 100;\n```\n\n## Required Indexes\n\n```sql\n-- Index 1: Filter users by date, cover name/email to avoid table lookups\nCREATE INDEX idx_users_created_covering \n    ON users (created_at, id, name, email);\n\n-- Index 2: Enable efficient GROUP BY and aggregate computation on orders\nCREATE INDEX idx_orders_user_agg \n    ON orders (user_id, created_at, amount);\n```\n\n## Why Each Optimization Matters\n\n### 1. Eliminate Correlated Subqueries \u2192 Single JOIN\n\n```\nBEFORE: 4 subqueries \u00d7 N users = O(4N) trips to orders table\nAFTER:  1 aggregation pass + 1 hash join = O(N) total\n\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 BEFORE (Row-by-Row)                                      \u2502\n\u2502                                                          \u2502\n\u2502 users row 1 \u2500\u2500\u2192 scan orders \u2500\u2500\u2192 COUNT                    \u2502\n\u2502              \u2500\u2500\u2192 scan orders \u2500\u2500\u2192 SUM                     \u2502\n\u2502              \u2500\u2500\u2192 scan orders \u2500\u2500\u2192 MAX                     \u2502\n\u2502              \u2500\u2500\u2192 scan orders \u2500\u2500\u2192 COUNT (filter)          \u2502\n\u2502 users row 2 \u2500\u2500\u2192 scan orders \u2500\u2500\u2192 COUNT                    \u2502\n\u2502              \u2500\u2500\u2192 ... (repeat millions of times)          \u2502\n\u2502                                                          \u2502\n\u2502 AFTER (Two Passes)                                       \u2502\n\u2502                                                          \u2502\n\u2502 Pass 1: Scan orders ONCE \u2500\u2500\u2192 GROUP BY user_id            \u2502\n\u2502         \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510         \u2502\n\u2502         \u2502 user_id \u2502 COUNT \u2502  SUM  \u2502    MAX     \u2502         \u2502\n\u2502         \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524         \u2502\n\u2502         \u2502    1    \u2502  12   \u2502 1500  \u2502 2024-03-01 \u2502         \u2502\n\u2502         \u2502    2    \u2502   3   \u2502  200  \u2502 2024-02-15 \u2502 \u2190 gone  \u2502\n\u2502         \u2502    7    \u2502   8   \u2502  950  \u2502 2024-04-10 \u2502         \u2502\n\u2502         \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518         \u2502\n\u2502                                                          \u2502\n\u2502 Pass 2: Hash join with filtered users                    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### 2. HAVING Clause Pushdown\n\n```sql\n-- The HAVING COUNT(*) > 5 filters INSIDE the aggregation\n-- This eliminates users with \u22645 orders BEFORE the join\n-- Reducing the join's right side dramatically\n```\n\n### 3. Index Design Rationale\n\n```\nidx_orders_user_agg ON orders (user_id, created_at, amount)\n\u2502\n\u251c\u2500\u2500 user_id first:    GROUP BY scans contiguous blocks\n\u251c\u2500\u2500 created_at next:  MAX(created_at) = last entry per group\n\u251c\u2500\u2500 amount included:  SUM(amount) from index, no table access\n\u2502\n\u2514\u2500\u2500 This is a COVERING INDEX \u2014 the query never touches\n    the actual orders table rows (index-only scan)\n\nidx_users_created_covering ON users (created_at, id, name, email)\n\u2502\n\u251c\u2500\u2500 created_at first: Range scan for WHERE > '2024-01-01'\n\u251c\u2500\u2500 id included:      JOIN condition satisfied from index\n\u251c\u2500\u2500 name, email:      SELECT columns covered\n\u2502\n\u2514\u2500\u2500 Another COVERING INDEX \u2014 no table lookups needed\n```\n\n## Execution Plan Comparison\n\n```\nBEFORE (estimated):\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n Sort (cost=~98,000,000)\n   \u2192 Filter (subquery count > 5)\n     \u2192 Seq Scan on users\n       \u2192 4\u00d7 Seq Scan on orders per row\n \n Estimated rows scanned: ~40 BILLION\n Time: 45 seconds\n\n\nAFTER (estimated):\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n Limit 100\n   \u2192 Sort (top-100 heapsort on total_spent)\n     \u2192 Hash Join (users \u2194 o_agg)\n       \u2192 Index Range Scan on idx_users_created_covering\n         (rows: ~subset of users after 2024-01-01)\n       \u2192 Hash (subquery o_agg)\n         \u2192 Index-Only Scan on idx_orders_user_agg\n           (single pass, grouped, HAVING applied)\n \n Estimated rows scanned: ~10M (orders) + filtered users\n Time: 200-800ms\n```\n\n## Further Optimizations If Needed\n\n### Option A: Materialized View (if data freshness allows)\n\n```sql\n-- Pre-compute aggregates, refresh periodically\nCREATE MATERIALIZED VIEW user_order_stats AS\nSELECT \n    user_id,\n    COUNT(*)        AS order_count,\n    SUM(amount)     AS total_spent,\n    MAX(created_at) AS last_order\nFROM orders\nGROUP BY user_id;\n\nCREATE UNIQUE INDEX idx_uos_user ON user_order_stats (user_id);\nCREATE INDEX idx_uos_spent ON user_order_stats (total_spent DESC);\n\n-- Query becomes trivial:\nSELECT u.name, u.email, s.order_count, s.total_spent, s.last_order\nFROM users u\nJOIN user_order_stats s ON s.user_id = u.id\nWHERE u.created_at > '2024-01-01'\n  AND s.order_count > 5\nORDER BY s.total_spent DESC\nLIMIT 100;\n-- Runs in ~5ms\n```\n\n### Option B: Partial Index (PostgreSQL)\n\n```sql\n-- If most users have \u22645 orders, index only the heavy buyers\nCREATE INDEX idx_orders_active_users \n    ON orders (user_id, amount, created_at)\n    WHERE user_id IN (\n        SELECT user_id FROM orders \n        GROUP BY user_id HAVING COUNT(*) > 5\n    );\n-- Note: this is conceptual \u2014 actual implementation would \n-- use a different filtering strategy\n```\n\n### Option C: Push LIMIT into the aggregation (advanced)\n\n```sql\n-- If you know most high-spenders are recent users,\n-- you can hint the optimizer with a CTE:\nWITH recent_users AS (\n    SELECT id, name, email\n    FROM users\n    WHERE created_at > '2024-01-01'\n)\nSELECT ru.name, ru.email, o_agg.*\nFROM recent_users ru\nJOIN LATERAL (\n    SELECT COUNT(*) AS order_count,\n           SUM(amount) AS total_spent,",
+      "tokens": 2265,
+      "time_ms": 35113
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 7.0,
+        "correctness": 6.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 8.35,
+      "weighted_b": 6.95,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A gives a solid rewrite, appropriate index recommendations, and a sensible alternative that can reduce work by joining recent users first. Response B is clear but includes questionable claims about guaranteed sub-second performance and suggests an invalid/unsupported partial-index approach, reducing correctness."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 8.0,
+        "completeness": 6.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 7.25,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B provided a complete, highly accurate answer with an excellent secondary optimization (CTE) and was not cut off at the end like Response A."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 10.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.8,
+      "weighted_b": 8.2,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provided a more thorough analysis, deeper optimization strategies, clearer execution plan comparisons, and more actionable index recommendations with covering indexes."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

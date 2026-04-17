@@ -1,0 +1,101 @@
+{
+  "question_id": "REASON-026",
+  "category": "reasoning",
+  "question_text": "A teacher gives a test. Students who scored in the top 10% get praised. Students who scored in the bottom 10% get extra tutoring. On the next test, the top scorers decline slightly and the bottom scor",
+  "timestamp": "2026-04-16T18:04:52.913554",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# (1) What's actually happening: Regression to the Mean\n\nTest scores = true ability + random noise (lucky guesses, how you slept, which questions happened to appear, etc.).\n\nStudents who score in the **top 10%** are disproportionately likely to have had *positive* noise on top of high ability. On retest, the noise resets toward zero on average, so their scores drift down \u2014 even if nothing about them changed.\n\nStudents who score in the **bottom 10%** had disproportionately *negative* noise. On retest, noise again averages out, so their scores drift up \u2014 even with no intervention.\n\nThis pattern would appear **even if praise and tutoring did literally nothing**. The teacher has mistaken a statistical artifact for a causal effect. (This is essentially the example Kahneman uses in *Thinking, Fast and Slow* about Israeli flight instructors.)\n\n# (2) A Study Design That Separates RTM from Real Effects\n\nThe core fix: **don't select on extreme scores and then treat everyone in the extreme group.** Use a control group drawn from the same extreme.\n\n**Randomized Controlled Design:**\n1. Administer Test 1 to all students.\n2. Identify the top 10% and bottom 10%.\n3. Within each extreme group, **randomly** assign half to treatment (praise / tutoring) and half to no intervention.\n4. Administer Test 2.\n5. Compare treatment vs. control *within* each extreme group.\n\nBoth subgroups in the bottom 10% will regress upward; both subgroups in the top 10% will regress downward. The **difference** between treated and untreated students in the same stratum isolates the real causal effect.\n\n**Supplementary tools:**\n- **Multiple baseline tests** before intervention to estimate each student's \"true\" score and reduce noise-based selection.\n- **Regression discontinuity** at the 10% cutoff: students just above vs. just below the threshold are near-identical in ability, so differences in outcomes reflect treatment, not RTM.\n- **Reliability analysis** of the test itself \u2014 less reliable tests produce more RTM.\n\n# (3) Real-World Policy Examples of the Same Fallacy\n\n**1. Speed cameras and \"black spot\" road safety.**\nGovernments install cameras at intersections with the most accidents in a given year. Accidents drop the next year and officials claim success. But intersections chosen *because* of an unusually bad year would have improved anyway. Studies that fail to use control intersections systematically overestimate camera effectiveness, leading to overinvestment and misallocation of safety budgets.\n\n**2. School/hospital \"turnaround\" interventions.**\nSchools with the worst test scores or hospitals with the worst mortality rates get flagged for mandatory reform programs. Performance improves the following year, and the reform is declared a success and scaled up nationally. Much of that improvement is RTM \u2014 the worst-performing institutions in year *t* are disproportionately those having an unusually bad year. Real examples include critiques of UK hospital \"failing trust\" interventions and US No Child Left Behind school-improvement designations.\n\n**3. Financial regulation and \"crackdown\" policies after crises.**\nRegulators intervene aggressively in sectors after a record-bad year (bank failures, fund losses, fraud spikes). The next year looks better, and the regulation is credited. But extreme years are extreme partly due to noise; some reversion is automatic. This can entrench burdensome rules whose actual marginal benefit is much smaller than claimed \u2014 or conversely, lead to premature deregulation after a quiet year following a bad one.\n\n**Other canonical cases:** the \"Sports Illustrated cover jinx,\" CEO replacement after a bad quarter, alternative-medicine testimonials (people try remedies when symptoms peak), and the flight-instructor example (punishment \"works,\" praise \"backfires\").\n\nThe common structure: **select on an extreme outcome \u2192 intervene \u2192 observe regression \u2192 credit (or blame) the intervention.** Without a control group drawn from the same extreme, the conclusion is unfounded.",
+      "tokens": 1490,
+      "time_ms": 25796
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Regression to the Mean: A Complete Analysis\n\n## (1) What's Actually Happening\n\nThe teacher is observing **regression to the mean** and misattributing it to causal interventions.\n\n**The core mechanism:**\n\nAny test score is a combination of two components:\n\n```\nObserved Score = True Ability + Random Fluctuation (luck, sleep, mood, guessing)\n```\n\nStudents who scored in the **top 10%** likely had true ability working in their favor *plus* positive random fluctuation. On a retest, that lucky component is unlikely to repeat at the same magnitude, so their scores drift downward toward their true average.\n\nStudents who scored in the **bottom 10%** likely experienced negative random fluctuation. On a retest, that unlucky component is unlikely to repeat, so their scores drift upward toward their true average.\n\n**This would happen with no intervention at all.** The teacher is watching a purely statistical phenomenon and constructing a causal narrative around it.\n\nThe critical error is comparing post-intervention scores to the *selected extreme scores* rather than to what would have happened without intervention. The teacher has no counterfactual. She is essentially saying \"I observed the most predictable statistical artifact in the world and decided my actions caused it.\"\n\n---\n\n## (2) A Study Design That Separates Regression from Real Effects\n\n### Randomized Controlled Trial with Stratified Assignment\n\n**Step 1: Establish baseline**\nAdminister Test 1 to all students. Identify the top 10% and bottom 10%.\n\n**Step 2: Randomize within extreme groups**\n\n```\nBottom 10% Scorers (n = 40)\n\u251c\u2500\u2500 Random assignment: Tutoring Group (n = 20)\n\u2514\u2500\u2500 Random assignment: Control Group (n = 20) \u2014 no tutoring\n\nTop 10% Scorers (n = 40)\n\u251c\u2500\u2500 Random assignment: Praise Group (n = 20)\n\u2514\u2500\u2500 Random assignment: Control Group (n = 20) \u2014 no praise\n\nMiddle 80% (n = 320)\n\u251c\u2500\u2500 Random subset gets praise (n = 20)\n\u251c\u2500\u2500 Random subset gets tutoring (n = 20)\n\u2514\u2500\u2500 Remainder: no intervention\n```\n\n**Step 3: Administer Test 2 to everyone**\n\n**Step 4: Analysis**\n\n| Comparison | What It Reveals |\n|---|---|\n| Bottom 10% tutoring vs. bottom 10% control | True tutoring effect *separated from* regression to mean |\n| Top 10% praise vs. top 10% control | True praise effect *separated from* regression to mean |\n| Bottom 10% control on Test 2 vs. Test 1 | Pure regression to the mean (no intervention) |\n| Top 10% control on Test 2 vs. Test 1 | Pure regression to the mean (no intervention) |\n| Middle 80% subgroups with interventions | Effects on non-extreme students (no regression confound) |\n\n**Why this works:** Both the treatment and control groups within each extreme band will experience identical regression to the mean. Any *additional* improvement or decline in the treatment group beyond what the control group shows is attributable to the intervention.\n\n**Additional strengthening measures:**\n- Use multiple baseline tests to get more reliable estimates of true ability before selection\n- Pre-register the analysis plan\n- Measure effect sizes, not just significance\n- Include a delayed third test to assess persistence of effects\n\n---\n\n## (3) Three Real-World Examples of This Fallacy Driving Bad Policy\n\n### Example 1: Speed Cameras and Traffic Safety\n\n**The situation:** A city installs speed cameras at intersections that had unusually high accident rates last year. The following year, accidents at those locations decline. Officials declare the cameras a success and expand the program.\n\n**The regression problem:** Locations were selected *because* they had extreme values. Some of those accidents reflected genuinely dangerous intersections, but some reflected random clustering. Accidents at those locations would have partially declined anyway. Meanwhile, other previously average locations may now experience spikes, which officials interpret as \"new problem areas\" rather than the same random variation.\n\n**The policy damage:** Resources get allocated based on a phantom effect size. The cameras may have *some* real effect, but the city dramatically overestimates it, potentially diverting funds from infrastructure improvements (better lighting, road redesign) that might have larger true effects. Cost-benefit analyses built on inflated effect sizes lead to systematic misallocation.\n\n### Example 2: \"Crackdowns\" on Crime Hotspots\n\n**The situation:** A police department identifies neighborhoods with the worst crime statistics in a given quarter. They deploy intensive policing, task forces, and community interventions. Next quarter, crime in those neighborhoods drops. The chief credits the crackdown strategy and it becomes departmental doctrine.\n\n**The regression problem:** Crime statistics fluctuate. Neighborhoods selected for having the *worst* quarter will, on average, have a less extreme next quarter regardless of intervention. The department never examines what happens in neighborhoods with equally bad statistics that didn't receive the crackdown (because there's no control group in standard policing). Additionally, crime may simply displace to adjacent areas, creating the illusion of a new hotspot that \"needs\" the next crackdown.\n\n**The policy damage:** Aggressive policing tactics get validated by statistical artifact, entrenching confrontational approaches over community-based alternatives. The department builds an institutional belief in a strategy whose true effect size is unknown, while the social costs of intensive policing in those communities (erosion of trust, over-incarceration) are very real.\n\n### Example 3: Business Performance Interventions and the \"Sports Illustrated Cover Jinx\"\n\n**The situation:** A corporation identifies its worst-performing divisions, fires the managers, installs new leadership, and restructures. The following year, those divisions improve. The CEO writes in the annual report that \"decisive leadership intervention turned around our struggling units.\" Simultaneously, last year's top-performing divisions decline, and the narrative becomes \"complacency set in.\"\n\n**The regression problem:** Divisional performance depends on market conditions, competitor behavior, product cycles, and randomness. Divisions selected for extreme underperformance were partially unlucky. New managers get credit for regression to the mean. Fired managers get blamed for what was partly bad luck. The same logic applies to the \"Sports Illustrated cover jinx\" \u2014 athletes featured after extraordinary seasons tend to decline, not because of a curse, but because extraordinary seasons contain extraordinary luck.\n\n**The policy damage:** Organizations develop a culture of reactive, punitive management. They fire people for bad luck and promote people for good luck, creating massive organizational churn. They never learn what actually drives performance because they can't distinguish signal from noise. Worse, they become convinced that disruption itself is the solution, leading to constant restructuring that destroys institutional knowledge and employee morale. Strategic patience \u2014 staying the course through a bad quarter \u2014 becomes impossible when the board \"knows\" that firing people fixes things.\n\n---\n\n## The Deeper Lesson\n\nRegression to the mean is arguably the **single most underappreciated statistical phenomenon in human decision-making.** Daniel Kahneman has called it the concept he most wishes everyone understood. The pattern is always the same:\n\n1. Select cases based on extreme performance\n2. Observe them moving toward the average\n3. Attribute the movement to whatever happened in between\n\nThe antidote is always the same: **you need a control group.** Without knowing what would have happened absent your intervention, you are narrating noise.",
+      "tokens": 1801,
+      "time_ms": 42398
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 9.25,
+      "weighted_b": 9.45,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Both responses are highly accurate, but Response B is slightly more complete and structured, with a clearer study design, explicit control comparisons, and stronger real-world policy examples tied to concrete harms."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 10.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 10.0,
+        "depth": 9.0,
+        "usefulness": 10.0,
+        "correctness": 10.0,
+        "completeness": 10.0
+      },
+      "weighted_a": 9.05,
+      "weighted_b": 9.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B provides a more thoroughly structured study design and breaks down the real-world examples into situation, problem, and policy damage, offering greater depth and clarity."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 8.45,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provided a more thorough and detailed analysis, including a comprehensive study design with a structured table and deeper real-world examples with specific policy consequences."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 3
+  },
+  "judges_agree": true
+}

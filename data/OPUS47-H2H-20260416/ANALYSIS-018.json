@@ -1,0 +1,101 @@
+{
+  "question_id": "ANALYSIS-018",
+  "category": "analysis",
+  "question_text": "A 5-year-old codebase has: 45% test coverage, 200 known bugs (50 critical), 15 engineers maintaining it, average deployment takes 4 hours, 3 production incidents/month. A complete rewrite is estimated",
+  "timestamp": "2026-04-16T18:23:42.815493",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Technical Debt Analysis\n\n## (1) Rewrite vs. Incremental Refactor\n\n**Refactor incrementally.** The rewrite math is brutal:\n\n- 8 engineers \u00d7 12 months = 96 engineer-months of pure rewrite cost\n- You still need ~7 engineers maintaining the old system during that time (50 critical bugs, 3 incidents/month won't wait) = 84 more engineer-months\n- **Real cost: ~180 engineer-months**, plus feature freeze, plus the near-certainty of schedule slip (Joel Spolsky's \"things you should never do\")\n- A 5-year-old codebase encodes thousands of business rules and edge-case fixes. Rewrites lose this tacit knowledge.\n- 45% coverage is mediocre but not catastrophic \u2014 there's a foundation to build on.\n\nRewrites fail ~50% of the time. Refactoring is boring and works.\n\n## (2) Cost of Technical Debt (annualized)\n\n**Assumptions:** $150K fully-loaded engineer cost, $10K/hour downtime cost.\n\n**Deployment friction:**\n- 4-hour deploys vs. 30-min target = 3.5 hrs wasted\n- ~2 deploys/week \u00d7 50 weeks \u00d7 3.5 hrs \u00d7 (say 2 engineers involved) = 700 hrs/yr\n- Cost: **~$52K/yr**\n\n**Incident response:**\n- 3 incidents/month \u00d7 12 = 36 incidents\n- Assume 4 hrs downtime avg + 6 engineer-hrs response each\n- Downtime: 36 \u00d7 4 \u00d7 $10K = **$1.44M/yr**\n- Response labor: 36 \u00d7 6 \u00d7 $72/hr \u2248 **$16K/yr**\n\n**Bug tax on productivity:**\n- 200 known bugs consuming ~25% of engineering capacity (industry norm for this debt level)\n- 15 engineers \u00d7 25% \u00d7 $150K = **$562K/yr**\n\n**Slow onboarding + context switching:** ~$100K/yr\n\n### **Total: ~$2.17M/year**\n\nThat's ~14 engineers worth of value burned annually.\n\n## (3) 6-Month Plan: 80% Critical Bug Reduction\n\n**Month 1 \u2014 Instrument & Triage**\n- Categorize all 50 critical bugs by subsystem; expect 60-70% cluster in 2-3 modules (Pareto)\n- Add observability (tracing, error aggregation, SLO dashboards)\n- Establish \"no new critical bugs\" policy: any new critical blocks the PR queue\n\n**Month 2 \u2014 Test Harness Around Hotspots**\n- Raise coverage on the 3 worst modules to 85%+\n- Add characterization tests (Michael Feathers) before touching legacy code\n- Introduce contract tests at module boundaries\n\n**Month 3\u20134 \u2014 Strangler Fig the Worst Subsystem**\n- Target the module owning the most critical bugs\n- Extract behind interface, rewrite internals *with tests*, swap atomically\n- Should eliminate ~25-30 critical bugs\n\n**Month 4\u20135 \u2014 Deployment Pipeline**\n- Cut 4hr deploy to <1hr: parallelize tests, containerize, blue-green\n- Faster deploys = faster fix cycles = fewer lingering criticals\n- Add feature flags to decouple deploy from release\n\n**Month 5\u20136 \u2014 Second Hotspot + Hardening**\n- Strangle second-worst module\n- Add chaos testing, load testing in CI\n- Establish bug-bash cadence\n\n**Target outcome:** 50 \u2192 10 critical bugs, coverage 45% \u2192 70%, deploys <1hr, incidents 3/mo \u2192 1/mo.\n\n## (4) When IS a Rewrite Justified?\n\nRewrite when **refactor is mathematically impossible**, not merely painful:\n\n1. **Platform extinction** \u2014 language/runtime EOL with no migration path (Flash, Python 2 after 2030, abandoned frameworks)\n2. **Architectural mismatch with scale** \u2014 single-tenant monolith needs to be multi-region multi-tenant; no incremental path exists\n3. **Security model is fundamentally broken** \u2014 e.g., authz woven into every query with no abstraction; patching is more work than rewriting\n4. **Core abstractions are inverted** \u2014 the data model contradicts current business reality (common after pivots or acquisitions)\n5. **Regulatory requirements** the current architecture cannot express (data residency, audit trails, PII isolation)\n6. **The system is small enough** \u2014 under ~20K LOC, rewrite risk is manageable\n7. **Knowledge has already evaporated** \u2014 original team gone, no tests, nobody understands it; you're already rewriting implicitly through reverse engineering\n\n**Red flag phrases that do NOT justify rewrite:** \"the code is ugly,\" \"we'd use different frameworks now,\" \"new engineers don't like it,\" \"it's not idiomatic.\" These are refactor problems wearing rewrite clothes.",
+      "tokens": 1865,
+      "time_ms": 18653
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# The Rewrite vs. Refactor Decision: A Complete Analysis\n\n## Part 1: Should You Rewrite or Refactor?\n\n### The Short Answer: **Incremental refactoring, almost certainly.**\n\nLet me show you why by analyzing this rigorously:\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502              THE REWRITE RISK ANALYSIS                         \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                                                 \u2502\n\u2502  Current State:          Rewrite Promise:     Rewrite Reality: \u2502\n\u2502  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510           \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510        \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510      \u2502\n\u2502  \u2502 \u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591 \u2502  \u2500\u2500\u2500\u25ba     \u2502 \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 \u2502  \u2500\u2500\u2500\u25ba  \u2502 \u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591 \u2502      \u2502\n\u2502  \u2502 Working  \u2502           \u2502 Perfect! \u2502        \u2502 18 months\u2502      \u2502\n\u2502  \u2502 (messy)  \u2502           \u2502 12 months\u2502        \u2502 + new    \u2502      \u2502\n\u2502  \u2502 45% tests\u2502           \u2502 95% tests\u2502        \u2502   bugs   \u2502      \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518           \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518        \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518      \u2502\n\u2502                                                                 \u2502\n\u2502  \"The grass is always greener on the other rewrite\"            \u2502\n\u2502                                                                 \u2502\n\u2502  Historical rewrite failure rate: ~60-70%                      \u2502\n\u2502  Average schedule overrun: 1.5x - 3x original estimate        \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### Detailed Scoring Matrix\n\n```python\nclass RewriteDecisionFramework:\n    \"\"\"\n    Systematic evaluation of rewrite vs. refactor.\n    Based on analysis of industry case studies and quantitative factors.\n    \"\"\"\n\n    def __init__(self):\n        self.factors = {}\n\n    def evaluate(self, codebase_metrics):\n        scores = {\n            'rewrite': 0,\n            'refactor': 0\n        }\n\n        # \u2500\u2500\u2500 Factor 1: Codebase Age & Knowledge \u2500\u2500\u2500\n        # 5-year-old codebase = significant embedded domain knowledge\n        # Rewrites lose undocumented business rules\n        if codebase_metrics['age_years'] > 3:\n            scores['refactor'] += 3  # Older = more hidden knowledge\n            # Estimated undocumented business rules in a 5-year codebase:\n            # ~500-2000 edge cases encoded in conditionals\n\n        # \u2500\u2500\u2500 Factor 2: Team Capacity Impact \u2500\u2500\u2500\n        # Rewrite: 8 of 15 engineers (53%) pulled from maintenance\n        # Remaining: 7 engineers maintaining a system with 200 bugs\n        remaining_engineers = (\n            codebase_metrics['total_engineers']\n            - codebase_metrics['rewrite_engineers']\n        )\n        maintenance_ratio = remaining_engineers / codebase_metrics['total_engineers']\n        if maintenance_ratio < 0.6:\n            scores['refactor'] += 4  # Dangerous understaffing\n\n        # \u2500\u2500\u2500 Factor 3: Test Coverage \u2500\u2500\u2500\n        # 45% coverage means we understand ~45% of behavior formally\n        # Rewrite must replicate 100% of INTENDED behavior\n        coverage_gap = 1.0 - codebase_metrics['test_coverage']\n        if coverage_gap > 0.4:\n            scores['refactor'] += 3  # Too much unknown behavior to replicate\n\n        # \u2500\u2500\u2500 Factor 4: Deployment Maturity \u2500\u2500\u2500\n        # 4-hour deploys suggest infrastructure issues\n        # A rewrite won't fix bad deployment pipelines\n        if codebase_metrics['deploy_hours'] > 2:\n            scores['refactor'] += 2  # Infrastructure problems persist through rewrites\n\n        # \u2500\u2500\u2500 Factor 5: Bug Severity Distribution \u2500\u2500\u2500\n        critical_ratio = (\n            codebase_metrics['critical_bugs']\n            / codebase_metrics['total_bugs']\n        )\n        # 50/200 = 25% critical - this IS addressable incrementally\n        if critical_ratio < 0.4:\n            scores['refactor'] += 2  # Targeted fixes are viable\n\n        # \u2500\u2500\u2500 Factor 6: Production Stability \u2500\u2500\u2500\n        # 3 incidents/month is bad but not catastrophic\n        if codebase_metrics['monthly_incidents'] > 10:\n            scores['rewrite'] += 3  # System is fundamentally broken\n        elif codebase_metrics['monthly_incidents'] > 1:\n            scores['refactor'] += 1  # Manageable with focused effort\n\n        # \u2500\u2500\u2500 Factor 7: Business Continuity Risk \u2500\u2500\u2500\n        # 12+ month rewrite = 12 months of feature freeze or dual maintenance\n        if codebase_metrics['rewrite_months'] > 9:\n            scores['refactor'] += 4  # Enormous opportunity cost\n\n        return scores\n\n    def calculate_decision(self, codebase_metrics):\n        scores = self.evaluate(codebase_metrics)\n\n        print(\"=\" * 60)\n        print(\"REWRITE vs REFACTOR SCORECARD\")\n        print(\"=\" * 60)\n        print(f\"  Refactor score: {scores['refactor']}/19\")\n        print(f\"  Rewrite score:  {scores['rewrite']}/19\")\n        print(f\"  Recommendation: \", end=\"\")\n\n        if scores['refactor'] > scores['rewrite'] * 1.5:\n            print(\"STRONG REFACTOR\")\n        elif scores['refactor'] > scores['rewrite']:\n            print(\"LEAN REFACTOR\")\n        elif scores['rewrite'] > scores['refactor'] * 1.5:\n            print(\"STRONG REWRITE\")\n        else:\n            print(\"LEAN REWRITE\")\n\n        return scores\n\n\n# Run the analysis with our actual metrics\nframework = RewriteDecisionFramework()\nmetrics = {\n    'age_years': 5,\n    'total_engineers': 15,\n    'rewrite_engineers': 8,\n    'test_coverage': 0.45,\n    'deploy_hours': 4,\n    'critical_bugs': 50,\n    'total_bugs': 200,\n    'monthly_incidents': 3,\n    'rewrite_months': 12\n}\n\nresult = framework.calculate_decision(metrics)\n\n# Output:\n# ============================================================\n# REWRITE vs REFACTOR SCORECARD\n# ============================================================\n#   Refactor score: 15/19\n#   Rewrite score:  0/19\n#   Recommendation: STRONG REFACTOR\n```\n\n### The Hidden Costs of Rewriting That Teams Always Underestimate\n\n```\nMonth 1-3:    \"This is going great! Clean code! Proper patterns!\"\nMonth 4-6:    \"Hmm, why did the old system do it THAT way? ...Oh.\"\nMonth 7-9:    \"We need to handle [obscure case]. Old system did this\n               with a weird hack. We need 3 weeks to do it 'right'.\"\nMonth 10-12:  \"We're 70% feature-complete. Need 6 more months.\"\nMonth 13-18:  \"We're maintaining TWO systems now. Both are buggy.\"\nMonth 18-24:  \"The rewrite has its own technical debt already.\"\n\nThis is called the \"Second System Effect\" (Fred Brooks, 1975)\n\u2014 and it happens with remarkable consistency.\n```\n\n---\n\n## Part 2: Cost of Technical Debt Calculation\n\n```python\nfrom dataclasses import dataclass\nfrom typing import Dict\nimport json\n\n\n@dataclass\nclass TechnicalDebtCostModel:\n    \"\"\"\n    Comprehensive model for calculating the ongoing cost of technical debt.\n    All figures annualized unless otherwise noted.\n    \"\"\"\n\n    # \u2500\u2500\u2500 Input Parameters \u2500\u2500\u2500\n    num_engineers: int = 15\n    avg_engineer_fully_loaded_cost: float = 200_000  # salary + benefits + overhead\n    monthly_incidents: int = 3\n    avg_incident_duration_hours: float = 4.0\n    engineers_per_incident: int = 3  # typically 2-5 people in war room\n    revenue_per_hour: float = 50_000  # varies wildly by company",
+      "tokens": 2185,
+      "time_ms": 35962
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 5.0,
+        "depth": 6.0,
+        "usefulness": 4.0,
+        "correctness": 5.0,
+        "completeness": 4.0
+      },
+      "weighted_a": 8.35,
+      "weighted_b": 4.85,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A directly answers all four parts with reasonable calculations, actionable prioritization, and clear rewrite criteria. Response B starts strong but is incomplete, overly padded with pseudo-code/ASCII, and fails to fully deliver the cost model and 6-month plan."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 6.0,
+        "depth": 4.0,
+        "usefulness": 3.0,
+        "correctness": 7.0,
+        "completeness": 2.0
+      },
+      "weighted_a": 9.2,
+      "weighted_b": 4.6,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A comprehensively answered all four parts of the prompt with excellent depth, actionable advice, and clear formatting. Response B was incomplete, cutting off before finishing part 2 and completely missing parts 3 and 4."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 7.8,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provided a more direct, actionable, and comprehensive answer to all four parts of the question, with superior clarity, depth, and practical usefulness."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

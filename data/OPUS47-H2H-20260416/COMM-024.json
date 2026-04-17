@@ -1,0 +1,103 @@
+{
+  "question_id": "COMM-024",
+  "category": "communication",
+  "question_text": "Rewrite these technical feature descriptions as customer-facing value propositions: (1) 'We use a distributed event-driven architecture with CQRS.' (2) 'Our model achieves 0.94 F1 score on the benchma",
+  "timestamp": "2026-04-16T19:06:39.505982",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "Here are customer-facing rewrites that focus on the \"why it matters\" rather than the technical implementation:\n\n**(1) Distributed event-driven architecture with CQRS**\n\u2192 \"Your system keeps responding instantly, even during traffic spikes or when parts of the platform are under heavy load. No slowdowns, no waiting \u2014 everything just works, together.\"\n\n**(2) 0.94 F1 score on the benchmark**\n\u2192 \"Our AI gets it right the vast majority of the time, so you spend less time correcting mistakes and more time trusting the results. Fewer false alarms, fewer missed catches.\"\n\n**(3) Built on Kubernetes with auto-scaling and 99.99% SLA**\n\u2192 \"Whether you have 10 users or 10 million, the platform scales automatically without you lifting a finger \u2014 and we guarantee it's available when you need it, with less than an hour of downtime per year.\"\n\n**(4) End-to-end encryption with AES-256 and RSA key exchange**\n\u2192 \"Your data is protected by the same security standards used by banks and governments. Only you and the people you authorize can ever read it \u2014 not us, not anyone else.\"\n\n**(5) Sub-100ms p99 latency with edge caching**\n\u2192 \"Everything feels instant. No waiting, no spinning wheels \u2014 your team stays in flow, and your customers never lose patience, no matter where they are in the world.\"\n\n---\n\n**The pattern behind these rewrites:**\n- Replace architecture terms with **outcomes** (\"stays responsive\" vs. \"event-driven\")\n- Translate metrics into **stakes** (\"less than an hour of downtime per year\" vs. \"99.99% SLA\")\n- Swap jargon for **familiar comparisons** (\"used by banks\" vs. \"AES-256\")\n- Lead with **what the customer feels or gains**, not what you built",
+      "tokens": 789,
+      "time_ms": 6375
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Technical Features \u2192 Customer Value Propositions\n\n## 1. Event-Driven Architecture with CQRS\n\n**Before:** *\"We use a distributed event-driven architecture with CQRS.\"*\n\n**After:**\n> **Every action you take is reflected instantly across your entire workspace.** Your team sees changes in real time \u2014 no refreshing, no syncing delays, no \"wait, I'm looking at an old version.\" Even at scale, the system stays snappy whether you're reading dashboards or making updates.\n\n**The core value:** Real-time reliability and speed, even when your whole team works simultaneously.\n\n---\n\n## 2. 0.94 F1 Score on Benchmark\n\n**Before:** *\"Our model achieves 0.94 F1 score on the benchmark.\"*\n\n**After:**\n> **It gets the right answer 19 out of 20 times** \u2014 and just as importantly, it almost never gives you a confident answer that turns out to be wrong. That means fewer false alarms to chase down and fewer real issues slipping through the cracks.\n\n**The core value:** You can actually trust the results enough to make decisions on them.\n\n---\n\n## 3. Kubernetes with Auto-Scaling and 99.99% SLA\n\n**Before:** *\"Built on Kubernetes with auto-scaling and 99.99% SLA.\"*\n\n**After:**\n> **The system works on your busiest day just as well as your quietest.** Whether 50 people log in or 50,000, performance stays the same \u2014 and we guarantee less than **53 minutes of downtime per year.** You'll never have to plan around our limitations.\n\n**The core value:** It scales with you, and it's always on when you need it.\n\n---\n\n## 4. AES-256 Encryption with RSA Key Exchange\n\n**Before:** *\"End-to-end encryption with AES-256 and RSA key exchange.\"*\n\n**After:**\n> **Your data is locked from the moment it leaves your device until the moment it arrives \u2014 and no one in between can read it.** Not hackers, not us, not anyone. It's the same grade of protection used by banks and governments, applied to every single message and file you share.\n\n**The core value:** Your sensitive information stays yours. Period.\n\n---\n\n## 5. Sub-100ms p99 Latency with Edge Caching\n\n**Before:** *\"Sub-100ms p99 latency with edge caching.\"*\n\n**After:**\n> **Every click feels instant \u2014 no matter where in the world you're working from.** Whether your team is in Tokyo, Toronto, or Tallinn, the experience feels local. Even in the worst case, pages respond faster than the blink of an eye.\n\n**The core value:** It feels fast for everyone, everywhere, all the time.\n\n---\n\n## The Pattern to Remember\n\n```\nTechnical Feature    \u2192  \"So what?\"         \u2192  Customer Value\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nArchitecture         \u2192  What they FEEL      \u2192  \"It's instant and reliable\"\nModel accuracy       \u2192  What they TRUST     \u2192  \"I can act on this\"\nInfrastructure       \u2192  What they FORGET    \u2192  \"It just works\"\nEncryption           \u2192  What they FEAR      \u2192  \"My data is safe\"\nLatency              \u2192  What they EXPERIENCE\u2192  \"It's fast everywhere\"\n```\n\n> **The golden rule:** Customers don't buy *mechanisms*. They buy **outcomes, feelings, and eliminated fears.** Lead with the problem they *already worry about*, then tell them it's solved.",
+      "tokens": 972,
+      "time_ms": 19677
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 8.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.95,
+      "weighted_b": 8.25,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A is more complete and polished, with stronger customer-facing framing for each item and clearer articulation of why each feature matters. While B is slightly more cautious on technical claims, A delivers greater depth and practical value overall."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "depth": 8.0,
+        "clarity": 9.0,
+        "usefulness": 8.0,
+        "completeness": 8.0,
+        "correctness": 8.0
+      },
+      "scores_b": {
+        "depth": 9.0,
+        "clarity": 9.0,
+        "usefulness": 9.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 8.2,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B provides more accurate translations of the specific technical terms (e.g., capturing the read/write separation of CQRS and the precision/recall balance of F1 scores) and formats the output with excellent clarity.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:16:25.556645"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.6,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B provides slightly more complete and insightful value propositions, with a clearer, more structured pattern summary that enhances depth and usefulness."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 3
+  },
+  "judges_agree": true
+}

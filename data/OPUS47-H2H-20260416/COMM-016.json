@@ -1,0 +1,104 @@
+{
+  "question_id": "COMM-016",
+  "category": "communication",
+  "question_text": "Explain how HTTPS works to someone who only knows that 'the lock icon means secure.' Cover: (1) What actually happens when you type https://example.com, (2) Why you need certificates, (3) What a man-i",
+  "timestamp": "2026-04-16T18:53:21.128060",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# How the Lock Icon Actually Works\n\n### 1. What happens when you visit a website\n\nImagine you want to send a letter to a friend across a crowded room full of strangers who will pass it hand-to-hand. Anything you write plainly, everyone reads.\n\nSo before sending anything, you and your friend do a quick trick: you invent a secret language together, right there on the spot. Now when notes pass through the crowd, the strangers just see gibberish. Only your friend understands.\n\nThat's roughly what your browser and the website do the moment you hit enter. In a split second, they agree on a private \"language\" only the two of them can read, and everything after \u2014 your password, your messages, your credit card \u2014 travels as nonsense to anyone watching.\n\n### 2. Why you need the ID card\n\nBut wait \u2014 how do you know you're actually talking to your real friend? What if a stranger in the crowd is pretending to be them?\n\nSo you demand proof of identity first. Your friend shows a special ID card, signed and stamped by a trusted authority that everyone in town recognizes \u2014 like a notary's seal. Your browser keeps a list of these trusted notaries built in. If the stamp looks real and matches the name, you trust you're talking to the right person. If the ID looks fake, your browser shows a big scary warning.\n\n### 3. The impostor in the middle\n\nPicture someone standing between you and your friend, catching every note. They pretend to be your friend *to you*, and pretend to be you *to your friend*. Both sides think they're talking privately \u2014 but the impostor reads and even changes every note passing through.\n\nThis is why the ID card matters. Without checking the stamp, you'd happily start whispering secrets to the impostor. With the stamp check, the impostor can't fake being your friend \u2014 they don't have a real signed ID.\n\n### 4. Why coffee-shop Wi-Fi still bites\n\nEven with all this protection, public Wi-Fi has a twist. The Wi-Fi itself is like the room you're standing in. An attacker in that room can't read your sealed notes \u2014 but they *can* see **who you're writing to**. They know you visited your bank, your doctor, certain websites.\n\nThey can also trick your device into visiting fake pages, show pop-ups, or exploit any app on your phone that forgot to use the secret language. The lock protects the letter's contents \u2014 not the fact that you mailed it, and not everything else leaking from your pocket.",
+      "tokens": 917,
+      "time_ms": 17146
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# How That Little Lock Actually Protects You\n\n## What Happens When You Visit a Secure Site\n\nImagine you want to pass secret notes with your friend across a crowded cafeteria. Before sending anything private, you both agree on a secret language only you two understand. So even though everyone can *see* the notes being passed hand to hand, nobody in between can *read* them \u2014 it just looks like gibberish.\n\nWhen you type that web address, your computer and the website quickly invent a secret language together, unique to just that conversation. From that point on, everything \u2014 your passwords, credit cards, messages \u2014 travels as gibberish that only you two can decode.\n\n## Why Sites Need a \"Digital ID Badge\"\n\nHere's the problem: how do you know you're actually passing notes with your *real* friend, and not an imposter sitting in their seat?\n\nWebsites carry an official ID badge issued by a small group of universally trusted \"referees.\" Your browser checks this badge automatically. If the badge is missing, expired, or has the wrong name, your browser throws up a warning \u2014 like a bouncer saying, \"This ID looks fake.\" That's why the lock icon matters: it means the badge checked out.\n\n## The Imposter in the Middle\n\nNow imagine someone sneaky sits *between* you and your friend, intercepting every note. They read your note, then rewrite it in their own secret language to your friend, pretending to be you \u2014 and vice versa. Neither of you realizes there's a middleman reading everything.\n\nThis is exactly what a bad actor tries to do online: sit invisibly between you and the website, reading all your \"notes.\" The ID badge system exists specifically to stop this, because the imposter can't fake a legitimate badge. Your browser would catch it.\n\n## Why Public WiFi Is Still Risky\n\nPicture that crowded cafeteria again, but now the *owner of the cafeteria* is shady. They control every table, every path a note travels. They might not be able to read your secret-language notes, but they **can**:\n\n- See *who* you're passing notes to (which websites you visit)\n- Slip you a fake login page *before* the secret language kicks in\n- Watch your patterns \u2014 how often, how long, with whom\n- Try to trick you into ignoring a badge warning\n\nThe lock means the *contents* of your notes are scrambled. But the shady cafeteria owner still learns a lot just by watching the envelopes move around.\n\n**The lock is real protection \u2014 but it's not invisibility.**",
+      "tokens": 684,
+      "time_ms": 17206
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.65,
+      "weighted_b": 8.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses are accurate and clear, but Response B better adheres to the analogy-only constraint, covers all four requested points cleanly, and gives slightly more practical value about public Wi-Fi risks beyond the browser."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "depth": 8.0,
+        "clarity": 9.0,
+        "usefulness": 9.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "scores_b": {
+        "depth": 8.0,
+        "clarity": 8.0,
+        "usefulness": 8.0,
+        "completeness": 9.0,
+        "correctness": 9.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 8.45,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A maintains a more cohesive analogy throughout (the cafeteria) and uses better formatting to clearly explain the risks of public WiFi.",
+      "rerun": true,
+      "rerun_timestamp": "2026-04-17T16:15:27.264938"
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 10.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 7.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 8.0,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A more thoroughly covers all requested points, uses analogies more consistently without technical terms, and provides clearer explanations of risks like app vulnerabilities on public WiFi."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}

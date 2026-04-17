@@ -1,0 +1,101 @@
+{
+  "question_id": "REASON-025",
+  "category": "reasoning",
+  "question_text": "Standard trolley: pull a lever to divert a trolley from killing 5 to killing 1. Most say yes. Now consider: (1) Push a large person off a bridge to stop the trolley (saving 5). Same math, different an",
+  "timestamp": "2026-04-16T18:03:39.196829",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "These cases reveal that most people aren't pure consequentialists, and the interesting question is whether that inconsistency is a bug or a feature.\n\n**(1) Lever vs. push**\n\nThe math is identical: 1 dies, 5 live. But people balk at pushing because:\n\n- **Using vs. redirecting**: In the lever case, the one death is a side effect of diverting a threat. In the push case, the person's body is the instrument\u2014if they magically survived the fall, your plan fails. Kant's formula of humanity (don't use people merely as means) tracks this.\n- **Physical directness**: Touching and shoving activates different moral intuitions than flipping a switch. Evolutionarily plausible, but is it *justified*? That's debatable.\n- **Doctrine of double effect**: Foreseen harm \u2260 intended harm.\n\nWhether this distinction is principled or just squeamishness is the real philosophical fight. Utilitarians say it's a bias. Deontologists say it's tracking something real about agency and respect for persons.\n\n**(2) The surgeon**\n\nAlmost everyone says no\u2014including most utilitarians, once they think carefully. Why it's different from the trolley despite the same math:\n\n- The patient came for care; violating that trust destroys the institution of medicine (rule consequentialism catches this).\n- The healthy person isn't already entangled in the threat\u2014you're creating a victim from outside.\n- If this were permitted, no one would ever visit a hospital. The expected utility collapses.\n\nThis is why crude \"5 > 1\" reasoning fails. Consequences include systemic and second-order effects.\n\n**(3) Autonomous vehicles**\n\n**Not the same problem**, though it's often framed that way. Key differences:\n\n- Real AV situations almost never present clean 1-vs-5 choices with certainty. They involve probabilities, sensor noise, and split-second physics.\n- The decision is made *in advance* by engineers, not in the moment by an agent. That's policy-setting, not trolley-pulling.\n- Who bears the risk matters: passenger vs. pedestrian, lawful vs. jaywalking, etc. MIT's Moral Machine showed wildly different intuitions across cultures.\n- Market reality: people won't buy cars programmed to kill them to save strangers (Bonnefon et al., 2016 showed this directly).\n\nThe honest answer is that AVs should be programmed to (a) minimize harm probabilistically, (b) follow traffic law, (c) not make identity-based discriminations (age, status), and (d) have their decision rules publicly auditable. The trolley framing is mostly a distraction\u2014real AV ethics is about risk distribution under uncertainty, liability, and transparency.\n\n**The through-line**: Pure utilitarian math fails to capture intuitions about using people, institutional trust, and the difference between acting and policy-making. Whether you think that means our intuitions need correcting or our theories do is roughly the fault line between utilitarians and their critics.",
+      "tokens": 1155,
+      "time_ms": 12726
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# The Trolley Problem and Its Variants: A Careful Analysis\n\n## Why the Bridge Case Feels Different\n\nThe standard lever case and the bridge case share identical arithmetic (1 death vs. 5), yet most people respond differently. Several factors explain this divergence.\n\n**The using-versus-redirecting distinction**\nIn the lever case, you redirect an existing threat. The one person who dies is killed by the trolley, not directly by your body. In the bridge case, you use someone's physical body as a tool - their death isn't a side effect but the mechanism of rescue. This maps onto what philosophers call the **doctrine of double effect**: there's a moral difference between harm you foresee as a side effect and harm you intend as a means.\n\n**The contact and agency dimension**\nPushing someone involves direct physical force against a specific person. This activates deep moral intuitions about bodily autonomy and personal violence that pulling a lever does not. Joshua Greene's fMRI research showed the bridge case activates emotional processing regions (ventromedial prefrontal cortex) far more than the lever case, which engages more deliberative reasoning.\n\n**But here's where it gets genuinely complicated.** The question is whether these different emotional responses track a real moral distinction or are merely psychological artifacts. There are strong arguments on both sides.\n\n---\n\n## The Surgeon Case\n\nThis is where the trolley framework starts to reveal serious tensions.\n\n**Why almost everyone says no, and why the reasoning matters:**\n\n- **Rights and institutional trust.** A medical system where doctors might harvest visitors' organs would collapse. Nobody would go to hospitals. The consequentialist calculation that says \"5 > 1\" ignores that a norm permitting this would kill far more than 5 people through destroyed institutional trust.\n- **Consent and bodily sovereignty.** The visitor has entered a hospital with no assumption of risk. Their body is being commandeered entirely without consent for purposes they never agreed to.\n- **The distinction between killing and letting die.** The surgeon must actively kill a healthy person versus failing to save five dying ones. Most ethical frameworks treat this asymmetry as morally significant, though some consequentialists challenge it.\n\n**The strongest consequentialist response** isn't actually \"yes, harvest the organs.\" It's that *rule consequentialism* also says no - because a world with this practice produces worse outcomes than a world without it. This is important because it shows the disagreement isn't simply \"consequentialism versus everything else.\"\n\n**However**, I should be honest about where this gets uncomfortable. If you truly could guarantee secrecy, guarantee no institutional effects, and strip away all practical complications, the pure utilitarian calculus does point toward harvesting. Most philosophers take this as a *reductio against simple act utilitarianism* rather than as evidence we should harvest organs. But reasonable people disagree about what exactly has gone wrong in the reasoning.\n\n---\n\n## The Autonomous Vehicle Case\n\nThis is genuinely different from the trolley problem in several important ways, though it's routinely treated as equivalent.\n\n**What's actually different:**\n\n1. **Pre-programming versus in-the-moment choice.** The trolley problem asks what a person should do in an emergency. AV programming asks what policy we should encode in advance for a class of situations. These are fundamentally different ethical questions - the second is closer to legislation than to moral dilemma.\n\n2. **Epistemic conditions are radically different.** Real AVs face massive uncertainty - about the number of people, their identities, the probability of various outcomes, sensor reliability. The clean \"1 versus 5\" framing almost never applies. The actual engineering problem is about risk distribution under uncertainty, not discrete body counts.\n\n3. **The manufacturer's liability position.** Whoever programs the car is making a deliberate, premeditated choice about who dies in foreseeable scenarios. This introduces legal and moral dimensions absent from the split-second trolley decision.\n\n4. **The moral hazard problem.** If cars are programmed to minimize total deaths, a pedestrian standing alone is more \"targetable\" than a group. This effectively punishes people for being isolated, creating perverse incentives and justice concerns.\n\n**What the research actually suggests (MIT Moral Machine project and subsequent work):**\n\nPeople's intuitions vary dramatically across cultures on questions like whether to spare the young over the old, whether the car should protect passengers or pedestrians, and whether the number of people should matter at all. This doesn't mean the question is unanswerable, but it does mean there's no clean consensus to implement.\n\n**My honest assessment of the AV question:**\n\nThe most defensible approach is probably not to program explicit \"who to kill\" decisions at all, but rather to program cars to minimize collision probability generally, obey traffic laws, and reduce speed in uncertain conditions. The trolley framing, while philosophically interesting, may actually be *counterproductive* for AV ethics because it suggests we need to solve an unsolvable targeting problem rather than focusing on the engineering problem of making crashes extremely rare.\n\n---\n\n## The Deeper Question: Is This the Same Problem?\n\n**No, but the differences are instructive.**\n\nThese scenarios share surface-level arithmetic but differ along dimensions that matter morally:\n\n| Dimension | Lever | Bridge | Surgeon | AV |\n|---|---|---|---|---|\n| Harm as means vs. side effect | Side effect | Means | Means | Depends on programming |\n| Pre-existing threat redirected | Yes | Yes | No | Varies |\n| Institutional context | None | None | Critical | Critical |\n| Decision type | Individual emergency | Individual emergency | Professional role | Policy/legislation |\n| Epistemic certainty | High (by stipulation) | High (by stipulation) | High (by stipulation) | Low (in practice) |\n\nThe real lesson of the trolley problem isn't that we need one universal answer. It's that **moral reasoning involves multiple considerations that can genuinely conflict** - consequences, rights, duties, institutional effects, the distinction between doing and allowing, the role of intention - and no single principle cleanly resolves all cases.\n\nThe people who say \"obviously just maximize lives saved\" are ignoring real moral considerations. The people who say \"you can never sacrifice one for five\" will struggle with cases where inaction has enormous costs. The honest position is that these tensions are *real features of morality*, not puzzles waiting for a clever solution to dissolve them.",
+      "tokens": 1554,
+      "time_ms": 39568
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 10.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 10.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.4,
+      "weighted_b": 8.6,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A is more comprehensive and analytically deeper, especially on the surgeon and autonomous vehicle cases, while maintaining strong clarity and practical insight."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 8.85,
+      "weighted_b": 8.45,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A provided a more thorough and structured analysis, utilizing a helpful comparison table to synthesize the differences between the scenarios."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.45,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B provides a more thorough, nuanced, and structured analysis with deeper philosophical engagement and clearer practical insights across all scenarios."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_46": 3
+  },
+  "judges_agree": true
+}

@@ -1,0 +1,102 @@
+{
+  "question_id": "CODE-021",
+  "category": "code",
+  "question_text": "Write a Python function that parses unified diff format (the output of `git diff`) and returns a structured representation: files changed, lines added/removed/modified, hunks with context. Handle edge",
+  "timestamp": "2026-04-16T17:29:38.792550",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Unified Diff Parser\n\n```python\n\"\"\"\nUnified diff parser for git diff output.\n\nParses unified diff format and returns structured representations including\nfiles changed, hunks, and line-level changes with context.\n\"\"\"\n\nfrom dataclasses import dataclass, field\nfrom enum import Enum\nfrom typing import Optional\nimport re\n\n\nclass LineType(Enum):\n    CONTEXT = \" \"\n    ADDED = \"+\"\n    REMOVED = \"-\"\n    NO_NEWLINE = \"\\\\\"  # \"\\ No newline at end of file\"\n\n\nclass FileStatus(Enum):\n    MODIFIED = \"modified\"\n    ADDED = \"added\"\n    DELETED = \"deleted\"\n    RENAMED = \"renamed\"\n    COPIED = \"copied\"\n    MODE_CHANGED = \"mode_changed\"\n    BINARY = \"binary\"\n\n\n@dataclass\nclass DiffLine:\n    type: LineType\n    content: str\n    old_lineno: Optional[int] = None  # Line number in original file\n    new_lineno: Optional[int] = None  # Line number in new file\n\n\n@dataclass\nclass Hunk:\n    old_start: int\n    old_count: int\n    new_start: int\n    new_count: int\n    section_header: str  # The text after @@ like \" def foo():\"\n    lines: list[DiffLine] = field(default_factory=list)\n\n    @property\n    def added_lines(self) -> list[DiffLine]:\n        return [l for l in self.lines if l.type == LineType.ADDED]\n\n    @property\n    def removed_lines(self) -> list[DiffLine]:\n        return [l for l in self.lines if l.type == LineType.REMOVED]\n\n\n@dataclass\nclass FileDiff:\n    old_path: Optional[str]  # None for added files (sort of - git still shows it)\n    new_path: Optional[str]  # None for deleted files\n    status: FileStatus\n    hunks: list[Hunk] = field(default_factory=list)\n    old_mode: Optional[str] = None\n    new_mode: Optional[str] = None\n    similarity: Optional[int] = None  # Percentage for rename/copy\n    is_binary: bool = False\n    old_hash: Optional[str] = None\n    new_hash: Optional[str] = None\n\n    @property\n    def path(self) -> str:\n        \"\"\"Return the most relevant path for display.\"\"\"\n        return self.new_path or self.old_path or \"<unknown>\"\n\n    @property\n    def lines_added(self) -> int:\n        return sum(len(h.added_lines) for h in self.hunks)\n\n    @property\n    def lines_removed(self) -> int:\n        return sum(len(h.removed_lines) for h in self.hunks)\n\n\n@dataclass\nclass Diff:\n    files: list[FileDiff] = field(default_factory=list)\n\n    @property\n    def total_added(self) -> int:\n        return sum(f.lines_added for f in self.files)\n\n    @property\n    def total_removed(self) -> int:\n        return sum(f.lines_removed for f in self.files)\n\n    def __len__(self) -> int:\n        return len(self.files)\n\n    def __iter__(self):\n        return iter(self.files)\n\n\n# --- Parser implementation ---\n\n_DIFF_HEADER_RE = re.compile(r\"^diff --git a/(.+?) b/(.+)$\")\n_HUNK_HEADER_RE = re.compile(\n    r\"^@@ -(\\d+)(?:,(\\d+))? \\+(\\d+)(?:,(\\d+))? @@(.*)$\"\n)\n_INDEX_RE = re.compile(r\"^index ([0-9a-f]+)\\.\\.([0-9a-f]+)(?: (\\d+))?$\")\n\n\ndef _strip_prefix(path: str, prefix: str) -> str:\n    \"\"\"Strip a/ or b/ prefix from git paths.\"\"\"\n    if path.startswith(prefix):\n        return path[len(prefix):]\n    return path\n\n\ndef parse_diff(text: str) -> Diff:\n    \"\"\"\n    Parse unified diff text (as produced by `git diff`) into a Diff object.\n\n    Handles:\n      - Standard modifications\n      - Added files (--- /dev/null)\n      - Deleted files (+++ /dev/null)\n      - Renamed files (rename from / rename to)\n      - Copied files\n      - Binary files\n      - Mode-only changes\n      - Empty input\n\n    Args:\n        text: Raw diff output as a single string.\n\n    Returns:\n        A Diff object containing FileDiff entries.\n    \"\"\"\n    if not text or not text.strip():\n        return Diff()\n\n    lines = text.splitlines()\n    files: list[FileDiff] = []\n    i = 0\n    n = len(lines)\n\n    while i < n:\n        line = lines[i]\n\n        # Skip until we find a diff header\n        if not line.startswith(\"diff --git \"):\n            i += 1\n            continue\n\n        m = _DIFF_HEADER_RE.match(line)\n        if not m:\n            i += 1\n            continue\n\n        old_path = m.group(1)\n        new_path = m.group(2)\n\n        file_diff = FileDiff(\n            old_path=old_path,\n            new_path=new_path,\n            status=FileStatus.MODIFIED,\n        )\n        i += 1\n\n        # Parse extended header lines (before the hunks)\n        while i < n:\n            l = lines[i]\n\n            if l.startswith(\"diff --git \"):\n                break  # Next file\n            if l.startswith(\"@@\"):\n                break  # Start of hunks\n\n            if l.startswith(\"old mode \"):\n                file_diff.old_mode = l[len(\"old mode \"):].strip()\n                file_diff.status = FileStatus.MODE_CHANGED\n            elif l.startswith(\"new mode \"):\n                file_diff.new_mode = l[len(\"new mode \"):].strip()\n            elif l.startswith(\"deleted file mode \"):\n                file_diff.old_mode = l[len(\"deleted file mode \"):].strip()\n                file_diff.status = FileStatus.DELETED\n                file_diff.new_path = None\n            elif l.startswith(\"new file mode \"):\n                file_diff.new_mode = l[len(\"new file mode \"):].strip()\n                file_diff.status = FileStatus.ADDED\n                file_diff.old_path = None\n            elif l.startswith(\"similarity index \"",
+      "tokens": 2152,
+      "time_ms": 13021
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n```python\n\"\"\"\nParser for unified diff format (git diff output).\n\nHandles: regular diffs, binary files, renamed files, mode changes,\nempty diffs, new/deleted files, and multiple hunks.\n\"\"\"\n\nfrom __future__ import annotations\n\nimport re\nfrom dataclasses import dataclass, field\nfrom enum import Enum\n\n\nclass LineType(Enum):\n    CONTEXT = \"context\"\n    ADDED = \"added\"\n    REMOVED = \"removed\"\n\n\nclass FileStatus(Enum):\n    MODIFIED = \"modified\"\n    ADDED = \"added\"\n    DELETED = \"deleted\"\n    RENAMED = \"renamed\"\n    COPIED = \"copied\"\n    BINARY = \"binary\"\n    MODE_CHANGE = \"mode_change\"\n\n\n@dataclass\nclass DiffLine:\n    line_type: LineType\n    content: str\n    old_lineno: int | None = None  # Line number in old file\n    new_lineno: int | None = None  # Line number in new file\n\n    def __repr__(self) -> str:\n        prefix = {LineType.CONTEXT: \" \", LineType.ADDED: \"+\", LineType.REMOVED: \"-\"}\n        return f\"DiffLine({prefix[self.line_type]}{self.content!r}, old={self.old_lineno}, new={self.new_lineno})\"\n\n\n@dataclass\nclass Hunk:\n    old_start: int\n    old_count: int\n    new_start: int\n    new_count: int\n    header: str  # The full @@ line, including any function context\n    lines: list[DiffLine] = field(default_factory=list)\n\n    @property\n    def added_lines(self) -> list[DiffLine]:\n        return [l for l in self.lines if l.line_type == LineType.ADDED]\n\n    @property\n    def removed_lines(self) -> list[DiffLine]:\n        return [l for l in self.lines if l.line_type == LineType.REMOVED]\n\n    @property\n    def context_lines(self) -> list[DiffLine]:\n        return [l for l in self.lines if l.line_type == LineType.CONTEXT]\n\n\n@dataclass\nclass FileDiff:\n    old_path: str | None\n    new_path: str | None\n    status: FileStatus\n    hunks: list[Hunk] = field(default_factory=list)\n    old_mode: str | None = None\n    new_mode: str | None = None\n    similarity_index: int | None = None  # For renames/copies\n    is_binary: bool = False\n    index_line: str | None = None  # e.g., \"index abc123..def456 100644\"\n\n    @property\n    def path(self) -> str:\n        \"\"\"Return the most relevant path (new_path for renames, otherwise best available).\"\"\"\n        return self.new_path or self.old_path or \"<unknown>\"\n\n    @property\n    def lines_added(self) -> int:\n        return sum(len(h.added_lines) for h in self.hunks)\n\n    @property\n    def lines_removed(self) -> int:\n        return sum(len(h.removed_lines) for h in self.hunks)\n\n    @property\n    def lines_modified(self) -> list[tuple[DiffLine, DiffLine]]:\n        \"\"\"\n        Heuristic: pair consecutive removed+added lines as 'modified'.\n        Returns list of (removed_line, added_line) tuples.\n        \"\"\"\n        modified = []\n        for hunk in self.hunks:\n            i = 0\n            while i < len(hunk.lines):\n                # Find a block of removed lines followed by added lines\n                removed_block = []\n                while i < len(hunk.lines) and hunk.lines[i].line_type == LineType.REMOVED:\n                    removed_block.append(hunk.lines[i])\n                    i += 1\n                added_block = []\n                while i < len(hunk.lines) and hunk.lines[i].line_type == LineType.ADDED:\n                    added_block.append(hunk.lines[i])\n                    i += 1\n                if removed_block and added_block:\n                    # Pair them up\n                    for r, a in zip(removed_block, added_block):\n                        modified.append((r, a))\n                elif not removed_block and not added_block:\n                    i += 1\n        return modified\n\n\n@dataclass\nclass DiffResult:\n    files: list[FileDiff] = field(default_factory=list)\n\n    @property\n    def total_additions(self) -> int:\n        return sum(f.lines_added for f in self.files)\n\n    @property\n    def total_deletions(self) -> int:\n        return sum(f.lines_removed for f in self.files)\n\n    @property\n    def files_changed(self) -> int:\n        return len(self.files)\n\n\n# Regex patterns\nDIFF_HEADER = re.compile(r\"^diff --git a/(.*) b/(.*)$\")\nOLD_FILE = re.compile(r\"^--- (?:a/(.+)|(/dev/null))$\")\nNEW_FILE = re.compile(r\"^\\+\\+\\+ (?:b/(.+)|(/dev/null))$\")\nHUNK_HEADER = re.compile(r\"^@@ -(\\d+)(?:,(\\d+))? \\+(\\d+)(?:,(\\d+))? @@(.*)$\")\nINDEX_LINE = re.compile(r\"^index ([0-9a-f]+)\\.\\.([0-9a-f]+)(?: (\\d+))?$\")\nOLD_MODE = re.compile(r\"^old mode (\\d+)$\")\nNEW_MODE = re.compile(r\"^new mode (\\d+)$\")\nNEW_FILE_MODE = re.compile(r\"^new file mode (\\d+)$\")\nDELETED_FILE_MODE = re.compile(r\"^deleted file mode (\\d+)$\")\nSIMILARITY_INDEX = re.compile(r\"^similarity index (\\d+)%$\")\nRENAME_FROM = re.compile(r\"^rename from (.+)$\")\nRENAME_TO = re.compile(r\"^rename to (.+)$\")\nCOPY_FROM = re.compile(r\"^copy from (.+)$\")\nCOPY_TO = re.compile(r\"^copy to (.+)$\")\nBINARY_FILES = re.compile(r\"^Binary files (?:a/(.+)|(/dev/null)) and (?:b/(.+)|(/dev/null)) differ$\")\nGIT_BINARY_PATCH = re.compile(r\"^GIT binary patch$\")\n\n\ndef parse_diff(diff_text: str) -> DiffResult:\n    \"\"\"\n    Parse unified diff format text (as produced by `git diff`) into\n    a structured DiffResult.\n\n    Handles:\n    - Regular file modifications with multiple hunks\n    - New files and deleted files\n    - Renamed and copied files (with similarity index)\n    - Mode changes (chmod)\n    - Binary files\n    - Empty diffs\n    - No-newline-at-end-of-file markers\n    \"\"\"\n    if not diff_text or not diff_text.strip():\n        return DiffResult()\n\n    result = DiffResult()\n    lines = diff_text.split(\"\\n\")\n    i = 0\n\n    while i < len(lines):\n        line = lines[i]\n\n        # Look for diff --git header\n        m = DIFF_HEADER.match(line)\n        if not m:\n            i += 1\n            continue\n\n        file_diff = FileDiff(\n            old_path=m.group(1),\n            new_path=m.group(2),\n            status=FileStatus.MODIFIED,\n        )\n        i += 1\n\n        # Parse extended header lines\n        while i < len(lines):\n            line = lines[i]\n\n            # Stop if we hit another diff header\n            if DIFF_HEADER.match(line):\n                break\n\n            # Stop if we hit --- (start of unified diff body)\n            if line.startswith(\"--- \"):\n                break\n\n            # Stop if we hit a hunk header (possible in some edge cases)\n            if line.startswith(\"@@\"):\n                break\n\n            m_old_",
+      "tokens": 2119,
+      "time_ms": 25285
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 5.0,
+        "depth": 3.0,
+        "usefulness": 1.0,
+        "correctness": 2.0,
+        "completeness": 2.0
+      },
+      "scores_b": {
+        "clarity": 6.0,
+        "depth": 3.0,
+        "usefulness": 2.0,
+        "correctness": 3.0,
+        "completeness": 3.0
+      },
+      "weighted_a": 2.65,
+      "weighted_b": 3.45,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses are incomplete and cut off before delivering a full parser or tests, but Response B is slightly clearer and more coherent in the portion provided."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 6.0,
+        "depth": 5.0,
+        "usefulness": 2.0,
+        "correctness": 3.0,
+        "completeness": 2.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 6.0,
+        "usefulness": 2.0,
+        "correctness": 3.0,
+        "completeness": 2.0
+      },
+      "weighted_a": 3.65,
+      "weighted_b": 4.05,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Both responses cut off mid-implementation and fail to provide the requested tests, but Response B sets up a more robust regex-based parsing strategy for git diff extended headers before the cutoff."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 7.0,
+        "usefulness": 7.0,
+        "correctness": 7.0,
+        "completeness": 6.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 7.0,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response A is more complete, correct, and deeper, with a fully implemented parser and better handling of edge cases, while Response B is incomplete and lacks key functionality."
+    }
+  },
+  "winner_aggregate": "claude_opus_46",
+  "judge_votes": {
+    "claude_opus_47": 1,
+    "claude_opus_46": 2
+  },
+  "judges_agree": false
+}

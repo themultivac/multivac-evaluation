@@ -1,0 +1,101 @@
+{
+  "question_id": "CODE-026",
+  "category": "code",
+  "question_text": "Design and implement health check endpoints for a microservice that depends on a database, Redis cache, and an external API. Include: liveness probe (is the process alive?), readiness probe (can it se",
+  "timestamp": "2026-04-16T17:35:41.128836",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# Health Check Endpoints for Microservices\n\nHere's a production-ready implementation with thoughtful handling of cascading failures.\n\n## Design Philosophy\n\nBefore the code, let's clarify what each probe means and **why cascading failures matter**:\n\n| Probe | Question | Failure Action | Should Check Dependencies? |\n|-------|----------|----------------|----------------------------|\n| **Liveness** | Is the process deadlocked/broken? | Kill & restart pod | \u274c **No** \u2014 restart won't fix a dead DB |\n| **Readiness** | Can I serve traffic *right now*? | Remove from load balancer | \u2705 **Yes** \u2014 but selectively |\n| **Startup** | Is initialization done? | Delay other probes | \u2705 **Yes** \u2014 required deps only |\n\n**Key insight on cascading failures**: If Redis goes down and *every* service marks itself unready, you've amplified a cache outage into a total outage. Classify dependencies as **critical** vs. **degraded**.\n\n## Implementation (Python/FastAPI)\n\n```python\n# health.py\nimport asyncio\nimport time\nfrom enum import Enum\nfrom dataclasses import dataclass, field\nfrom typing import Callable, Awaitable\nfrom fastapi import FastAPI, Response, status\nimport asyncpg\nimport redis.asyncio as redis\nimport httpx\n\nclass Status(str, Enum):\n    HEALTHY = \"healthy\"\n    DEGRADED = \"degraded\"\n    UNHEALTHY = \"unhealthy\"\n\nclass Criticality(str, Enum):\n    CRITICAL = \"critical\"      # failure => not ready\n    DEGRADED = \"degraded\"      # failure => still serve, but report degraded\n    \n@dataclass\nclass DependencyCheck:\n    name: str\n    criticality: Criticality\n    check: Callable[[], Awaitable[bool]]\n    timeout_s: float = 2.0\n    # Circuit-breaker-ish: cache result briefly to avoid hammering deps\n    cache_ttl_s: float = 5.0\n    _last_result: bool | None = field(default=None, init=False)\n    _last_checked: float = field(default=0.0, init=False)\n\n    async def run(self) -> tuple[str, bool, float, str | None]:\n        now = time.monotonic()\n        if self._last_result is not None and (now - self._last_checked) < self.cache_ttl_s:\n            return self.name, self._last_result, 0.0, \"cached\"\n        \n        start = time.monotonic()\n        err = None\n        try:\n            ok = await asyncio.wait_for(self.check(), timeout=self.timeout_s)\n        except asyncio.TimeoutError:\n            ok, err = False, f\"timeout>{self.timeout_s}s\"\n        except Exception as e:\n            ok, err = False, f\"{type(e).__name__}: {e}\"\n        \n        latency = time.monotonic() - start\n        self._last_result = ok\n        self._last_checked = now\n        return self.name, ok, latency, err\n\n\nclass HealthRegistry:\n    def __init__(self):\n        self.checks: list[DependencyCheck] = []\n        self.startup_complete: bool = False\n        self.startup_errors: list[str] = []\n\n    def register(self, dep: DependencyCheck):\n        self.checks.append(dep)\n\n    async def evaluate(self) -> dict:\n        results = await asyncio.gather(*(c.run() for c in self.checks))\n        \n        details = {}\n        overall = Status.HEALTHY\n        \n        for (name, ok, latency, err), check in zip(results, self.checks):\n            details[name] = {\n                \"ok\": ok,\n                \"criticality\": check.criticality.value,\n                \"latency_ms\": round(latency * 1000, 2),\n                \"error\": err,\n            }\n            if not ok:\n                if check.criticality == Criticality.CRITICAL:\n                    overall = Status.UNHEALTHY\n                elif overall == Status.HEALTHY:\n                    overall = Status.DEGRADED\n        \n        return {\"status\": overall.value, \"dependencies\": details}\n\n\n# ---- Wire up the service ----\napp = FastAPI()\nregistry = HealthRegistry()\n\n# Globals (replace with DI in production)\ndb_pool: asyncpg.Pool | None = None\nredis_client: redis.Redis | None = None\nhttp_client: httpx.AsyncClient | None = None\n\n\nasync def check_db() -> bool:\n    async with db_pool.acquire() as conn:\n        return await conn.fetchval(\"SELECT 1\") == 1\n\nasync def check_redis() -> bool:\n    return await redis_client.ping()\n\nasync def check_external_api() -> bool:\n    r = await http_client.get(\"https://api.example.com/health\")\n    return r.status_code == 200\n\n\n@app.on_event(\"startup\")\nasync def startup():\n    global db_pool, redis_client, http_client\n    try:\n        db_pool = await asyncpg.create_pool(dsn=\"postgres://...\", min_size=2, max_size=10)\n        redis_client = redis.from_url(\"redis://localhost:6379\")\n        http_client = httpx.AsyncClient(timeout=2.0)\n\n        # DB is critical \u2014 we can't function without it.\n        registry.register(DependencyCheck(\"database\", Criticality.CRITICAL, check_db))\n        # Redis is a cache \u2014 degraded, not fatal. Don't cascade outages!\n        registry.register(DependencyCheck(\"redis\", Criticality.DEGRADED, check_redis))\n        # External API \u2014 depends on your service's contract. Often degraded.\n        registry.register(DependencyCheck(\"external_api\", Criticality.DEGRADED, check_external_api))\n        \n        # Validate critical deps at startup\n        result = await registry.evaluate()\n        critical_failing = [n for n, d in result[\"dependencies\"].items()\n                           if d[\"criticality\"] == \"critical\" and not d[\"ok\"]]\n        if critical_failing:\n            registry.startup_errors = critical_failing\n            return  # startup_complete stays False\n        \n        registry.startup_complete = True\n    except Exception as e:\n        registry.startup_errors.append(str(e))\n\n\n# ---- Endpoints ----\n\n@app.get(\"/health/live\")\nasync def li",
+      "tokens": 2164,
+      "time_ms": 24853
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Comprehensive Health Check System for Microservices\n\n## Architecture Overview\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                     Health Check System                          \u2502\n\u2502                                                                  \u2502\n\u2502  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510                \u2502\n\u2502  \u2502 Liveness \u2502  \u2502  Readiness   \u2502  \u2502  Startup  \u2502                \u2502\n\u2502  \u2502  /healthz\u2502  \u2502  /ready      \u2502  \u2502  /startup \u2502                \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2518                \u2502\n\u2502       \u2502               \u2502                \u2502                        \u2502\n\u2502       \u25bc               \u25bc                \u25bc                        \u2502\n\u2502  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510             \u2502\n\u2502  \u2502 Process \u2502  \u2502 Dependencies \u2502  \u2502 Initialization\u2502             \u2502\n\u2502  \u2502  Check  \u2502  \u2502    Checks    \u2502  \u2502    Checks     \u2502             \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518             \u2502\n\u2502                       \u2502                                         \u2502\n\u2502          \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510                           \u2502\n\u2502          \u25bc            \u25bc            \u25bc                            \u2502\n\u2502    \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510                     \u2502\n\u2502    \u2502 Database \u2502 \u2502  Redis   \u2502 \u2502 External \u2502                     \u2502\n\u2502    \u2502  Check   \u2502 \u2502  Check   \u2502 \u2502 API Check\u2502                     \u2502\n\u2502    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518                     \u2502\n\u2502                                                                  \u2502\n\u2502    \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510                 \u2502\n\u2502    \u2502         Dependency Classification        \u2502                 \u2502\n\u2502    \u2502  CRITICAL: DB (must be up)              \u2502                 \u2502\n\u2502    \u2502  DEGRADED: Redis (can serve w/o)        \u2502                 \u2502\n\u2502    \u2502  DEGRADED: External API (can serve w/o) \u2502                 \u2502\n\u2502    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518                 \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n## Full Implementation\n\n### Project Structure\n\n```\nhealth_check_service/\n\u251c\u2500\u2500 app/\n\u2502   \u251c\u2500\u2500 __init__.py\n\u2502   \u251c\u2500\u2500 main.py\n\u2502   \u251c\u2500\u2500 config.py\n\u2502   \u251c\u2500\u2500 health/\n\u2502   \u2502   \u251c\u2500\u2500 __init__.py\n\u2502   \u2502   \u251c\u2500\u2500 router.py\n\u2502   \u2502   \u251c\u2500\u2500 models.py\n\u2502   \u2502   \u251c\u2500\u2500 checker.py\n\u2502   \u2502   \u251c\u2500\u2500 dependencies.py\n\u2502   \u2502   \u2514\u2500\u2500 circuit_breaker.py\n\u2502   \u251c\u2500\u2500 middleware/\n\u2502   \u2502   \u251c\u2500\u2500 __init__.py\n\u2502   \u2502   \u2514\u2500\u2500 health_middleware.py\n\u2502   \u2514\u2500\u2500 services/\n\u2502       \u251c\u2500\u2500 __init__.py\n\u2502       \u251c\u2500\u2500 database.py\n\u2502       \u251c\u2500\u2500 redis_client.py\n\u2502       \u2514\u2500\u2500 external_api.py\n\u251c\u2500\u2500 tests/\n\u2502   \u251c\u2500\u2500 __init__.py\n\u2502   \u251c\u2500\u2500 test_health_checks.py\n\u2502   \u251c\u2500\u2500 test_circuit_breaker.py\n\u2502   \u2514\u2500\u2500 test_cascading_failures.py\n\u251c\u2500\u2500 kubernetes/\n\u2502   \u251c\u2500\u2500 deployment.yaml\n\u2502   \u2514\u2500\u2500 service.yaml\n\u251c\u2500\u2500 requirements.txt\n\u2514\u2500\u2500 Dockerfile\n```\n\n### Core Models\n\n```python\n# app/health/models.py\nfrom __future__ import annotations\n\nimport time\nfrom dataclasses import dataclass, field\nfrom enum import Enum\nfrom typing import Optional\n\n\nclass HealthStatus(str, Enum):\n    HEALTHY = \"healthy\"\n    DEGRADED = \"degraded\"       # Functioning but with reduced capability\n    UNHEALTHY = \"unhealthy\"     # Cannot serve traffic properly\n    UNKNOWN = \"unknown\"\n\n\nclass DependencyType(str, Enum):\n    \"\"\"Classification determines how dependency failure affects overall health.\"\"\"\n    CRITICAL = \"critical\"       # Service CANNOT function without this\n    DEGRADED = \"degraded\"       # Service CAN function but with reduced capability\n    OPTIONAL = \"optional\"       # Nice to have, no impact on health\n\n\nclass ProbeType(str, Enum):\n    LIVENESS = \"liveness\"\n    READINESS = \"readiness\"\n    STARTUP = \"startup\"\n\n\n@dataclass\nclass DependencyHealth:\n    name: str\n    status: HealthStatus\n    dependency_type: DependencyType\n    response_time_ms: float = 0.0\n    message: str = \"\"\n    last_checked: float = field(default_factory=time.time)\n    consecutive_failures: int = 0\n    details: dict = field(default_factory=dict)\n\n    def to_dict(self) -> dict:\n        return {\n            \"name\": self.name,\n            \"status\": self.status.value,\n            \"type\": self.dependency_type.value,\n            \"response_time_ms\": round(self.response_time_ms, 2),\n            \"message\": self.message,\n            \"last_checked\": self.last_checked,\n            \"consecutive_failures\": self.consecutive_failures,\n            \"details\": self.details,\n        }\n\n\n@dataclass\nclass HealthResponse:\n    status: HealthStatus\n    probe_type: ProbeType\n    timestamp: float = field(default_factory=time.time)\n    uptime_seconds: float = 0.0\n    version: str = \"\"\n    dependencies: list[DependencyHealth] = field(default_factory=list)\n    message: str = \"\"\n\n    def to_dict(self) -> dict:\n        result = {\n            \"status\": self.status.value,\n            \"probe_type\": self.probe_type.value,\n            \"timestamp\": self.timestamp,\n            \"uptime_seconds\": round(self.uptime_seconds, 2),\n            \"version\": self.version,\n            \"message\": self.message,\n        }\n        if self.dependencies:\n            result[\"dependencies\"] = [d.to_dict() for d in self.dependencies]\n        return result\n\n    @property\n    def http_status_code(self) -> int:\n        if self.status == HealthStatus.HEALTHY:\n            return 200\n        elif self.status == HealthStatus.DEGRADED:\n            return 200  # Still serving traffic, but degraded\n        else:\n            return 503\n```\n\n### Circuit Breaker Pattern\n\n```python\n# app/health/circuit_breaker.py\n\"\"\"\nCircuit breaker prevents cascading failures by short-circuiting\nhealth checks to known-failed dependencies, avoiding timeout accumulation.\n\"\"\"\n\nimport asyncio\nimport time\nfrom dataclasses import dataclass, field\nfrom enum import Enum\nfrom typing import Callable, Awaitable, Any, Optional\n\n\nclass CircuitState(str, Enum):\n    CLOSED = \"closed\"           # Normal operation, requests flow through\n    OPEN = \"open\"               # Failure detected, requests short-circuited\n    HALF_OPEN = \"half_open\"     # Testing if dependency recovered\n\n\n@dataclass\nclass CircuitBreakerConfig:\n    failure_threshold: int = 3          # Failures before opening circuit\n    recovery_timeout: float = 30.0      # Seconds before trying half-open\n    half_open_max_calls: int = 1        # Max concurrent calls in half-open\n    success_threshold: int = 2          # Successes in half-open before closing\n    timeout: float = 5.0                # Individual call timeout\n\n\n@dataclass\nclass CircuitBreakerStats:\n    total_calls: int = 0\n    successful_calls: int = 0\n    failed_calls: int = 0\n    rejected_calls: int = 0            # Calls rejected while circuit open\n    last_failure_time: Optional[float] = None\n    last_success_time: Optional[float] = None\n    state_changes: list = field(default_factory=list)\n\n\nclass CircuitBreaker:\n    \"\"\"\n    Implements the circuit breaker pattern for dependency health checks.\n    \n    State transitions:\n        CLOSED --[failure_threshold reached]--> OPEN",
+      "tokens": 2127,
+      "time_ms": 26343
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 6.0,
+        "depth": 7.0,
+        "usefulness": 4.0,
+        "correctness": 6.0,
+        "completeness": 5.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 5.7,
+      "weighted_b": 7.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B better explains probe semantics, directly addresses cascading failures with critical vs degraded dependencies, and provides a more coherent implementable design. Response A is detailed but appears incomplete and less practically usable as shown."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 7.0,
+        "depth": 6.0,
+        "usefulness": 5.0,
+        "correctness": 7.0,
+        "completeness": 4.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 5.9,
+      "weighted_b": 8.25,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses cut off, but Response B directly addresses the prompt's core questions, provides excellent architectural insights on probes and cascading failures, and implements the actual dependency checking logic, whereas Response A gets bogged down in boilerplate."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 8.0,
+        "completeness": 8.0
+      },
+      "weighted_a": 9.0,
+      "weighted_b": 8.0,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A provided a more direct, actionable, and philosophically insightful implementation that directly addressed the cascading failure question with clear design rationale and practical code. Response B was comprehensive but more abstract and less immediately implementable."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 3
+  },
+  "judges_agree": true
+}

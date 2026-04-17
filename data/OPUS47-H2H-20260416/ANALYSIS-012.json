@@ -1,0 +1,102 @@
+{
+  "question_id": "ANALYSIS-012",
+  "category": "analysis",
+  "question_text": "A bank uses an ML model for loan approvals. Accuracy: 92%. But analysis shows: approval rate for Group A: 78%, Group B: 45%. The bank says 'the model doesn't use race as a feature.' (1) Explain how th",
+  "timestamp": "2026-04-16T18:15:15.376374",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# ML Loan Approval Fairness Analysis\n\n## (1) How Discrimination Occurs Without Race as a Feature\n\n\"Fairness through unawareness\" is a well-known fallacy. The model can discriminate because:\n\n- **Redundant encoding**: Race is statistically correlated with many other features. The model reconstructs race implicitly from combinations of legal variables.\n- **Historical bias in labels**: If training data reflects past discriminatory lending (e.g., redlining), the model learns to replicate those patterns even with \"neutral\" features.\n- **Measurement bias**: Credit scores themselves encode historical inequities (thin credit files, alternative credit histories penalized).\n- **Distribution shift**: Features like income volatility may have different meanings across groups due to structural factors (employment discrimination, wage gaps).\n\nThe 78% vs 45% gap suggests the model found a way to separate groups regardless of the feature name used.\n\n## (2) Likely Proxy Variables\n\n| Proxy | Mechanism |\n|-------|-----------|\n| **ZIP code / address** | Residential segregation \u2192 near-perfect race proxy |\n| **Name** | If used for identity checks |\n| **Educational institution** | HBCUs, neighborhood schools |\n| **Employer / industry** | Occupational segregation |\n| **Credit history length** | Generational wealth differences |\n| **Banking relationships** | Unbanked/underbanked populations |\n| **Type of prior credit** (payday loans vs. credit cards) | Access to mainstream finance |\n| **Down payment size** | Generational wealth |\n| **Income sources** (W-2 vs. gig/self-employed) | Employment patterns |\n\nCombinations of these can reconstruct race with high accuracy even if each alone is weak.\n\n## (3) Is Equalizing Approval Rates the Right Fix?\n\n**It depends on which fairness definition you adopt \u2014 they are mathematically incompatible.**\n\n### Fairness Definitions in Tension\n- **Demographic parity**: Equal approval rates across groups (78% = 45%)\n- **Equal opportunity**: Equal true positive rates (qualified applicants approved equally)\n- **Predictive parity**: Equal precision (approved applicants default at equal rates)\n- **Individual fairness**: Similar applicants treated similarly\n\nChouldechova (2017) and Kleinberg et al. proved you generally **cannot satisfy all three** when base rates differ across groups.\n\n### Tradeoffs of Forcing Demographic Parity\n**Pros:**\n- Addresses disparate impact (legally salient under ECOA/Fair Housing Act)\n- Counteracts biased training labels\n- Reduces compounding historical harm\n\n**Cons:**\n- May approve higher-default-risk applicants in one group \u2192 financial harm to borrowers (debt trap) and lender\n- Could violate equal-treatment-of-individuals if thresholds differ by group\n- \"Leveling down\" possibility: reject qualified Group A applicants rather than approve more Group B\n\n### Better Framing\nAsk: **Why do base rates differ?**\n- If due to biased labels/features \u2192 fix the data and model\n- If due to real economic disparities \u2192 unequal approval may be \"accurate\" but perpetuates inequality; policy intervention (not just ML fix) needed\n- Consider **equal opportunity** as a middle ground: ensure qualified applicants have equal chance of approval\n\n## (4) Audit Procedure Design\n\n### Phase 1: Data & Feature Audit\n1. **Proxy detection**: Train a classifier to predict race from the feature set. If AUC > 0.7, significant proxy information exists.\n2. **Feature importance by group**: SHAP/permutation importance stratified by protected class.\n3. **Label audit**: Examine historical approval decisions for patterns of bias in training labels.\n\n### Phase 2: Outcome Metrics (compute for each protected group)\n- Approval rate (demographic parity)\n- TPR, FPR, FNR (equal opportunity / equalized odds)\n- Precision, calibration curves (predictive parity)\n- Score distributions (Kolmogorov-Smirnov test)\n\n### Phase 3: Counterfactual & Causal Testing\n- **Paired testing**: Generate synthetic applicants identical except on proxy variables (ZIP, name).\n- **Counterfactual fairness**: Would the decision change if the applicant's race (and its descendants in the causal graph) were different?\n- **Perturbation tests**: Flip ZIP codes between segregated areas; measure decision change rates.\n\n### Phase 4: Intersectional Analysis\nExamine subgroups (race \u00d7 gender \u00d7 age). Aggregate metrics can hide \"fairness gerrymandering.\"\n\n### Phase 5: Downstream Impact\n- Default rates of approved applicants by group (are standards actually equal?)\n- Denial reasons and their distribution\n- Long-term outcomes: do approved loans lead to wealth building equally?\n\n### Phase 6: Governance\n- **Documentation**: Model cards, datasheets for datasets\n- **External audit**: Independent third-party review, not just internal\n- **Adverse action notices**: Regulation B requires specific reasons; audit these for consistency\n- **Monitoring**: Continuous drift detection post-deployment\n- **Recourse**: Can a denied applicant take concrete actions to get approved? (Actionable feature analysis)\n- **Appeals process**: Human review path for disputed decisions\n\n### Phase 7: Remediation Options (in order of preference)\n1. Improve data quality and expand features that capture creditworthiness fairly (cash-flow underwriting, rent payments)\n2. Reweight/resample training data\n3. Adversarial debiasing (train model to be unable to predict protected class)\n4. Post-processing: group-specific thresholds (legally risky in US; permitted in some contexts)\n5. Reject-option classification near decision boundary\n\n### Key Principle\nFairness is **not a single metric** but a sociotechnical property. The audit should surface tradeoffs for **human decision-makers and regulators**, not algorithmically \"solve\" fairness. Document why a specific definition was chosen given legal context (",
+      "tokens": 2209,
+      "time_ms": 34334
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "# Algorithmic Discrimination in Lending: A Comprehensive Analysis\n\n## Part 1: How Discrimination Occurs Without Using Race Directly\n\n### The Fundamental Misconception\n\nThe bank's defense\u2014\"we don't use race as a feature\"\u2014reflects a common but deeply flawed understanding of how discrimination operates in machine learning systems. This is known as the **\"fairness through unawareness\" fallacy**.\n\n```\nTHE FAIRNESS THROUGH UNAWARENESS FALLACY\n\nBank's Mental Model (Incorrect):\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502  Input Features                 \u2502\n\u2502  [income, credit_score, ...]    \u2502\u2500\u2500\u2192 Model \u2500\u2500\u2192 Decision\n\u2502  (race NOT included)            \u2502\n\u2502  \u2234 Model cannot be racist       \u2502    \u2190 THIS LOGIC IS WRONG\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\nReality:\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         Historical Structural Inequality          \u2502\n\u2502  (redlining, education gaps, wealth gaps, ...)    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n               \u2502 encodes into\n               \u25bc\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502  \"Neutral\" Features              \u2502\n\u2502  zip code \u2248 proxy for race       \u2502\n\u2502  wealth   \u2248 proxy for race       \u2502\u2500\u2500\u2192 Model \u2500\u2500\u2192 Discriminatory\n\u2502  school   \u2248 proxy for race       \u2502              Decision\n\u2502  employment type \u2248 proxy         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### Three Mechanisms of Indirect Discrimination\n\n```\nMECHANISM 1: PROXY ENCODING\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nHistorical redlining \u2192 residential segregation \u2192 zip codes correlate with race\nModel uses zip code \u2192 effectively uses race\n\nMECHANISM 2: BIASED TRAINING DATA\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nHistorical loan officers were biased \u2192\n  approved Group A more often \u2192\n    training data labels reflect this bias \u2192\n      model learns to replicate human bias\n\nMECHANISM 3: FEATURE INTERACTION EFFECTS\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nNo single feature is a proxy, but COMBINATIONS reconstruct race:\n  zip_code + income_level + education \u2192 predicts race with ~85% accuracy\n  Model implicitly learns this composite signal\n```\n\n### Mathematical Demonstration\n\n```python\nimport numpy as np\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import accuracy_score\n\nnp.random.seed(42)\n\n# === SIMULATION: How \"race-blind\" models discriminate ===\n\nn = 10000\n\n# Race (not used as feature, but generates other features)\nrace = np.random.binomial(1, 0.5, n)  # 0=Group A, 1=Group B\n\n# Due to historical inequality, \"neutral\" features correlate with race\n# These correlations reflect real documented disparities\nincome = 50000 + 20000 * (1 - race) + np.random.normal(0, 15000, n)\ncredit_score = 680 + 40 * (1 - race) + np.random.normal(0, 50, n)\nzip_code_wealth = 0.6 * (1 - race) + np.random.normal(0, 0.2, n)\n\n# True creditworthiness (what we SHOULD predict)\ntrue_risk = (\n    0.3 * (income > 45000).astype(float) +\n    0.4 * (credit_score > 670).astype(float) +\n    0.3 * np.random.random(n)\n)\ntrue_worthy = (true_risk > 0.45).astype(int)\n\n# But historical labels reflect BIASED human decisions\n# Human officers approved Group A at higher rates even at same risk\nbias_factor = 0.15 * (1 - race)  # Group A gets benefit of doubt\nhistorical_labels = (true_risk + bias_factor > 0.45).astype(int)\n\n# Train \"race-blind\" model\nX = np.column_stack([income, credit_score, zip_code_wealth])\nmodel = LogisticRegression()\nmodel.fit(X, historical_labels)\n\npredictions = model.predict(X)\n\n# Analyze disparate impact\ngroup_a_rate = predictions[race == 0].mean()\ngroup_b_rate = predictions[race == 1].mean()\n\nprint(f\"Overall accuracy: {accuracy_score(historical_labels, predictions):.1%}\")\nprint(f\"Group A approval rate: {group_a_rate:.1%}\")\nprint(f\"Group B approval rate: {group_b_rate:.1%}\")\nprint(f\"Disparate impact ratio: {group_b_rate/group_a_rate:.2f}\")\nprint(f\"(Legal threshold is typically 0.80, known as the 4/5ths rule)\")\n```\n\n```\nTYPICAL OUTPUT:\nOverall accuracy: 91.8%\nGroup A approval rate: 76.3%\nGroup B approval rate: 44.7%\nDisparate impact ratio: 0.59    \u2190 WELL BELOW legal threshold\n```\n\n### The Causal Diagram\n\n```\n                    \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n                    \u2502   HISTORICAL     \u2502\n                    \u2502   RACISM &       \u2502\n                    \u2502   STRUCTURAL     \u2502\n                    \u2502   INEQUALITY     \u2502\n                    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                             \u2502\n              \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n              \u2502              \u2502              \u2502\n              \u25bc              \u25bc              \u25bc\n        \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n        \u2502 Wealth   \u2502  \u2502 Where    \u2502  \u2502 Education\u2502\n        \u2502 Gaps     \u2502  \u2502 People   \u2502  \u2502 Quality  \u2502\n        \u2502          \u2502  \u2502 Live     \u2502  \u2502 Gaps     \u2502\n        \u2514\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2518\n              \u2502             \u2502             \u2502\n              \u25bc             \u25bc             \u25bc\n        \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n        \u2502 Income   \u2502  \u2502 Zip Code \u2502  \u2502 Degree   \u2502\n        \u2502 Credit   \u2502  \u2502 Property \u2502  \u2502 School   \u2502\n        \u2502 Savings  \u2502  \u2502 Value    \u2502  \u2502 Name     \u2502\n        \u2514\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2518\n              \u2502             \u2502             \u2502\n              \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u2502  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                         \u2502  \u2502  \u2502\n                         \u25bc  \u25bc  \u25bc\n                    \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n                    \u2502  \"RACE-BLIND\"\u2502\n                    \u2502    MODEL     \u2502\u2500\u2500\u2192 DISCRIMINATORY\n                    \u2502              \u2502    OUTCOME\n                    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\nThe model doesn't need to \"see\" race.\nRace is written into the features by history.\n```\n\n---\n\n## Part 2: Proxy Variables \u2014 Detailed Analysis\n\n### Identifying Proxy Variables\n\n```python\n\"\"\"\nSystematic proxy detection: measuring how well each feature\n(or combination of features) predicts protected group membership.\n\"\"\"\n\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import cross_val_score\nfrom itertools import combinations\n\nclass ProxyDetector:\n    \"\"\"\n    Detects features that serve as proxies for protected attributes.\n    \n    A feature is a proxy if it carries substantial mutual information\n    with the protected attribute, meaning the model can effectively\n    reconstruct group membership from \"neutral\" features.\n    \"\"\"\n    \n    def __init__(self, protected_attribute):\n        self.protected = protected_attribute\n        self.results = {}\n    \n    def measure_proxy_strength(self, feature_matrix, feature_names):\n        \"\"\"\n        For each feature and combination, measure how well it predicts\n        the protected attribute",
+      "tokens": 2160,
+      "time_ms": 35467
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 6.0,
+        "depth": 7.0,
+        "usefulness": 4.0,
+        "correctness": 7.0,
+        "completeness": 5.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 8.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 5.95,
+      "weighted_b": 8.8,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B directly answers all four parts with accurate fairness concepts, concrete proxy examples, clear tradeoff analysis, and a practical audit procedure. Response A has some good concepts, but it is incomplete, overly long, and the audit/proxy sections are cut off and therefore much less useful overall."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 7.0,
+        "depth": 6.0,
+        "usefulness": 4.0,
+        "correctness": 7.0,
+        "completeness": 3.0
+      },
+      "weighted_a": 8.8,
+      "weighted_b": 5.55,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response A addresses all four parts of the prompt comprehensively, whereas Response B cuts off midway through part 2 and completely fails to answer parts 3 and 4."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 0.0,
+        "depth": 0.0,
+        "usefulness": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "scores_b": {
+        "clarity": 0.0,
+        "depth": 0.0,
+        "usefulness": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "weighted_a": 0.0,
+      "weighted_b": 0.0,
+      "ab_winner": "TIE",
+      "contestant_winner": "tie",
+      "brief_justification": "Both responses are incomplete and cut off mid-analysis, preventing a full evaluation."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "tie": 1
+  },
+  "judges_agree": false
+}

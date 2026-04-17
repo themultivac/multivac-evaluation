@@ -1,0 +1,102 @@
+{
+  "question_id": "CODE-014",
+  "category": "code",
+  "question_text": "Implement a Last-Writer-Wins Element Set (LWW-Element-Set) CRDT in Python. It should support add, remove, lookup, and merge operations. Include a proof that merge is commutative, associative, and idem",
+  "timestamp": "2026-04-16T17:19:16.894927",
+  "contestants": {
+    "claude_opus_47": {
+      "display_name": "Claude Opus 4.7",
+      "model_id": "anthropic/claude-opus-4.7",
+      "response": "# LWW-Element-Set CRDT Implementation\n\n## Implementation\n\n```python\nimport time\nimport unittest\nfrom typing import Any, Dict, Set, Tuple\nfrom copy import deepcopy\n\n\nclass LWWElementSet:\n    \"\"\"\n    Last-Writer-Wins Element Set CRDT.\n    \n    Maintains two dictionaries (add_set and remove_set) mapping\n    elements to their latest timestamps. On lookup, an element is\n    present iff it's in add_set with a timestamp >= any timestamp\n    in remove_set (bias: add wins on tie).\n    \"\"\"\n    \n    def __init__(self, bias: str = \"add\"):\n        \"\"\"\n        Args:\n            bias: 'add' or 'remove' -- determines tie-breaking behavior\n                  when an element has the same add and remove timestamp.\n        \"\"\"\n        if bias not in (\"add\", \"remove\"):\n            raise ValueError(\"bias must be 'add' or 'remove'\")\n        self.add_set: Dict[Any, float] = {}\n        self.remove_set: Dict[Any, float] = {}\n        self.bias = bias\n    \n    @staticmethod\n    def _now() -> float:\n        return time.time()\n    \n    def add(self, element: Any, timestamp: float = None) -> None:\n        ts = timestamp if timestamp is not None else self._now()\n        if element not in self.add_set or self.add_set[element] < ts:\n            self.add_set[element] = ts\n    \n    def remove(self, element: Any, timestamp: float = None) -> None:\n        ts = timestamp if timestamp is not None else self._now()\n        if element not in self.remove_set or self.remove_set[element] < ts:\n            self.remove_set[element] = ts\n    \n    def lookup(self, element: Any) -> bool:\n        if element not in self.add_set:\n            return False\n        add_ts = self.add_set[element]\n        if element not in self.remove_set:\n            return True\n        remove_ts = self.remove_set[element]\n        if add_ts > remove_ts:\n            return True\n        if add_ts < remove_ts:\n            return False\n        # Tie\n        return self.bias == \"add\"\n    \n    def elements(self) -> Set[Any]:\n        return {e for e in self.add_set if self.lookup(e)}\n    \n    def merge(self, other: \"LWWElementSet\") -> \"LWWElementSet\":\n        \"\"\"Merge this set with another, returning a new LWWElementSet.\"\"\"\n        if self.bias != other.bias:\n            raise ValueError(\"Cannot merge sets with different biases\")\n        \n        merged = LWWElementSet(bias=self.bias)\n        merged.add_set = self._merge_dicts(self.add_set, other.add_set)\n        merged.remove_set = self._merge_dicts(self.remove_set, other.remove_set)\n        return merged\n    \n    @staticmethod\n    def _merge_dicts(d1: Dict[Any, float], d2: Dict[Any, float]) -> Dict[Any, float]:\n        result = dict(d1)\n        for k, v in d2.items():\n            if k not in result or result[k] < v:\n                result[k] = v\n        return result\n    \n    def __repr__(self):\n        return f\"LWWElementSet(elements={self.elements()})\"\n```\n\n## Proof: Merge is Commutative, Associative, and Idempotent\n\nThe merge operation on `LWWElementSet` reduces to merging two dictionaries via element-wise `max` on timestamps. Let `\u2294` denote merge and let `S.A`, `S.R` denote the add/remove dictionaries of state `S`.\n\n**Definition.** `(S\u2081 \u2294 S\u2082).A[e] = max(S\u2081.A[e], S\u2082.A[e])` where missing keys are treated as `-\u221e`. Same for `.R`.\n\n### 1. Commutativity: `S\u2081 \u2294 S\u2082 = S\u2082 \u2294 S\u2081`\n\n`max(a, b) = max(b, a)` for all real numbers. Since merge is built entirely from `max` applied element-wise, merge inherits commutativity:\n\n```\n(S\u2081 \u2294 S\u2082).A[e] = max(S\u2081.A[e], S\u2082.A[e]) = max(S\u2082.A[e], S\u2081.A[e]) = (S\u2082 \u2294 S\u2081).A[e]\n```\n\nThe same reasoning applies to `.R`. \u220e\n\n### 2. Associativity: `(S\u2081 \u2294 S\u2082) \u2294 S\u2083 = S\u2081 \u2294 (S\u2082 \u2294 S\u2083)`\n\n`max` is associative: `max(max(a, b), c) = max(a, max(b, c)) = max(a, b, c)`. Therefore:\n\n```\n((S\u2081 \u2294 S\u2082) \u2294 S\u2083).A[e] = max(max(S\u2081.A[e], S\u2082.A[e]), S\u2083.A[e])\n                      = max(S\u2081.A[e], max(S\u2082.A[e], S\u2083.A[e]))\n                      = (S\u2081 \u2294 (S\u2082 \u2294 S\u2083)).A[e]\n```\n\nSame for `.R`. \u220e\n\n### 3. Idempotence: `S \u2294 S = S`\n\n`max(a, a) = a` for every `a`. Thus:\n\n```\n(S \u2294 S).A[e] = max(S.A[e], S.A[e]) = S.A[e]\n```\n\nSame for `.R`, giving `S \u2294 S = S`. \u220e\n\nBecause `(State, \u2294)` forms a **join-semilattice** (the product of two semilattices of timestamp-indexed sets under element-wise max), the LWW-Element-Set is a valid state-based CRDT (CvRDT): replicas converge to the same state regardless of the order or multiplicity of merges.\n\n## Tests\n\n```python\nclass TestLWWElementSet(unittest.TestCase):\n    \n    def test_basic_add_lookup(self):\n        s = LWWElementSet()\n        s.add(\"a\", timestamp=1.0)\n        self.assertTrue(s.lookup(\"a\"))\n        self.assertFalse(s.lookup(\"b\"))\n    \n    def test_remove_after_add(self):\n        s = LWWElementSet()\n        s.add(\"a\",",
+      "tokens": 2160,
+      "time_ms": 21357
+    },
+    "claude_opus_46": {
+      "display_name": "Claude Opus 4.6",
+      "model_id": "anthropic/claude-opus-4.6",
+      "response": "\n\n# LWW-Element-Set CRDT Implementation\n\n## Overview\n\nA Last-Writer-Wins Element Set (LWW-Element-Set) is a state-based CRDT that maintains two internal sets: an **add set** and a **remove set**, each storing elements with timestamps. An element is considered in the set if it's in the add set and either not in the remove set, or its latest add timestamp is greater than or equal to its latest remove timestamp.\n\n## Implementation\n\n```python\n\"\"\"\nLWW-Element-Set CRDT (Last-Writer-Wins Element Set)\n\nA state-based CRDT that resolves conflicts using timestamps.\nEach element tracks its latest add and remove timestamps.\nThe element is considered present if its add timestamp >= remove timestamp.\n\nBias: add-bias (element present when add timestamp == remove timestamp).\nThis is configurable.\n\"\"\"\n\nfrom __future__ import annotations\n\nimport copy\nimport time\nfrom dataclasses import dataclass, field\nfrom enum import Enum, auto\nfrom typing import Any, Dict, FrozenSet, Hashable, Optional, Set, Tuple\n\n\nclass Bias(Enum):\n    \"\"\"Determines winner when add and remove timestamps are equal.\"\"\"\n    ADD = auto()     # Element is present when timestamps tie\n    REMOVE = auto()  # Element is absent when timestamps tie\n\n\n@dataclass\nclass LWWElementSet:\n    \"\"\"\n    Last-Writer-Wins Element Set CRDT.\n\n    Internal state:\n        add_set:    Dict[element -> timestamp]  \u2014 latest add timestamp per element\n        remove_set: Dict[element -> timestamp]  \u2014 latest remove timestamp per element\n\n    An element e is in the logical set iff:\n        e \u2208 add_set AND (e \u2209 remove_set OR add_set[e] \u2265 remove_set[e])  [add-bias]\n        e \u2208 add_set AND (e \u2209 remove_set OR add_set[e] > remove_set[e])  [remove-bias]\n\n    Merge is defined as pointwise max of timestamps:\n        merge(A, B).add_set[e]    = max(A.add_set[e],    B.add_set[e])\n        merge(A, B).remove_set[e] = max(A.remove_set[e], B.remove_set[e])\n    \"\"\"\n\n    add_set: Dict[Hashable, float] = field(default_factory=dict)\n    remove_set: Dict[Hashable, float] = field(default_factory=dict)\n    bias: Bias = Bias.ADD\n    replica_id: Optional[str] = None  # For debugging / tracing\n\n    # \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    # Core Operations\n    # \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    def add(self, element: Hashable, timestamp: Optional[float] = None) -> None:\n        \"\"\"\n        Add an element with the given timestamp.\n        If the element already has a higher add-timestamp, this is a no-op.\n\n        Args:\n            element: Any hashable value.\n            timestamp: Logical or wall-clock timestamp. Defaults to time.time().\n        \"\"\"\n        if timestamp is None:\n            timestamp = time.time()\n\n        current = self.add_set.get(element)\n        if current is None or timestamp > current:\n            self.add_set[element] = timestamp\n\n    def remove(self, element: Hashable, timestamp: Optional[float] = None) -> None:\n        \"\"\"\n        Remove an element with the given timestamp.\n        If the element already has a higher remove-timestamp, this is a no-op.\n\n        Precondition (soft): element should exist in add_set for remove to be\n        meaningful, but we don't enforce this \u2014 the lookup semantics handle it.\n\n        Args:\n            element: Any hashable value.\n            timestamp: Logical or wall-clock timestamp. Defaults to time.time().\n        \"\"\"\n        if timestamp is None:\n            timestamp = time.time()\n\n        current = self.remove_set.get(element)\n        if current is None or timestamp > current:\n            self.remove_set[element] = timestamp\n\n    def lookup(self, element: Hashable) -> bool:\n        \"\"\"\n        Check if an element is logically in the set.\n\n        Returns True iff:\n            - element is in add_set, AND\n            - element is NOT in remove_set OR add timestamp beats remove timestamp\n              (with tie-breaking determined by self.bias)\n        \"\"\"\n        if element not in self.add_set:\n            return False\n\n        if element not in self.remove_set:\n            return True\n\n        add_ts = self.add_set[element]\n        remove_ts = self.remove_set[element]\n\n        if self.bias == Bias.ADD:\n            return add_ts >= remove_ts\n        else:  # Bias.REMOVE\n            return add_ts > remove_ts\n\n    def get_all(self) -> FrozenSet[Hashable]:\n        \"\"\"Return all elements currently in the logical set.\"\"\"\n        return frozenset(e for e in self.add_set if self.lookup(e))\n\n    # \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    # Merge\n    # \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    def merge(self, other: LWWElementSet) -> LWWElementSet:\n        \"\"\"\n        Merge this set with another, returning a NEW LWWElementSet.\n\n        The merge is defined as the pointwise maximum of timestamps:\n            result.add_set[e]    = max(self.add_set.get(e, -\u221e), other.add_set.get(e, -\u221e))\n            result.remove_set[e] = max(self.remove_set.get(e, -\u221e), other.remove_set.get(e, -\u221e))\n\n        This operation is:\n            - Commutative:  merge(A, B) == merge(B, A)\n            - Associative:  merge(merge(A, B), C) == merge(A, merge(B, C))\n            - Idempotent:   merge(A, A) == A\n\n        Args:\n            other: Another LWWElementSet to merge with.\n\n        Returns:\n            A new LWWElementSet representing the merged state.\n        \"\"\"\n        merged_add: Dict[Hashable, float] = {}\n        merged_remove: Dict[Hashable, float] = {}\n\n        # Merge add sets: pointwise max\n        all_add_keys = set(self.add_set.keys()) | set(other.add_set.keys())\n        for key in all_add_keys:\n            ts_self = self.add_set.get(key, float('-inf'))\n            ts_other = other.add_set.get(key, float('-inf'))\n            merged_add[key] = max(ts_self, ts_other)\n\n        # Merge remove sets: pointwise max\n        all_remove_keys = set(self.remove_set.keys()) | set(other.remove_set.keys())\n        for key in all_remove_keys:\n            ts_self = self.remove_set.get(key, float('-inf'))\n            ts_other = other.remove_set.get(key, float('-inf'))\n            merged_remove[key] = max(ts_self, ts_other)\n\n        return LWWElementSet(\n            add_set=merged_add,\n            remove_set=merged_remove,\n            bias=self.bias,\n            replica_id=f\"merged({self.replica_id},{other.replica_id})\"\n        )\n\n    def merge_in_place(self, other: LWWElementSet) -> None:\n        \"\"\"Merge another set INTO this one (mutating self).\"\"\"\n        for key, ts in other.add_set.items():\n            current = self.add_set.get(key, float('-inf'))\n            if ts > current:\n                self.add_set[key] = ts\n\n        for key, ts in other.remove_set.items():\n            current = self.remove_set.get(key, float('-inf'))\n            if ts > current:\n                self.remove_set[key] = ts\n\n    # \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n    # Comparison (for proofs / testing)\n    # \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n    def state_equal(self, other: LWWElementSet) -> bool:",
+      "tokens": 2126,
+      "time_ms": 26094
+    }
+  },
+  "judgments": {
+    "gpt54": {
+      "judge_display": "GPT-5.4",
+      "slot_a_was": "Claude Opus 4.6",
+      "slot_b_was": "Claude Opus 4.7",
+      "scores_a": {
+        "clarity": 6.0,
+        "depth": 4.0,
+        "usefulness": 3.0,
+        "correctness": 3.0,
+        "completeness": 4.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 8.0,
+        "completeness": 7.0
+      },
+      "weighted_a": 4.0,
+      "weighted_b": 7.65,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Response B provides a coherent implementation, a solid proof of commutativity/associativity/idempotence, and usable tests structure. Response A is substantially incomplete, with truncated code and missing requested tests/proof details in the visible content."
+    },
+    "gemini": {
+      "judge_display": "Gemini 3.1 Pro",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 7.0,
+        "correctness": 8.0,
+        "completeness": 6.0
+      },
+      "scores_b": {
+        "clarity": 8.0,
+        "depth": 5.0,
+        "usefulness": 6.0,
+        "correctness": 7.0,
+        "completeness": 4.0
+      },
+      "weighted_a": 7.45,
+      "weighted_b": 6.05,
+      "ab_winner": "A",
+      "contestant_winner": "claude_opus_47",
+      "brief_justification": "Both responses were cut off before completing the tests, but Response A successfully included the requested mathematical proof for commutativity, associativity, and idempotence, whereas Response B omitted it."
+    },
+    "deepseek": {
+      "judge_display": "DeepSeek V3.2",
+      "slot_a_was": "Claude Opus 4.7",
+      "slot_b_was": "Claude Opus 4.6",
+      "scores_a": {
+        "clarity": 8.0,
+        "depth": 8.0,
+        "usefulness": 8.0,
+        "correctness": 9.0,
+        "completeness": 8.0
+      },
+      "scores_b": {
+        "clarity": 9.0,
+        "depth": 9.0,
+        "usefulness": 9.0,
+        "correctness": 9.0,
+        "completeness": 9.0
+      },
+      "weighted_a": 8.25,
+      "weighted_b": 9.0,
+      "ab_winner": "B",
+      "contestant_winner": "claude_opus_46",
+      "brief_justification": "Response B is more thorough, includes a merge_in_place method, better documentation, and a more complete proof structure."
+    }
+  },
+  "winner_aggregate": "claude_opus_47",
+  "judge_votes": {
+    "claude_opus_47": 2,
+    "claude_opus_46": 1
+  },
+  "judges_agree": false
+}
