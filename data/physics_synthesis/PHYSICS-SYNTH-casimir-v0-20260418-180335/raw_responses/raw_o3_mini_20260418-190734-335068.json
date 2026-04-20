@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776557246-Yrl7mzL1qdNfWtah85vJ",
+  "object": "chat.completion",
+  "created": 1776557246,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 51,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Differentiation is correctly performed yielding the expected force magnitude and sign.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5BzEWGl-zgSdrwd0pp9BTUiphNMnAZfVMx4HnMrsLoSRm0Ef5Y5MyH2nvV6G1c4tgSqxB3-DMXFx94efWetqP3Kh7bVuhINMrRVOUaKAaMpwCxok2ehHLVM1Nmlw2ZTbYJEwZtVvsbvNhkpQBQGKsyhtUSPTE_joqKO4EPa5nflfyY5Pl0LF7FnLKO2pRgSrokCChlxZ-sSv7wOPq8p1qNm2cne--XkEuuwwFabWmcZIKtsn6c8hrOx3F9AAShFk6G25hRDYUJWoRCrB3gGqfjPeQO6nrbQQxlWUMgTUSYJu1KcADQzaHpgbgaqESC1yd9Do1OUS6WzYVvGmzhbJCdn79kJCy4aM336ZcHSV4vmeK2P2BvtiZs4lv23jqjBpvlPt2jfyoQkrigkIOsHWB9_0Sh8iIr810uveIQhYiSkUKfa4UP_5ctuWRVL7r25wbYowAC0724KOKaZDzWY_MJsVq8xh5qjWmz6ET_63M_6wn25g_VaoXYOcSxe9m4IzlGd75LcoFcD0YPBUViFBdsuz-g==",
+            "format": "openai-responses-v1",
+            "id": "rs_07d5b9c7b12bb2660169e41cbf4d988195903992211f80eea0",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 538,
+    "completion_tokens": 1617,
+    "total_tokens": 2155,
+    "cost": 0.0077066,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0077066,
+      "upstream_inference_prompt_cost": 0.0005918,
+      "upstream_inference_completions_cost": 0.0071148
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 768,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

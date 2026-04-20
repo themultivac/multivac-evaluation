@@ -1,0 +1,647 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "Consider two perfectly conducting, infinite plates of area $A$ (with $A \\to \\infty$) parallel to the $xy$-plane, located at $z=0$ and $z=d$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard and valid assumption for Casimir force derivation in infinite parallel plate geometry.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard and valid assumption for Casimir force derivation in infinite parallel plate geometry.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T18:54:28.850691"
+  },
+  {
+    "claim_id": 2,
+    "claim_text": "The vacuum electromagnetic field between them must satisfy the perfect-conductor boundary conditions: the tangential components of $\\mathbf{E}$ and the normal component of $\\mathbf{B}$ vanish at each plate.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":2,\"verdict\":\"CONFIRMED\",\"explanation\":\"For ideal perfect conductors, boundary conditions at the surface are \\\\(\\\\mathbf{E}_\\\\parallel=0\\\\) and \\\\(B_n=0\\\\) (equivalently \\\\(\\\\mathbf{n}\\\\cdot\\\\mathbf{B}=0\\\\)).\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 2,
+      "verdict": "CONFIRMED",
+      "explanation": "For ideal perfect conductors, boundary conditions at the surface are \\(\\mathbf{E}_\\parallel=0\\) and \\(B_n=0\\) (equivalently \\(\\mathbf{n}\\cdot\\mathbf{B}=0\\)).",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T18:54:32.085491"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "The allowed wavevector components are: $k_x, k_y \\in \\mathbb{R}$ (continuous, since plates are infinite in $xy$).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Infinite plates ensure continuous k_x and k_y, with only the perpendicular component being quantized.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "Infinite plates ensure continuous k_x and k_y, with only the perpendicular component being quantized.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T18:54:38.023939"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "$k_z = \\frac{n\\pi}{d}$, with $n = 0, 1, 2, \\ldots$ (discrete, from the boundary conditions).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":4,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Allowed longitudinal modes are quantized as n\u03c0/d, but EM conducting plates require TE/TM polarization-dependent treatment; n=0 is absent for TE and only special for TM.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 4,
+      "verdict": "INCOMPLETE",
+      "explanation": "Allowed longitudinal modes are quantized as n\u03c0/d, but EM conducting plates require TE/TM polarization-dependent treatment; n=0 is absent for TE and only special for TM.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T18:54:41.342568"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "The dispersion relation is $\\omega_n(\\mathbf{k}_\\parallel) = c\\sqrt{k_\\parallel^2 + \\left(\\tfrac{n\\pi}{d}\\right)^2}$, $k_\\parallel^2 = k_x^2+k_y^2$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 5, \"verdict\": \"CONFIRMED\", \"explanation\": \"The dispersion relation correctly represents the continuous in-plane component and quantized perpendicular mode under perfect conductor boundary conditions.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "CONFIRMED",
+      "explanation": "The dispersion relation correctly represents the continuous in-plane component and quantized perpendicular mode under perfect conductor boundary conditions.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T18:54:56.705569"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "For each $n \\geq 1$ there are two independent transverse polarizations (TE and TM).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":6,\"verdict\":\"CONFIRMED\",\"explanation\":\"Between perfect-conductor plates, each nonzero longitudinal mode \\(n\\\\ge1\\) supports two physical EM modes: TE and TM. Only the \\(n=0\\) sector is exceptional.\",\"confidence\":0.97}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T18:55:00.092848"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "For $n=0$, only one polarization (TM) survives the boundary conditions.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T18:57:08.909631"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "We handle this by including $n=0$ with weight $1$ and $n\\geq 1$ with weight $2$, which is equivalent to summing $\\sum_{n=0}^\\infty$ with a factor $2$ and subtracting the overcounted $n=0$ mode \u2014 in practice a primed sum $\\sum'$ where the $n=0$ term carries weight $1/2$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"For parallel plates, TE/TM give two polarizations for n\u22651, but only one physical polarization at n=0. Thus \\u2211'(\u2026) with half-weighted n=0 is equivalent bookkeeping.\",\"confidence\":0.96}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 8,
+      "verdict": "CONFIRMED",
+      "explanation": "For parallel plates, TE/TM give two polarizations for n\u22651, but only one physical polarization at n=0. Thus \u2211'(\u2026) with half-weighted n=0 is equivalent bookkeeping.",
+      "confidence": 0.96
+    },
+    "timestamp": "2026-04-18T18:57:12.388540"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "The zero-point energy per unit area between the plates is $\\frac{U(d)}{A} = \\frac{\\hbar}{2} \\sum_{n=0}^\\infty {}' \\; 2 \\int \\frac{d^2 k_\\parallel}{(2\\pi)^2} \\, \\omega_n(\\mathbf{k}_\\parallel)$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expression correctly sums the quantized modes with proper k\u2225 integration and n=0 half-weight, reflecting the two polarization states.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "CONFIRMED",
+      "explanation": "The expression correctly sums the quantized modes with proper k\u2225 integration and n=0 half-weight, reflecting the two polarization states.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T18:58:04.968025"
+  },
+  {
+    "claim_id": 10,
+    "claim_text": "$\\frac{U(d)}{A} = \\hbar c \\int \\frac{d^2 k_\\parallel}{(2\\pi)^2}\\left[\\tfrac{1}{2} k_\\parallel + \\sum_{n=1}^\\infty \\sqrt{k_\\parallel^2 + (n\\pi/d)^2}\\right]$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":10,\"verdict\":\"CONFIRMED\",\"explanation\":\"Correct mode-sum per area after summing TE/TM degeneracies: n>=1 gives two polarizations cancelling 1/2, while n=0 contributes one half-weight mode.\",\"confidence\":0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 10,
+      "verdict": "CONFIRMED",
+      "explanation": "Correct mode-sum per area after summing TE/TM degeneracies: n>=1 gives two polarizations cancelling 1/2, while n=0 contributes one half-weight mode.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T18:58:08.607354"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "This expression is doubly divergent (UV in $k_\\parallel$ and in $n$).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Both the continuous k_parallel integral and the discrete sum over n exhibit UV divergences, necessitating separate regularization.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 11,
+      "verdict": "CONFIRMED",
+      "explanation": "Both the continuous k_parallel integral and the discrete sum over n exhibit UV divergences, necessitating separate regularization.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T18:58:23.968993"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "I use a smooth UV cutoff function $f(\\omega/\\omega_c)$ with $f(0)=1$ and $f(\\infty)=0$, modeling the fact that real conductors become transparent at high frequencies.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":12,\"verdict\":\"CONFIRMED\",\"explanation\":\"Physically motivated and standard: finite conductivity makes real metals ineffective reflectors above plasma-scale frequencies, justifying a smooth high-frequency cutoff in regularization.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 12,
+      "verdict": "CONFIRMED",
+      "explanation": "Physically motivated and standard: finite conductivity makes real metals ineffective reflectors above plasma-scale frequencies, justifying a smooth high-frequency cutoff in regularization.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T18:58:27.271131"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "The physical answer must be independent of the choice of $f$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 13,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"With proper subtraction of divergences, any regulator f yields the same physical finite result.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "CONFIRMED",
+      "explanation": "With proper subtraction of divergences, any regulator f yields the same physical finite result.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T18:58:41.384656"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "Switching to polar coordinates ($d^2 k_\\parallel = 2\\pi k_\\parallel\\,dk_\\parallel$) and defining $u = (k_\\parallel d/\\pi)^2$, the energy per unit area becomes $\\frac{U(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3}\\left[\\tfrac{1}{2} F(0) + \\sum_{n=1}^\\infty F(n)\\right]$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":14,\"verdict\":\"CONFIRMED\",\"explanation\":\"From \\\\(U/A=\\\\hbar c\\\\sum_n\\\\int d^2k/(2\\\\pi)^2\\\\sqrt{k^2+(n\\\\pi/d)^2}\\\\), polar coordinates and \\\\(u=(k d/\\\\pi)^2\\\\) give prefactor \\\\(\\\\hbar c\\\\pi^2/(4d^3)\\\\).\",\"confidence\":0.96}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 14,
+      "verdict": "CONFIRMED",
+      "explanation": "From \\(U/A=\\hbar c\\sum_n\\int d^2k/(2\\pi)^2\\sqrt{k^2+(n\\pi/d)^2}\\), polar coordinates and \\(u=(k d/\\pi)^2\\) give prefactor \\(\\hbar c\\pi^2/(4d^3)\\).",
+      "confidence": 0.96
+    },
+    "timestamp": "2026-04-18T18:58:45.201700"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "$F(n) \\equiv \\int_0^\\infty du\\, \\sqrt{u + n^2}\\; f\\!\\left(\\tfrac{\\pi c}{d}\\sqrt{u+n^2}\\,/\\,\\omega_c\\right)$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:00:23.766774"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "The corresponding free-vacuum energy (no plates, same region) is obtained by replacing $\\sum_n \\to \\int_0^\\infty dn$: $\\frac{U_{\\text{free}}(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3} \\int_0^\\infty dn\\, F(n)$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":16,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Replacing the mode sum by an integral is right, but free vacuum needs continuum normalization/density-of-states justification and careful TE/TM/polarization matching to the plate region.\",\"confidence\":0.93}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 16,
+      "verdict": "INCOMPLETE",
+      "explanation": "Replacing the mode sum by an integral is right, but free vacuum needs continuum normalization/density-of-states justification and careful TE/TM/polarization matching to the plate region.",
+      "confidence": 0.93
+    },
+    "timestamp": "2026-04-18T19:00:27.556706"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "The Casimir energy per unit area is the finite difference $\\frac{\\mathcal{E}(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3}\\left[\\tfrac{1}{2}F(0) + \\sum_{n=1}^\\infty F(n) - \\int_0^\\infty F(n)\\,dn\\right]$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 17, \"verdict\": \"INCOMPLETE\", \"explanation\": \"It remains in an unevaluated intermediate form using an undefined function F(n) rather than explicitly yielding the standard result.\", \"confidence\": 0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 17,
+      "verdict": "INCOMPLETE",
+      "explanation": "It remains in an unevaluated intermediate form using an undefined function F(n) rather than explicitly yielding the standard result.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:01:09.057053"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "$\\tfrac{1}{2}F(0) + \\sum_{n=1}^\\infty F(n) - \\int_0^\\infty F(n)\\,dn = -\\tfrac{1}{12}F'(0) + \\tfrac{1}{720}F'''(0) - \\cdots$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 19,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"It is the correct Euler\u2013Maclaurin expansion using Bernoulli coefficients for smooth, decaying functions.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "It is the correct Euler\u2013Maclaurin expansion using Bernoulli coefficients for smooth, decaying functions.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:02:19.659395"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "With $w = u+n^2$, $F(n) = \\int_{n^2}^\\infty dw\\, \\sqrt{w}\\, f(\\cdots)$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"After substituting $w=u+n^2$ in $\\int_0^\\infty du\\\\,\\\\sqrt{u+n^2}f(\\\\cdots)$, limits become $[n^2,\\\\infty)$ and $\\\\sqrt{w}$ appears, but omitted integrand details prevent verification.\",\"confidence\":0.91}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:02:23.111749"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "$F'(n) = -2n^2\\, f(\\pi c n/(d\\omega_c))$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 21, \"verdict\": \"ERROR\", \"explanation\": \"Differentiating with respect to the index n is inappropriate; the derivation must differentiate with respect to d, making the expression inconsistent.\", \"confidence\": 0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "ERROR",
+      "explanation": "Differentiating with respect to the index n is inappropriate; the derivation must differentiate with respect to d, making the expression inconsistent.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:02:34.040403"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "As $\\omega_c \\to \\infty$, $f \\to 1$, so $F'(n) = -2n^2$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":22,\"verdict\":\"ERROR\",\"explanation\":\"With regulator \\(f(n)=e^{-2\\pi n/(\\omega_c d/c)}\\), \\(F(n)=n^2f\\). Then \\(F'(n)=2nf+n^2f'\\to 2n\\), not \\(-2n^2\\).\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:02:37.314314"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "$F'(0) = 0$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 23,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The Casimir force scales as d\u207b\u2074, so at d=0 its derivative diverges, not equaling zero.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 23,
+      "verdict": "ERROR",
+      "explanation": "The Casimir force scales as d\u207b\u2074, so at d=0 its derivative diverges, not equaling zero.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:02:53.289133"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "$F''(0) = 0$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":24,\"verdict\":\"ERROR\",\"explanation\":\"For exponential-cutoff regularization, \\(F(\\alpha)=e^{-2\\alpha n\\pi/d}\\) gives \\(F''(0)=(2n\\pi/d)^2\\neq0\\). No natural Casimir quantity here has zero second derivative at 0.\",\"confidence\":0.96}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:02:56.967588"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "$F'''(0) = -4$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 25,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The third derivative at zero is meaningless here; the Casimir force scales as d\u207b\u2074, making F'''(0) = -4 both dimensionally and conceptually incorrect.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 25,
+      "verdict": "ERROR",
+      "explanation": "The third derivative at zero is meaningless here; the Casimir force scales as d\u207b\u2074, making F'''(0) = -4 both dimensionally and conceptually incorrect.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:03:08.033147"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "$F^{(k\\geq 5)}(0) = 0$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"ERROR\",\"explanation\":\"For the common regulator \\(f(x)=e^{-x}\\), \\(f^{(k)}(0)=(-1)^k\\neq0\\) for all \\(k\\). Claim is false unless an unstated special regulator is assumed.\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:03:11.617594"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "All higher-order Euler\u2013Maclaurin corrections vanish, so the answer is independent of the cutoff (justifying the regularization).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 27,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"Higher-order Euler\u2013Maclaurin terms do not inherently vanish; cutoff independence results from careful subtraction and analytic continuation, not from them being zero.\",\n    \"confidence\": 0.9\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 27,
+      "verdict": "ERROR",
+      "explanation": "Higher-order Euler\u2013Maclaurin terms do not inherently vanish; cutoff independence results from careful subtraction and analytic continuation, not from them being zero.",
+      "confidence": 0.9
+    },
+    "timestamp": "2026-04-18T19:03:26.871519"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "$\\tfrac{1}{2}F(0) + \\sum_{n=1}^\\infty F(n) - \\int_0^\\infty F(n)\\,dn = \\frac{1}{720}(-4) = -\\frac{1}{180}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":28,\"verdict\":\"ERROR\",\"explanation\":\"Euler\u2013Maclaurin gives correction involving Bernoulli numbers and derivatives. For Casimir sums the difference is typically proportional to \\\\(-B_4/4!\\\\,F'''(0)\\\\), not a bare \\\\((1/720)(-4)\\\\).\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 28,
+      "verdict": "ERROR",
+      "explanation": "Euler\u2013Maclaurin gives correction involving Bernoulli numbers and derivatives. For Casimir sums the difference is typically proportional to \\(-B_4/4!\\,F'''(0)\\), not a bare \\((1/720)(-4)\\).",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T19:03:32.610044"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "After performing the $k_\\parallel$ integral with dimensional/zeta regularization, one encounters $\\sum_{n=1}^\\infty n^3$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:05:22.078431"
+  },
+  {
+    "claim_id": 31,
+    "claim_text": "Carrying through the coefficients yields the same answer below.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 31,\n    \"verdict\": \"UNJUSTIFIED\",\n    \"explanation\": \"The claim asserts identical coefficients without showing necessary derivation or explicit coefficient evaluation.\",\n    \"confidence\": 0.9\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 31,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "The claim asserts identical coefficients without showing necessary derivation or explicit coefficient evaluation.",
+      "confidence": 0.9
+    },
+    "timestamp": "2026-04-18T19:05:30.374136"
+  },
+  {
+    "claim_id": 32,
+    "claim_text": "$\\frac{\\mathcal{E}(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3}\\left(-\\frac{1}{180}\\right) = -\\frac{\\pi^2 \\hbar c}{720\\, d^3}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":32,\"verdict\":\"CONFIRMED\",\"explanation\":\"Matches the standard Casimir energy per area for two perfectly conducting parallel plates after vacuum subtraction: \\\\(U/A=-\\\\pi^2\\\\hbar c/(720 d^3)\\\\).\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 32,
+      "verdict": "CONFIRMED",
+      "explanation": "Matches the standard Casimir energy per area for two perfectly conducting parallel plates after vacuum subtraction: \\(U/A=-\\pi^2\\hbar c/(720 d^3)\\).",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T19:05:33.548128"
+  },
+  {
+    "claim_id": 33,
+    "claim_text": "The force per unit area (pressure) is $\\frac{F(d)}{A} = -\\frac{\\partial}{\\partial d}\\!\\left[\\frac{\\mathcal{E}(d)}{A}\\right]$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 33,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard definition: force equals negative derivative of energy per unit area with respect to separation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 33,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard definition: force equals negative derivative of energy per unit area with respect to separation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:05:39.533329"
+  },
+  {
+    "claim_id": 34,
+    "claim_text": "$\\frac{F(d)}{A} = -\\frac{\\partial}{\\partial d}\\!\\left(-\\frac{\\pi^2 \\hbar c}{720\\, d^3}\\right)$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":34,\"verdict\":\"CONFIRMED\",\"explanation\":\"With \\(U/A=-\\pi^2\\hbar c/(720d^3)\\), \\(-\\partial_d(U/A)=-\\pi^2\\hbar c/(240d^4)\\), the standard attractive Casimir pressure.\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:05:45.327230"
+  },
+  {
+    "claim_id": 35,
+    "claim_text": "$\\frac{F(d)}{A} = -\\frac{\\pi^2\\, \\hbar c}{240\\, d^4}$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 35,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"It exactly matches the standard Casimir result via zeta-function regularization.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 35,
+      "verdict": "CONFIRMED",
+      "explanation": "It exactly matches the standard Casimir result via zeta-function regularization.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:05:54.170989"
+  },
+  {
+    "claim_id": 36,
+    "claim_text": "The minus sign indicates an attractive force.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":36,\"verdict\":\"CONFIRMED\",\"explanation\":\"With force per area defined as pressure on increasing plate separation, negative sign means energy decreases as d decreases, so plates attract.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 36,
+      "verdict": "CONFIRMED",
+      "explanation": "With force per area defined as pressure on increasing plate separation, negative sign means energy decreases as d decreases, so plates attract.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T19:05:57.407530"
+  },
+  {
+    "claim_id": 37,
+    "claim_text": "Perfect conductors \u2014 idealized boundary conditions; real metals deviate at frequencies above the plasma frequency.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 37,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Perfect conductors are idealized; real metals lose reflectivity above their plasma frequency, validating the claim.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 37,
+      "verdict": "CONFIRMED",
+      "explanation": "Perfect conductors are idealized; real metals lose reflectivity above their plasma frequency, validating the claim.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:06:03.369178"
+  },
+  {
+    "claim_id": 38,
+    "claim_text": "Zero temperature; only vacuum fluctuations contribute.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":38,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard Casimir derivation here assumes \\(T=0\\); thermal photons are absent, leaving only zero-point vacuum fluctuations. Finite-temperature corrections would modify the force.\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:06:06.624747"
+  },
+  {
+    "claim_id": 39,
+    "claim_text": "Infinite plate area ($A \\to \\infty$), so transverse momenta are continuous.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 39,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Infinite plates imply a continuum of transverse momenta, a standard assumption in Casimir derivations.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 39,
+      "verdict": "CONFIRMED",
+      "explanation": "Infinite plates imply a continuum of transverse momenta, a standard assumption in Casimir derivations.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:06:17.579144"
+  },
+  {
+    "claim_id": 40,
+    "claim_text": "Flat, rigid, parallel plates; no roughness or curvature.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":40,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard idealization for deriving the canonical Casimir force: infinite, perfectly flat, rigid, parallel plates. Roughness, curvature, or deformation introduce corrections beyond this setup.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 40,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard idealization for deriving the canonical Casimir force: infinite, perfectly flat, rigid, parallel plates. Roughness, curvature, or deformation introduce corrections beyond this setup.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T19:06:20.959447"
+  },
+  {
+    "claim_id": 41,
+    "claim_text": "Regularization: smooth UV cutoff $f(\\omega/\\omega_c)$ with $\\omega_c \\to \\infty$, physically justified by the transparency of conductors at high frequency.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 41,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"UV cutoff with \u03c9_c\u2192\u221e is standard, justified by real conductors' high-frequency transparency in Casimir derivations.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 41,
+      "verdict": "CONFIRMED",
+      "explanation": "UV cutoff with \u03c9_c\u2192\u221e is standard, justified by real conductors' high-frequency transparency in Casimir derivations.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:06:38.671065"
+  },
+  {
+    "claim_id": 42,
+    "claim_text": "The cutoff-independence of the final result is verified via Euler\u2013Maclaurin.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":42,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"Euler\u2013Maclaurin can isolate the finite plate-separation term, but cutoff-independence requires showing divergent terms are d-independent or renormalized away; the claim gives no such demonstration.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 42,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "Euler\u2013Maclaurin can isolate the finite plate-separation term, but cutoff-independence requires showing divergent terms are d-independent or renormalized away; the claim gives no such demonstration.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T19:06:43.896612"
+  },
+  {
+    "claim_id": 45,
+    "claim_text": "Subtraction scheme: the free-vacuum (continuum-$n$) energy is subtracted to isolate the $d$-dependent finite part; $d$-independent divergences cancel.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 45, \"verdict\": \"CONFIRMED\", \"explanation\": \"The standard subtraction eliminates d-independent infinities, isolating the finite d-dependent part.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 45,
+      "verdict": "CONFIRMED",
+      "explanation": "The standard subtraction eliminates d-independent infinities, isolating the finite d-dependent part.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:06:54.243897"
+  },
+  {
+    "claim_id": 46,
+    "claim_text": "For $d = 1\\,\\mu\\text{m}$: $\\frac{F}{A} \\approx -1.3 \\times 10^{-3}\\,\\text{Pa}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":46,\"verdict\":\"CONFIRMED\",\"explanation\":\"Using \\(F/A=-\\pi^2\\hbar c/(240d^4)\\) with \\(d=10^{-6}\\,\\mathrm m\\) gives \\(-1.30\\times10^{-3}\\,\\mathrm{Pa}\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:06:59.155781"
+  },
+  {
+    "claim_id": 48,
+    "claim_text": "The $n=0$ term in the zero-point energy sum contributes $\\tfrac{1}{2} k_\\parallel$ inside the integral.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":48,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For EM between perfect plates, the \\(n=0\\) mode has only one polarization (TE absent), so its contribution is half the usual two-polarization weight; context-dependent.\",\"confidence\":0.92}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:07:02.536733"
+  },
+  {
+    "claim_id": 49,
+    "claim_text": "The substitution $u = (k_\\parallel d/\\pi)^2$ is used to rewrite the energy sum.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 49, \"verdict\": \"CONFIRMED\", \"explanation\": \"The substitution correctly non-dimensionalizes k_parallel relative to the mode spacing from the plate separation.\", \"confidence\": 0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 49,
+      "verdict": "CONFIRMED",
+      "explanation": "The substitution correctly non-dimensionalizes k_parallel relative to the mode spacing from the plate separation.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:07:20.353959"
+  },
+  {
+    "claim_id": 50,
+    "claim_text": "The prefactor $\\frac{\\hbar c \\pi^2}{4 d^3}$ arises from the change of variables to $u$ and polar coordinates.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":50,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"A variable change alone cannot fix the full prefactor; Jacobian, angular measure, polarization/counting, and prior constants must be shown explicitly.\",\"confidence\":0.96}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 50,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "A variable change alone cannot fix the full prefactor; Jacobian, angular measure, polarization/counting, and prior constants must be shown explicitly.",
+      "confidence": 0.96
+    },
+    "timestamp": "2026-04-18T19:07:25.039046"
+  },
+  {
+    "claim_id": 51,
+    "claim_text": "$-\\frac{\\partial}{\\partial d}\\left(-\\frac{\\pi^2 \\hbar c}{720 d^3}\\right) = -\\frac{\\pi^2 \\hbar c}{240 d^4}$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 51,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Differentiation is correctly performed yielding the expected force magnitude and sign.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 51,
+      "verdict": "CONFIRMED",
+      "explanation": "Differentiation is correctly performed yielding the expected force magnitude and sign.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:07:34.339070"
+  },
+  {
+    "claim_id": 52,
+    "claim_text": "$\\frac{\\pi^2}{4} \\times \\frac{1}{180} = \\frac{\\pi^2}{720}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":52,\"verdict\":\"CONFIRMED\",\"explanation\":\"Arithmetic is correct: \\\\((\\\\pi^2/4)(1/180)=\\\\pi^2/(4\\\\cdot180)=\\\\pi^2/720\\\\).\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 52,
+      "verdict": "CONFIRMED",
+      "explanation": "Arithmetic is correct: \\((\\pi^2/4)(1/180)=\\pi^2/(4\\cdot180)=\\pi^2/720\\).",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T19:07:37.757327"
+  }
+]

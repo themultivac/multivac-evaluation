@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776535691-LUeaSPTamcJ9jFUfXfcR",
+  "object": "chat.completion",
+  "created": 1776535691,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Examining a claim on rapidity**\n\nThe assertion regarding \\(a_\\mu a^\\mu = -\\dot{\\phi}^2\\) seems correct if \\(\\phi\\) is the rapidity and the dot represents derivative with respect to proper time. I\u2019m questioning whether any sign details are missing. In 1+1 dimensions, the derivative of rapidity corresponds to proper acceleration. While the claim holds under these assumptions, it might lack completeness if not clearly defined. Plus, it\u2019s worth noting that this is specific to motion in one spatial dimension.**Confirming the relationship in Minkowski coordinates**\n\nIn Minkowski coordinates, I can define the proper time derivative of rapidity as being equivalent to proper acceleration. So, I\u2019m saying confirmed, but only if everything is well-defined. Now, it\u2019s time for me to put that into the required JSON format. I just need to make sure everything aligns correctly. That\u2019ll make it clear for anyone reviewing the information and ensure I get it right!",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Examining a claim on rapidity**\n\nThe assertion regarding \\(a_\\mu a^\\mu = -\\dot{\\phi}^2\\) seems correct if \\(\\phi\\) is the rapidity and the dot represents derivative with respect to proper time. I\u2019m questioning whether any sign details are missing. In 1+1 dimensions, the derivative of rapidity corresponds to proper acceleration. While the claim holds under these assumptions, it might lack completeness if not clearly defined. Plus, it\u2019s worth noting that this is specific to motion in one spatial dimension.**Confirming the relationship in Minkowski coordinates**\n\nIn Minkowski coordinates, I can define the proper time derivative of rapidity as being equivalent to proper acceleration. So, I\u2019m saying confirmed, but only if everything is well-defined. Now, it\u2019s time for me to put that into the required JSON format. I just need to make sure everything aligns correctly. That\u2019ll make it clear for anyone reviewing the information and ensure I get it right!",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp48ijbOsQ_c4Xe2hXaHHFXAcKcBZejZeuki0si5QeA_AYj5Z7WOVeFp9IAnQs7h3bgoDh9kBcR6TQNAv4Z-jIyXHcy6doBhYsMP5ZUylB48z1ZnYJTzmeiQj5WrVPUy-XgPYS3GjxdnD7itrC0QoW1Zp3oSyd4A4hWCBbFRx9w_RH0reELLgaRkTu-G9347QSeHRX69fVVtcDh0O4ORFrE-4gC9vMbRoa68DWms1jAcSuEFUGSFe2cl9KgrIJA4Z4ynsdWFhW7WxC0wzmYSqLD_HVmJK0AUHnav4rrqfsjCkdGVATV0wzgUVSinHWDmfHOlhKlVNknBvsHGXa_lthYSE4aKpY7Dkma6KKX4j1hBSLF501-LA-00N9aTxzM822Tb640HIF-o74mveQyTIpmRhtVeUTthNIwVxoZrX-hOvSkMg63DNm4HPYid3yJ0Svq_AeZkAhd60rcRBDQ9gl_Oeb_bhrq9TjUA494tVkeq8CJ6_IEho_zJdAzI9Ul6-PNvVsh5s3AKjqSJXm9b3kvHileQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_00bad384fb5892190169e3c88c7770819689fa4f2aae3c4647",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 511,
+    "completion_tokens": 4096,
+    "total_tokens": 4607,
+    "cost": 0.0185845,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0185845,
+      "upstream_inference_prompt_cost": 0.0005621,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

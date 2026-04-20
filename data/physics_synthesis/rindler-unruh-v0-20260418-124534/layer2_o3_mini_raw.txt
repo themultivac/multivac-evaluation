@@ -1,0 +1,344 @@
+```json
+{
+  "model": "unknown",
+  "total_claims": 42,
+  "claims": [
+    {
+      "id": 1,
+      "text": "We start in (1+1)-dimensional Minkowski spacetime with coordinates (t,x) and metric ds² = dt² - dx².",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Using c=1 units implicitly here."
+    },
+    {
+      "id": 2,
+      "text": "An observer undergoing constant proper acceleration a follows a worldline such that the magnitude of its 4-acceleration (as measured in the instantaneous rest frame) is constant.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The worldline may be written as t(τ) = (1/a)sinh(aτ), x(τ) = (1/a)cosh(aτ), where τ is the proper time.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [1, 2],
+      "notes": "Stated as standard result; verification invited but not shown."
+    },
+    {
+      "id": 4,
+      "text": "One easily checks that x² - t² = 1/a².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [3],
+      "notes": "Follows from cosh² - sinh² = 1."
+    },
+    {
+      "id": 5,
+      "text": "Thus the worldline is a hyperbola in Minkowski space.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [4],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "We have chosen the initial conditions so that the observer is at rest at τ=0 in the Rindler frame.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [3],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "The accelerated observer only has causal contact with a portion of Minkowski space (the region x>|t|).",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [3],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "The Rindler coordinates (η,ξ) are defined by t = ξ sinh η, x = ξ cosh η.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "The coordinate ranges are ξ > 0 and -∞ < η < ∞.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [8],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "Inverting the relations gives ξ = √(x² - t²), tanh η = t/x.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "The chart covers the region x > |t|, which is sometimes called the 'right Rindler wedge.'",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [9, 10],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "Differentiating gives dt = sinh η dξ + ξ cosh η dη, dx = cosh η dξ + ξ sinh η dη.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "ds² = dt² - dx² = (sinh²η - cosh²η) dξ² - ξ²(cosh²η - sinh²η) dη²",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1, 12],
+      "notes": "Sign error: should get +ξ²dη² term from cross-term cancellation."
+    },
+    {
+      "id": 14,
+      "text": "Using the hyperbolic identity cosh²η - sinh²η = 1, this simplifies to ds² = -dξ² + ξ² dη².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [13],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "The metric is customarily written as ds² = ξ² dη² - dξ².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [14],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "The time coordinate η is known as Rindler time and the spatial coordinate ξ parametrizes the distance from the Rindler horizon.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [15],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "An observer with constant ξ remains at a fixed spatial position with respect to the Rindler coordinate system.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [15],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "If we choose ξ = 1/a, then t = (1/a)sinh η, x = (1/a)cosh η, recovering the hyperbolic worldline of an observer with constant proper acceleration a.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [3, 8],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "Along a worldline of constant ξ the proper time τ is related to η by dτ = ξ dη = dη/a.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15, 18],
+      "notes": "dτ = ξ dη is correct; dη/a only when ξ=1/a."
+    },
+    {
+      "id": 20,
+      "text": "Hence η = aτ.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [19],
+      "notes": "Only for the specific observer with ξ=1/a."
+    },
+    {
+      "id": 21,
+      "text": "The Rindler horizon is identified by the limit in which the metric coefficient in front of dη² goes to zero, i.e. at ξ = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "In Minkowski coordinates, ξ = √(x² - t²), so ξ = 0 if and only if x² - t² = 0, i.e. x = ±t.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [10, 21],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "The surfaces x = t and x = -t are precisely the null planes in Minkowski spacetime.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [22],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "Hence the Rindler horizon is a null surface in Minkowski space, even though in the Rindler coordinate system it appears as a coordinate singularity where the metric is not invertible.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [21, 22, 23],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "A free, massless scalar quantum field φ in Minkowski space can be expanded in plane wave solutions as φ(t,x) = ∫₀^∞ dω/√(2π·2ω) [a_ω e^{-iωt} e^{+ikx} + a_ω† e^{+iωt} e^{-ikx}].",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [1],
+      "notes": "Relation between ω and k not stated explicitly."
+    },
+    {
+      "id": 26,
+      "text": "The creation and annihilation operators a_ω†, a_ω satisfy the usual commutation relations.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [25],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "The Minkowski vacuum |0_M⟩ is defined by a_ω|0_M⟩ = 0 for all ω.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [26],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "In the Rindler wedge it is natural to expand the field in eigenmodes of the Rindler time coordinate η.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [15],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "Strictly speaking, one must introduce two sets of modes, one for the right Rindler wedge and one for the left, but here we concentrate on the right wedge.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [28],
+      "notes": "Important simplification; full treatment needs both wedges."
+    },
+    {
+      "id": 30,
+      "text": "In Rindler coordinates the field may be expanded as φ(η,ξ) = ∫₀^∞ dΩ [b_Ω f_Ω(ξ) e^{-iΩη} + b_Ω† f_Ω*(ξ) e^{iΩη}].",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [28],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "The Rindler vacuum |0_R⟩ is defined by b_Ω |0_R⟩ = 0 for all Ω.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [30],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "text": "The two sets of modes (Minkowski and Rindler) are related by a Bogoliubov transformation.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [25, 30],
+      "notes": "This is the key physical assumption stated by the problem."
+    },
+    {
+      "id": 33,
+      "text": "One may express the Rindler operators in terms of the Minkowski ones: b_Ω = ∫₀^∞ dω [α_{Ωω} a_ω + β*_{Ωω} a_ω†].",
+      "type": "derivation_step",
+      "provenance": "cited",
+      "depends_on": [32],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "text": "The nonvanishing of the β coefficients implies that the Minkowski vacuum contains a nonzero admixture of both positive and negative frequency parts when expressed in the Rindler basis.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [33],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "A detailed derivation based on analyticity properties of the mode functions in the complex t-plane shows that the Bogoliubov coefficients satisfy |β_{Ωω}|²/|α_{Ωω}|² = e^{-2πΩ/a}.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [33],
+      "notes": "Result invoked without derivation; acknowledged as such."
+    },
+    {
+      "id": 36,
+      "text": "From this one finds that the number expectation value for Rindler quanta in the Minkowski vacuum is ⟨0_M| b_Ω† b_Ω |0_M⟩ = 1/(e^{2πΩ/a} - 1).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [35, 27],
+      "notes": "Intermediate steps from ratio to expectation value not shown."
+    },
+    {
+      "id": 37,
+      "text": "This is precisely the Bose–Einstein distribution at temperature T = ℏa/(2πc k_B).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [36],
+      "notes": "Identification with Planck distribution; restoring c, ℏ, k_B."
+    },
+    {
+      "id": 38,
+      "text": "A uniformly accelerating observer with acceleration a sees the Minkowski vacuum as a thermal bath at temperature T = ℏa/(2πc k_B).",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [37],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "The basic physical assumption is that one may relate the Minkowski and Rindler mode decompositions via a Bogoliubov transformation.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "It is this mixing of positive and negative frequencies that leads to the interpretation of the Minkowski vacuum as a thermal state for the accelerating observer.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [34, 36],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "Some of the steps—in particular the analytic continuation leading to the result for the Bogoliubov coefficients—are heuristic in that they invoke properties of the mode functions in the complex plane.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [35],
+      "notes": "Model explicitly flags this as heuristic."
+    },
+    {
+      "id": 42,
+      "text": "The particle excitation number ⟨0_M|b_Ω† b_Ω|0_M⟩ = 1/(e^{2πΩ/a} - 1) corresponds to a temperature T = ℏa/(2πc k_B).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [36, 37],
+      "notes": ""
+    }
+  ]
+}
+```

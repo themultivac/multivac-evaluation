@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776539761-RmtLobjFyzY2KuNnjPl7",
+  "object": "chat.completion",
+  "created": 1776539761,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard Minkowski metric and signature; no discrepancy.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49h1bmGODMlYY1ZCOcKreCaL7QAy-PMc7ZtjSfHruBAfrO0Dka5DnBCQQkedYchOpSYBGBi2alZDZMcvw9NRFxB63BGIvQelR2TwK9vVTryEEgN2fJ01Gs3C9e4spTIfOjmh1Y2NqEdWfJBMyWgX-jWvlVi8I-NnhB3wKnj7qkrRkPuBk7aXp88UMq3YAjySQawVnamj2MaKS0ydZpdtIKCG708o_gmjgLdrFrkhhzy7aRtnhd5uJzN6tZke4RvWerfKgIjpJSIJMjuEIDr_WJpI9e4v7H34b8wzHtJrkiX__NMZFKk0St_H_TqwySEUaBGAuwYNLbxJbyu6WuhRR-CSv5GqoxAKxFoTD_dF1JH8drcDhTydZjJs_TThB0KIe7DlGYAsWSLTAuLBw_BpIQggO9OfDrC7rKSxoA3ZeaM1QTV66S-OlD5NrUp7DJOZ2uWwp2ct7-zkjl5ZE_-Nw1w7pun4kHuaQUuiScVrmIEF25yMQuisVGqJ7yFrKshOgZkK_OIIQs9w2exWUe--i3Jv-A==",
+            "format": "openai-responses-v1",
+            "id": "rs_0dcce0eee975f7730169e3d871b9908193830e6feab2b39e18",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 533,
+    "completion_tokens": 999,
+    "total_tokens": 1532,
+    "cost": 0.0049819,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0049819,
+      "upstream_inference_prompt_cost": 0.0005863,
+      "upstream_inference_completions_cost": 0.0043956
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 448,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

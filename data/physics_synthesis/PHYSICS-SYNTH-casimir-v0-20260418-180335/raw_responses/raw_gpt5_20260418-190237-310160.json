@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776556955-Gjtw8YpTnxA1myOkLyW1",
+  "object": "chat.completion",
+  "created": 1776556955,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":22,\"verdict\":\"ERROR\",\"explanation\":\"With regulator \\(f(n)=e^{-2\\pi n/(\\omega_c d/c)}\\), \\(F(n)=n^2f\\). Then \\(F'(n)=2nf+n^2f'\\to 2n\\), not \\(-2n^2\\).\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 521,
+    "completion_tokens": 84,
+    "total_tokens": 605,
+    "cost": 0.0025625,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0025625,
+      "upstream_inference_prompt_cost": 0.0013025,
+      "upstream_inference_completions_cost": 0.00126
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

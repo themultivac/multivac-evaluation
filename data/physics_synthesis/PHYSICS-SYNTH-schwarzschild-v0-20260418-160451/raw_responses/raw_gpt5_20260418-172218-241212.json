@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776550936-2GKOPc9ypNx2Ik9z7QA1",
+  "object": "chat.completion",
+  "created": 1776550936,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":4,\"verdict\":\"CONFIRMED\",\"explanation\":\"In vacuum with zero cosmological constant, Einstein equations give G_{\u03bc\u03bd}=0. Tracing yields -R=0 in 4D, hence R_{\u03bc\u03bd}=G_{\u03bc\u03bd}+(1/2)Rg_{\u03bc\u03bd}=0, and conversely.\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 387,
+    "completion_tokens": 83,
+    "total_tokens": 470,
+    "cost": 0.0022125,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0022125,
+      "upstream_inference_prompt_cost": 0.0009675,
+      "upstream_inference_completions_cost": 0.001245
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

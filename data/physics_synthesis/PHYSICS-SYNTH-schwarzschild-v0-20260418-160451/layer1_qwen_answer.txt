@@ -1,0 +1,73 @@
+To derive the Schwarzschild radius from first principles, we begin with the Einstein Field Equations (EFE) and apply the specific symmetries of a static, spherically symmetric mass in a vacuum.
+
+### 1. Assumptions and Field Equations
+
+**Assumptions:**
+1.  **Vacuum:** Outside the mass, the energy-momentum tensor vanishes ($T_{\mu\nu} = 0$).
+2.  **Spherical Symmetry:** The spacetime is invariant under rotations.
+3.  **Static:** The metric coefficients are independent of time $t$, and there are no cross-terms (e.g., $dt dr$).
+4.  **Asymptotic Flatness:** Far from the mass ($r \to \infty$), spacetime approaches the Minkowski metric.
+
+**The Einstein Field Equations:**
+$$R_{\mu\nu} - \frac{1}{2}R g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu}$$
+Given $T_{\mu\nu} = 0$, the equations reduce to the vacuum condition of Ricci flatness:
+$$R_{\mu\nu} = 0$$
+
+### 2. The Metric Ansatz
+
+Based on spherical symmetry and static conditions, we propose the general line element:
+$$ds^2 = -e^{\nu(r)} c^2 dt^2 + e^{\lambda(r)} dr^2 + r^2 (d\theta^2 + \sin^2\theta d\phi^2)$$
+Here, $\nu(r)$ and $\lambda(r)$ are unknown functions to be determined. The metric tensor $g_{\mu\nu}$ and its inverse $g^{\mu\nu}$ are:
+$$g_{\mu\nu} = \text{diag}(-e^{\nu}, e^{\lambda}, r^2, r^2\sin^2\theta), \quad g^{\mu\nu} = \text{diag}(-e^{-\nu}, e^{-\lambda}, r^{-2}, (r\sin\theta)^{-2})$$
+
+### 3. Christoffel Symbols and Ricci Tensor
+
+The Christoffel symbols are defined as $\Gamma^\sigma_{\mu\nu} = \frac{1}{2}g^{\sigma\rho}(\partial_\mu g_{\nu\rho} + \partial_\nu g_{\mu\rho} - \partial_\rho g_{\mu\nu})$. The non-zero components required for the Ricci tensor are:
+$$\Gamma^r_{tt} = \frac{1}{2}\nu' e^{\nu-\lambda}, \quad \Gamma^r_{rr} = \frac{1}{2}\lambda', \quad \Gamma^r_{\theta\theta} = -re^{-\lambda}, \quad \Gamma^t_{tr} = \frac{1}{2}\nu'$$
+$$\Gamma^\theta_{r\theta} = \frac{1}{r}, \quad \Gamma^\phi_{r\phi} = \frac{1}{r}$$
+(Primes denote derivatives with respect to $r$).
+
+The Ricci tensor components $R_{\mu\nu} = \partial_\rho \Gamma^\rho_{\mu\nu} - \partial_\nu \Gamma^\rho_{\mu\rho} + \Gamma^\rho_{\rho\lambda}\Gamma^\lambda_{\mu\nu} - \Gamma^\rho_{\nu\lambda}\Gamma^\lambda_{\mu\rho}$ are:
+1.  $R_{tt} = e^{\nu-\lambda} \left[ \frac{\nu''}{2} + \frac{(\nu')^2}{4} - \frac{\nu'\lambda'}{4} + \frac{\nu'}{r} \right] = 0$
+2.  $R_{rr} = -\frac{\nu''}{2} - \frac{(\nu')^2}{4} + \frac{\nu'\lambda'}{4} + \frac{\lambda'}{r} = 0$
+3.  $R_{\theta\theta} = 1 - e^{-\lambda} - \frac{r}{2}e^{-\lambda}(\nu' - \lambda') = 0$
+
+### 4. Solving the Differential Equations
+
+**Step A: Relating $\nu$ and $\lambda$**
+Multiply $R_{tt}$ by $e^{-\nu}$ and $R_{rr}$ by $e^{-\lambda}$ and add them:
+$$e^{-\nu}R_{tt} + e^{-\lambda}R_{rr} = \frac{\nu' + \lambda'}{r} = 0 \implies \nu' + \lambda' = 0$$
+Integrating gives $\nu(r) + \lambda(r) = C$. Applying the asymptotic flatness condition ($\nu, \lambda \to 0$ as $r \to \infty$), we find $C=0$, so:
+$$\lambda(r) = -\nu(r)$$
+
+**Step B: Solving for the Metric**
+Substitute $\lambda = -\nu$ into $R_{\theta\theta} = 0$:
+$$1 - e^{\nu} - \frac{r}{2}e^{\nu}(\nu' - (-\nu')) = 0 \implies 1 - e^{\nu} - r e^{\nu} \nu' = 0$$
+Rearranging:
+$$e^{-\nu} = 1 + r\nu' = \frac{d}{dr}(r e^{-\nu}) \quad \text{(Note: } \frac{d}{dr}(r e^{-\nu}) = e^{-\nu} - r\nu' e^{-\nu} \text{)}$$
+Actually, it is easier to solve for $g_{rr} = e^\lambda$. Using $\nu = -\lambda$ in $R_{\theta\theta}=0$:
+$$1 - e^{-\lambda} + r e^{-\lambda} \lambda' = 0 \implies r \frac{d\lambda}{dr} = 1 - e^\lambda$$
+Separating variables and integrating:
+$$\int \frac{d\lambda}{1 - e^\lambda} = \int \frac{dr}{r} \implies \ln\left( \frac{e^\lambda}{1 - e^\lambda} \right) = \ln r + \text{const}$$
+Solving for $e^\lambda$:
+$$e^\lambda = \frac{1}{1 + \frac{k}{r}}$$
+where $k$ is an integration constant.
+
+### 5. The Newtonian Limit
+
+To identify $k$, we match the weak-field limit to Newtonian gravity. For large $r$, $g_{tt} \approx -(1 + \frac{2\Phi}{c^2})$, where $\Phi = -\frac{GM}{r}$.
+Since $g_{tt} = -e^\nu = -e^{-\lambda} = -(1 + \frac{k}{r})$, we have:
+$$-(1 + \frac{k}{r}) \approx -(1 - \frac{2GM}{c^2 r}) \implies k = -\frac{2GM}{c^2}$$
+Defining the Schwarzschild radius $R_s = \frac{2GM}{c^2}$, the metric becomes:
+$$ds^2 = -\left(1 - \frac{R_s}{r}\right) c^2 dt^2 + \left(1 - \frac{R_s}{r}\right)^{-1} dr^2 + r^2 d\Omega^2$$
+
+### 6. The Schwarzschild Radius
+
+The Schwarzschild radius is the coordinate singularity where the metric coefficients diverge or vanish:
+1.  $g_{rr} \to \infty$ as $r \to R_s$.
+2.  $g_{tt} \to 0$ as $r \to R_s$.
+
+This radius defines the event horizon of a non-rotating black hole.
+
+**Final Result:**
+$$R_s = \frac{2GM}{c^2}$$

@@ -1,0 +1,552 @@
+```json
+{
+  "model": "unknown",
+  "total_claims": 68,
+  "claims": [
+    {
+      "id": 1,
+      "text": "We work in (1+1)-dimensional Minkowski spacetime with signature $(+,-,-,-)$ and metric $ds^2 = c^2 dt^2 - dx^2$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "The transverse directions are trivial spectators.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "Constant proper acceleration means the magnitude of the 4-acceleration $a^\\mu = du^\\mu/d\\tau$ is constant: $a_\\mu a^\\mu = -a^2$ (spacelike, with magnitude $a$).",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "The 4-velocity satisfies $u_\\mu u^\\mu = 1$.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "Parametrize $u^\\mu = (\\cosh\\phi(\\tau),\\; \\sinh\\phi(\\tau))$, which automatically satisfies the normalization.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [4],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "$a^\\mu = \\dot\\phi(\\tau)\\,(\\sinh\\phi,\\;\\cosh\\phi)$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [5],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "$a_\\mu a^\\mu = -\\dot\\phi^2$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "Constant proper acceleration $a$ requires $\\dot\\phi = a$, so $\\phi(\\tau) = a\\tau$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [3, 7],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "Integrating $u^\\mu = dx^\\mu/d\\tau$: $t(\\tau) = \\frac{1}{a}\\sinh(a\\tau)$, $x(\\tau) = \\frac{1}{a}\\cosh(a\\tau)$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [5, 8],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "Integration constants are chosen so the worldline passes through $(t,x) = (0, 1/a)$ with zero coordinate velocity.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "Eliminating $\\tau$: $x^2 - t^2 = \\frac{1}{a^2}$ — a hyperbola asymptoting to the null lines $x = \\pm t$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [9],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "Each observer at 'Rindler position' $\\xi$ has proper acceleration $1/\\xi$ and worldline $x^2 - t^2 = \\xi^2$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [11],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "The Rindler coordinate transformation is $t = \\xi \\sinh(\\eta)$, $x = \\xi \\cosh(\\eta)$ with $\\xi > 0$ (right Rindler wedge, $x > |t|$).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [12],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "$dt = \\sinh\\eta\\,d\\xi + \\xi\\cosh\\eta\\,d\\eta$, $dx = \\cosh\\eta\\,d\\xi + \\xi\\sinh\\eta\\,d\\eta$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [13],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "The induced metric is $ds^2 = \\xi^2\\,d\\eta^2 - d\\xi^2$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [14],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "Defining $\\xi = \\frac{1}{a}e^{a\\bar\\xi}$ gives the conformally flat form.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "In the conformally flat form: $t = \\frac{1}{a}e^{a\\xi}\\sinh(a\\eta)$, $x = \\frac{1}{a}e^{a\\xi}\\cosh(a\\eta)$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [13, 16],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "The conformally flat metric is $ds^2 = e^{2a\\xi}(d\\eta^2 - d\\xi^2)$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [17],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "An observer at fixed $\\xi$ has proper time $d\\tau = e^{a\\xi}d\\eta$ and proper acceleration $a\\,e^{-a\\xi}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [18],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "The fiducial observer at $\\xi = 0$ has proper acceleration $a$ and $\\eta = \\tau$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [19],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "The inverse transformation is $\\xi = \\sqrt{x^2 - t^2}$, $\\eta = \\tanh^{-1}(t/x) = \\tfrac{1}{2}\\ln\\frac{x+t}{x-t}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [13],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "The Rindler coordinates only cover the right wedge $R = \\{x > |t|\\}$.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [13],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "As we approach $x \\to t^+$ (with $x,t \\to \\infty$), $\\xi \\to 0$ and $\\eta \\to +\\infty$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [21],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "The null lines $x = \\pm t$ form the Rindler horizon $\\mathcal{H}$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [22],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "The surface $x = t$ has tangent vector $\\partial_t + \\partial_x$, whose norm is $1 - 1 = 0$. The surface is null.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1, 24],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "The metric component $g_{\\eta\\eta} = \\xi^2$ vanishes at $\\xi = 0$, so $\\sqrt{-g} = \\xi \\to 0$ — the coordinate system degenerates.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15, 24],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "All curvature invariants vanish (Minkowski space is flat), confirming this is only a coordinate singularity, not a physical one.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [26],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "The horizon is precisely analogous to the event horizon of a Schwarzschild black hole in Schwarzschild coordinates: a coordinate artifact masking a null surface.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [25, 27],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "The boost Killing vector $\\partial_\\eta = x\\,\\partial_t + t\\,\\partial_x$ has norm $x^2 - t^2 = \\xi^2$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [13],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "The boost Killing vector is timelike in $R$, null on $\\mathcal{H}$, and spacelike beyond — i.e., $\\mathcal{H}$ is a Killing horizon.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [29, 24],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "A massless scalar field obeys $\\Box\\phi = 0$, which in Minkowski coordinates is $(\\partial_t^2 - \\partial_x^2)\\phi = 0$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [1],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "text": "In conformal Rindler coordinates the equation has the same form because the metric is conformally flat in 2D and the massless scalar is conformally invariant in 2D.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [18, 31],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "In Rindler coordinates: $(\\partial_\\eta^2 - \\partial_\\xi^2)\\phi = 0$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [32],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "text": "Minkowski modes (positive frequency w.r.t. $\\partial_t$): $u_k^M(t,x) = \\frac{1}{\\sqrt{4\\pi\\omega}}e^{-i\\omega t + i k x}$, $\\omega = |k|$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [31],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "Field expansion: $\\phi = \\int dk\\,(a_k^M u_k^M + a_k^{M\\dagger}u_k^{M*})$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [34],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "text": "Minkowski vacuum: $a_k^M|0_M\\rangle = 0$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [35],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "Rindler modes (positive frequency w.r.t. boost Killing vector $\\partial_\\eta$) in wedge $R$: $u_\\Omega^R(\\eta,\\xi) = \\frac{1}{\\sqrt{4\\pi\\Omega}}e^{-i\\Omega\\eta + i K\\xi}$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [33],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "text": "Analogous left-wedge modes $u_\\Omega^L$ are defined in $L$, with positive frequency w.r.t. $-\\partial_\\eta$ (because the boost Killing vector is past-directed in $L$).",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [37],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "Field expansion: $\\phi = \\int_0^\\infty d\\Omega\\,(b_\\Omega^R u_\\Omega^R + b_\\Omega^L u_\\Omega^L + \\text{h.c.})$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [37, 38],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "Rindler vacuum: $b_\\Omega^{R,L}|0_R\\rangle = 0$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [39],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "The two vacua are inequivalent.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [36, 40],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "The Bogoliubov transformation is $b_\\Omega^R = \\int dk\\,(\\alpha_{\\Omega k}a_k^M - \\beta_{\\Omega k}^* a_k^{M\\dagger})$ with $\\beta \\ne 0$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [35, 39],
+      "notes": "Key physical assumption stated."
+    },
+    {
+      "id": 43,
+      "text": "The Minkowski vacuum contains Rindler particles: $\\langle 0_M|b_\\Omega^{R\\dagger}b_\\Omega^R|0_M\\rangle = \\int dk\\,|\\beta_{\\Omega k}|^2$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [36, 42],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "text": "Light-cone coordinates: $U = t - x$, $V = t + x$ in Minkowski, and $u = \\eta - \\xi$, $v = \\eta + \\xi$ in Rindler.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "text": "In wedge $R$: $U = -\\frac{1}{a}e^{-au}$, $V = \\frac{1}{a}e^{av}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [17, 44],
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "text": "In wedge $L$: $U = +\\frac{1}{a}e^{-au_L}$, $V = -\\frac{1}{a}e^{av_L}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [44],
+      "notes": "Left wedge transformation stated without full derivation."
+    },
+    {
+      "id": 47,
+      "text": "The right-moving Rindler mode is $\\phi_\\Omega^R = \\frac{1}{\\sqrt{4\\pi\\Omega}}e^{-i\\Omega u} = \\frac{1}{\\sqrt{4\\pi\\Omega}}(-aU)^{i\\Omega/a}$ for $U<0$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [37, 45],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "text": "Analytically continue to $U > 0$ through the lower half complex $U$-plane: $-U = e^{-i\\pi}U$, giving an extra factor $e^{\\pi\\Omega/a}$ relative to $(aU)^{i\\Omega/a}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [47],
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "text": "The combination $\\Phi_\\Omega = \\frac{1}{\\sqrt{2\\sinh(\\pi\\Omega/a)}}(e^{\\pi\\Omega/(2a)}\\phi_\\Omega^R + e^{-\\pi\\Omega/(2a)}\\phi_\\Omega^{L*})$ is analytic and bounded in the lower-half $U$ plane.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [47, 48],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "text": "Positive-frequency Minkowski modes are precisely those analytic and bounded in the lower-half complex null coordinate plane — this is invoked without proof.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Model explicitly states this is invoked without proof."
+    },
+    {
+      "id": 51,
+      "text": "$\\Phi_\\Omega$ is a positive-frequency Minkowski mode and hence annihilates $|0_M\\rangle$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [49, 50],
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "text": "Inverting: $b_\\Omega^R = \\frac{1}{\\sqrt{2\\sinh(\\pi\\Omega/a)}}(e^{\\pi\\Omega/(2a)}d_\\Omega - e^{-\\pi\\Omega/(2a)}d_\\Omega^{L\\dagger})$ where $d_\\Omega$ annihilate $|0_M\\rangle$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [51],
+      "notes": ""
+    },
+    {
+      "id": 53,
+      "text": "$\\langle 0_M|b_\\Omega^{R\\dagger}b_\\Omega^R|0_M\\rangle = \\frac{e^{-\\pi\\Omega/a}}{2\\sinh(\\pi\\Omega/a)}\\langle 0_M|d_\\Omega^L d_\\Omega^{L\\dagger}|0_M\\rangle$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [52],
+      "notes": ""
+    },
+    {
+      "id": 54,
+      "text": "Using $[d_\\Omega^L, d_{\\Omega'}^{L\\dagger}] = \\delta(\\Omega - \\Omega')$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Standard canonical commutation relation."
+    },
+    {
+      "id": 55,
+      "text": "$\\langle N_\\Omega\\rangle = \\frac{e^{-\\pi\\Omega/a}}{2\\sinh(\\pi\\Omega/a)} = \\frac{e^{-\\pi\\Omega/a}}{e^{\\pi\\Omega/a} - e^{-\\pi\\Omega/a}} = \\frac{1}{e^{2\\pi\\Omega/a} - 1}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [53, 54],
+      "notes": ""
+    },
+    {
+      "id": 56,
+      "text": "This is the Bose-Einstein distribution at temperature $k_B T = \\frac{a}{2\\pi}$.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [55],
+      "notes": ""
+    },
+    {
+      "id": 57,
+      "text": "Restoring $\\hbar$ and $c$: $k_B T = \\frac{\\hbar a}{2\\pi c}$, equivalently $T_{\\rm Unruh} = \\frac{\\hbar a}{2\\pi c\\,k_B}$.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [56],
+      "notes": ""
+    },
+    {
+      "id": 58,
+      "text": "The Minkowski vacuum, when restricted to the right Rindler wedge (tracing out degrees of freedom in $L$), is a thermal density matrix at temperature $T_{\\rm Unruh}$ with respect to the boost Hamiltonian.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [57, 22],
+      "notes": ""
+    },
+    {
+      "id": 59,
+      "text": "An accelerated observer's particle detector — coupled to $\\phi$ along its worldline — registers an isotropic thermal bath.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [58],
+      "notes": ""
+    },
+    {
+      "id": 60,
+      "text": "The theorem that positive-frequency Minkowski modes are those analytic and bounded in the lower-half complex null-coordinate plane follows from the Fourier representation; the rigorous version is the Bisognano-Wichmann theorem.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 61,
+      "text": "The 2D massless scalar has IR subtleties (the field itself isn't well-defined, only its derivatives).",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 62,
+      "text": "The calculation properly proceeds in higher dimensions or with an IR regulator, but the resulting Planckian spectrum is unchanged.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [61],
+      "notes": ""
+    },
+    {
+      "id": 63,
+      "text": "The 'particle' content is observer-dependent: $|0_M\\rangle$ is a perfectly good vacuum for inertial observers; only an accelerated observer sees the thermal bath.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [41],
+      "notes": ""
+    },
+    {
+      "id": 64,
+      "text": "The full 3+1 dimensional calculation produces the same Planck factor $1/(e^{2\\pi\\Omega/a}-1)$.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [55],
+      "notes": ""
+    },
+    {
+      "id": 65,
+      "text": "In 3+1 dimensions there are additional grey-body factors from the transverse mode structure that do not alter the temperature.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [64],
+      "notes": ""
+    },
+    {
+      "id": 66,
+      "text": "$\\sqrt{-g} = \\xi$ for the Rindler metric $ds^2 = \\xi^2 d\\eta^2 - d\\xi^2$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15],
+      "notes": ""
+    },
+    {
+      "id": 67,
+      "text": "The boost Killing vector is past-directed in the left wedge $L$.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [29],
+      "notes": ""
+    },
+    {
+      "id": 68,
+      "text": "Unruh's trick constructs combinations of Rindler modes that are analytic and bounded in the lower half of complex Minkowski null coordinates, and such combinations share the Minkowski vacuum.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [50],
+      "notes": ""
+    }
+  ]
+}
+```

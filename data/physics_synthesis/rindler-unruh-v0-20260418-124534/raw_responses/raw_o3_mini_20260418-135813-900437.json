@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776538675-6U5vPhun018bUhaJO4yd",
+  "object": "chat.completion",
+  "created": 1776538675,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Clarifying the Rindler horizon**\n\nI\u2019m thinking about the Rindler horizon and its relationship to the \"lightcone.\" While \"lightcone\" typically includes all null lines from a point, the Rindler horizon is just one of these surfaces. The claim could be acceptable if derived from Minkowski coordinates, suggesting the Rindler horizon defines the Rindler wedge. However, the statement feels under-specified; it should clarify that it defines the Rindler horizon, a portion of the Minkowski lightcone.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Clarifying the Rindler horizon**\n\nI\u2019m thinking about the Rindler horizon and its relationship to the \"lightcone.\" While \"lightcone\" typically includes all null lines from a point, the Rindler horizon is just one of these surfaces. The claim could be acceptable if derived from Minkowski coordinates, suggesting the Rindler horizon defines the Rindler wedge. However, the statement feels under-specified; it should clarify that it defines the Rindler horizon, a portion of the Minkowski lightcone.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49RFG59E7DTxxwD8nbOYq2uyqxdU_eVSJm0qgopKqCpraX3kmUqAwyeZ4m4LjVxc38wSZzX7ffzTNmWBzP6XCtqLoPEAh_HW83EKySi9Ly1o1ioOqUH967oCSZWO2oWugqXgdte4kp1EIrntKATYX497au86p3bFThHoIWC1V19GpYXsSKKdn0K4hJZPUPG_iSvDjobCcQcWyFnO_xNQFHCIB4YbQLwE31VdYXgW4A7aJLCfUYBJH8QyFBULiXPYL5I7oiywmfHDUJvH4hzpdYyY3OowEe_26ILX_jTUeoav7MjHfcN072oqGhyriytfQTJYQeRp3Tt9wIpZVyHaporUU7VEd38XWatj7tuGBYNZIXYOfrOIxP2VtYuTljAPQIVfWJMXde_ErAOsQPKqQtWHW0wcRot-sY43qzi42FB3nInZ96lhVv3sQu5dT3Yuf1puiR_7Ve67b4T_YS1n5cw0VSe3EWUHbJSLa9d28mQzvCjdna8Bzj79Ee8-hP7yWfzFmMKCXv-49w_J0vOAyjYHfg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0fbd9c03702bfea80169e3d43435f4819786b19ddb8f6813f1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 506,
+    "completion_tokens": 4096,
+    "total_tokens": 4602,
+    "cost": 0.018579,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.018579,
+      "upstream_inference_prompt_cost": 0.0005566,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,424 @@
+```json
+{
+  "model": "o3",
+  "total_claims": 52,
+  "claims": [
+    {
+      "id": 1,
+      "text": "Consider two perfectly conducting, infinite plates of area $A$ (with $A \\to \\infty$) parallel to the $xy$-plane, located at $z=0$ and $z=d$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "The vacuum electromagnetic field between them must satisfy the perfect-conductor boundary conditions: the tangential components of $\\mathbf{E}$ and the normal component of $\\mathbf{B}$ vanish at each plate.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [1],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The allowed wavevector components are: $k_x, k_y \\in \\mathbb{R}$ (continuous, since plates are infinite in $xy$).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1, 2],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "$k_z = \\frac{n\\pi}{d}$, with $n = 0, 1, 2, \\ldots$ (discrete, from the boundary conditions).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1, 2],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "The dispersion relation is $\\omega_n(\\mathbf{k}_\\parallel) = c\\sqrt{k_\\parallel^2 + \\left(\\tfrac{n\\pi}{d}\\right)^2}$, $k_\\parallel^2 = k_x^2+k_y^2$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [3, 4],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "For each $n \\geq 1$ there are two independent transverse polarizations (TE and TM).",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [2, 4],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "For $n=0$, only one polarization (TM) survives the boundary conditions.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [2, 4],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "We handle this by including $n=0$ with weight $1$ and $n\\geq 1$ with weight $2$, which is equivalent to summing $\\sum_{n=0}^\\infty$ with a factor $2$ and subtracting the overcounted $n=0$ mode — in practice a primed sum $\\sum'$ where the $n=0$ term carries weight $1/2$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6, 7],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "The zero-point energy per unit area between the plates is $\\frac{U(d)}{A} = \\frac{\\hbar}{2} \\sum_{n=0}^\\infty {}' \\; 2 \\int \\frac{d^2 k_\\parallel}{(2\\pi)^2} \\, \\omega_n(\\mathbf{k}_\\parallel)$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [5, 8],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "$\\frac{U(d)}{A} = \\hbar c \\int \\frac{d^2 k_\\parallel}{(2\\pi)^2}\\left[\\tfrac{1}{2} k_\\parallel + \\sum_{n=1}^\\infty \\sqrt{k_\\parallel^2 + (n\\pi/d)^2}\\right]$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [9],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "This expression is doubly divergent (UV in $k_\\parallel$ and in $n$).",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [10],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "I use a smooth UV cutoff function $f(\\omega/\\omega_c)$ with $f(0)=1$ and $f(\\infty)=0$, modeling the fact that real conductors become transparent at high frequencies.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "The physical answer must be independent of the choice of $f$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [12],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "Switching to polar coordinates ($d^2 k_\\parallel = 2\\pi k_\\parallel\\,dk_\\parallel$) and defining $u = (k_\\parallel d/\\pi)^2$, the energy per unit area becomes $\\frac{U(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3}\\left[\\tfrac{1}{2} F(0) + \\sum_{n=1}^\\infty F(n)\\right]$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [10, 12],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "$F(n) \\equiv \\int_0^\\infty du\\, \\sqrt{u + n^2}\\; f\\!\\left(\\tfrac{\\pi c}{d}\\sqrt{u+n^2}\\,/\\,\\omega_c\\right)$.",
+      "type": "definition",
+      "provenance": "derived",
+      "depends_on": [14],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "The corresponding free-vacuum energy (no plates, same region) is obtained by replacing $\\sum_n \\to \\int_0^\\infty dn$: $\\frac{U_{\\text{free}}(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3} \\int_0^\\infty dn\\, F(n)$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [14, 15],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "The Casimir energy per unit area is the finite difference $\\frac{\\mathcal{E}(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3}\\left[\\tfrac{1}{2}F(0) + \\sum_{n=1}^\\infty F(n) - \\int_0^\\infty F(n)\\,dn\\right]$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [14, 16],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "The Euler–Maclaurin formula gives $\\sum_{n=0}^\\infty F(n) - \\int_0^\\infty F(n)\\,dn = \\tfrac{1}{2}F(0) - \\tfrac{1}{12}F'(0) + \\tfrac{1}{720}F'''(0) - \\cdots$.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Euler–Maclaurin formula invoked without derivation."
+    },
+    {
+      "id": 19,
+      "text": "$\\tfrac{1}{2}F(0) + \\sum_{n=1}^\\infty F(n) - \\int_0^\\infty F(n)\\,dn = -\\tfrac{1}{12}F'(0) + \\tfrac{1}{720}F'''(0) - \\cdots$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [17, 18],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "With $w = u+n^2$, $F(n) = \\int_{n^2}^\\infty dw\\, \\sqrt{w}\\, f(\\cdots)$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "$F'(n) = -2n^2\\, f(\\pi c n/(d\\omega_c))$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [20],
+      "notes": "Should be $F'(n) = -2n\\sqrt{n^2}\\cdot f(...)= -2n|n|f(...)$; check sign/form."
+    },
+    {
+      "id": 22,
+      "text": "As $\\omega_c \\to \\infty$, $f \\to 1$, so $F'(n) = -2n^2$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [21],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "$F'(0) = 0$.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [22],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "$F''(0) = 0$.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [22],
+      "notes": "If $F'(n)=-2n^2$, then $F''(n)=-4n$, so $F''(0)=0$. Consistent."
+    },
+    {
+      "id": 25,
+      "text": "$F'''(0) = -4$.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [22],
+      "notes": "If $F'(n)=-2n^2$, $F'''(n)=-4$. Consistent."
+    },
+    {
+      "id": 26,
+      "text": "$F^{(k\\geq 5)}(0) = 0$.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [22],
+      "notes": "Follows from $F'(n)=-2n^2$ being a polynomial of degree 2."
+    },
+    {
+      "id": 27,
+      "text": "All higher-order Euler–Maclaurin corrections vanish, so the answer is independent of the cutoff (justifying the regularization).",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [19, 26],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "$\\tfrac{1}{2}F(0) + \\sum_{n=1}^\\infty F(n) - \\int_0^\\infty F(n)\\,dn = \\frac{1}{720}(-4) = -\\frac{1}{180}$.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [19, 23, 25, 26],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "After performing the $k_\\parallel$ integral with dimensional/zeta regularization, one encounters $\\sum_{n=1}^\\infty n^3$.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [10],
+      "notes": "Intermediate steps not shown."
+    },
+    {
+      "id": 30,
+      "text": "$\\sum_{n=1}^\\infty n^3 \\xrightarrow{\\text{analytic continuation}} \\zeta(-3) = \\frac{1}{120}$.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Riemann zeta analytic continuation invoked without derivation."
+    },
+    {
+      "id": 31,
+      "text": "Carrying through the coefficients yields the same answer below.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [29, 30],
+      "notes": "Details not shown; claimed consistency."
+    },
+    {
+      "id": 32,
+      "text": "$\\frac{\\mathcal{E}(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3}\\left(-\\frac{1}{180}\\right) = -\\frac{\\pi^2 \\hbar c}{720\\, d^3}$.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [17, 28],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "The force per unit area (pressure) is $\\frac{F(d)}{A} = -\\frac{\\partial}{\\partial d}\\!\\left[\\frac{\\mathcal{E}(d)}{A}\\right]$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [32],
+      "notes": "Should be $-\\partial(\\mathcal{E}/A)/\\partial d$ or $-(1/A)\\partial\\mathcal{E}/\\partial d$."
+    },
+    {
+      "id": 34,
+      "text": "$\\frac{F(d)}{A} = -\\frac{\\partial}{\\partial d}\\!\\left(-\\frac{\\pi^2 \\hbar c}{720\\, d^3}\\right)$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [32, 33],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "$\\frac{F(d)}{A} = -\\frac{\\pi^2\\, \\hbar c}{240\\, d^4}$.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [34],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "text": "The minus sign indicates an attractive force.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [35],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "Perfect conductors — idealized boundary conditions; real metals deviate at frequencies above the plasma frequency.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "text": "Zero temperature; only vacuum fluctuations contribute.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "Infinite plate area ($A \\to \\infty$), so transverse momenta are continuous.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "Flat, rigid, parallel plates; no roughness or curvature.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "Regularization: smooth UV cutoff $f(\\omega/\\omega_c)$ with $\\omega_c \\to \\infty$, physically justified by the transparency of conductors at high frequency.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [12],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "The cutoff-independence of the final result is verified via Euler–Maclaurin.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [27],
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "text": "Invoked without derivation: the Euler–Maclaurin formula.",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [18],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "text": "Invoked without derivation: the analytic continuation $\\zeta(-3) = 1/120$.",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [30],
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "text": "Subtraction scheme: the free-vacuum (continuum-$n$) energy is subtracted to isolate the $d$-dependent finite part; $d$-independent divergences cancel.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [16, 17],
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "text": "For $d = 1\\,\\mu\\text{m}$: $\\frac{F}{A} \\approx -1.3 \\times 10^{-3}\\,\\text{Pa}$.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [35],
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "text": "This prediction has been experimentally confirmed (Lamoreaux 1997; Mohideen & Roy 1998) at the percent level.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [35],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "text": "The $n=0$ term in the zero-point energy sum contributes $\\tfrac{1}{2} k_\\parallel$ inside the integral.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [7, 8, 9],
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "text": "The substitution $u = (k_\\parallel d/\\pi)^2$ is used to rewrite the energy sum.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [10],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "text": "The prefactor $\\frac{\\hbar c \\pi^2}{4 d^3}$ arises from the change of variables to $u$ and polar coordinates.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [14, 49],
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "text": "$-\\frac{\\partial}{\\partial d}\\left(-\\frac{\\pi^2 \\hbar c}{720 d^3}\\right) = -\\frac{\\pi^2 \\hbar c}{240 d^4}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [34],
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "text": "$\\frac{\\pi^2}{4} \\times \\frac{1}{180} = \\frac{\\pi^2}{720}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [28],
+      "notes": "Arithmetic check for the energy expression."
+    }
+  ]
+}
+```

@@ -1,0 +1,982 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "We work in 1+1 dimensions first, since the essential physics is in the (t,x) plane.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Constant proper acceleration along one axis reduces the non-trivial dynamics to 1+1 dimensions; transverse dimensions (y,z) remain unaffected and decouple.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "Constant proper acceleration along one axis reduces the non-trivial dynamics to 1+1 dimensions; transverse dimensions (y,z) remain unaffected and decouple.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:24:02.072497"
+  },
+  {
+    "claim_id": 2,
+    "claim_text": "We use Minkowski metric with signature (+,-): ds\u00b2 = c\u00b2dt\u00b2 - dx\u00b2.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 2,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In 1+1 dimensions, the metric with signature (+,-) is standard and correctly defined for Rindler coordinate derivations.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 2,
+      "verdict": "CONFIRMED",
+      "explanation": "In 1+1 dimensions, the metric with signature (+,-) is standard and correctly defined for Rindler coordinate derivations.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:24:14.312583"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "A worldline x^\u03bc(\u03c4) = (ct(\u03c4), x(\u03c4)) parameterized by proper time \u03c4 has four-velocity u^\u03bc = dx^\u03bc/d\u03c4.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The definition of four-velocity as the derivative of the position four-vector with respect to proper time is standard and correct in special relativity.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "The definition of four-velocity as the derivative of the position four-vector with respect to proper time is standard and correct in special relativity.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:24:19.775539"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "The four-acceleration is a^\u03bc = du^\u03bc/d\u03c4.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 5,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The four-acceleration is standardly defined as the derivative of the four-velocity with respect to proper time.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "CONFIRMED",
+      "explanation": "The four-acceleration is standardly defined as the derivative of the four-velocity with respect to proper time.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:24:24.215838"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "Constant proper acceleration means -a^\u03bc a_\u03bc = a\u00b2, where a > 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 6,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The definition correctly expresses the constant proper acceleration via the four-vector norm in Minkowski spacetime.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 6,
+      "verdict": "CONFIRMED",
+      "explanation": "The definition correctly expresses the constant proper acceleration via the four-vector norm in Minkowski spacetime.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:24:37.643741"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "In 1+1 dimensions, the four-velocity can be written as u^\u03bc = (c cosh \u03b8, c sinh \u03b8) in terms of rapidity \u03b8(\u03c4).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 7,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The parameterization of the four-velocity using rapidity correctly satisfies the normalization condition u^\u03bc u_\u03bc = c^2 for the (+,-,-,-) signature.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 7,
+      "verdict": "CONFIRMED",
+      "explanation": "The parameterization of the four-velocity using rapidity correctly satisfies the normalization condition u^\u03bc u_\u03bc = c^2 for the (+,-,-,-) signature.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:24:44.595208"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "u^\u03bc u_\u03bc = c\u00b2 cosh\u00b2\u03b8 - c\u00b2 sinh\u00b2\u03b8 = c\u00b2, confirming the normalization.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 8,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The derivation correctly applies cosh\u00b2\u03b8 - sinh\u00b2\u03b8 = 1 with the (+,-,-,-) metric, ensuring u^\u03bc u_\u03bc = c\u00b2.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 8,
+      "verdict": "CONFIRMED",
+      "explanation": "The derivation correctly applies cosh\u00b2\u03b8 - sinh\u00b2\u03b8 = 1 with the (+,-,-,-) metric, ensuring u^\u03bc u_\u03bc = c\u00b2.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:24:53.847251"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "a^\u03bc = du^\u03bc/d\u03c4 = c \u03b8\u0307 (sinh \u03b8, cosh \u03b8), where \u03b8\u0307 = d\u03b8/d\u03c4.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The 4-acceleration is the proper time derivative of the 4-velocity u^\u03bc = c(cosh\u03b8, sinh\u03b8). The differentiation correctly yields c\u03b8\u0307(sinh\u03b8, cosh\u03b8).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "CONFIRMED",
+      "explanation": "The 4-acceleration is the proper time derivative of the 4-velocity u^\u03bc = c(cosh\u03b8, sinh\u03b8). The differentiation correctly yields c\u03b8\u0307(sinh\u03b8, cosh\u03b8).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:25:02.236383"
+  },
+  {
+    "claim_id": 10,
+    "claim_text": "a^\u03bc a_\u03bc = c\u00b2 \u03b8\u0307\u00b2 (sinh\u00b2\u03b8 - cosh\u00b2\u03b8) = -c\u00b2 \u03b8\u0307\u00b2.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 10,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The rapidity parametrization and hyperbolic identity cosh\u00b2\u03b8 - sinh\u00b2\u03b8 = 1 correctly yield -c\u00b2\u03b8\u0307\u00b2 with the Minkowski metric.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 10,
+      "verdict": "CONFIRMED",
+      "explanation": "The rapidity parametrization and hyperbolic identity cosh\u00b2\u03b8 - sinh\u00b2\u03b8 = 1 correctly yield -c\u00b2\u03b8\u0307\u00b2 with the Minkowski metric.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:25:16.592265"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "-a^\u03bc a_\u03bc = c\u00b2 \u03b8\u0307\u00b2 = a\u00b2, so for constant proper acceleration \u03b8\u0307 = a/c.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The 4-acceleration norm in (+,-,-,-) signature is a^\u03bc a_\u03bc = -c\u00b2 \u03b8\u0307\u00b2. Setting this to -a\u00b2 correctly yields \u03b8\u0307 = a/c.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 11,
+      "verdict": "CONFIRMED",
+      "explanation": "The 4-acceleration norm in (+,-,-,-) signature is a^\u03bc a_\u03bc = -c\u00b2 \u03b8\u0307\u00b2. Setting this to -a\u00b2 correctly yields \u03b8\u0307 = a/c.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:25:24.858832"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "\u03b8(\u03c4) = a\u03c4/c + \u03b8\u2080.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 12,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Integrating d\u03b8/d\u03c4 = a/c yields \u03b8(\u03c4) = a\u03c4/c + \u03b8\u2080, which is standard for constant proper acceleration.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 12,
+      "verdict": "CONFIRMED",
+      "explanation": "Integrating d\u03b8/d\u03c4 = a/c yields \u03b8(\u03c4) = a\u03c4/c + \u03b8\u2080, which is standard for constant proper acceleration.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:25:40.491798"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "We choose initial conditions so that at \u03c4 = 0, the observer is instantaneously at rest, so \u03b8\u2080 = 0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 13,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Choosing the observer to be instantaneously at rest at proper time zero is a standard, valid coordinate choice that simplifies the derivation of Rindler coordinates.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "CONFIRMED",
+      "explanation": "Choosing the observer to be instantaneously at rest at proper time zero is a standard, valid coordinate choice that simplifies the derivation of Rindler coordinates.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:25:45.451820"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "u^\u03bc = (c cosh(a\u03c4/c), c sinh(a\u03c4/c)).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 14,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The four-velocity correctly results from differentiating the hyperbolic trajectory, and its normalization is verified.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 14,
+      "verdict": "CONFIRMED",
+      "explanation": "The four-velocity correctly results from differentiating the hyperbolic trajectory, and its normalization is verified.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:25:54.949287"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "dt/d\u03c4 = cosh(a\u03c4/c) and dx/d\u03c4 = c sinh(a\u03c4/c).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expressions correctly satisfy the four-velocity normalization c^2(dt/d\\u03c4)^2 - (dx/d\\u03c4)^2 = c^2 and yield a constant proper acceleration of magnitude a.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "The expressions correctly satisfy the four-velocity normalization c^2(dt/d\u03c4)^2 - (dx/d\u03c4)^2 = c^2 and yield a constant proper acceleration of magnitude a.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:26:02.826362"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "Integrating: t(\u03c4) = (c/a) sinh(a\u03c4/c) + t\u2080 and x(\u03c4) = (c\u00b2/a) cosh(a\u03c4/c) + x\u2080.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 16,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"These are the standard hyperbolic motion formulas with arbitrary integration constants, correctly reflecting constant proper acceleration in Minkowski space.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 16,
+      "verdict": "CONFIRMED",
+      "explanation": "These are the standard hyperbolic motion formulas with arbitrary integration constants, correctly reflecting constant proper acceleration in Minkowski space.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:26:54.848213"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "A standard convenient choice is t\u2080 = 0, x\u2080 = 0 shifted so that x(0) = c\u00b2/a.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 17,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Setting the initial position to x(0) = c\\u00b2/a at t=0 is the standard convention to center the hyperbola at the origin, yielding x\\u00b2 - c\\u00b2t\\u00b2 = c\\u2074/a\\u00b2.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 17,
+      "verdict": "CONFIRMED",
+      "explanation": "Setting the initial position to x(0) = c\u00b2/a at t=0 is the standard convention to center the hyperbola at the origin, yielding x\u00b2 - c\u00b2t\u00b2 = c\u2074/a\u00b2.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T13:27:08.463855"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "The worldline is ct(\u03c4) = (c\u00b2/a) sinh(a\u03c4/c), x(\u03c4) = (c\u00b2/a) cosh(a\u03c4/c).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 18,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The hyperbolic trajectory correctly represents constant proper acceleration in Minkowski spacetime.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 18,
+      "verdict": "CONFIRMED",
+      "explanation": "The hyperbolic trajectory correctly represents constant proper acceleration in Minkowski spacetime.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:27:15.338904"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "Eliminating \u03c4: x\u00b2 - c\u00b2t\u00b2 = (c\u00b2/a)\u00b2(cosh\u00b2(a\u03c4/c) - sinh\u00b2(a\u03c4/c)) = (c\u00b2/a)\u00b2.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 19,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The step correctly uses the hyperbolic identity cosh\\u00b2\\u03b8 - sinh\\u00b2\\u03b8 = 1 to eliminate proper time \\u03c4, yielding the standard hyperbolic trajectory x\\u00b2 - c\\u00b2t\\u00b2 = (c\\u00b2/a)\\u00b2.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "The step correctly uses the hyperbolic identity cosh\u00b2\u03b8 - sinh\u00b2\u03b8 = 1 to eliminate proper time \u03c4, yielding the standard hyperbolic trajectory x\u00b2 - c\u00b2t\u00b2 = (c\u00b2/a)\u00b2.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:27:21.494094"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "The worldline is the hyperbola x\u00b2 - c\u00b2t\u00b2 = c\u2074/a\u00b2.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 20,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The hyperbola correctly represents the worldline for constant proper acceleration in Minkowski spacetime.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 20,
+      "verdict": "CONFIRMED",
+      "explanation": "The hyperbola correctly represents the worldline for constant proper acceleration in Minkowski spacetime.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:27:30.331160"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "The right Rindler wedge is defined as x > |ct|.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 21,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The right Rindler wedge is standardly defined as the spacetime region where x > |ct|, which is the domain accessible to the uniformly accelerating observer.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "CONFIRMED",
+      "explanation": "The right Rindler wedge is standardly defined as the spacetime region where x > |ct|, which is the domain accessible to the uniformly accelerating observer.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:27:35.770449"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "Define a spatial coordinate \u03be > 0 by x\u00b2 - c\u00b2t\u00b2 = \u03be\u00b2.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:29:42.004775"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "Points of fixed \u03be lie on hyperbolae, and each hyperbola corresponds to a uniformly accelerated observer with proper acceleration a(\u03be) = c\u00b2/\u03be.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 23,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In Rindler coordinates, curves of constant spatial coordinate \\u03be are hyperbolae in Minkowski space, representing observers with constant proper acceleration a = c\\u00b2/\\u03be.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 23,
+      "verdict": "CONFIRMED",
+      "explanation": "In Rindler coordinates, curves of constant spatial coordinate \u03be are hyperbolae in Minkowski space, representing observers with constant proper acceleration a = c\u00b2/\u03be.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:29:49.094293"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "The coordinate transformation is x = \u03be cosh(\u03b7/c), ct = \u03be sinh(\u03b7/c), \u03be > 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:31:26.386595"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "The inverse transformation is \u03be = \u221a(x\u00b2 - c\u00b2t\u00b2), \u03b7 = (c/2) ln((x + ct)/(x - ct)).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 25,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The expression for \u03b7 is missing the proper acceleration 'a' in the denominator to have correct units of time; it should be \u03b7 = (c/2a) ln((x+ct)/(x-ct)).\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 25,
+      "verdict": "ERROR",
+      "explanation": "The expression for \u03b7 is missing the proper acceleration 'a' in the denominator to have correct units of time; it should be \u03b7 = (c/2a) ln((x+ct)/(x-ct)).",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T13:31:36.122520"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "dx = cosh(\u03b7/c) d\u03be + (\u03be/c) sinh(\u03b7/c) d\u03b7.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 26,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The formula omits the proper acceleration factor, a, in both the hyperbolic argument and the d\u03b7 term, leading to dimensional inconsistency.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 26,
+      "verdict": "ERROR",
+      "explanation": "The formula omits the proper acceleration factor, a, in both the hyperbolic argument and the d\u03b7 term, leading to dimensional inconsistency.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:32:11.752262"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "c dt = sinh(\u03b7/c) d\u03be + (\u03be/c) cosh(\u03b7/c) d\u03b7.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 27,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The differential is mathematically correct and follows directly from the Rindler coordinate transformation ct = \\u03be sinh(\\u03b7/c) using standard product and chain rules.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 27,
+      "verdict": "CONFIRMED",
+      "explanation": "The differential is mathematically correct and follows directly from the Rindler coordinate transformation ct = \u03be sinh(\u03b7/c) using standard product and chain rules.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:32:20.072093"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "Substituting into ds\u00b2 = c\u00b2dt\u00b2 - dx\u00b2 and using cosh\u00b2 - sinh\u00b2 = 1, the cross terms cancel.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 28,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Derivatives yield cross terms with equal magnitude and opposite signs, cancelling via cosh\u00b2 - sinh\u00b2 = 1.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 28,
+      "verdict": "CONFIRMED",
+      "explanation": "Derivatives yield cross terms with equal magnitude and opposite signs, cancelling via cosh\u00b2 - sinh\u00b2 = 1.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:32:37.959294"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "The Rindler metric is ds\u00b2 = (\u03be\u00b2/c\u00b2) d\u03b7\u00b2 - d\u03be\u00b2 - dy\u00b2 - dz\u00b2.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 29,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The metric is dimensionally inconsistent. If d\u03be\u00b2 is length squared, (\u03be\u00b2/c\u00b2)d\u03b7\u00b2 has units of time squared (if \u03b7 is dimensionless), which cannot be subtracted from length squared.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 29,
+      "verdict": "ERROR",
+      "explanation": "The metric is dimensionally inconsistent. If d\u03be\u00b2 is length squared, (\u03be\u00b2/c\u00b2)d\u03b7\u00b2 has units of time squared (if \u03b7 is dimensionless), which cannot be subtracted from length squared.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:32:50.047102"
+  },
+  {
+    "claim_id": 30,
+    "claim_text": "For an observer at fixed \u03be = \u03be\u2080, ds\u00b2 = c\u00b2d\u03c4\u00b2 = (\u03be\u2080\u00b2/c\u00b2) d\u03b7\u00b2.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:34:09.263923"
+  },
+  {
+    "claim_id": 31,
+    "claim_text": "Hence d\u03c4 = (\u03be\u2080/c\u00b2) d\u03b7.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 31,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The equation is dimensionally inconsistent. If \\u03be\\u2080 is length and \\u03b7 is dimensionless, d\\u03c4 should be (\\u03be\\u2080/c)d\\u03b7. The c\\u00b2 factor yields incorrect units for proper time.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 31,
+      "verdict": "ERROR",
+      "explanation": "The equation is dimensionally inconsistent. If \u03be\u2080 is length and \u03b7 is dimensionless, d\u03c4 should be (\u03be\u2080/c)d\u03b7. The c\u00b2 factor yields incorrect units for proper time.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T13:34:20.150667"
+  },
+  {
+    "claim_id": 32,
+    "claim_text": "\u03b7 is proportional to the proper time along each constant-\u03be worldline.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 32, \"verdict\": \"CONFIRMED\", \"explanation\": \"For fixed \u03be, the line element gives d\u03c4 = \u03be d\u03b7, so proper time is linearly related to \u03b7.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 32,
+      "verdict": "CONFIRMED",
+      "explanation": "For fixed \u03be, the line element gives d\u03c4 = \u03be d\u03b7, so proper time is linearly related to \u03b7.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:34:34.860314"
+  },
+  {
+    "claim_id": 33,
+    "claim_text": "Comparing the constant-\u03be\u2080 worldline with the uniformly accelerated trajectory, we identify \u03be\u2080 = c\u00b2/a.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 33,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In standard Rindler coordinates, proper acceleration is inversely proportional to the spatial coordinate. Restoring units, \\u03be\\u2080 = c\\u00b2/a correctly identifies the uniformly accelerating observer's position.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 33,
+      "verdict": "CONFIRMED",
+      "explanation": "In standard Rindler coordinates, proper acceleration is inversely proportional to the spatial coordinate. Restoring units, \u03be\u2080 = c\u00b2/a correctly identifies the uniformly accelerating observer's position.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:34:41.066752"
+  },
+  {
+    "claim_id": 34,
+    "claim_text": "Thus a = c\u00b2/\u03be.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 34,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The relation follows from the hyperbolic trajectory in Rindler coordinates, where \u03be is defined as c\u00b2/a.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 34,
+      "verdict": "CONFIRMED",
+      "explanation": "The relation follows from the hyperbolic trajectory in Rindler coordinates, where \u03be is defined as c\u00b2/a.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:34:56.592315"
+  },
+  {
+    "claim_id": 35,
+    "claim_text": "Each \u03be = const worldline is uniformly accelerated, with larger acceleration as \u03be \u2192 0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 35,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In standard Rindler coordinates, proper acceleration is a = 1/\\u03be. Constant \\u03be implies constant proper acceleration, which diverges as \\u03be \\u2192 0 (approaching the Rindler horizon).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 35,
+      "verdict": "CONFIRMED",
+      "explanation": "In standard Rindler coordinates, proper acceleration is a = 1/\u03be. Constant \u03be implies constant proper acceleration, which diverges as \u03be \u2192 0 (approaching the Rindler horizon).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:35:07.688480"
+  },
+  {
+    "claim_id": 36,
+    "claim_text": "The Rindler coordinate patch only covers x > |ct|. The boundaries are x = ct and x = -ct.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:37:02.046609"
+  },
+  {
+    "claim_id": 37,
+    "claim_text": "The boundaries x = \u00b1ct are null lines in Minkowski spacetime because ds\u00b2 = c\u00b2dt\u00b2 - dx\u00b2 = 0 when dx = \u00b1c dt.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 37,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The claim correctly identifies that x = \\u00b1ct implies dx = \\u00b1c dt, which yields ds\\u00b2 = 0 in the Minkowski metric, correctly defining null lines.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 37,
+      "verdict": "CONFIRMED",
+      "explanation": "The claim correctly identifies that x = \u00b1ct implies dx = \u00b1c dt, which yields ds\u00b2 = 0 in the Minkowski metric, correctly defining null lines.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:37:06.771799"
+  },
+  {
+    "claim_id": 38,
+    "claim_text": "In null coordinates U = ct - x, V = ct + x, the right wedge is characterized by U < 0, V > 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 38,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using Rindler coordinates, U = -\u03bee\u207b\u03b7 < 0 and V = \u03bee\u03b7 > 0 correctly describe the right wedge.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 38,
+      "verdict": "CONFIRMED",
+      "explanation": "Using Rindler coordinates, U = -\u03bee\u207b\u03b7 < 0 and V = \u03bee\u03b7 > 0 correctly describe the right wedge.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:37:16.596427"
+  },
+  {
+    "claim_id": 39,
+    "claim_text": "The Rindler horizons are U = 0 (x = ct) and V = 0 (x = -ct).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 39,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The Rindler horizons correspond to the light cones x = \\u00b1ct, which are indeed the null surfaces U=0 and V=0 in standard light-cone coordinates.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 39,
+      "verdict": "CONFIRMED",
+      "explanation": "The Rindler horizons correspond to the light cones x = \u00b1ct, which are indeed the null surfaces U=0 and V=0 in standard light-cone coordinates.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:37:22.182386"
+  },
+  {
+    "claim_id": 40,
+    "claim_text": "On the horizon x\u00b2 - c\u00b2t\u00b2 = 0, so \u03be = 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 40,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Since the transformation yields \u03be\u00b2 = x\u00b2 - c\u00b2t\u00b2, setting x\u00b2 - c\u00b2t\u00b2 = 0 correctly gives \u03be = 0 as the Rindler horizon.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 40,
+      "verdict": "CONFIRMED",
+      "explanation": "Since the transformation yields \u03be\u00b2 = x\u00b2 - c\u00b2t\u00b2, setting x\u00b2 - c\u00b2t\u00b2 = 0 correctly gives \u03be = 0 as the Rindler horizon.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:38:03.884397"
+  },
+  {
+    "claim_id": 41,
+    "claim_text": "At \u03be = 0, the coefficient g_{\u03b7\u03b7} = \u03be\u00b2/c\u00b2 vanishes, making the metric appear singular.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 41,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The vanishing of the metric component g_{\u03b7\u03b7} at \u03be=0 causes the metric determinant to vanish, which correctly identifies the coordinate singularity at the Rindler horizon.\",\n    \"confidence\": 0.9\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 41,
+      "verdict": "CONFIRMED",
+      "explanation": "The vanishing of the metric component g_{\u03b7\u03b7} at \u03be=0 causes the metric determinant to vanish, which correctly identifies the coordinate singularity at the Rindler horizon.",
+      "confidence": 0.9
+    },
+    "timestamp": "2026-04-18T13:38:13.898926"
+  },
+  {
+    "claim_id": 42,
+    "claim_text": "Minkowski spacetime is perfectly regular at the horizon; the apparent singularity is only because the coordinates break down at the wedge boundary.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 42,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Minkowski spacetime is flat; the singularity at the horizon appears solely from the breakdown of Rindler coordinates.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 42,
+      "verdict": "CONFIRMED",
+      "explanation": "Minkowski spacetime is flat; the singularity at the horizon appears solely from the breakdown of Rindler coordinates.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:38:21.989183"
+  },
+  {
+    "claim_id": 43,
+    "claim_text": "The horizon is a coordinate singularity, not a curvature singularity, since the spacetime is flat everywhere with Riemann tensor zero.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 43,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Minkowski spacetime is globally flat with a vanishing Riemann tensor. Therefore, the singularity at the Rindler horizon is purely a coordinate artifact, not a physical curvature singularity.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 43,
+      "verdict": "CONFIRMED",
+      "explanation": "Minkowski spacetime is globally flat with a vanishing Riemann tensor. Therefore, the singularity at the Rindler horizon is purely a coordinate artifact, not a physical curvature singularity.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:38:27.429215"
+  },
+  {
+    "claim_id": 44,
+    "claim_text": "The key physical assumption is: the field can be decomposed into positive-frequency modes with respect to Minkowski time t, and also into positive-frequency modes with respect to Rindler time \u03b7, related by a Bogoliubov transformation, and the Minkowski vacuum is not the Rindler vacuum.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 44,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"It correctly states the key assumption: distinct positive-frequency decompositions via Bogoliubov transformations yield inequivalent vacua.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 44,
+      "verdict": "CONFIRMED",
+      "explanation": "It correctly states the key assumption: distinct positive-frequency decompositions via Bogoliubov transformations yield inequivalent vacua.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:38:38.398932"
+  },
+  {
+    "claim_id": 45,
+    "claim_text": "A massless scalar field satisfies \u25a1\u03c6 = 0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 45,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The Klein-Gordon equation for a free scalar field is (\u25a1 + m^2)\u03c6 = 0. For a massless field (m=0), this correctly reduces to \u25a1\u03c6 = 0.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 45,
+      "verdict": "CONFIRMED",
+      "explanation": "The Klein-Gordon equation for a free scalar field is (\u25a1 + m^2)\u03c6 = 0. For a massless field (m=0), this correctly reduces to \u25a1\u03c6 = 0.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:38:43.045784"
+  },
+  {
+    "claim_id": 46,
+    "claim_text": "In 1+1 dimensions this is (1/c\u00b2 \u2202\u00b2_t - \u2202\u00b2_x)\u03c6 = 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 46,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correct d'Alembertian operator for a massless scalar in 1+1 Minkowski spacetime with signature (+,-).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 46,
+      "verdict": "CONFIRMED",
+      "explanation": "Correct d'Alembertian operator for a massless scalar in 1+1 Minkowski spacetime with signature (+,-).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:38:51.843982"
+  },
+  {
+    "claim_id": 47,
+    "claim_text": "In Minkowski null coordinates U = ct - x, V = ct + x, the general solution splits into left- and right-moving parts: \u03c6(t,x) = \u03c6_R(U) + \u03c6_L(V).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 47,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The 1+1D massless wave equation reduces to \u2202_U \u2202_V \u03c6 = 0, whose general solution is exactly the sum of right-moving (U) and left-moving (V) functions.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 47,
+      "verdict": "CONFIRMED",
+      "explanation": "The 1+1D massless wave equation reduces to \u2202_U \u2202_V \u03c6 = 0, whose general solution is exactly the sum of right-moving (U) and left-moving (V) functions.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:38:59.023134"
+  },
+  {
+    "claim_id": 48,
+    "claim_text": "It is enough to analyze one chiral sector, say the right-moving part depending on U.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 48,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"For a 1+1-dimensional massless field, left\u2010 and right-moving sectors decouple, so focusing on one (the U sector) is justified.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 48,
+      "verdict": "CONFIRMED",
+      "explanation": "For a 1+1-dimensional massless field, left\u2010 and right-moving sectors decouple, so focusing on one (the U sector) is justified.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T13:39:19.850354"
+  },
+  {
+    "claim_id": 49,
+    "claim_text": "In the right wedge, U = ct - x = \u03be(sinh(\u03b7/c) - cosh(\u03b7/c)) = -\u03be e^{-\u03b7/c}.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 49,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The algebraic substitution and simplification using the hyperbolic identity sinh(z) - cosh(z) = -e^{-z} are entirely correct for standard Rindler coordinates.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 49,
+      "verdict": "CONFIRMED",
+      "explanation": "The algebraic substitution and simplification using the hyperbolic identity sinh(z) - cosh(z) = -e^{-z} are entirely correct for standard Rindler coordinates.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:39:25.612251"
+  },
+  {
+    "claim_id": 50,
+    "claim_text": "V = ct + x = \u03be(sinh(\u03b7/c) + cosh(\u03b7/c)) = \u03be e^{\u03b7/c}.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:41:21.352538"
+  },
+  {
+    "claim_id": 51,
+    "claim_text": "In the right wedge, U = -\u03be e^{-\u03b7/c} < 0 and V = \u03be e^{\u03b7/c} > 0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 51,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The definitions of lightcone coordinates U = t-x and V = t+x in the right Rindler wedge correctly yield U < 0 and V > 0 for positive \\u03be.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 51,
+      "verdict": "CONFIRMED",
+      "explanation": "The definitions of lightcone coordinates U = t-x and V = t+x in the right Rindler wedge correctly yield U < 0 and V > 0 for positive \u03be.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:41:29.382354"
+  },
+  {
+    "claim_id": 52,
+    "claim_text": "A Rindler null time variable is u_R = \u03b7 - c ln(\u03be/\u03be\u2080), so that U = -\u03be\u2080 e^{-u_R/c}.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:43:14.416609"
+  },
+  {
+    "claim_id": 53,
+    "claim_text": "The crucial point is that Minkowski null coordinate U is exponential in Rindler null coordinate u_R.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 53,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Minkowski null coordinates U, V are related to Rindler null coordinates u, v via exponentials (e.g., U \\u221d -e^{-au}), which is essential for deriving the Bogoliubov coefficients.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 53,
+      "verdict": "CONFIRMED",
+      "explanation": "Minkowski null coordinates U, V are related to Rindler null coordinates u, v via exponentials (e.g., U \u221d -e^{-au}), which is essential for deriving the Bogoliubov coefficients.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:43:22.213470"
+  },
+  {
+    "claim_id": 54,
+    "claim_text": "A positive-frequency Minkowski right-moving mode has the form f_\u03a9(U) \u221d e^{-i\u03a9U/c} with \u03a9 > 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 54,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The mode is the standard Minkowski plane-wave for a right-moving, positive-frequency solution.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 54,
+      "verdict": "CONFIRMED",
+      "explanation": "The mode is the standard Minkowski plane-wave for a right-moving, positive-frequency solution.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:43:38.745181"
+  },
+  {
+    "claim_id": 55,
+    "claim_text": "A positive-frequency Rindler mode has the form g_\u03c9(u_R) \u221d e^{-i\u03c9u_R/c} with \u03c9 > 0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 55,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The function oscillates as e^{-i\u03c9\u03b7} (where \u03b7 is Rindler time), correctly defining a positive-frequency mode with respect to the Rindler time-translation Killing vector.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 55,
+      "verdict": "CONFIRMED",
+      "explanation": "The function oscillates as e^{-i\u03c9\u03b7} (where \u03b7 is Rindler time), correctly defining a positive-frequency mode with respect to the Rindler time-translation Killing vector.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:43:45.427101"
+  },
+  {
+    "claim_id": 56,
+    "claim_text": "Since U = -\u03be\u2080 e^{-u_R/c}, a Minkowski mode restricted to the right wedge becomes f_\u03a9 \u221d exp(i\u03a9\u03be\u2080/c \u00b7 e^{-u_R/c}).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:45:42.055237"
+  },
+  {
+    "claim_id": 57,
+    "claim_text": "This is not a pure Fourier mode in u_R; it contains both positive and negative Rindler frequencies, which is the origin of the Bogoliubov mixing.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 57,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"A Minkowski positive-frequency mode decomposes into both positive and negative Rindler frequency modes. This frequency mixing is the fundamental origin of the Bogoliubov transformation and Unruh radiation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 57,
+      "verdict": "CONFIRMED",
+      "explanation": "A Minkowski positive-frequency mode decomposes into both positive and negative Rindler frequency modes. This frequency mixing is the fundamental origin of the Bogoliubov transformation and Unruh radiation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:45:53.852928"
+  },
+  {
+    "claim_id": 58,
+    "claim_text": "The field can be expanded in Minkowski modes: \u03c6 = \u03a3_i (a_i^M f_i + a_i^{M\u2020} f_i*) or in Rindler modes: \u03c6 = \u03a3_j (a_j^R g_j + a_j^{R\u2020} g_j*).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 58, \"verdict\": \"CONFIRMED\", \"explanation\": \"Standard QFT expansion using complete sets of modes (summation implies continuous integration).\", \"confidence\": 0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 58,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard QFT expansion using complete sets of modes (summation implies continuous integration).",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T13:46:04.747290"
+  },
+  {
+    "claim_id": 60,
+    "claim_text": "The Minkowski vacuum is defined by a_i^M |0_M\u27e9 = 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 60, \"verdict\": \"CONFIRMED\", \"explanation\": \"It correctly states the standard annihilation condition defining the Minkowski vacuum in QFT.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 60,
+      "verdict": "CONFIRMED",
+      "explanation": "It correctly states the standard annihilation condition defining the Minkowski vacuum in QFT.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:46:15.113875"
+  },
+  {
+    "claim_id": 61,
+    "claim_text": "The number of Rindler quanta in mode j seen in |0_M\u27e9 is \u27e80_M| a_j^{R\u2020} a_j^R |0_M\u27e9 = \u03a3_i |\u03b2_{ji}|\u00b2.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 61,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is the standard result from the Bogoliubov transformation; the expectation value of the Rindler number operator in the Minkowski vacuum equals the sum of squared beta coefficients.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 61,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the standard result from the Bogoliubov transformation; the expectation value of the Rindler number operator in the Minkowski vacuum equals the sum of squared beta coefficients.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:46:21.306213"
+  },
+  {
+    "claim_id": 62,
+    "claim_text": "u_R = -c ln(-U/\u03be\u2080), hence e^{-i\u03c9u_R/c} = exp(i\u03c9 ln(-U/\u03be\u2080)) = (-U/\u03be\u2080)^{i\u03c9}.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 62,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Algebraic manipulation is correct using logarithm and exponential properties, assuming the proper branch for ln(-U/\u03be\u2080).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 62,
+      "verdict": "CONFIRMED",
+      "explanation": "Algebraic manipulation is correct using logarithm and exponential properties, assuming the proper branch for ln(-U/\u03be\u2080).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:46:29.096892"
+  },
+  {
+    "claim_id": 63,
+    "claim_text": "This expression is naturally defined in the right wedge where U < 0. To continue it across the horizon U = 0, one must choose a branch of the logarithm.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 63,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Continuing Rindler modes across the horizon requires analytic continuation of ln(-U) to positive U, which necessitates choosing a branch cut, correctly yielding the Bogoliubov coefficients.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 63,
+      "verdict": "CONFIRMED",
+      "explanation": "Continuing Rindler modes across the horizon requires analytic continuation of ln(-U) to positive U, which necessitates choosing a branch cut, correctly yielding the Bogoliubov coefficients.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T13:46:35.428783"
+  },
+  {
+    "claim_id": 66,
+    "claim_text": "From |\u03b2_\u03c9|\u00b2 = e^{-2\u03c0\u03c9c/a} |\u03b1_\u03c9|\u00b2 and |\u03b1_\u03c9|\u00b2 - |\u03b2_\u03c9|\u00b2 = 1, we get |\u03b2_\u03c9|\u00b2 = 1/(e^{2\u03c0\u03c9c/a} - 1).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 66,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correctly uses the Bogoliubov relations to derive the Bose-Einstein factor.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 66,
+      "verdict": "CONFIRMED",
+      "explanation": "Correctly uses the Bogoliubov relations to derive the Bose-Einstein factor.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:46:43.008411"
+  },
+  {
+    "claim_id": 67,
+    "claim_text": "This is exactly the Bose-Einstein occupation number at temperature T if \u210f\u03c9/(k_B T) = 2\u03c0\u03c9c/a.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 67,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The relation correctly identifies the Unruh temperature by equating the Bogoliubov coefficient's exponent to the Bose-Einstein thermal factor.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 67,
+      "verdict": "CONFIRMED",
+      "explanation": "The relation correctly identifies the Unruh temperature by equating the Bogoliubov coefficient's exponent to the Bose-Einstein thermal factor.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:46:49.473289"
+  },
+  {
+    "claim_id": 68,
+    "claim_text": "Therefore T = \u210fa/(2\u03c0ck_B).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 68,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The formula exactly matches the standard Unruh temperature derived using Bogoliubov transformations.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 68,
+      "verdict": "CONFIRMED",
+      "explanation": "The formula exactly matches the standard Unruh temperature derived using Bogoliubov transformations.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:47:00.326884"
+  },
+  {
+    "claim_id": 69,
+    "claim_text": "An equivalent derivation via Euclidean periodicity: Wick rotating the Rindler metric to Euclidean time gives ds\u00b2_E = d\u03c1\u00b2 + (a\u03c1/c)\u00b2c\u00b2d\u03c4_E\u00b2 near \u03c1 = 0, which is flat plane in polar coordinates.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "```json\n{\n    \"claim_id\": 69,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The metric term (a\\u03c1/c)\\u00b2c\\u00b2d\\u03c4_E\\u00b2 is dimensionally incorrect. The correct",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:47:18.769162"
+  },
+  {
+    "claim_id": 70,
+    "claim_text": "To avoid a conical singularity at \u03c1 = 0, one requires periodicity \u03c4_E ~ \u03c4_E + 2\u03c0c/a.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 70,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The periodicity 2\u03c0c/a is standard to eliminate a conical singularity in Euclidean Rindler space, consistent with the derived Unruh temperature.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 70,
+      "verdict": "CONFIRMED",
+      "explanation": "The periodicity 2\u03c0c/a is standard to eliminate a conical singularity in Euclidean Rindler space, consistent with the derived Unruh temperature.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:47:32.737780"
+  },
+  {
+    "claim_id": 71,
+    "claim_text": "In finite-temperature QFT, imaginary time periodicity \u03b2\u210f corresponds to temperature T, so \u03b2\u210f = 2\u03c0c/a, giving T = \u210fa/(2\u03c0ck_B).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "```json\n{\n    \"claim_id\": 71,\n    \"verdict\": \"INCOMPLETE\",\n    \"explanation\": \"While physically correct via the Euclidean approach, this bypasses the prompt's explicit requirement to derive the temperature using Bogoliubov transformations and mode decompositions.\",\n    \"confidence\": 0.95\n}\n```",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 71,
+      "verdict": "INCOMPLETE",
+      "explanation": "While physically correct via the Euclidean approach, this bypasses the prompt's explicit requirement to derive the temperature using Bogoliubov transformations and mode decompositions.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T13:47:46.825450"
+  },
+  {
+    "claim_id": 72,
+    "claim_text": "A uniformly accelerated observer does not have access to the full Minkowski spacetime, only one Rindler wedge. The Minkowski vacuum restricted to one wedge, with inaccessible modes traced over, is thermal with respect to Rindler time evolution.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 72,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The claim correctly reflects the Unruh effect: restricting the Minkowski vacuum to one Rindler wedge yields a thermal state.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 72,
+      "verdict": "CONFIRMED",
+      "explanation": "The claim correctly reflects the Unruh effect: restricting the Minkowski vacuum to one Rindler wedge yields a thermal state.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:47:55.049182"
+  }
+]

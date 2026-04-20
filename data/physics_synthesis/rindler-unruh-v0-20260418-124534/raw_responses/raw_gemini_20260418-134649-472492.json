@@ -1,0 +1,59 @@
+{
+  "id": "gen-1776538004-VKgy7eryRS7pwEyqnKag",
+  "object": "chat.completion",
+  "created": 1776538004,
+  "model": "google/gemini-3.1-pro-preview-20260219",
+  "provider": "Google AI Studio",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 67,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The relation correctly identifies the Unruh temperature by equating the Bogoliubov coefficient's exponent to the Bose-Einstein thermal factor.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Analyzing the Relation**\n\nI'm currently verifying the claim's relationship to the Bose-Einstein distribution. I've broken down the Unruh temperature equation and am working towards substituting it into the provided formula. My immediate goal is to confirm whether the given condition leads to the expected Bose-Einstein occupation number.\n\n\n",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "**Analyzing the Relation**\n\nI'm currently verifying the claim's relationship to the Bose-Einstein distribution. I've broken down the Unruh temperature equation and am working towards substituting it into the provided formula. My immediate goal is to confirm whether the given condition leads to the expected Bose-Einstein occupation number.\n\n\n",
+            "format": "google-gemini-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "EqoLCqcLAQw51scAJN0O2y529/kD8wLmrX+TNI/eNlHts14XrWdKJjr8qPHTuc5XxQhwVGePbmlvHIARdqXLi3WzTab6NhY4fBZ1Qpr987ZalaVx31HHdQW+JEzBHp0aPKU/5SScmD1Uw7yqp7UqQpuVTgBQ2FXne5eDc1WnYnMnvimq2n/BYEnemoO/1gfQhuwh3Xx8cCFM85D7mz+wCrfDTWkJfS+by+aQzlXN66yJ2eIDu7/dwy48BZ5+RPYmr6jkB/Q7YbDKO34xWObgN0YmKqamiOz+4F4k8dHI76vBp/Mt6eZYFoDimwFS1eeSlCLJf5ekVOhByzwkRYiZUBwzmbpdfTN1aj+WkkrFHOoU4YqRUcGQnaVn1kTStIAV26XS0dPvUED3hblDA1oJBQOlMyQJ/4yzLKTOnBm5175p1ixWINHhQRqQtF9r6gF8WSIkxxu9Eyanw37IhDijVJlXsyJXxf1yc4dSNlShZE6RKZ712qG/Q2GrgUSVyM6y4zHJNU3xWblJvVhIpgnZJBoFxrAHpXPLAzBN5PwgDz/YpEWTe9JwR/CYnVMefHv/kQBrcZRKjjVNmVzANk3JRdofFAgWz5c0uhKcIfQAykpll0d6VS6P6yRgZW/slslURopxuLwng3NC4jKccsTJJW5d9OOG9+9sXvx+O0UqU+N9SCIo4cUmPgDXxKLQYT7b4ecph3BzI1p2y1hVEIN54hkL7/i8S/PnrqV1hcmU51K5cPPyW3bkszr7M6rTY4CXSfVF+PX5DlZdVf++0TyK+Eec8W4sKGQs1yxF2lriGJAVOPDFtdwCLPGrz5v6iTBS2Gk3fXAAQZLC17TX9BXI9qF2AFC9BB7IOWrouNhNSzLx+7BayBUtiADdRcZTM6ryP9o4zhcXPrXNJa2rrlK7qYiAgvaxaz9or8cz0A5+mPwrRK2HIeyCCAMyxXxiPObm3ojEbOKYNta72ltNgWM8/Asv9AhH3pm3jXywpPRL6As3IJhqnCbX1CWqdlyPrRwMIeJQfgEIOjVRxh3pXzSHcpIPLdlF7rpB0ulgdXlr5srlYv9ZHyxRgMmeLy8rQPzigI7yyrmhf+0zhkxYjK5YOylRs4tg/+yKjksznt0Dn+6Er+6XSdl/TIdwHjRgIPzAYg0z+ZhKVWDEo+/xeVOQCIgLaVJOuq8X3OHFy1UziEalfgRkEbW3JHaSz16uf3j+mxgsYmGn4Ab745S9hUYC7aJIzHNCx+e2JTbJYqMwLwchhSzBLqzPCBcUjChs1L02leijFCB100BejE17xPr0sAnKdaSMgpEnV8S/hh416P9w+q2XODyVVKXrAtrqnzhPJO+ejYHYlCrzhYUcnYT+S2R2aReS4sA4XiThpzbkSG2hQ2kfqPzzeQcA/XmEpU+TJEDQ6HfrpQJaAYbQzLgl1TD6dwWe9MqJynVGP5lUJnQh03GLr8IapGxux/wCQodxY8MQ883M0lSZwPUdPDDaXT9nExVnNM1+Fuw0ojoAdJDRgq/dSRISIewvyROab5v/nUIY1kOWk9pD2bGVCK8c5HIcYQFruhjm4j0P8vDh+EagRcrqn4eavIGHstIuyy+qZX8e2R8Z2m3j0UaaoRsUGL9s/kDgvfB+OJjzQa3POwo4q3Av+Lpx+SrjEfrsLTErkgPVrzebrSb9zzpfhWEjHO6VBic2mCxdIVaWJXcBfgBedqixTXvabiyuIuyvTXVEbVIy3XjhXJv7MWFQKG4SCvk3n665eMP6DpdIFyIdIMzp6lvaJMja+6r61gvVL4PYDIdlQ/XML0tdNv5S5EmaWEciz7Vyzs200/9S5dpAI9c9mIeeMXol/3P/Gn22gPHb3BiIUjG+uVdtkNxUe09kpu+8JGd898nPZsiW7oVzyGhTye7J+Mp1sLhm43HRod8NQpOhC+ng2MEYOqIfIw==",
+            "format": "google-gemini-v1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 514,
+    "completion_tokens": 448,
+    "total_tokens": 962,
+    "cost": 0.006404,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.006404,
+      "upstream_inference_prompt_cost": 0.001028,
+      "upstream_inference_completions_cost": 0.005376
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 382,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

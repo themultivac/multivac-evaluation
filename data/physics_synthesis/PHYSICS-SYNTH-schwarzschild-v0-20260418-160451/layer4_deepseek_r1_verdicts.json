@@ -1,0 +1,537 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "The derivation assumes spherical symmetry: the metric depends only on the radial coordinate r and the angular coordinates \u03b8, \u03c6.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"INCOMPLETE\",\n    \"explanation\": \"It omits the additional static (time-independence) assumption; spherical symmetry alone is insufficient.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "INCOMPLETE",
+      "explanation": "It omits the additional static (time-independence) assumption; spherical symmetry alone is insufficient.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:52:40.651539"
+  },
+  {
+    "claim_id": 2,
+    "claim_text": "The derivation assumes staticity: the metric is time-independent and has no off-diagonal terms mixing time and space.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":2,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Staticity implies a hypersurface-orthogonal timelike Killing field; in spherical symmetry one can set g_tr=0, but angular cross-terms vanish by symmetry, not staticity alone.\",\"confidence\":0.96}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 2,
+      "verdict": "INCOMPLETE",
+      "explanation": "Staticity implies a hypersurface-orthogonal timelike Killing field; in spherical symmetry one can set g_tr=0, but angular cross-terms vanish by symmetry, not staticity alone.",
+      "confidence": 0.96
+    },
+    "timestamp": "2026-04-18T16:52:44.498434"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "The derivation assumes vacuum: outside the mass, the energy-momentum tensor vanishes, T_{\u03bc\u03bd} = 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 3, \"verdict\": \"CONFIRMED\", \"explanation\": \"Vacuum assumption (T_{\u03bc\u03bd} = 0) outside the mass is standard for deriving the Schwarzschild metric.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "Vacuum assumption (T_{\u03bc\u03bd} = 0) outside the mass is standard for deriving the Schwarzschild metric.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:52:52.020205"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "The derivation assumes asymptotic flatness: as r \u2192 \u221e, the metric approaches the Minkowski metric.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":4,\"verdict\":\"CONFIRMED\",\"explanation\":\"For the exterior vacuum solution of an isolated spherical mass, asymptotic flatness is the standard boundary condition fixing integration constants to recover Minkowski metric at infinity.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 4,
+      "verdict": "CONFIRMED",
+      "explanation": "For the exterior vacuum solution of an isolated spherical mass, asymptotic flatness is the standard boundary condition fixing integration constants to recover Minkowski metric at infinity.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:52:55.333157"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "The most general metric satisfying these conditions is ds\u00b2 = -A(r)c\u00b2dt\u00b2 + B(r)dr\u00b2 + r\u00b2d\u03b8\u00b2 + r\u00b2sin\u00b2\u03b8 d\u03c6\u00b2.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n  \"claim_id\": 5,\n  \"verdict\": \"CONFIRMED\",\n  \"explanation\": \"This is the standard ansatz for static, spherically symmetric spacetimes in Schwarzschild coordinates.\",\n  \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the standard ansatz for static, spherically symmetric spacetimes in Schwarzschild coordinates.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:53:16.799983"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "\u0393^t_{tr} = \u0393^t_{rt} = A'/(2A)",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 7,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard metric computation yields \u0393^t_{tr} = A'/(2A) for ds\u00b2 = -A dt\u00b2 + B dr\u00b2 + ...\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 7,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard metric computation yields \u0393^t_{tr} = A'/(2A) for ds\u00b2 = -A dt\u00b2 + B dr\u00b2 + ...",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T16:53:25.906925"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "\u0393^r_{tt} = c\u00b2A'/(2B)",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"For ds\u00b2=-A c\u00b2dt\u00b2+B dr\u00b2+r\u00b2d\u03a9\u00b2, \u0393^r_tt=-(1/2)g^{rr}\u2202_r g_tt=(1/2B)c\u00b2A'. Sign and factors are correct.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 8,
+      "verdict": "CONFIRMED",
+      "explanation": "For ds\u00b2=-A c\u00b2dt\u00b2+B dr\u00b2+r\u00b2d\u03a9\u00b2, \u0393^r_tt=-(1/2)g^{rr}\u2202_r g_tt=(1/2B)c\u00b2A'. Sign and factors are correct.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:53:29.923641"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "\u0393^r_{rr} = B'/(2B)",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"For a metric with g_rr = B(r), the standard Christoffel symbol calculation indeed gives \u0393^r_rr = B'/(2B).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "CONFIRMED",
+      "explanation": "For a metric with g_rr = B(r), the standard Christoffel symbol calculation indeed gives \u0393^r_rr = B'/(2B).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:59:45.423383"
+  },
+  {
+    "claim_id": 10,
+    "claim_text": "\u0393^r_{\u03b8\u03b8} = -r/B",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":10,\"verdict\":\"CONFIRMED\",\"explanation\":\"For ds\u00b2=-A dt\u00b2+B dr\u00b2+r\u00b2(d\u03b8\u00b2+sin\u00b2\u03b8 d\u03c6\u00b2), \u0393^r_{\u03b8\u03b8}=-(1/2)g^{rr}\u2202_r g_{\u03b8\u03b8}=-(1/2)(1/B)(2r)=-r/B.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 10,
+      "verdict": "CONFIRMED",
+      "explanation": "For ds\u00b2=-A dt\u00b2+B dr\u00b2+r\u00b2(d\u03b8\u00b2+sin\u00b2\u03b8 d\u03c6\u00b2), \u0393^r_{\u03b8\u03b8}=-(1/2)g^{rr}\u2202_r g_{\u03b8\u03b8}=-(1/2)(1/B)(2r)=-r/B.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:59:48.652289"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "\u0393^r_{\u03c6\u03c6} = -r sin\u00b2\u03b8 / B",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using g_{\u03c6\u03c6} = r\u00b2 sin\u00b2\u03b8 and g^{rr} = 1/B, the derivative yields -r sin\u00b2\u03b8/B correctly.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 11,
+      "verdict": "CONFIRMED",
+      "explanation": "Using g_{\u03c6\u03c6} = r\u00b2 sin\u00b2\u03b8 and g^{rr} = 1/B, the derivative yields -r sin\u00b2\u03b8/B correctly.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:00:08.863865"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "\u0393^\u03b8_{r\u03b8} = \u0393^\u03b8_{\u03b8r} = 1/r",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":12,\"verdict\":\"CONFIRMED\",\"explanation\":\"For spherical metric with g_{\u03b8\u03b8}=r^2, Christoffel formula gives \u0393^\u03b8_{r\u03b8}=\u0393^\u03b8_{\u03b8r}=\u00bd g^{\u03b8\u03b8}\u2202_r g_{\u03b8\u03b8}=\u00bd(1/r^2)(2r)=1/r.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 12,
+      "verdict": "CONFIRMED",
+      "explanation": "For spherical metric with g_{\u03b8\u03b8}=r^2, Christoffel formula gives \u0393^\u03b8_{r\u03b8}=\u0393^\u03b8_{\u03b8r}=\u00bd g^{\u03b8\u03b8}\u2202_r g_{\u03b8\u03b8}=\u00bd(1/r^2)(2r)=1/r.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:00:12.650516"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "\u0393^\u03b8_{\u03c6\u03c6} = -sin\u03b8 cos\u03b8",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 13,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correct; it matches the standard Christoffel symbol for the 2-sphere part of the Schwarzschild metric.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "CONFIRMED",
+      "explanation": "Correct; it matches the standard Christoffel symbol for the 2-sphere part of the Schwarzschild metric.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:00:26.581423"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "\u0393^\u03c6_{r\u03c6} = \u0393^\u03c6_{\u03c6r} = 1/r",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":14,\"verdict\":\"CONFIRMED\",\"explanation\":\"For spherical coordinates with g_{\\\\phi\\\\phi}=r^2\\\\sin^2\\\\theta and g^{\\\\phi\\\\phi}=1/(r^2\\\\sin^2\\\\theta), Christoffel formula gives \\\\Gamma^\\\\phi_{r\\\\phi}=\\\\Gamma^\\\\phi_{\\\\phi r}=\\\\tfrac12 g^{\\\\phi\\\\phi}\\\\partial_r g_{\\\\phi\\\\phi}=1/r.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 14,
+      "verdict": "CONFIRMED",
+      "explanation": "For spherical coordinates with g_{\\phi\\phi}=r^2\\sin^2\\theta and g^{\\phi\\phi}=1/(r^2\\sin^2\\theta), Christoffel formula gives \\Gamma^\\phi_{r\\phi}=\\Gamma^\\phi_{\\phi r}=\\tfrac12 g^{\\phi\\phi}\\partial_r g_{\\phi\\phi}=1/r.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:00:30.162754"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "\u0393^\u03c6_{\u03b8\u03c6} = \u0393^\u03c6_{\u03c6\u03b8} = cot\u03b8",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using the 2-sphere metric, the computation yields \u0393^\u03c6_{\u03b8\u03c6} = cot\u03b8, confirming the claim.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "Using the 2-sphere metric, the computation yields \u0393^\u03c6_{\u03b8\u03c6} = cot\u03b8, confirming the claim.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:00:38.149358"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "R_{tt} = (c\u00b2/2B)A'' - c\u00b2(A')\u00b2/(4AB) - c\u00b2A'B'/(4B\u00b2) + c\u00b2A'/(rB)",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":16,\"verdict\":\"CONFIRMED\",\"explanation\":\"For metric ds\u00b2=-A(r)c\u00b2dt\u00b2+B(r)dr\u00b2+r\u00b2d\u03a9\u00b2 with signature (-,+,+,+), direct Christoffel/Ricci calculation gives this exact R_tt expression.\",\"confidence\":0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 16,
+      "verdict": "CONFIRMED",
+      "explanation": "For metric ds\u00b2=-A(r)c\u00b2dt\u00b2+B(r)dr\u00b2+r\u00b2d\u03a9\u00b2 with signature (-,+,+,+), direct Christoffel/Ricci calculation gives this exact R_tt expression.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T17:00:41.531328"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "R_{rr} = -A''/(2A) + (A')\u00b2/(4A\u00b2) + A'B'/(4AB) + B'/(rB)",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T17:02:05.933677"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "R_{\u03b8\u03b8} = 1 - 1/B + r/(2B)(B'/B - A'/A)",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"For metric ds\u00b2=-A dt\u00b2+B dr\u00b2+r\u00b2d\u03a9\u00b2, direct Ricci computation gives R_{\u03b8\u03b8}=1-1/B+rB'/(2B\u00b2)-rA'/(2AB), equivalent to stated formula.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 18,
+      "verdict": "CONFIRMED",
+      "explanation": "For metric ds\u00b2=-A dt\u00b2+B dr\u00b2+r\u00b2d\u03a9\u00b2, direct Ricci computation gives R_{\u03b8\u03b8}=1-1/B+rB'/(2B\u00b2)-rA'/(2AB), equivalent to stated formula.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T17:02:10.227915"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "R_{\u03c6\u03c6} = sin\u00b2\u03b8 R_{\u03b8\u03b8}",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 19,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Spherical symmetry implies the angular metric yields R_{\u03c6\u03c6} = sin\u00b2\u03b8 R_{\u03b8\u03b8}, confirming the relation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "Spherical symmetry implies the angular metric yields R_{\u03c6\u03c6} = sin\u00b2\u03b8 R_{\u03b8\u03b8}, confirming the relation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:03:07.783733"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "From R_{tt}=0 and R_{rr}=0, after algebraic manipulation, we obtain A'/A + B'/B = 0.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"CONFIRMED\",\"explanation\":\"For static spherical metric ds\u00b2=-A dt\u00b2+B dr\u00b2+r\u00b2d\u03a9\u00b2, vacuum equations give R_tt/(A/B)+R_rr = (A'/A+B'/B)/r = 0, hence A'/A+B'/B=0.\",\"confidence\":0.96}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 20,
+      "verdict": "CONFIRMED",
+      "explanation": "For static spherical metric ds\u00b2=-A dt\u00b2+B dr\u00b2+r\u00b2d\u03a9\u00b2, vacuum equations give R_tt/(A/B)+R_rr = (A'/A+B'/B)/r = 0, hence A'/A+B'/B=0.",
+      "confidence": 0.96
+    },
+    "timestamp": "2026-04-18T17:03:12.513979"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "A'/A + B'/B = 0 implies (AB)' = 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 21, \"verdict\": \"CONFIRMED\", \"explanation\": \"Using logarithmic differentiation, A'/A + B'/B = d(ln(AB))/dr. A zero derivative makes ln(AB) constant, so (AB)' = 0.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "CONFIRMED",
+      "explanation": "Using logarithmic differentiation, A'/A + B'/B = d(ln(AB))/dr. A zero derivative makes ln(AB) constant, so (AB)' = 0.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:03:22.230935"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "AB = constant follows from (AB)' = 0.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":22,\"verdict\":\"CONFIRMED\",\"explanation\":\"If the radial derivative satisfies (AB)'=0 on a connected domain, then AB is constant with respect to r on that domain.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 22,
+      "verdict": "CONFIRMED",
+      "explanation": "If the radial derivative satisfies (AB)'=0 on a connected domain, then AB is constant with respect to r on that domain.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:03:25.290058"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "Asymptotic flatness requires A \u2192 1 and B \u2192 1 as r \u2192 \u221e, so the constant AB = 1.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 23,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Field equations yield d/dr(log(AB))=0; asymptotic flatness (A, B \u2192 1) fixes the integration constant to 1.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 23,
+      "verdict": "CONFIRMED",
+      "explanation": "Field equations yield d/dr(log(AB))=0; asymptotic flatness (A, B \u2192 1) fixes the integration constant to 1.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:03:38.285278"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "Therefore B = 1/A.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":24,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"For static spherical vacuum metric, B=1/A follows only after using Einstein equations (e.g., G^t_t-G^r_r=0) plus asymptotic flatness/gauge choice; not automatic.\",\"confidence\":0.93}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 24,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "For static spherical vacuum metric, B=1/A follows only after using Einstein equations (e.g., G^t_t-G^r_r=0) plus asymptotic flatness/gauge choice; not automatic.",
+      "confidence": 0.93
+    },
+    "timestamp": "2026-04-18T17:03:41.909375"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "Substituting B = 1/A into R_{\u03b8\u03b8} = 0 gives 2(1/A - 1) + r(-2A'/A) = 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T17:05:09.103472"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "This simplifies to 1/A - 1 - rA'/A = 0.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"Could follow from a specific Einstein-equation combination only after defining metric/sign conventions and prior equations; by itself the simplification is not verifiable.\",\"confidence\":0.84}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 26,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "Could follow from a specific Einstein-equation combination only after defining metric/sign conventions and prior equations; by itself the simplification is not verifiable.",
+      "confidence": 0.84
+    },
+    "timestamp": "2026-04-18T17:05:12.991856"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "Multiplying by A gives 1 - A - rA' = 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T17:07:10.342797"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "1 - A - rA' = 0 can be rewritten as (rA)' = 1.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":28,\"verdict\":\"CONFIRMED\",\"explanation\":\"Since (rA)' = A + rA', rearranging 1 - A - rA' = 0 gives A + rA' = 1, hence (rA)' = 1.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 28,
+      "verdict": "CONFIRMED",
+      "explanation": "Since (rA)' = A + rA', rearranging 1 - A - rA' = 0 gives A + rA' = 1, hence (rA)' = 1.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:07:13.326970"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "Integrating (rA)' = 1 gives rA = r + C, so A = 1 + C/r.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T17:09:39.855900"
+  },
+  {
+    "claim_id": 30,
+    "claim_text": "In the weak-field limit, general relativity must reduce to Newtonian gravity.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":30,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard correspondence principle: for weak, static fields and slow motions, Einstein equations reproduce Poisson\u2019s equation and geodesics give Newtonian acceleration.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 30,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard correspondence principle: for weak, static fields and slow motions, Einstein equations reproduce Poisson\u2019s equation and geodesics give Newtonian acceleration.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:09:43.571752"
+  },
+  {
+    "claim_id": 33,
+    "claim_text": "Our solution gives g_{tt} = -Ac\u00b2 = -c\u00b2(1 + C/r) = -c\u00b2 - c\u00b2C/r.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 33,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The sign of the C/r term is incorrect; the Schwarzschild g_tt should be -c\u00b2(1 - constant/r), not -c\u00b2(1 + constant/r).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 33,
+      "verdict": "ERROR",
+      "explanation": "The sign of the C/r term is incorrect; the Schwarzschild g_tt should be -c\u00b2(1 - constant/r), not -c\u00b2(1 + constant/r).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:09:52.762985"
+  },
+  {
+    "claim_id": 34,
+    "claim_text": "Comparing g_{tt} from the weak-field limit and our solution: -c\u00b2C/r = 2GM/r, so C = -2GM/c\u00b2.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":34,\"verdict\":\"ERROR\",\"explanation\":\"Weak-field gives g_tt \u2248 -(1-2GM/(c^2 r)); comparing with g_tt = -(1 + c^2 C/r) yields c^2 C = -2GM/c^2, so C = -2GM/c^4.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 34,
+      "verdict": "ERROR",
+      "explanation": "Weak-field gives g_tt \u2248 -(1-2GM/(c^2 r)); comparing with g_tt = -(1 + c^2 C/r) yields c^2 C = -2GM/c^2, so C = -2GM/c^4.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T17:09:56.600108"
+  },
+  {
+    "claim_id": 35,
+    "claim_text": "A = 1 - 2GM/(c\u00b2r) and B = 1/(1 - 2GM/(c\u00b2r)).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 35,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"These metric coefficients match the standard Schwarzschild solution derived from the Einstein field equations.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 35,
+      "verdict": "CONFIRMED",
+      "explanation": "These metric coefficients match the standard Schwarzschild solution derived from the Einstein field equations.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:10:07.913692"
+  },
+  {
+    "claim_id": 36,
+    "claim_text": "The Schwarzschild metric is ds\u00b2 = -(1 - 2GM/(c\u00b2r))c\u00b2dt\u00b2 + (1 - 2GM/(c\u00b2r))\u207b\u00b9dr\u00b2 + r\u00b2d\u03b8\u00b2 + r\u00b2sin\u00b2\u03b8 d\u03c6\u00b2.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":36,\"verdict\":\"CONFIRMED\",\"explanation\":\"This is the standard Schwarzschild line element in Schwarzschild coordinates for vacuum, static, spherically symmetric spacetime, with correct coefficients and signature (-,+,+,+).\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 36,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the standard Schwarzschild line element in Schwarzschild coordinates for vacuum, static, spherically symmetric spacetime, with correct coefficients and signature (-,+,+,+).",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:10:11.350985"
+  },
+  {
+    "claim_id": 37,
+    "claim_text": "The metric exhibits a coordinate singularity where g_{rr} diverges and g_{tt} vanishes.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 37,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"At r = 2GM/c\u00b2, g_tt vanishes and g_rr diverges, indicating a coordinate singularity in Schwarzschild coordinates.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 37,
+      "verdict": "CONFIRMED",
+      "explanation": "At r = 2GM/c\u00b2, g_tt vanishes and g_rr diverges, indicating a coordinate singularity in Schwarzschild coordinates.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:10:17.675936"
+  },
+  {
+    "claim_id": 38,
+    "claim_text": "Setting 1 - 2GM/(c\u00b2r) = 0 gives r_s = 2GM/c\u00b2.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":38,\"verdict\":\"CONFIRMED\",\"explanation\":\"In Schwarzschild coordinates, the metric coefficient 1-2GM/(c^2 r) vanishes at the coordinate singularity, defining the Schwarzschild radius r_s=2GM/c^2.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 38,
+      "verdict": "CONFIRMED",
+      "explanation": "In Schwarzschild coordinates, the metric coefficient 1-2GM/(c^2 r) vanishes at the coordinate singularity, defining the Schwarzschild radius r_s=2GM/c^2.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:10:20.914830"
+  },
+  {
+    "claim_id": 39,
+    "claim_text": "r_s = 2GM/c\u00b2 defines the Schwarzschild radius.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 39,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The formula correctly represents the event horizon in Schwarzschild geometry.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 39,
+      "verdict": "CONFIRMED",
+      "explanation": "The formula correctly represents the event horizon in Schwarzschild geometry.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:10:26.380765"
+  },
+  {
+    "claim_id": 40,
+    "claim_text": "The Schwarzschild radius is a coordinate singularity, not a physical one, as can be shown by transforming to other coordinates (e.g., Kruskal-Szekeres).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":40,\"verdict\":\"CONFIRMED\",\"explanation\":\"At r=2GM/c^2 Schwarzschild coordinates make metric components diverge, but curvature scalars remain finite; regular coordinates like Eddington-Finkelstein or Kruskal-Szekeres remove the singularity.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 40,
+      "verdict": "CONFIRMED",
+      "explanation": "At r=2GM/c^2 Schwarzschild coordinates make metric components diverge, but curvature scalars remain finite; regular coordinates like Eddington-Finkelstein or Kruskal-Szekeres remove the singularity.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T17:10:29.964538"
+  }
+]

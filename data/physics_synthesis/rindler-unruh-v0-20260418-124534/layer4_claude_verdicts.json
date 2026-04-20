@@ -1,0 +1,817 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "We work in (1+1)-dimensional Minkowski spacetime with signature $(+,-,-,-)$ and metric $ds^2 = c^2 dt^2 - dx^2$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"Mismatch: (1+1)-dimensional Minkowski uses (+,-) signature, not the four-component (+,-,-,-) provided.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "ERROR",
+      "explanation": "Mismatch: (1+1)-dimensional Minkowski uses (+,-) signature, not the four-component (+,-,-,-) provided.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:07:36.211907"
+  },
+  {
+    "claim_id": 2,
+    "claim_text": "The transverse directions are trivial spectators.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":2,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Only in flat spacetime with boost symmetry and Cartesian transverse coordinates; metric includes unchanged transverse terms, and field modes retain transverse momentum affecting the Unruh spectrum degeneracy.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 2,
+      "verdict": "INCOMPLETE",
+      "explanation": "Only in flat spacetime with boost symmetry and Cartesian transverse coordinates; metric includes unchanged transverse terms, and field modes retain transverse momentum affecting the Unruh spectrum degeneracy.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T13:07:40.295897"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "Constant proper acceleration means the magnitude of the 4-acceleration $a^\\mu = du^\\mu/d\\tau$ is constant: $a_\\mu a^\\mu = -a^2$ (spacelike, with magnitude $a$).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Proper acceleration is defined as the constant norm of the spacelike 4-acceleration, correctly yielding -a\u00b2 in Minkowski spacetime.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "Proper acceleration is defined as the constant norm of the spacelike 4-acceleration, correctly yielding -a\u00b2 in Minkowski spacetime.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:07:49.010339"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "Parametrize $u^\\mu = (\\cosh\\phi(\\tau),\\; \\sinh\\phi(\\tau))$, which automatically satisfies the normalization.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 5,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Hyperbolic functions satisfy cosh^2(\u03c6) - sinh^2(\u03c6) = 1, automatically normalizing the timelike 4-velocity in Minkowski space.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "CONFIRMED",
+      "explanation": "Hyperbolic functions satisfy cosh^2(\u03c6) - sinh^2(\u03c6) = 1, automatically normalizing the timelike 4-velocity in Minkowski space.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:08:05.111410"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "$a^\\mu = \\dot\\phi(\\tau)\\,(\\sinh\\phi,\\;\\cosh\\phi)$",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":6,\"verdict\":\"CONFIRMED\",\"explanation\":\"For 1+1 Minkowski with \\(u^\\mu=(\\cosh\\phi,\\sinh\\phi)\\), proper-time derivative gives \\(a^\\mu=du^\\mu/d\\tau=\\dot\\phi(\\sinh\\phi,\\cosh\\phi)\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:08:10.039458"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "$a_\\mu a^\\mu = -\\dot\\phi^2$",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 7,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using u^\u03bc = (cosh\u03c6, sinh\u03c6), differentiation yields a_\u03bc a^\u03bc = -(d\u03c6/d\u03c4)^2, consistent with the (+,-,-,-) signature.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 7,
+      "verdict": "CONFIRMED",
+      "explanation": "Using u^\u03bc = (cosh\u03c6, sinh\u03c6), differentiation yields a_\u03bc a^\u03bc = -(d\u03c6/d\u03c4)^2, consistent with the (+,-,-,-) signature.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:09:36.392175"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "Constant proper acceleration $a$ requires $\\dot\\phi = a$, so $\\phi(\\tau) = a\\tau$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"ERROR\",\"explanation\":\"Rapidity derivative equals proper acceleration divided by c: d\\\\phi/d\\\\tau=a/c. Thus \\\\phi=a\\\\tau only if c=1; otherwise \\\\phi=(a/c)\\\\tau+const.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 8,
+      "verdict": "ERROR",
+      "explanation": "Rapidity derivative equals proper acceleration divided by c: d\\phi/d\\tau=a/c. Thus \\phi=a\\tau only if c=1; otherwise \\phi=(a/c)\\tau+const.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T13:09:39.873578"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "Integrating $u^\\mu = dx^\\mu/d\\tau$: $t(\\tau) = \\frac{1}{a}\\sinh(a\\tau)$, $x(\\tau) = \\frac{1}{a}\\cosh(a\\tau)$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard derivation of hyperbolic motion with constant proper acceleration in Minkowski space.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard derivation of hyperbolic motion with constant proper acceleration in Minkowski space.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:09:46.858029"
+  },
+  {
+    "claim_id": 10,
+    "claim_text": "Integration constants are chosen so the worldline passes through $(t,x) = (0, 1/a)$ with zero coordinate velocity.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":10,\"verdict\":\"CONFIRMED\",\"explanation\":\"For constant proper acceleration, choosing initial conditions \\\\(t(0)=0, x(0)=1/a, v(0)=0\\\\) fixes integration constants and yields the standard hyperbola \\\\(x^2-t^2=1/a^2\\\\).\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 10,
+      "verdict": "CONFIRMED",
+      "explanation": "For constant proper acceleration, choosing initial conditions \\(t(0)=0, x(0)=1/a, v(0)=0\\) fixes integration constants and yields the standard hyperbola \\(x^2-t^2=1/a^2\\).",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T13:09:50.418206"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "Eliminating $\\tau$: $x^2 - t^2 = \\frac{1}{a^2}$ \u2014 a hyperbola asymptoting to the null lines $x = \\pm t$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Eliminating proper time from hyperbolic motion yields x\u00b2-t\u00b2=1/a\u00b2, correctly identifying asymptotic null lines x=\u00b1t.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 11,
+      "verdict": "CONFIRMED",
+      "explanation": "Eliminating proper time from hyperbolic motion yields x\u00b2-t\u00b2=1/a\u00b2, correctly identifying asymptotic null lines x=\u00b1t.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:10:08.664866"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "Each observer at 'Rindler position' $\\xi$ has proper acceleration $1/\\xi$ and worldline $x^2 - t^2 = \\xi^2$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":12,\"verdict\":\"INCOMPLETE\",\"explanation\":\"In units c=1 and right wedge, constant-\u03be worldlines satisfy x\u00b2\u2212t\u00b2=\u03be\u00b2 and proper acceleration 1/\u03be. Must specify \u03be>0, wedge choice, and dimensions otherwise misleading.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 12,
+      "verdict": "INCOMPLETE",
+      "explanation": "In units c=1 and right wedge, constant-\u03be worldlines satisfy x\u00b2\u2212t\u00b2=\u03be\u00b2 and proper acceleration 1/\u03be. Must specify \u03be>0, wedge choice, and dimensions otherwise misleading.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T13:10:13.144762"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "The Rindler coordinate transformation is $t = \\xi \\sinh(\\eta)$, $x = \\xi \\cosh(\\eta)$ with $\\xi > 0$ (right Rindler wedge, $x > |t|$).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 13,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The transformation is the standard Rindler coordinate mapping for the right wedge (x > |t|), yielding hyperbolic trajectories with constant \u03be.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "CONFIRMED",
+      "explanation": "The transformation is the standard Rindler coordinate mapping for the right wedge (x > |t|), yielding hyperbolic trajectories with constant \u03be.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:10:30.584372"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "$dt = \\sinh\\eta\\,d\\xi + \\xi\\cosh\\eta\\,d\\eta$, $dx = \\cosh\\eta\\,d\\xi + \\xi\\sinh\\eta\\,d\\eta$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":14,\"verdict\":\"CONFIRMED\",\"explanation\":\"From standard right-wedge Rindler transform \\(t=\\xi\\sinh\\eta,\\ x=\\xi\\cosh\\eta\\), direct differentiation gives the stated \\(dt\\) and \\(dx\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:10:34.060388"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "The induced metric is $ds^2 = \\xi^2\\,d\\eta^2 - d\\xi^2$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using t = \u03be sinh(\u03b7) and x = \u03be cosh(\u03b7), the Minkowski metric indeed transforms to ds\u00b2 = \u03be\u00b2 d\u03b7\u00b2 - d\u03be\u00b2.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "Using t = \u03be sinh(\u03b7) and x = \u03be cosh(\u03b7), the Minkowski metric indeed transforms to ds\u00b2 = \u03be\u00b2 d\u03b7\u00b2 - d\u03be\u00b2.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:10:46.133903"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "Defining $\\xi = \\frac{1}{a}e^{a\\bar\\xi}$ gives the conformally flat form.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":16,\"verdict\":\"CONFIRMED\",\"explanation\":\"Starting from ds^2=(a\\\\xi)^2 d\\\\eta^2-d\\\\xi^2, set \\\\xi=e^{a\\\\bar\\\\xi}/a so d\\\\xi=e^{a\\\\bar\\\\xi}d\\\\bar\\\\xi and ds^2=e^{2a\\\\bar\\\\xi}(d\\\\eta^2-d\\\\bar\\\\xi^2).\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 16,
+      "verdict": "CONFIRMED",
+      "explanation": "Starting from ds^2=(a\\xi)^2 d\\eta^2-d\\xi^2, set \\xi=e^{a\\bar\\xi}/a so d\\xi=e^{a\\bar\\xi}d\\bar\\xi and ds^2=e^{2a\\bar\\xi}(d\\eta^2-d\\bar\\xi^2).",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T13:10:51.281728"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "In the conformally flat form: $t = \\frac{1}{a}e^{a\\xi}\\sinh(a\\eta)$, $x = \\frac{1}{a}e^{a\\xi}\\cosh(a\\eta)$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n  \"claim_id\": 17,\n  \"verdict\": \"CONFIRMED\",\n  \"explanation\": \"Matches standard Rindler coordinates derivation with correct exponential mapping yielding hyperbolic worldlines and a horizon.\",\n  \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 17,
+      "verdict": "CONFIRMED",
+      "explanation": "Matches standard Rindler coordinates derivation with correct exponential mapping yielding hyperbolic worldlines and a horizon.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:11:01.511825"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "The conformally flat metric is $ds^2 = e^{2a\\xi}(d\\eta^2 - d\\xi^2)$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":18,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Missing the acceleration scale: with physical units, \\(ds^2=e^{2a\\xi}(d\\eta^2-d\\xi^2/a^2)\\) or after rescaling \\(\\eta\\), \\(a^2e^{2a\\xi}(d\\tau^2-d\\xi^2)\\).\",\"confidence\":0.92}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:11:05.482260"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "An observer at fixed $\\xi$ has proper time $d\\tau = e^{a\\xi}d\\eta$ and proper acceleration $a\\,e^{-a\\xi}$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 19, \"verdict\": \"CONFIRMED\", \"explanation\": \"Derived from ds\u00b2 = e^(2a\u03be)(d\u03b7\u00b2-d\u03be\u00b2), constant \u03be gives d\u03c4 = e^(a\u03be)d\u03b7 and proper acceleration a e^(\u2212a\u03be), matching standard definitions.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "Derived from ds\u00b2 = e^(2a\u03be)(d\u03b7\u00b2-d\u03be\u00b2), constant \u03be gives d\u03c4 = e^(a\u03be)d\u03b7 and proper acceleration a e^(\u2212a\u03be), matching standard definitions.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:11:18.281492"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "The fiducial observer at $\\xi = 0$ has proper acceleration $a$ and $\\eta = \\tau$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"CONFIRMED\",\"explanation\":\"With \\(ct=(c^2/a)e^{a\\xi/c^2}\\sinh(a\\eta/c)\\), \\(x=(c^2/a)e^{a\\xi/c^2}\\cosh(a\\eta/c)\\), \\(\\xi=0\\) gives hyperbola \\(x^2-c^2t^2=(c^2/a)^2\\), proper acceleration \\(a\\), and metric \\(ds^2=c^2d\\eta^2\\).\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:11:22.541258"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "The inverse transformation is $\\xi = \\sqrt{x^2 - t^2}$, $\\eta = \\tanh^{-1}(t/x) = \\tfrac{1}{2}\\ln\\frac{x+t}{x-t}$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 21,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Inverse mapping using x = \u03be cosh \u03b7 and t = \u03be sinh \u03b7 is correct for Rindler coordinates in the appropriate wedge.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "CONFIRMED",
+      "explanation": "Inverse mapping using x = \u03be cosh \u03b7 and t = \u03be sinh \u03b7 is correct for Rindler coordinates in the appropriate wedge.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:11:38.471208"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "The Rindler coordinates only cover the right wedge $R = \\{x > |t|\\}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":22,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard Rindler coordinates \\(t=\\xi\\sinh\\eta,\\ x=\\xi\\cosh\\eta\\) with \\(\\xi>0\\) imply \\(x^2-t^2=\\xi^2>0\\) and \\(x>0\\), hence only \\(x>|t|\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:11:42.315426"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "As we approach $x \\to t^+$ (with $x,t \\to \\infty$), $\\xi \\to 0$ and $\\eta \\to +\\infty$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 23, \"verdict\": \"CONFIRMED\", \"explanation\": \"Using the transformation \u03be=\u221a(x\u00b2-t\u00b2) and \u03b7=atanh(t/x), as x\u2192t\u207a we have \u03be\u21920 and t/x\u21921, implying \u03b7\u2192+\u221e.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 23,
+      "verdict": "CONFIRMED",
+      "explanation": "Using the transformation \u03be=\u221a(x\u00b2-t\u00b2) and \u03b7=atanh(t/x), as x\u2192t\u207a we have \u03be\u21920 and t/x\u21921, implying \u03b7\u2192+\u221e.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:13:00.602817"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "The null lines $x = \\pm t$ form the Rindler horizon $\\mathcal{H}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":24,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For the right Rindler wedge, the horizons are the two null boundaries \\(x=\\pm t\\); calling both lines \u2018the\u2019 horizon needs wedge qualification and boundary context.\",\"confidence\":0.95}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:13:05.632383"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "The surface $x = t$ has tangent vector $\\partial_t + \\partial_x$, whose norm is $1 - 1 = 0$. The surface is null.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 25,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using ds\u00b2 = dt\u00b2 - dx\u00b2, the calculation \u2202t+\u2202x yields norm 0, correctly showing that the surface x = t is null.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 25,
+      "verdict": "CONFIRMED",
+      "explanation": "Using ds\u00b2 = dt\u00b2 - dx\u00b2, the calculation \u2202t+\u2202x yields norm 0, correctly showing that the surface x = t is null.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:13:21.300676"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "The metric component $g_{\\eta\\eta} = \\xi^2$ vanishes at $\\xi = 0$, so $\\sqrt{-g} = \\xi \\to 0$ \u2014 the coordinate system degenerates.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"CONFIRMED\",\"explanation\":\"For 1+1 Rindler, \\(ds^2=\\xi^2 d\\eta^2-d\\xi^2\\), so \\(\\det g=-\\xi^2\\) and \\(\\sqrt{-g}=|\\xi|\\). At \\(\\xi=0\\), Jacobian vanishes: coordinate singularity/horizon.\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:13:25.926519"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "The horizon is precisely analogous to the event horizon of a Schwarzschild black hole in Schwarzschild coordinates: a coordinate artifact masking a null surface.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":28,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Both are null Killing horizons and coordinate singularities in chosen charts, but Schwarzschild also has a true global event horizon; Rindler horizon is observer-dependent in flat spacetime.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 28,
+      "verdict": "INCOMPLETE",
+      "explanation": "Both are null Killing horizons and coordinate singularities in chosen charts, but Schwarzschild also has a true global event horizon; Rindler horizon is observer-dependent in flat spacetime.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T13:13:31.828995"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "The boost Killing vector $\\partial_\\eta = x\\,\\partial_t + t\\,\\partial_x$ has norm $x^2 - t^2 = \\xi^2$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 29,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Direct computation using Minkowski metric and the transformation x=\u03be cosh\u03b7, t=\u03be sinh\u03b7 shows the norm equals \u03be\u00b2.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 29,
+      "verdict": "CONFIRMED",
+      "explanation": "Direct computation using Minkowski metric and the transformation x=\u03be cosh\u03b7, t=\u03be sinh\u03b7 shows the norm equals \u03be\u00b2.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:13:41.745044"
+  },
+  {
+    "claim_id": 30,
+    "claim_text": "The boost Killing vector is timelike in $R$, null on $\\mathcal{H}$, and spacelike beyond \u2014 i.e., $\\mathcal{H}$ is a Killing horizon.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":30,\"verdict\":\"CONFIRMED\",\"explanation\":\"For \\u03c7=x\\\\partial_t+t\\\\partial_x, norm is \\\\chi^2=t^2-x^2. In right wedge x>|t| it is negative (timelike, +---), vanishes on x=\\\\pm t, positive outside: a Killing horizon.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 30,
+      "verdict": "CONFIRMED",
+      "explanation": "For \u03c7=x\\partial_t+t\\partial_x, norm is \\chi^2=t^2-x^2. In right wedge x>|t| it is negative (timelike, +---), vanishes on x=\\pm t, positive outside: a Killing horizon.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T13:13:46.293150"
+  },
+  {
+    "claim_id": 31,
+    "claim_text": "A massless scalar field obeys $\\Box\\phi = 0$, which in Minkowski coordinates is $(\\partial_t^2 - \\partial_x^2)\\phi = 0$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 31,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard definition in 1+1 Minkowski spacetime; the claim is correct for a massless scalar field under these assumptions.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 31,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard definition in 1+1 Minkowski spacetime; the claim is correct for a massless scalar field under these assumptions.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:13:59.032081"
+  },
+  {
+    "claim_id": 33,
+    "claim_text": "In Rindler coordinates: $(\\partial_\\eta^2 - \\partial_\\xi^2)\\phi = 0$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:15:08.564887"
+  },
+  {
+    "claim_id": 34,
+    "claim_text": "Minkowski modes (positive frequency w.r.t. $\\partial_t$): $u_k^M(t,x) = \\frac{1}{\\sqrt{4\\pi\\omega}}e^{-i\\omega t + i k x}$, $\\omega = |k|$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":34,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard normalized 1+1D massless Minkowski plane-wave modes: positive frequency under \\\\(\\\\partial_t\\\\), with dispersion \\\\(\\\\omega=|k|\\\\). Assumes continuum normalization and conventional Klein-Gordon inner product.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 34,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard normalized 1+1D massless Minkowski plane-wave modes: positive frequency under \\(\\partial_t\\), with dispersion \\(\\omega=|k|\\). Assumes continuum normalization and conventional Klein-Gordon inner product.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T13:15:12.246411"
+  },
+  {
+    "claim_id": 35,
+    "claim_text": "Field expansion: $\\phi = \\int dk\\,(a_k^M u_k^M + a_k^{M\\dagger}u_k^{M*})$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 35,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expansion is the standard Minkowski field decomposition with implicit normalization factors.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 35,
+      "verdict": "CONFIRMED",
+      "explanation": "The expansion is the standard Minkowski field decomposition with implicit normalization factors.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:15:24.207656"
+  },
+  {
+    "claim_id": 36,
+    "claim_text": "Minkowski vacuum: $a_k^M|0_M\\rangle = 0$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":36,\"verdict\":\"CONFIRMED\",\"explanation\":\"This is the standard defining property of the Minkowski vacuum: all positive-frequency Minkowski annihilation operators annihilate |0_M\\\\rangle.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 36,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the standard defining property of the Minkowski vacuum: all positive-frequency Minkowski annihilation operators annihilate |0_M\\rangle.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T13:15:27.521966"
+  },
+  {
+    "claim_id": 37,
+    "claim_text": "Rindler modes (positive frequency w.r.t. boost Killing vector $\\partial_\\eta$) in wedge $R$: $u_\\Omega^R(\\eta,\\xi) = \\frac{1}{\\sqrt{4\\pi\\Omega}}e^{-i\\Omega\\eta + i K\\xi}$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:16:38.674402"
+  },
+  {
+    "claim_id": 38,
+    "claim_text": "Analogous left-wedge modes $u_\\Omega^L$ are defined in $L$, with positive frequency w.r.t. $-\\partial_\\eta$ (because the boost Killing vector is past-directed in $L$).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":38,\"verdict\":\"CONFIRMED\",\"explanation\":\"In the left wedge, the boost Killing field \\\\(\\\\partial_\\\\eta\\\\) is past-directed timelike; choosing positive frequency with respect to future-directed time requires \\\\(-\\\\partial_\\\\eta\\\\).\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 38,
+      "verdict": "CONFIRMED",
+      "explanation": "In the left wedge, the boost Killing field \\(\\partial_\\eta\\) is past-directed timelike; choosing positive frequency with respect to future-directed time requires \\(-\\partial_\\eta\\).",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T13:16:42.192859"
+  },
+  {
+    "claim_id": 39,
+    "claim_text": "Field expansion: $\\phi = \\int_0^\\infty d\\Omega\\,(b_\\Omega^R u_\\Omega^R + b_\\Omega^L u_\\Omega^L + \\text{h.c.})$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:17:00.012794"
+  },
+  {
+    "claim_id": 40,
+    "claim_text": "Rindler vacuum: $b_\\Omega^{R,L}|0_R\\rangle = 0$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":40,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard definition: the Rindler vacuum is annihilated by all positive-frequency right/left wedge Rindler mode annihilation operators.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 40,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard definition: the Rindler vacuum is annihilated by all positive-frequency right/left wedge Rindler mode annihilation operators.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T13:17:03.622558"
+  },
+  {
+    "claim_id": 41,
+    "claim_text": "The two vacua are inequivalent.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 41, \"verdict\": \"CONFIRMED\", \"explanation\": \"The Bogoliubov transformation implies the Minkowski and Rindler vacua are distinct physical states.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 41,
+      "verdict": "CONFIRMED",
+      "explanation": "The Bogoliubov transformation implies the Minkowski and Rindler vacua are distinct physical states.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:17:14.167666"
+  },
+  {
+    "claim_id": 42,
+    "claim_text": "The Bogoliubov transformation is $b_\\Omega^R = \\int dk\\,(\\alpha_{\\Omega k}a_k^M - \\beta_{\\Omega k}^* a_k^{M\\dagger})$ with $\\beta \\ne 0$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":42,\"verdict\":\"CONFIRMED\",\"explanation\":\"Rindler positive-frequency modes mix Minkowski positive/negative frequencies; thus annihilators are related by a Bogoliubov transformation with nonzero \u03b2 coefficients.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 42,
+      "verdict": "CONFIRMED",
+      "explanation": "Rindler positive-frequency modes mix Minkowski positive/negative frequencies; thus annihilators are related by a Bogoliubov transformation with nonzero \u03b2 coefficients.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T13:17:17.438119"
+  },
+  {
+    "claim_id": 43,
+    "claim_text": "The Minkowski vacuum contains Rindler particles: $\\langle 0_M|b_\\Omega^{R\\dagger}b_\\Omega^R|0_M\\rangle = \\int dk\\,|\\beta_{\\Omega k}|^2$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 43,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard result from Bogoliubov transformation; Minkowski vacuum yields a non-zero Rindler particle number via squared beta coefficients.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 43,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard result from Bogoliubov transformation; Minkowski vacuum yields a non-zero Rindler particle number via squared beta coefficients.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:17:29.407893"
+  },
+  {
+    "claim_id": 44,
+    "claim_text": "Light-cone coordinates: $U = t - x$, $V = t + x$ in Minkowski, and $u = \\eta - \\xi$, $v = \\eta + \\xi$ in Rindler.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":44,\"verdict\":\"CONFIRMED\",\"explanation\":\"These are standard null-coordinate definitions in 1+1 dimensions. Sign conventions match (+,-) metric and usual Rindler null variables.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 44,
+      "verdict": "CONFIRMED",
+      "explanation": "These are standard null-coordinate definitions in 1+1 dimensions. Sign conventions match (+,-) metric and usual Rindler null variables.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T13:17:32.751778"
+  },
+  {
+    "claim_id": 45,
+    "claim_text": "In wedge $R$: $U = -\\frac{1}{a}e^{-au}$, $V = \\frac{1}{a}e^{av}$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 45,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"These expressions are the standard Minkowski null coordinates in terms of Rindler null coordinates with correct sign conventions for the right wedge.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 45,
+      "verdict": "CONFIRMED",
+      "explanation": "These expressions are the standard Minkowski null coordinates in terms of Rindler null coordinates with correct sign conventions for the right wedge.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:17:51.121441"
+  },
+  {
+    "claim_id": 46,
+    "claim_text": "In wedge $L$: $U = +\\frac{1}{a}e^{-au_L}$, $V = -\\frac{1}{a}e^{av_L}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":46,\"verdict\":\"CONFIRMED\",\"explanation\":\"For left wedge \\(x<-|t|\\), \\(U=t-x>0\\), \\(V=t+x<0\\). Standard null-Rindler coordinates give \\(U=\\frac1a e^{-au_L}\\), \\(V=-\\frac1a e^{av_L}\\).\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:17:54.605108"
+  },
+  {
+    "claim_id": 47,
+    "claim_text": "The right-moving Rindler mode is $\\phi_\\Omega^R = \\frac{1}{\\sqrt{4\\pi\\Omega}}e^{-i\\Omega u} = \\frac{1}{\\sqrt{4\\pi\\Omega}}(-aU)^{i\\Omega/a}$ for $U<0$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 47,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The transformation u = -(1/a)ln(-aU) for U<0 is correctly applied, yielding the standard right-moving Rindler mode representation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 47,
+      "verdict": "CONFIRMED",
+      "explanation": "The transformation u = -(1/a)ln(-aU) for U<0 is correctly applied, yielding the standard right-moving Rindler mode representation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:18:07.389342"
+  },
+  {
+    "claim_id": 48,
+    "claim_text": "Analytically continue to $U > 0$ through the lower half complex $U$-plane: $-U = e^{-i\\pi}U$, giving an extra factor $e^{\\pi\\Omega/a}$ relative to $(aU)^{i\\Omega/a}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":48,\"verdict\":\"ERROR\",\"explanation\":\"Wrong sign. Lower-half continuation gives \\\\(-U=e^{+i\\\\pi}U\\\\), so \\\\((-aU)^{i\\\\Omega/a}=e^{-\\\\pi\\\\Omega/a}(aU)^{i\\\\Omega/a}\\\\), not \\(e^{+\\\\pi\\\\Omega/a}\\).\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:18:11.380310"
+  },
+  {
+    "claim_id": 49,
+    "claim_text": "The combination $\\Phi_\\Omega = \\frac{1}{\\sqrt{2\\sinh(\\pi\\Omega/a)}}(e^{\\pi\\Omega/(2a)}\\phi_\\Omega^R + e^{-\\pi\\Omega/(2a)}\\phi_\\Omega^{L*})$ is analytic and bounded in the lower-half $U$ plane.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 49,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is the standard Unruh mode combination ensuring analytic continuation and boundedness in the lower-half U plane.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 49,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the standard Unruh mode combination ensuring analytic continuation and boundedness in the lower-half U plane.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T13:18:27.475875"
+  },
+  {
+    "claim_id": 51,
+    "claim_text": "$\\Phi_\\Omega$ is a positive-frequency Minkowski mode and hence annihilates $|0_M\\rangle$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 51,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"By definition in Minkowski quantization, positive-frequency",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:19:10.867123"
+  },
+  {
+    "claim_id": 52,
+    "claim_text": "Inverting: $b_\\Omega^R = \\frac{1}{\\sqrt{2\\sinh(\\pi\\Omega/a)}}(e^{\\pi\\Omega/(2a)}d_\\Omega - e^{-\\pi\\Omega/(2a)}d_\\Omega^{L\\dagger})$ where $d_\\Omega$ annihilate $|0_M\\rangle$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":52,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Standard Unruh-mode inversion is plausible, but normalization/convention depends on mode definitions and possible labels/signs. Without defining \\(d_\\Omega,d_\\Omega^L\\) and commutators, correctness isn\u2019t established.\",\"confidence\":0.84}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:19:14.557757"
+  },
+  {
+    "claim_id": 53,
+    "claim_text": "$\\langle 0_M|b_\\Omega^{R\\dagger}b_\\Omega^R|0_M\\rangle = \\frac{e^{-\\pi\\Omega/a}}{2\\sinh(\\pi\\Omega/a)}\\langle 0_M|d_\\Omega^L d_\\Omega^{L\\dagger}|0_M\\rangle$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:20:17.666793"
+  },
+  {
+    "claim_id": 54,
+    "claim_text": "Using $[d_\\Omega^L, d_{\\Omega'}^{L\\dagger}] = \\delta(\\Omega - \\Omega')$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":54,\"verdict\":\"CONFIRMED\",\"explanation\":\"For canonically normalized left-Rindler modes, associated annihilation/creation operators satisfy bosonic CCR: [d^L_\\\\Omega,d^{L\\\\dagger}_{\\\\Omega'}]=\\\\delta(\\\\Omega-\\\\Omega').\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 54,
+      "verdict": "CONFIRMED",
+      "explanation": "For canonically normalized left-Rindler modes, associated annihilation/creation operators satisfy bosonic CCR: [d^L_\\Omega,d^{L\\dagger}_{\\Omega'}]=\\delta(\\Omega-\\Omega').",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T13:20:33.193375"
+  },
+  {
+    "claim_id": 55,
+    "claim_text": "$\\langle N_\\Omega\\rangle = \\frac{e^{-\\pi\\Omega/a}}{2\\sinh(\\pi\\Omega/a)} = \\frac{e^{-\\pi\\Omega/a}}{e^{\\pi\\Omega/a} - e^{-\\pi\\Omega/a}} = \\frac{1}{e^{2\\pi\\Omega/a} - 1}$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 55,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The mathematical simplifications are correct and match the standard Unruh result.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 55,
+      "verdict": "CONFIRMED",
+      "explanation": "The mathematical simplifications are correct and match the standard Unruh result.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:20:43.490201"
+  },
+  {
+    "claim_id": 56,
+    "claim_text": "This is the Bose-Einstein distribution at temperature $k_B T = \\frac{a}{2\\pi}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":56,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Missing constants: in SI, Unruh temperature is $T=\\\\hbar a/(2\\\\pi c k_B)$. The statement is valid only in natural units with $\\\\hbar=c=k_B=1$.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 56,
+      "verdict": "INCOMPLETE",
+      "explanation": "Missing constants: in SI, Unruh temperature is $T=\\hbar a/(2\\pi c k_B)$. The statement is valid only in natural units with $\\hbar=c=k_B=1$.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T13:20:47.026588"
+  },
+  {
+    "claim_id": 57,
+    "claim_text": "Restoring $\\hbar$ and $c$: $k_B T = \\frac{\\hbar a}{2\\pi c}$, equivalently $T_{\\rm Unruh} = \\frac{\\hbar a}{2\\pi c\\,k_B}$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 57,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The restored units match the conventional Unruh temperature formula, and the derivation is standard.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 57,
+      "verdict": "CONFIRMED",
+      "explanation": "The restored units match the conventional Unruh temperature formula, and the derivation is standard.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:20:55.267116"
+  },
+  {
+    "claim_id": 58,
+    "claim_text": "The Minkowski vacuum, when restricted to the right Rindler wedge (tracing out degrees of freedom in $L$), is a thermal density matrix at temperature $T_{\\rm Unruh}$ with respect to the boost Hamiltonian.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":58,\"verdict\":\"CONFIRMED\",\"explanation\":\"This is the Bisognano-Wichmann/Unruh result: restricting Minkowski vacuum to one wedge gives a KMS thermal state for boost generator, temperature \\u2113a/(2\\u03c0 ck_B) for acceleration a.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 58,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the Bisognano-Wichmann/Unruh result: restricting Minkowski vacuum to one wedge gives a KMS thermal state for boost generator, temperature \u2113a/(2\u03c0 ck_B) for acceleration a.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T13:21:00.371500"
+  },
+  {
+    "claim_id": 59,
+    "claim_text": "An accelerated observer's particle detector \u2014 coupled to $\\phi$ along its worldline \u2014 registers an isotropic thermal bath.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:23:13.713582"
+  },
+  {
+    "claim_id": 61,
+    "claim_text": "The 2D massless scalar has IR subtleties (the field itself isn't well-defined, only its derivatives).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 61,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correct: In 2D, the massless scalar field shows IR divergences (zero mode issues) making only its derivatives physically meaningful.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 61,
+      "verdict": "CONFIRMED",
+      "explanation": "Correct: In 2D, the massless scalar field shows IR divergences (zero mode issues) making only its derivatives physically meaningful.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:23:21.599725"
+  },
+  {
+    "claim_id": 62,
+    "claim_text": "The calculation properly proceeds in higher dimensions or with an IR regulator, but the resulting Planckian spectrum is unchanged.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":62,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Planck factor survives, but dimensions change detector response/mode density; IR issues in 1+1 massless case need care. \u2018Spectrum unchanged\u2019 requires qualification about what quantity is compared.\",\"confidence\":0.91}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 62,
+      "verdict": "INCOMPLETE",
+      "explanation": "Planck factor survives, but dimensions change detector response/mode density; IR issues in 1+1 massless case need care. \u2018Spectrum unchanged\u2019 requires qualification about what quantity is compared.",
+      "confidence": 0.91
+    },
+    "timestamp": "2026-04-18T13:23:26.517312"
+  },
+  {
+    "claim_id": 63,
+    "claim_text": "The 'particle' content is observer-dependent: $|0_M\\rangle$ is a perfectly good vacuum for inertial observers; only an accelerated observer sees the thermal bath.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 63,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correct: The Unruh effect shows that the Minkowski vacuum appears thermal only to accelerating observers.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 63,
+      "verdict": "CONFIRMED",
+      "explanation": "Correct: The Unruh effect shows that the Minkowski vacuum appears thermal only to accelerating observers.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:23:36.757116"
+  },
+  {
+    "claim_id": 66,
+    "claim_text": "$\\sqrt{-g} = \\xi$ for the Rindler metric $ds^2 = \\xi^2 d\\eta^2 - d\\xi^2$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":66,\"verdict\":\"CONFIRMED\",\"explanation\":\"For metric diag$(\\xi^2,-1)$, determinant is $g=-\\xi^2$, so $\\sqrt{-g}=\\sqrt{\\xi^2}=|\\\\xi|$; on standard Rindler wedge $\\xi>0$, hence $\\sqrt{-g}=\\xi$.\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T13:23:40.199583"
+  },
+  {
+    "claim_id": 67,
+    "claim_text": "The boost Killing vector is past-directed in the left wedge $L$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 67, \"verdict\": \"CONFIRMED\", \"explanation\": \"In the left Rindler wedge (x < 0), the boost Killing vector reverses its time orientation relative to Minkowski time, becoming past-directed.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 67,
+      "verdict": "CONFIRMED",
+      "explanation": "In the left Rindler wedge (x < 0), the boost Killing vector reverses its time orientation relative to Minkowski time, becoming past-directed.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T13:23:50.853593"
+  }
+]

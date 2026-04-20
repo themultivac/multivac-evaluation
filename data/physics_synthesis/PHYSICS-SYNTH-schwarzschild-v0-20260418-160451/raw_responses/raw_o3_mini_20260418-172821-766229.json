@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776551281-3ZzPNmR9eAADXN8ffkAP",
+  "object": "chat.completion",
+  "created": 1776551281,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 25,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using spherical symmetry and Bianchi identities, one Einstein equation becomes redundant once the others are solved.\",\n    \"confidence\": 0.95\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5AWF5QqHKbAuxz8nDsKvcwcZlB10U2xytPWZ9ac58Np3x3zubycacgPc1_WHARUZgAjOIG1Rme027xX16xZRNHe2F2qSLM33vTwxxAm9wIt0jO0hT7bgRmnqj9YJqWywyRMiET94QOYCdmgyCy2c0yCJD5y67qGrIY8McgXgd3gHY8QDyN8bPJrRgKD8mmzIPqd_AV88eokKMgi3XhQyDyLM2oVdzROAOU7ahAZedHg3m2stZGR1cs-5wXDUaqKQ8tM2FqO3hILBGU9dLrXTUwyCUCbEamiCPzmh7V-AfDauGyyPJmfG9D9KFNEkg6sUXbzc1eRvXmTSKKs-mK3QUltxhw4IiLdDIdTO-wcqutxL_KO3N_U7gRogEHTB1RXPtuiUETrLl9bIQPb5Bo4nKZCCSo72I9wFpbxMUUyz341s8Dc28Sh1z3NS5ETJ1J5VeONAHQ0vGyfCEZV2hXMmjs3BmDJ5XGG9El8tr0n3u1lG4FJwzc4lamfZijj1J002xaX-C9ZF2icOs_5KchiQc8l_mQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_097df3cc1cce08920169e4057343b48194b82a6e7123655d8c",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 373,
+    "completion_tokens": 3012,
+    "total_tokens": 3385,
+    "cost": 0.0136631,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0136631,
+      "upstream_inference_prompt_cost": 0.0004103,
+      "upstream_inference_completions_cost": 0.0132528
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1472,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776536622-HrPqW99KdJFDQbGD006n",
+  "object": "chat.completion",
+  "created": 1776536622,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\": 67, \"verdict\": \"CONFIRMED\", \"explanation\": \"In the left Rindler wedge (x < 0), the boost Killing vector reverses its time orientation relative to Minkowski time, becoming past-directed.\", \"confidence\": 1.0}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp48w2U5g3ULxdIEXwvX53ffuZRI4llGRyvp7AIdnUx1gDXtfq929CvNTpqYW1-5btXFtk9rKj5lh-l_ijiHZD8RE36OAXAtbbsFP9d35QSkyPeukx-zrAWkzngZVQc_hWlXa8voKyWL7vgp4rdQ_QMes9kkYBMU6YGGqjmlUspvE9Mo88z65mWedMIaOnx8Le7OgIylHXvCPE5hbuWO0uBkxRLxCEMxqCWn5bk2NN5h3sWWQrH7010D70O-qfW7_JAdUq_SZHa4H-1OodSLhWJM-f2GkDQhZ9yT65EE-IlLdQmHVX-ZpxG39pSJHu47wszPxfbS6z0VXoHDQPZTbTGAYBvtZwpFZtKqH8Hcq_vXkxCXGHBvXCIKajthr7Fx2dW93pJPxvr0ubjXNb2PbXj2avL67xL0lixn2nQRcUDIl03Gfa99zaqT_1JI-3pZLrku_qyNfb2EB70-norYWOeBDRiXxNRtEXGvUqhLQy7CS_A7eetjUum36Sd-MtDxZlJgaILAcyOelkFqQlzTHqKEdrKQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_07d594a52f459df50169e3cc2e98348195950bdfe9b1b4267d",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 511,
+    "completion_tokens": 2415,
+    "total_tokens": 2926,
+    "cost": 0.0111881,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0111881,
+      "upstream_inference_prompt_cost": 0.0005621,
+      "upstream_inference_completions_cost": 0.010626
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1152,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

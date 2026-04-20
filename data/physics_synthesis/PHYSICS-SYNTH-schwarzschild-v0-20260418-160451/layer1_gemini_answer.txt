@@ -1,0 +1,48 @@
+To derive the Schwarzschild radius from first principles, we must solve the Einstein Field Equations (EFE) for the spacetime outside a spherically symmetric, non-rotating, uncharged mass. 
+
+### 1. Assumptions and Initial Setup
+
+**The Einstein Field Equations:**
+The EFE relate the geometry of spacetime to the distribution of mass and energy:
+$$ R_{\mu\nu} - \frac{1}{2}R g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu} $$
+where $R_{\mu\nu}$ is the Ricci curvature tensor, $R$ is the Ricci scalar, $g_{\mu\nu}$ is the metric tensor, $G$ is the gravitational constant, $c$ is the speed of light, and $T_{\mu\nu}$ is the stress-energy tensor.
+
+**Assumptions:**
+1.  **Vacuum:** We are finding the metric *outside* the mass, so there is no matter or energy present. Therefore, $T_{\mu\nu} = 0$. Taking the trace of the EFE in vacuum yields $R = 0$. Thus, the vacuum EFE simplify to:
+    $$ R_{\mu\nu} = 0 $$
+2.  **Spherical Symmetry:** The spacetime must be invariant under spatial rotations. The most general spherically symmetric metric in coordinates $(t, r, \theta, \phi)$ can be written as:
+    $$ ds^2 = -e^{2\nu(t,r)} c^2 dt^2 + e^{2\lambda(t,r)} dr^2 + r^2 (d\theta^2 + \sin^2\theta d\phi^2) $$
+    where we use the metric signature $(-, +, +, +)$.
+3.  **Static Spacetime (Birkhoff's Theorem):** For a spherically symmetric vacuum solution, Birkhoff's theorem guarantees that the metric is static (independent of time $t$) and that cross-terms (like $dt\,dr$) can be eliminated. Therefore, $\nu$ and $\lambda$ are functions of $r$ only:
+    $$ ds^2 = -e^{2\nu(r)} c^2 dt^2 + e^{2\lambda(r)} dr^2 + r^2 (d\theta^2 + \sin^2\theta d\phi^2) $$
+
+### 2. Calculating the Christoffel Symbols
+
+To find the Ricci tensor $R_{\mu\nu}$, we first need the Christoffel symbols, defined as:
+$$ \Gamma^\rho_{\mu\nu} = \frac{1}{2} g^{\rho\sigma} (\partial_\mu g_{\nu\sigma} + \partial_\nu g_{\mu\sigma} - \partial_\sigma g_{\mu\nu}) $$
+From our metric, the non-zero components are $g_{tt} = -e^{2\nu}c^2$, $g_{rr} = e^{2\lambda}$, $g_{\theta\theta} = r^2$, and $g_{\phi\phi} = r^2\sin^2\theta$. Their inverses are simply $1/g_{\mu\mu}$.
+
+Letting primes denote derivatives with respect to $r$ (e.g., $\nu' = d\nu/dr$), the non-zero Christoffel symbols are:
+*   $\Gamma^t_{tr} = \Gamma^t_{rt} = \frac{1}{2} g^{tt} \partial_r g_{tt} = \nu'$
+*   $\Gamma^r_{tt} = -\frac{1}{2} g^{rr} \partial_r g_{tt} = c^2 \nu' e^{2(\nu-\lambda)}$
+*   $\Gamma^r_{rr} = \frac{1}{2} g^{rr} \partial_r g_{rr} = \lambda'$
+*   $\Gamma^r_{\theta\theta} = -\frac{1}{2} g^{rr} \partial_r g_{\theta\theta} = -r e^{-2\lambda}$
+*   $\Gamma^r_{\phi\phi} = -\frac{1}{2} g^{rr} \partial_r g_{\phi\phi} = -r \sin^2\theta e^{-2\lambda}$
+*   $\Gamma^\theta_{r\theta} = \Gamma^\theta_{\theta r} = \frac{1}{2} g^{\theta\theta} \partial_r g_{\theta\theta} = \frac{1}{r}$
+*   $\Gamma^\theta_{\phi\phi} = -\frac{1}{2} g^{\theta\theta} \partial_\theta g_{\phi\phi} = -\sin\theta \cos\theta$
+*   $\Gamma^\phi_{r\phi} = \Gamma^\phi_{\phi r} = \frac{1}{2} g^{\phi\phi} \partial_r g_{\phi\phi} = \frac{1}{r}$
+*   $\Gamma^\phi_{\theta\phi} = \Gamma^\phi_{\phi\theta} = \frac{1}{2} g^{\phi\phi} \partial_\theta g_{\phi\phi} = \cot\theta$
+
+### 3. Calculating the Ricci Tensor
+
+The Ricci tensor is given by:
+$$ R_{\mu\nu} = \partial_\rho \Gamma^\rho_{\mu\nu} - \partial_\nu \Gamma^\rho_{\mu\rho} + \Gamma^\rho_{\rho\sigma}\Gamma^\sigma_{\mu\nu} - \Gamma^\rho_{\nu\sigma}\Gamma^\sigma_{\mu\rho} $$
+We only need to evaluate $R_{tt}$, $R_{rr}$, and $R_{\theta\theta}$ (since $R_{\phi\phi} = R_{\theta\theta}\sin^2\theta$ by symmetry). 
+
+**For $R_{tt}$:**
+$$ R_{tt} = \partial_r \Gamma^r_{tt} + \Gamma^r_{tt}(\Gamma^t_{tr} + \Gamma^r_{rr} + \Gamma^\theta_{r\theta} + \Gamma^\phi_{r\phi}) - 2\Gamma^t_{tr}\Gamma^r_{tt} $$
+Substituting the Christoffel symbols and simplifying yields:
+$$ R_{tt} = c^2 e^{2(\nu-\lambda)} \left( \nu'' + (\nu')^2 - \nu'\lambda' + \frac{2}{r}\nu' \right) $$
+
+**For $R_{rr}$:**
+$$ R_{rr} = -\partial_r(\Gamma^t_{tr} + \Gamma^\theta_{r\theta} + \Gamma^\phi_{r\phi}) + \partial_r \Gamma^r_{rr} + \Gamma^r_{rr}(\Gamma^t_{

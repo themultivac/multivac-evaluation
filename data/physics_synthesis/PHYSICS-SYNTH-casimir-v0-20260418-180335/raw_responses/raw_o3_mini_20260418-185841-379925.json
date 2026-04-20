@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776556708-X871mXyWT9gNzDBgwtcL",
+  "object": "chat.completion",
+  "created": 1776556708,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 13,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"With proper subtraction of divergences, any regulator f yields the same physical finite result.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5BqvwUZREOCS2aWeFhCcE0CaOVnwFqwZyIzsOsfMZIZ801plQY86W-kemM81DXw1-dRBsKNUhZoKQIvzVwyFKDbzPyGe3KnqyiFuHvFlP9Mb3sngJCgHAdoMwoDYlVaKI73PX10Xzsxfxc9nj4Fgt0AtkmVeTasrv0pnidudgEjiKsDSI7v3d_YGy-BVRX_b9WJ1u60FQ4naok9NNk1Po8oDvbzqQB0JRdwLoo20KEWLqKoQ73-tlAFCh0-8fhJxM9PYtLMSQMPmAeRDuyTbrBdWuHAqbE0hj5NnmiCCObysRPSpfi4VlRkHKqbD8rWS7JuhDu-2Sydxoe8D0HoyZgjbgUs2tE8pABNccI_NGkF8mvSv1_DPA_aHkZCq_B5Dp7OYqXuKcgdX-ndNderUTox3CCQFXTQycBnIqQzlZak5CxgTMfBssX7WOzbt8UEYZCyBgbFHVVyzEZyoo3WDuFzhN2KEU7w1O_S0iOjNeKdgSTWbaiOxSETI-cuj5KXgavfDwIwgTUt8I2J-gd1O4sfc8g==",
+            "format": "openai-responses-v1",
+            "id": "rs_0f79511b0273ad490169e41aa5478081949f1bb715329ada2d",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 502,
+    "completion_tokens": 2774,
+    "total_tokens": 3276,
+    "cost": 0.0127578,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0127578,
+      "upstream_inference_prompt_cost": 0.0005522,
+      "upstream_inference_completions_cost": 0.0122056
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1344,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

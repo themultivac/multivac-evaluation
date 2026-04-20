@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776558181-EJGe8cHoPPnBU4ToeWrn",
+  "object": "chat.completion",
+  "created": 1776558181,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 40,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The exponential cutoff e^{-\u03b5\u03c9} is a standard regularization technique used to tame the divergent zero-point energy sums.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CBtqcsrOkTidcyQ6fb0s84YOwwIb0yfN1FyH1vOcQzZ5V0uUyBZcat_aHtCkhu6ehrxXVlHGCcBBxBkfQffHI0tbjLAoCv847LUwWdOTHots7zazh2XzE47Ul3veCYDy2_dcln_vTU17RftA23uKFI0B8R-78QjiQScmnzqPMCyXRQ68h0N1LRH7lDZe7Y-wLt2vp-aLpLcyx71w1qhpQM7qnwdKfRJG9z_C1YBMWCdPj0lmk3fo8A7KKQWrh9dcn86cWPfoF3-e9aeQZ8rMKlYgNV_IFWFisxbAAQ-_WJJoTj2F09e6rZ-WVWeYNc-ln3BQB0IS-LlLYLZ03447xR06fG2w8WBpYpEN72rnEKxSwyrZLIE7psYX9Lfgt-NDOTBYnRJegFQOgA4pSoZ-06OIxFYlyfEjvn2uDlQ79zbqbkgpWkDlcbWzmRwHzm56TGZqp0RvtvP_srO3j3v5k8v0DYJVbHKc2yv2zCZk0ajVgdwcFQyaB22eo10nPRo6z7gh1SmyBe3JHfsMQGI28O6Yg==",
+            "format": "openai-responses-v1",
+            "id": "rs_01838435891595870169e42067c94c8197a15ca9929e1fa545",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 510,
+    "completion_tokens": 1911,
+    "total_tokens": 2421,
+    "cost": 0.0089694,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0089694,
+      "upstream_inference_prompt_cost": 0.000561,
+      "upstream_inference_completions_cost": 0.0084084
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 896,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

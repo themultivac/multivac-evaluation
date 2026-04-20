@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776547537-TTTS8gIlnEfa39UgLS0d",
+  "object": "chat.completion",
+  "created": 1776547537,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 23,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Under vacuum Einstein equations and asymptotically flat conditions, the relation e^(\u03bd+\u03bb)=1 holds, implying \u03bd(r) = -\u03bb(r).\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_bYgXVNmc-7xCIbbb6d69zOoPvnyI30qzRM9wUZ3bcVKlBWMbdqO_f7tfNcCG-t8z8yDY3onUyWGeW_KpDy9YKBhBlrOweBwRUUimRGnVozPoFWeCsO70AXzl8_vVt6Y8Sz8SFh-5jrgS9CKzmQZLjlgzfNY85E5CMqtZRZFHjBVSaAVU9m6-_Y6jmob1v_5gbdyajM6ZAd17W0ji5t-xoW7-yHr2EbhwByX3maeAFHSZ6NiemtQ-pWoOD_7n6YrFiHvRd3gqS1YDaTo9GnMQrbJ23Sj8GQHLUnBUsD8XnYiMROiGK0UCQVcbRBj1PiWOURNFDUxFevfZZTKMP3GNsHCPccABJbsItFfTajEf2YWR-SDKIi-gsCOouylgP4q-gq4E-olvh-JqXgbyq-_PvO84pfqXvj_1MV_Z4CaNP3A9USFAf2aCBJT5UCxA9tAcYeXlvJp50vI9tjgdCp9f3ZIScrTMw1p7sbrrmQUFEsBxCymSCZT3j1rv34HQSsR9Q8TaplJW8Z3BvTLxeI-BM3gg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0499173d3c20f8230169e3f6d1ff848196934a17db9170e25b",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 358,
+    "completion_tokens": 1902,
+    "total_tokens": 2260,
+    "cost": 0.0087626,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0087626,
+      "upstream_inference_prompt_cost": 0.0003938,
+      "upstream_inference_completions_cost": 0.0083688
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 896,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

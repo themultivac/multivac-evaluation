@@ -1,0 +1,528 @@
+{
+  "model": "unknown",
+  "total_claims": 52,
+  "claims": [
+    {
+      "id": 1,
+      "text": "Minkowski spacetime with signature $(+, -, -, -)$ and metric $ds^2 = c^2 dt^2 - dx^2 - dy^2 - dz^2$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "The observer moves along the $x$-axis (1+1 dimensions).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The observer undergoes constant proper acceleration $a$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "The observer's worldline is $x^\\mu(\\tau) = (ct(\\tau), x(\\tau))$, where $\\tau$ is proper time.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "The four-velocity is $u^\\mu = \\frac{dx^\\mu}{d\\tau} = (\\gamma c, \\gamma v)$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        4
+      ],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "$u^\\mu u_\\mu = c^2 \\implies (u^0)^2 - (u^1)^2 = c^2$",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        1,
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "$u^\\mu A_\\mu = 0$ (orthogonality)",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        5,
+        6
+      ],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "$A^\\mu A_\\mu = -a^2$ (constant magnitude)",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        3
+      ],
+      "notes": "Defines constant proper acceleration via four-acceleration invariant."
+    },
+    {
+      "id": 9,
+      "text": "Differentiating the first constraint gives $u^0 \\dot{u}^0 - u^1 \\dot{u}^1 = 0$, implying $\\dot{u}^0 \\propto u^1$ and $\\dot{u}^1 \\propto u^0$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        6
+      ],
+      "notes": "Proportionality claim needs justification from acceleration constraint too."
+    },
+    {
+      "id": 10,
+      "text": "Substituting into the acceleration magnitude constraint yields the differential equations: $\\frac{du^0}{d\\tau} = \\frac{a}{c} u^1, \\quad \\frac{du^1}{d\\tau} = \\frac{a}{c} u^0$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        8,
+        9
+      ],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "Initial conditions are $u^1(0)=0$ (starts from rest) and $u^0(0)=c$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "Solving these with initial conditions gives $u^0(\\tau) = c \\cosh\\left(\\frac{a\\tau}{c}\\right), \\quad u^1(\\tau) = c \\sinh\\left(\\frac{a\\tau}{c}\\right)$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        10,
+        11
+      ],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "Integrating $u^\\mu = \\frac{dx^\\mu}{d\\tau}$ with $x(0) = c^2/a$ and $t(0)=0$ gives $t(\\tau) = \\frac{c}{a} \\sinh\\left(\\frac{a\\tau}{c}\\right), \\quad x(\\tau) = \\frac{c^2}{a} \\cosh\\left(\\frac{a\\tau}{c}\\right)$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        12
+      ],
+      "notes": "Initial condition $x(0)=c^2/a$ is a conventional choice."
+    },
+    {
+      "id": 14,
+      "text": "Eliminating $\\tau$ yields the hyperbolic trajectory: $x^2 - c^2 t^2 = \\left(\\frac{c^2}{a}\\right)^2$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        13
+      ],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "We define Rindler coordinates $(\\eta, \\xi)$ to cover the 'Right Rindler Wedge' ($x > |ct|$).",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "The coordinate transformation is $ct = \\xi \\sinh \\eta, \\quad x = \\xi \\cosh \\eta$ where $\\xi > 0$ and $\\eta \\in (-\\infty, \\infty)$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        14,
+        15
+      ],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "Substituting these into the Minkowski metric: $ds^2 = c^2 dt^2 - dx^2 = (\\sinh \\eta \\, d\\xi + \\xi \\cosh \\eta \\, d\\eta)^2 - (\\cosh \\eta \\, d\\xi + \\xi \\sinh \\eta \\, d\\eta)^2$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        1,
+        16
+      ],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "Using $\\cosh^2 \\eta - \\sinh^2 \\eta = 1$ and canceling cross terms: $ds^2 = \\xi^2 d\\eta^2 - d\\xi^2$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        17
+      ],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "The observer with proper acceleration $a$ corresponds to the specific worldline $\\xi = c^2/a$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        13,
+        16
+      ],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "Their proper time is related to the coordinate $\\eta$ by $d\\tau = \\frac{\\xi}{c} d\\eta = \\frac{c}{a} d\\eta$, implying $\\eta = \\frac{a\\tau}{c}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        18,
+        19
+      ],
+      "notes": "Uses $d\\tau^2 = ds^2/c^2$ at fixed $\\xi$; missing factor of $c$ discussion."
+    },
+    {
+      "id": 21,
+      "text": "The Rindler horizon is the boundary of the region covered by these coordinates.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        15
+      ],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "In Minkowski coordinates, the boundary is $x = \\pm ct$ (the light cone).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        16,
+        21
+      ],
+      "notes": "More precisely the future light cone of the origin."
+    },
+    {
+      "id": 23,
+      "text": "This is a null surface ($ds^2=0$).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        1,
+        22
+      ],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "In Rindler coordinates, the boundary corresponds to $\\xi \\to 0$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        16,
+        21
+      ],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "At $\\xi=0$, the metric component $g_{\\eta\\eta} = \\xi^2$ vanishes.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        18,
+        24
+      ],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "This is a coordinate singularity (similar to the origin in polar coordinates), not a physical singularity, as the curvature remains zero.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        25
+      ],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "A massless scalar field $\\phi$ in 1+1 dimensions is assumed.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "The Minkowski vacuum $|0_M\\rangle$ is defined by the annihilation of Minkowski modes.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "We relate Minkowski modes to Rindler modes (positive frequency with respect to $\\eta$) via Bogoliubov transformation.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "This is the key physical assumption stated."
+    },
+    {
+      "id": 30,
+      "text": "The field satisfies $\\Box \\phi = 0$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        27
+      ],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "In 1+1 dimensions, solutions are functions of null coordinates $U = ct - x$ and $V = ct + x$.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        30
+      ],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "text": "Minkowski positive frequency modes are $u_k \\propto e^{-ikU}$ (for right-movers).",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        31
+      ],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "In the Right Wedge, $U = \\xi(\\sinh \\eta - \\cosh \\eta) = -\\xi e^{-\\eta}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        16,
+        31
+      ],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "text": "A mode with frequency $\\Omega$ with respect to $\\eta$ behaves as $v_\\Omega \\propto e^{-i\\Omega \\eta}$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        29
+      ],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "Substituting $\\eta = -\\ln(-U/\\xi)$, we find the dependence on the Minkowski null coordinate: $v_\\Omega \\propto e^{-i\\Omega (-\\ln(-U))} = (-U)^{i\\Omega}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        33,
+        34
+      ],
+      "notes": "Dropped $\\xi$-dependent factor; valid for fixed $\\xi$."
+    },
+    {
+      "id": 36,
+      "text": "We restrict to $U < 0$ in the Right Wedge.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        33
+      ],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "We expand the Rindler mode $v_\\Omega$ in terms of Minkowski modes: $v_\\Omega = \\int_0^\\infty dk \\left( \\alpha_{\\Omega k} u_k + \\beta_{\\Omega k} u_k^* \\right)$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        29,
+        32,
+        34
+      ],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "text": "The coefficient $\\beta_{\\Omega k}$ represents the mixing of negative frequency Minkowski modes into the positive frequency Rindler mode.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        37
+      ],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "$\\beta_{\\Omega k}$ is proportional to the Fourier transform of $v_\\Omega$ evaluated at negative frequency: $\\beta_{\\Omega k} \\propto \\int_{-\\infty}^0 dU \\, (-U)^{i\\Omega} e^{ikU}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        35,
+        37
+      ],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "Let $U = -y$ (where $y > 0$): $I \\propto \\int_0^\\infty dy \\, y^{i\\Omega} e^{-iky}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        39
+      ],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "This is a standard integral yielding a Gamma function (using analytic continuation): $\\int_0^\\infty dy \\, y^{s-1} e^{-iky} = \\Gamma(s) (ik)^{-s}$",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        40
+      ],
+      "notes": "Requires $\\text{Re}(s)>0$ and appropriate contour rotation."
+    },
+    {
+      "id": 42,
+      "text": "With $s = 1 + i\\Omega$, we analyze the magnitude squared of the coefficients for positive ($k$) and negative ($-k$) frequencies.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        41
+      ],
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "text": "$| (ik)^{-1-i\\Omega} |^2 \\propto | e^{-i\\frac{\\pi}{2}(1+i\\Omega)} |^2 = e^{\\pi \\Omega}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        42
+      ],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "text": "$| (-ik)^{-1-i\\Omega} |^2 \\propto | e^{i\\frac{\\pi}{2}(1+i\\Omega)} |^2 = e^{-\\pi \\Omega}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        42
+      ],
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "text": "The ratio of the Bogoliubov coefficients is: $\\frac{|\\beta_{\\Omega k}|^2}{|\\alpha_{\\Omega k}|^2} = \\frac{e^{-\\pi \\Omega}}{e^{\\pi \\Omega}} = e^{-2\\pi \\Omega}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        43,
+        44
+      ],
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "text": "Using the normalization condition $|\\alpha|^2 - |\\beta|^2 = 1$, we solve for the particle number expectation value in the Minkowski vacuum: $\\langle N_\\Omega \\rangle = |\\beta_{\\Omega k}|^2 = \\frac{1}{e^{2\\pi \\Omega} - 1}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        45
+      ],
+      "notes": "Normalization condition is for bosonic Bogoliubov coefficients."
+    },
+    {
+      "id": 47,
+      "text": "This is the Bose-Einstein distribution.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        46
+      ],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "text": "The dimensionless Rindler frequency $\\Omega$ is related to the physical energy $E$ measured by the observer. Since $\\eta = \\frac{a\\tau}{c}$, the physical frequency is $\\omega_{phys} = \\frac{a}{c}\\Omega$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        20,
+        34
+      ],
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "text": "Thus $E = \\hbar \\omega_{phys} = \\hbar \\frac{a}{c} \\Omega$, or $\\Omega = \\frac{c E}{\\hbar a}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        48
+      ],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "text": "Substituting into the distribution: $\\frac{1}{e^{2\\pi \\frac{c E}{\\hbar a}} - 1} = \\frac{1}{e^{E / k_B T} - 1}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        46,
+        49
+      ],
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "text": "Equating the exponents: $\\frac{2\\pi c}{\\hbar a} = \\frac{1}{k_B T}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        50
+      ],
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "text": "Solving for $T$, we obtain the Unruh temperature: $T = \\frac{\\hbar a}{2\\pi c k_B}$",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        51
+      ],
+      "notes": ""
+    }
+  ]
+}

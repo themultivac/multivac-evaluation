@@ -1,0 +1,545 @@
+{
+  "model": "unknown",
+  "total_claims": 52,
+  "claims": [
+    {
+      "id": 1,
+      "text": "Consider Minkowski spacetime in 1+1 dimensions with metric signature (+,-): ds\u00b2 = dt\u00b2 - dx\u00b2.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "An observer with constant proper acceleration a > 0 (in the +x direction) follows a worldline x^\u03bc(\u03c4) parameterized by proper time \u03c4, where the 4-velocity u^\u03bc = dx^\u03bc/d\u03c4 satisfies u^\u03bc u_\u03bc = 1, a^\u03bc = Du^\u03bc/d\u03c4, a^\u03bc u_\u03bc = 0.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The proper acceleration scalar is \u03b1 = \u221a(-a^\u03bc a_\u03bc) = a (constant).",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [
+        2
+      ],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "Introduce the rapidity \u03c6(\u03c4) via dt/d\u03c4 = cosh \u03c6, dx/d\u03c4 = sinh \u03c6.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        1,
+        2
+      ],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "This automatically satisfies u^\u03bc u_\u03bc = 1.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        1,
+        4
+      ],
+      "notes": "cosh\u00b2\u03c6 - sinh\u00b2\u03c6 = 1, correct."
+    },
+    {
+      "id": 6,
+      "text": "Differentiating and imposing constant proper acceleration yields d\u03c6/d\u03c4 = a.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        3,
+        4,
+        5
+      ],
+      "notes": "Intermediate steps omitted but standard."
+    },
+    {
+      "id": 7,
+      "text": "Choosing \u03c6(0) = 0, we get \u03c6 = a\u03c4.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        6
+      ],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "Integration gives the worldline t(\u03c4) = (1/a)sinh(a\u03c4), x(\u03c4) = (1/a)cosh(a\u03c4).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        4,
+        7
+      ],
+      "notes": "Initial conditions t(0)=0, x(0)=1/a assumed implicitly."
+    },
+    {
+      "id": 9,
+      "text": "Eliminating \u03c4 produces x\u00b2 - t\u00b2 = 1/a\u00b2, which is a hyperbola in Minkowski coordinates (one branch with x > |t|).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        8
+      ],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "Introduce Rindler coordinates (\u03b7, \u03be) via the explicit transformation t = (1/a)e^{a\u03be} sinh(a\u03b7), x = (1/a)e^{a\u03be} cosh(a\u03b7), where \u03b7 \u2208 (-\u221e,+\u221e) and \u03be \u2208 (-\u221e,+\u221e).",
+      "type": "definition",
+      "provenance": "derived",
+      "depends_on": [
+        8,
+        9
+      ],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "At fixed \u03be = 0, this reduces exactly to the hyperbolic worldline above with proper time \u03c4 = \u03b7.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        8,
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "The inverse transformation is \u03b7 = (1/(2a))ln((x+t)/(x-t)), \u03be = (1/(2a))ln[a\u00b2(x\u00b2 - t\u00b2)].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "The differentials are dt = e^{a\u03be}[sinh(a\u03b7) d\u03be + cosh(a\u03b7) d\u03b7], dx = e^{a\u03be}[cosh(a\u03b7) d\u03be + sinh(a\u03b7) d\u03b7].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "Substituting into ds\u00b2 = dt\u00b2 - dx\u00b2 gives dt\u00b2 - dx\u00b2 = e^{2a\u03be}(d\u03b7\u00b2 - d\u03be\u00b2).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        1,
+        13
+      ],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "Thus (restoring transverse directions) ds\u00b2 = e^{2a\u03be}(d\u03b7\u00b2 - d\u03be\u00b2) - dy\u00b2 - dz\u00b2.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        14
+      ],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "For an observer at constant \u03be, d\u03be = dy = dz = 0, so ds\u00b2 = e^{2a\u03be} d\u03b7\u00b2.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        15
+      ],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "The proper time is therefore d\u03c4 = e^{a\u03be} d\u03b7.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        16
+      ],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "The 4-acceleration magnitude measured by this observer is a e^{-a\u03be}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        15,
+        17
+      ],
+      "notes": "Stated without explicit derivation."
+    },
+    {
+      "id": 19,
+      "text": "In particular, the observer at \u03be = 0 has proper acceleration exactly a.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        18
+      ],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "The Rindler horizon is the surface \u03be \u2192 -\u221e.",
+      "type": "definition",
+      "provenance": "derived",
+      "depends_on": [
+        10,
+        15
+      ],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "In Rindler coordinates this appears as a coordinate singularity: g_{\u03b7\u03b7} = e^{2a\u03be} \u2192 0 while all curvature invariants remain zero (the spacetime is flat).",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [
+        15,
+        20
+      ],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "t + x = a^{-1} exp[a(\u03b7 + \u03be)], t - x = -a^{-1} exp[a(\u03be - \u03b7)].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "As \u03be \u2192 -\u221e at fixed finite \u03b7, both t+x \u2192 0 and t-x \u2192 0, i.e., the surface approaches the lightlike lines x = \u00b1t.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        22,
+        20
+      ],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "These are null because ds\u00b2 = 0 along dt = \u00b1dx.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        1,
+        23
+      ],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "These are event horizons for the Rindler observers: signals from beyond \u03be = -\u221e can never reach them.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [
+        23,
+        24
+      ],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "The coordinate singularity is removable by returning to Minkowski coordinates, where the geometry is regular across x = |t|.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [
+        21,
+        23
+      ],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "Consider a massless scalar field \u03c6 obeying the wave equation \u25a1\u03c6 = 0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "In Minkowski coordinates the field admits a mode expansion in plane-wave basis functions that are positive-frequency with respect to Minkowski time t: \u03c6(x) = \u222b\u2080^\u221e d\u03c9/\u221a(4\u03c0\u03c9) [a_\u03c9 e^{-i\u03c9t+ikx} + a_\u03c9\u2020 e^{i\u03c9t-ikx}].",
+      "type": "derivation_step",
+      "provenance": "cited",
+      "depends_on": [
+        27
+      ],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "The Minkowski vacuum |0_M\u27e9 is defined by a_\u03c9|0_M\u27e9 = 0 for all \u03c9 > 0.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [
+        28
+      ],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "A uniformly accelerating observer uses proper time \u03c4 \u221d \u03b7 and therefore regards modes that are positive-frequency with respect to Rindler time \u03b7 as defining his particles.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [
+        17,
+        27
+      ],
+      "notes": "Key physical assumption about particle definition."
+    },
+    {
+      "id": 31,
+      "text": "The Rindler mode functions (right wedge) satisfying the wave equation and positive-frequency condition \u2202_\u03b7 u_\u03c9^R \u221d -i\u03c9 u_\u03c9^R (\u03c9 > 0) are u_\u03c9^R(\u03b7,\u03be) = (1/\u221a(4\u03c0\u03c9)) e^{-i\u03c9\u03b7} f(\u03be).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        15,
+        27,
+        30
+      ],
+      "notes": "f(\u03be) not explicitly determined."
+    },
+    {
+      "id": 32,
+      "text": "The field admits an alternative expansion \u03c6(x) = \u222b\u2080^\u221e d\u03c9/\u221a(4\u03c0\u03c9) [b_\u03c9 u_\u03c9^R + b_\u03c9\u2020 (u_\u03c9^R)* + left-wedge terms], with associated vacuum |0_R\u27e9 annihilated by all b_\u03c9.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        31
+      ],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "The two complete orthonormal bases {u_\u03c9^M} and {u_\u03c9^R} are linearly related by a Bogoliubov transformation (key physical assumption: the field operator \u03c6 is unique and can be expanded in either basis; the transformation coefficients are determined by the Klein-Gordon inner product on a Cauchy surface).",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [
+        28,
+        32
+      ],
+      "notes": "Stated as key physical assumption."
+    },
+    {
+      "id": 34,
+      "text": "u_\u03c9^M = \u222b\u2080^\u221e d\u03c9' (\u03b1_{\u03c9\u03c9'} u_{\u03c9'}^R + \u03b2_{\u03c9\u03c9'} (u_{\u03c9'}^R)*).",
+      "type": "derivation_step",
+      "provenance": "cited",
+      "depends_on": [
+        33
+      ],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "The inverse transformation expresses the Rindler operators in terms of Minkowski ones: b_\u03c9 = \u222b\u2080^\u221e d\u03c9' (\u03b1_{\u03c9\u03c9'}* a_{\u03c9'} - \u03b2_{\u03c9\u03c9'}* a_{\u03c9'}\u2020).",
+      "type": "derivation_step",
+      "provenance": "cited",
+      "depends_on": [
+        34
+      ],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "text": "The left-wedge modes must be included to obtain a complete basis across the full spacetime; they mix with the right-wedge modes through the horizon.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        32,
+        33
+      ],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "The Minkowski vacuum is therefore not the Rindler vacuum.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [
+        33,
+        35
+      ],
+      "notes": "Follows from \u03b2 \u2260 0."
+    },
+    {
+      "id": 38,
+      "text": "The expectation value of the Rindler number operator in the Minkowski vacuum is \u27e8N_\u03c9\u27e9 \u2261 \u27e80_M|b_\u03c9\u2020 b_\u03c9|0_M\u27e9 = \u222b\u2080^\u221e d\u03c9' |\u03b2_{\u03c9\u03c9'}|\u00b2.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        29,
+        35
+      ],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "Explicit evaluation of the overlap integrals (using the relation U \u221d e^{a\u03b7} between null coordinates and performing a contour integration or invoking the Gamma-function identity \u0393(1+ix)\u0393(-ix) = 2\u03c0/(e^{2\u03c0x}-1)) yields |\u03b2_{\u03c9\u03c9'}|\u00b2 = \u03b4(\u03c9 - \u03c9') \u00b7 1/(e^{2\u03c0\u03c9/a}-1).",
+      "type": "derivation_step",
+      "provenance": "cited",
+      "depends_on": [
+        34,
+        38
+      ],
+      "notes": "Invoked without explicit derivation, as stated."
+    },
+    {
+      "id": 40,
+      "text": "The Gamma-function identity used is \u0393(1+ix)\u0393(-ix) = 2\u03c0/(e^{2\u03c0x}-1).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Should be \u03c0x/(sinh(\u03c0x)); stated identity looks incorrect."
+    },
+    {
+      "id": 41,
+      "text": "Consequently \u27e8N_\u03c9\u27e9 = 1/(e^{2\u03c0\u03c9/a} - 1).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        38,
+        39
+      ],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "This is precisely a Bose-Einstein thermal distribution \u27e8N_\u03c9\u27e9 = 1/(e^{\u03c9/T} - 1).",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [
+        41
+      ],
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "text": "Comparing 2\u03c0\u03c9/a = \u03c9/T gives T = a/(2\u03c0) in natural units.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        41,
+        42
+      ],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "text": "Restoring \u210f, c, k_B gives the Unruh temperature T = \u210fa/(2\u03c0ck_B).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        43
+      ],
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "text": "The factor 2\u03c0 originates from the periodicity in imaginary Rindler time \u03b7 \u2192 \u03b7 + 2\u03c0i/a that makes the Minkowski vacuum appear thermal to the accelerated observer.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [
+        10,
+        44
+      ],
+      "notes": "Connection to Euclidean/KMS periodicity."
+    },
+    {
+      "id": 46,
+      "text": "The same result follows from the reduced density matrix obtained by tracing over the left wedge: \u03c1_R = Tr_L |0_M\u27e9\u27e80_M| is thermal at the Unruh temperature.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [
+        36,
+        44
+      ],
+      "notes": "Stated without derivation."
+    },
+    {
+      "id": 47,
+      "text": "All steps up to the explicit form of |\u03b2_{\u03c9\u03c9'}|\u00b2 are exact.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [
+        38
+      ],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "text": "The overlap integral itself is a standard but technical result (invoking analytic continuation across the Rindler horizon); it is invoked here without performing the contour integration explicitly.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [
+        39
+      ],
+      "notes": "Model explicitly flags this as invoked."
+    },
+    {
+      "id": 49,
+      "text": "The Rindler coordinates cover the right Rindler wedge (x > |t|).",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "text": "Transverse coordinates y, z are unchanged in the Rindler transformation.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "text": "The wedges \u03be > -\u221e and \u03be < -\u221e correspond to causally disconnected regions.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        25
+      ],
+      "notes": "\u03be < -\u221e is not well-defined; means beyond the horizon."
+    },
+    {
+      "id": 52,
+      "text": "The final Unruh temperature is T = \u210fa/(2\u03c0ck_B).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        44
+      ],
+      "notes": ""
+    }
+  ]
+}

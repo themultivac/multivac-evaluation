@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776540864-ROjRsbIkvHHAmx4tALBO",
+  "object": "chat.completion",
+  "created": 1776540864,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\": 21, \"verdict\": \"CONFIRMED\", \"explanation\": \"The statement accurately describes the Rindler horizon as a coordinate singularity without introducing curvature.\", \"confidence\": 1.0}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49zICWC0AZ2F2Oc-nhEbo1jchur1xLkXywZmdICOO2MO5cl2X7WbE0Sgicd0GkfgmRGBbXhH1G4aOBPYahkutXfLTST53ixB_nHiVirBfeKvPsqBCPpl7fh0o5yDa3GDin9Q__Gteom-U0Q1trW1sS9smzfH-nzJcg24oRU2LrpsCPTMLzx37QOqyQL8nMfnvhyeg0FSDbFO2jd63DRA3LZSrUtDXb73sn2fL61C_Vs_FjI4-i2xkJGogZEKlkNzfpJ3OQCotlsw9Uk-T2X6b2sPJL887mFAxeWemXIfsfEmfcpqkkjDozxsZxFNAHI7cISZHQYSBH3riQrE3wqNZgbZDhCNd10UzKNyRX3Wjb59GwKsNd5O4RYkaLhXj3nQyOD1JSZjtISyOG3aUvy5amp3z_lzR7aYzteQ69YBRcCgG-c48F0bD6r9TIb02VijtJuXHEuRnohO5qWu9zIylDHmUP10alLy9grAkZ0wM_OtvqFzSNf_Qo4cxVNcLtkUPe2_WxEgUdBorb96RSOPnksi_g==",
+            "format": "openai-responses-v1",
+            "id": "rs_0cf064151a4823c10169e3dcc0a4848195a73ebcac243403f8",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 539,
+    "completion_tokens": 2501,
+    "total_tokens": 3040,
+    "cost": 0.0115973,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0115973,
+      "upstream_inference_prompt_cost": 0.0005929,
+      "upstream_inference_completions_cost": 0.0110044
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1216,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

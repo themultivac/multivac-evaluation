@@ -1,0 +1,59 @@
+{
+  "id": "gen-1776548769-AfMUeNNu9tvZugUIKIaU",
+  "object": "chat.completion",
+  "created": 1776548769,
+  "model": "google/gemini-3.1-pro-preview-20260219",
+  "provider": "Google",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"These are the exact assumptions specified in the problem statement required to derive the Schwarzschild metric.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Testing Claim #3**\n\nI'm currently stress-testing the assumption of spherical symmetry for the Schwarzschild radius derivation. My focus is on how this assumption underpins the initial setup and influences subsequent steps.\n\n**Confirming Premise #3**\n\nI've confirmed that Claim #3, which posits spherical symmetry, is a foundational assumption directly provided by the problem statement. It's the very premise upon which the derivation rests, thus validating its inclusion.\n\n",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "**Testing Claim #3**\n\nI'm currently stress-testing the assumption of spherical symmetry for the Schwarzschild radius derivation. My focus is on how this assumption underpins the initial setup and influences subsequent steps.\n\n**Confirming Premise #3**\n\nI've confirmed that Claim #3, which posits spherical symmetry, is a foundational assumption directly provided by the problem statement. It's the very premise upon which the derivation rests, thus validating its inclusion.\n\n",
+            "format": "google-gemini-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "CiQBjz1rXxQCdSmSuJzKYdFlumFFb0NfFcYEV1EOUa9NcX8e+34KXQGPPWtfAXiHwRLgYJIJbo4PZcpXiuKA3QnGvkGkhgZKFfMY3SMze5EZKJFnYhLsTSDCJymW7g4Gm/nbw8sZnAftEPiIduQA8e7xDH+t5PbzUSsopF2Mj2pZteCE5QqhAQGPPWtfUdJYmqxKEPJSuVsBPW+/nPGAns4Om7ILHXuXSUQU8QQEwD2jvBmgGy9YRQrPLWHkRYgjOpO89y5W0ne1kI4n3KiMVwU0wxEDrwgYxcYV3B6zllFnJgoTv/WqzBUEzjuqDx4OVJOPbCKj3Lxt2i0VX7MrU/RLfNuK5Wb+sUdX0/rEkAW5WBIb9zlVMJft8rRmKt6Pw9A3NC95mUx2Co8BAY89a18pkRqwei1tRyEBeEInNHOLJXCnZB6Q5AESyWqfrPmq2c1AEwe/oK0VOb997Q6G4b4Df4Vfupw0CZSJsJOM2ZBaqWtOcGwx9nsDIUZ5A3GClZxyFocifXrglXHGwJTyHjgI5ELvPI6smE7ZZ8cMY41BiuqgiDYozphAFvzbIHE/ABV+xcQq3iI04h8KkQEBjz1rXyba1bVctnzKFtJWriydunH7w8lj7cFVqEWL4GpYtCvifSq6efKIhRAoz9HluJGBCjxnkZnb51j5QRhHbhLTS7FywE6qg/XFfmhwnj+m3IUapdTuthvLffMKfbIHCw3Vq0MJkAlcIQO01s9DeE1V7XQMJuGQLQipqzxT7adQahz07wNEBRrGM6PkeqssCn0Bjz1rX9YOOFY+WK2F4ho4pB5sElwqEM/JmXu1LUislbYfE8CjdP327jDJ4JVNbQUoQTJrmk7zlynD8K/fh81Uzzv8IxvCBOKDJjR2BLRj1iDRchGntTt60JZmq2aWUvQO47uSikwl8Nc5DICZrr5d/zZIWOePPETc6piGzwqlAQGPPWtf5D7CtXwC4YXAzCFAWpK0r455rjZ32V/S5v/90zFtb+9LGCS9qMoSnAV8XlJ5Pms614tRIl5zusQWwpYn7ZQSw9RDrytAC5nGcwaLepuMKxf692elQQv2suBQyVhGANDiz5pXzLdb4NmcYgiFgzRgWd/nXcpdJa6aGMX4j2QOX+FFASTPMqmWOdHUxONHjKja8/9x3b7Ov25iW8Ahe4ZgNQonAY89a1+Lt+KelQdVc6SbhF/2/F99S3kmaiWi+W6mpnX1bs/CPEoS",
+            "format": "google-gemini-v1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 355,
+    "completion_tokens": 204,
+    "total_tokens": 559,
+    "cost": 0.003158,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.003158,
+      "upstream_inference_prompt_cost": 0.00071,
+      "upstream_inference_completions_cost": 0.002448
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 148,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

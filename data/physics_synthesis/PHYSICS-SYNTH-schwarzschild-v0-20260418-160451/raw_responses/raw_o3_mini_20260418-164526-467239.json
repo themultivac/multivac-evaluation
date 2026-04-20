@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776548717-jxojHEhG4ab27lLhaRpE",
+  "object": "chat.completion",
+  "created": 1776548717,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 44,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The Schwarzschild radius is correctly given by r = 2GM/c\u00b2, matching the standard derivation.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Verifying Schwarzschild Radius Claim**\n\nI'm evaluating a claim about the Schwarzschild radius formula, \"r=2GM/c\u00b2.\" It looks like the final result is correct, but I need to check if the claim is complete. The question asks for a derivation from the Einstein field equations for a non-rotating mass in vacuum. While the result is accurate, showing all assumptions and steps is essential. Thus, even if the numerical value is supplied, it seems I need to provide more detail in my response.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Verifying Schwarzschild Radius Claim**\n\nI'm evaluating a claim about the Schwarzschild radius formula, \"r=2GM/c\u00b2.\" It looks like the final result is correct, but I need to check if the claim is complete. The question asks for a derivation from the Einstein field equations for a non-rotating mass in vacuum. While the result is accurate, showing all assumptions and steps is essential. Thus, even if the numerical value is supplied, it seems I need to provide more detail in my response.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_t1Y4UUZ9ZjmPsnceR8SDhC2j-D1GGI5P-yxPiq4UhZbaC7M2gxHeIuQDtOLI6Z7T-20M5_nw4wKSIFZI9eK5B-f0oFnTfUI2rYElLqyI5g9PtlhYwalYuPYBuyh3NBR4V9TJ625BYFrTZOV5HxMh4ryF1cMPnx_O9ID8gapS_GqjH8HvmnKX3uxHNA_VBwCIi1-eOHrYKIQz09wK1IGwAYImx_1eGRHZPqHkT3gd6KqWOqLjQGoatAQqDrUDPPHdStlbAK-qxXJH-KPxaT-O2rlpEeu8HGgG6PtbNVw2X0cpjwI-frpA1Ttf9IM-9t9u99A0xmdITJN8Unln_vdvZ7NY_GfQZl1K3Uv1SRXBXPAsyvEI-m2v4z7ne9zwwks45rSitrj-cHJBhYeVWkhUYOPDiF8TzKj3hX4nR1-M9DQX4elSbkM1xT82jQ-8B0tzJk7aX9pmfzuNJuZPMwi_BGPbL0McsAM2YrYfqf5_wtpwvpZazBHCLDJ5b3k0dEQPMwFdF52ZAYHTt1Gwg40qGRAQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_0e3e8e37a21be6b40169e3fb6e70e88194b0b155c26ceb9449",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 357,
+    "completion_tokens": 2014,
+    "total_tokens": 2371,
+    "cost": 0.0092543,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0092543,
+      "upstream_inference_prompt_cost": 0.0003927,
+      "upstream_inference_completions_cost": 0.0088616
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 960,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

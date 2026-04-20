@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776557135-Ht5YG2AagQMmDRRoAwm8",
+  "object": "chat.completion",
+  "created": 1776557135,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 33,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard definition: force equals negative derivative of energy per unit area with respect to separation.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5BxTzlhK33C3EExxF2bUK5LQRxjjXiXAIMeHfNWCFhQLE5XXhXwivuZYpeZ1L5MHkC49F6PeSSyq5dYssz7WAJCcu-6zrDk-9lOhUmouAF-qlYoPOuqR9Rf5163sJsUWpgy5odOzcndBYTqumMw1P58kh1HyJMKGLtbux9nqHOdM4iYlQ4AD8nF0I_Rdo27xdSLvqGxdyJ6Wn_P2p26-71wsCclC1qwuh-NXcop19tMzDZTrhzdTaTSNZBYdlF9vRZ9nHrFVT3kee_0aJqW9DsL3Ofko7cAW009aoxj3TtNf40ugLBVEKs5FTsiiDq211-aXdnsZtk37zrnKjE5eJ_Lpvn1qGuSCfZJm3MRl5VxLJFyf-Gl0O_0i3Vmfh4vwAv-8m2l9R0TrWft-eN89WxdPaEs6kxPUmX3P3YMLNwTC12U5IIRXg0SiUGivUVmwy8VW2sWoPc36HkAj-p1l1fJQLdLJNT88U0W4OnPVGfgEwgpyHibbJCCpzg6F0N_-AXhQ4n57xkqsj9Li59r5WuD4-w==",
+            "format": "openai-responses-v1",
+            "id": "rs_063ca47183b8c45e0169e41c4fbb7481938812d9f6d5aa6b0b",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 536,
+    "completion_tokens": 633,
+    "total_tokens": 1169,
+    "cost": 0.0033748,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0033748,
+      "upstream_inference_prompt_cost": 0.0005896,
+      "upstream_inference_completions_cost": 0.0027852
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 256,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

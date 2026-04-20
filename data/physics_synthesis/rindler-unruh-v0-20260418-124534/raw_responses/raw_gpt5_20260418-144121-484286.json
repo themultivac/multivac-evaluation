@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776541279-RZ1eQmNRo7rIL1JNA4BG",
+  "object": "chat.completion",
+  "created": 1776541279,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":42,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For Unruh effect, exponent is dimensionless: \u27e8N_\u03c9\u27e9=1/(e^{\\hbar\\omega/(k_BT)}-1), or with Rindler frequency and c=\u210f=k_B=1 conventions explicitly stated.\",\"confidence\":0.96}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 529,
+    "completion_tokens": 81,
+    "total_tokens": 610,
+    "cost": 0.0025375,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0025375,
+      "upstream_inference_prompt_cost": 0.0013225,
+      "upstream_inference_completions_cost": 0.001215
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

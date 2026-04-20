@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776550313-Ptd06s2ryI6C8YtKw6aX",
+  "object": "chat.completion",
+  "created": 1776550313,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using g\u03b8\u03b8 = r\u00b2, the computation yields (1/2)*(2r)*(1/r\u00b2) = 1/r, which is correct.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5AGwkY8z9zcoOGHLj8mbtCCjBVQBSCpd6cbay7uxKExLXVmwC6BL3eU4dfdfwootV9X4-6NOX_eV-vR3dV8hAsClole4dP_WpoArD54ssYMfjouW-WldfLXzN22TzUf8FNPG3gRN3Br76wc7AjWVFdODvBlTSN4AdyI7Vj0HmLxOK6WAbCwvNr6e5naA_XNdImrRIs5BGB9pu1wm1emfe_R4JEx7deLVpDmDpWtxRB6k5T7qI_coZgOgOG0Lw79IFfznKxvabJJ_G0jRgo8HE44sm7RK4D9UgWnGAEeoqssUaR0INU50YngXtkKj1ax1NL43vHgb54JN50IpTJwsNQhqTpHUowZ-MQ-fCZ-XWLWHkvsNGAQUwaw8R-2f-G7whSQNI4qB0bAaB4G9VR2TCBsb3xgEbNp-GtEQ-NMmTaI0k_IuJaoKBJm5YeFrbDgrERg2f6DrAMP0-NxmExSxvnJ-BKcp_HcWR7QitYYs8UL1G-D1E5RG5gzg4kWEicdIWn8KK36lUyLDyBgG04OmnQ0J2A==",
+            "format": "openai-responses-v1",
+            "id": "rs_01224db4f9b57c250169e401a992c48195b7cda4b8dff9e137",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 366,
+    "completion_tokens": 2059,
+    "total_tokens": 2425,
+    "cost": 0.0094622,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0094622,
+      "upstream_inference_prompt_cost": 0.0004026,
+      "upstream_inference_completions_cost": 0.0090596
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 960,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

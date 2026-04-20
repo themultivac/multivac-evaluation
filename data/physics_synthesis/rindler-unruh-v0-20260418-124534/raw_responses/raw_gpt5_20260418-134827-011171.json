@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776538105-ZZg56bTckypKRKgAAmIC",
+  "object": "chat.completion",
+  "created": 1776538105,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":8,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Right-wedge Rindler chart is usually \\(ct=\\xi\\sinh(a\\eta/c)\\), \\(x=\\xi\\cosh(a\\eta/c)\\) or dimensionless variants. Claim omits wedge/domain and acceleration/unit factors.\",\"confidence\":0.95}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 519,
+    "completion_tokens": 75,
+    "total_tokens": 594,
+    "cost": 0.0024225,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0024225,
+      "upstream_inference_prompt_cost": 0.0012975,
+      "upstream_inference_completions_cost": 0.001125
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

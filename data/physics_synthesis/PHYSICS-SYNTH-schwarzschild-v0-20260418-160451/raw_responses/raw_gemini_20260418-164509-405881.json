@@ -1,0 +1,59 @@
+{
+  "id": "gen-1776548705-asM5OxfhlCvCoulMSnqn",
+  "object": "chat.completion",
+  "created": 1776548705,
+  "model": "google/gemini-3.1-pro-preview-20260219",
+  "provider": "Google",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 41,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The stated equation is the correct standard form of the Schwarzschild metric in spherical coordinates.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Confirming Metric Formulation**\n\nI've confirmed the presented Schwarzschild metric in standard coordinates is indeed the correct representation. My current focus is on the subsequent steps required for its derivation and the identification of the coordinate singularity.\n\n**Verifying Metric Accuracy**\n\nI've confirmed the Schwarzschild metric you presented in standard coordinates. My current efforts are directed towards the derivation process and pinpointing the location of the coordinate singularity.\n\n",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "**Confirming Metric Formulation**\n\nI've confirmed the presented Schwarzschild metric in standard coordinates is indeed the correct representation. My current focus is on the subsequent steps required for its derivation and the identification of the coordinate singularity.\n\n**Verifying Metric Accuracy**\n\nI've confirmed the Schwarzschild metric you presented in standard coordinates. My current efforts are directed towards the derivation process and pinpointing the location of the coordinate singularity.\n\n",
+            "format": "google-gemini-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "Cm4Bjz1rX7lvcWHRASwOjlxGyJTwly5XLbEpuThUChLeMsgWhnXz3m7IRZWEpfCUhjrpjMx2ySAXU/NIQ08A5RDwuL6mwAU+mZPijRJbLJhystqDDF4dx3MUejqxFx1MYU1ikSZaM1UD+R15ziZ6rQpJAY89a18ZzCV2vmwXkK6MNdfyXZWrdT6lQ7A1sjz6reDA5WazWV0/i7o3K+qTSTHcvhF+8NsWyn7Q0yREVjwT28j//jXnrepUDwphAY89a19OoOMQ1tW78uxa1k/cdULwEKdn7KyZgIVhXXbAFUEfRosQOkJ9UQD3lmJvBHRjzkFvnm0EYr0bR0wFC3tToEDKHq9rdgdaW2jWklRPOkUmCuypSb8fNchQR2TQMQqyAQGPPWtfrgsaALrtFcahiqO6nWP5+loNIiu4oHeIXzeP5d3xn5yR5x9SRchBrjRaYCmbnPw+wCPcrzFBS7yV2m4vovaqUKpj6xWivLqehPTh3tCLMl7jN1pEIXDMYBz3sLn3NVisgDxtHXBcxzgaErfWC2rMEjyIyDJgXn1kiBjJLVFFJYlpRsMaOIWTyUPBEdsAQtXYzHAD1M858IoDrXDaqGcbZ4J+B53Pey3jMRIT7xkKhgEBjz1rXyGDnOShUTTmA9xh/2DHuygJbyfIDMzksiLftYewKE3+PH+VHJijGAI8J+2cKUglQ1VNpynu29hwXvY3qisAeKi3TB10fs3d5pTUxKAeVd4dcQ79LHRO/VGtU0EvevJwEbZ5uUF33BZfbwJ4kSRm6OziKOY5AJN26scMeAEynjsgUAqVAQGPPWtf+2BV8PEHgs2GTnnrd9q6UjlkQHosTXQQV2hG7ms1xSRpHhBkq2Oll3pFuVubBQb3psC09KHoXEh7WQtN57r6nUrh4WhvKeDvDg6QVCH+bGLI9OBzmgo3lgEpIxffNM2DJMQsjWV02oYsW3/RXRHlq5kcqCbpbpKeSzwWbZDWeZXdLTtd6BCzbmZOqsx4TVZcCqcBAY89a19jVBOqg6vPhsK2zpLUNep6rZpOV1fW+UvSL+O2yAvfbLl6Qz65d1qZdW97Bm82LARpY7LIJA03E4eR4Ute83bQvNXxCbnO6K7wUpvJNO7p4e9fdO/yqSBhiYWT8w02x6ZVoCUwqNhzxg0boT2QpmTN7Jut3DglZy7nwbQNXa0MRqW5RZgTrK+izsrQk87mMgBHZ1wHfaFMTIXMUjOygeC1pykKQAGPPWtfTKjBkBp3L0v0VE2ZqqQkxwT6HUS/bMTUwa4uCQIca51PSTrnmrXPqyXDKrHQFky+aJ3ybhNgbXO1vT8=",
+            "format": "google-gemini-v1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 389,
+    "completion_tokens": 236,
+    "total_tokens": 625,
+    "cost": 0.00361,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00361,
+      "upstream_inference_prompt_cost": 0.000778,
+      "upstream_inference_completions_cost": 0.002832
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 180,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776556722-VcIWG4pYrjinyZZWZ7ZA",
+  "object": "chat.completion",
+  "created": 1776556722,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":14,\"verdict\":\"CONFIRMED\",\"explanation\":\"From \\\\(U/A=\\\\hbar c\\\\sum_n\\\\int d^2k/(2\\\\pi)^2\\\\sqrt{k^2+(n\\\\pi/d)^2}\\\\), polar coordinates and \\\\(u=(k d/\\\\pi)^2\\\\) give prefactor \\\\(\\\\hbar c\\\\pi^2/(4d^3)\\\\).\",\"confidence\":0.96}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 594,
+    "completion_tokens": 103,
+    "total_tokens": 697,
+    "cost": 0.00303,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00303,
+      "upstream_inference_prompt_cost": 0.001485,
+      "upstream_inference_completions_cost": 0.001545
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

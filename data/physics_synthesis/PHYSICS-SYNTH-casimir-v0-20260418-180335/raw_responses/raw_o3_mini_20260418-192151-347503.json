@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776558101-F3n6I64aRndh92dF11gh",
+  "object": "chat.completion",
+  "created": 1776558101,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\": 32, \"verdict\": \"ERROR\", \"explanation\": \"The result is dimensionally incorrect; Casimir force must depend on d (F/A = -\u03c0\u00b2\u210fc/(240d\u2074)), not a constant -\u210fc/\u03c0.\", \"confidence\": 1.0}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CAeNXyIo8NQ85O3LECnaNCxO5UyWdINCJAoSzrcaGE926ZtZcpyCW4gpjt2nBxLoR9Mz-jLCDTRazHaBASFXWc4Y89wqNZ6ap4U7NqxBVrDPBzXtEq_WvSMa4DBObNGGKgu-swZQjuDqzJWT3Yaciq91N28u9WjkmzS4o_2dR28t9WAYSJ4CPDQ7aJoZtX4SdeZsX7iGF4-luKDow56dxH2w0lqEWk37OvVbyEeS7ty3RGgjMsSeMhvPLMxa2X-TKtUVwFRJl8UQfjOay5hdAsbDpqbb0bAPxxumFFFuBmnASa4OlmBJVD_gs65PfJEO7Spjn0jf3pVpwbk3xXADy7jDO0VQM_Id1F_JLHxFNTmx3M2TgSI-8A5_lMqDL1BZjD1_eM7QXACSYNvOM78PMl3LfDDO3H7qXO94p76FZ0WRDGBOLYvCk6B_zlGPj1Pit99q7y99FJg85U_4br_UnHOcfFXzFkerKjoAMUDcHmU5VLsgh-IVWanIv5O2SZ4Eq1FqL7zggQVvXa9szXDHWDVZg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0b06eae4961f0cec0169e4201571f48194919d9dd5464921be",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 505,
+    "completion_tokens": 2947,
+    "total_tokens": 3452,
+    "cost": 0.0135223,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0135223,
+      "upstream_inference_prompt_cost": 0.0005555,
+      "upstream_inference_completions_cost": 0.0129668
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1408,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

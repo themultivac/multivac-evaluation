@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776540071-FxDpVsqtINddusToa1h4",
+  "object": "chat.completion",
+  "created": 1776540071,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 19,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"A constant proper acceleration yields x\u00b2 - c\u00b2t\u00b2 = (c\u00b2/a)\u00b2, so setting \u03be = c\u00b2/a correctly specifies the hyperbolic trajectory.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Clarifying proper acceleration**\n\nI'm thinking about the proper acceleration of a particle with a constant trajectory in Rindler coordinates, which might be given by 1/\u03be. In Minkowski space, the magnitude of the proper acceleration vector is a = 1/\u03be for the hyperbola defined by x^2 - t^2 = \u03be^2. However, if I use the standard transformation, I realize the parameter for the hyperbola is actually 1/a, not c^2/a. Recalling that proper acceleration for hyperbolic motion is consistent with the physical derivation helps clarify my thoughts.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Clarifying proper acceleration**\n\nI'm thinking about the proper acceleration of a particle with a constant trajectory in Rindler coordinates, which might be given by 1/\u03be. In Minkowski space, the magnitude of the proper acceleration vector is a = 1/\u03be for the hyperbola defined by x^2 - t^2 = \u03be^2. However, if I use the standard transformation, I realize the parameter for the hyperbola is actually 1/a, not c^2/a. Recalling that proper acceleration for hyperbolic motion is consistent with the physical derivation helps clarify my thoughts.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49myMRnzpBg41DwVwtNfxu1W1J1ylKmagBQc2iwSzJTHyExdjQb8k4fhcnAXA_kotrFsX0mEGMdRRuu_CKcaQoiwXn2REuKzM5CplFG23NEAnGU9WmtN-n_gUzfKk7ImoEZYGYeD28EB8YEORMQQ86jtYK2BL70Rvlw4Y-ZnFgnEIGKEoscEUdRGzRVuZzWVVLyNXAyspI-hzHoZmJbCr3nEEKUPtzPWqDOahutfkmJQNp0uKL3z_vPxFATvb6CuAYTFK9pZeNwwkFce4ObkSwPucNgPeraQrQ28JXxmXUzxIDPi2wa_PsTwPq-s1CtB7AjULqYeu5kdnJ8f3KadIUByKR6CkePHVXemzzxUToTOw6AZl7NRfGcEBywe1P-HXK2BZvaL0IJesR1OnGfK-GqqQzGHmqDAm6R0Ac-qH1xhhprn-u6ODWO_ydp_M3DgjQVA4zgddV0tIUfEmNJQIb573TrR6lpqfVkLFh8mYXfkCuUWJwKH_3ohkD3yYnB6UUGvdlStrOhcrc56BeKkQ_7rrg==",
+            "format": "openai-responses-v1",
+            "id": "rs_08bb6da93812703e0169e3d9a78c148196832ae280c08d8600",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 518,
+    "completion_tokens": 3048,
+    "total_tokens": 3566,
+    "cost": 0.013981,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.013981,
+      "upstream_inference_prompt_cost": 0.0005698,
+      "upstream_inference_completions_cost": 0.0134112
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1472,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

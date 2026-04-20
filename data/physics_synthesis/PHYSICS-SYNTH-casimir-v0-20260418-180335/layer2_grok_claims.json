@@ -1,0 +1,296 @@
+{
+  "model": "unknown",
+  "total_claims": 30,
+  "claims": [
+    {
+      "id": 1,
+      "text": "The quantized electromagnetic field satisfies perfect-conductor boundary conditions (\\(\\mathbf{E}_\\parallel = 0\\) and \\(\\mathbf{B}_\\perp = 0\\)) at the plates, taken to lie at \\(z = 0\\) and \\(z = d\\).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "The allowed frequencies are \\(\\omega_{n,\\mathbf{k}_\\perp} = c \\kappa_n\\) with \\(\\kappa_n = \\sqrt{k_\\perp^2 + (n\\pi/d)^2}\\) for \\(n = 0, 1, 2, \\dots\\), where \\(\\mathbf{k}_\\perp = (k_x, k_y)\\) is continuous.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        1
+      ],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "For \\(n = 0\\) there is one polarization; for \\(n \\geq 1\\) there are two degenerate polarizations.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        1,
+        2
+      ],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "The zero-point energy per unit area follows from summing \\(\\frac{1}{2} \\hbar \\omega\\) over all modes: \\[\\frac{U(d)}{A} = \\frac{\\hbar c}{4\\pi} \\int_0^\\infty k \\, dk \\Bigl[ \\kappa_0 + 2 \\sum_{n=1}^\\infty \\kappa_n \\Bigr],\\] where \\(\\kappa_n = \\sqrt{k^2 + (n\\pi/d)^2}\\) (and \\(\\kappa_0 = k\\)).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        2,
+        3
+      ],
+      "notes": "Prefactor should be \\(\\hbar c/(4\\pi)\\); check angular integration factor."
+    },
+    {
+      "id": 5,
+      "text": "This expression is formally divergent.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        4
+      ],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "To regularize, scale variables by setting \\(k = (\\pi/d) u\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        4
+      ],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "This yields the equivalent form \\[\\frac{U(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3} \\int_0^\\infty u \\, du \\Bigl[ \\sqrt{u^2} + 2 \\sum_{n=1}^\\infty \\sqrt{u^2 + n^2} \\Bigr].\\]",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        4,
+        6
+      ],
+      "notes": "Check Jacobian and prefactor from substitution."
+    },
+    {
+      "id": 8,
+      "text": "The \\(n = 0\\) term is independent of \\(d\\) and does not contribute to the force upon differentiation with respect to \\(d\\); it is omitted below.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        7
+      ],
+      "notes": "n=0 term after rescaling still has d^{-3} prefactor; claim is questionable."
+    },
+    {
+      "id": 9,
+      "text": "Introduce the regularization parameter \\(s\\) (with \\(\\operatorname{Re}(s) > 3\\) for convergence) by replacing the integrand factor \\((u^2 + n^2)^{1/2}\\) with \\((u^2 + n^2)^{-s/2}\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        7
+      ],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "\\[Z(s) = 2 \\sum_{n=1}^\\infty \\int_0^\\infty u \\, (u^2 + n^2)^{-s/2} \\, du.\\]",
+      "type": "definition",
+      "provenance": "derived",
+      "depends_on": [
+        9
+      ],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "The regularized energy per unit area is then identified with the analytic continuation of \\[\\frac{U(d,s)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3} \\, Z(s)\\] evaluated at \\(s = -1\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        7,
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "For each term in the sum, substitute \\(v = u/n\\): \\[\\int_0^\\infty u \\, (u^2 + n^2)^{-s/2} \\, du = n^{2-s} \\int_0^\\infty v \\, (v^2 + 1)^{-s/2} \\, dv.\\]",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "The \\(v\\)-integral evaluates to \\(1/(s-2)\\) (for \\(\\operatorname{Re}(s) > 2\\); this form is retained for continuation).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        12
+      ],
+      "notes": "Should verify: \\(\\int_0^\\infty v(v^2+1)^{-s/2}dv = 1/(s-2)\\)."
+    },
+    {
+      "id": 14,
+      "text": "Thus, \\[Z(s) = \\frac{2}{s-2} \\sum_{n=1}^\\infty n^{2-s} = \\frac{2 \\, \\zeta(s-2)}{s-2},\\] where \\(\\zeta\\) is the Riemann zeta function.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        10,
+        12,
+        13
+      ],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "Analytically continue to \\(s = -1\\): here \\(s-2 = -3\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        14
+      ],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "\\(\\zeta(-3) = 1/120\\) (a known value obtained from the functional equation of \\(\\zeta(z)\\)).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "Therefore, \\[Z(-1) = \\frac{2 \\cdot (1/120)}{-3} = -\\frac{1}{180}.\\]",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        14,
+        15,
+        16
+      ],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "The Casimir energy per unit area is \\[\\frac{U(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3} \\left( -\\frac{1}{180} \\right) = -\\frac{\\pi^2 \\hbar c}{720 d^3}.\\]",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        11,
+        17
+      ],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "This is the finite part after subtracting the free-space contribution implicit in the analytic continuation.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        18
+      ],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "The force per unit area is \\[\\frac{F(d)}{A} = -\\frac{d}{dd} \\left( \\frac{U(d)}{A} \\right).\\]",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Standard thermodynamic relation for force from energy."
+    },
+    {
+      "id": 21,
+      "text": "Differentiating \\(-K/d^3\\) (\\(K = \\pi^2 \\hbar c / 720 > 0\\)) gives \\[\\frac{F(d)}{A} = -\\frac{3K}{d^4} = -\\frac{\\pi^2 \\hbar c}{240 d^4}.\\]",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        18,
+        20
+      ],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "The negative sign implies attraction.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        21
+      ],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "Plates are perfectly conducting (frequency-independent boundary conditions).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "Plates are infinite in extent (continuum in \\(k_\\perp\\)).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "The system is at zero temperature.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "The system is in vacuum.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "Only propagating modes are quantized; evanescent waves are neglected.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Evanescent modes are not typically relevant for Casimir between conductors."
+    },
+    {
+      "id": 28,
+      "text": "The zeta regularization is justified a posteriori by agreement with cutoff methods (e.g., exponential cutoffs \\(\\exp(-\\sigma \\kappa_n)\\) with \\(\\sigma \\to 0^+\\) after subtracting the free vacuum).",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "The zeta regularization is also justified by the physical interpretation that real mirrors are imperfect at high frequencies.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "The final Casimir force per unit area is \\(-\\dfrac{\\pi^{2} \\hbar c}{240 d^{4}}\\).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        21
+      ],
+      "notes": ""
+    }
+  ]
+}

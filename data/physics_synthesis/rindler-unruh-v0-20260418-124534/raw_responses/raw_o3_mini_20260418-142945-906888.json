@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776540580-F0A8eRaBUowuWLeOQSyP",
+  "object": "chat.completion",
+  "created": 1776540580,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The metric is correctly stated for 1+1 Minkowski spacetime with the (+,-) signature.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49upbaHR4-YAUllG9iouB83x1jbwz2I8KBuairwwuE9DLxyDRamsmnIbpn-YsKj7XVsH5gDxMGvk9Tfv9II8wHL7VrdrppVtBcCH6kcUuP90ot3Um_QaJT8vvX02tzALsQMy0mqFwaS_MaVQXMe93JUtK8E59iX5COFRs_igma90x_Ar0JuIiFwdw3dWgAOPumNxWu0b7sayjiogEksXCDXcGCfL_aal6whpx7scf0scg6s4jW8eHJ_x7Qk9b5YGuTLkJdDzS7uvEhzi7w0wwDYSHvcAlttxDXAMiaDDVyAFd9PteB2cdqZ2cbzj3tWQCwY-_-7XA6CeYm6smBnjzAKFfvGIeUswDW8jP17Hhz5PTpRfZeT2LFjIvayDrMgSGXpnBEvNE0AIEG8BDQ_LmujS_WlGhYv66eCE1WZg9QU3EtVaSYl7WIR0TH30nLfLvQT_5y4rNOkIgzhHm3NkdzjhW-sasm5VJi1s-xw2Rr0xJL1GXJ3GFCh3YuVffn37rqiuWchJJq8zW9rnRqcch7nCOw==",
+            "format": "openai-responses-v1",
+            "id": "rs_0d469a790e67dd850169e3dba4f0c48195a3fe113dd1e82315",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 519,
+    "completion_tokens": 1356,
+    "total_tokens": 1875,
+    "cost": 0.0065373,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0065373,
+      "upstream_inference_prompt_cost": 0.0005709,
+      "upstream_inference_completions_cost": 0.0059664
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 640,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

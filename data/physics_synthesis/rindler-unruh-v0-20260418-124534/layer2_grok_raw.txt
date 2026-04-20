@@ -1,0 +1,425 @@
+```json
+{
+  "model": "unknown",
+  "total_claims": 52,
+  "claims": [
+    {
+      "id": 1,
+      "text": "Consider Minkowski spacetime in 1+1 dimensions with metric signature (+,-): ds² = dt² - dx².",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "An observer with constant proper acceleration a > 0 (in the +x direction) follows a worldline x^μ(τ) parameterized by proper time τ, where the 4-velocity u^μ = dx^μ/dτ satisfies u^μ u_μ = 1, a^μ = Du^μ/dτ, a^μ u_μ = 0.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The proper acceleration scalar is α = √(-a^μ a_μ) = a (constant).",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [2],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "Introduce the rapidity φ(τ) via dt/dτ = cosh φ, dx/dτ = sinh φ.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1, 2],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "This automatically satisfies u^μ u_μ = 1.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1, 4],
+      "notes": "cosh²φ - sinh²φ = 1, correct."
+    },
+    {
+      "id": 6,
+      "text": "Differentiating and imposing constant proper acceleration yields dφ/dτ = a.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [3, 4, 5],
+      "notes": "Intermediate steps omitted but standard."
+    },
+    {
+      "id": 7,
+      "text": "Choosing φ(0) = 0, we get φ = aτ.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "Integration gives the worldline t(τ) = (1/a)sinh(aτ), x(τ) = (1/a)cosh(aτ).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [4, 7],
+      "notes": "Initial conditions t(0)=0, x(0)=1/a assumed implicitly."
+    },
+    {
+      "id": 9,
+      "text": "Eliminating τ produces x² - t² = 1/a², which is a hyperbola in Minkowski coordinates (one branch with x > |t|).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "Introduce Rindler coordinates (η, ξ) via the explicit transformation t = (1/a)e^{aξ} sinh(aη), x = (1/a)e^{aξ} cosh(aη), where η ∈ (-∞,+∞) and ξ ∈ (-∞,+∞).",
+      "type": "definition",
+      "provenance": "derived",
+      "depends_on": [8, 9],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "At fixed ξ = 0, this reduces exactly to the hyperbolic worldline above with proper time τ = η.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8, 10],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "The inverse transformation is η = (1/(2a))ln((x+t)/(x-t)), ξ = (1/(2a))ln[a²(x² - t²)].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [10],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "The differentials are dt = e^{aξ}[sinh(aη) dξ + cosh(aη) dη], dx = e^{aξ}[cosh(aη) dξ + sinh(aη) dη].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [10],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "Substituting into ds² = dt² - dx² gives dt² - dx² = e^{2aξ}(dη² - dξ²).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1, 13],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "Thus (restoring transverse directions) ds² = e^{2aξ}(dη² - dξ²) - dy² - dz².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [14],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "For an observer at constant ξ, dξ = dy = dz = 0, so ds² = e^{2aξ} dη².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "The proper time is therefore dτ = e^{aξ} dη.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [16],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "The 4-acceleration magnitude measured by this observer is a e^{-aξ}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15, 17],
+      "notes": "Stated without explicit derivation."
+    },
+    {
+      "id": 19,
+      "text": "In particular, the observer at ξ = 0 has proper acceleration exactly a.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [18],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "The Rindler horizon is the surface ξ → -∞.",
+      "type": "definition",
+      "provenance": "derived",
+      "depends_on": [10, 15],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "In Rindler coordinates this appears as a coordinate singularity: g_{ηη} = e^{2aξ} → 0 while all curvature invariants remain zero (the spacetime is flat).",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [15, 20],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "t + x = a^{-1} exp[a(η + ξ)], t - x = -a^{-1} exp[a(ξ - η)].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [10],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "As ξ → -∞ at fixed finite η, both t+x → 0 and t-x → 0, i.e., the surface approaches the lightlike lines x = ±t.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [22, 20],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "These are null because ds² = 0 along dt = ±dx.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1, 23],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "These are event horizons for the Rindler observers: signals from beyond ξ = -∞ can never reach them.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [23, 24],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "The coordinate singularity is removable by returning to Minkowski coordinates, where the geometry is regular across x = |t|.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [21, 23],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "Consider a massless scalar field φ obeying the wave equation □φ = 0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "In Minkowski coordinates the field admits a mode expansion in plane-wave basis functions that are positive-frequency with respect to Minkowski time t: φ(x) = ∫₀^∞ dω/√(4πω) [a_ω e^{-iωt+ikx} + a_ω† e^{iωt-ikx}].",
+      "type": "derivation_step",
+      "provenance": "cited",
+      "depends_on": [27],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "The Minkowski vacuum |0_M⟩ is defined by a_ω|0_M⟩ = 0 for all ω > 0.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [28],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "A uniformly accelerating observer uses proper time τ ∝ η and therefore regards modes that are positive-frequency with respect to Rindler time η as defining his particles.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [17, 27],
+      "notes": "Key physical assumption about particle definition."
+    },
+    {
+      "id": 31,
+      "text": "The Rindler mode functions (right wedge) satisfying the wave equation and positive-frequency condition ∂_η u_ω^R ∝ -iω u_ω^R (ω > 0) are u_ω^R(η,ξ) = (1/√(4πω)) e^{-iωη} f(ξ).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15, 27, 30],
+      "notes": "f(ξ) not explicitly determined."
+    },
+    {
+      "id": 32,
+      "text": "The field admits an alternative expansion φ(x) = ∫₀^∞ dω/√(4πω) [b_ω u_ω^R + b_ω† (u_ω^R)* + left-wedge terms], with associated vacuum |0_R⟩ annihilated by all b_ω.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [31],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "The two complete orthonormal bases {u_ω^M} and {u_ω^R} are linearly related by a Bogoliubov transformation (key physical assumption: the field operator φ is unique and can be expanded in either basis; the transformation coefficients are determined by the Klein-Gordon inner product on a Cauchy surface).",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [28, 32],
+      "notes": "Stated as key physical assumption."
+    },
+    {
+      "id": 34,
+      "text": "u_ω^M = ∫₀^∞ dω' (α_{ωω'} u_{ω'}^R + β_{ωω'} (u_{ω'}^R)*).",
+      "type": "derivation_step",
+      "provenance": "cited",
+      "depends_on": [33],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "The inverse transformation expresses the Rindler operators in terms of Minkowski ones: b_ω = ∫₀^∞ dω' (α_{ωω'}* a_{ω'} - β_{ωω'}* a_{ω'}†).",
+      "type": "derivation_step",
+      "provenance": "cited",
+      "depends_on": [34],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "text": "The left-wedge modes must be included to obtain a complete basis across the full spacetime; they mix with the right-wedge modes through the horizon.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [32, 33],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "The Minkowski vacuum is therefore not the Rindler vacuum.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [33, 35],
+      "notes": "Follows from β ≠ 0."
+    },
+    {
+      "id": 38,
+      "text": "The expectation value of the Rindler number operator in the Minkowski vacuum is ⟨N_ω⟩ ≡ ⟨0_M|b_ω† b_ω|0_M⟩ = ∫₀^∞ dω' |β_{ωω'}|².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [29, 35],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "Explicit evaluation of the overlap integrals (using the relation U ∝ e^{aη} between null coordinates and performing a contour integration or invoking the Gamma-function identity Γ(1+ix)Γ(-ix) = 2π/(e^{2πx}-1)) yields |β_{ωω'}|² = δ(ω - ω') · 1/(e^{2πω/a}-1).",
+      "type": "derivation_step",
+      "provenance": "cited",
+      "depends_on": [34, 38],
+      "notes": "Invoked without explicit derivation, as stated."
+    },
+    {
+      "id": 40,
+      "text": "The Gamma-function identity used is Γ(1+ix)Γ(-ix) = 2π/(e^{2πx}-1).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Should be πx/(sinh(πx)); stated identity looks incorrect."
+    },
+    {
+      "id": 41,
+      "text": "Consequently ⟨N_ω⟩ = 1/(e^{2πω/a} - 1).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [38, 39],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "This is precisely a Bose-Einstein thermal distribution ⟨N_ω⟩ = 1/(e^{ω/T} - 1).",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [41],
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "text": "Comparing 2πω/a = ω/T gives T = a/(2π) in natural units.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [41, 42],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "text": "Restoring ℏ, c, k_B gives the Unruh temperature T = ℏa/(2πck_B).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [43],
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "text": "The factor 2π originates from the periodicity in imaginary Rindler time η → η + 2πi/a that makes the Minkowski vacuum appear thermal to the accelerated observer.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [10, 44],
+      "notes": "Connection to Euclidean/KMS periodicity."
+    },
+    {
+      "id": 46,
+      "text": "The same result follows from the reduced density matrix obtained by tracing over the left wedge: ρ_R = Tr_L |0_M⟩⟨0_M| is thermal at the Unruh temperature.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [36, 44],
+      "notes": "Stated without derivation."
+    },
+    {
+      "id": 47,
+      "text": "All steps up to the explicit form of |β_{ωω'}|² are exact.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [38],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "text": "The overlap integral itself is a standard but technical result (invoking analytic continuation across the Rindler horizon); it is invoked here without performing the contour integration explicitly.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [39],
+      "notes": "Model explicitly flags this as invoked."
+    },
+    {
+      "id": 49,
+      "text": "The Rindler coordinates cover the right Rindler wedge (x > |t|).",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [10],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "text": "Transverse coordinates y, z are unchanged in the Rindler transformation.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [10],
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "text": "The wedges ξ > -∞ and ξ < -∞ correspond to causally disconnected regions.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [25],
+      "notes": "ξ < -∞ is not well-defined; means beyond the horizon."
+    },
+    {
+      "id": 52,
+      "text": "The final Unruh temperature is T = ℏa/(2πck_B).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [44],
+      "notes": ""
+    }
+  ],
+  "total_claims": 52
+}
+```

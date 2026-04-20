@@ -1,0 +1,533 @@
+{
+  "model": "unknown",
+  "total_claims": 52,
+  "claims": [
+    {
+      "id": 1,
+      "text": "We assume spherical symmetry.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "We assume static spacetime (time-independent, non-rotating).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "We assume vacuum outside the mass, so T_{\u03bc\u03bd}=0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "Einstein's equations reduce to R_{\u03bc\u03bd}=0 since G_{\u03bc\u03bd}=R_{\u03bc\u03bd}-\u00bdg_{\u03bc\u03bd}R=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        3
+      ],
+      "notes": "Requires taking trace to show R=0 first; step is compressed but correct."
+    },
+    {
+      "id": 5,
+      "text": "The most general static, spherically symmetric line element in coordinates (t,r,\u03b8,\u03c6) can be written as ds\u00b2=-e^{2\u03a6(r)}c\u00b2dt\u00b2+e^{2\u039b(r)}dr\u00b2+r\u00b2d\u03b8\u00b2+r\u00b2sin\u00b2\u03b8 d\u03c6\u00b2.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        1,
+        2
+      ],
+      "notes": "Standard result; cross terms can be eliminated by coordinate choice."
+    },
+    {
+      "id": 6,
+      "text": "The metric is diagonal with g_{tt}=-e^{2\u03a6}c\u00b2, g_{rr}=e^{2\u039b}, g_{\u03b8\u03b8}=r\u00b2, g_{\u03c6\u03c6}=r\u00b2sin\u00b2\u03b8.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "The inverse metric has g^{tt}=-e^{-2\u03a6}/c\u00b2, g^{rr}=e^{-2\u039b}, g^{\u03b8\u03b8}=1/r\u00b2, g^{\u03c6\u03c6}=1/(r\u00b2sin\u00b2\u03b8).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        6
+      ],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "The nontrivial Ricci tensor components are R_{tt}=0, R_{rr}=0, R_{\u03b8\u03b8}=0, with R_{\u03c6\u03c6}=sin\u00b2\u03b8 R_{\u03b8\u03b8}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        4,
+        6
+      ],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "R_{tt}=e^{2(\u03a6-\u039b)}c\u00b2(\u03a6''+\u03a6'\u00b2-\u03a6'\u039b'+2\u03a6'/r)=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        6,
+        7,
+        8
+      ],
+      "notes": "Standard Ricci component for this ansatz; computation omitted."
+    },
+    {
+      "id": 10,
+      "text": "R_{rr}=-\u03a6''-\u03a6'\u00b2+\u03a6'\u039b'+2\u039b'/r=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        6,
+        7,
+        8
+      ],
+      "notes": "Standard Ricci component for this ansatz; computation omitted."
+    },
+    {
+      "id": 11,
+      "text": "R_{\u03b8\u03b8}=1-e^{-2\u039b}(1-r\u039b'+r\u03a6')=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        6,
+        7,
+        8
+      ],
+      "notes": "Standard Ricci component for this ansatz; computation omitted."
+    },
+    {
+      "id": 12,
+      "text": "Primes denote derivatives with respect to r.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "From R_{tt}=0: \u03a6''+\u03a6'\u00b2-\u03a6'\u039b'+2\u03a6'/r=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        9
+      ],
+      "notes": "Dividing out the prefactor e^{2(\u03a6-\u039b)}c\u00b2."
+    },
+    {
+      "id": 14,
+      "text": "From R_{rr}=0: -\u03a6''-\u03a6'\u00b2+\u03a6'\u039b'+2\u039b'/r=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "Adding the equations from R_{tt}=0 and R_{rr}=0 gives (2/r)(\u03a6'+\u039b')=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        13,
+        14
+      ],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "Hence \u03a6'+\u039b'=0, so \u03a6(r)=-\u039b(r)+const.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        15
+      ],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "The constant can be absorbed into a rescaling of the time coordinate t, so we take \u03a6(r)=-\u039b(r).",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [
+        16
+      ],
+      "notes": "Standard coordinate freedom argument."
+    },
+    {
+      "id": 18,
+      "text": "Thus e^{2\u03a6}=e^{-2\u039b}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        17
+      ],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "Let f(r)\u2261e^{2\u03a6(r)}=e^{-2\u039b(r)}.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        18
+      ],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "The metric becomes ds\u00b2=-f(r)c\u00b2dt\u00b2+dr\u00b2/f(r)+r\u00b2d\u03a9\u00b2, where d\u03a9\u00b2=d\u03b8\u00b2+sin\u00b2\u03b8 d\u03c6\u00b2.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5,
+        19
+      ],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "Using R_{\u03b8\u03b8}=0: 1-e^{-2\u039b}(1-r\u039b'+r\u03a6')=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        11
+      ],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "Since \u03a6'=-\u039b', we have 1-r\u039b'+r\u03a6'=1-2r\u039b'.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        17,
+        21
+      ],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "Also e^{-2\u039b}=f(r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        19
+      ],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "So R_{\u03b8\u03b8}=0 becomes 1-f(r)(1-2r\u039b')=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        21,
+        22,
+        23
+      ],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "Since f=e^{-2\u039b}, differentiating gives f'=-2\u039b'e^{-2\u039b}=-2\u039b'f.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        19
+      ],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "Hence \u039b'=-f'/(2f).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        25
+      ],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "Substituting into R_{\u03b8\u03b8}=0: 1-f(1+rf'/f)=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        24,
+        26
+      ],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "This simplifies to 1-f-rf'=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        27
+      ],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "Thus rf'+f=1, which is d/dr(rf)=1.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        28
+      ],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "Integrating gives rf=r+C, where C is an integration constant.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        29
+      ],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "Therefore f(r)=1+C/r.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        30
+      ],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "text": "The metric is ds\u00b2=-(1+C/r)c\u00b2dt\u00b2+dr\u00b2/(1+C/r)+r\u00b2d\u03a9\u00b2.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        20,
+        31
+      ],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "Far from the mass, spacetime must approach flat Minkowski space, so f(r)\u21921 as r\u2192\u221e.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Asymptotic flatness boundary condition."
+    },
+    {
+      "id": 34,
+      "text": "The form f(r)=1+C/r already satisfies f(r)\u21921 as r\u2192\u221e.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        31,
+        33
+      ],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "In the weak-field Newtonian limit, g_{tt}\u2248-(1+2\u03c6_N/c\u00b2), where \u03c6_N is the Newtonian potential.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Standard weak-field limit of GR."
+    },
+    {
+      "id": 36,
+      "text": "The Newtonian potential outside a mass M is \u03c6_N(r)=-GM/r.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "From the metric, g_{tt}/c\u00b2=-(1+C/r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        32
+      ],
+      "notes": "Model writes g_{tt}=-f(r)c\u00b2dt\u00b2, seems to mean the coefficient."
+    },
+    {
+      "id": 38,
+      "text": "In the weak field, 1+C/r=1+2\u03c6_N/c\u00b2=1-2GM/(c\u00b2r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        35,
+        36,
+        37
+      ],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "Hence C=-2GM/c\u00b2.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        38
+      ],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "Therefore f(r)=1-2GM/(c\u00b2r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        31,
+        39
+      ],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "The Schwarzschild metric is ds\u00b2=-(1-2GM/(c\u00b2r))c\u00b2dt\u00b2+dr\u00b2/(1-2GM/(c\u00b2r))+r\u00b2(d\u03b8\u00b2+sin\u00b2\u03b8 d\u03c6\u00b2).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        20,
+        40
+      ],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "This is the unique static, spherically symmetric vacuum solution: Birkhoff's theorem guarantees this.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        41
+      ],
+      "notes": "Birkhoff's theorem also removes the static assumption."
+    },
+    {
+      "id": 43,
+      "text": "The metric coefficients become singular when 1-2GM/(c\u00b2r)=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        41
+      ],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "text": "Solving gives r=2GM/c\u00b2.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        43
+      ],
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "text": "This defines the Schwarzschild radius: r_s=2GM/c\u00b2.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        44
+      ],
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "text": "At r=r_s, g_{tt}=0 and g_{rr}\u2192\u221e.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        41,
+        45
+      ],
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "text": "The singularity at r=r_s is a coordinate singularity, not a physical curvature singularity.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [
+        45
+      ],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "text": "The true physical singularity is at r=0.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "text": "The Kretschner scalar is K=R_{\u03bc\u03bd\u03c1\u03c3}R^{\u03bc\u03bd\u03c1\u03c3}=48G\u00b2M\u00b2/(c\u2074r\u2076).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        41
+      ],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "text": "At r=r_s, the Kretschner scalar is finite; at r=0, it diverges.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [
+        45,
+        49
+      ],
+      "notes": "Confirms r_s is coordinate singularity, r=0 is physical."
+    },
+    {
+      "id": 51,
+      "text": "The surface r=r_s is the event horizon of a Schwarzschild black hole.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [
+        45
+      ],
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "text": "In regular coordinates (e.g. Eddington\u2013Finkelstein or Kruskal\u2013Szekeres), spacetime is smooth at r=r_s.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [
+        47,
+        51
+      ],
+      "notes": ""
+    }
+  ]
+}

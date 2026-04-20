@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776547643-sb6af4KNF0G7uXlm7Q9N",
+  "object": "chat.completion",
+  "created": 1776547643,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Evaluating the differential equation**\n\nI'm thinking about the differential equation and realize it might be dimensionally incorrect on its surface. First, checking unit consistency: 'r' is a length, and e^(2\u03bd) is unitless, so their product is a length. The derivative d/dr doesn\u2019t have a unit. The right-hand side is 1, which seems fine. Yet, the manipulation \"d/dr(r e^(2\u03bd))=1\" doesn\u2019t seem to follow from the standard Einstein field equations. Instead, it aligns with the known equation for the metric function: d/dr(r(1-e^{-2\u03bb}))=0, not \"r e^(2\u03bd).\"",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Evaluating the differential equation**\n\nI'm thinking about the differential equation and realize it might be dimensionally incorrect on its surface. First, checking unit consistency: 'r' is a length, and e^(2\u03bd) is unitless, so their product is a length. The derivative d/dr doesn\u2019t have a unit. The right-hand side is 1, which seems fine. Yet, the manipulation \"d/dr(r e^(2\u03bd))=1\" doesn\u2019t seem to follow from the standard Einstein field equations. Instead, it aligns with the known equation for the metric function: d/dr(r(1-e^{-2\u03bb}))=0, not \"r e^(2\u03bd).\"",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_dQWHM6kWCXD9OBsY8tYS9TDQPbpeHe5h45EQ7eyNNvDIGVbsjEPLu-f0H_c5uSrK_lw3pFBjIkWmp9ERA0fl_REiyzYb443FkQjcKHXdMvEzRyyYN9JWhxbiHS1jFSxR8i7XH1D925Vr8gLVivnDLoluMq1qPssx9HtgeayYJfsAmcxxfsX1BkSBge9ZfCcrzhnTm1pYBSMO5N-yBmCtvWeD_bB61Ln35l09Ru-nwf9a1svtIQ_IK2NLRI7lYIam9Hf0fyY6kHZCRlFCLkpU2vxPHCXIZtdhv4XbFWmgqG7UlbRJrPmFwh5QKk8pyqHbJDRbLF46exVaYEuKHuoVJadMOR1GGfkX98sfcGuXp9toojhdhuSXTuU5_LMnzCoohkKRqhWS05Ni4ZiLX-eePOy8saTOIJlyQqdIC5XrsK3PMDkgmreypKC0e4rtQbXEIXXRb-DtEwxOoBwZSHYPtlTrt9Wn1qmgPhitAPyj0AUkOrWo8ho30f20Pv1JshjOCBCuV5JY57AADLeu1ujTCrow==",
+            "format": "openai-responses-v1",
+            "id": "rs_07d4005a3b5bde5f0169e3f73df4b48190bce5fbc80023fc9b",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 363,
+    "completion_tokens": 4096,
+    "total_tokens": 4459,
+    "cost": 0.0184217,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0184217,
+      "upstream_inference_prompt_cost": 0.0003993,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

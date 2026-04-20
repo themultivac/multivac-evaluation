@@ -1,0 +1,165 @@
+Below is one complete derivation of the two parts of the problem. In what follows we use units in which the speed of light is explicit (i.e. we keep factors of \( c \)) though often one works in units where \( c=1 \). We also include factors of \( \hbar \) and \( k_B \) when needed.
+
+──────────────────────────────
+Part 1. The Rindler Coordinates
+
+We start in (1+1)-dimensional Minkowski spacetime with coordinates \((t,x)\) and metric
+\[
+ds^2 = dt^2 - dx^2~.
+\]
+
+An observer undergoing constant proper acceleration \(a\) follows a worldline such that the magnitude of its 4-acceleration (as measured in the instantaneous rest frame) is constant. A standard result (which you may verify by computing the 4-acceleration of the following trajectory) is that the worldline may be written as
+\[
+t(\tau) = \frac{1}{a}\sinh(a\tau),\qquad x(\tau) = \frac{1}{a}\cosh(a\tau)~,
+\]
+where \(\tau\) is the proper time. One easily checks that
+\[
+x^2 - t^2 = \frac{1}{a^2}~.
+\]
+Thus the worldline is a hyperbola in Minkowski space. (This derivation assumes no loss of generality—we have chosen the initial conditions so that the observer is at rest at \(\tau=0\) in the Rindler “frame”.)
+
+Now, because the accelerated observer only has causal contact with a portion of Minkowski space (the region \(x>|t|\)), it is useful to introduce coordinates adapted to these observers. These are the “Rindler coordinates” \((\eta,\xi)\) defined as follows:
+\[
+t = \xi\sinh\eta,\qquad x = \xi\cosh\eta~,
+\]
+with the coordinate ranges
+\[
+\xi > 0\quad \text{and}\quad -\infty < \eta < \infty~.
+\]
+Notice that inverting these relations gives
+\[
+\xi = \sqrt{x^2-t^2},\qquad \tanh\eta=\frac{t}{x}~,
+\]
+so that the chart covers the region
+\[
+x > |t|~,
+\]
+which is sometimes called the “right Rindler wedge.”
+
+Let us now compute the metric in these coordinates. Differentiating,
+\[
+dt = \sinh\eta\, d\xi + \xi\cosh\eta\, d\eta, \qquad
+dx = \cosh\eta\, d\xi + \xi\sinh\eta\, d\eta~.
+\]
+Thus,
+\[
+\begin{split}
+ds^2 &= dt^2 - dx^2\\[1mm]
+&=\Bigl[\sinh\eta\, d\xi + \xi\cosh\eta\, d\eta\Bigr]^2 - \Bigl[\cosh\eta\, d\xi + \xi\sinh\eta\, d\eta\Bigr]^2\\[1mm]
+&= \bigl(\sinh^2\eta -\cosh^2\eta\bigr)\,d\xi^2 - \xi^2\bigl(\cosh^2\eta -\sinh^2\eta\bigr)\,d\eta^2\\[1mm]
+&= -d\xi^2 + \xi^2 d\eta^2~,
+\end{split}
+\]
+where we have used the hyperbolic identity \(\cosh^2\eta - \sinh^2\eta = 1\). It is customary to write this metric in the form
+\[
+ds^2 = \xi^2 d\eta^2 - d\xi^2~.
+\]
+The time coordinate \(\eta\) is known as Rindler time and the spatial coordinate \(\xi\) parametrizes the distance from the “Rindler horizon.”
+
+An observer with constant \(\xi\) remains at a fixed spatial position with respect to the Rindler coordinate system. In particular, if we choose
+\[
+\xi=\frac{1}{a}~,
+\]
+then from
+\[
+t=\frac{1}{a}\sinh\eta,\qquad x=\frac{1}{a}\cosh\eta,
+\]
+we recover precisely the hyperbolic worldline of an observer with constant proper acceleration \(a\). (Notice that along a worldline of constant \(\xi\) the proper time \(\tau\) is related to the coordinate \(\eta\) by \(d\tau = \xi\, d\eta = \frac{d\eta}{a}\); hence \(\eta=a\tau\).)
+
+The Rindler horizon is identified by the limit in which the metric coefficient in front of \(d\eta^2\) goes to zero. That is, the coordinate singularity appears at
+\[
+\xi=0~.
+\]
+Viewed from Minkowski coordinates, recall that
+\[
+\xi = \sqrt{x^2 - t^2}~.
+\]
+Thus \(\xi=0\) if and only if 
+\[
+x^2-t^2=0 \quad\Longrightarrow\quad x=\pm t~.
+\]
+But these surfaces, \(x=t\) and \(x=-t\), are precisely the null planes in Minkowski spacetime. Hence the Rindler horizon is a null surface in Minkowski space, even though in the Rindler coordinate system it appears as a coordinate singularity where the metric is not invertible.
+
+──────────────────────────────
+Part 2. Derivation of the Unruh Temperature
+
+Now consider a free, massless scalar quantum field \(\phi\) in Minkowski space. In the ordinary (inertial) Minkowski quantization, one expands the field in plane wave solutions. In our simplified setting (ignoring transverse dimensions) one may write
+\[
+\phi(t,x) = \int_0^\infty \frac{d\omega}{\sqrt{2\pi\,2\omega}}\,\Bigl[a_\omega\,e^{-i\omega t}e^{+ikx} + a_\omega^\dagger\,e^{+i\omega t}e^{-ikx}\Bigr]~,
+\]
+where the creation and annihilation operators \(a_\omega^\dagger,\, a_\omega\) satisfy the usual commutation relations, and the Minkowski vacuum \(|0_M\rangle\) is defined by
+\[
+a_\omega|0_M\rangle=0\quad \forall\,\omega~.
+\]
+
+On the other hand, in the Rindler wedge it is natural to expand the field in eigenmodes of the Rindler time coordinate \(\eta\). (Strictly speaking, one must introduce two sets of modes, one for the right Rindler wedge and one for the left, but here we concentrate on the right wedge.) In Rindler coordinates the field may be expanded as
+\[
+\phi(\eta,\xi) = \int_{0}^{\infty} d\Omega\,\Bigl[b_{\Omega}\,f_{\Omega}(\xi)e^{-i\Omega\eta} + b_{\Omega}^\dagger\,f_{\Omega}^*(\xi)e^{i\Omega\eta}\Bigr]~,
+\]
+where the \(b_\Omega\) are the annihilation operators with respect to Rindler time and the Rindler vacuum \(|0_R\rangle\) is defined by
+\[
+b_\Omega\,|0_R\rangle = 0\quad \forall\, \Omega~.
+\]
+
+The key point now is that the two sets of modes (Minkowski and Rindler) are related by a Bogoliubov transformation. In other words, one may express the Rindler operators in terms of the Minkowski ones:
+\[
+b_\Omega = \int_0^\infty d\omega\,\Bigl[\alpha_{\Omega\omega}\, a_\omega + \beta_{\Omega\omega}^*\, a_\omega^\dagger\Bigr]~.
+\]
+A crucial role is played by the coefficients \(\beta_{\Omega\omega}\). Their nonvanishing implies that the Minkowski vacuum (which contains no particles in the Minkowski basis) contains a nonzero admixture of both positive and negative frequency parts when expressed in the Rindler basis.
+
+A detailed derivation (which we do not repeat here) based on analyticity properties of the mode functions in the complex \(t\)-plane (or, equivalently, in \(\eta\)) shows that these coefficients satisfy the relation
+\[
+\frac{|\beta_{\Omega\omega}|^2}{|\alpha_{\Omega\omega}|^2} = e^{-2\pi\Omega/a}~.
+\]
+From this one finds that the number expectation value for Rindler quanta in the Minkowski vacuum is given by
+\[
+\langle 0_M|\,b_\Omega^\dagger b_\Omega\,|0_M\rangle = \frac{1}{e^{2\pi\Omega/a}-1}~,
+\]
+which is precisely the Bose–Einstein distribution at temperature
+\[
+T = \frac{\hbar a}{2\pi c\, k_B}~.
+\]
+That is, a uniformly accelerating observer with acceleration \(a\) sees the Minkowski vacuum as a thermal bath at temperature
+\[
+T = \frac{\hbar a}{2\pi c\, k_B}~.
+\]
+
+──────────────────────────────
+Comments on the Derivation
+
+1. In Part 1 we assumed the standard hyperbolic trajectory for constant proper acceleration and then introduced coordinates \((\eta,\xi)\) that “straighten out” the hyperbola into a worldline at fixed \(\xi\). We also showed explicitly that the Rindler metric becomes
+\[
+ds^2=\xi^2 d\eta^2-d\xi^2,
+\]
+and that the surface \(\xi=0\) (which corresponds to \(x^2-t^2=0\)) is both a null surface in Minkowski space and a coordinate singularity in Rindler coordinates.
+
+2. In Part 2 the basic physical assumption is that one may relate the Minkowski and Rindler mode decompositions via a Bogoliubov transformation. (The full derivation of the Bogoliubov coefficients is rather technical and is presented in many textbooks; here we have only stated the key result.) It is this mixing of positive and negative frequencies that leads to the interpretation of the Minkowski vacuum, when seen by a uniformly accelerating observer, as a thermal state with temperature
+\[
+T = \frac{\hbar a}{2\pi c\, k_B}~.
+\]
+
+Some of the steps in the derivation—in particular the analytic continuation leading to the result for the Bogoliubov coefficients—are heuristic in that they invoke properties of the mode functions in the complex plane. Nonetheless, this is the standard derivation of the Unruh effect.
+
+──────────────────────────────
+Final Answer
+
+1. The Rindler coordinate transformation is given by
+\[
+t=\xi\sinh\eta,\qquad x=\xi\cosh\eta,
+\]
+so that the metric becomes
+\[
+ds^2=\xi^2d\eta^2-d\xi^2.
+\]
+An observer with constant proper acceleration \(a\) follows the worldline with \(\xi=1/a\) (i.e. \(x^2-t^2=1/a^2\)). The horizon appears at \(\xi=0\) (i.e. \(x=\pm t\)), which is a null surface in Minkowski space though it is a coordinate singularity in Rindler coordinates.
+
+2. A Bogoliubov transformation between the Minkowski mode expansion and the Rindler mode expansion shows that the Minkowski vacuum appears as a thermal state to Rindler observers. The particle excitation number is
+\[
+\langle 0_M|b_\Omega^\dagger b_\Omega|0_M\rangle=\frac{1}{e^{2\pi\Omega/a}-1}\,,
+\]
+corresponding to a temperature
+\[
+T=\frac{\hbar a}{2\pi c\, k_B}\,.
+\]
+
+Any derivation equivalent to the one above is correct.

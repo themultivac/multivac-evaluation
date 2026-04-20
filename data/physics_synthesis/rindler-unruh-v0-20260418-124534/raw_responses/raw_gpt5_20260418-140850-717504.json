@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776539329-2HCoK4zcfuiMx3pVQflH",
+  "object": "chat.completion",
+  "created": 1776539329,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":20,\"verdict\":\"CONFIRMED\",\"explanation\":\"From standard Rindler transformation \\(t=\\xi\\sinh\\eta\\), total differential gives \\(dt=\\sinh\\eta\\,d\\xi+\\xi\\cosh\\eta\\,d\\eta\\).\",\"confidence\":0.99}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 509,
+    "completion_tokens": 70,
+    "total_tokens": 579,
+    "cost": 0.0023225,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0023225,
+      "upstream_inference_prompt_cost": 0.0012725,
+      "upstream_inference_completions_cost": 0.00105
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

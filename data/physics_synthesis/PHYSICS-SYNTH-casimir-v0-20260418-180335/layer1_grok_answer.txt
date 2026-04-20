@@ -1,0 +1,55 @@
+The quantized electromagnetic field satisfies perfect-conductor boundary conditions (\(\mathbf{E}_\parallel = 0\) and \(\mathbf{B}_\perp = 0\)) at the plates, taken to lie at \(z = 0\) and \(z = d\). The allowed frequencies are \(\omega_{n,\mathbf{k}_\perp} = c \kappa_n\) with \(\kappa_n = \sqrt{k_\perp^2 + (n\pi/d)^2}\) for \(n = 0, 1, 2, \dots\), where \(\mathbf{k}_\perp = (k_x, k_y)\) is continuous. For \(n = 0\) there is one polarization; for \(n \geq 1\) there are two degenerate polarizations.
+
+The zero-point energy per unit area follows from summing \(\frac{1}{2} \hbar \omega\) over all modes:
+\[
+\frac{U(d)}{A} = \frac{\hbar c}{4\pi} \int_0^\infty k \, dk \Bigl[ \kappa_0 + 2 \sum_{n=1}^\infty \kappa_n \Bigr],
+\]
+where \(\kappa_n = \sqrt{k^2 + (n\pi/d)^2}\) (and \(\kappa_0 = k\)). This expression is formally divergent.
+
+To regularize, scale variables by setting \(k = (\pi/d) u\). This yields the equivalent form
+\[
+\frac{U(d)}{A} = \frac{\hbar c \pi^2}{4 d^3} \int_0^\infty u \, du \Bigl[ \sqrt{u^2} + 2 \sum_{n=1}^\infty \sqrt{u^2 + n^2} \Bigr].
+\]
+(The \(n = 0\) term is independent of \(d\) and does not contribute to the force upon differentiation with respect to \(d\); it is omitted below.) Introduce the regularization parameter \(s\) (with \(\operatorname{Re}(s) > 3\) for convergence) by replacing the integrand factor \((u^2 + n^2)^{1/2}\) with \((u^2 + n^2)^{-s/2}\):
+\[
+Z(s) = 2 \sum_{n=1}^\infty \int_0^\infty u \, (u^2 + n^2)^{-s/2} \, du.
+\]
+The regularized energy per unit area is then identified with the analytic continuation of
+\[
+\frac{U(d,s)}{A} = \frac{\hbar c \pi^2}{4 d^3} \, Z(s)
+\]
+evaluated at \(s = -1\).
+
+For each term in the sum, substitute \(v = u/n\):
+\[
+\int_0^\infty u \, (u^2 + n^2)^{-s/2} \, du = n^{2-s} \int_0^\infty v \, (v^2 + 1)^{-s/2} \, dv.
+\]
+The \(v\)-integral evaluates to \(1/(s-2)\) (for \(\operatorname{Re}(s) > 2\); this form is retained for continuation). Thus,
+\[
+Z(s) = \frac{2}{s-2} \sum_{n=1}^\infty n^{2-s} = \frac{2 \, \zeta(s-2)}{s-2},
+\]
+where \(\zeta\) is the Riemann zeta function. Analytically continue to \(s = -1\): here \(s-2 = -3\) and \(\zeta(-3) = 1/120\) (a known value obtained from the functional equation of \(\zeta(z)\)). Therefore,
+\[
+Z(-1) = \frac{2 \cdot (1/120)}{-3} = -\frac{1}{180}.
+\]
+The Casimir energy per unit area is
+\[
+\frac{U(d)}{A} = \frac{\hbar c \pi^2}{4 d^3} \left( -\frac{1}{180} \right) = -\frac{\pi^2 \hbar c}{720 d^3}.
+\]
+(This is the finite part after subtracting the free-space contribution implicit in the analytic continuation.)
+
+The force per unit area is
+\[
+\frac{F(d)}{A} = -\frac{d}{dd} \left( \frac{U(d)}{A} \right).
+\]
+Differentiating \(-K/d^3\) (\(K = \pi^2 \hbar c / 720 > 0\)) gives
+\[
+\frac{F(d)}{A} = -\frac{3K}{d^4} = -\frac{\pi^2 \hbar c}{240 d^4}.
+\]
+(The negative sign implies attraction.)
+
+**Physical assumptions**: Plates are perfectly conducting (frequency-independent boundary conditions), infinite in extent (continuum in \(k_\perp\)), at zero temperature, and in vacuum. Only propagating modes are quantized; evanescent waves are neglected. The zeta regularization is justified *a posteriori* by agreement with cutoff methods (e.g., exponential cutoffs \(\exp(-\sigma \kappa_n)\) with \(\sigma \to 0^+\) after subtracting the free vacuum) and by the physical interpretation that real mirrors are imperfect at high frequencies.
+
+**Final Answer**
+
+\[ -\dfrac{\pi^{2} \hbar c}{240 d^{4}} \]

@@ -1,0 +1,328 @@
+```json
+{
+  "model": "unknown",
+  "total_claims": 40,
+  "claims": [
+    {
+      "id": 1,
+      "text": "We consider two infinite plates in the $xy$-plane at $z=0$ and $z=d$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "For perfect conductors, the tangential electric field $\\mathbf{E}_{\\parallel}$ must vanish at the boundaries.",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The electromagnetic field is quantized into modes characterized by wave vectors $\\mathbf{k} = (k_x, k_y, k_z)$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "Transverse directions ($x, y$): Continuous wave vectors $k_x, k_y$.",
+      "type": "assumption",
+      "provenance": "derived",
+      "depends_on": [1],
+      "notes": "Follows from infinite plate assumption."
+    },
+    {
+      "id": 5,
+      "text": "Confined direction ($z$): Boundary conditions require $k_z = n\\pi/d$ for $n = 0, 1, 2, \\dots$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1, 2],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "The frequency of each mode is $\\omega_{n, \\mathbf{k}_{\\perp}} = c \\sqrt{k_{\\perp}^2 + (n\\pi/d)^2}$, where $k_{\\perp}^2 = k_x^2 + k_y^2$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [3, 5],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "For $n \\ge 1$: There are two independent transverse polarizations (TE and TM).",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [2, 5],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "For $n = 0$: The field is independent of $z$. The TE mode vanishes ($E_{\\parallel}=0$), leaving only one polarization (TM).",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [2, 5],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "Zero-Point Energy: $E_0 = \\sum_{\\text{modes}} \\frac{1}{2} \\hbar \\omega$.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Standard QFT zero-point energy formula."
+    },
+    {
+      "id": 10,
+      "text": "The total zero-point energy $E(d)$ for area $A$ is: $$E(d) = \\frac{A \\hbar c}{2} \\left[ \\int \\frac{d^2k_{\\perp}}{(2\\pi)^2} k_{\\perp} + 2 \\sum_{n=1}^{\\infty} \\int \\frac{d^2k_{\\perp}}{(2\\pi)^2} \\sqrt{k_{\\perp}^2 + \\left(\\frac{n\\pi}{d}\\right)^2} \\right]$$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6, 7, 8, 9],
+      "notes": "First term is n=0 with one polarization; second term is n≥1 with two."
+    },
+    {
+      "id": 11,
+      "text": "Using polar coordinates $d^2k_{\\perp} = 2\\pi k_{\\perp} dk_{\\perp}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "We define the integral $f(n)$ for a single polarization: $$f(n) = \\frac{1}{2\\pi} \\int_0^{\\infty} k_{\\perp} \\sqrt{k_{\\perp}^2 + \\kappa_n^2} \\, dk_{\\perp}, \\quad \\text{where } \\kappa_n = \\frac{n\\pi}{d}$$",
+      "type": "definition",
+      "provenance": "derived",
+      "depends_on": [10, 11],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "The energy density per unit area $\\mathcal{E}(d) = E(d)/A$ is: $$\\mathcal{E}(d) = \\hbar c \\left[ \\frac{1}{2} f(0) + \\sum_{n=1}^{\\infty} f(n) \\right]$$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [10, 12],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "This integral is quartically divergent.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [12],
+      "notes": "f(n) diverges; overall sum is also divergent."
+    },
+    {
+      "id": 15,
+      "text": "We apply an exponential cutoff $e^{-\\lambda \\omega}$ to model the physical reality that metals become transparent at high frequencies (plasma frequency).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Physical motivation for regularization stated."
+    },
+    {
+      "id": 16,
+      "text": "$$f(n, \\lambda) = \\frac{1}{2\\pi} \\int_0^{\\infty} k_{\\perp} \\sqrt{k_{\\perp}^2 + \\kappa_n^2} e^{-\\lambda \\sqrt{k_{\\perp}^2 + \\kappa_n^2}} \\, dk_{\\perp}$$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [12, 15],
+      "notes": "Cutoff is $e^{-\\lambda c\\omega/c}$; uses $\\omega/c = \\sqrt{k_\\perp^2+\\kappa_n^2}$."
+    },
+    {
+      "id": 17,
+      "text": "Let $u = \\sqrt{k_{\\perp}^2 + \\kappa_n^2}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [16],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "The integral becomes: $$f(n, \\lambda) = \\frac{1}{2\\pi} \\int_{\\kappa_n}^{\\infty} u^2 e^{-\\lambda u} \\, du$$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [16, 17],
+      "notes": "Substitution: $u\\,du = k_\\perp dk_\\perp$, $k_\\perp dk_\\perp \\cdot u = u^2 du$."
+    },
+    {
+      "id": 19,
+      "text": "$$f(n, \\lambda) = \\frac{1}{2\\pi} e^{-\\lambda \\kappa_n} \\left( \\frac{\\kappa_n^2}{\\lambda} + \\frac{2\\kappa_n}{\\lambda^2} + \\frac{2}{\\lambda^3} \\right)$$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [18],
+      "notes": "Result of integrating $u^2 e^{-\\lambda u}$ from $\\kappa_n$ to $\\infty$."
+    },
+    {
+      "id": 20,
+      "text": "The free-vacuum energy density $\\mathcal{E}_{\\text{free}}$ is found by replacing the discrete sum over $n$ with an integral over $k_z$ (accounting for the density of states $dk_z/2\\pi$ and two polarizations).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [13],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "$$\\mathcal{E}_{\\text{free}} = \\hbar c \\int_0^{\\infty} f(x, \\lambda) \\, dx, \\quad \\text{where } x = \\frac{k_z d}{\\pi}$$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [20],
+      "notes": "Continuous limit of the discrete sum."
+    },
+    {
+      "id": 22,
+      "text": "The physically meaningful energy per unit area is the difference $\\Delta \\mathcal{E} = \\mathcal{E}(d) - \\mathcal{E}_{\\text{free}}$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [13, 21],
+      "notes": "Subtraction scheme to isolate plate-dependent energy."
+    },
+    {
+      "id": 23,
+      "text": "$$\\Delta \\mathcal{E} = \\hbar c \\left[ \\frac{1}{2} f(0) + \\sum_{n=1}^{\\infty} f(n) - \\int_0^{\\infty} f(x) \\, dx \\right]$$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [13, 21, 22],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "Using the Euler-Maclaurin summation formula: $$\\sum_{n=0}^{\\infty} f(n) \\approx \\int_0^{\\infty} f(x) \\, dx + \\frac{1}{2}f(0) + \\sum_{k=1}^{\\infty} \\frac{B_{2k}}{(2k)!} f^{(2k-1)}(0)$$",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Standard Euler-Maclaurin formula; sign convention matters."
+    },
+    {
+      "id": 25,
+      "text": "The difference simplifies to: $$\\Delta \\mathcal{E} = -\\hbar c \\sum_{k=1}^{\\infty} \\frac{B_{2k}}{(2k)!} f^{(2k-1)}(0)$$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [23, 24],
+      "notes": "Sign follows from rearranging Euler-Maclaurin."
+    },
+    {
+      "id": 26,
+      "text": "$f'(0) = 0$",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [19],
+      "notes": "Not explicitly derived; asserted."
+    },
+    {
+      "id": 27,
+      "text": "$f'''(0) = -\\frac{\\pi^2}{d^3}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [19],
+      "notes": "Evaluation via Leibniz rule claimed but details sparse."
+    },
+    {
+      "id": 28,
+      "text": "$f'''(0) = \\frac{1}{2\\pi} \\left( \\frac{\\pi}{d} \\right)^3 \\left[ \\frac{d^3}{d\\kappa^3} \\int_{\\kappa}^{\\infty} u^2 e^{-\\lambda u} du \\right]_{\\kappa=0}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [18, 19],
+      "notes": "Chain rule application for $\\kappa_n = n\\pi/d$."
+    },
+    {
+      "id": 29,
+      "text": "Using $B_4 = -1/30$",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "The finite part (as $\\lambda \\to 0$) is: $$\\Delta \\mathcal{E} = -\\hbar c \\left( \\frac{B_4}{24} f'''(0) \\right)$$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [25, 26, 29],
+      "notes": "Only $k=2$ term survives; $B_2$ term vanishes since $f'(0)=0$."
+    },
+    {
+      "id": 31,
+      "text": "Higher-order terms ($k \\ge 3$) in the Euler-Maclaurin series vanish as $\\lambda \\to 0$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [25],
+      "notes": "Implicitly assumed but not shown."
+    },
+    {
+      "id": 32,
+      "text": "$$\\Delta \\mathcal{E} = -\\hbar c \\left( \\frac{-1/30}{24} \\right) \\left( -\\frac{\\pi^2}{d^3} \\right)$$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [27, 29, 30],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "$$\\Delta \\mathcal{E} = -\\frac{\\pi^2 \\hbar c}{720 d^3}$$",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [32],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "text": "The $B_4/(4!)$ prefactor equals $(-1/30)/24 = -1/720$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [29],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "The force per unit area $F/A$ is the negative derivative of the energy with respect to $d$.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Standard thermodynamic relation."
+    },
+    {
+      "id": 36,
+      "text": "$$\\frac{F}{A} = -\\frac{\\partial}{\\partial d} \\left( -\\frac{\\pi^2 \\hbar c}{720 d^3} \\right)$$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [33, 35],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "$$\\frac{F}{A} = -\\frac{\\pi^2 \\hbar c}{240 d^4}$$",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [36],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "text": "The derivative of $-\\pi^2\\hbar c/(720 d^3)$ with respect to $d$ is $3\\pi^2\\hbar c/(720 d^4) = \\pi^2\\hbar c/(240 d^4)$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [36],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "The negative sign indicates an attractive force.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [37],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "The final Casimir force per unit area is: $$\\frac{F}{A} = -\\frac{\\pi^2 \\hbar c}{240 d^4}$$",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [37],
+      "notes": "This is the well-known Casimir result."
+    }
+  ]
+}
+```

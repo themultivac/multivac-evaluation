@@ -1,0 +1,537 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "Outside the mass, the energy-momentum tensor vanishes ($T_{\\mu\\nu} = 0$).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 1, \"verdict\": \"CONFIRMED\", \"explanation\": \"In the vacuum outside a mass, the assumption T_{\u03bc\u03bd}=0 is standard and justified.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "In the vacuum outside a mass, the assumption T_{\u03bc\u03bd}=0 is standard and justified.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:10:37.606565"
+  },
+  {
+    "claim_id": 2,
+    "claim_text": "The spacetime is invariant under rotations (spherical symmetry).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":2,\"verdict\":\"CONFIRMED\",\"explanation\":\"For a non-rotating, uncharged isolated mass, assuming spherical symmetry means invariance under SO(3) spatial rotations; this is the standard symmetry ansatz for deriving Schwarzschild.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 2,
+      "verdict": "CONFIRMED",
+      "explanation": "For a non-rotating, uncharged isolated mass, assuming spherical symmetry means invariance under SO(3) spatial rotations; this is the standard symmetry ansatz for deriving Schwarzschild.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T17:10:41.100307"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "The metric coefficients are independent of time $t$, and there are no cross-terms (e.g., $dt dr$).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Static, spherically symmetric assumptions require time-independence and removing dtdr cross-terms, a standard consequence of symmetry.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "Static, spherically symmetric assumptions require time-independence and removing dtdr cross-terms, a standard consequence of symmetry.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:10:49.998132"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "Far from the mass ($r \\to \\infty$), spacetime approaches the Minkowski metric (asymptotic flatness).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":4,\"verdict\":\"CONFIRMED\",\"explanation\":\"For the exterior vacuum of an isolated finite mass, asymptotic flatness is the standard boundary condition: metric components approach \u03b7_{\u03bc\u03bd} as r\u2192\u221e.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 4,
+      "verdict": "CONFIRMED",
+      "explanation": "For the exterior vacuum of an isolated finite mass, asymptotic flatness is the standard boundary condition: metric components approach \u03b7_{\u03bc\u03bd} as r\u2192\u221e.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T17:10:53.283897"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "Given $T_{\\mu\\nu} = 0$, the equations reduce to the vacuum condition $R_{\\mu\\nu} = 0$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":6,\"verdict\":\"CONFIRMED\",\"explanation\":\"From Einstein equations \\(R_{\\mu\\nu}-\\tfrac12 R g_{\\mu\\nu}+\\Lambda g_{\\mu\\nu}=(8\\pi G/c^4)T_{\\mu\\nu}\\), with \\(T_{\\mu\\nu}=0\\) and \\(\\Lambda=0\\), tracing gives \\(R=0\\), hence \\(R_{\\mu\\nu}=0\\).\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T17:10:56.851978"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "Based on spherical symmetry and static conditions, the general line element is $ds^2 = -e^{\\nu(r)} c^2 dt^2 + e^{\\lambda(r)} dr^2 + r^2 (d\\theta^2 + \\sin^2\\theta d\\phi^2)$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 7, \"verdict\": \"CONFIRMED\", \"explanation\": \"This is the standard, correct ansatz for a static, spherically symmetric metric.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 7,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the standard, correct ansatz for a static, spherically symmetric metric.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:11:01.670534"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "The metric tensor is $g_{\\mu\\nu} = \\text{diag}(-e^{\\nu}, e^{\\lambda}, r^2, r^2\\sin^2\\theta)$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For Schwarzschild coordinates, angular components should be negative or include full line element/signature. Claim omits coordinate basis context and signature convention, making diagonal form ambiguous.\",\"confidence\":0.94}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 8,
+      "verdict": "INCOMPLETE",
+      "explanation": "For Schwarzschild coordinates, angular components should be negative or include full line element/signature. Claim omits coordinate basis context and signature convention, making diagonal form ambiguous.",
+      "confidence": 0.94
+    },
+    "timestamp": "2026-04-18T17:11:05.562032"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "The inverse metric is $g^{\\mu\\nu} = \\text{diag}(-e^{-\\nu}, e^{-\\lambda}, r^{-2}, (r\\sin\\theta)^{-2})$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Inverse metric components correctly obtained from the diagonal Schwarzschild metric.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "CONFIRMED",
+      "explanation": "Inverse metric components correctly obtained from the diagonal Schwarzschild metric.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:11:16.825974"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "$\\Gamma^r_{tt} = \\frac{1}{2}\\nu' e^{\\nu-\\lambda}$",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using the metric ds\u00b2 = e^\u03bddt\u00b2 - e^\u03bbdr\u00b2, the Christoffel symbol computation confirms the result with sign cancellation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 11,
+      "verdict": "CONFIRMED",
+      "explanation": "Using the metric ds\u00b2 = e^\u03bddt\u00b2 - e^\u03bbdr\u00b2, the Christoffel symbol computation confirms the result with sign cancellation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:11:33.106372"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "$\\Gamma^r_{rr} = \\frac{1}{2}\\lambda'$",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":12,\"verdict\":\"CONFIRMED\",\"explanation\":\"For metric \\(g_{rr}=e^{\\lambda(r)}\\), \\(g^{rr}=e^{-\\lambda}\\). Then \\(\\Gamma^r_{rr}=\\tfrac12 g^{rr}\\partial_r g_{rr}=\\tfrac12 e^{-\\lambda}(e^\\lambda\\lambda')=\\tfrac12\\lambda'\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T17:11:36.691151"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "$\\Gamma^r_{\\theta\\theta} = -re^{-\\lambda}$",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 13,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using g\u208d\u03b8\u03b8\u208e=r\u00b2 and g^{rr}=e^{-\u03bb}, the derivation yields \u0393\u1d63\u03b8\u03b8 = -re^{-\u03bb}, confirming the claim.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "CONFIRMED",
+      "explanation": "Using g\u208d\u03b8\u03b8\u208e=r\u00b2 and g^{rr}=e^{-\u03bb}, the derivation yields \u0393\u1d63\u03b8\u03b8 = -re^{-\u03bb}, confirming the claim.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:11:47.647957"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "$\\Gamma^t_{tr} = \\frac{1}{2}\\nu'$",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":14,\"verdict\":\"CONFIRMED\",\"explanation\":\"For ds\u00b2=e^{\\\\nu(r)}c\u00b2dt\u00b2-e^{\\\\lambda(r)}dr\u00b2-r\u00b2d\u03a9\u00b2, \u0393^t_{tr}=\\\\tfrac12 g^{tt}\\\\partial_r g_{tt}=\\\\tfrac12 e^{-\\\\nu}\\\\partial_r e^{\\\\nu}=\\\\nu'/2.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 14,
+      "verdict": "CONFIRMED",
+      "explanation": "For ds\u00b2=e^{\\nu(r)}c\u00b2dt\u00b2-e^{\\lambda(r)}dr\u00b2-r\u00b2d\u03a9\u00b2, \u0393^t_{tr}=\\tfrac12 g^{tt}\\partial_r g_{tt}=\\tfrac12 e^{-\\nu}\\partial_r e^{\\nu}=\\nu'/2.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:11:51.329405"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "$\\Gamma^\\theta_{r\\theta} = \\frac{1}{r}$",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using g\u03b8\u03b8 = r\u00b2, the computation yields (1/2)*(2r)*(1/r\u00b2) = 1/r, which is correct.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "Using g\u03b8\u03b8 = r\u00b2, the computation yields (1/2)*(2r)*(1/r\u00b2) = 1/r, which is correct.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:12:00.613590"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "$\\Gamma^\\phi_{r\\phi} = \\frac{1}{r}$",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":16,\"verdict\":\"CONFIRMED\",\"explanation\":\"For spherical metrics with g_{\\\\phi\\\\phi}=r^2\\\\sin^2\\\\theta and g_{r\\\\phi}=0, \\\\Gamma^\\\\phi_{r\\\\phi}=\\\\tfrac12 g^{\\\\phi\\\\phi}\\\\partial_r g_{\\\\phi\\\\phi}=1/r.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 16,
+      "verdict": "CONFIRMED",
+      "explanation": "For spherical metrics with g_{\\phi\\phi}=r^2\\sin^2\\theta and g_{r\\phi}=0, \\Gamma^\\phi_{r\\phi}=\\tfrac12 g^{\\phi\\phi}\\partial_r g_{\\phi\\phi}=1/r.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:12:04.339251"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "$R_{tt} = e^{\\nu-\\lambda} \\left[ \\frac{\\nu''}{2} + \\frac{(\\nu')^2}{4} - \\frac{\\nu'\\lambda'}{4} + \\frac{\\nu'}{r} \\right] = 0$",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"For static spherically symmetric metric \\(ds^2=-e^{\\\\nu}c^2dt^2+e^{\\\\lambda}dr^2+r^2d\\\\Omega^2\\), the vacuum Ricci component \\(R_{tt}\\) has exactly this form and vanishes.\",\"confidence\":0.97}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T17:12:08.230898"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "$R_{rr} = -\\frac{\\nu''}{2} - \\frac{(\\nu')^2}{4} + \\frac{\\nu'\\lambda'}{4} + \\frac{\\lambda'}{r} = 0$",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T17:13:30.049697"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "$R_{\\theta\\theta} = 1 - e^{-\\lambda} - \\frac{r}{2}e^{-\\lambda}(\\nu' - \\lambda') = 0$",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"CONFIRMED\",\"explanation\":\"For metric ds\u00b2=e^\u03bdc\u00b2dt\u00b2\u2212e^\u03bbdr\u00b2\u2212r\u00b2d\u03a9\u00b2 with (+\u2212\u2212\u2212) convention, the vacuum angular Ricci component is exactly this: R_{\u03b8\u03b8}=0.\",\"confidence\":0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 20,
+      "verdict": "CONFIRMED",
+      "explanation": "For metric ds\u00b2=e^\u03bdc\u00b2dt\u00b2\u2212e^\u03bbdr\u00b2\u2212r\u00b2d\u03a9\u00b2 with (+\u2212\u2212\u2212) convention, the vacuum angular Ricci component is exactly this: R_{\u03b8\u03b8}=0.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T17:13:33.633473"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "Multiply $R_{tt}$ by $e^{-\\nu}$ and $R_{rr}$ by $e^{-\\lambda}$ and add them.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 21,\n    \"verdict\": \"UNJUSTIFIED\",\n    \"explanation\": \"The step is stated without justification; it isn\u2019t clear why those specific multiplications simplify the equations.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "The step is stated without justification; it isn\u2019t clear why those specific multiplications simplify the equations.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T17:13:46.432383"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "$e^{-\\nu}R_{tt} + e^{-\\lambda}R_{rr} = \\frac{\\nu' + \\lambda'}{r} = 0$",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":22,\"verdict\":\"CONFIRMED\",\"explanation\":\"For static spherical metric with vacuum equations R_tt=R_rr=0, the standard Ricci expressions imply e^{-nu}R_tt+e^{-lambda}R_rr=(nu'+lambda')/r, hence zero.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 22,
+      "verdict": "CONFIRMED",
+      "explanation": "For static spherical metric with vacuum equations R_tt=R_rr=0, the standard Ricci expressions imply e^{-nu}R_tt+e^{-lambda}R_rr=(nu'+lambda')/r, hence zero.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T17:13:50.013135"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "$\\nu' + \\lambda' = 0$",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 23,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In spherical vacuum symmetry, combining the tt and rr equations produces nu' + lambda' = 0, consistent with the standard Schwarzschild derivation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 23,
+      "verdict": "CONFIRMED",
+      "explanation": "In spherical vacuum symmetry, combining the tt and rr equations produces nu' + lambda' = 0, consistent with the standard Schwarzschild derivation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:14:46.760307"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "Integrating $\\nu' + \\lambda' = 0$ gives $\\nu(r) + \\lambda(r) = C$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":24,\"verdict\":\"CONFIRMED\",\"explanation\":\"Since d(\u03bd+\u03bb)/dr = \u03bd' + \u03bb' = 0, \u03bd+\u03bb is constant on any connected radial domain; integration yields \u03bd(r)+\u03bb(r)=C.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 24,
+      "verdict": "CONFIRMED",
+      "explanation": "Since d(\u03bd+\u03bb)/dr = \u03bd' + \u03bb' = 0, \u03bd+\u03bb is constant on any connected radial domain; integration yields \u03bd(r)+\u03bb(r)=C.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:14:50.342509"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "Applying asymptotic flatness ($\\nu, \\lambda \\to 0$ as $r \\to \\infty$), we find $C=0$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 25,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"As asymptotic flatness forces \u03bd, \u03bb to vanish at infinity, the integration constant must indeed be zero.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 25,
+      "verdict": "CONFIRMED",
+      "explanation": "As asymptotic flatness forces \u03bd, \u03bb to vanish at infinity, the integration constant must indeed be zero.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:15:52.388103"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "$\\lambda(r) = -\\nu(r)$",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"INCOMPLETE\",\"explanation\":\"In vacuum Einstein equations imply \u03bb+\u03bd=const, not directly \u03bb=-\u03bd. Equality follows only after imposing asymptotic flatness/time normalization so const=0.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 26,
+      "verdict": "INCOMPLETE",
+      "explanation": "In vacuum Einstein equations imply \u03bb+\u03bd=const, not directly \u03bb=-\u03bd. Equality follows only after imposing asymptotic flatness/time normalization so const=0.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T17:15:55.834201"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "Substituting $\\lambda = -\\nu$ into $R_{\\theta\\theta} = 0$ gives $1 - e^{\\nu} - r e^{\\nu} \\nu' = 0$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T17:17:24.144864"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "Using $\\nu = -\\lambda$ in $R_{\\theta\\theta}=0$ gives $1 - e^{-\\lambda} + r e^{-\\lambda} \\lambda' = 0$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":28,\"verdict\":\"CONFIRMED\",\"explanation\":\"For ds\u00b2=-e^\u03bdc\u00b2dt\u00b2+e^\u03bbdr\u00b2+r\u00b2d\u03a9\u00b2, vacuum gives R_{\u03b8\u03b8}=1-e^{-\u03bb}+(r/2)e^{-\u03bb}(\u03bb'-\u03bd'). With \u03bd=-\u03bb, this becomes 1-e^{-\u03bb}+r e^{-\u03bb}\u03bb'=0.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 28,
+      "verdict": "CONFIRMED",
+      "explanation": "For ds\u00b2=-e^\u03bdc\u00b2dt\u00b2+e^\u03bbdr\u00b2+r\u00b2d\u03a9\u00b2, vacuum gives R_{\u03b8\u03b8}=1-e^{-\u03bb}+(r/2)e^{-\u03bb}(\u03bb'-\u03bd'). With \u03bd=-\u03bb, this becomes 1-e^{-\u03bb}+r e^{-\u03bb}\u03bb'=0.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T17:17:27.699248"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "This can be rewritten as $r \\frac{d\\lambda}{dr} = 1 - e^\\lambda$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T17:18:57.119418"
+  },
+  {
+    "claim_id": 30,
+    "claim_text": "Separating variables and integrating: $\\int \\frac{d\\lambda}{1 - e^\\lambda} = \\int \\frac{dr}{r}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":30,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"This separation only follows after deriving a specific ODE for \u03bb(r), e.g. r\u03bb' = e^\u03bb-1. That prerequisite equation is not shown here.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 30,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "This separation only follows after deriving a specific ODE for \u03bb(r), e.g. r\u03bb' = e^\u03bb-1. That prerequisite equation is not shown here.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T17:19:00.290399"
+  },
+  {
+    "claim_id": 31,
+    "claim_text": "$\\ln\\left( \\frac{e^\\lambda}{1 - e^\\lambda} \\right) = \\ln r + \\text{const}$",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T17:21:02.289905"
+  },
+  {
+    "claim_id": 32,
+    "claim_text": "Solving for $e^\\lambda$ gives $e^\\lambda = \\frac{1}{1 + \\frac{k}{r}}$ where $k$ is an integration constant.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":32,\"verdict\":\"ERROR\",\"explanation\":\"Vacuum Einstein equations give e^{-\\\\lambda}=1-C/r, hence e^{\\\\lambda}=1/(1-C/r), not 1/(1+k/r). Sign is wrong absent redefinition k=-C.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 32,
+      "verdict": "ERROR",
+      "explanation": "Vacuum Einstein equations give e^{-\\lambda}=1-C/r, hence e^{\\lambda}=1/(1-C/r), not 1/(1+k/r). Sign is wrong absent redefinition k=-C.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T17:21:05.849208"
+  },
+  {
+    "claim_id": 34,
+    "claim_text": "Since $g_{tt} = -e^\\nu = -e^{-\\lambda} = -(1 + \\frac{k}{r})$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":34,\"verdict\":\"ERROR\",\"explanation\":\"Vacuum Einstein equations give e^nu = e^{-lambda} = 1 + k/r, so g_tt = -e^nu = -(1 + k/r), but not equal to -e^{-lambda}.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 34,
+      "verdict": "ERROR",
+      "explanation": "Vacuum Einstein equations give e^nu = e^{-lambda} = 1 + k/r, so g_tt = -e^nu = -(1 + k/r), but not equal to -e^{-lambda}.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T17:21:09.185511"
+  },
+  {
+    "claim_id": 35,
+    "claim_text": "$-(1 + \\frac{k}{r}) \\approx -(1 - \\frac{2GM}{c^2 r})$ implies $k = -\\frac{2GM}{c^2}$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 35,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Coefficient matching under first-order terms is algebraically correct, yielding k = -2GM/c\u00b2.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 35,
+      "verdict": "CONFIRMED",
+      "explanation": "Coefficient matching under first-order terms is algebraically correct, yielding k = -2GM/c\u00b2.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:21:19.682303"
+  },
+  {
+    "claim_id": 36,
+    "claim_text": "Defining the Schwarzschild radius $R_s = \\frac{2GM}{c^2}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":36,\"verdict\":\"CONFIRMED\",\"explanation\":\"For the Schwarzschild vacuum solution, the metric coefficient g_tt vanishes and g_rr diverges at r=2GM/c^2, defining the Schwarzschild radius in Schwarzschild coordinates.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 36,
+      "verdict": "CONFIRMED",
+      "explanation": "For the Schwarzschild vacuum solution, the metric coefficient g_tt vanishes and g_rr diverges at r=2GM/c^2, defining the Schwarzschild radius in Schwarzschild coordinates.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:21:24.484506"
+  },
+  {
+    "claim_id": 37,
+    "claim_text": "The Schwarzschild metric is $ds^2 = -\\left(1 - \\frac{R_s}{r}\\right) c^2 dt^2 + \\left(1 - \\frac{R_s}{r}\\right)^{-1} dr^2 + r^2 d\\Omega^2$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 37,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The form matches the standard Schwarzschild metric when Rs is defined as 2GM/c^2.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 37,
+      "verdict": "CONFIRMED",
+      "explanation": "The form matches the standard Schwarzschild metric when Rs is defined as 2GM/c^2.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:21:34.931454"
+  },
+  {
+    "claim_id": 38,
+    "claim_text": "$g_{rr} \\to \\infty$ as $r \\to R_s$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":38,\"verdict\":\"CONFIRMED\",\"explanation\":\"In Schwarzschild coordinates, g_rr=(1-2GM/(rc^2))^{-1}, so it diverges as r approaches R_s=2GM/c^2 from either side, indicating a coordinate singularity.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 38,
+      "verdict": "CONFIRMED",
+      "explanation": "In Schwarzschild coordinates, g_rr=(1-2GM/(rc^2))^{-1}, so it diverges as r approaches R_s=2GM/c^2 from either side, indicating a coordinate singularity.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:21:38.208789"
+  },
+  {
+    "claim_id": 39,
+    "claim_text": "$g_{tt} \\to 0$ as $r \\to R_s$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 39,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In the Schwarzschild solution, g_tt = -(1 - R_s/r) approaches 0 at r = R_s, marking the coordinate singularity.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 39,
+      "verdict": "CONFIRMED",
+      "explanation": "In the Schwarzschild solution, g_tt = -(1 - R_s/r) approaches 0 at r = R_s, marking the coordinate singularity.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:21:48.401987"
+  },
+  {
+    "claim_id": 40,
+    "claim_text": "The Schwarzschild radius is a coordinate singularity where the metric coefficients diverge or vanish.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":40,\"verdict\":\"CONFIRMED\",\"explanation\":\"In Schwarzschild coordinates at r=2GM/c^2, g_tt vanishes and g_rr diverges; curvature invariants remain finite, so this is a coordinate singularity.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 40,
+      "verdict": "CONFIRMED",
+      "explanation": "In Schwarzschild coordinates at r=2GM/c^2, g_tt vanishes and g_rr diverges; curvature invariants remain finite, so this is a coordinate singularity.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T17:21:51.574286"
+  },
+  {
+    "claim_id": 41,
+    "claim_text": "This radius defines the event horizon of a non-rotating black hole.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 41,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The Schwarzschild radius is exactly the event horizon for a static, spherically symmetric black hole.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 41,
+      "verdict": "CONFIRMED",
+      "explanation": "The Schwarzschild radius is exactly the event horizon for a static, spherically symmetric black hole.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T17:22:01.472398"
+  },
+  {
+    "claim_id": 42,
+    "claim_text": "The final result is $R_s = \\frac{2GM}{c^2}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":42,\"verdict\":\"CONFIRMED\",\"explanation\":\"For the Schwarzschild vacuum solution, the coordinate singularity occurs where g_tt=0 and g_rr diverges: r=2GM/c^2, defining the Schwarzschild radius.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 42,
+      "verdict": "CONFIRMED",
+      "explanation": "For the Schwarzschild vacuum solution, the coordinate singularity occurs where g_tt=0 and g_rr diverges: r=2GM/c^2, defining the Schwarzschild radius.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T17:22:04.905686"
+  }
+]

@@ -1,0 +1,312 @@
+[
+  {
+    "claim_id": 3,
+    "claim_text": "We are finding the metric outside the mass, so there is no matter or energy present. Therefore, T_{\u03bc\u03bd} = 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correct assumption; in vacuum outside mass, T_{\u03bc\u03bd} = 0, standard for Schwarzschild derivation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "Correct assumption; in vacuum outside mass, T_{\u03bc\u03bd} = 0, standard for Schwarzschild derivation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:48:50.147697"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "Taking the trace of the EFE in vacuum yields R = 0.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":4,\"verdict\":\"CONFIRMED\",\"explanation\":\"Vacuum Einstein equations are R_{\\\\mu\\\\nu}-\\\\tfrac12 g_{\\\\mu\\\\nu}R=0. Contracting with g^{\\\\mu\\\\nu} gives R-2R=0, hence R=0 in four dimensions.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 4,
+      "verdict": "CONFIRMED",
+      "explanation": "Vacuum Einstein equations are R_{\\mu\\nu}-\\tfrac12 g_{\\mu\\nu}R=0. Contracting with g^{\\mu\\nu} gives R-2R=0, hence R=0 in four dimensions.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:48:53.328672"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "The vacuum EFE simplify to R_{\u03bc\u03bd} = 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 5,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In a vacuum (T\u208d\u03bc\u03bd\u208e=0) with zero cosmological constant, contracting yields R=0, so the field equations reduce to R\u208d\u03bc\u03bd\u208e=0.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "CONFIRMED",
+      "explanation": "In a vacuum (T\u208d\u03bc\u03bd\u208e=0) with zero cosmological constant, contracting yields R=0, so the field equations reduce to R\u208d\u03bc\u03bd\u208e=0.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:49:05.920713"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "The spacetime must be invariant under spatial rotations.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":6,\"verdict\":\"CONFIRMED\",\"explanation\":\"For a spherically symmetric, non-rotating isolated mass, the metric is by definition invariant under SO(3) spatial rotations about the center.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 6,
+      "verdict": "CONFIRMED",
+      "explanation": "For a spherically symmetric, non-rotating isolated mass, the metric is by definition invariant under SO(3) spatial rotations about the center.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T16:49:09.100430"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "We use the metric signature (-, +, +, +).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"Using signature (-,+,+,+) is a valid convention for Schwarzschild derivations if applied consistently; it does not alter the Schwarzschild radius result.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 8,
+      "verdict": "CONFIRMED",
+      "explanation": "Using signature (-,+,+,+) is a valid convention for Schwarzschild derivations if applied consistently; it does not alter the Schwarzschild radius result.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:49:12.274353"
+  },
+  {
+    "claim_id": 10,
+    "claim_text": "Therefore, \u03bd and \u03bb are functions of r only: ds\u00b2 = -e^{2\u03bd(r)} c\u00b2 dt\u00b2 + e^{2\u03bb(r)} dr\u00b2 + r\u00b2(d\u03b8\u00b2 + sin\u00b2\u03b8 d\u03c6\u00b2)",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":10,\"verdict\":\"CONFIRMED\",\"explanation\":\"By spherical symmetry and stationarity for a vacuum, non-rotating source, metric coefficients depend only on areal radius r; this is the standard diagonal ansatz.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 10,
+      "verdict": "CONFIRMED",
+      "explanation": "By spherical symmetry and stationarity for a vacuum, non-rotating source, metric coefficients depend only on areal radius r; this is the standard diagonal ansatz.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T16:49:15.449102"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "The non-zero metric components are g_{tt} = -e^{2\u03bd}c\u00b2, g_{rr} = e^{2\u03bb}, g_{\u03b8\u03b8} = r\u00b2, and g_{\u03c6\u03c6} = r\u00b2sin\u00b2\u03b8.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":12,\"verdict\":\"CONFIRMED\",\"explanation\":\"For the standard static, spherically symmetric ansatz with signature (-,+,+,+) and coordinates (t,r,\u03b8,\u03c6), these are exactly the nonzero covariant metric components.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 12,
+      "verdict": "CONFIRMED",
+      "explanation": "For the standard static, spherically symmetric ansatz with signature (-,+,+,+) and coordinates (t,r,\u03b8,\u03c6), these are exactly the nonzero covariant metric components.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:49:18.727237"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "Their inverses are simply 1/g_{\u03bc\u03bc}.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 13,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In a diagonal metric (like Schwarzschild\u2019s), each inverse element equals the reciprocal of the corresponding metric component.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "CONFIRMED",
+      "explanation": "In a diagonal metric (like Schwarzschild\u2019s), each inverse element equals the reciprocal of the corresponding metric component.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:49:32.751847"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "\u0393^t_{tr} = \u0393^t_{rt} = (1/2) g^{tt} \u2202_r g_{tt} = \u03bd'",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":14,\"verdict\":\"ERROR\",\"explanation\":\"For ds\u00b2=e^{2\u03bd}c\u00b2dt\u00b2\u2212\u2026, g_tt=e^{2\u03bd}c\u00b2 gives \u0393^t_{tr}=(1/2)g^{tt}\u2202_rg_tt=\u03bd', not 2\u03bd'. Claim omits 1/2 cancellation?\",\"confidence\":0.93}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 14,
+      "verdict": "ERROR",
+      "explanation": "For ds\u00b2=e^{2\u03bd}c\u00b2dt\u00b2\u2212\u2026, g_tt=e^{2\u03bd}c\u00b2 gives \u0393^t_{tr}=(1/2)g^{tt}\u2202_rg_tt=\u03bd', not 2\u03bd'. Claim omits 1/2 cancellation?",
+      "confidence": 0.93
+    },
+    "timestamp": "2026-04-18T16:49:36.330068"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "\u0393^r_{tt} = -(1/2) g^{rr} \u2202_r g_{tt} = c\u00b2 \u03bd' e^{2(\u03bd-\u03bb)}",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using g_tt = -e^(2\u03bd)c\u00b2 and g^(rr)=e^(-2\u03bb), the derivative correctly yields \u0393^r_tt = c\u00b2\u03bd'e^(2(\u03bd-\u03bb)).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "Using g_tt = -e^(2\u03bd)c\u00b2 and g^(rr)=e^(-2\u03bb), the derivative correctly yields \u0393^r_tt = c\u00b2\u03bd'e^(2(\u03bd-\u03bb)).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:49:49.781438"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "\u0393^r_{rr} = (1/2) g^{rr} \u2202_r g_{rr} = \u03bb'",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":16,\"verdict\":\"ERROR\",\"explanation\":\"For g_rr=e^{2\\\\lambda}, \u0393^r_rr=(1/2)g^{rr}\\\\partial_r g_rr=(1/2)e^{-2\\\\lambda}(2\\\\lambda'e^{2\\\\lambda})=\\\\lambda', not from the stated incomplete formula alone.\",\"confidence\":0.93}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 16,
+      "verdict": "ERROR",
+      "explanation": "For g_rr=e^{2\\lambda}, \u0393^r_rr=(1/2)g^{rr}\\partial_r g_rr=(1/2)e^{-2\\lambda}(2\\lambda'e^{2\\lambda})=\\lambda', not from the stated incomplete formula alone.",
+      "confidence": 0.93
+    },
+    "timestamp": "2026-04-18T16:49:53.027472"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "\u0393^r_{\u03b8\u03b8} = -(1/2) g^{rr} \u2202_r g_{\u03b8\u03b8} = -r e^{-2\u03bb}",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 17,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correct derivation using the standard spherically symmetric metric: g\u03b8\u03b8=r\u00b2 and \u2202r g\u03b8\u03b8=2r yields -r e^(-2\u03bb).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 17,
+      "verdict": "CONFIRMED",
+      "explanation": "Correct derivation using the standard spherically symmetric metric: g\u03b8\u03b8=r\u00b2 and \u2202r g\u03b8\u03b8=2r yields -r e^(-2\u03bb).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:50:00.238755"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "\u0393^r_{\u03c6\u03c6} = -(1/2) g^{rr} \u2202_r g_{\u03c6\u03c6} = -r sin\u00b2\u03b8 e^{-2\u03bb}",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"For diagonal metric with g_{\u03c6\u03c6}=r\u00b2sin\u00b2\u03b8 and g^{rr}=-e^{-2\u03bb}, \u0393^r_{\u03c6\u03c6}=-(1/2)g^{rr}\u2202_r g_{\u03c6\u03c6}=r e^{-2\u03bb}sin\u00b2\u03b8 under +--- signature conventions.\",\"confidence\":0.88}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 18,
+      "verdict": "CONFIRMED",
+      "explanation": "For diagonal metric with g_{\u03c6\u03c6}=r\u00b2sin\u00b2\u03b8 and g^{rr}=-e^{-2\u03bb}, \u0393^r_{\u03c6\u03c6}=-(1/2)g^{rr}\u2202_r g_{\u03c6\u03c6}=r e^{-2\u03bb}sin\u00b2\u03b8 under +--- signature conventions.",
+      "confidence": 0.88
+    },
+    "timestamp": "2026-04-18T16:50:03.594698"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "\u0393^\u03b8_{r\u03b8} = \u0393^\u03b8_{\u03b8r} = (1/2) g^{\u03b8\u03b8} \u2202_r g_{\u03b8\u03b8} = 1/r",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 19, \"verdict\": \"CONFIRMED\", \"explanation\": \"Using g_{\u03b8\u03b8}=r\u00b2, \u2202_r g_{\u03b8\u03b8}=2r and g^{\u03b8\u03b8}=1/r\u00b2, yielding (1/2)(2r/r\u00b2)=1/r as expected.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "Using g_{\u03b8\u03b8}=r\u00b2, \u2202_r g_{\u03b8\u03b8}=2r and g^{\u03b8\u03b8}=1/r\u00b2, yielding (1/2)(2r/r\u00b2)=1/r as expected.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:50:10.940111"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "\u0393^\u03b8_{\u03c6\u03c6} = -(1/2) g^{\u03b8\u03b8} \u2202_\u03b8 g_{\u03c6\u03c6} = -sin\u03b8 cos\u03b8",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"CONFIRMED\",\"explanation\":\"For spherical symmetry, g_{\u03c6\u03c6}=r^2\\\\sin^2\\\\theta and g^{\\\\theta\\\\theta}=1/r^2, so \u0393^\\\\theta_{\\\\phi\\\\phi}=-(1/2)(1/r^2)\\\\partial_\\\\theta(r^2\\\\sin^2\\\\theta)=-\\\\sin\\\\theta\\\\cos\\\\theta.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 20,
+      "verdict": "CONFIRMED",
+      "explanation": "For spherical symmetry, g_{\u03c6\u03c6}=r^2\\sin^2\\theta and g^{\\theta\\theta}=1/r^2, so \u0393^\\theta_{\\phi\\phi}=-(1/2)(1/r^2)\\partial_\\theta(r^2\\sin^2\\theta)=-\\sin\\theta\\cos\\theta.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:50:14.426171"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "\u0393^\u03c6_{r\u03c6} = \u0393^\u03c6_{\u03c6r} = (1/2) g^{\u03c6\u03c6} \u2202_r g_{\u03c6\u03c6} = 1/r",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 21,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The computation is standard; g_{\u03c6\u03c6} derivative cancels sin^2\u03b8, yielding 1/r in spherical coordinates.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "CONFIRMED",
+      "explanation": "The computation is standard; g_{\u03c6\u03c6} derivative cancels sin^2\u03b8, yielding 1/r in spherical coordinates.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:50:35.847898"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "\u0393^\u03c6_{\u03b8\u03c6} = \u0393^\u03c6_{\u03c6\u03b8} = (1/2) g^{\u03c6\u03c6} \u2202_\u03b8 g_{\u03c6\u03c6} = cot\u03b8",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":22,\"verdict\":\"CONFIRMED\",\"explanation\":\"For spherical symmetry, g_{\u03c6\u03c6}=r^2\\\\sin^2\\\\theta and g^{\u03c6\u03c6}=1/(r^2\\\\sin^2\\\\theta). Then (1/2)g^{\u03c6\u03c6}\\\\partial_\\\\theta g_{\u03c6\u03c6}=(1/2)(2\\\\cos\\\\theta/\\\\sin\\\\theta)=\\\\cot\\\\theta.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 22,
+      "verdict": "CONFIRMED",
+      "explanation": "For spherical symmetry, g_{\u03c6\u03c6}=r^2\\sin^2\\theta and g^{\u03c6\u03c6}=1/(r^2\\sin^2\\theta). Then (1/2)g^{\u03c6\u03c6}\\partial_\\theta g_{\u03c6\u03c6}=(1/2)(2\\cos\\theta/\\sin\\theta)=\\cot\\theta.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:50:39.437280"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "We only need to evaluate R_{tt}, R_{rr}, and R_{\u03b8\u03b8} (since R_{\u03c6\u03c6} = R_{\u03b8\u03b8} sin\u00b2\u03b8 by symmetry).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":24,\"verdict\":\"CONFIRMED\",\"explanation\":\"For a static spherically symmetric diagonal metric, Ricci tensor is diagonal and spherical symmetry gives R_{\\\\phi\\\\phi}=\\\\sin^2\\\\theta\\\\,R_{\\\\theta\\\\theta}; only tt, rr, and \u03b8\u03b8 are independent.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 24,
+      "verdict": "CONFIRMED",
+      "explanation": "For a static spherically symmetric diagonal metric, Ricci tensor is diagonal and spherical symmetry gives R_{\\phi\\phi}=\\sin^2\\theta\\,R_{\\theta\\theta}; only tt, rr, and \u03b8\u03b8 are independent.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T16:50:42.818544"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "R_{tt} = \u2202_r \u0393^r_{tt} + \u0393^r_{tt}(\u0393^t_{tr} + \u0393^r_{rr} + \u0393^\u03b8_{r\u03b8} + \u0393^\u03c6_{r\u03c6}) - 2\u0393^t_{tr}\u0393^r_{tt}",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:51:55.911971"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "R_{tt} = c\u00b2 e^{2(\u03bd-\u03bb)} (\u03bd'' + (\u03bd')\u00b2 - \u03bd'\u03bb' + (2/r)\u03bd')",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"ERROR\",\"explanation\":\"For ds\u00b2=-e^{2\u03bd}c\u00b2dt\u00b2+e^{2\u03bb}dr\u00b2+r\u00b2d\u03a9\u00b2, R_tt has no overall c\u00b2 and carries opposite sign: e^{2(\u03bd-\u03bb)}[\u03bd''+\u03bd'^2-\u03bd'\u03bb'+2\u03bd'/r].\",\"confidence\":0.96}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 26,
+      "verdict": "ERROR",
+      "explanation": "For ds\u00b2=-e^{2\u03bd}c\u00b2dt\u00b2+e^{2\u03bb}dr\u00b2+r\u00b2d\u03a9\u00b2, R_tt has no overall c\u00b2 and carries opposite sign: e^{2(\u03bd-\u03bb)}[\u03bd''+\u03bd'^2-\u03bd'\u03bb'+2\u03bd'/r].",
+      "confidence": 0.96
+    },
+    "timestamp": "2026-04-18T16:51:59.593281"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "R_{rr} = -\u2202_r(\u0393^t_{tr} + \u0393^\u03b8_{r\u03b8} + \u0393^\u03c6_{r\u03c6}) + \u2202_r \u0393^r_{rr} + \u0393^r_{rr}(\u0393^t_{...)",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 27,\n    \"verdict\": \"INCOMPLETE\",\n    \"explanation\": \"The expression is truncated and misses necessary Christoffel symbol terms and summations for a full R_rr derivation.\",\n    \"confidence\": 0.9\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 27,
+      "verdict": "INCOMPLETE",
+      "explanation": "The expression is truncated and misses necessary Christoffel symbol terms and summations for a full R_rr derivation.",
+      "confidence": 0.9
+    },
+    "timestamp": "2026-04-18T16:52:08.911068"
+  }
+]

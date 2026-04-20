@@ -1,0 +1,432 @@
+{
+  "model": "unknown",
+  "total_claims": 42,
+  "claims": [
+    {
+      "id": 1,
+      "text": "The plates are perfectly conducting, infinite in extent, and parallel.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "The electromagnetic field satisfies the boundary conditions: tangential electric field vanishes on the plates.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [
+        1
+      ],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The quantum vacuum exhibits zero-point energy \\(\\frac{1}{2}\\hbar\\omega\\) per mode.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "An exponential cutoff \\(e^{-\\alpha \\omega}\\) (with \\(\\alpha \\to 0^+\\)) is used to handle divergences.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "The Casimir energy is the difference between the zero-point energy with plates and that in free space for the same volume.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "For plates at \\(z=0\\) and \\(z=d\\), the boundary conditions lead to discrete wave numbers \\(k_z = n\\pi/d\\) with \\(n = 0, 1, 2, \\ldots\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        2
+      ],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "For \\(n = 0\\): one polarization (TEM mode).",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        6
+      ],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "For \\(n \\geq 1\\): two independent polarizations.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        6
+      ],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "The frequency for a given transverse wavevector \\(\\mathbf{k}_\\parallel\\) and integer \\(n\\) is \\(\\omega_{\\mathbf{k}_\\parallel, n} = c \\sqrt{k_\\parallel^2 + \\left(\\frac{n\\pi}{d}\\right)^2}\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        6
+      ],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "The zero-point energy per unit area is \\(\\frac{U(d)}{A} = \\hbar \\sum_{n=0}^\\infty{}' \\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\, \\omega_{\\mathbf{k}_\\parallel, n}\\), where the prime indicates that the \\(n=0\\) term is weighted by \\(1/2\\) and \\(n \\geq 1\\) terms are weighted by \\(1\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        3,
+        7,
+        8,
+        9
+      ],
+      "notes": "Factor of \u0127 instead of \u0127/2 accounts for two polarizations at n\u22651."
+    },
+    {
+      "id": 11,
+      "text": "The regularized energy per unit area is \\(\\frac{U(d,\\alpha)}{A} = \\hbar \\left[ \\frac{1}{2} \\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\, \\omega_{\\mathbf{k}_\\parallel,0} e^{-\\alpha \\omega_{\\mathbf{k}_\\parallel,0}} + \\sum_{n=1}^\\infty \\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\, \\omega_{\\mathbf{k}_\\parallel, n} e^{-\\alpha \\omega_{\\mathbf{k}_\\parallel, n}} \\right]\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        4,
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "Define \\(k_n = n\\pi/d\\) and \\(\\beta = \\alpha c\\).",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "\\(\\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\, \\omega_{\\mathbf{k}_\\parallel, n} e^{-\\alpha \\omega_{\\mathbf{k}_\\parallel, n}} = \\frac{c}{2\\pi} e^{-\\beta k_n} \\left( \\frac{k_n^2}{\\beta} + \\frac{2k_n}{\\beta^2} + \\frac{2}{\\beta^3} \\right) \\equiv g(k_n)\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        9,
+        11,
+        12
+      ],
+      "notes": "Non-trivial integral evaluation; should be verified."
+    },
+    {
+      "id": 14,
+      "text": "\\(\\frac{U(d,\\alpha)}{A} = \\hbar \\left[ \\frac{1}{2} g(0) + \\sum_{n=1}^\\infty g(k_n) \\right] \\equiv \\hbar S'\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        11,
+        13
+      ],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "The zero-point energy in free space for a volume of area \\(A\\) and thickness \\(d\\) is \\(\\frac{U_0(d,\\alpha)}{A} = d \\cdot \\hbar \\int \\frac{d^3k}{(2\\pi)^3} \\, \\omega e^{-\\alpha \\omega}\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        3,
+        4,
+        5
+      ],
+      "notes": "Missing factor of 2 for polarizations, but absorbed in convention."
+    },
+    {
+      "id": 16,
+      "text": "\\(\\frac{U_0(d,\\alpha)}{A} = \\hbar d \\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\int_0^\\infty \\frac{dk_z}{\\pi} \\, \\omega e^{-\\alpha \\omega}\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        15
+      ],
+      "notes": "Factor dk_z/\u03c0 from density of states for half-line."
+    },
+    {
+      "id": 17,
+      "text": "Expressing this in terms of \\(g(k_z)\\), \\(\\frac{U_0(d,\\alpha)}{A} = \\hbar d \\int_0^\\infty \\frac{dk_z}{\\pi} \\, g(k_z) = \\hbar \\int_0^\\infty dn \\, g\\left(\\frac{\\pi n}{d}\\right)\\), where we changed variables to \\(n = d k_z/\\pi\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        13,
+        16
+      ],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "\\(I \\equiv \\int_0^\\infty dn \\, g\\left(\\frac{\\pi n}{d}\\right) = \\frac{3 c d}{\\pi^2 \\beta^4}\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        13,
+        17
+      ],
+      "notes": "Integral evaluation should be verified."
+    },
+    {
+      "id": 19,
+      "text": "The Casimir energy is the difference: \\(\\frac{E_{\\text{Cas}}(d,\\alpha)}{A} = \\frac{U(d,\\alpha)}{A} - \\frac{U_0(d,\\alpha)}{A} = \\hbar (S' - I)\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5,
+        14,
+        17,
+        18
+      ],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "Let \\(a = \\beta \\pi / d\\).",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        12
+      ],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "\\(g(k_n) = \\frac{c}{2\\pi} e^{-a n} \\left( \\frac{\\pi^2 n^2}{d^2 \\beta} + \\frac{2\\pi n}{d \\beta^2} + \\frac{2}{\\beta^3} \\right)\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        12,
+        13,
+        20
+      ],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "\\(\\sum_{n=1}^\\infty e^{-a n} = \\frac{1}{e^a - 1} = a^{-1} - \\frac{1}{2} + \\frac{a}{12} - \\frac{a^3}{720} + \\cdots\\)",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Laurent expansion of 1/(e^a - 1)."
+    },
+    {
+      "id": 23,
+      "text": "\\(\\sum_{n=1}^\\infty n e^{-a n} = \\frac{e^{-a}}{(1-e^{-a})^2} = a^{-2} - \\frac{1}{12} + \\frac{a^2}{240} - \\cdots\\)",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Should be verified; coefficient 1/12 needs checking."
+    },
+    {
+      "id": 24,
+      "text": "\\(\\sum_{n=1}^\\infty n^2 e^{-a n} = \\frac{e^{-a}(1+e^{-a})}{(1-e^{-a})^3} = 2a^{-3} - \\frac{a}{120} + \\cdots\\)",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Expansion coefficients should be verified."
+    },
+    {
+      "id": 25,
+      "text": "\\(\\sum_{n=1}^\\infty f(n) = \\frac{3 c d}{\\pi^2 \\beta^4} - \\frac{c}{2\\pi \\beta^3} - \\frac{c \\pi^2}{720 d^3} + \\mathcal{O}(\\beta)\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "notes": "Combines series expansions; intermediate steps omitted."
+    },
+    {
+      "id": 26,
+      "text": "\\(g(0) = c/(\\pi \\beta^3)\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        13
+      ],
+      "notes": "Setting k_n=0 in g(k_n)."
+    },
+    {
+      "id": 27,
+      "text": "\\(S' = \\frac{1}{2} g(0) + \\sum_{n=1}^\\infty f(n) = \\frac{3 c d}{\\pi^2 \\beta^4} - \\frac{c \\pi^2}{720 d^3} + \\mathcal{O}(\\beta)\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        14,
+        25,
+        26
+      ],
+      "notes": "The c/(2\u03c0\u03b2\u00b3) terms cancel between g(0)/2 and the sum."
+    },
+    {
+      "id": 28,
+      "text": "Subtracting \\(I = 3 c d/(\\pi^2 \\beta^4)\\) gives \\(S' - I = -\\frac{c \\pi^2}{720 d^3} + \\mathcal{O}(\\beta)\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        18,
+        27
+      ],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "Taking \\(\\beta \\to 0\\) (i.e., \\(\\alpha \\to 0\\)), the \\(\\mathcal{O}(\\beta)\\) terms vanish.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        28
+      ],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "\\(\\frac{E_{\\text{Cas}}(d)}{A} = \\hbar (S' - I) = -\\frac{\\pi^2 \\hbar c}{720 d^3}\\).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        19,
+        28,
+        29
+      ],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "The force per unit area is the negative derivative of the energy per unit area with respect to \\(d\\).",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "text": "\\(\\frac{F(d)}{A} = -\\frac{d}{dd} \\left( \\frac{E_{\\text{Cas}}(d)}{A} \\right) = -\\frac{d}{dd} \\left( -\\frac{\\pi^2 \\hbar c}{720 d^3} \\right) = -\\frac{\\pi^2 \\hbar c}{240 d^4}\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        30,
+        31
+      ],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "The negative sign indicates an attractive force.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        32
+      ],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "text": "The Casimir force per unit area between two parallel, perfectly conducting plates separated by distance \\(d\\) in vacuum is \\(\\frac{F}{A} = -\\frac{\\pi^2 \\hbar c}{240 d^4}\\).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        32
+      ],
+      "notes": "This is the standard Casimir result."
+    },
+    {
+      "id": 35,
+      "text": "The free-vacuum contribution has a factor of 2 for polarizations included via \\(\\int \\frac{d^3k}{(2\\pi)^3}\\) with the same \\(\\hbar\\) prefactor.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [
+        15
+      ],
+      "notes": "Implicit: free-vacuum also counts 2 polarizations."
+    },
+    {
+      "id": 36,
+      "text": "The transverse wavevector integral is performed in polar coordinates: \\(\\int d^2k_\\parallel = 2\\pi \\int_0^\\infty k_\\parallel \\, dk_\\parallel\\).",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Implicit step used in evaluating the integrals."
+    },
+    {
+      "id": 37,
+      "text": "The integral \\(\\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\omega e^{-\\alpha\\omega}\\) with \\(\\omega = c\\sqrt{k_\\parallel^2 + k_n^2}\\) yields the expression \\(g(k_n)\\) as stated.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        9,
+        36
+      ],
+      "notes": "Key integral; details of evaluation omitted."
+    },
+    {
+      "id": 38,
+      "text": "The closed form \\(\\sum_{n=1}^\\infty e^{-an} = 1/(e^a-1)\\) is a geometric series result.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "The closed form \\(\\sum_{n=1}^\\infty n e^{-an} = e^{-a}/(1-e^{-a})^2\\) follows from differentiating the geometric series.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        38
+      ],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "The closed form \\(\\sum_{n=1}^\\infty n^2 e^{-an} = e^{-a}(1+e^{-a})/(1-e^{-a})^3\\) follows from further differentiation.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        38
+      ],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "The divergent terms (powers of \\(1/\\beta\\)) in \\(S'\\) are exactly canceled by \\(I\\), leaving only the finite part.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [
+        27,
+        28
+      ],
+      "notes": "This is the key cancellation in the Casimir calculation."
+    },
+    {
+      "id": 42,
+      "text": "The derivative \\(-\\frac{d}{dd}\\left(-\\frac{\\pi^2 \\hbar c}{720 d^3}\\right) = -\\frac{3\\pi^2 \\hbar c}{720 d^4} = -\\frac{\\pi^2 \\hbar c}{240 d^4}\\).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        30,
+        31
+      ],
+      "notes": "Straightforward differentiation."
+    }
+  ]
+}

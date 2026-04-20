@@ -1,0 +1,592 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "Two infinite, perfectly conducting, parallel plates lie at z=0 and z=d.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is the standard, correct geometric setup and boundary condition assumption for the 1D Casimir effect as requested in the prompt.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the standard, correct geometric setup and boundary condition assumption for the 1D Casimir effect as requested in the prompt.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:07:49.026048"
+  },
+  {
+    "claim_id": 2,
+    "claim_text": "The space between the plates is vacuum.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 2,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The assumption is standard for Casimir derivations between perfectly conducting plates in empty space.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 2,
+      "verdict": "CONFIRMED",
+      "explanation": "The assumption is standard for Casimir derivations between perfectly conducting plates in empty space.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:08:01.655498"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "The tangential electric field vanishes on each plate: E_parallel = 0 at z=0,d.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Perfectly conducting plates require the tangential component of the electric field to vanish at their surfaces to prevent infinite surface currents.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "Perfectly conducting plates require the tangential component of the electric field to vanish at their surfaces to prevent infinite surface currents.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:08:06.127596"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "The field is quantized in the region between the plates.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 4,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard QFT assumption; quantization within bounded regions with proper boundary conditions is foundational for calculating the Casimir effect.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 4,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard QFT assumption; quantization within bounded regions with proper boundary conditions is foundational for calculating the Casimir effect.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:08:22.511574"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "Edge effects are neglected because the plates are infinite.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 5,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"For infinite plates, there are no edges, so edge effects are strictly zero and naturally do not enter the calculation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "CONFIRMED",
+      "explanation": "For infinite plates, there are no edges, so edge effects are strictly zero and naturally do not enter the calculation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:08:29.066342"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "Only the change in vacuum energy due to the plates is computed; absolute vacuum energy is divergent and unobservable.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 6,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"It's standard practice; only changes in vacuum energy are measurable while the absolute value is divergent.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 6,
+      "verdict": "CONFIRMED",
+      "explanation": "It's standard practice; only changes in vacuum energy are measurable while the absolute value is divergent.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:08:39.265983"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "The allowed electromagnetic modes are standing waves in the z-direction and plane waves in the transverse (x,y)-directions.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 7,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Perfectly conducting parallel plates impose boundary conditions in the z-direction yielding standing waves, while translational invariance in x and y yields plane waves.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 7,
+      "verdict": "CONFIRMED",
+      "explanation": "Perfectly conducting parallel plates impose boundary conditions in the z-direction yielding standing waves, while translational invariance in x and y yields plane waves.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:08:44.221214"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "The allowed longitudinal wave numbers are k_z = n\u03c0/d, n=0,1,2,...",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:11:06.765521"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "The mode frequencies are \u03c9_{n,k_\u22a5} = c\u221a(k_\u22a5\u00b2 + (n\u03c0/d)\u00b2).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The dispersion relation correctly reflects the boundary conditions for perfectly conducting plates, with continuous transverse wave vector and quantized perpendicular wave vector k_z = n\u03c0/d.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "CONFIRMED",
+      "explanation": "The dispersion relation correctly reflects the boundary conditions for perfectly conducting plates, with continuous transverse wave vector and quantized perpendicular wave vector k_z = n\u03c0/d.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:11:13.423476"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "The zero-point energy per unit area is U(d)/A = (\u210f/2) \u222b d\u00b2k_\u22a5/(2\u03c0)\u00b2 [\u03c9_{0,k_\u22a5} + 2 \u03a3_{n=1}^\u221e \u03c9_{n,k_\u22a5}].",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 12,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expression correctly applies mode summation with proper degeneracies (n=0 single, n>0 double) for the confined EM field.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 12,
+      "verdict": "CONFIRMED",
+      "explanation": "The expression correctly applies mode summation with proper degeneracies (n=0 single, n>0 double) for the confined EM field.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:11:59.708183"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "This zero-point energy expression is formally divergent.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 13,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The zero-point energy involves an infinite sum over all modes of \\u00bd\\u0127\\u03c9, which diverges without a high-frequency cutoff or regularization.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "CONFIRMED",
+      "explanation": "The zero-point energy involves an infinite sum over all modes of \u00bd\u0127\u03c9, which diverges without a high-frequency cutoff or regularization.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:12:05.341004"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "An exponential cutoff e^{-\u03b5 \u03c9} with \u03b5>0 is introduced to suppress high-frequency modes.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 14,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The exponential cutoff is a standard method to regularize high-frequency divergences in zero-point energy calculations.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 14,
+      "verdict": "CONFIRMED",
+      "explanation": "The exponential cutoff is a standard method to regularize high-frequency divergences in zero-point energy calculations.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:12:17.936350"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "The regulator will be removed by taking \u03b5\u21920\u207a after subtraction of the free-vacuum contribution.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Removing the regulator after subtracting the free-vacuum contribution is the standard, correct procedure to extract the finite physical Casimir energy.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "Removing the regulator after subtracting the free-vacuum contribution is the standard, correct procedure to extract the finite physical Casimir energy.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:12:23.774176"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "The regularized zero-point energy per unit area is U_\u03b5(d)/A = (\u210fc/2) \u222b d\u00b2k_\u22a5/(2\u03c0)\u00b2 [k_\u22a5 e^{-\u03b5c k_\u22a5} + 2 \u03a3_{n=1}^\u221e \u221a(k_\u22a5\u00b2+(n\u03c0/d)\u00b2) e^{-\u03b5c\u221a(k_\u22a5\u00b2+(n\u03c0/d)\u00b2)}].",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 16,\n    \"verdict\":",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:12:43.454762"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "The free-vacuum energy per unit area in a slab of width d is U^{(0)}_\u03b5(d)/A = \u210f \u222b d\u00b2k_\u22a5/(2\u03c0)\u00b2 (d/\u03c0) \u222b_0^\u221e dk_z c\u221a(k_\u22a5\u00b2+k_z\u00b2) e^{-\u03b5c\u221a(k_\u22a5\u00b2+k_z\u00b2)}.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 17,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The claim correctly converts the free-space mode sum into an integral, including the factor of 2 for polarizations and restricting k_z to positive values.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 17,
+      "verdict": "CONFIRMED",
+      "explanation": "The claim correctly converts the free-space mode sum into an integral, including the factor of 2 for polarizations and restricting k_z to positive values.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:12:57.474203"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "The Casimir energy is U_{Cas,\u03b5}(d)/A = U_\u03b5(d)/A - U^{(0)}_\u03b5(d)/A.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 19,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The Casimir energy is correctly defined as the difference between the regularized zero-point energy with plates and the regularized free vacuum zero-point energy.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "The Casimir energy is correctly defined as the difference between the regularized zero-point energy with plates and the regularized free vacuum zero-point energy.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:13:02.379762"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "Define F(x) = \u222b d\u00b2k_\u22a5/(2\u03c0)\u00b2 \u210fc \u221a(k_\u22a5\u00b2+x\u00b2) e^{-\u03b5c\u221a(k_\u22a5\u00b2+x\u00b2)}.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:14:52.527653"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "U_\u03b5(d)/A = \u03a3_{n=0}^\u221e' F(n\u03c0/d), where the prime means half weight for n=0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 21,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The prime correctly accounts for the single polarization state (TM) at n=0, compared to two polarization states (TE and TM) for n>0.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "CONFIRMED",
+      "explanation": "The prime correctly accounts for the single polarization state (TM) at n=0, compared to two polarization states (TE and TM) for n>0.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:15:06.762521"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "U^{(0)}_\u03b5(d)/A = (d/\u03c0) \u222b_0^\u221e dx F(x).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 22, \"verdict\": \"INCOMPLETE\", \"explanation\": \"The step omits a definition of F(x) and justification for the (d/\u03c0) factor from the discrete mode summation.\", \"confidence\": 0.9}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 22,
+      "verdict": "INCOMPLETE",
+      "explanation": "The step omits a definition of F(x) and justification for the (d/\u03c0) factor from the discrete mode summation.",
+      "confidence": 0.9
+    },
+    "timestamp": "2026-04-18T19:16:13.732067"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "U_{Cas,\u03b5}(d)/A = \u03a3_{n=0}^\u221e' F(an) - (1/a) \u222b_0^\u221e dx F(x), where a = \u03c0/d.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 23,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expression correctly represents the difference between the discrete sum (plates) and continuous integral (free vacuum) for the Euler-Maclaurin formula, with a = \\u03c0/d.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 23,
+      "verdict": "CONFIRMED",
+      "explanation": "The expression correctly represents the difference between the discrete sum (plates) and continuous integral (free vacuum) for the Euler-Maclaurin formula, with a = \u03c0/d.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:16:23.356973"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "After applying Euler\u2013Maclaurin, U_{Cas,\u03b5}(d)/A = -(a\u00b3/720) F^{(3)}(0) + ..., where omitted terms vanish or are canceled.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 25,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The Euler-Maclaurin term involving the third derivative is +1/720 F^{(3)}(0), not -1/720 F^{(3)}(0). The Bernoulli number B_4 is -1/30, giving -B_",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:16:47.628181"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "The leading Euler\u2013Maclaurin correction is -[B_4/4!] a\u00b3 F^{(3)}(0) = (a\u00b3/720) F^{(3)}(0).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 27,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The Euler-Maclaurin formula's third-derivative term is -B_4/4! f^{(3)}(0). With B_4 = -1/30 and 4! = 24, this evaluates correctly to",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:17:12.408391"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "Using polar coordinates, F(x) = (\u210fc/2\u03c0) \u222b_0^\u221e k_\u22a5 dk_\u22a5 \u221a(k_\u22a5\u00b2+x\u00b2) e^{-\u03b5c\u221a(k_\u22a5\u00b2+x\u00b2)}.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:18:42.216108"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "Substituting u = \u221a(k_\u22a5\u00b2+x\u00b2), so k_\u22a5 dk_\u22a5 = u du, gives F(x) = (\u210fc/2\u03c0) \u222b_x^\u221e u\u00b2 e^{-\u03b5cu} du.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "```json\n{\n    \"claim_id\": 29,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The substitution correctly transforms the 2D momentum integral. The prefactor \u210fc/2\u03c0 accurately accounts for the angular integration 2\u03c0/(2\u03c0)\u00b2 and the energy term.\",\n    \"confidence\": 1.0\n}\n```",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 29,
+      "verdict": "CONFIRMED",
+      "explanation": "The substitution correctly transforms the 2D momentum integral. The prefactor \u210fc/2\u03c0 accurately accounts for the angular integration 2\u03c0/(2\u03c0)\u00b2 and the energy term.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:19:03.850159"
+  },
+  {
+    "claim_id": 30,
+    "claim_text": "As \u03b5\u21920, \u222b_x^\u221e u\u00b2 e^{-\u03b5cu} du = (divergent terms independent of x or polynomial in x) - x\u00b3/3 + O(\u03b5).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:20:41.002560"
+  },
+  {
+    "claim_id": 31,
+    "claim_text": "The x-dependent finite piece of F(x) is F(x) ~ -(\u210fc/6\u03c0) x\u00b3 + (terms canceled by subtraction).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "```json\n{\n    \"claim_id\": 31,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The transverse momentum integral for a given kz=x yields a divergent constant minus (\\\\hbar c / 6\\\\pi) x^3, which correctly leads to the Casimir energy via Euler-Maclaurin.\",\n    \"confidence\": 0.95\n}\n```",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 31,
+      "verdict": "CONFIRMED",
+      "explanation": "The transverse momentum integral for a given kz=x yields a divergent constant minus (\\hbar c / 6\\pi) x^3, which correctly leads to the Casimir energy via Euler-Maclaurin.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:20:58.310230"
+  },
+  {
+    "claim_id": 32,
+    "claim_text": "F^{(3)}(0) = -\u210fc/\u03c0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 32, \"verdict\": \"ERROR\", \"explanation\": \"The result is dimensionally incorrect; Casimir force must depend on d (F/A = -\u03c0\u00b2\u210fc/(240d\u2074)), not a constant -\u210fc/\u03c0.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 32,
+      "verdict": "ERROR",
+      "explanation": "The result is dimensionally incorrect; Casimir force must depend on d (F/A = -\u03c0\u00b2\u210fc/(240d\u2074)), not a constant -\u210fc/\u03c0.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:21:51.352084"
+  },
+  {
+    "claim_id": 33,
+    "claim_text": "U_{Cas}(d)/A = (a\u00b3/720) F^{(3)}(0) = (a\u00b3/720)(-\u210fc/\u03c0) = -\u210fc a\u00b3/(720\u03c0).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "```json\n{\n    \"claim_id\": 33,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The expression has incorrect dimensions and yields the wrong result. The correct Casimir energy per unit area is -\\\\pi^2 \\\\hbar c / (720 d^3).\",\n    \"confidence\": 1.0\n}\n```",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 33,
+      "verdict": "ERROR",
+      "explanation": "The expression has incorrect dimensions and yields the wrong result. The correct Casimir energy per unit area is -\\pi^2 \\hbar c / (720 d^3).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:22:03.027462"
+  },
+  {
+    "claim_id": 34,
+    "claim_text": "Substituting a = \u03c0/d gives U_{Cas}(d)/A = -(\u210fc/(720\u03c0))(\u03c0/d)\u00b3 = -\u03c0\u00b2\u210fc/(720 d\u00b3).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 34, \"verdict\": \"CONFIRMED\", \"explanation\": \"Substituting a = \u03c0/d correctly recovers the standard Casimir energy density with proper numerical factors and unit consistency.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 34,
+      "verdict": "CONFIRMED",
+      "explanation": "Substituting a = \u03c0/d correctly recovers the standard Casimir energy density with proper numerical factors and unit consistency.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:22:15.637240"
+  },
+  {
+    "claim_id": 35,
+    "claim_text": "The Casimir energy per unit area is U(d)/A = -\u03c0\u00b2\u210fc/(720 d\u00b3).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 35,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The Casimir energy per unit area is indeed -\\u03c0\\u00b2\\u210fc/(720 d\\u00b3), which correctly yields the standard Casimir force F/A = -\\u03c0\\u00b2\\u210fc/(240 d\\u2074) upon differentiation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 35,
+      "verdict": "CONFIRMED",
+      "explanation": "The Casimir energy per unit area is indeed -\u03c0\u00b2\u210fc/(720 d\u00b3), which correctly yields the standard Casimir force F/A = -\u03c0\u00b2\u210fc/(240 d\u2074) upon differentiation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:22:30.673033"
+  },
+  {
+    "claim_id": 36,
+    "claim_text": "The force per unit area is F(d)/A = -d/d(d) [U_{Cas}(d)/A].",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 36,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The relation is the standard definition of force as the negative derivative of energy with respect to separation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 36,
+      "verdict": "CONFIRMED",
+      "explanation": "The relation is the standard definition of force as the negative derivative of energy with respect to separation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:22:39.890847"
+  },
+  {
+    "claim_id": 37,
+    "claim_text": "d/d(d) [U_{Cas}(d)/A] = -(\u03c0\u00b2\u210fc/720) d/d(d)(d^{-3}) = -(\u03c0\u00b2\u210fc/720)(-3)d^{-4} = \u03c0\u00b2\u210fc/(240 d\u2074).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 37,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The mathematical differentiation of the Casimir energy per unit area with respect to the plate separation d is entirely correct.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 37,
+      "verdict": "CONFIRMED",
+      "explanation": "The mathematical differentiation of the Casimir energy per unit area with respect to the plate separation d is entirely correct.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:22:47.572725"
+  },
+  {
+    "claim_id": 38,
+    "claim_text": "F(d)/A = -\u03c0\u00b2\u210fc/(240 d\u2074).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 38,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Result matches the standard Casimir force derivation using zeta-function regularization and perfect conductor boundaries.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 38,
+      "verdict": "CONFIRMED",
+      "explanation": "Result matches the standard Casimir force derivation using zeta-function regularization and perfect conductor boundaries.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:22:53.508790"
+  },
+  {
+    "claim_id": 39,
+    "claim_text": "The negative sign of the force means the force is attractive.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 39,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"A negative sign for the force (derived as the negative gradient of energy with respect to separation) conventionally and correctly indicates an attractive force.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 39,
+      "verdict": "CONFIRMED",
+      "explanation": "A negative sign for the force (derived as the negative gradient of energy with respect to separation) conventionally and correctly indicates an attractive force.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:23:00.164558"
+  },
+  {
+    "claim_id": 40,
+    "claim_text": "An exponential cutoff e^{-\u03b5\u03c9} was used to regulate the formally divergent zero-point sums/integrals.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 40,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The exponential cutoff e^{-\u03b5\u03c9} is a standard regularization technique used to tame the divergent zero-point energy sums.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 40,
+      "verdict": "CONFIRMED",
+      "explanation": "The exponential cutoff e^{-\u03b5\u03c9} is a standard regularization technique used to tame the divergent zero-point energy sums.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:23:10.512174"
+  },
+  {
+    "claim_id": 41,
+    "claim_text": "The subtraction of the free-vacuum contribution removes the divergent bulk vacuum energy, leaving a finite d-dependent remainder.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 41,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Subtracting the continuum free-vacuum zero-point energy from the discrete cavity zero-point energy correctly cancels the ultraviolet divergence, yielding the finite, observable Casimir energy.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 41,
+      "verdict": "CONFIRMED",
+      "explanation": "Subtracting the continuum free-vacuum zero-point energy from the discrete cavity zero-point energy correctly cancels the ultraviolet divergence, yielding the finite, observable Casimir energy.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:23:16.052986"
+  },
+  {
+    "claim_id": 42,
+    "claim_text": "The Euler\u2013Maclaurin formula was used to extract the finite difference between the discrete mode sum and the continuum integral.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 42,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Euler\u2013Maclaurin is a standard and correct method to isolate the finite remainder between the discrete sum and continuum integral in Casimir derivations.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 42,
+      "verdict": "CONFIRMED",
+      "explanation": "Euler\u2013Maclaurin is a standard and correct method to isolate the finite remainder between the discrete sum and continuum integral in Casimir derivations.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:23:32.013082"
+  },
+  {
+    "claim_id": 43,
+    "claim_text": "No explicit zeta-function regularization was required in the main derivation.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 43,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Zeta-function regularization is just one of several valid regularization schemes (like exponential cutoff) to extract the finite Casimir energy; it is not strictly required.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 43,
+      "verdict": "CONFIRMED",
+      "explanation": "Zeta-function regularization is just one of several valid regularization schemes (like exponential cutoff) to extract the finite Casimir energy; it is not strictly required.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:23:39.898548"
+  },
+  {
+    "claim_id": 48,
+    "claim_text": "The model initially writes U_{Cas,\u03b5}(d)/A = -(a\u00b3/720)F^{(3)}(0) and then states 'the sign is clearly wrong'.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 48,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The negative energy is expected; asserting the sign is wrong contradicts the correct Casimir energy derivation.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 48,
+      "verdict": "ERROR",
+      "explanation": "The negative energy is expected; asserting the sign is wrong contradicts the correct Casimir energy derivation.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:24:34.682505"
+  },
+  {
+    "claim_id": 49,
+    "claim_text": "After correcting the sign, U_{Cas}(d)/A = (a\u00b3/720) F^{(3)}(0).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "\\frac{\\pi}{d})^4 n^3$.\nThen $F^{(3)}(n) = - (\\frac{\\pi}{d})^4 6 n \\dots$ wait, $F'(n) = - (\\pi/d)^4 n^3$.\nSo $F''(n) = - 3 (\\pi/d)^4 n^2$.\n$F^{(3",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:24:59.669131"
+  },
+  {
+    "claim_id": 51,
+    "claim_text": "The Euler\u2013Maclaurin formula requires F to be sufficiently smooth and the regulator to be present.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 51,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Euler-Maclaurin requires a smooth function. The regulator ensures convergence and that boundary terms at infinity vanish, making the formula applicable to the divergent zero-point energy sum.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 51,
+      "verdict": "CONFIRMED",
+      "explanation": "Euler-Maclaurin requires a smooth function. The regulator ensures convergence and that boundary terms at infinity vanish, making the formula applicable to the divergent zero-point energy sum.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:25:05.402486"
+  },
+  {
+    "claim_id": 52,
+    "claim_text": "In the limit \u03b5\u21920\u207a, the omitted Euler\u2013Maclaurin terms vanish or correspond to divergent pieces canceled by subtraction.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 52, \"verdict\": \"UNJUSTIFIED\", \"explanation\": \"The explanation lacks a rigorous demonstration of why the remainder terms vanish or cancel; no detailed convergence analysis in the \u03b5\u21920 limit is provided.\", \"confidence\": 0.9}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 52,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "The explanation lacks a rigorous demonstration of why the remainder terms vanish or cancel; no detailed convergence analysis in the \u03b5\u21920 limit is provided.",
+      "confidence": 0.9
+    },
+    "timestamp": "2026-04-18T19:25:18.937911"
+  }
+]

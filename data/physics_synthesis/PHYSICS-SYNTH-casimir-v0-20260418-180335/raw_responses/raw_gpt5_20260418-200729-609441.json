@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776560847-rEvPkYekVrWLXkXzz53l",
+  "object": "chat.completion",
+  "created": 1776560847,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":8,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For parallel-plate EM modes, TE n=0 is absent and TM n=0 is subtle. Simply calling it d-independent ignores polarization/boundary-condition details needed for correctness.\",\"confidence\":0.94}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 528,
+    "completion_tokens": 63,
+    "total_tokens": 591,
+    "cost": 0.002265,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.002265,
+      "upstream_inference_prompt_cost": 0.00132,
+      "upstream_inference_completions_cost": 0.000945
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776560500-NvGAsGX2MawuQGfzNxNF",
+  "object": "chat.completion",
+  "created": 1776560500,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":28,\"verdict\":\"CONFIRMED\",\"explanation\":\"With \\(f(\\kappa)=\\\\frac{1}{2\\\\pi}\\\\int_0^\\\\infty k\\,dk\\\\sqrt{k^2+(\\\\pi\\\\kappa/d)^2}e^{-\\\\lambda\\\\sqrt{\\cdot}}\\) and \\(u=\\\\sqrt{k^2+(\\\\pi\\\\kappa/d)^2}\\), one gets \\(f(\\\\kappa)=\\\\frac{1}{2\\\\pi}(\\\\pi/d)^2\\\\int_{\\\\pi\\\\kappa/d}^\\\\infty u^2e^{-\\\\lambda u}du\\); differentiating thrice gives the stated form up to chain-rule factors already displayed.\",\"confidence\":0.81}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 566,
+    "completion_tokens": 163,
+    "total_tokens": 729,
+    "cost": 0.00386,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00386,
+      "upstream_inference_prompt_cost": 0.001415,
+      "upstream_inference_completions_cost": 0.002445
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

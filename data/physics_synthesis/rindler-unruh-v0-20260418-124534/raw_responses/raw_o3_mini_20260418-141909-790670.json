@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776539943-sDcr0VNLUj6eRSHiCUgZ",
+  "object": "chat.completion",
+  "created": 1776539943,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\": 13, \"verdict\": \"CONFIRMED\", \"explanation\": \"Standard hyperbolic motion results for constant proper acceleration with correct initial conditions.\", \"confidence\": 1.0}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49kto_-jkgjz4Q2DZcTJoGb4eQ3QRYOG7yo8VaQwRztDgMImXNl9PBZNTQjsir0A3Y115dwPUqFr6GWg_y3_pePwKUr3J2gZXkgFjxNNX6E5kxXONlckBfc_AC7Z4VCz-TQPpiIV0MWm4ksDRUbJVkQSUE7mfsxNTFSvA75DTphPJ1Kh9l2twL3xBQriTc7oNa_FuGlWR8o49QJwGIUpzuLTRbc9kV4z-IvJHAP2LNPuoXo8hRLFccruzipjEItreRE9ZHDKS9NCOaTHwfDXdtjX0VBZnDIZLkluVzJGF7fpVm4V43pk44OQ2h9o7NJaWtE8-h-43JYla808VvnkLh_VT3VAq5EZ3cTBYvUZDlK22Wl40Fj1a2AYLKwO9y4WASePfEVJQfrf-I4Z8Im8cACUxt6wu_YoFrErdcaVKVKdCzMWBBlFy_k5BoNU_lznQ7uEYkaHoW9zdAVt96l2ZAXg4pc_l3hoxUv405tVujyZiuKerYc2PFoPEVIRpjLfigGdSy_CnaBPqZgMlzSLR7iTOA==",
+            "format": "openai-responses-v1",
+            "id": "rs_0de68f95d52b612f0169e3d92887c0819588fe4f93a901a992",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 596,
+    "completion_tokens": 1355,
+    "total_tokens": 1951,
+    "cost": 0.0066176,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0066176,
+      "upstream_inference_prompt_cost": 0.0006556,
+      "upstream_inference_completions_cost": 0.005962
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 640,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776550194-uor6fbxOcoZEA8XOhi69",
+  "object": "chat.completion",
+  "created": 1776550194,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":34,\"verdict\":\"ERROR\",\"explanation\":\"Weak-field gives g_tt \u2248 -(1-2GM/(c^2 r)); comparing with g_tt = -(1 + c^2 C/r) yields c^2 C = -2GM/c^2, so C = -2GM/c^4.\",\"confidence\":0.97}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 383,
+    "completion_tokens": 79,
+    "total_tokens": 462,
+    "cost": 0.0021425,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0021425,
+      "upstream_inference_prompt_cost": 0.0009575,
+      "upstream_inference_completions_cost": 0.001185
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

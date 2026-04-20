@@ -1,0 +1,344 @@
+```json
+{
+  "model": "unknown",
+  "total_claims": 42,
+  "claims": [
+    {
+      "id": 1,
+      "text": "The Casimir force per unit area between two perfectly conducting, infinite, parallel plates separated by distance d is F/A = -π²ℏc/(240 d⁴)",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "The negative sign indicates an attractive force.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [1],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The plates are assumed to be infinite and located at z=0 and z=d.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "For a perfectly conducting surface the tangential components of the electric field must vanish.",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "The magnetic field normal to the surface vanishes for a perfectly conducting surface.",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "The allowed modes in the z direction are quantized with mode functions proportional to sin(nπz/d).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [3, 4],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "k_z = nπ/d, with n = 1, 2, 3, ...",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "In the x and y directions the wave-vectors k_x and k_y are continuous because the plates are infinite.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [3],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "There is a subtlety regarding the n=0 mode and how the two physical polarizations are counted, but these details do not affect the final result.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "n=0 contributes for one polarization (TM); claim it doesn't affect result needs justification."
+    },
+    {
+      "id": 10,
+      "text": "The dispersion relation is ω_n(k_⊥) = c√(k_⊥² + (nπ/d)²).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [7, 8],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "The vacuum (zero-point) energy is obtained by summing ½ℏω for every mode.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "The energy per unit area is U(d)/A = (ℏ/2) Σ_modes ω.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [11],
+      "notes": "Missing factor of 2 for polarizations in this expression."
+    },
+    {
+      "id": 13,
+      "text": "U(d)/A = (ℏ/2) Σ_{n=1}^∞ ∫ d²k_⊥/(2π)² c√(k_⊥² + (nπ/d)²)",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [10, 12],
+      "notes": "Missing factor of 2 for two polarizations."
+    },
+    {
+      "id": 14,
+      "text": "This sum/integral is divergent.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [13],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "A physically motivated regularization is to introduce an exponential cutoff factor e^{-λω} with λ > 0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "The regularized energy is U(d,λ)/A = (ℏ/2) Σ_{n=1}^∞ ∫ d²k_⊥/(2π)² c√(k_⊥²+(nπ/d)²) e^{-λc√(k_⊥²+(nπ/d)²)}",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [13, 15],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "ζ(-3) = 1/120, where ζ(s) is the Riemann zeta function.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "Converting the k_⊥ integration to polar coordinates gives d²k_⊥ = 2π k dk.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "U(d,λ)/A = (ℏc)/(4π) Σ_{n=1}^∞ ∫_0^∞ k dk √(k²+(nπ/d)²) e^{-λc√(k²+(nπ/d)²)}",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [16, 18],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "Substituting ω = √(k²+(nπ/d)²), when k runs from 0 to ∞, ω runs from nπ/d to ∞.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [19],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "Under this substitution, k dk = ω dω.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [20],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "U(d,λ)/A = (ℏc)/(4π) Σ_{n=1}^∞ ∫_{nπ/d}^∞ dω ω² e^{-λcω}",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [19, 20, 21],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "Substituting x = λcω transforms the integral to (1/(λc)³) ∫_{λcnπ/d}^∞ x² e^{-x} dx.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [22],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "∫_a^∞ x² e^{-x} dx = e^{-a}(a² + 2a + 2)",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "U(d,λ)/A = (ℏc)/(4π(λc)³) Σ_{n=1}^∞ e^{-λc(nπ/d)} [(λcnπ/d)² + 2λc(nπ/d) + 2]",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [22, 23, 24],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "The regulated energy still contains divergences as λ→0.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [25],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "These divergences are independent of the plate separation d and are present also in free space.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [26],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "The finite Casimir energy per unit area is defined as U_Casimir(d)/A = U(d)/A - U(d→∞)/A.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "Only the d-dependent part is physically observable (in the form of a force).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "After subtracting the d-independent divergent terms, one obtains U_Casimir(d)/A = -π²ℏc/(720 d³).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [25, 28, 17],
+      "notes": "Detailed subtraction steps are omitted."
+    },
+    {
+      "id": 31,
+      "text": "The summation is recast in terms of Riemann zeta functions; one encounters sums of the form Σ_{n=1}^∞ n³.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [25],
+      "notes": "Intermediate steps showing how Σn³ arises are skipped."
+    },
+    {
+      "id": 32,
+      "text": "Σ_{n=1}^∞ n³ is assigned a finite value by analytic continuation using ζ(-3) = 1/120.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [17, 31],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "The Casimir force per unit area is obtained by F(d)/A = -∂/∂d (U_Casimir(d)/A).",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "text": "F(d)/A = -∂/∂d [-π²ℏc/(720 d³)]",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [30, 33],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "The derivative of -π²ℏc/(720 d³) with respect to d is -π²ℏc/(720) · (-3)/d⁴ = π²ℏc/(240 d⁴).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [34],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "text": "F(d)/A = -π²ℏc/(240 d⁴)",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [34, 35],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "The plates are assumed to be perfectly conducting and infinite in extent.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "text": "The electromagnetic field is quantized in the region between the plates with boundary conditions that force the tangential electric field to vanish at the plate surfaces.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "The zero-point energy per mode is taken to be ½ℏω.",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "An exponential cutoff factor e^{-λω} with subsequent removal via λ→0 was used to regularize the divergent sums.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "The subtraction of the free-vacuum (d→∞) contribution isolates the physically observable, d-dependent piece.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "In evaluating divergent sums such as Σn³, the analytic continuation of the Riemann zeta function (ζ(-3)=1/120) is employed.",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [17],
+      "notes": ""
+    }
+  ]
+}
+```

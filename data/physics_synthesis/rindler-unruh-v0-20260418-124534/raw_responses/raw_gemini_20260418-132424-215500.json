@@ -1,0 +1,53 @@
+{
+  "id": "gen-1776536661-R3Vasp2I2evLbyxBN2FT",
+  "object": "chat.completion",
+  "created": 1776536661,
+  "model": "google/gemini-3.1-pro-preview-20260219",
+  "provider": "Google AI Studio",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 5,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The four-acceleration is standardly defined as the derivative of the four-velocity with respect to proper time.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "Et4ECtsEAQw51sfolRXIZcAh6v55uv3/ozp+X66oDa5q78m3K8C2+Rra3rNoYrFp3Wt6JQwQ/gstRH71dhZjm90fQYhzRolo/gPoQkc32IZ7JtVD8jG7C5G/Tg5jRbGr/WGaZAgEwjbVljwJ2yvGhZh+IpA2SdlpfrR67y+IIu296efdsi4r+JTBwnV/3Wn+mxTlMri7ePIDBQFXlXZuRPDj/pBtEJe07KGiU9N5s6k5nKFaXiwQvnOYgj4mrhKBwkcK5IbV5ozATLcqLzuaW1gKW7qdPTcidEiwBvHOr69durnSxz2O6DlanA+aX2Mf7iyowpW3qImC7r+2xaCP8FSZlXi5Nkn5NZV9BfxF/LE0vuKjz+fscngxjVZWlxJ35BfEzNketqmyUDWbRKlaEnaZK5WzNBdG47Z6WJRC4UiD76nq3QnqDiRl81RJJPLg8sBDoG51l3roSUbAkMiaGaszjQNB0ZJ6qii3z1VrECNfq5nwGExY+CpFv0MSPP4GNslOubivC0k1wJ/zPinswRL6DfNISeuOaoqi29yFFb65zIQcjMEOkx8i6Nx2rDv5SS5i3WLPkZtXADDsmPOQeKcBTUpN0W+bD2s3KJw0BNzBREuo1PtdYQhDQ69Zpltuwa66UQvjgm9jKTl85IVpRxu85fxHBY0d3djfoQVLcXBAf7uRHqUopp4gfNj2tMsDX6qtSbt/fG2hA6l8YxRcHg8hE27vIVJro7mMoI5TkJ/c4ZtFniLiN32/3Bt0Pa2aMT8p+Kmh8gtIzdSvasgy+PU8t7hE3UUn9Pa2gsPW3iT+",
+            "format": "google-gemini-v1",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 496,
+    "completion_tokens": 187,
+    "total_tokens": 683,
+    "cost": 0.003236,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.003236,
+      "upstream_inference_prompt_cost": 0.000992,
+      "upstream_inference_completions_cost": 0.002244
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 126,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

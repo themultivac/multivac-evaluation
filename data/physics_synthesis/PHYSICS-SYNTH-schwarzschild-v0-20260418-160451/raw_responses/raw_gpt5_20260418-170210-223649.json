@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776549727-SO9PWPqQwt2BiRul4LGY",
+  "object": "chat.completion",
+  "created": 1776549727,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"For metric ds\u00b2=-A dt\u00b2+B dr\u00b2+r\u00b2d\u03a9\u00b2, direct Ricci computation gives R_{\u03b8\u03b8}=1-1/B+rB'/(2B\u00b2)-rA'/(2AB), equivalent to stated formula.\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 374,
+    "completion_tokens": 77,
+    "total_tokens": 451,
+    "cost": 0.00209,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00209,
+      "upstream_inference_prompt_cost": 0.000935,
+      "upstream_inference_completions_cost": 0.001155
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

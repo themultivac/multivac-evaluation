@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776536007-kF6X4ORLjS52qGmTEwU4",
+  "object": "chat.completion",
+  "created": 1776536007,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":28,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Both are null Killing horizons and coordinate singularities in chosen charts, but Schwarzschild also has a true global event horizon; Rindler horizon is observer-dependent in flat spacetime.\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 524,
+    "completion_tokens": 62,
+    "total_tokens": 586,
+    "cost": 0.00224,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00224,
+      "upstream_inference_prompt_cost": 0.00131,
+      "upstream_inference_completions_cost": 0.00093
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

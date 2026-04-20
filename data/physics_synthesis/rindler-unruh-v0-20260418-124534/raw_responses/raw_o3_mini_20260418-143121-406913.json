@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776540672-tUKt3cTLbl7JiM2qbcf4",
+  "object": "chat.completion",
+  "created": 1776540672,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Eliminating \u03c4 from x = (1/a)cosh(a\u03c4) and t = (1/a)sinh(a\u03c4) correctly yields x\u00b2 - t\u00b2 = 1/a\u00b2, representing the right Rindler wedge.\",\n    \"confidence\": 0.99\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49wIakJn7AJqpelEqKdFliogBfevF6RCsFo7kFXOZI42fgb7UeUePLMN1kmuQ1WeSXRiEqlL0xM69Jjzf6eBaB63w4uyP-4mbsTHWpa2gLYg5bvSL2U6CeS-di67ryhy62a8qqDHw-BfBBWU1yluMzNgFPntsPWBaRk0Dz4aAE15en0OYWnqrbbVjiycmfsPbJNDgR2k1xmTCRNrHAdXEXDpAcjMAUVgmTDDgRwbL7OgaB99S9o2EdIdydI20EXQeBKQyFXxEQ3bhkrvbNpQGyjvj0JMNHatsMMwHcRpjk8I3WDzXNympfhGQgHM0Vf8yVmkDbAHrKoG7N0LniLT8qiygkzELYrSF7hYZYAjiZ7CfQV0XqNKuYK3k39WU8dO9_mWPBmOkeHzZkhaPHl2ddFVaI2WEE56h2rq4_5guKAo9vT5KvwFl978kHpOvo0OQ7_EZGb4jEGfERGltZmduqV7Igk38ySuKl2PeaH-J4krsv0EwWTzJ4aVR9oVg0rRq0NIDEm1Rcz4FAT0oMcLyJbyUQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_0eface264af4addd0169e3dc018bb881959583222f36253df0",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 531,
+    "completion_tokens": 2155,
+    "total_tokens": 2686,
+    "cost": 0.0100661,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0100661,
+      "upstream_inference_prompt_cost": 0.0005841,
+      "upstream_inference_completions_cost": 0.009482
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1024,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

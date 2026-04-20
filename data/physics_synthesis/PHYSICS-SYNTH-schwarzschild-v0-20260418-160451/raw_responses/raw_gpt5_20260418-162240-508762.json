@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776547357-m5srwi14Nf28M0lx8QLg",
+  "object": "chat.completion",
+  "created": 1776547357,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard for isolated spherically symmetric vacuum solutions: impose g_tt\u2192-c^2, g_rr\u21921, angular part unchanged as r\u2192\u221e, yielding asymptotic Minkowski spacetime.\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 373,
+    "completion_tokens": 67,
+    "total_tokens": 440,
+    "cost": 0.0019375,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0019375,
+      "upstream_inference_prompt_cost": 0.0009325,
+      "upstream_inference_completions_cost": 0.001005
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

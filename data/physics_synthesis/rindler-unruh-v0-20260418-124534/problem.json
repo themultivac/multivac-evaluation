@@ -1,0 +1,30 @@
+{
+  "id": "rindler-unruh-v0",
+  "question": "Consider an observer undergoing constant proper acceleration a in Minkowski spacetime (special relativity, flat spacetime, (+,-,-,-) signature). \n\nPart 1: Derive the Rindler coordinates (\u03b7, \u03be) from first principles. Show that the observer's worldline traces a hyperbola in Minkowski coordinates (t, x), and derive the explicit coordinate transformation between (t, x) and (\u03b7, \u03be). Identify the Rindler horizon and show that it is a null surface in Minkowski coordinates but a coordinate singularity in Rindler coordinates. \n\nPart 2: Starting from a massless scalar quantum field in Minkowski vacuum, derive the Unruh temperature T = \u210fa/(2\u03c0ck_B) that a uniformly accelerating observer measures. State the key physical assumption (Bogoliubov transformation between Minkowski and Rindler mode decompositions), and show how the thermal spectrum emerges. \n\nShow all assumptions, intermediate steps, and physical reasoning. Use LaTeX for equations. State explicitly if any step is heuristic or requires results you are invoking without derivation.",
+  "ground_truth": {
+    "final_answers": {
+      "rindler_coordinate_transform": "t = \u03be sinh(\u03b7), x = \u03be cosh(\u03b7)  [or equivalent with a factor]",
+      "unruh_temperature": "T = \u210fa / (2\u03c0 c k_B)"
+    },
+    "key_steps": [
+      "Observer's worldline: x(\u03c4) = (c\u00b2/a) cosh(a\u03c4/c), t(\u03c4) = (c/a) sinh(a\u03c4/c)",
+      "Rindler coordinates: t = \u03be sinh(a\u03b7/c), x = \u03be cosh(a\u03b7/c) where \u03be = c\u00b2/a for the reference worldline",
+      "Rindler metric: ds\u00b2 = -(a\u03be/c)\u00b2 c\u00b2 d\u03b7\u00b2 + d\u03be\u00b2 + dy\u00b2 + dz\u00b2",
+      "Rindler horizon at \u03be = 0 (the past and future null surfaces x = \u00b1ct)",
+      "Decompose scalar field in both Minkowski and Rindler modes",
+      "Compute Bogoliubov coefficients \u03b1_\u03c9 and \u03b2_\u03c9 between the two mode sets",
+      "Expected number of Rindler particles in Minkowski vacuum: <N_\u03c9> = |\u03b2_\u03c9|\u00b2 / (|\u03b1_\u03c9|\u00b2 - |\u03b2_\u03c9|\u00b2)",
+      "Show |\u03b2_\u03c9|\u00b2 / |\u03b1_\u03c9|\u00b2 = exp(-2\u03c0\u03c9c/a), giving Planck spectrum at T = \u210fa/(2\u03c0ck_B)"
+    ],
+    "key_assumptions": [
+      "Constant proper acceleration a",
+      "Flat Minkowski background (no gravity, no curvature)",
+      "Free massless scalar quantum field",
+      "Minkowski vacuum state as reference",
+      "Bogoliubov transformation between inertial and Rindler observer mode decompositions"
+    ]
+  },
+  "domain": "quantum_field_theory_in_curved_spacetime",
+  "difficulty": "graduate",
+  "source": "Birrell & Davies Ch. 4; Crispino, Higuchi, Matsas (Rev. Mod. Phys. 2008)"
+}

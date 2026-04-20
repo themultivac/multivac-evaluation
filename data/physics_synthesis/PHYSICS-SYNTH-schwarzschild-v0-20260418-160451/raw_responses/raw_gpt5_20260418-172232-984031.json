@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776550951-28zrmBlffCzsvgKpkFpQ",
+  "object": "chat.completion",
+  "created": 1776550951,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"This is the standard static, spherically symmetric metric in areal radius gauge; asymptotic flatness requires A,B\u21921 as r\u2192\u221e for vacuum around isolated mass.\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 404,
+    "completion_tokens": 63,
+    "total_tokens": 467,
+    "cost": 0.001955,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.001955,
+      "upstream_inference_prompt_cost": 0.00101,
+      "upstream_inference_completions_cost": 0.000945
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,404 @@
+Below is a standard derivation of the Casimir force between two infinite, perfectly conducting, parallel plates separated by distance \(d\), starting from the zero-point energy of the quantized electromagnetic field.
+
+I will use an exponential regulator and explicitly subtract the free-vacuum contribution. I will also state where standard analytic continuation results are invoked.
+
+---
+
+# 1. Physical setup and assumptions
+
+We assume:
+
+1. **Two infinite, perfectly conducting, parallel plates** lie at
+   \[
+   z=0,\qquad z=d.
+   \]
+2. The space between them is vacuum.
+3. The plates are ideal conductors, so the tangential electric field vanishes on each plate:
+   \[
+   \mathbf E_\parallel = 0 \quad \text{at } z=0,d.
+   \]
+4. The field is quantized in the region between the plates.
+5. We neglect edge effects because the plates are infinite.
+6. We compute only the change in vacuum energy due to the plates; absolute vacuum energy is divergent and unobservable in this context.
+
+---
+
+# 2. Electromagnetic normal modes between the plates
+
+For perfectly conducting plates, the allowed electromagnetic modes are standing waves in the \(z\)-direction and plane waves in the transverse \((x,y)\)-directions.
+
+Let
+\[
+\mathbf k_\perp = (k_x,k_y),\qquad k_\perp = |\mathbf k_\perp|.
+\]
+The allowed longitudinal wave numbers are
+\[
+k_z = \frac{n\pi}{d},\qquad n=0,1,2,\dots
+\]
+with mode frequencies
+\[
+\omega_{n,\mathbf k_\perp} = c\sqrt{k_\perp^2+\left(\frac{n\pi}{d}\right)^2}.
+\]
+
+For the electromagnetic field:
+
+- For \(n\ge 1\), there are **two polarizations** (TE and TM).
+- For \(n=0\), only **one physical polarization** contributes.
+
+A compact way to write the zero-point energy per unit area is therefore
+\[
+\frac{U(d)}{A}
+=
+\frac{\hbar}{2}
+\int \frac{d^2 k_\perp}{(2\pi)^2}
+\left[
+\omega_{0,\mathbf k_\perp}
++
+2\sum_{n=1}^\infty \omega_{n,\mathbf k_\perp}
+\right].
+\]
+This is formally divergent.
+
+It is often convenient to rewrite this as
+\[
+\frac{U(d)}{A}
+=
+\hbar
+\int \frac{d^2 k_\perp}{(2\pi)^2}
+\left[
+\sum_{n=1}^\infty \omega_{n,\mathbf k_\perp}
++\frac12 \omega_{0,\mathbf k_\perp}
+\right].
+\]
+But this still diverges and must be regularized.
+
+---
+
+# 3. Regularized zero-point energy
+
+We introduce an **exponential cutoff**
+\[
+e^{-\varepsilon \omega},\qquad \varepsilon>0,
+\]
+which suppresses high-frequency modes. This is physically motivated as a UV regulator, and we will remove \(\varepsilon\to 0^+\) after subtraction of the free-vacuum contribution.
+
+Thus
+\[
+\frac{U_\varepsilon(d)}{A}
+=
+\frac{\hbar}{2}
+\int \frac{d^2 k_\perp}{(2\pi)^2}
+\left[
+\omega_{0,\mathbf k_\perp}e^{-\varepsilon\omega_{0,\mathbf k_\perp}}
++
+2\sum_{n=1}^\infty
+\omega_{n,\mathbf k_\perp}e^{-\varepsilon\omega_{n,\mathbf k_\perp}}
+\right].
+\]
+
+Since
+\[
+\omega_{n,\mathbf k_\perp}=c\sqrt{k_\perp^2+\left(\frac{n\pi}{d}\right)^2},
+\]
+this becomes
+\[
+\frac{U_\varepsilon(d)}{A}
+=
+\frac{\hbar c}{2}
+\int \frac{d^2 k_\perp}{(2\pi)^2}
+\left[
+k_\perp e^{-\varepsilon c k_\perp}
++
+2\sum_{n=1}^\infty
+\sqrt{k_\perp^2+\left(\frac{n\pi}{d}\right)^2}
+\,e^{-\varepsilon c \sqrt{k_\perp^2+(n\pi/d)^2}}
+\right].
+\]
+
+---
+
+# 4. Free-vacuum contribution
+
+Without plates, \(k_z\) is continuous. The vacuum zero-point energy per unit area in a slab of width \(d\) is
+\[
+\frac{U^{(0)}_\varepsilon(d)}{A}
+=
+\frac{\hbar}{2}
+\cdot 2
+\int \frac{d^2 k_\perp}{(2\pi)^2}
+\int_0^\infty \frac{dk_z}{\pi}
+\,
+c\sqrt{k_\perp^2+k_z^2}\,
+e^{-\varepsilon c\sqrt{k_\perp^2+k_z^2}}.
+\]
+Explanation:
+
+- There are 2 photon polarizations in free space.
+- The density of states in \(k_z\) over an interval of length \(d\) is \(d/\pi\) for positive \(k_z\), but since I am expressing the energy **per unit area** for a slab of thickness \(d\), the correct replacement matching the plate mode sum is
+  \[
+  \sum_{n=0}^\infty{}' f\!\left(\frac{n\pi}{d}\right)
+  \;\to\;
+  \frac{d}{\pi}\int_0^\infty dk_z\, f(k_z),
+  \]
+  where the prime means the \(n=0\) term carries half weight.
+
+Equivalently, the free-vacuum subtraction corresponding to the plate sum is
+\[
+\frac{U^{(0)}_\varepsilon(d)}{A}
+=
+\hbar
+\int \frac{d^2 k_\perp}{(2\pi)^2}
+\frac{d}{\pi}
+\int_0^\infty dk_z\,
+c\sqrt{k_\perp^2+k_z^2}\,
+e^{-\varepsilon c\sqrt{k_\perp^2+k_z^2}}.
+\]
+
+The Casimir energy is then
+\[
+\frac{U_{\text{Cas},\varepsilon}(d)}{A}
+=
+\frac{U_\varepsilon(d)}{A}
+-
+\frac{U^{(0)}_\varepsilon(d)}{A}.
+\]
+
+---
+
+# 5. Rewrite in a form suitable for summation
+
+Define
+\[
+F(x)
+=
+\int \frac{d^2 k_\perp}{(2\pi)^2}\,
+\hbar c\sqrt{k_\perp^2+x^2}\,
+e^{-\varepsilon c\sqrt{k_\perp^2+x^2}}.
+\]
+Then
+\[
+\frac{U_\varepsilon(d)}{A}
+=
+\sum_{n=0}^\infty{}' F\!\left(\frac{n\pi}{d}\right),
+\]
+where the prime means half weight for \(n=0\).
+
+Similarly,
+\[
+\frac{U^{(0)}_\varepsilon(d)}{A}
+=
+\frac{d}{\pi}\int_0^\infty dx\,F(x).
+\]
+
+Therefore
+\[
+\frac{U_{\text{Cas},\varepsilon}(d)}{A}
+=
+\sum_{n=0}^\infty{}' F\!\left(\frac{n\pi}{d}\right)
+-
+\frac{d}{\pi}\int_0^\infty dx\,F(x).
+\]
+
+Now set
+\[
+a=\frac{\pi}{d},
+\]
+so that
+\[
+\frac{U_{\text{Cas},\varepsilon}(d)}{A}
+=
+\sum_{n=0}^\infty{}' F(an)
+-
+\frac{1}{a}\int_0^\infty dx\,F(x).
+\]
+
+To extract the finite part, use the **Euler–Maclaurin formula**:
+\[
+\sum_{n=0}^\infty{}' F(an)
+=
+\frac1a\int_0^\infty dx\,F(x)
+-\frac{a^3}{720}F^{(3)}(0)+\cdots
+\]
+provided \(F\) is sufficiently smooth and the regulator is present. Thus
+\[
+\frac{U_{\text{Cas},\varepsilon}(d)}{A}
+=
+-\frac{a^3}{720}F^{(3)}(0)+\cdots
+\]
+and in the limit \(\varepsilon\to0^+\), the omitted terms vanish or correspond to divergent pieces canceled by subtraction. So the finite part is determined by \(F^{(3)}(0)\).
+
+---
+
+# 6. Compute \(F(x)\) near \(x=0\)
+
+We first evaluate \(F(x)\) without yet removing the regulator:
+\[
+F(x)=
+\hbar c
+\int \frac{d^2k_\perp}{(2\pi)^2}
+\sqrt{k_\perp^2+x^2}\,
+e^{-\varepsilon c\sqrt{k_\perp^2+x^2}}.
+\]
+Using polar coordinates in the transverse plane,
+\[
+d^2k_\perp = 2\pi k_\perp\,dk_\perp,
+\]
+so
+\[
+F(x)=
+\frac{\hbar c}{2\pi}
+\int_0^\infty k_\perp\,dk_\perp\,
+\sqrt{k_\perp^2+x^2}\,
+e^{-\varepsilon c\sqrt{k_\perp^2+x^2}}.
+\]
+
+Let
+\[
+u=\sqrt{k_\perp^2+x^2}\quad\Rightarrow\quad k_\perp\,dk_\perp=u\,du.
+\]
+Then
+\[
+F(x)=
+\frac{\hbar c}{2\pi}
+\int_x^\infty u^2 e^{-\varepsilon c u}\,du.
+\]
+
+To determine the finite Casimir term, we only need the small-\(x\) behavior. As \(\varepsilon\to0\),
+\[
+\int_x^\infty u^2 e^{-\varepsilon c u}\,du
+=
+\text{(divergent terms independent of \(x\) or polynomial in \(x\))}
+-\frac{x^3}{3}
++O(\varepsilon).
+\]
+So the \(x\)-dependent finite piece is
+\[
+F(x) \sim -\frac{\hbar c}{6\pi}x^3 + \text{(terms canceled by subtraction)}.
+\]
+Hence
+\[
+F^{(3)}(0) = -\frac{\hbar c}{\pi}.
+\]
+
+Therefore
+\[
+\frac{U_{\text{Cas}}(d)}{A}
+=
+-\frac{a^3}{720}\left(-\frac{\hbar c}{\pi}\right)
+=
+\frac{\hbar c\,a^3}{720\pi}.
+\]
+At this point the sign is clearly wrong compared to the known physical result, so I need to check the Euler–Maclaurin sign carefully.
+
+For a half-weighted sum,
+\[
+\sum_{n=0}^\infty{}' F(an)
+=
+\frac1a\int_0^\infty F(x)\,dx
+-\sum_{m=1}^\infty \frac{B_{2m}}{(2m)!}a^{2m-1}F^{(2m-1)}(0).
+\]
+Since \(B_4=-1/30\),
+\[
+-\frac{B_4}{4!}a^3F^{(3)}(0)
+=
+-\left(-\frac{1}{30}\right)\frac{a^3}{24}F^{(3)}(0)
+=
+\frac{a^3}{720}F^{(3)}(0).
+\]
+Thus
+\[
+\frac{U_{\text{Cas}}(d)}{A}
+=
+\frac{a^3}{720}F^{(3)}(0)
+=
+\frac{a^3}{720}\left(-\frac{\hbar c}{\pi}\right)
+=
+-\frac{\hbar c\,a^3}{720\pi}.
+\]
+Now substituting \(a=\pi/d\),
+\[
+\frac{U_{\text{Cas}}(d)}{A}
+=
+-\frac{\hbar c}{720\pi}\left(\frac{\pi}{d}\right)^3
+=
+-\frac{\pi^2\hbar c}{720\,d^3}.
+\]
+
+This is the standard Casimir energy per unit area.
+
+---
+
+# 7. Casimir force per unit area
+
+The force per unit area is minus the derivative of the energy per unit area with respect to separation:
+\[
+\frac{F(d)}{A}
+=
+-\frac{d}{dd}\left(\frac{U_{\text{Cas}}(d)}{A}\right).
+\]
+Since
+\[
+\frac{U_{\text{Cas}}(d)}{A}
+=
+-\frac{\pi^2\hbar c}{720\,d^3},
+\]
+we get
+\[
+\frac{d}{dd}\left(\frac{U_{\text{Cas}}(d)}{A}\right)
+=
+-\frac{\pi^2\hbar c}{720}\frac{d}{dd}(d^{-3})
+=
+-\frac{\pi^2\hbar c}{720}(-3)d^{-4}
+=
+\frac{\pi^2\hbar c}{240\,d^4}.
+\]
+Therefore
+\[
+\boxed{
+\frac{F(d)}{A}
+=
+-\frac{\pi^2\hbar c}{240\,d^4}
+}
+\]
+which is negative, meaning the force is **attractive**.
+
+---
+
+# 8. Final results
+
+## Casimir energy per unit area
+\[
+\boxed{
+\frac{U(d)}{A}
+=
+-\frac{\pi^2\hbar c}{720\,d^3}
+}
+\]
+
+## Casimir force per unit area
+\[
+\boxed{
+\frac{F(d)}{A}
+=
+-\frac{\pi^2\hbar c}{240\,d^4}
+}
+\]
+
+---
+
+# 9. Comments on regularization and known results
+
+- I used an **exponential cutoff** \(e^{-\varepsilon\omega}\) to regulate the formally divergent zero-point sums/integrals.
+- The subtraction of the **free-vacuum contribution** removes the divergent bulk vacuum energy, leaving a finite \(d\)-dependent remainder.
+- I used the **Euler–Maclaurin formula** to extract the finite difference between the discrete mode sum and the continuum integral.
+- No explicit zeta-function regularization was required in the main derivation.
+
+A shorter alternative derivation uses the known analytically continued value
+\[
+\zeta(-3)=\frac{1}{120},
+\]
+which is a standard result from analytic continuation of the Riemann zeta function. If that route were used, I would state explicitly that this value is not obtained from the convergent series \(\sum n^3\), but by analytic continuation.
+
+If you want, I can also give:
+1. a derivation using **zeta-function regularization**, or  
+2. a derivation using the **vacuum stress tensor** instead of differentiating the energy.

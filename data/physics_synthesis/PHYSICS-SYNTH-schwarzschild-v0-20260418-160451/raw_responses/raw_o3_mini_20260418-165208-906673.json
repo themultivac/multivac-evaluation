@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776549121-S728pnpwmToTofTc8VOS",
+  "object": "chat.completion",
+  "created": 1776549121,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 27,\n    \"verdict\": \"INCOMPLETE\",\n    \"explanation\": \"The expression is truncated and misses necessary Christoffel symbol terms and summations for a full R_rr derivation.\",\n    \"confidence\": 0.9\n}",
+        "refusal": null,
+        "reasoning": "**Evaluating classification criteria**\n\nI'm looking at the expression \"\u0393^r_{rr}(\u0393^t_{...\" and realizing it lacks completeness due to missing summation terms. The breakdown shows that the right-hand side has incomplete representations, signifying partial writing of the coordinate representation for the Ricci tensor. Since it's missing essential details, I\u2019m leaning towards classifying it as \"INCOMPLETE.\" The standard formula for the Ricci tensor indeed requires more terms, so it seems quite truncated here.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Evaluating classification criteria**\n\nI'm looking at the expression \"\u0393^r_{rr}(\u0393^t_{...\" and realizing it lacks completeness due to missing summation terms. The breakdown shows that the right-hand side has incomplete representations, signifying partial writing of the coordinate representation for the Ricci tensor. Since it's missing essential details, I\u2019m leaning towards classifying it as \"INCOMPLETE.\" The standard formula for the Ricci tensor indeed requires more terms, so it seems quite truncated here.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_0IJXa-AJ3AUe9Fjhg6xbnB3IexhZkx3Zjm914_De2THrkSDcKaFu7VmAwVsA7xTYpKfrH03z2jMW61pF_3mf9fhaLLqGnKUZQgBRsvG64-6WZSXZzvEzj6e--VqVU0YPEX__cbg4IkUSPxSBYNfecY01O9kV2ugP-L54KlcJxznquX2TvJeeAl9kxpJa-eI5sR6StJ96g5j8MArhy69j2cHRHAKdhddnMBQYHGiYOMY6VFQS_HuRAQdW8mckPR1RLyAPutjldrogYHFQZdRoQKHfUZWNk19n8nexuLV8FipSB9Y102w4VtrbYY53fp25LtFy6sJ09t1cQTpqB_T-fDFj4KeaqC3p4DDR2x44MJC7_Nmwnnyyb7cSTxqALF2uZbRc7D0joF15ZQdMnyGMNqB13S3ZZp4_ke7OvaV-EQU7VI9EqmoxApxm4z9WBYlVsRHi61PoflsSQonZ5q5HLysJz5E1ZfM9-tg9_lyUK6FZuu0i6Q8BZNBHJkVMwIHxe9dXg9jlMIKYw8JBilM_iLCA==",
+            "format": "openai-responses-v1",
+            "id": "rs_0e9d4caebc16590b0169e3fd01c8b08195b2a268f20e3787c6",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 405,
+    "completion_tokens": 2178,
+    "total_tokens": 2583,
+    "cost": 0.0100287,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0100287,
+      "upstream_inference_prompt_cost": 0.0004455,
+      "upstream_inference_completions_cost": 0.0095832
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1024,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776538609-1pFyiNsR78YJpazCLO1R",
+  "object": "chat.completion",
+  "created": 1776538609,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":26,\"verdict\":\"CONFIRMED\",\"explanation\":\"For ds\u00b2=(1+a\u03be/c\u00b2)\u00b2c\u00b2d\u03b7\u00b2-d\u03be\u00b2, det g=-c\u00b2(1+a\u03be/c\u00b2)\u00b2 vanishes at \u03be=-c\u00b2/a. This is the Rindler horizon, a null coordinate singularity, not curvature.\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 555,
+    "completion_tokens": 85,
+    "total_tokens": 640,
+    "cost": 0.0026625,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0026625,
+      "upstream_inference_prompt_cost": 0.0013875,
+      "upstream_inference_completions_cost": 0.001275
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

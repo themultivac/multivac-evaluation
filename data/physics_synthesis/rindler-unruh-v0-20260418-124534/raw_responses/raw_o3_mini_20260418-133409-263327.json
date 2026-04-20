@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776537231-pzfpknkcXJhpmPru4txL",
+  "object": "chat.completion",
+  "created": 1776537231,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Working through derivatives**\n\nI need to clarify a few things about the equation: ds\u00b2 = c\u00b2 dt\u00b2 - dx\u00b2. I think dt should involve a derivative with respect to some parameter, plus extra terms from d\u03be. If \u03be is fixed, then only \u03b7 varies. So I can rewrite ds\u00b2 as: ds\u00b2 = c\u00b2 (dt/d\u03b7)\u00b2 d\u03b7\u00b2 - (dx/d\u03b7)\u00b2 d\u03b7\u00b2. \n\nUsing the equations for t and x, I'll find dt/d\u03b7 and dx/d\u03b7, leading to dt/d\u03b7 = \u03be cosh(a\u03b7/c) and dx/d\u03b7 = \u03be sinh(a\u03b7/c).",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Working through derivatives**\n\nI need to clarify a few things about the equation: ds\u00b2 = c\u00b2 dt\u00b2 - dx\u00b2. I think dt should involve a derivative with respect to some parameter, plus extra terms from d\u03be. If \u03be is fixed, then only \u03b7 varies. So I can rewrite ds\u00b2 as: ds\u00b2 = c\u00b2 (dt/d\u03b7)\u00b2 d\u03b7\u00b2 - (dx/d\u03b7)\u00b2 d\u03b7\u00b2. \n\nUsing the equations for t and x, I'll find dt/d\u03b7 and dx/d\u03b7, leading to dt/d\u03b7 = \u03be cosh(a\u03b7/c) and dx/d\u03b7 = \u03be sinh(a\u03b7/c).",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp486hOZaijza_KPV9Xo9MJazcU8DacLKo_1OJuNW94PJxoRqiMlQ-ADb97Xs4cqKq0912YBjPVsFFSIrAfV9IRazO8PguCA3SnZykvzfjUYKj7XJHU_YaEftogToEPf36_p6ypYXoe4dn43j25HB0hxvSW9f6qcK2S8SEso7agDWOIa6qJHCEDKlY4VmZmsrlkXSKDTXNreUxupUQr6xwWzlwLCKp-RC5cFCyqLDf98s7LvcXHs0_MIrBoG4w8il_oqBCppeaZJqrfHSNuWpszg_Qrw79gVFAJrLTxQQ2fFEIMb-M7IWeLGNcveWIUeKALRMUeuDYW1N9c-_SXbbXNNVrX3vqPraQ_h-S7JQZ-P9FoxFxb3eIo8OOpD7pAalNTankhy4S841REJDXfevZunn0aE_5yc9B0asRDn9eU5bxQEr5hU8z6dP3EAJo8LlISiMVxZjScdo5xAEOxbiPGF4hIPGn0mNq3d7j9keKmZ6B8w_-HGuDQKtCC_YigqeG2wJG5g5HXRxsQ0csLQ6tzxhJZg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0b817902f9c68c2d0169e3ce8f9c8881979cf204e3c913e378",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 527,
+    "completion_tokens": 4096,
+    "total_tokens": 4623,
+    "cost": 0.0186021,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0186021,
+      "upstream_inference_prompt_cost": 0.0005797,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

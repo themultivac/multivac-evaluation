@@ -1,0 +1,313 @@
+```json
+{
+  "model": "unknown",
+  "total_claims": 38,
+  "claims": [
+    {
+      "id": 1,
+      "text": "The Einstein field equations are R_{μν} - (1/2)R g_{μν} + Λ g_{μν} = (8πG/c⁴) T_{μν}.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "We assume a vanishing cosmological constant Λ = 0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "We seek a solution in vacuum (T_{μν} = 0) exterior to a spherically symmetric, nonrotating, uncharged mass M.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "Vacuum implies R_{μν} = 0 (tracing the equations yields R = 0, so the Einstein tensor vanishes if and only if the Ricci tensor does).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1, 2, 3],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "By Birkhoff's theorem, the vacuum solution is necessarily static (time-independent with no dt dr cross terms).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [3, 4],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "Spherical symmetry further restricts the form of the line element to depend only on a radial coordinate r, with the angular sector reducing to the standard round 2-sphere.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [3],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "Asymptotic flatness (Minkowski spacetime recovered as r → ∞) is also assumed.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "The general ansatz is ds² = -A(r) c² dt² + B(r) dr² + r²(dθ² + sin²θ dφ²), where A(r) → 1 and B(r) → 1 as r → ∞.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [5, 6, 7],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "The nonvanishing Christoffel symbols for this metric are Γ^t_{tr} = A'/(2A), Γ^r_{tt} = c²A'/(2B), Γ^r_{rr} = B'/(2B), Γ^r_{θθ} = -r/B, Γ^r_{φφ} = -r sin²θ/B, Γ^θ_{rθ} = 1/r, Γ^φ_{rφ} = 1/r, Γ^φ_{θφ} = cotθ, Γ^θ_{φφ} = -sinθ cosθ.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "The Ricci tensor is R_{μν} = ∂_λ Γ^λ_{μν} - ∂_ν Γ^λ_{μλ} + Γ^λ_{σλ} Γ^σ_{μν} - Γ^λ_{σν} Γ^σ_{μλ}.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "The Einstein equations reduce to the independent conditions R_{tt} = 0, R_{rr} = 0, and R_{θθ} = 0.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [4, 8],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "The φφ component is proportional to the θθ component by spherical symmetry.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [6],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "Off-diagonal components such as R_{tr} vanish identically by staticity.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [5],
+      "notes": "Model later uses R_{tr}=0 as a nontrivial equation; inconsistency."
+    },
+    {
+      "id": 14,
+      "text": "First consider R_{tr} = 0. Substituting the Christoffel symbols yields ∂_r(A'/A + B'/B) = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [9, 10],
+      "notes": "Model said R_{tr} vanishes identically, then uses it as an equation."
+    },
+    {
+      "id": 15,
+      "text": "Integration gives A(r)B(r) = K (constant).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [14],
+      "notes": "∂_r(ln A + ln B)=0 gives AB=const; correct logic."
+    },
+    {
+      "id": 16,
+      "text": "Asymptotic flatness forces K = 1, so B(r) = 1/A(r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [7, 15],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "The metric simplifies to ds² = -A(r) c² dt² + dr²/A(r) + r²(dθ² + sin²θ dφ²).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8, 16],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "R_{θθ} = 1 - 1/B - rA'/(2AB) + rB'/(2B²).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [9, 10],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "Setting R_{θθ} = 0 with B = 1/A (so B' = -A'/A²) yields 1 - A - rA' = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [16, 18],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "The equation 1 - A - rA' = 0 is equivalent to dA/(1-A) = dr/r.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [19],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "Direct integration produces -ln|1-A| = ln r + C₁, implying 1 - A = C/r.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [20],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "A(r) = 1 - C/r, where C > 0 is an integration constant.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [21],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "The sign C > 0 ensures a sensible Newtonian limit.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [22],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "The Schwarzschild metric is ds² = -(1 - C/r)c² dt² + dr²/(1 - C/r) + r²(dθ² + sin²θ dφ²).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [17, 22],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "The remaining equation R_{tt} = 0 or R_{rr} = 0 is automatically satisfied by this form.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [24],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "For weak fields (|Φ| ≪ c²), g_{tt} ≈ -(1 + 2Φ/c²)c², so A(r) ≈ 1 + 2Φ/c².",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "Poisson's equation ∇²Φ = 4πGρ for a spherical mass M has solution Φ = -GM/r.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "A(r) ≈ 1 - 2GM/(c²r), implying C = 2GM/c².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [22, 26, 27],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "The Schwarzschild metric is ds² = -(1 - 2GM/(c²r))c² dt² + dr²/(1 - 2GM/(c²r)) + r²(dθ² + sin²θ dφ²).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [24, 28],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "A coordinate singularity occurs where the metric coefficients diverge or vanish, i.e., where A(r) = 0 or equivalently where the coefficient of dr² diverges.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [29],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "The coordinate singularity is at r = r_s = 2GM/c².",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [29, 30],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "text": "This is a coordinate singularity, not a curvature singularity.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [31],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "The Kretschner scalar R_{αβγδ}R^{αβγδ} remains finite as r → r_s.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [31],
+      "notes": "Model writes 'Kretschner'; standard name is 'Kretschner' or 'Kretschmann'."
+    },
+    {
+      "id": 34,
+      "text": "The metric can be extended smoothly across r_s in other coordinate systems, e.g., Eddington–Finkelstein or Kruskal–Szekeres.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [32],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "The Schwarzschild radius is r_s = 2GM/c².",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [31],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "text": "The R_{tr} equation, after substituting Christoffel symbols, yields ∂_r(A'/A + B'/B) = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [9, 10],
+      "notes": "R_{tr}=0 is actually automatic for diagonal static metric."
+    },
+    {
+      "id": 37,
+      "text": "The cancellations yielding the compact form of R_{θθ} include csc²θ - cot²θ = 1 from angular Christoffel symbols.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [9, 18],
+      "notes": "Trigonometric identity is correct."
+    },
+    {
+      "id": 38,
+      "text": "R_{θθ} = 0 holds identically for flat spacetime when A = B = 1.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [18],
+      "notes": "Consistency check; correct since 1-1-0=0."
+    }
+  ],
+  "total_claims": 38
+}
+```

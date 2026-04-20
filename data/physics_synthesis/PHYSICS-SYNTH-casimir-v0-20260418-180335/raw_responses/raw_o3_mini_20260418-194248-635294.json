@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776559349-n7ccLH8WE9jwMK6iPmNL",
+  "object": "chat.completion",
+  "created": 1776559349,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Verifying the integral**\n\nI'm confirming that the integral is correct if we focus on the intermediate substitution and how it influences the variable. The variable I'm using is \\( u \\) for momentum. When I convert it, I let \\( v = \\sqrt{u^2 + k_n^2} \\). This leads me to express \\( d^2k_{\\parallel} \\) in terms of \\( u \\), ultimately calculating the integral using a known formula. It looks like the claim is verified with some adjustments, but it doesn't specify that explicitly.**Confirming the claim's correctness**\n\nThe claim is correct if I assume \\( \\beta = \\alpha c \\), but it doesn't explicitly mention that. It identifies \\( \\alpha \\) in the exponent as \\( e^{-\\alpha \\omega} \\), while the conclusion uses \\( \\beta \\). The claim states a derived expression, which appears mathematically consistent with previous results from substitutions involving \\( \\alpha c \\). It\u2019s crucial to note that the dispersion relation leads me to double-check the substitutions made throughout the process.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Verifying the integral**\n\nI'm confirming that the integral is correct if we focus on the intermediate substitution and how it influences the variable. The variable I'm using is \\( u \\) for momentum. When I convert it, I let \\( v = \\sqrt{u^2 + k_n^2} \\). This leads me to express \\( d^2k_{\\parallel} \\) in terms of \\( u \\), ultimately calculating the integral using a known formula. It looks like the claim is verified with some adjustments, but it doesn't specify that explicitly.**Confirming the claim's correctness**\n\nThe claim is correct if I assume \\( \\beta = \\alpha c \\), but it doesn't explicitly mention that. It identifies \\( \\alpha \\) in the exponent as \\( e^{-\\alpha \\omega} \\), while the conclusion uses \\( \\beta \\). The claim states a derived expression, which appears mathematically consistent with previous results from substitutions involving \\( \\alpha c \\). It\u2019s crucial to note that the dispersion relation leads me to double-check the substitutions made throughout the process.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CUISlPOenDLeJPzFoT-LiQ7JbgmyHZde2tmrZNR5TSYNkoI7Pw0wsvAMYdB4wOwUEGkIuSyapOjDlRsjMFfGP_uE88bmhvAx_XN2lM8eL-I9clfxEgwiC0YOMLjm_g1qBP5QLPiRWYkz9A52QmT_E4_FnWvBlCFfZZSbwn-escl1VtaXT4JwZCHjMpnvg2cyiZvPRsnzvxWvuYDC6KKtaVctJUxV5ejfeCAzyv5ktY5bCZF_qRisGQr5pmkkcZRXDsWVrpn_A5oCqdF-vBGlya8YtQFUwEmXNYT6mic7L8f1X7jEdaWOyZKFKSdouXQJf8EADIC8F4tMQ1JDiGZp-baS-7b-319wzBiqlBZVCGFPiNt-yCFI-E2ryFHcOjIlZFtR7FYzCQDKaDQgAY_a2r_jGzLf8C6zDyWhCFHgtbgg6ES4v5RDFgQFj1kjc8lk2KVm3KgbLLEbyIETAfqtK3wvKhJj_SP0RlHnpz-4tOitQFkeZPPO_aYyR4x5KNPE3RTSnbOFqE7yZd1zcm6fJhWNg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0a7b7b7ccdb94b9f0169e424f674008193ad337f28919a154c",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 603,
+    "completion_tokens": 4096,
+    "total_tokens": 4699,
+    "cost": 0.0186857,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0186857,
+      "upstream_inference_prompt_cost": 0.0006633,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

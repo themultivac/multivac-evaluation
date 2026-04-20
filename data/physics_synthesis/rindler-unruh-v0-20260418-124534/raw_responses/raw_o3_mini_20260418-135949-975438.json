@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776538774-jE8EzppBbGHlSdwYYD78",
+  "object": "chat.completion",
+  "created": 1776538774,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49SlgKSAZ_r3vWK9QeBbksRX8eWYrPRodV8CIUbt39Pwb7WqxnBeHAU77u7hzFc-ApE7Ig38Z6SprWgaisQWuSgUpl0x5C2RFhCZHQ7scOcRzEXHOhUQQZ2jMjR2tQ10a8lUbm5gOL0Yin27keaTBMnKw2JeYLjuXAPgLUA6qEYEyHQ8uoaWzFWhxiAcyG2DbXjKzUYaKfhXBA09vf76QDOEw8EWJW43z4pJCiEua4r2Yy9Cuw8C7iLDvzJFu4eCW3ZW41yQMDxva0ebmS-LOpq8NNAbt0VFWl3QLIkP7UFc59BNI0Gr0eozCa_oTb4zgLnzr_FBiP8JpBuNT3Zq5Z_TkGmN5u8Iuv4bypVzjumRXF9rfNDc6TgMaHEW5il7_EbVfAwjlb8HnlyyifqEo7aw8ClD8l6pblVzznqurtc88gOWzQP3h6DIv65xBRIbhV3ydN6j1MGdqbAfBwY4jndAHOLvgox6mnMNbfdlGdxm5xDGuP7Tzy9PY4XHvxkGEQdySDXz9N_uK00-djTawbjz3Q==",
+            "format": "openai-responses-v1",
+            "id": "rs_00b38b20379b539a0169e3d49695a8819383bd162b506f48ec",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 543,
+    "completion_tokens": 4096,
+    "total_tokens": 4639,
+    "cost": 0.0186197,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0186197,
+      "upstream_inference_prompt_cost": 0.0005973,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

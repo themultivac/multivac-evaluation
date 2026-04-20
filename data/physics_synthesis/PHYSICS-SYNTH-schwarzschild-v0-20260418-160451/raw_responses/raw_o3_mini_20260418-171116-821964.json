@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776550267-tOK7jnMNtUJLIfjYeH1U",
+  "object": "chat.completion",
+  "created": 1776550267,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Inverse metric components correctly obtained from the diagonal Schwarzschild metric.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5AGDkPP739lI0LubIgev5qVK46DGsJznGtYLut7yyVCsP6tBGsN8mD_n9va_8yj9dvjJ3LuuzJDCh5zKUv28BAkZhF1JDkS93CgmzdWklYcEXV9Q2PgtwDw15bd_rTEA8tNmtI4LHoy2AaiPxcD9SO3cmAZkoEgJR2PWEjkHDWQztVxsxiRKvI1TaZDtrFoxBvC1EWm67ZvuPimFDOvjzKic2sU9rFHRtr4uuTbkNfWh6w5C9qNdTT5VBpkRAcq4sWrjfybNvSM4FXq7MwOxpYcSymchM7n3hH6wUAIb5phtPsr52ft7xHLOPpKUy7T3jDMNCBW3qJFJ2u6XERU03E2NueRpIZ8F0y__dEWB77hvlV6uHi8CasmvVPN_u4rLzCzjM59MFWEloW5MyTbMxjqEcPn5WloZuj1U6tPCRJUhS_nroIK5HRDqr9_RVItrWdehrOGfEOnyNGPys3ubWR8wXSfFvdJS-zJiopgfzYczTj4eRAXgVN9ov77VT25XjGf8N3rWyFde7PArMmgASMJSRw==",
+            "format": "openai-responses-v1",
+            "id": "rs_0026960479ba20e90169e4017c22ac819581aa54b6c69a0fee",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 393,
+    "completion_tokens": 2025,
+    "total_tokens": 2418,
+    "cost": 0.0093423,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0093423,
+      "upstream_inference_prompt_cost": 0.0004323,
+      "upstream_inference_completions_cost": 0.00891
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 960,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

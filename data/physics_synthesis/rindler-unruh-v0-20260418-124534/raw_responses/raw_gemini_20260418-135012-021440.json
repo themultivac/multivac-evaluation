@@ -1,0 +1,59 @@
+{
+  "id": "gen-1776538208-abEz36MYYgtlYkKIvZkA",
+  "object": "chat.completion",
+  "created": 1776538208,
+  "model": "google/gemini-3.1-pro-preview-20260219",
+  "provider": "Google AI Studio",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 29,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"A complete set of modes for Minkowski spacetime requires both left and right Rindler wedge modes. Focusing on the right wedge is standard for the observer's experience.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Analyzing Rindler Wedges**\n\nI've confirmed the initial claim's accuracy. We acknowledge the need for both right and left Rindler wedges to fully describe Minkowski spacetime, yet we're focusing on the right wedge's implications. This approach is valid, given that Rindler coordinates are fundamentally tailored to these specific regions.\n\n\n",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "**Analyzing Rindler Wedges**\n\nI've confirmed the initial claim's accuracy. We acknowledge the need for both right and left Rindler wedges to fully describe Minkowski spacetime, yet we're focusing on the right wedge's implications. This approach is valid, given that Rindler coordinates are fundamentally tailored to these specific regions.\n\n\n",
+            "format": "google-gemini-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "Ep8ICpwIAQw51sds/MgFAIPu8On9+6JSmrUYgc6AIkUVQrXyQF0RSOaHMDrPLydISaD8ZlLFn7isC7NRNRPchosE3knt6XPjhe5phT+yQPiIfcIobgHlM5DtzvPptvIxKV7GocDXUG8Y9jCUvAbN7MP8aHbGKqdBI7kdlvR4MCuFDc1yraA2eDQOfe0/H1xJBGJ0+K1/HIZKs2mBKNRo+7uCctVKV8D7yDUVu87czgjQlkO26yCfeomAKgqJZW3XBYQUXhn7FNWgNA1m9F6nuIspzP2Iz/xvct7P7Bjcm1cD+ryTa5BzPYdhDutqJaznZBpAZQWs6IejZE0FG0kxNhHaFtkui1v7aTtPhik2ZUIOSgGjH0HaROh/6jCF4G80yQbhjanuTfpl03jq6rCz5rXqDH/iWOfgbIi4Or4K25RGVQLJ27x8d4l1neqWCpLVb87n8NwPgex8Ncu0/9efOEbvWYlI5/kfsFhlNosrvEO9/h/0KZgTkh7152UTKosv93pIYSuhI65jBxKXH8Az1mpE4/ke80GYq99ufbmsUs+KXhr34XT7OaoI6ZB7+yu2kxPfrFLYzdPAb4OieMDNrgl7xEki7Bo7ReWK+e3TPaPLhb8N6nQbnsSKg8tbJ3GwJRWeNuXUS26EsainOsBZZtQ/CN20aXHTEOwzjSgF0QuQPj9MbI+au3slqV7pN32W6XzsST6yDu52dqm/8QxpiIyxJwuSy1rqy/PB6WaZfSzoyoUEw7UM3oWdJqPaGebkxgHOaaz0os4kKuqUMoTqWTaav7HsrQKf7tgNc0H0AifSSH16OP1Km3jy1yd3juIFvMPdGqeYqPnD29Yxk3T0pwGkpo52M7wS5YbnTQ+IG9gQL7kToYLy7cYRuwXxKthlHdX6o4YG2mmmUoEgoKg20OvlhLHDklUI8V3RQGxmuvePdzvxH0Oe68O1G3Vf925cyw7tHrfcMLmAfUHu90Fp6Lnsbuz4G1OYtwPOdmqRC7nEWdfHMmfhPKIhIQUWHmbmluanJ1WE3tL1gr5nGIQo9Mj2jrc5UKHpRzuzxgSpOXTeX9hTo+fjt5hBYv67+eY9kiAaaRSlAgNQWvzDOTEy0ASvLNzND9kUhRTpA+bT/aTmo03oNOBG5W1Nj4DBkgXwF8Sv76PYf+s5R9RdxaF+y6RZLGBqtOMWqpCKHR3QgXshHkyk9c1NEJa3T2Qasv7nWy8u2Ehr3WTYKP8noVtG0UYzWymG0lmSaNi+0yT8b0GYzn8pFdXfhZ1eAO397slyeUFu+xc0zAfaBkqW3ulFx3zDqdQJHlHoiAIWl8uTkLHz/EV3iEKTdVBQpIFIomC2MpQ/UQPW5AmHYdbeooE1wo/HPYFCX12c8Rqshoix9J6eKWS3RUEmhx7IkILvLgz0Dps=",
+            "format": "google-gemini-v1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 515,
+    "completion_tokens": 260,
+    "total_tokens": 775,
+    "cost": 0.00415,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00415,
+      "upstream_inference_prompt_cost": 0.00103,
+      "upstream_inference_completions_cost": 0.00312
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 188,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

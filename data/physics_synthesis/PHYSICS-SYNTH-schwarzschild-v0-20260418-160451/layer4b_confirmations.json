@@ -1,0 +1,229 @@
+[
+  {
+    "contestant_key": "claude",
+    "verdict_index": 11,
+    "claim_id": 16,
+    "claim_text": "R_{rr} = -\u03bd'' - (\u03bd')\u00b2 + \u03bd'\u03bb' + 2\u03bb'/r.",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:48:41.063241"
+  },
+  {
+    "contestant_key": "claude",
+    "verdict_index": 24,
+    "claim_id": 29,
+    "claim_text": "R_{rr} = 0 and R_{tt} = 0 are then automatically satisfied.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":29,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For the Schwarzschild ansatz, solving angular equations plus \\(AB=\\) const and using Bianchi identities can imply \\(R_{tt}=R_{rr}=0\\). But this is not automatic without those prior conditions.\",\"confidence\":0.89}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:48:44.584720"
+  },
+  {
+    "contestant_key": "claude",
+    "verdict_index": 28,
+    "claim_id": 35,
+    "claim_text": "At r = 0, g_{tt} \u2192 -\u221e.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":35,\"verdict\":\"ERROR\",\"explanation\":\"For Schwarzschild metric, g_tt=-(1-2GM/(rc^2))=-1+2GM/(rc^2). As r\u21920+, the positive 2GM/(rc^2) term dominates, so g_tt\u2192+\u221e, not -\u221e.\",\"confidence\":0.99}",
+    "confirmation_verdict": {
+      "claim_id": 35,
+      "verdict": "ERROR",
+      "explanation": "For Schwarzschild metric, g_tt=-(1-2GM/(rc^2))=-1+2GM/(rc^2). As r\u21920+, the positive 2GM/(rc^2) term dominates, so g_tt\u2192+\u221e, not -\u221e.",
+      "confidence": 0.99
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T17:48:47.657097"
+  },
+  {
+    "contestant_key": "gpt5",
+    "verdict_index": 28,
+    "claim_id": 30,
+    "claim_text": "Integrating gives rf=r+C, where C is an integration constant.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary_family": "google",
+    "raw_response": "```json\n{\n    \"claim_id\": 30,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The equation R_\u03b8\u03b8=0 simplifies to 1 - (rf)' = 0 where f = e^{-2\u03bb}. Integrating this exactly yields rf = r + C. The previous reviewer was incorrect.\",\n    \"confidence\": 1.0\n}\n```",
+    "confirmation_verdict": {
+      "claim_id": 30,
+      "verdict": "CONFIRMED",
+      "explanation": "The equation R_\u03b8\u03b8=0 simplifies to 1 - (rf)' = 0 where f = e^{-2\u03bb}. Integrating this exactly yields rf = r + C. The previous reviewer was incorrect.",
+      "confidence": 1.0
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:49:11.780067"
+  },
+  {
+    "contestant_key": "gpt5",
+    "verdict_index": 30,
+    "claim_id": 32,
+    "claim_text": "The metric is ds\u00b2=-(1+C/r)c\u00b2dt\u00b2+dr\u00b2/(1+C/r)+r\u00b2d\u03a9\u00b2.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 32,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is a correct intermediate step before applying the Newtonian weak-field limit to evaluate the integration constant C as -2GM/c\u00b2.\",\n    \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 32,
+      "verdict": "CONFIRMED",
+      "explanation": "This is a correct intermediate step before applying the Newtonian weak-field limit to evaluate the integration constant C as -2GM/c\u00b2.",
+      "confidence": 1.0
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:49:23.395179"
+  },
+  {
+    "contestant_key": "gemini",
+    "verdict_index": 8,
+    "claim_id": 14,
+    "claim_text": "\u0393^t_{tr} = \u0393^t_{rt} = (1/2) g^{tt} \u2202_r g_{tt} = \u03bd'",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 14,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correct derivation: the 1/2 cancels with the factor of 2 in \u2202r g_tt, yielding \u03bd' exactly.\",\n    \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 14,
+      "verdict": "CONFIRMED",
+      "explanation": "Correct derivation: the 1/2 cancels with the factor of 2 in \u2202r g_tt, yielding \u03bd' exactly.",
+      "confidence": 1.0
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:49:33.570365"
+  },
+  {
+    "contestant_key": "gemini",
+    "verdict_index": 10,
+    "claim_id": 16,
+    "claim_text": "\u0393^r_{rr} = (1/2) g^{rr} \u2202_r g_{rr} = \u03bb'",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 16, \"verdict\": \"CONFIRMED\", \"explanation\": \"Using g_rr = e^(2\u03bb), the derivative cancels neatly, yielding \u03bb'.\", \"confidence\": 1.0}",
+    "confirmation_verdict": {
+      "claim_id": 16,
+      "verdict": "CONFIRMED",
+      "explanation": "Using g_rr = e^(2\u03bb), the derivative cancels neatly, yielding \u03bb'.",
+      "confidence": 1.0
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:49:45.854590"
+  },
+  {
+    "contestant_key": "gemini",
+    "verdict_index": 19,
+    "claim_id": 26,
+    "claim_text": "R_{tt} = c\u00b2 e^{2(\u03bd-\u03bb)} (\u03bd'' + (\u03bd')\u00b2 - \u03bd'\u03bb' + (2/r)\u03bd')",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:51:12.761008"
+  },
+  {
+    "contestant_key": "deepseek_r1",
+    "verdict_index": 29,
+    "claim_id": 33,
+    "claim_text": "Our solution gives g_{tt} = -Ac\u00b2 = -c\u00b2(1 + C/r) = -c\u00b2 - c\u00b2C/r.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":33,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"From vacuum equations, A(r)=1+C/r is allowed. Only after Newtonian asymptotics does C=-2GM/c^2, giving g_tt=-c^2(1-2GM/(c^2r)). The isolated sign claim isn\u2019t inherently wrong.\",\"confidence\":0.95}",
+    "confirmation_verdict": {
+      "claim_id": 33,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "From vacuum equations, A(r)=1+C/r is allowed. Only after Newtonian asymptotics does C=-2GM/c^2, giving g_tt=-c^2(1-2GM/(c^2r)). The isolated sign claim isn\u2019t inherently wrong.",
+      "confidence": 0.95
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:51:16.914301"
+  },
+  {
+    "contestant_key": "deepseek_r1",
+    "verdict_index": 30,
+    "claim_id": 34,
+    "claim_text": "Comparing g_{tt} from the weak-field limit and our solution: -c\u00b2C/r = 2GM/r, so C = -2GM/c\u00b2.",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:52:58.130554"
+  },
+  {
+    "contestant_key": "qwen",
+    "verdict_index": 28,
+    "claim_id": 32,
+    "claim_text": "Solving for $e^\\lambda$ gives $e^\\lambda = \\frac{1}{1 + \\frac{k}{r}}$ where $k$ is an integration constant.",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 32,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The correct derivation yields e\u207b\u03bb = 1 - C/r and so e^\u03bb = 1/(1 - C/r); using +k gives a sign error unless k is redefined as -C.\",\n    \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 32,
+      "verdict": "ERROR",
+      "explanation": "The correct derivation yields e\u207b\u03bb = 1 - C/r and so e^\u03bb = 1/(1 - C/r); using +k gives a sign error unless k is redefined as -C.",
+      "confidence": 1.0
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T17:53:07.043760"
+  },
+  {
+    "contestant_key": "qwen",
+    "verdict_index": 29,
+    "claim_id": 34,
+    "claim_text": "Since $g_{tt} = -e^\\nu = -e^{-\\lambda} = -(1 + \\frac{k}{r})$.",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 34,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The sign is wrong. Vacuum equations yield e^\u03bd = e^{-\u03bb} = 1 - (constant)/r (matching the Newtonian limit), not 1 + k/r.\",\n    \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 34,
+      "verdict": "ERROR",
+      "explanation": "The sign is wrong. Vacuum equations yield e^\u03bd = e^{-\u03bb} = 1 - (constant)/r (matching the Newtonian limit), not 1 + k/r.",
+      "confidence": 1.0
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T17:53:48.411880"
+  },
+  {
+    "contestant_key": "grok",
+    "verdict_index": 16,
+    "claim_id": 20,
+    "claim_text": "The equation 1 - A - rA' = 0 is equivalent to dA/(1-A) = dr/r.",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 20,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\":",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:54:05.615399"
+  },
+  {
+    "contestant_key": "grok",
+    "verdict_index": 28,
+    "claim_id": 36,
+    "claim_text": "The R_{tr} equation, after substituting Christoffel symbols, yields \u2202_r(A'/A + B'/B) = 0.",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 36,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"R_tr is identically zero for a static metric, so it does not yield any differential condition like \u2202_r(A'/A+B'/B)=0.\",\n    \"confidence\": 0.95\n}",
+    "confirmation_verdict": {
+      "claim_id": 36,
+      "verdict": "ERROR",
+      "explanation": "R_tr is identically zero for a static metric, so it does not yield any differential condition like \u2202_r(A'/A+B'/B)=0.",
+      "confidence": 0.95
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T17:54:13.485400"
+  }
+]

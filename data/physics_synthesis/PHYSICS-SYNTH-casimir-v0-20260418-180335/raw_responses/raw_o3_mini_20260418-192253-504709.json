@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776558169-YftIwpHhtUCGAUwgqcwv",
+  "object": "chat.completion",
+  "created": 1776558169,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 38,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Result matches the standard Casimir force derivation using zeta-function regularization and perfect conductor boundaries.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CBdBNL33zYVp9hifg8rkqBzT9bAeqa0zoLXtFRp-FlBTop6IgUmt8wRYMFrPBTVUDK_LgHGdUkLKhvAFMlPHhKXVlV3qRUVrV_Ram4db8R4Pb2MmxDrj-Hka-RAPp358K5ClqlNjJcRa_OLtA-zgnH5Pmo-_rllsqShpca7F4y_2OCY1HVobutoaFZtabkiyF5mbXD9MwT4YROK1B4as6x3Qr-LaIqSyyedkr1VXqKZPu20gMPN0chwSkMWIyuDEjEYWGlSMyhLQ-Ns1T5nMxtb1sS5cC8yVripbCuVmeqh-J6nuaW3zN4jCmZP-Eesr-PCCZtHQX6BO5lYPA7mDXbyBw0vON2HTtB0leN09fU_onA6WrM2VPTKFdDM7qOjfViAAOblCmM--dSxRAS29zHclPjsrnIgDYpRfHzU_955XSAsr1gCNPy7A6gQRadHQ30wMIEi6hS63CWgy_kB7xEKEWsSuVZ7HtIP66J3s669F0tSodM-eNrQmwDba82VR_xSD2QCVyPouzXcXP_ua0sJEQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_0920e5b95d507e090169e42059a7cc8195b60148d4ad3782f3",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 507,
+    "completion_tokens": 967,
+    "total_tokens": 1474,
+    "cost": 0.0048125,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0048125,
+      "upstream_inference_prompt_cost": 0.0005577,
+      "upstream_inference_completions_cost": 0.0042548
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 448,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

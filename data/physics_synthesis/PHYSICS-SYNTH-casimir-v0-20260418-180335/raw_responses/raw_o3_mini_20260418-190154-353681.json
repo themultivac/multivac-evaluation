@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776556896-1PJWLLs9Ma59eijDhP42",
+  "object": "chat.completion",
+  "created": 1776556896,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Deriving the Euler Maclaurin Formula**\n\nI\u2019m working through the Euler Maclaurin formula, which connects a sum to an integral. Typically, it shows that the sum of a function can be approximated by integrating it, adjusting with some values at the boundaries and corrections using Bernoulli numbers. When assuming the upper limit tends to infinity, the components simplify a bit. I just need to confirm how the terms fall together, particularly with the boundaries for the series involving Bernoulli coefficients and their contributions.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Deriving the Euler Maclaurin Formula**\n\nI\u2019m working through the Euler Maclaurin formula, which connects a sum to an integral. Typically, it shows that the sum of a function can be approximated by integrating it, adjusting with some values at the boundaries and corrections using Bernoulli numbers. When assuming the upper limit tends to infinity, the components simplify a bit. I just need to confirm how the terms fall together, particularly with the boundaries for the series involving Bernoulli coefficients and their contributions.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5BtyWpej1lI5VmLanR-q1xKKvkpYDsvPu97J_gsiJGs6IqWzSIDxE5iwYOx9lTU-JghdWXdoF9B56knl-mBLhDIKv6iJUs9Rkpg8S7VlHwU7_QsELGvrhZvu8H6r0TLxMU9Y-6nr_D3mTCNU1pem3fA7EGJlxEwt465eXzfzrLa-1aKmcv4PVHQIriyV7kC2ASg2HI8euoFvyhBZkLDVjt1DBfXO5khheC26Ze1v_rHdZbSnRgoCOxMxaU1o3F9N3Ht6XM3a44XGAWD9iirXotha2Geg6PrxIJ8GOjYp6FpNkqy6quIaKBHr-5fpCMIPNLvFzb0_vtOrtkjDi_J4DVqohpTWFZA27NvpoMZHC2WJtRPXnQO5iC2j0RiAQtjY8Et0HjN3bkXFmWwY7n9d90bRbwgCNDOK8tyVwMxkxuJDCg2QA6VCQsq_0l8SaxWDfxSfgybwJNvJP9PjI6Fzw81esS-hjBbYDtTxdA91evT7iWKxeAF3dSk9J5pydjB6kj2O7TuGXNG74yY4UOC_adz4Sg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0e8a5952d0fa72250169e41b613bb48196ad441519211698fd",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 563,
+    "completion_tokens": 4096,
+    "total_tokens": 4659,
+    "cost": 0.0186417,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0186417,
+      "upstream_inference_prompt_cost": 0.0006193,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

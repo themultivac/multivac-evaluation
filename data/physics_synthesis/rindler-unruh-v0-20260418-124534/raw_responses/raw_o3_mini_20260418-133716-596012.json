@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776537428-sTS5tEOxK094waU7tkHj",
+  "object": "chat.completion",
+  "created": 1776537428,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 38,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using Rindler coordinates, U = -\u03bee\u207b\u03b7 < 0 and V = \u03bee\u03b7 > 0 correctly describe the right wedge.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp489c3lDVBSwKS4cCO2geTCU832hxMolPpia9vMlWJsdQkJEB6QVTYYDelVUKMf-B0AeZh0Ycp4sBuab4Fqzfs14Brv8Fljw_1084Nl-sT2IGBUQmyQwHMI8uGmPNaiXCP2nKZlr_fqVUaAemxB1JsKshCI1dpwqkHhRvYn7eCZq_jkEXXAMpKfblDEubvuhS5-m3mgOBncmnTXzp3Ra0lFg2fkQHTqT-BcDGvSBORU7calcWczvuhXLhzBqsmQoKn5tElommkTgTTIux2mMxidb9LP2FPp3QBrv1uJSEx7IPWXLPDlVsCxQT44xn2rom7ePPvQQ1hLpunJ957D-JD79bdffRyVqJ3Bf-vNxFiF4cJdDgmbYsHlizec-fN_W4Lc_F302KbHOU18ghmWFqCoE3LKZ9mgiE4TTeXTm6te-wRBBiVdTO6-__kmq6Jx6xzTQ5LAMxe4OcBrfYhTuX40nkzyLJmNOCRQQ7njiy_QlV29K7ySShL_CeL8-W3Vh0PZFMOruPEl_HQTD4HqED2Ieegg==",
+            "format": "openai-responses-v1",
+            "id": "rs_043dc48cc52eedaa0169e3cf5526708193bfad46bb1a080599",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 526,
+    "completion_tokens": 2271,
+    "total_tokens": 2797,
+    "cost": 0.010571,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.010571,
+      "upstream_inference_prompt_cost": 0.0005786,
+      "upstream_inference_completions_cost": 0.0099924
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1088,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

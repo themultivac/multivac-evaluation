@@ -1,0 +1,171 @@
+We wish to derive the Schwarzschild metric, which is the unique spherically symmetric, static solution of Einstein’s equations in vacuum, and then identify the Schwarzschild radius where a coordinate singularity appears. We start with the assumptions:
+
+1. The spacetime is vacuum (outside the mass), so the energy–momentum tensor vanishes:  
+   \[
+   T_{\mu\nu} = 0.
+   \]
+   Therefore the Einstein field equations reduce to  
+   \[
+   R_{\mu\nu} = 0,
+   \]
+   where \(R_{\mu\nu}\) is the Ricci tensor.
+
+2. The spacetime is spherically symmetric, non-rotating, and uncharged. Hence the metric can depend only on the radial coordinate \(r\) and must reduce to the Minkowski metric at large \(r\) (asymptotic flatness).
+
+3. We assume the metric is static (time-independent) and use coordinates where the line element takes the form  
+   \[
+   ds^2 = -e^{2\Phi(r)} c^2\, dt^2 + e^{2\lambda(r)}\,dr^2 + r^2 \,d\theta^2 + r^2\sin^2\theta\,d\phi^2 \,.
+   \]
+   Here \(\Phi(r)\) and \(\lambda(r)\) are functions to be determined.
+
+---
+
+### Step 1. Write the metric ansatz
+
+We start with the general spherically symmetric, static metric in the form
+
+\[
+ds^2 = -e^{2\Phi(r)} c^2\, dt^2 + e^{2\lambda(r)}\,dr^2 + r^2 \, \left( d\theta^2 + \sin^2 \theta\, d\phi^2 \right) \,.
+\]
+
+Our goal is to find the functions \(\Phi(r)\) and \(\lambda(r)\) by inserting this ansatz into the vacuum Einstein equations.
+
+---
+
+### Step 2. Apply Vacuum Field Equations
+
+Because the region we are considering is vacuum, the Einstein equations reduce to
+
+\[
+R_{\mu\nu} = 0\,.
+\]
+
+Calculations (which can be found in many texts on general relativity) show that the nontrivial components of the Ricci tensor for our metric lead to a set of differential equations for \(\Phi(r)\) and \(\lambda(r)\). Two of the most instructive equations come from the \(rr\) and \(\theta\theta\) components.
+
+A standard result is that one of these equations can be written as
+
+\[
+\frac{d}{dr}\left[ r \left(1 - e^{-2\lambda(r)}\right) \right] = 0\,.
+\]
+
+#### Integration:
+
+Integrate with respect to \(r\):
+
+\[
+r \left( 1 - e^{-2\lambda(r)} \right) = \text{constant} \,.
+\]
+
+Let the constant be identified as \(\frac{2GM}{c^2}\) (this choice guarantees that when we compare our result with the Newtonian potential in the weak-field limit we recover the expected behavior). Thus,
+
+\[
+1 - e^{-2\lambda(r)} = \frac{2GM}{c^2r}\,.
+\]
+
+Solving for \(e^{2\lambda(r)}\):
+
+\[
+e^{-2\lambda(r)} = 1 - \frac{2GM}{c^2r} \quad \Longrightarrow \quad e^{2\lambda(r)} = \left( 1 - \frac{2GM}{c^2r} \right)^{-1}\,.
+\]
+
+---
+
+### Step 3. Determine \(\Phi(r)\) from the Field Equations
+
+Another combination of \(R_{tt}\) and \(R_{rr}\) equations yields a relation involving \(\Phi'(r)\) and \(\lambda'(r)\). In fact, one finds
+
+\[
+\Phi'(r) + \lambda'(r) = 0\,,
+\]
+
+which integrates to give
+
+\[
+\Phi(r) = - \lambda(r) + \text{constant}\,.
+\]
+
+To ensure that the metric is asymptotically flat as \(r \to \infty\) (i.e. \(g_{tt} \to -c^2\)), we choose the constant so that
+
+\[
+e^{2\Phi(r)} \to 1 \quad \text{as} \quad r \to \infty\,.
+\]
+
+Given that \(e^{2\lambda(r)} \to 1\) in that limit too, we set the constant to zero and obtain
+
+\[
+e^{2\Phi(r)} = e^{-2\lambda(r)} = 1 - \frac{2GM}{c^2r}\,.
+\]
+
+---
+
+### Step 4. Write the Schwarzschild Metric
+
+Substituting the results for \(\Phi(r)\) and \(\lambda(r)\) into our ansatz, the line element becomes
+
+\[
+ds^2 = -\left(1-\frac{2GM}{c^2r}\right) c^2 dt^2 + \left(1-\frac{2GM}{c^2r}\right)^{-1}dr^2 + r^2 \left( d\theta^2 + \sin^2 \theta\,d\phi^2\right)\,.
+\]
+
+This is the Schwarzschild metric.
+
+---
+
+### Step 5. Identify the Schwarzschild Radius
+
+In the metric components, notice that the coefficient of \(dt^2\) is
+
+\[
+g_{tt} = -\left(1-\frac{2GM}{c^2r}\right)\,,
+\]
+
+and the coefficient of \(dr^2\) is
+
+\[
+g_{rr} = \left(1-\frac{2GM}{c^2r}\right)^{-1}\,.
+\]
+
+A coordinate singularity appears (i.e. the metric components diverge) when
+
+\[
+1-\frac{2GM}{c^2r} = 0 \quad \Longrightarrow \quad r = \frac{2GM}{c^2}\,.
+\]
+
+This radius is called the Schwarzschild radius \(r_S\):
+
+\[
+r_S = \frac{2GM}{c^2}\,.
+\]
+
+It is important to note that this singularity is a coordinate artifact (the so-called “coordinate singularity”) and not a true physical singularity. (The true curvature singularity is at \(r=0\), where invariants like the Kretschmann scalar diverge.)
+
+---
+
+### Final Result
+
+The Schwarzschild metric is given by
+
+\[
+\boxed{
+ds^2 = -\left(1-\frac{2GM}{c^2r}\right) c^2 dt^2 + \left(1-\frac{2GM}{c^2r}\right)^{-1}dr^2 + r^2 \left( d\theta^2 + \sin^2 \theta\, d\phi^2\right)
+}
+\]
+
+and the Schwarzschild (coordinate) radius is
+
+\[
+\boxed{
+r_S = \frac{2GM}{c^2}\,.
+}
+\]
+
+---
+
+### Assumptions and Physical Reasoning Summary
+
+- We assumed vacuum (i.e., \(T_{\mu\nu}=0\)) so the Einstein equations become \(R_{\mu\nu} = 0\).
+- We assumed spherical symmetry and static conditions, leading us to the metric ansatz with functions \(\Phi(r)\) and \(\lambda(r)\).
+- The integration constant emerging in the solution of the field equations was identified with the mass \(M\) via comparison with the Newtonian limit.
+- Asymptotic flatness (requiring the metric to approach the Minkowski metric at infinity) fixes the integration constants.
+- The metric coefficient \(g_{rr}\) diverges when \(r = \frac{2GM}{c^2}\), which is identified as the Schwarzschild radius.
+
+This completes the derivation of the Schwarzschild metric and the identification of the Schwarzschild radius from first principles.

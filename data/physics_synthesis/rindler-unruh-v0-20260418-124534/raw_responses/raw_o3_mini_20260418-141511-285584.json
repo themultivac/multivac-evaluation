@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776539705-QsLKxqkCSiiM8c8lzlnT",
+  "object": "chat.completion",
+  "created": 1776539705,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 59,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Bogoliubov transformations are essential for relating Minkowski and Rindler modes, yielding the thermal spectrum in the Unruh effect.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49g-CF0KOd-l4lsenqLiolNo6FKI44qiNErPt4QwVXfa9qDr0EUNKthmdC9MCAT4C2L0ieDcqpFeH8gpDKdZGbEt48-2FfOfaGzWgNGuTAjKur9o32smQiNxxsCkf-YASQFtK6uHAziPNvWUkRZgqMzQVmoNQXa95wQBjAW8kVNqftSZ1Wq2MxDApDUJU6uDqDmwItxAGR9K5wRJQpDb6D2YHwZJCzoEqiLC1AfJpw1j8KiFgDiiqwZwnH3JBF2TTJwwIvJVZNALc828RZ3jATVc0j__7pV4GbvAWvl_HcsQWU2pS-NKgTRYmCsHI6csYagI4CkENirmyrPIqTlAFVvRRboj0YHrM53ZzxzUajbnvrx0LOCefRxRJ6iRe-L5DAO6_ppUvGFIqrUM02pW0pxGqNi47yiha8jIhcFNzG624gGow3_ZrDzdQ33Ja879IRpPKI7iGJVER4g8eT1J3S2IzGc6rO6wi9F_YT2KXlI2YPLzlnA1qtxo3kOVP1b9nzfaED5xGOUfGE0OcmPUup-Bhg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0634990853cddb570169e3d83a6000819696213b8884486430",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 518,
+    "completion_tokens": 1378,
+    "total_tokens": 1896,
+    "cost": 0.006633,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.006633,
+      "upstream_inference_prompt_cost": 0.0005698,
+      "upstream_inference_completions_cost": 0.0060632
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 640,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

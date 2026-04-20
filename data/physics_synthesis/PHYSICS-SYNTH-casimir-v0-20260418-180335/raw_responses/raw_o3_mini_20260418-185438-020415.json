@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776556473-VBHXMRNqPRsY7z4XzNPL",
+  "object": "chat.completion",
+  "created": 1776556473,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Infinite plates ensure continuous k_x and k_y, with only the perpendicular component being quantized.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Evaluating the Casimir Force**\n\nI'm addressing a physics problem about deriving the Casimir force per unit area. The model claims that the wavevector components \\(k_x\\) and \\(k_y\\) are continuous due to the infinite length of the plates in the \\(xy\\) plane. That reasoning seems solid; the infinite plates mean no quantization in those directions. However, it's important to note that the \\(k_z\\) component would be quantized. Overall, the claim regarding \\(k_x\\) and \\(k_y\\) is correct, reflecting standard theory.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Evaluating the Casimir Force**\n\nI'm addressing a physics problem about deriving the Casimir force per unit area. The model claims that the wavevector components \\(k_x\\) and \\(k_y\\) are continuous due to the infinite length of the plates in the \\(xy\\) plane. That reasoning seems solid; the infinite plates mean no quantization in those directions. However, it's important to note that the \\(k_z\\) component would be quantized. Overall, the claim regarding \\(k_x\\) and \\(k_y\\) is correct, reflecting standard theory.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5Bm9tbG5vtkF9enDbn1WMHwhNbM2i6QAmH_xWJnK2hu0zIhhUcVf7Y4aUF8jDWKKIe2feFyo5Ljp5IkfZMJ7C_q3MFjUthpWbp2hOlmjXphj_PGy_CwHXWcaWW4LpWPng_TyRfydrXl60bgMiiHSKrPpDBrl5uN3khes7YYB_mxs6TrFNRw3BjL2emiTuYBK8OyoTyeZeYSu6kOFkNhLZxBRCNErM6EoRVxaWjq12xZMmWDSqWY0CxpzC3lyHXb1SbJU_qP8IXauZbXoZvm7kHQZCNgwA6yXlHeDixkiM-gXk_3njGIDNQ3mjW1lHQM6r8xkW9I93MBBMff8Movgo5HSrwj8fbuR--hOesWlnhtFa4Vxc5dzmxb1E2ihC0nZ3M2ypPImH_X9JRVFII2u6duG5-YY87f_3yYmgvKJaSp_UhE7KkfxhMYdc5mv_jtIqDNMFpv5MaxtUDIvavzAzMtG-A_Uz-giKyv_B3-NqEZ8dXDAwLWoLNl3vR1_lN41bM_XjxhvnW3KbFdSmfVpue0tyQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_065930ca6130ee9c0169e419ba474081968356d416fa109bf0",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 524,
+    "completion_tokens": 886,
+    "total_tokens": 1410,
+    "cost": 0.0044748,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0044748,
+      "upstream_inference_prompt_cost": 0.0005764,
+      "upstream_inference_completions_cost": 0.0038984
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 384,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

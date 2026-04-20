@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776550943-4dMBiaGJNGc9nFY5a95D",
+  "object": "chat.completion",
+  "created": 1776550943,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 7,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Asymptotic flatness is a standard boundary condition in Schwarzschild derivations, ensuring Minkowski spacetime at infinity.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5AQk0MjTS3rglXr2nsNBCMK55MRe1teEf05XuEl9VinkK1aJdmGPy9sIFKoWy7cGOwcP8_dmn8AsDlPVI0sAh3S9R3JeUVcC06WLqkag-HX5IKpqyg-YHjR3TtvlQCqoPa_WtZ2QVZGWlY-LGTsZ58Zuz9WH5Rcj-95hDzR7KJV4V_lZSe_G5lussav84iEFNxJF0mmSSeHHFYMG8Y88k4BohbzIGbICVVRhBq1RPCBhAhiVg_qdABIOsw8ySfcEXUMe-bqjLXhga5-lxvswvmcjc4B50yYTH8x2M_tgPgj8ptYFCkXlTw1kjveLx-J0A5MDspR8HM4x-AjDWtIv20g6MbART4eXnxAn9_GJHzMBi3ftg5CVHnBHn25Sg8b17fgHuN7P-Fc6BmJoHQfaCSE0CmH88JjQT8SAPScINMnRM0ONZqaSgqZ5F_xLAxTJ1Dje0KqG56GZEZnItGtTxIDVivADsfvE48rcLuL7pfPv2ktjlx7MSJgv29guCfLBRFNcMFyDaH8oKqSma6dreRD8RA==",
+            "format": "openai-responses-v1",
+            "id": "rs_0f1b128cb35746eb0169e4041fd1988194af35ac81c69d9afd",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 369,
+    "completion_tokens": 1649,
+    "total_tokens": 2018,
+    "cost": 0.0076615,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0076615,
+      "upstream_inference_prompt_cost": 0.0004059,
+      "upstream_inference_completions_cost": 0.0072556
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 768,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776539507-yTTN1LS2kn1uLPxgoPjm",
+  "object": "chat.completion",
+  "created": 1776539507,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":32,\"verdict\":\"CONFIRMED\",\"explanation\":\"Correct standard assumption: a free massless scalar in 1+1 Minkowski satisfies the Klein\u2013Gordon equation, \\u2202_t^2\\u03c6-\\u2202_x^2\\u03c6=0, with c=1 and signature (+,-).\",\"confidence\":0.99}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 533,
+    "completion_tokens": 85,
+    "total_tokens": 618,
+    "cost": 0.0026075,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0026075,
+      "upstream_inference_prompt_cost": 0.0013325,
+      "upstream_inference_completions_cost": 0.001275
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

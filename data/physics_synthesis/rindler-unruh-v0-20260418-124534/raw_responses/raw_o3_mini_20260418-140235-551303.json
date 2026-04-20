@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776538950-dBOZVWuU5q3Joyaorr5l",
+  "object": "chat.completion",
+  "created": 1776538950,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 39,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The horizon is a coordinate artifact; in Rindler coordinates the metric becomes singular though it is regular in Minkowski space.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49VL4YzlUEuSuFM6E9SifV5OgNhMPILCq-j6k2VVmw59rQ0Tzea1zxtbLSC3Se1G-1yex2Pn6l2pDxj3bK1U_6Z1eoJYKJfG2nyeB_xWWWMBDPc5mi-oWMldHtbBZUoHTXKwAFfV7WmO67If1fr6k7uEuKKxLfUXIuPHhwjcraWJK0x_tFOd5uf-3xpmT2K66ZUjnlc4-VNdIqu6DHQhC8n9UnGc_KZZTQTQkbJVTF2zW4Ozf2ZPCidS0_ldahwdPbbD9q9JJw3gCW9L4Rt3KPItpsOkzerEVRiRKi5UkkgcEx7Ahr0M3gUU4W6exKvJkWsgv9N3lpHVwTsW-x3JAYnvUgShn0MrkCBJmEpjjFjar8MnzQCohB3CzFGI6d2ELXFw9B9PeEPLYgL4ObARWSuvDO6RkVU72MxW11Z4skfhG0XAW7sfdswT25dGt5_zd2MeGURccWmOy-OW-XCS41Z6BPsBzT0T7KMlow6-JftTO7RfngEFJhlwS90lduIFJM21jgjB1HSLxQwOlEVD4vfDow==",
+            "format": "openai-responses-v1",
+            "id": "rs_0da77df7144406f10169e3d547226c81949f38d3a682debb77",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 512,
+    "completion_tokens": 1157,
+    "total_tokens": 1669,
+    "cost": 0.005654,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.005654,
+      "upstream_inference_prompt_cost": 0.0005632,
+      "upstream_inference_completions_cost": 0.0050908
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 512,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

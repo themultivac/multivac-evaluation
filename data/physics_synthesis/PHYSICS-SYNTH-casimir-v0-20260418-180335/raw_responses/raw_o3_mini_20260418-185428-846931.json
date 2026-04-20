@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776556465-pLnb3Qo4PXtClsZE8JDX",
+  "object": "chat.completion",
+  "created": 1776556465,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard and valid assumption for Casimir force derivation in infinite parallel plate geometry.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5Bm0FF4vQIVfpcB243zX0ZhJL24XIQRxYGIKgcjdglN6X4EYtr5kQAS2h0gosTEGdx491ry4TmQPQmWW0utC_y5NFv3p9BHIDaCnklLGHWRfgyOiG3TYI92XxiEDKhhVkMrhOGapCXx7imv8_Xr6eQSVqdE-Hh81xkLWsiSAvh2BJ554H5D8msv_cKBlQjW591g2bHD3ggGs0C3fek0TijIo8licvCeHA7LhQUqoYDBCzecLryM_2ybCpThHG-0vlP89Dol5Z7wXrWhfTZzbGrLjG2HNoyqx-1g5pBY5Fjkd0BqZhl_2AtTzdrIV_zPhvMmO9D9wDQT5b0QGJXXUH_uVMitx3Tbw_cTc1NQpiytLnm8VwoonVPPgb47apbLVACxe6IUaSLmr7vYstaX6NFpxPnmG-n5eHeknslEKm1T6GYOOjM3JwCCOd441e5N9qos2fWY8G9FfcvOg0qynGpNvZOZxQMq6SyVGRT61tYHiIsNDoHrkVpn7CbsiS0PE936L02myshBDxMw5dTUeyRBKCQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_0a7272044d437bbc0169e419b1f6dc8190b3c23813f6683a75",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 533,
+    "completion_tokens": 835,
+    "total_tokens": 1368,
+    "cost": 0.0042603,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0042603,
+      "upstream_inference_prompt_cost": 0.0005863,
+      "upstream_inference_completions_cost": 0.003674
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 384,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,442 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "The plates are perfectly conducting, infinite in extent, and parallel.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The assumption is standard and necessary to simplify mode summation in the Casimir effect derivation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "The assumption is standard and necessary to simplify mode summation in the Casimir effect derivation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:37:42.255352"
+  },
+  {
+    "claim_id": 2,
+    "claim_text": "The electromagnetic field satisfies the boundary conditions: tangential electric field vanishes on the plates.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":2,\"verdict\":\"CONFIRMED\",\"explanation\":\"For perfectly conducting plates in electrostatic equilibrium, Maxwell boundary conditions require \\\\(\\\\mathbf{n}\\\\times\\\\mathbf{E}=0\\\\) at the surfaces; tangential electric field vanishes.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 2,
+      "verdict": "CONFIRMED",
+      "explanation": "For perfectly conducting plates in electrostatic equilibrium, Maxwell boundary conditions require \\(\\mathbf{n}\\times\\mathbf{E}=0\\) at the surfaces; tangential electric field vanishes.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T19:37:47.273528"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "The quantum vacuum exhibits zero-point energy \\(\\frac{1}{2}\\hbar\\omega\\) per mode.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is the standard result from quantizing the harmonic oscillator in field theory.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the standard result from quantizing the harmonic oscillator in field theory.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:37:53.312560"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "An exponential cutoff \\(e^{-\\alpha \\omega}\\) (with \\(\\alpha \\to 0^+\\)) is used to handle divergences.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":4,\"verdict\":\"CONFIRMED\",\"explanation\":\"Exponential damping \\(e^{-\\alpha\\omega}\\) is a standard physically motivated regulator for zero-point mode sums; taking \\(\\alpha\\\\to0^+\\) after subtracting vacuum isolates the finite Casimir term.\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:37:56.488562"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "The Casimir energy is the difference between the zero-point energy with plates and that in free space for the same volume.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 5,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Subtracting free-space zero-point energy is the standard procedure to isolate the finite, measurable Casimir energy.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "CONFIRMED",
+      "explanation": "Subtracting free-space zero-point energy is the standard procedure to isolate the finite, measurable Casimir energy.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:38:08.573631"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "For plates at \\(z=0\\) and \\(z=d\\), the boundary conditions lead to discrete wave numbers \\(k_z = n\\pi/d\\) with \\(n = 0, 1, 2, \\ldots\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":6,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For perfect conductors, allowed \\(k_z=n\\pi/d\\) is right, but EM mode structure/polarizations matter: TE excludes \\(n=0\\), TM includes a special \\(n=0\\) mode.\",\"confidence\":0.97}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:38:11.852384"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "For \\(n = 0\\): one polarization (TEM mode).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:40:16.469117"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "For \\(n \\geq 1\\): two independent polarizations.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Between perfect plates, \\(n\\ge1\\) supports TE and TM branches, but mode counting needs \\(k_\\parallel=0\\) and \\(n=0\\) subtleties; not universally just 'two polarizations.'\",\"confidence\":0.93}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:40:19.850832"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "The frequency for a given transverse wavevector \\(\\mathbf{k}_\\parallel\\) and integer \\(n\\) is \\(\\omega_{\\mathbf{k}_\\parallel, n} = c \\sqrt{k_\\parallel^2 + \\left(\\frac{n\\pi}{d}\\right)^2}\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The dispersion relation follows directly from the cavity boundary conditions, matching the standard result.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "CONFIRMED",
+      "explanation": "The dispersion relation follows directly from the cavity boundary conditions, matching the standard result.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:40:32.151574"
+  },
+  {
+    "claim_id": 10,
+    "claim_text": "The zero-point energy per unit area is \\(\\frac{U(d)}{A} = \\hbar \\sum_{n=0}^\\infty{}' \\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\, \\omega_{\\mathbf{k}_\\parallel, n}\\), where the prime indicates that the \\(n=0\\) term is weighted by \\(1/2\\) and \\(n \\geq 1\\) terms are weighted by \\(1\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":10,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Mode sum matches plate-counting after combining polarizations, but boundary-condition justification is missing and TE/TM treatment of the \\(n=0\\) mode is not explicitly established.\",\"confidence\":0.9}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:40:35.562955"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "The regularized energy per unit area is \\(\\frac{U(d,\\alpha)}{A} = \\hbar \\left[ \\frac{1}{2} \\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\, \\omega_{\\mathbf{k}_\\parallel,0} e^{-\\alpha \\omega_{\\mathbf{k}_\\parallel,0}} + \\sum_{n=1}^\\infty \\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\, \\omega_{\\mathbf{k}_\\parallel, n} e^{-\\alpha \\omega_{\\mathbf{k}_\\parallel, n}} \\right]\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:42:24.885656"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "Define \\(k_n = n\\pi/d\\) and \\(\\beta = \\alpha c\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":12,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard mode quantization gives \\(k_z=n\\\\pi/d\\) between perfectly conducting plates. Defining \\\\(\\\\beta=\\\\alpha c\\\\) is a harmless variable substitution if \\\\(\\\\alpha\\\\) is the energy cutoff parameter.\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:42:28.263431"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "\\(\\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\, \\omega_{\\mathbf{k}_\\parallel, n} e^{-\\alpha \\omega_{\\mathbf{k}_\\parallel, n}} = \\frac{c}{2\\pi} e^{-\\beta k_n} \\left( \\frac{k_n^2}{\\beta} + \\frac{2k_n}{\\beta^2} + \\frac{2}{\\beta^3} \\right) \\equiv g(k_n)\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:43:31.718979"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "\\(\\frac{U(d,\\alpha)}{A} = \\hbar \\left[ \\frac{1}{2} g(0) + \\sum_{n=1}^\\infty g(k_n) \\right] \\equiv \\hbar S'\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":14,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"Mode sum form is plausible, but \\(g(k_n)\\), \\(k_n\\), cutoff \\(\\alpha\\), and TE/TM polarization/degeneracy factors are undefined, so equality to regulated energy is not established.\",\"confidence\":0.96}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:43:35.026146"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "The zero-point energy in free space for a volume of area \\(A\\) and thickness \\(d\\) is \\(\\frac{U_0(d,\\alpha)}{A} = d \\cdot \\hbar \\int \\frac{d^3k}{(2\\pi)^3} \\, \\omega e^{-\\alpha \\omega}\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"It omits the necessary 1/2 factor in the zero-point energy sum (each mode contributes \u00bd\u0127\u03c9).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "ERROR",
+      "explanation": "It omits the necessary 1/2 factor in the zero-point energy sum (each mode contributes \u00bd\u0127\u03c9).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:43:46.086997"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "\\(\\frac{U_0(d,\\alpha)}{A} = \\hbar d \\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\int_0^\\infty \\frac{dk_z}{\\pi} \\, \\omega e^{-\\alpha \\omega}\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":16,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"This is the regularized free-vacuum reference energy per area, but replacing mode counting by \\(d\\,dk_z/\\\\pi\\) and the polarization factor needs explicit derivation.\",\"confidence\":0.94}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:43:49.704678"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "Expressing this in terms of \\(g(k_z)\\), \\(\\frac{U_0(d,\\alpha)}{A} = \\hbar d \\int_0^\\infty \\frac{dk_z}{\\pi} \\, g(k_z) = \\hbar \\int_0^\\infty dn \\, g\\left(\\frac{\\pi n}{d}\\right)\\), where we changed variables to \\(n = d k_z/\\pi\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 17,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The substitution n = (d k_z)/\u03c0 is correctly applied; dk_z = (\u03c0/d) dn cancels the d/\u03c0 factor appropriately.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 17,
+      "verdict": "CONFIRMED",
+      "explanation": "The substitution n = (d k_z)/\u03c0 is correctly applied; dk_z = (\u03c0/d) dn cancels the d/\u03c0 factor appropriately.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:44:39.097930"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "\\(I \\equiv \\int_0^\\infty dn \\, g\\left(\\frac{\\pi n}{d}\\right) = \\frac{3 c d}{\\pi^2 \\beta^4}\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"Using \\(g(k)=\\int \\frac{d^2k_\\perp}{(2\\pi)^2}\\hbar c\\sqrt{k_\\perp^2+k^2}e^{-\\beta c\\sqrt{k_\\perp^2+k^2}}\\), integrate \\(n\\to k\\): \\(I=(d/\\pi)\\int_0^\\infty g(k)dk=3cd/(\\pi^2\\beta^4)\\).\",\"confidence\":0.95}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:44:42.816074"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "The Casimir energy is the difference: \\(\\frac{E_{\\text{Cas}}(d,\\alpha)}{A} = \\frac{U(d,\\alpha)}{A} - \\frac{U_0(d,\\alpha)}{A} = \\hbar (S' - I)\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:44:58.995901"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "Let \\(a = \\beta \\pi / d\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"As a standalone definition it\u2019s permissible, but \\u03b2 and the purpose/units of a are unspecified, so insufficiently justified in the derivation.\",\"confidence\":0.83}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 20,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "As a standalone definition it\u2019s permissible, but \u03b2 and the purpose/units of a are unspecified, so insufficiently justified in the derivation.",
+      "confidence": 0.83
+    },
+    "timestamp": "2026-04-18T19:45:02.375728"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "\\(g(k_n) = \\frac{c}{2\\pi} e^{-a n} \\left( \\frac{\\pi^2 n^2}{d^2 \\beta} + \\frac{2\\pi n}{d \\beta^2} + \\frac{2}{\\beta^3} \\right)\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n  \"claim_id\": 21,\n  \"verdict\": \"ERROR\",\n  \"explanation\": \"The expression introduces an undefined parameter \u03b2 and inconsistent dimensions, making the regularization step questionable.\",\n  \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "ERROR",
+      "explanation": "The expression introduces an undefined parameter \u03b2 and inconsistent dimensions, making the regularization step questionable.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:45:18.042994"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "\\(\\sum_{n=1}^\\infty f(n) = \\frac{3 c d}{\\pi^2 \\beta^4} - \\frac{c}{2\\pi \\beta^3} - \\frac{c \\pi^2}{720 d^3} + \\mathcal{O}(\\beta)\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:47:02.853183"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "\\(g(0) = c/(\\pi \\beta^3)\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"Value depends on undefined g and \u03b2. For standard \\(g(n)=\\\\int d^2k\\\\,\\\\omega e^{-\\\\beta\\\\omega}\\), \\(g(0)=2c/(\\\\pi\\\\beta^3)\\), not shown here.\",\"confidence\":0.73}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:47:06.484948"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "\\(S' = \\frac{1}{2} g(0) + \\sum_{n=1}^\\infty f(n) = \\frac{3 c d}{\\pi^2 \\beta^4} - \\frac{c \\pi^2}{720 d^3} + \\mathcal{O}(\\beta)\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:48:50.837765"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "Subtracting \\(I = 3 c d/(\\pi^2 \\beta^4)\\) gives \\(S' - I = -\\frac{c \\pi^2}{720 d^3} + \\mathcal{O}(\\beta)\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":28,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"Finite term matches standard Casimir subtraction, but without definitions of S', \u03b2-regularization, and derivation of the 3cd/(\u03c0^2\u03b2^4) divergence, the step is unsupported.\",\"confidence\":0.87}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 28,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "Finite term matches standard Casimir subtraction, but without definitions of S', \u03b2-regularization, and derivation of the 3cd/(\u03c0^2\u03b2^4) divergence, the step is unsupported.",
+      "confidence": 0.87
+    },
+    "timestamp": "2026-04-18T19:48:54.368604"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "Taking \\(\\beta \\to 0\\) (i.e., \\(\\alpha \\to 0\\)), the \\(\\mathcal{O}(\\beta)\\) terms vanish.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:50:47.474571"
+  },
+  {
+    "claim_id": 30,
+    "claim_text": "\\(\\frac{E_{\\text{Cas}}(d)}{A} = \\hbar (S' - I) = -\\frac{\\pi^2 \\hbar c}{720 d^3}\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":30,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Final value matches standard Casimir energy/area, but equality to \\\\(\\\\hbar(S'-I)\\\\) is unexplained and dimensionally suspect unless \\\\(S'-I\\\\) already includes \\\\(c/d^3\\\\).\",\"confidence\":0.94}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 30,
+      "verdict": "INCOMPLETE",
+      "explanation": "Final value matches standard Casimir energy/area, but equality to \\(\\hbar(S'-I)\\) is unexplained and dimensionally suspect unless \\(S'-I\\) already includes \\(c/d^3\\).",
+      "confidence": 0.94
+    },
+    "timestamp": "2026-04-18T19:50:50.951655"
+  },
+  {
+    "claim_id": 31,
+    "claim_text": "The force per unit area is the negative derivative of the energy per unit area with respect to \\(d\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 31, \"verdict\": \"CONFIRMED\", \"explanation\": \"It correctly states the definition F = -d(U/A)/dd, a standard and valid relation in energy differentiation.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 31,
+      "verdict": "CONFIRMED",
+      "explanation": "It correctly states the definition F = -d(U/A)/dd, a standard and valid relation in energy differentiation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:50:57.536116"
+  },
+  {
+    "claim_id": 32,
+    "claim_text": "\\(\\frac{F(d)}{A} = -\\frac{d}{dd} \\left( \\frac{E_{\\text{Cas}}(d)}{A} \\right) = -\\frac{d}{dd} \\left( -\\frac{\\pi^2 \\hbar c}{720 d^3} \\right) = -\\frac{\\pi^2 \\hbar c}{240 d^4}\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":32,\"verdict\":\"CONFIRMED\",\"explanation\":\"Differentiating \\u2212C d\\u207b\\u00b3 gives +3C d\\u207b\\u2074; with prefactor \\u2212 outside, pressure is \\u22123C d\\u207b\\u2074 = \\u2212\\u03c0\\u00b2\\u0127c/(240 d\\u2074).\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 32,
+      "verdict": "CONFIRMED",
+      "explanation": "Differentiating \u2212C d\u207b\u00b3 gives +3C d\u207b\u2074; with prefactor \u2212 outside, pressure is \u22123C d\u207b\u2074 = \u2212\u03c0\u00b2\u0127c/(240 d\u2074).",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T19:51:01.943284"
+  },
+  {
+    "claim_id": 33,
+    "claim_text": "The negative sign indicates an attractive force.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 33, \"verdict\": \"CONFIRMED\", \"explanation\": \"The negative derivative of energy implies a force pulling the plates together, which is standard in Casimir effect derivations.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 33,
+      "verdict": "CONFIRMED",
+      "explanation": "The negative derivative of energy implies a force pulling the plates together, which is standard in Casimir effect derivations.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:51:11.349394"
+  },
+  {
+    "claim_id": 34,
+    "claim_text": "The Casimir force per unit area between two parallel, perfectly conducting plates separated by distance \\(d\\) in vacuum is \\(\\frac{F}{A} = -\\frac{\\pi^2 \\hbar c}{240 d^4}\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":34,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard zero-temperature Casimir pressure for two infinite perfectly conducting parallel plates in vacuum; negative sign denotes attraction: \\(F/A=-\\pi^2\\hbar c/(240 d^4)\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:51:14.504677"
+  },
+  {
+    "claim_id": 35,
+    "claim_text": "The free-vacuum contribution has a factor of 2 for polarizations included via \\(\\int \\frac{d^3k}{(2\\pi)^3}\\) with the same \\(\\hbar\\) prefactor.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 35,\n    \"ver",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:51:33.030267"
+  },
+  {
+    "claim_id": 36,
+    "claim_text": "The transverse wavevector integral is performed in polar coordinates: \\(\\int d^2k_\\parallel = 2\\pi \\int_0^\\infty k_\\parallel \\, dk_\\parallel\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":36,\"verdict\":\"CONFIRMED\",\"explanation\":\"Correct for an isotropic integrand over the full two-dimensional transverse momentum plane; the Jacobian gives \\(d^2k_\\parallel=k_\\parallel\\,dk_\\parallel\\,d\\phi\\), yielding \\(2\\pi\\int_0^\\infty k_\\parallel dk_\\parallel\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:51:36.631310"
+  },
+  {
+    "claim_id": 37,
+    "claim_text": "The integral \\(\\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\omega e^{-\\alpha\\omega}\\) with \\(\\omega = c\\sqrt{k_\\parallel^2 + k_n^2}\\) yields the expression \\(g(k_n)\\) as stated.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 37,\n    \"verdict\": \"UNJUSTIFIED\",\n    \"explanation\": \"The result g(k\u2099) is stated without explicit derivation steps or clear definition, leaving the cutoff treatment and integration details unsubstantiated.\",\n    \"confidence\": 0.9\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 37,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "The result g(k\u2099) is stated without explicit derivation steps or clear definition, leaving the cutoff treatment and integration details unsubstantiated.",
+      "confidence": 0.9
+    },
+    "timestamp": "2026-04-18T19:52:36.475638"
+  },
+  {
+    "claim_id": 41,
+    "claim_text": "The divergent terms (powers of \\(1/\\beta\\)) in \\(S'\\) are exactly canceled by \\(I\\), leaving only the finite part.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 41,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"When the same regulator is consistently applied to both confined and free vacuum energies, the 1/\u03b2 divergent terms cancel exactly.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 41,
+      "verdict": "CONFIRMED",
+      "explanation": "When the same regulator is consistently applied to both confined and free vacuum energies, the 1/\u03b2 divergent terms cancel exactly.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:52:50.966918"
+  },
+  {
+    "claim_id": 42,
+    "claim_text": "The derivative \\(-\\frac{d}{dd}\\left(-\\frac{\\pi^2 \\hbar c}{720 d^3}\\right) = -\\frac{3\\pi^2 \\hbar c}{720 d^4} = -\\frac{\\pi^2 \\hbar c}{240 d^4}\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":42,\"verdict\":\"CONFIRMED\",\"explanation\":\"Differentiate \\(-C d^{-3}\\): \\(-d/dd)(-C d^{-3})=-3C d^{-4}\\). With \\(C=\\pi^2\\\\hbar c/720\\), this gives \\(-\\pi^2\\\\hbar c/(240 d^4)\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:52:54.493748"
+  }
+]

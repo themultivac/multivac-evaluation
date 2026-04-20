@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776536843-qsg47x44CdjaLGehtgIJ",
+  "object": "chat.completion",
+  "created": 1776536843,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 20,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The hyperbola correctly represents the worldline for constant proper acceleration in Minkowski spacetime.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp480RczSeP2hsPPEzte_SRv9rmadmHa_ylAM__IH8fKO_LtulTT4g0V0ODyzAZGFi8c0UKNlNMzXtPlzn7n8mdBlS47ILWboUPxIVrYeyiAktfGrmrLazxC1LoE_WGmIuzxX2fyC2vg08JfMx_0wVE7SVg_mhvUvZlhvWUr659ivoURBqBJjjmvq1PYE9WHEzCinBXO2jpAA105EkSSR2nwvDjTfFaE0QAHeEwQrYf92uoAFr7ziWqshVOvmCo8qH3ZkDbF2OtQJT0WoeCY3EZ94yupJ5F0ckYHhUZZWvAvCBFD7ou25TY3Gj7ZEnD3X5c0NjtJrbarFzWAgJvaLGfLTgoboFMsOUykVeF2bsLGwoOTzfZrcDfzxj0k22zFajdlRVOOR7v9D0ViKaehipOqczbN3WauskZKRKxgJ9_pWD8_0EcPwbPP2-Hrp4y5y_1iBjrV_G4kl4YegGdvJiRCyth0DmczD6T8PrEQE7nKRs1ING0v6cp8qHCLVQpwpaUaM28WRvO1AAYvOV93K7CIxVmw==",
+            "format": "openai-responses-v1",
+            "id": "rs_06b684b34e8df9fa0169e3cd0ba7848195b180e5644b66103f",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 516,
+    "completion_tokens": 2028,
+    "total_tokens": 2544,
+    "cost": 0.0094908,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0094908,
+      "upstream_inference_prompt_cost": 0.0005676,
+      "upstream_inference_completions_cost": 0.0089232
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 960,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

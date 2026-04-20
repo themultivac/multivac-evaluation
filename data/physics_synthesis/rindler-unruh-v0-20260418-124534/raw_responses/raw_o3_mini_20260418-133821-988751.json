@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776537495-t3fClCX5jCJIkEtrYD6M",
+  "object": "chat.completion",
+  "created": 1776537495,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 42,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Minkowski spacetime is flat; the singularity at the horizon appears solely from the breakdown of Rindler coordinates.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp48-dtT31rXtM3zjnEnt_HJHZfmSziXEdTvTTqzwVR0KaomowWJaxeunMisvUpQMgUCP6LoSst_eG817fhnftaRkIppuWudMWK_oYo-gx-uPs82T-xqzZ4z4-F8V7UiHowpwpSf6ZnzVzkpMhw4ndhwtDXiq0aYlAhPEtCeKtqauAA8zHq4akTnfZAyANddOKeNTsIIUGJYESCWjsIs9__16k4Qbh97D5Bf3geoJkbDfRtFyCAyIkAGdTprN1otc2sUKAwJHSJfG8AHxDXaBOO962MPKhYLjpXlnG550ecYftIrm-7JnbTk7W8jelkMGU0UG20FUnJxREXy69cLpHWc1EY_obolYbJPRTrVJg7mzyxrgwtZUzXiF8I_8HSHQHT4UJ-qzTiv0BejVEuifehy9o70TQQg-9U6CMCE20mNx8XJGoTfI0IzRYUqSPbrNmONn9M3k1ihxWwx6APe9F3YmeQZLkGnCRSQz_rSbxSz8n9m7wZ_pHxMy2cEVuL8kYhT1aZxgPvA_lsUm9WlMpWyE4qQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_0a6806fb4c3b6ba70169e3cf97fc748197ba33780d50a26904",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 524,
+    "completion_tokens": 1633,
+    "total_tokens": 2157,
+    "cost": 0.0077616,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0077616,
+      "upstream_inference_prompt_cost": 0.0005764,
+      "upstream_inference_completions_cost": 0.0071852
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 768,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

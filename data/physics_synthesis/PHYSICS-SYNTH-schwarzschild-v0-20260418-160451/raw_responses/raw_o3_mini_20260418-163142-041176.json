@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776547895-R61u49iQExqhRK5oIK4g",
+  "object": "chat.completion",
+  "created": 1776547895,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 4,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In vacuum, contracting Einstein's equations yields R = 0, so indeed R_{\u03bc\u03bd} = 0.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_g9VsPnoKyz5kArlx7bWPszr7k7jAmSnpwrqB_8NrsjzK0wZ5h2JCDqFXd6V6Hjq2HGPRMjbUgELtrDrk3BrDR1HyIv_ePthT72SiJuKtgnorliBgwWpL5rUU4vcAZBKa7TGPta-eXQ5LlABFHt6L77l861RJ4KHGq5oHjEaLREhME8VUmzAEttdJ1QSfKlX10O4sTfJrifYNderNFNlyQ53Vifx_jPYlS3SQi5q9gzHr5vIrw1m_aBNApRDrI7M_QHZkNbbBc1WfBgvEzpDz6iFOympvX0m_IMmelm-97VlTYGPXupyYjFSwPQIsdsCDIZOB9l6isFXTqiMP3K8huQn-oz-Ph486OMLrQORujP1cvGcHaJm5L--mPfEEny3WZiFGvJrNeo9CUzKFogM5JVPr7QeoAhJcgigLiTEIHIJoW9PAqNKPQm0UiFViRwjX2MYrTiAzkniHKTOpoHzZp_TvrFlqdOsNV3NwKHaegZuWH_AVcMaBA_abnjIocP7pONmio2REz6gJlIAMvWss7UfA==",
+            "format": "openai-responses-v1",
+            "id": "rs_04f74fd84d6b0b980169e3f8377f2c8194a5d0869b34d85a5c",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 381,
+    "completion_tokens": 1770,
+    "total_tokens": 2151,
+    "cost": 0.0082071,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0082071,
+      "upstream_inference_prompt_cost": 0.0004191,
+      "upstream_inference_completions_cost": 0.007788
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 832,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

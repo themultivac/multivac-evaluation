@@ -1,0 +1,288 @@
+```json
+{
+  "model": "unknown",
+  "total_claims": 35,
+  "claims": [
+    {
+      "id": 1,
+      "text": "The spacetime is vacuum (outside the mass), so the energy–momentum tensor vanishes: T_{μν} = 0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "Therefore the Einstein field equations reduce to R_{μν} = 0, where R_{μν} is the Ricci tensor.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1],
+      "notes": "Requires noting that trace-reversed EFE with T=0 gives R_{μν}=0."
+    },
+    {
+      "id": 3,
+      "text": "The spacetime is spherically symmetric, non-rotating, and uncharged.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "The metric can depend only on the radial coordinate r and must reduce to the Minkowski metric at large r (asymptotic flatness).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [3],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "We assume the metric is static (time-independent).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Birkhoff's theorem would make this unnecessary, but it's stated as assumption."
+    },
+    {
+      "id": 6,
+      "text": "The line element takes the form ds² = -e^{2Φ(r)} c² dt² + e^{2λ(r)} dr² + r² dθ² + r² sin²θ dφ².",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [3, 5],
+      "notes": "Standard ansatz for static spherically symmetric metric."
+    },
+    {
+      "id": 7,
+      "text": "Here Φ(r) and λ(r) are functions to be determined.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [6],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "Our goal is to find the functions Φ(r) and λ(r) by inserting this ansatz into the vacuum Einstein equations.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [2, 6],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "The nontrivial components of the Ricci tensor for our metric lead to a set of differential equations for Φ(r) and λ(r).",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [2, 6],
+      "notes": "Actual Ricci tensor computation is not shown."
+    },
+    {
+      "id": 10,
+      "text": "A standard result is that one of these equations can be written as d/dr[r(1 - e^{-2λ(r)})] = 0.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [9],
+      "notes": "Derivation of this ODE from Ricci components is skipped."
+    },
+    {
+      "id": 11,
+      "text": "Integrate with respect to r: r(1 - e^{-2λ(r)}) = constant.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [10],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "Let the constant be identified as 2GM/c² (this choice guarantees that when we compare our result with the Newtonian potential in the weak-field limit we recover the expected behavior).",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [11],
+      "notes": "Newtonian limit comparison is not explicitly shown."
+    },
+    {
+      "id": 13,
+      "text": "Thus, 1 - e^{-2λ(r)} = 2GM/(c²r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [11, 12],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "Solving for e^{2λ(r)}: e^{-2λ(r)} = 1 - 2GM/(c²r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [13],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "e^{2λ(r)} = (1 - 2GM/(c²r))^{-1}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [14],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "Another combination of R_{tt} and R_{rr} equations yields a relation involving Φ'(r) and λ'(r).",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [9],
+      "notes": "Explicit computation not shown."
+    },
+    {
+      "id": 17,
+      "text": "One finds Φ'(r) + λ'(r) = 0.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [16],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "This integrates to give Φ(r) = -λ(r) + constant.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [17],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "To ensure that the metric is asymptotically flat as r → ∞ (i.e. g_{tt} → -c²), we choose the constant so that e^{2Φ(r)} → 1 as r → ∞.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [4, 18],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "Given that e^{2λ(r)} → 1 in that limit too, we set the constant to zero.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15, 19],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "e^{2Φ(r)} = e^{-2λ(r)} = 1 - 2GM/(c²r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [14, 18, 20],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "Substituting the results for Φ(r) and λ(r) into our ansatz, the line element becomes ds² = -(1 - 2GM/(c²r)) c² dt² + (1 - 2GM/(c²r))^{-1} dr² + r²(dθ² + sin²θ dφ²).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6, 15, 21],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "This is the Schwarzschild metric.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [22],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "The coefficient of dt² is g_{tt} = -(1 - 2GM/(c²r)).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [22],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "The coefficient of dr² is g_{rr} = (1 - 2GM/(c²r))^{-1}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [22],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "A coordinate singularity appears (i.e. the metric components diverge) when 1 - 2GM/(c²r) = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [24, 25],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "1 - 2GM/(c²r) = 0 implies r = 2GM/c².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [26],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "This radius is called the Schwarzschild radius r_S: r_S = 2GM/c².",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [27],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "This singularity is a coordinate artifact (the so-called 'coordinate singularity') and not a true physical singularity.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [26],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "The true curvature singularity is at r=0, where invariants like the Kretschmann scalar diverge.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "We assumed vacuum (i.e., T_{μν}=0) so the Einstein equations become R_{μν} = 0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Restates claims 1 and 2."
+    },
+    {
+      "id": 32,
+      "text": "We assumed spherical symmetry and static conditions, leading us to the metric ansatz with functions Φ(r) and λ(r).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Restates claims 3, 5, 6."
+    },
+    {
+      "id": 33,
+      "text": "The integration constant emerging in the solution of the field equations was identified with the mass M via comparison with the Newtonian limit.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [12],
+      "notes": "Newtonian limit comparison not explicitly performed."
+    },
+    {
+      "id": 34,
+      "text": "Asymptotic flatness (requiring the metric to approach the Minkowski metric at infinity) fixes the integration constants.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [19, 20],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "The metric coefficient g_{rr} diverges when r = 2GM/c², which is identified as the Schwarzschild radius.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [25, 27, 28],
+      "notes": ""
+    }
+  ]
+}
+```

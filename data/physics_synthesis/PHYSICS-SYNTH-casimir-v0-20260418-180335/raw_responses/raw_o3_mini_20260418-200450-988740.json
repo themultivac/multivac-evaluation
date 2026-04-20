@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776560686-ALenp3M1F8eHtXfuqJ9l",
+  "object": "chat.completion",
+  "created": 1776560686,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 39,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The negative force indicates energy decreases with reduced separation, leading to attraction.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CoyFnQQHzK1if0XsGOwwgp_Jsdo6cWjvBFdbRsOGHdzWRLvX_A-rSCdIo-DikfIRJQvbocboK7MUY_28RiwmfscxalM9JyAGqytKm_qeroNCb5-6INIqHIe5dlrVBeu5Ah7HJ6tz9-b_k3cxhfKK-EZSOph87xFexzjUFIuSsTab0lX1qJJKtyStR4MLAe-_POjzcIWmJLZMKVvwiR9kBNxxuikKSPUM7BoNY2dAXxnyKpUQzzy5bBtw1rU1TJYCGZAKyWfDOSdsjOG4MOVuglvbepx0ep_Q1QZKSofKq76HANuFaIP4ze2NIZsL5CoFDQGUpnTfYqb37mJg4thLxOG4pqKjeOCQlaSpMna4u5INe6QLisPrk8P-fmFnGuM1zkXOoSa7p_6K9ewT9LrH1eRy9kYUR91JKqB2otyxcf-syg3oLxWUcgXOeVU0Qwq8phw8VNuoo90BhZLUSYCB5VFKYUjkqHxCOE7bifSiN70l_Q6MBJ0umot45JzS9sZ5ab9x-JS68-sc-PaLFibuo56Eg==",
+            "format": "openai-responses-v1",
+            "id": "rs_02dcca4961f9dec80169e42a2f6024819697b234066e4633f5",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 499,
+    "completion_tokens": 875,
+    "total_tokens": 1374,
+    "cost": 0.0043989,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0043989,
+      "upstream_inference_prompt_cost": 0.0005489,
+      "upstream_inference_completions_cost": 0.00385
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 384,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

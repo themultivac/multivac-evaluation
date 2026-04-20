@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776539954-PFGiVvRKIzEm3fV66UlH",
+  "object": "chat.completion",
+  "created": 1776539954,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The right Rindler wedge is conventionally defined as x > |ct|, matching the standard transformation domain.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49k6Gri0YunEyXl59BP5EKrfT-H4EJNwvdCosl1S2LT-4UDfTT4CgIpYvj9dQ2HENMFfsjr1yS-UCTwSIzAQE9FJ-rrfQ2NcAQKwWcPiQEz_7369pUn9JZ7u9Z33jyuGebQdlaCC5smYXeR3eVgBVPNpxFAsOHXGR3jsHuOx_Ia4DTFcvfusiiT67BLvEYBIiDnbJlyBIlHGw6kg7zdcBymmAF27QuytWnh6HBAHOBM5eBzTBLJg3Rs1dFtcYKtClKER8lomhRx8NxoTbOcMOLj54XURWux5CMkLJIWHuL7dlU_Ejj8EnsPYl92YUd2sKECDAGnj2qSXyGXqEXardEMF-vSWXT8fPNo05w5Sy13KE_hJvi9PFN8rUY00oiMsTGVM1XsbnV3eMcjx2smh58M-1CpHQggyugeMqh-ceJCRM1y_ihzqWbXLRUmSd24pVspUnAF2GVQy9CvS51pcF3nvRDgG90R-5oLkzEHpqv9trN2nUsE3lII6F2nD59VGTZLouzInMOMf-6NoXygTrTg7Kw==",
+            "format": "openai-responses-v1",
+            "id": "rs_0000bfe10f03d2580169e3d933596c8190b025c7b879182b37",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 526,
+    "completion_tokens": 2408,
+    "total_tokens": 2934,
+    "cost": 0.0111738,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0111738,
+      "upstream_inference_prompt_cost": 0.0005786,
+      "upstream_inference_completions_cost": 0.0105952
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1152,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,404 @@
+{
+  "model": "unknown",
+  "total_claims": 42,
+  "claims": [
+    {
+      "id": 1,
+      "text": "The Casimir force per unit area between two perfectly conducting, infinite, parallel plates separated by distance d is F/A = -\u03c0\u00b2\u210fc/(240 d\u2074)",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "The negative sign indicates an attractive force.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        1
+      ],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The plates are assumed to be infinite and located at z=0 and z=d.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "For a perfectly conducting surface the tangential components of the electric field must vanish.",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "The magnetic field normal to the surface vanishes for a perfectly conducting surface.",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "The allowed modes in the z direction are quantized with mode functions proportional to sin(n\u03c0z/d).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        3,
+        4
+      ],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "k_z = n\u03c0/d, with n = 1, 2, 3, ...",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        6
+      ],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "In the x and y directions the wave-vectors k_x and k_y are continuous because the plates are infinite.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        3
+      ],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "There is a subtlety regarding the n=0 mode and how the two physical polarizations are counted, but these details do not affect the final result.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "n=0 contributes for one polarization (TM); claim it doesn't affect result needs justification."
+    },
+    {
+      "id": 10,
+      "text": "The dispersion relation is \u03c9_n(k_\u22a5) = c\u221a(k_\u22a5\u00b2 + (n\u03c0/d)\u00b2).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        7,
+        8
+      ],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "The vacuum (zero-point) energy is obtained by summing \u00bd\u210f\u03c9 for every mode.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "The energy per unit area is U(d)/A = (\u210f/2) \u03a3_modes \u03c9.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        11
+      ],
+      "notes": "Missing factor of 2 for polarizations in this expression."
+    },
+    {
+      "id": 13,
+      "text": "U(d)/A = (\u210f/2) \u03a3_{n=1}^\u221e \u222b d\u00b2k_\u22a5/(2\u03c0)\u00b2 c\u221a(k_\u22a5\u00b2 + (n\u03c0/d)\u00b2)",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        10,
+        12
+      ],
+      "notes": "Missing factor of 2 for two polarizations."
+    },
+    {
+      "id": 14,
+      "text": "This sum/integral is divergent.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        13
+      ],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "A physically motivated regularization is to introduce an exponential cutoff factor e^{-\u03bb\u03c9} with \u03bb > 0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "The regularized energy is U(d,\u03bb)/A = (\u210f/2) \u03a3_{n=1}^\u221e \u222b d\u00b2k_\u22a5/(2\u03c0)\u00b2 c\u221a(k_\u22a5\u00b2+(n\u03c0/d)\u00b2) e^{-\u03bbc\u221a(k_\u22a5\u00b2+(n\u03c0/d)\u00b2)}",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        13,
+        15
+      ],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "\u03b6(-3) = 1/120, where \u03b6(s) is the Riemann zeta function.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "Converting the k_\u22a5 integration to polar coordinates gives d\u00b2k_\u22a5 = 2\u03c0 k dk.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "U(d,\u03bb)/A = (\u210fc)/(4\u03c0) \u03a3_{n=1}^\u221e \u222b_0^\u221e k dk \u221a(k\u00b2+(n\u03c0/d)\u00b2) e^{-\u03bbc\u221a(k\u00b2+(n\u03c0/d)\u00b2)}",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        16,
+        18
+      ],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "Substituting \u03c9 = \u221a(k\u00b2+(n\u03c0/d)\u00b2), when k runs from 0 to \u221e, \u03c9 runs from n\u03c0/d to \u221e.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        19
+      ],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "Under this substitution, k dk = \u03c9 d\u03c9.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        20
+      ],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "U(d,\u03bb)/A = (\u210fc)/(4\u03c0) \u03a3_{n=1}^\u221e \u222b_{n\u03c0/d}^\u221e d\u03c9 \u03c9\u00b2 e^{-\u03bbc\u03c9}",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        19,
+        20,
+        21
+      ],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "Substituting x = \u03bbc\u03c9 transforms the integral to (1/(\u03bbc)\u00b3) \u222b_{\u03bbcn\u03c0/d}^\u221e x\u00b2 e^{-x} dx.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        22
+      ],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "\u222b_a^\u221e x\u00b2 e^{-x} dx = e^{-a}(a\u00b2 + 2a + 2)",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "U(d,\u03bb)/A = (\u210fc)/(4\u03c0(\u03bbc)\u00b3) \u03a3_{n=1}^\u221e e^{-\u03bbc(n\u03c0/d)} [(\u03bbcn\u03c0/d)\u00b2 + 2\u03bbc(n\u03c0/d) + 2]",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        22,
+        23,
+        24
+      ],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "The regulated energy still contains divergences as \u03bb\u21920.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        25
+      ],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "These divergences are independent of the plate separation d and are present also in free space.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        26
+      ],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "The finite Casimir energy per unit area is defined as U_Casimir(d)/A = U(d)/A - U(d\u2192\u221e)/A.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "Only the d-dependent part is physically observable (in the form of a force).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "After subtracting the d-independent divergent terms, one obtains U_Casimir(d)/A = -\u03c0\u00b2\u210fc/(720 d\u00b3).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        25,
+        28,
+        17
+      ],
+      "notes": "Detailed subtraction steps are omitted."
+    },
+    {
+      "id": 31,
+      "text": "The summation is recast in terms of Riemann zeta functions; one encounters sums of the form \u03a3_{n=1}^\u221e n\u00b3.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [
+        25
+      ],
+      "notes": "Intermediate steps showing how \u03a3n\u00b3 arises are skipped."
+    },
+    {
+      "id": 32,
+      "text": "\u03a3_{n=1}^\u221e n\u00b3 is assigned a finite value by analytic continuation using \u03b6(-3) = 1/120.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        17,
+        31
+      ],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "The Casimir force per unit area is obtained by F(d)/A = -\u2202/\u2202d (U_Casimir(d)/A).",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "text": "F(d)/A = -\u2202/\u2202d [-\u03c0\u00b2\u210fc/(720 d\u00b3)]",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        30,
+        33
+      ],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "The derivative of -\u03c0\u00b2\u210fc/(720 d\u00b3) with respect to d is -\u03c0\u00b2\u210fc/(720) \u00b7 (-3)/d\u2074 = \u03c0\u00b2\u210fc/(240 d\u2074).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        34
+      ],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "text": "F(d)/A = -\u03c0\u00b2\u210fc/(240 d\u2074)",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        34,
+        35
+      ],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "The plates are assumed to be perfectly conducting and infinite in extent.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "text": "The electromagnetic field is quantized in the region between the plates with boundary conditions that force the tangential electric field to vanish at the plate surfaces.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "The zero-point energy per mode is taken to be \u00bd\u210f\u03c9.",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "An exponential cutoff factor e^{-\u03bb\u03c9} with subsequent removal via \u03bb\u21920 was used to regularize the divergent sums.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "The subtraction of the free-vacuum (d\u2192\u221e) contribution isolates the physically observable, d-dependent piece.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "In evaluating divergent sums such as \u03a3n\u00b3, the analytic continuation of the Riemann zeta function (\u03b6(-3)=1/120) is employed.",
+      "type": "assumption",
+      "provenance": "cited",
+      "depends_on": [
+        17
+      ],
+      "notes": ""
+    }
+  ]
+}

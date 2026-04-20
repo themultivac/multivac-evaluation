@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776551307-5LhrtJdwKZR2HlIQa2xk",
+  "object": "chat.completion",
+  "created": 1776551307,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 29,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard Schwarzschild metric; correctly expresses the coordinate singularity at r=2GM/c\u00b2.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Verifying the Schwarzschild metric**\n\nI'm looking at the Schwarzschild metric given as encompasses the standard form. My goal is to derive the Schwarzschild radius based on constants like G, M, and c. The claim states the metric correctly, and it mentions the coordinate singularity at r=2GM/c\u00b2. The expression \"1 - 2GM/(c\u00b2r)\" is accurate, so I need to ensure this aligns with the required coordinate basis, featuring both time and radial coordinates for clarity. It seems like everything checks out, but I'll confirm the details.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Verifying the Schwarzschild metric**\n\nI'm looking at the Schwarzschild metric given as encompasses the standard form. My goal is to derive the Schwarzschild radius based on constants like G, M, and c. The claim states the metric correctly, and it mentions the coordinate singularity at r=2GM/c\u00b2. The expression \"1 - 2GM/(c\u00b2r)\" is accurate, so I need to ensure this aligns with the required coordinate basis, featuring both time and radial coordinates for clarity. It seems like everything checks out, but I'll confirm the details.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5AWQxY-807Yn7DIJoz-YZ_IRCCb2BZDIiD1bTLk8Ziccjj2GgdV8qRJT7m8LoSTNm6VbUHT5ZnfvX9Sj5vK6xlp58FdYCY-Y0X4zprpWsmnrBKr_HMa7SA3Sznne54W9Ny37PWAADTXdjVusJUxJsd67g-9s9cqLT2ZwwHufiEmbOwAFkr_RzKLaAB_P-Tz88bi16ZSnw2CIYGBJgRxr4FjGURVcRn3wK9MIlnRTyDMvFx1ZeWNeF6p5Fg0VjiO0OcygfyJI2LXd0xzke07ox69Dtdsf_05gdgIoSk-A7ENxMj_cNgdi8hdpbzszCHHF1rUrJuK6cckZ9nAkG3HmbgUerfbKU6OgApEaQAtScRWlBrr3ddn-0NL4jS0KNMhkmGrVsH2MmqL3t7f5lBc2jrtQuCcDAc0IKfzdewtEILwyP2hIJF8GtnGa6lRqQHaQgJ8NvQ7fO_XHvRHz10Py-jqYFanWPz_PLRocfrpeyBtbhcn-oj-eK16JXFuQW6uqgv-9a94svWY45dIsUDfPuUAlOA==",
+            "format": "openai-responses-v1",
+            "id": "rs_03647dc20f39b9100169e4058b976c8194bc744891961f82c1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 399,
+    "completion_tokens": 1364,
+    "total_tokens": 1763,
+    "cost": 0.0064405,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0064405,
+      "upstream_inference_prompt_cost": 0.0004389,
+      "upstream_inference_completions_cost": 0.0060016
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 640,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

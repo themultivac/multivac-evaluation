@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776550032-779F5q6e4za8lYPivsZV",
+  "object": "chat.completion",
+  "created": 1776550032,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":28,\"verdict\":\"CONFIRMED\",\"explanation\":\"Since (rA)' = A + rA', rearranging 1 - A - rA' = 0 gives A + rA' = 1, hence (rA)' = 1.\",\"confidence\":0.99}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 370,
+    "completion_tokens": 69,
+    "total_tokens": 439,
+    "cost": 0.00196,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00196,
+      "upstream_inference_prompt_cost": 0.000925,
+      "upstream_inference_completions_cost": 0.001035
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

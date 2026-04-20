@@ -1,0 +1,29 @@
+{
+  "id": "schwarzschild-v0",
+  "question": "Derive the Schwarzschild radius from first principles. Starting from the Einstein field equations for a spherically symmetric, non-rotating, uncharged mass in vacuum, derive the Schwarzschild metric and identify the coordinate singularity that defines the Schwarzschild radius. Express the final result in terms of G, M, and c. Show all assumptions, intermediate steps, and physical reasoning.",
+  "ground_truth": {
+    "final_answers": {
+      "schwarzschild_radius": "r_s = 2GM/c^2"
+    },
+    "key_steps": [
+      "Start with Einstein field equations R_mn - (1/2)g_mn R = (8\u03c0G/c^4) T_mn",
+      "Apply vacuum condition T_mn = 0, reducing to R_mn = 0",
+      "Assume static, spherically symmetric metric (Birkhoff's theorem)",
+      "Write general metric: ds^2 = -A(r)c^2 dt^2 + B(r)dr^2 + r^2 dOmega^2",
+      "Compute Christoffel symbols for this metric",
+      "Compute Ricci tensor components R_tt, R_rr, R_thth, R_phph",
+      "Solve R_mn = 0 to get A(r) = 1 - C/r and B(r) = 1/A(r)",
+      "Apply boundary condition: Newtonian limit as r -> infinity gives C = 2GM/c^2",
+      "Identify coordinate singularity at r = 2GM/c^2 = r_s"
+    ],
+    "key_assumptions": [
+      "Vacuum exterior solution (T_mn = 0)",
+      "Static spacetime (no time dependence)",
+      "Spherical symmetry",
+      "Asymptotic flatness (reduces to Minkowski at infinity)"
+    ]
+  },
+  "domain": "general_relativity",
+  "difficulty": "graduate",
+  "source": "Standard GR derivation (Carroll Ch. 5, Schutz Ch. 10)"
+}

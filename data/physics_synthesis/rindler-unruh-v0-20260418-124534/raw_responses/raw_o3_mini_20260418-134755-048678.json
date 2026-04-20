@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776538068-08cy5HX28H4edWyd4QJx",
+  "object": "chat.completion",
+  "created": 1776538068,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 72,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The claim correctly reflects the Unruh effect: restricting the Minkowski vacuum to one Rindler wedge yields a thermal state.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49Har8EfgzopWS4835Z7lrw6Ik_eiPzmcl3DSiY5zEHuMsDGMuW10itDqIZDft76khhyC4jFxw04ZEv8IF-WNSj4kEC5PZf_O4e9JhElckAFvQUakdeb4qHt3EykdiXvZGxb3wo6O6PLwHfhHX_FIOi8VcIKMSdA6qATAfEyqPGgxf7Jtr2JGg7_1sT2MHZd6P1n6qxSymRBpMrA21DVGZ3sbVKJJUp8_1k5_jKS9za1rGSWtsZefhwxuJrigJrZ1ixjHEDTOd_xHsYe4bv4RpgDeH0kyAutJoiG03s13zSuf0_uUgDhbTxsb78Tg42AmyBt0C-yfzUZVjt5o9Xr0_JpN_X5z7hYjlFwK-8SSPadCftp-xmro9SsWB8ScSbFylRMUfcg-sgDEbp5MSnjmyg4vfY2zjUz7pcszZOAvDg4-6O-_TZ_7lyQeLZapGPsdq3vBL9mG7TH0INYGh3jYPO-w0681aSzOXboKlFU9y6VN1oir4DtAx5OaZTodKgOetvYXXC9aD6xUCnZwVpMxBJKlA==",
+            "format": "openai-responses-v1",
+            "id": "rs_0616ba152fc11de90169e3d1d4e968819692904f5b26222de1",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 545,
+    "completion_tokens": 1655,
+    "total_tokens": 2200,
+    "cost": 0.0078815,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0078815,
+      "upstream_inference_prompt_cost": 0.0005995,
+      "upstream_inference_completions_cost": 0.007282
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 768,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

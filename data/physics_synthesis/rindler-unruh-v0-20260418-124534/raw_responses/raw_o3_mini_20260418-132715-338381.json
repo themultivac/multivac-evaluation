@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776536830-ru0cO6uZvfSobcdNpT8x",
+  "object": "chat.completion",
+  "created": 1776536830,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 18,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The hyperbolic trajectory correctly represents constant proper acceleration in Minkowski spacetime.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp480C4ZZpwkQfb-mz4nQaRujsRWAU0M8fjlbMnej8q3N6uBkMYPrMx401AHWVf-bnUKxM5gZ5vDmZQkGdMKk1z80cpOhjqcqZNP_my2yXOWIGmhRBAJExU_oNL3O95VqUm62vO5RsZBUzPgulsnUHIIADECUNd4utlUgWfQuw_4AmKHLAT9t-82-3lqT22sPkFjUKpBIj7P5aIRiVoBq8Og58_b5p0dhcdDP5CNEmX7G_i4saUF_k3V0mYxqbrbPrRiSYu8XzT-zAMsxBoRZQdlCxfL7oC6aT4iS5NWQX0NMpiSLak6GDDRRnw4-gM59lDMSOlvguWk5585w24r-CyJPsrtVm_DZMBI7wSNOd6RIztpbhQfdudAhH7hemcZnK1JbZz8xTFsvQ4TMgdkuI9o9VajID03_8vBSBUzouhLvECQM9Rbo3PHO9gDtk4btxAMwMakOb7or3aAViPU2O4h2Lj3bB1cL6SnD_OnQlXRrxKn3vKgR5fBkS2IaWdUHSwXmqxlfIlQ38RFPWKQ0uSKmAJQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_099f2511aff9fad50169e3ccfeaa208190b7313bc3b86331a8",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 531,
+    "completion_tokens": 884,
+    "total_tokens": 1415,
+    "cost": 0.0044737,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0044737,
+      "upstream_inference_prompt_cost": 0.0005841,
+      "upstream_inference_completions_cost": 0.0038896
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 384,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

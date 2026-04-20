@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776537982-L2KV20m3bzdNrrdj2xmx",
+  "object": "chat.completion",
+  "created": 1776537982,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 62,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Algebraic manipulation is correct using logarithm and exponential properties, assuming the proper branch for ln(-U/\u03be\u2080).\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49GEwteKOfaWFouQi9gxYiDXsLnMfjY7BGABbe3Qg2dKW4AcPH7icMdwPgWMQb7WbJ59UdcWji5vmwFuICxG1z2pIDZl937Zn7Mu61UWEZP9PpCQUKrmhgNYH9mpl08xX0T4YLYJbUzwFcLjuj6Gz_FmQbzqafoaop0g6DolowyIt1uMYVeciiRxWqtHH0WEOKQobqhMPFWWZFjbCN9LDvykftyRbzmocwe21nJwA39B0uCF0esSffI0-bHvFNB4v-taaZg-UEGeJCUknQ0TXaxOAtqx20G8fq5z4ms43ethlioEFTCD490hBJJPRHlC1c7y20LenYgXFbjbLV6wL0_rImv6tMU6jejWayjaSh9Tax-j38HFdjMfx52hH0qa0E_rIREbZB4VoixS_akK-pfTMU17tdriUHvY4W8bOQGUJm73Wo_cgMn3gpLIg7zMVTiORurs89hqU5Qt-ouCwCdaIblME5FZoXvNruS8nGJLa7dbLfhPs3YUoVaLw4efE6YqZr4mmz4Bzm7aAxH_ZjMnzQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_008f30770aa6c37e0169e3d17f472081948962ede3f1d32e09",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 542,
+    "completion_tokens": 1776,
+    "total_tokens": 2318,
+    "cost": 0.0084106,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0084106,
+      "upstream_inference_prompt_cost": 0.0005962,
+      "upstream_inference_completions_cost": 0.0078144
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 832,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

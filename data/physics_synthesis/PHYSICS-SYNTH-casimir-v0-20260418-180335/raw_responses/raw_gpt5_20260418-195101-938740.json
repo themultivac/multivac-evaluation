@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776559859-oBUV5Cmm12WJsvepTgJJ",
+  "object": "chat.completion",
+  "created": 1776559859,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":32,\"verdict\":\"CONFIRMED\",\"explanation\":\"Differentiating \\u2212C d\\u207b\\u00b3 gives +3C d\\u207b\\u2074; with prefactor \\u2212 outside, pressure is \\u22123C d\\u207b\\u2074 = \\u2212\\u03c0\\u00b2\\u0127c/(240 d\\u2074).\",\"confidence\":0.99}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 581,
+    "completion_tokens": 102,
+    "total_tokens": 683,
+    "cost": 0.0029825,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0029825,
+      "upstream_inference_prompt_cost": 0.0014525,
+      "upstream_inference_completions_cost": 0.00153
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

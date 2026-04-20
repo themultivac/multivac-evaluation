@@ -1,0 +1,372 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "The quantized electromagnetic field satisfies perfect-conductor boundary conditions (\\(\\mathbf{E}_\\parallel = 0\\) and \\(\\mathbf{B}_\\perp = 0\\)) at the plates, taken to lie at \\(z = 0\\) and \\(z = d\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard perfect-conductor boundary conditions are correctly stated for the Casimir effect.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard perfect-conductor boundary conditions are correctly stated for the Casimir effect.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T20:05:03.485445"
+  },
+  {
+    "claim_id": 2,
+    "claim_text": "The allowed frequencies are \\(\\omega_{n,\\mathbf{k}_\\perp} = c \\kappa_n\\) with \\(\\kappa_n = \\sqrt{k_\\perp^2 + (n\\pi/d)^2}\\) for \\(n = 0, 1, 2, \\dots\\), where \\(\\mathbf{k}_\\perp = (k_x, k_y)\\) is continuous.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":2,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Dispersion is correct, but mode counting is incomplete: perfect-conductor boundary conditions give TE/TM branches with special \\(n=0\\) treatment; not every \\(n\\) has two polarizations.\",\"confidence\":0.95}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:05:06.913125"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "For \\(n = 0\\) there is one polarization; for \\(n \\geq 1\\) there are two degenerate polarizations.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard mode counting: boundary conditions remove one polarization for n=0, leaving two for n>=1.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard mode counting: boundary conditions remove one polarization for n=0, leaving two for n>=1.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T20:05:21.096031"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "The zero-point energy per unit area follows from summing \\(\\frac{1}{2} \\hbar \\omega\\) over all modes: \\[\\frac{U(d)}{A} = \\frac{\\hbar c}{4\\pi} \\int_0^\\infty k \\, dk \\Bigl[ \\kappa_0 + 2 \\sum_{n=1}^\\infty \\kappa_n \\Bigr],\\] where \\(\\kappa_n = \\sqrt{k^2 + (n\\pi/d)^2}\\) (and \\(\\kappa_0 = k\\)).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":4,\"verdict\":\"CONFIRMED\",\"explanation\":\"Correct mode-sum per area: \\(d^2k_\\perp/(2\\\\pi)^2\\\\to k\\,dk/(2\\\\pi)\\), times \\\\(\\\\hbar c/2\\\\), with EM degeneracy \\(n\\\\ge1\\\\) doubled and \\(n=0\\\\) single.\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:05:24.887951"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "This expression is formally divergent.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 5,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Indeed, the zero-point energy sum over modes diverges formally without regularization and subtraction of the free-vacuum contribution.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "CONFIRMED",
+      "explanation": "Indeed, the zero-point energy sum over modes diverges formally without regularization and subtraction of the free-vacuum contribution.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T20:05:32.465136"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "To regularize, scale variables by setting \\(k = (\\pi/d) u\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":6,\"verdict\":\"CONFIRMED\",\"explanation\":\"Valid change of variables for transverse momentum magnitude: \\(k=(\\\\pi/d)u\\) makes the integral dimensionless. Jacobian \\(dk=(\\\\pi/d)du\\) must be included.\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:05:36.254239"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "This yields the equivalent form \\[\\frac{U(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3} \\int_0^\\infty u \\, du \\Bigl[ \\sqrt{u^2} + 2 \\sum_{n=1}^\\infty \\sqrt{u^2 + n^2} \\Bigr].\\]",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:07:26.143721"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "The \\(n = 0\\) term is independent of \\(d\\) and does not contribute to the force upon differentiation with respect to \\(d\\); it is omitted below.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For parallel-plate EM modes, TE n=0 is absent and TM n=0 is subtle. Simply calling it d-independent ignores polarization/boundary-condition details needed for correctness.\",\"confidence\":0.94}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 8,
+      "verdict": "INCOMPLETE",
+      "explanation": "For parallel-plate EM modes, TE n=0 is absent and TM n=0 is subtle. Simply calling it d-independent ignores polarization/boundary-condition details needed for correctness.",
+      "confidence": 0.94
+    },
+    "timestamp": "2026-04-18T20:07:29.613497"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "Introduce the regularization parameter \\(s\\) (with \\(\\operatorname{Re}(s) > 3\\) for convergence) by replacing the integrand factor \\((u^2 + n^2)^{1/2}\\) with \\((u^2 + n^2)^{-s/2}\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:08:51.841892"
+  },
+  {
+    "claim_id": 10,
+    "claim_text": "\\[Z(s) = 2 \\sum_{n=1}^\\infty \\int_0^\\infty u \\, (u^2 + n^2)^{-s/2} \\, du.\\]",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":10,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"This equals the regulated mode sum only after introducing dimensionless variables and including TE/TM polarization counting; missing derivation and treatment of the n=0 mode.\",\"confidence\":0.86}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 10,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "This equals the regulated mode sum only after introducing dimensionless variables and including TE/TM polarization counting; missing derivation and treatment of the n=0 mode.",
+      "confidence": 0.86
+    },
+    "timestamp": "2026-04-18T20:08:55.222322"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "The regularized energy per unit area is then identified with the analytic continuation of \\[\\frac{U(d,s)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3} \\, Z(s)\\] evaluated at \\(s = -1\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 11,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The prefactor and s=-1 choice yield -\u0127c\u03c0\u00b2/(48d\u00b3), conflicting with the known \u03b6-regularized factor (involving \u03b6(-3)) for the Casimir energy.\",\n    \"confidence\": 0.9\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 11,
+      "verdict": "ERROR",
+      "explanation": "The prefactor and s=-1 choice yield -\u0127c\u03c0\u00b2/(48d\u00b3), conflicting with the known \u03b6-regularized factor (involving \u03b6(-3)) for the Casimir energy.",
+      "confidence": 0.9
+    },
+    "timestamp": "2026-04-18T20:09:09.150140"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "For each term in the sum, substitute \\(v = u/n\\): \\[\\int_0^\\infty u \\, (u^2 + n^2)^{-s/2} \\, du = n^{2-s} \\int_0^\\infty v \\, (v^2 + 1)^{-s/2} \\, dv.\\]",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":12,\"verdict\":\"CONFIRMED\",\"explanation\":\"With \\(u=nv\\), \\(du=n\\,dv\\). Then \\(u(u^2+n^2)^{-s/2}du = n^{2-s}v(v^2+1)^{-s/2}dv\\), yielding the stated factorization.\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:09:12.425908"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "The \\(v\\)-integral evaluates to \\(1/(s-2)\\) (for \\(\\operatorname{Re}(s) > 2\\); this form is retained for continuation).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:11:20.736091"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "Thus, \\[Z(s) = \\frac{2}{s-2} \\sum_{n=1}^\\infty n^{2-s} = \\frac{2 \\, \\zeta(s-2)}{s-2},\\] where \\(\\zeta\\) is the Riemann zeta function.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":14,\"verdict\":\"CONFIRMED\",\"explanation\":\"Given \\(Z(s)=\\\\sum_n\\\\int_0^\\\\infty du\\\\,(u+n^2)^{-s/2}\\), substitution \\(u=n^2 t\\) gives \\(n^{2-s}\\\\int_0^\\\\infty(1+t)^{-s/2}dt=2n^{2-s}/(s-2)\\) for \\\\(\\\\Re s>2\\\\).\",\"confidence\":0.96}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:11:25.338952"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "Analytically continue to \\(s = -1\\): here \\(s-2 = -3\\).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:13:35.298707"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "Therefore, \\[Z(-1) = \\frac{2 \\cdot (1/120)}{-3} = -\\frac{1}{180}.\\]",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:16:05.020942"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "The Casimir energy per unit area is \\[\\frac{U(d)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3} \\left( -\\frac{1}{180} \\right) = -\\frac{\\pi^2 \\hbar c}{720 d^3}.\\]",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"Matches the standard zero-temperature Casimir energy for two infinite perfectly conducting plates: \\(U/A=-\\pi^2\\hbar c/(720\\,d^3)\\). Arithmetic and dimensions are correct.\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:16:08.283481"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "This is the finite part after subtracting the free-space contribution implicit in the analytic continuation.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 19, \"verdict\": \"INCOMPLETE\", \"explanation\": \"The statement omits detailed explanation of the analytic continuation process and explicit subtraction steps.\", \"confidence\": 0.9}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "INCOMPLETE",
+      "explanation": "The statement omits detailed explanation of the analytic continuation process and explicit subtraction steps.",
+      "confidence": 0.9
+    },
+    "timestamp": "2026-04-18T20:16:15.253774"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "The force per unit area is \\[\\frac{F(d)}{A} = -\\frac{d}{dd} \\left( \\frac{U(d)}{A} \\right).\\]",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"CONFIRMED\",\"explanation\":\"Pressure equals minus derivative of energy per area with respect to separation at fixed plate area: \\(F/A=-\\partial(U/A)/\\partial d\\). Standard from virtual work.\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:16:18.426507"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "Differentiating \\(-K/d^3\\) (\\(K = \\pi^2 \\hbar c / 720 > 0\\)) gives \\[\\frac{F(d)}{A} = -\\frac{3K}{d^4} = -\\frac{\\pi^2 \\hbar c}{240 d^4}.\\]",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 21,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The derivative and sign are correct; converting 3/720 to 1/240 accurately yields the standard Casimir force result.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "CONFIRMED",
+      "explanation": "The derivative and sign are correct; converting 3/720 to 1/240 accurately yields the standard Casimir force result.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T20:16:31.427018"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "The negative sign implies attraction.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":22,\"verdict\":\"CONFIRMED\",\"explanation\":\"For \\(U/A=-C d^{-3}\\) with \\(C>0\\), \\(F/A=-\\\\partial(U/A)/\\\\partial d=-3C d^{-4}<0\\); negative pressure pulls plates together, i.e. attraction.\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T20:16:35.227769"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "Plates are perfectly conducting (frequency-independent boundary conditions).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 23,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The idealization (frequency-independent perfect conductors) is standard in theoretical Casimir derivations.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 23,
+      "verdict": "CONFIRMED",
+      "explanation": "The idealization (frequency-independent perfect conductors) is standard in theoretical Casimir derivations.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T20:16:45.969992"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "Plates are infinite in extent (continuum in \\(k_\\perp\\)).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":24,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard Casimir setup assumes infinite parallel plates, preserving translational symmetry and making transverse wavevectors \\\\(k_\\\\perp\\\\) continuous; finite plates would discretize modes and add edge effects.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 24,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard Casimir setup assumes infinite parallel plates, preserving translational symmetry and making transverse wavevectors \\(k_\\perp\\) continuous; finite plates would discretize modes and add edge effects.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T20:16:49.922365"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "The system is at zero temperature.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 25,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Assuming zero temperature is standard in deriving the Casimir effect to isolate the quantum zero-point energy without thermal contributions.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 25,
+      "verdict": "CONFIRMED",
+      "explanation": "Assuming zero temperature is standard in deriving the Casimir effect to isolate the quantum zero-point energy without thermal contributions.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T20:17:01.532579"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "The system is in vacuum.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"CONFIRMED\",\"explanation\":\"The problem explicitly specifies plates separated by distance d in vacuum, so assuming vacuum between and outside plates is correct.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 26,
+      "verdict": "CONFIRMED",
+      "explanation": "The problem explicitly specifies plates separated by distance d in vacuum, so assuming vacuum between and outside plates is correct.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T20:17:04.604283"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "Only propagating modes are quantized; evanescent waves are neglected.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 27,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"For ideal perfect conductors only standing propagating modes exist, so neglecting evanescent modes is justified.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 27,
+      "verdict": "CONFIRMED",
+      "explanation": "For ideal perfect conductors only standing propagating modes exist, so neglecting evanescent modes is justified.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T20:17:35.838528"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "The zeta regularization is justified a posteriori by agreement with cutoff methods (e.g., exponential cutoffs \\(\\exp(-\\sigma \\kappa_n)\\) with \\(\\sigma \\to 0^+\\) after subtracting the free vacuum).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":28,\"verdict\":\"CONFIRMED\",\"explanation\":\"After vacuum subtraction, exponential cutoff, Abel-Plana, and zeta regularization yield the same finite Casimir term, so zeta is validated a posteriori for this geometry.\",\"confidence\":0.96}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 28,
+      "verdict": "CONFIRMED",
+      "explanation": "After vacuum subtraction, exponential cutoff, Abel-Plana, and zeta regularization yield the same finite Casimir term, so zeta is validated a posteriori for this geometry.",
+      "confidence": 0.96
+    },
+    "timestamp": "2026-04-18T20:17:39.207239"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "The zeta regularization is also justified by the physical interpretation that real mirrors are imperfect at high frequencies.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 29,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"Zeta regularization is a mathematical analytic continuation, not justified by real mirror imperfections.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 29,
+      "verdict": "ERROR",
+      "explanation": "Zeta regularization is a mathematical analytic continuation, not justified by real mirror imperfections.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T20:17:44.849728"
+  },
+  {
+    "claim_id": 30,
+    "claim_text": "The final Casimir force per unit area is \\(-\\dfrac{\\pi^{2} \\hbar c}{240 d^{4}}\\).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":30,\"verdict\":\"CONFIRMED\",\"explanation\":\"For two infinite perfectly conducting parallel plates in vacuum at zero temperature, the standard Casimir pressure is attractive: F/A = -\u03c0\u00b2\u0127c/(240 d\u2074).\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 30,
+      "verdict": "CONFIRMED",
+      "explanation": "For two infinite perfectly conducting parallel plates in vacuum at zero temperature, the standard Casimir pressure is attractive: F/A = -\u03c0\u00b2\u0127c/(240 d\u2074).",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T20:17:47.843780"
+  }
+]

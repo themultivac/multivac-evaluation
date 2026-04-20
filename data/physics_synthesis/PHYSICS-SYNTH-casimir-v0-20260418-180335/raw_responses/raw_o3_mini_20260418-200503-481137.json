@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776560695-DMXUgbWXTTKohMw1YHkU",
+  "object": "chat.completion",
+  "created": 1776560695,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard perfect-conductor boundary conditions are correctly stated for the Casimir effect.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Reviewing boundary conditions**\n\nI'm thinking about the boundary conditions related to electric and magnetic fields, especially in perfect conductors. The parallel component of the electric field must vanish, and the normal component of the magnetic field should also be zero. So, recalling that for perfect conductors, E must entirely vanish inside, and tangential magnetic fields need to disappear at the surface. It\u2019s all consistent: B_perp is indeed the same as B_normal = 0.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Reviewing boundary conditions**\n\nI'm thinking about the boundary conditions related to electric and magnetic fields, especially in perfect conductors. The parallel component of the electric field must vanish, and the normal component of the magnetic field should also be zero. So, recalling that for perfect conductors, E must entirely vanish inside, and tangential magnetic fields need to disappear at the surface. It\u2019s all consistent: B_perp is indeed the same as B_normal = 0.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5Co_0zH_xOHvzo-TJEUqTJgl3gqEzON6CyqgKH61zix8QW9kJtvmKeKJBq0-AI4xOiSDVYur9PrY4LRmOfns2l34oqOP3pfwADvTNiS9rivy9Dcwd7807K_emSLfPoeVKhglu1Q9lXiVPH6LTGLJW27-ybCQlo-L5Z3dn5B16o37o4BHiYAOOmATUH3BvDnmc9UcErCHHlvzB2sLjJJFqVycGj15IkoCkfmoZI27Pm13HYGb_1dOa5nvzo_0tgjS-0Umqtr-iVTFHLFVySluKHSD9bPEJVKkq3q7FcB0AJ14H4-P5NP3XkibWVhyQRZ5kiWJun39J8DB1e8Ry7UBGzXXDeGMe2MZvEY8N4V84ZTy1xgxmMmDWRCezwX_Ydbg1SKL3VaBHieUajkUanNqAsCtZIjq96Gc7HLu2DMHhZYLUudg0KN1g_z6XeeVOJpEl_3m8gdWYl_y9hlMsZoK-La94RzHau8IOTRawyK4ce68paYohpZ0Cvxlspc12dgdPjbN7WE3n4D8Etg_0x-tBWVjdg==",
+            "format": "openai-responses-v1",
+            "id": "rs_09c0e8336b91f7ff0169e42a380d608196a7b70d4188202b78",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 550,
+    "completion_tokens": 1747,
+    "total_tokens": 2297,
+    "cost": 0.0082918,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0082918,
+      "upstream_inference_prompt_cost": 0.000605,
+      "upstream_inference_completions_cost": 0.0076868
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 832,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

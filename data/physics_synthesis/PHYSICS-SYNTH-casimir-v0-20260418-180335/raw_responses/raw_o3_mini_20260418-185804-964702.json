@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776556673-NtOx0TT8u8F5XcCAWmDO",
+  "object": "chat.completion",
+  "created": 1776556673,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expression correctly sums the quantized modes with proper k\u2225 integration and n=0 half-weight, reflecting the two polarization states.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Reviewing energy expression**\n\nThe claim states that zero-point energy per unit area equals a specific formula, and yes, that aligns with standard practices. I want to check details and confirm that the sum over modes includes a factor that accounts for n=0. I remember the electromagnetic modes have some characteristics, and although the expression seems standard, it's important to verify the factors involved, especially regarding frequency dispersion. Overall, this formula is correctly derived and widely used in this context.**Verifying claim on zero-point energy**\n\nI'm reviewing Claim #9, which discusses zero-point energy and the notation of half-weight for the n=0 mode due to polarization states. It seems standard to denote that, but I find it a bit confusing since only one polarization exists for n=0. Still, the prime notation is common, indicating this consideration. The equation for zero-point energy appears correct as a foundational expression for the Casimir effect. Overall, I\u2019ll confirm this claim and outline my reasoning succinctly in JSON format.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Reviewing energy expression**\n\nThe claim states that zero-point energy per unit area equals a specific formula, and yes, that aligns with standard practices. I want to check details and confirm that the sum over modes includes a factor that accounts for n=0. I remember the electromagnetic modes have some characteristics, and although the expression seems standard, it's important to verify the factors involved, especially regarding frequency dispersion. Overall, this formula is correctly derived and widely used in this context.**Verifying claim on zero-point energy**\n\nI'm reviewing Claim #9, which discusses zero-point energy and the notation of half-weight for the n=0 mode due to polarization states. It seems standard to denote that, but I find it a bit confusing since only one polarization exists for n=0. Still, the prime notation is common, indicating this consideration. The equation for zero-point energy appears correct as a foundational expression for the Casimir effect. Overall, I\u2019ll confirm this claim and outline my reasoning succinctly in JSON format.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5BqKlKe9zKhixnVCF594yIkFsH87-fgNpMB-BguVy0wmd2dvIqL0JzvIkdw-aZbIriaRlJI2QXtckQkPD2l1th5JzAvXsBWNRjttNog3otgOzjEV1rpUhVfiCh5z0azP_uUj79xzC1Ze6OadFFinFtmaXO6I4-3JcO1LomCP0flPQmLJ30dFZ-OR-KteYvgVe4uhOVbHc6xueR4Xg07dGh7fioy2sPyHgBcFOK4spjLDqwk67iYM_JNA4nRVHyHBaQONHVHdCWL8svBBlsLOoayS5MJMh0EwJYYULwAOeSt310d_6f6VCwh12QC16vNeSKCO5otjs9Y3UAjVYb_4vvqkHpv9ZvsnihA1uGkty_2z0CZr4_bNddSgs2UNT0c2vAXdLBlmwemOVC2yf9N9FL_HI1NvYJ2bPJCy7Y-NSOAG4j_5c9cUsDnArPq6a1gjaUIVk_ZeiCjA_D5b6LHoGzQGhU2DzkWRAzOVvgWJEAu3JC8YlqbknlM4MTPaJ0PJ0B7jbEl2w124hv0yAZPjBrA2Wg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0ea47df04c26bed30169e41a8212948196b1f294919126b4ef",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 567,
+    "completion_tokens": 2432,
+    "total_tokens": 2999,
+    "cost": 0.0113245,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0113245,
+      "upstream_inference_prompt_cost": 0.0006237,
+      "upstream_inference_completions_cost": 0.0107008
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1152,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

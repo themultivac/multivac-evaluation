@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776550258-dvoVgxblG6sB6MCVvksa",
+  "object": "chat.completion",
+  "created": 1776550258,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\": 7, \"verdict\": \"CONFIRMED\", \"explanation\": \"This is the standard, correct ansatz for a static, spherically symmetric metric.\", \"confidence\": 1.0}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5AF1cesrCNzWnqfmCFgZL6E4rXv0ATR3CI3DIEx1QDLlsHOG7jpoRlrCBI7wg4N1-8280JdEvQOuEO_Ym6dQP6G6bgVpSCFUeqV3N3skwtxdVaOP1OnV0eq4grOBtdI_M0CnuzpXCskP_8K9XJjDY6qFXLnH8UKWCEMSI7-DQlpbQi4wwri7d9g8H4K7MkLoW3cuSGsPim03NyiqHGyLH-ZlL2iKamm4x62kxVlDPkpvHl44U160phVU4bEO8tnH5dOG3aahsKkjP6jyhIW6EVc23hZDB0Aft-eA6304qSzcG0XIflC3BoWZnANjQivTLlCLn0Fjm7KdYYYb6Y9YX_6k_MNXbtXs1PprkwQaXcviytfghQ_FRN2VGYMxsKi4fOnj-Or3hcIb7IxClSkMPjKPjqwcp3x-VbfKGU_y7gdWLO_VRhE71eN-kD9mefT2PrEVJ8HBOtBPB5mFRvjQdmAZhDwPuiYkJYh6EOGyorM95Ib7DnIeh14cAx6hPxTCiFMson0I6cygDqAq0XXgSllebQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_09091b425f027e1e0169e4017304848195aa9470afa71ad93e",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 413,
+    "completion_tokens": 737,
+    "total_tokens": 1150,
+    "cost": 0.0036971,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0036971,
+      "upstream_inference_prompt_cost": 0.0004543,
+      "upstream_inference_completions_cost": 0.0032428
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 320,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

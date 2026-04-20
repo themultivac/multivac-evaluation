@@ -1,0 +1,59 @@
+{
+  "id": "gen-1776538213-N5i5mq7O9W57MlruvVTI",
+  "object": "chat.completion",
+  "created": 1776538213,
+  "model": "google/gemini-3.1-pro-preview-20260219",
+  "provider": "Google AI Studio",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 31,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The Rindler vacuum is correctly defined as the state annihilated by all Rindler annihilation operators, which correspond to positive frequency modes with respect to Rindler time.\",\n    \"confidence\": 0.95\n}",
+        "refusal": null,
+        "reasoning": "**Defining the Rindler Vacuum**\n\nI'm currently focused on the formal definition of the Rindler vacuum, specifically the role of the annihilation operators. The key aspect here is that the Rindler vacuum is defined as the state annihilated by all Rindler annihilation operators, which is described as $b_\\Omega |0_R\u27e9 = 0$. This seems like the standard definition.\n\n\n",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "**Defining the Rindler Vacuum**\n\nI'm currently focused on the formal definition of the Rindler vacuum, specifically the role of the annihilation operators. The key aspect here is that the Rindler vacuum is defined as the state annihilated by all Rindler annihilation operators, which is described as $b_\\Omega |0_R\u27e9 = 0$. This seems like the standard definition.\n\n\n",
+            "format": "google-gemini-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "ErgKCrUKAQw51sfKou+PitcSNOh3fogi5RtHAHC4fTScoJ86ZB30yGGL1JPwc59qBADO8gknLBUSfF3tvkyxoHnGWg8oPpz+Ff93KHF8kGGLDZmBcePq0GMRxAP3qAtml16CoM7nwHfwGto90evDN9m1asTfVPMfj0GCdeDsCgU0NO+Z7TVEQYItqYnN4fx7cf2HUqr1vwB1ufcRn6LbeNK113DB0n/c+6dqeWJA4FubvZfiwlQru6a6FbmkXZNkB3+Uv/Gw7+XwQ0u8+6H5Y8sYwz1ryG706vFfgMZyV44wzx8bpHmrAhu1jEgO1izRN8vteNlKunbfYTbSpmj+Oyjee+A5vOs+tz9fAc9tVlpw4QCBGNLHz8xJT2lTnqdXoMzseuExM7k8nU1jNlfHV5e7euAj7QEk0ZdB8x92yGxricGz/qwr+YoTnLy0+pF3QOzf8bEupUHYlgnHvDAqAR1CimtniJummTTcZrjEhhLR52TEveHbfraLfqqgLhRGW0nely7N/EO9uMT6nVdPl7/Jb/3Zc3C4Cq/m/AEMgee7bSAR45kXQPW8erx860ovwEVhQ8x2zRB5r6ZBZs75VBHYw6b/yLc8awHpK55YGnvN3emHpXxU5VeABX0Qh9aimYKNCiYkPaGxmGKIZWH9oTA83+OzZCrSfpK1lzhUllVJA7A33av8lIC1Y2Ka3sm7co9sXKwyGOu44oGlSg/7yk1wQ2fH4HH4ah0kbFAbmMQZspRs+3yPCVOzm8TK+8ZM9LfTWX4WZ+PyyEuvq+JXugNtzB/OvDtqhMqviUHTVguY1m7JzwbHfaAoeBoDdRSBReSUEPTHhLmdOaezdSjOawpDJkI5CYI/+r0A42V1rvkSVf7C4bi+4a5LY/y4YkJ5dVRbYmeJjA85TLPfy+44ST5iIYkIeeu9k3/xC3eOOxe6L/ItHa2QrIF+G1Z/Xpp7YYg2vgMQc83aQqvh5ufxdu0ZctU+yNN+yiSCk3QjUp5nrn+8k+62rZfoM68AOGxRjixmuhXyrRYMKv55QID1HloMKL+VDXcUycmDwB0DJ/A0ang7YdxL1NOV/9CoG8qeCIsOs2+4u336uBEUADHkszEjdyku5ALEeYPcrhnqa984eM9dpCEP51xvOftjGnSkVtN6EF1FXexTNwx0oTW89uIraJpkA96OKNuziX3q0VNrxcEb8BJQG8RX8fpVBP1K+zy217nbQYM6gU5/kr85INoEKPy+NQJceniOSHxocv/etqe9eugB2Sb0ByAalM2ZMDtgiXquWMzx9rfI50TLmV8uSKZTfDwLD9GUWcnc133KhB5fEiILaH0izopMpIXQpxuhIfkgrOYIeuykJ23NLKhMirqeP09KusOCM9xVeKEv2h6tEY+2X8YHb6gCnThDGfgbPptwG7D8T9bjOO+qphH8x3FbwPQeHXbLND4SxG/hgHU+zsjm3UO005M6DuFe+mOrgP8OwvbQs2wrXjnxtoaTHk9e/LQtMIOKfcC35i5DCddp5zNFFW7zpchlZ9jVYgapaj68PRM95dpxm3q5ewZrODl3aVxs1yzaDv85OgF5TuqY8goiz77ZxDf5WtT+IpRLPShaEhC5GauEOSUltCFU+0TCkKvfOgs/G+t1DNy6WEqNvpepA9BvuDAol2jWCRlgpCObYx91uyRTK0Uv8IePy8OUMuhRaIhY1K0kHUVQ5GznvyCg6E+prietAXRbbcXWeCZJzgKZjn0E4JnndLuMalyfY8fjlgeidpiib79g8dM6LjiDprk4ug==",
+            "format": "google-gemini-v1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 508,
+    "completion_tokens": 351,
+    "total_tokens": 859,
+    "cost": 0.005228,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.005228,
+      "upstream_inference_prompt_cost": 0.001016,
+      "upstream_inference_completions_cost": 0.004212
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 279,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gen-1776538197-EgGW7KGukx7Z1UkDSNDo",
+  "object": "chat.completion",
+  "created": 1776538197,
+  "model": "google/gemini-3.1-pro-preview-20260219",
+  "provider": "Google AI Studio",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 27,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is the standard definition of the Minkowski vacuum state, which is annihilated by all Minkowski annihilation operators.\",\n    \"confidence\": 0.95\n}",
+        "refusal": null,
+        "reasoning": "**Defining the Vacuum State**\n\nI've confirmed the initial claim regarding the Minkowski vacuum definition: |0_M\u27e9 is indeed defined by a_\u03c9|0_M\u27e9 = 0 for all \u03c9, which aligns with standard quantum field theory. This seems to be the baseline; a good starting point.\n\n\n",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "**Defining the Vacuum State**\n\nI've confirmed the initial claim regarding the Minkowski vacuum definition: |0_M\u27e9 is indeed defined by a_\u03c9|0_M\u27e9 = 0 for all \u03c9, which aligns with standard quantum field theory. This seems to be the baseline; a good starting point.\n\n\n",
+            "format": "google-gemini-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "EosJCogJAQw51serAUt2m2WEAQ8dIISfaTXz9HUTJkSDS9WMx4kCVFcbwnuOWdMq9/2TlzYwY4Y29+EP9Ta/u/g6SZs93VWIFBudwPgTlOjUfAaCOvOgq/opY/0Qhaet0JL0juSGJSJna53KyvIIr/6nJrmLgGCv97yoN4/GktNxetcYOz01mvtU/1JoJkvZDSUGgVsA3YhLnpEPcbZePU4SHelpuPAHp84KxfHx/0qSvhC4s5cQJOakYGL+2tISlFzS3L55hJ/M1N/h3EigSRbEpyZSpo7H1K3WnQ4AnxlI1+8x9GAC1tPZu+FiFDoGDFe5HLsnyCD8zQW0sIhYeY3MLt7t4VtNtPyvPHUBx9Pqy9idh848M7ls0bdfpwcSx5bnXgtoaEkFo5ZtoaOjDe1vuGIoFjrz+X6223QXWzi26qDip4HIl4MTfB+8mjoKYFO/EzBLCsEmXjzcVlPTZBOgWBTqMETKlRiJ90KPGdxvbPZKzKV2JGWx6fMKWgbvqigGpLfsijreEH6UBP9m4bB4eIw4f83ha45ZglnRQK8EGt42LHKQuUIAJtkEdRbA2bXgiUBzDavWTcZ1QM6waMvCoZX22nbdeyB15uux7Rf2FzhpUbMa+/3Z5kt/JhzOlJ1a1PA1nEb6IkRgr1GiE7dgMJWbe5tM3WqpJRQkDlK0WTdH6F792FWHpMueLvfGIyuHewTf/Ve8MHV+Ay1PjztpjtRjLPMqWlXTpuUrUPQghbxp7GtY/N4WKCnJB80zfNt9VDWACPLFdT0i9P1JOUpTWzmmhvRcdB2jFb4p0EHK5c0qEmNX9ipELv9gmEMVeMS5m8+z0hHxag0IyMZU173zIjp6nTPlJKJ+PLjsswxphEhKHXmG/duqX9KGkY8V+IfBDLqLSXB69f6rSxpA1Xw+TCRbezSqN8uV0aYJ2J1EnJ4qbLx1MeyM2rCftzvnMEgeJIDoTJZNH7fRm8OWW0C6l8sJTe/x5fXhH8DKmMVVyJ652C56fm6M53BvJJPLc8lF4+XA0FVnuuSwFDGJ4YFHzgRc53C9MI1pp7hHytGECL/DonP9JT559gq9LKlFxj9xF00DCgwMhuo0OjMJPkHoEu7kSm97rnWn6OqbLbxcVCEmula3UhxZ+hrYG84Y/7ARkv8XWw+zgaJmfwaKviiwqzDJXiGQCs86E9RIqrXMrmvnflzAhK5/JUCP9Mj6eUggoMaORfcHYuS27fDB/a2aQ+Tryu0llKuEZlXcPBdezzXsyfLDZWsY+4B9rd6bz5U6npFDddXdFo4dLMuSht6xpKBm/5Z4zTH3FMUP/sdXzJx/IeOl3wfF8KA/+S5U08Q9Qqv690g40cdG+8OeKaetp8Gr2P+yWkUVped7VFztVqY73N6ZiW7SamUjP4MlCSDWbYh6DFm/CmHKbZZaNs0vTNwfxtcZdzk6Nn09jJTM7qGOpRYsvajbqUCAV3pw3rnqsaS4k/kV/oitDP3UBP3hVDDkPujb+UGn44tLRnOo2cOQYHdpMmzxFB30EVoNovJoAW1jjMxIbpVN5LY=",
+            "format": "google-gemini-v1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 507,
+    "completion_tokens": 330,
+    "total_tokens": 837,
+    "cost": 0.004974,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.004974,
+      "upstream_inference_prompt_cost": 0.001014,
+      "upstream_inference_completions_cost": 0.00396
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 269,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

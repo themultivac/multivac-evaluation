@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776547825-nPSTwTiWrDlXzfI3Vdk7",
+  "object": "chat.completion",
+  "created": 1776547825,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"claim_id\": 43,\n  \"verdict\": \"CONFIRMED\",\n  \"explanation\": \"Inside the horizon, r becomes the timelike coordinate, making decreasing r inevitable along any timelike path.\",\n  \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_f3ybIOjTfSk777D4VM-KKjXJpZC_-mMrX2OIHBzKTvFiMzuAVAZe2czOMlrhCI-9BKVs5zAQCsAoLF8FiH7uOT-HBMD0DmvG5ssQYRLec8cicOvPGC9WWvhNxw0RsV3Ubn6y5ymPb8quZ7IHNFkcScz5sL6VHbwYuNF8yBzM5zb-e2lt0dOfYIgftNWA4wgDkgaFwVx-SyJG1KtosiZbOFKh2QWsbQjspcojkmkdvCpkOkX2X1-jbldVURX_o5IDnmAY5Wte7KVUjE_z4GlCvbDMSIVzqolygPWnBoy7LCuYoT3HsapUGbvaLca8_WeUgE7jQKFSzoQcM99g1ttwWY2ig1KJiWXZ4HY79h_9ebW6q7QPdjU2WbYihXLCk4GqoK-himCZ0mNvDN5DyQi5_Nl-BI6uOPrrpkMquhWewqEM5fRXp_wDIOFeIRDqu-kpd4W1y8pgC7DmP8yYocfv6tg3MLxZKlvfVhHMx1hWuYRmShvquZTuf9nJqI6yXHp21gA5tB87kOdIOEl8w66NCjgA==",
+            "format": "openai-responses-v1",
+            "id": "rs_0e61d632231de4c20169e3f7f1b0dc81959b4fddc59210769b",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 368,
+    "completion_tokens": 1866,
+    "total_tokens": 2234,
+    "cost": 0.0086152,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0086152,
+      "upstream_inference_prompt_cost": 0.0004048,
+      "upstream_inference_completions_cost": 0.0082104
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 896,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,332 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "Consider two infinite, perfectly conducting plates placed parallel to each other in a vacuum. Let the plates lie in the $xy$-plane at $z = 0$ and $z = d$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard infinite plate configuration in vacuum, consistent with Casimir setup assumptions.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard infinite plate configuration in vacuum, consistent with Casimir setup assumptions.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:29:00.517939"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "In the $x$ and $y$ directions, the space is infinite, so $k_x$ and $k_y$ are continuous.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Infinite plate extent implies no boundary quantization in x and y, so k_x and k_y remain continuous as standard in Casimir derivations.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "Infinite plate extent implies no boundary quantization in x and y, so k_x and k_y remain continuous as standard in Casimir derivations.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:29:10.766173"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "We define the transverse wave vector as $\\mathbf{k}_\\parallel = (k_x, k_y)$ with magnitude $k_\\parallel = \\sqrt{k_x^2 + k_y^2}$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":4,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard decomposition for parallel plates: wavevector splits into components parallel and normal to plates, with \\(k_\\\\parallel=\\\\sqrt{k_x^2+k_y^2}\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:29:14.443921"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "In the $z$-direction, the field must form standing waves, which quantizes the $z$-component of the wave vector: $k_z = \\frac{n\\pi}{d}, \\quad \\text{where } n = 0, 1, 2, \\dots$",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 5,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"For the EM field, the n=0 mode requires special treatment (or is excluded for TE modes), so stating n=0 without qualification is incorrect.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "ERROR",
+      "explanation": "For the EM field, the n=0 mode requires special treatment (or is excluded for TE modes), so stating n=0 without qualification is incorrect.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:30:45.894544"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "The angular frequency of each mode is given by the vacuum dispersion relation $\\omega = c|\\mathbf{k}|$: $\\omega_n(k_\\parallel) = c \\sqrt{k_\\parallel^2 + \\left(\\frac{n\\pi}{d}\\right)^2}$",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":6,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Correct for cavity modes with \\(k_z=n\\pi/d\\), but omits polarization structure and special treatment of the \\(n=0\\) electromagnetic mode under conductor boundary conditions.\",\"confidence\":0.92}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:30:49.161337"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "For $n = 0$, $k_z = 0$, the electric field must be entirely perpendicular to the plates (in the $z$-direction) to satisfy the boundary conditions, leaving only one allowed polarization state.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"For perfectly conducting plates, \\(E_\\parallel=0\\) at surfaces. With \\(k_z=0\\), TE \\(n=0\\) mode is forbidden; only TM mode with \\(E_z\\\\neq0\\) remains, giving one polarization.\",\"confidence\":0.97}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:30:52.650199"
+  },
+  {
+    "claim_id": 10,
+    "claim_text": "The total zero-point energy $E(d)$ is the sum over all allowed modes.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":10,\"verdict\":\"CONFIRMED\",\"explanation\":\"In quantized EM, vacuum energy is \\(E_0=\\frac12\\sum_{\\mathbf{k},\\lambda}\\hbar\\omega_{\\mathbf{k}\\lambda}\\) over all allowed cavity modes; divergences require later regularization and subtraction.\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:30:56.130341"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "Because the plates are infinite, we consider the energy per unit area, $\\mathcal{E}(d) = E(d)/A$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Infinite plates yield divergent total energy; energy per unit area is the standard finite observable.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 11,
+      "verdict": "CONFIRMED",
+      "explanation": "Infinite plates yield divergent total energy; energy per unit area is the standard finite observable.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:31:02.377032"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "We integrate over the continuous transverse wave vectors (with density of states $1/(2\\pi)^2$) and sum over the discrete mode number $n$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":12,\"verdict\":\"CONFIRMED\",\"explanation\":\"For infinite plates, translational invariance parallel to plates makes $k_x,k_y$ continuous; per-area state density is $d^2k_\\perp/(2\\\\pi)^2$, while boundary conditions discretize the normal mode index $n$.\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:31:05.755288"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "$\\mathcal{E}(d) = \\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\sum_{n=0}^{\\infty} \\! ' \\, \\left( 2 \\times \\frac{1}{2} \\hbar \\omega_n(k_\\parallel) \\right)$",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 13, \"verdict\": \"CONFIRMED\", \"explanation\": \"The expression correctly includes the polarization factor and the half-weight for the n=0 mode, matching the standard zero-point energy setup.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "CONFIRMED",
+      "explanation": "The expression correctly includes the polarization factor and the half-weight for the n=0 mode, matching the standard zero-point energy setup.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:31:42.620585"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "The prime on the summation $\\sum'$ indicates that the $n=0$ term is multiplied by $\\frac{1}{2}$ to account for its single polarization state.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":14,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For parallel perfect conductors, TE modes start at n=1 while TM includes n=0. Prime half-weight reflects endpoint counting in mode summation, not merely 'single polarization state.'\",\"confidence\":0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 14,
+      "verdict": "INCOMPLETE",
+      "explanation": "For parallel perfect conductors, TE modes start at n=1 while TM includes n=0. Prime half-weight reflects endpoint counting in mode summation, not merely 'single polarization state.'",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:31:46.003004"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "Converting the 2D integral over $\\mathbf{k}_\\parallel$ to polar coordinates ($d^2k_\\parallel = 2\\pi k_\\parallel dk_\\parallel$), we get: $\\mathcal{E}(d) = \\frac{\\hbar c}{2\\pi} \\sum_{n=0}^{\\infty} \\! ' \\int_0^\\infty k_\\parallel \\sqrt{k_\\parallel^2 + \\left(\\frac{n\\pi}{d}\\right)^2} \\, dk_\\parallel$",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:33:13.862192"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "This integral diverges quartically as $k_\\parallel \\to \\infty$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":16,\"verdict\":\"CONFIRMED\",\"explanation\":\"For zero-point energy per area, integrand scales as k_\\\\parallel^2 at large k_\\\\parallel; with measure dk_\\\\parallel this gives \\\\int^\\\\Lambda k_\\\\parallel^3 dk_\\\\parallel \\\\sim \\\\Lambda^4.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 16,
+      "verdict": "CONFIRMED",
+      "explanation": "For zero-point energy per area, integrand scales as k_\\parallel^2 at large k_\\parallel; with measure dk_\\parallel this gives \\int^\\Lambda k_\\parallel^3 dk_\\parallel \\sim \\Lambda^4.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T19:33:17.344645"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "This is the infinite energy of the quantum vacuum.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n  \"claim_id\": 17,\n  \"verdict\": \"ERROR\",\n  \"explanation\": \"It misinterprets the divergence; the infinite zero-point energy is subtracted via renormalization to yield finite differences.\",\n  \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 17,
+      "verdict": "ERROR",
+      "explanation": "It misinterprets the divergence; the infinite zero-point energy is subtracted via renormalization to yield finite differences.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:33:25.124785"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "To extract the physically meaningful part, we must regularize this divergence. We apply an exponential cutoff regularization.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"Zero-point energy is ultraviolet divergent; introducing an exponential cutoff is a standard physically motivated regulator before subtracting free-vacuum contributions.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 18,
+      "verdict": "CONFIRMED",
+      "explanation": "Zero-point energy is ultraviolet divergent; introducing an exponential cutoff is a standard physically motivated regulator before subtracting free-vacuum contributions.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T19:33:29.019453"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "Real metals are not perfect conductors at all frequencies. At very high frequencies (e.g., X-rays, well above the metal's plasma frequency), the plates become transparent and no longer impose boundary conditions on the EM field. Therefore, high-frequency modes should not contribute to the force.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 19,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Real metals reflect only below their plasma frequency, so high-frequency modes do not contribute significantly, matching physical expectations.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "Real metals reflect only below their plasma frequency, so high-frequency modes do not contribute significantly, matching physical expectations.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:33:38.840373"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "We introduce a cutoff function $e^{-\\omega/\\omega_c}$, where $\\omega_c$ is a very large cutoff frequency.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"CONFIRMED\",\"explanation\":\"Exponential frequency cutoff is a standard physically motivated regulator for divergent zero-point sums; taking \\\\omega_c\\\\to\\\\infty after vacuum subtraction recovers the finite Casimir result.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 20,
+      "verdict": "CONFIRMED",
+      "explanation": "Exponential frequency cutoff is a standard physically motivated regulator for divergent zero-point sums; taking \\omega_c\\to\\infty after vacuum subtraction recovers the finite Casimir result.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T19:33:41.815980"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "At the end of the calculation, we will take the limit $\\omega_c \\to \\infty$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 21,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard procedure; after subtracting the free-vacuum term for ideal conductors, sending \u03c9_c to infinity is valid.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard procedure; after subtracting the free-vacuum term for ideal conductors, sending \u03c9_c to infinity is valid.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:33:52.361472"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "Let $\\alpha = c/\\omega_c$.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":22,\"verdict\":\"CONFIRMED\",\"explanation\":\"A valid definition: with cutoff frequency \\\\(\\\\omega_c\\\\), \\\\(\\\\alpha=c/\\\\omega_c\\\\) has dimensions of length, suitable for exponential regulator notation.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 22,
+      "verdict": "CONFIRMED",
+      "explanation": "A valid definition: with cutoff frequency \\(\\omega_c\\), \\(\\alpha=c/\\omega_c\\) has dimensions of length, suitable for exponential regulator notation.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T19:33:55.533069"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "The regularized energy per unit area is: $\\mathcal{E}_{\\text{reg}}(d) = \\frac{\\hbar c}{2\\pi} \\sum_{n=0}^{\\infty} \\! ' \\int_0^\\infty k_\\parallel \\sqrt{k_\\parallel^2 + \\left(\\frac{n\\pi}{d}\\right)^2} \\, e^{-\\alpha \\sqrt{k_\\parallel^2 + (n\\pi/d)^2}} \\, dk_\\parallel$",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:35:19.813764"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "Define a function $F(x) = \\int_0^\\infty k_\\parallel \\sqrt{k_\\parallel^2 + x^2} \\, e^{-\\alpha \\sqrt{k_\\parallel^2 + x^2}} \\, dk_\\parallel$",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":24,\"verdict\":\"CONFIRMED\",\"explanation\":\"Valid definition of a regulator-smeared mode integral over transverse momentum; dimensions and integrand match zero-point energy summation structure after angular integration.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 24,
+      "verdict": "CONFIRMED",
+      "explanation": "Valid definition of a regulator-smeared mode integral over transverse momentum; dimensions and integrand match zero-point energy summation structure after angular integration.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T19:35:23.195763"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "We can change the integration variable from $k_\\parallel$ to $w = \\sqrt{k_\\parallel^2 + x^2}$.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:37:17.986508"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "Then $w dw = ...$",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"Claim is incomplete/elliptical: it states only \u201cThen w dw = ...\u201d without defining \\(w\\) or showing the derivation step.\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:37:21.056810"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "The derivation is incomplete: steps (4) subtraction of free-vacuum contribution and (5) differentiation to obtain force per unit area are missing.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 27, \"verdict\": \"CONFIRMED\", \"explanation\": \"Key steps\u2014subtracting the free vacuum and differentiating the energy\u2014are essential and are indeed missing.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 27,
+      "verdict": "CONFIRMED",
+      "explanation": "Key steps\u2014subtracting the free vacuum and differentiating the energy\u2014are essential and are indeed missing.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:37:32.629615"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "The final Casimir force per unit area result $F/A = -\\frac{\\pi^2 \\hbar c}{240 d^4}$ was never stated.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":28,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"Cannot assess without the referenced model answer text; claim concerns omission in that answer, not a physics derivation itself.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 28,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "Cannot assess without the referenced model answer text; claim concerns omission in that answer, not a physics derivation itself.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T19:37:36.009003"
+  }
+]

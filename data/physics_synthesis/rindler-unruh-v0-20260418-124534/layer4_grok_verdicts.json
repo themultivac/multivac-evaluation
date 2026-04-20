@@ -1,0 +1,567 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "Consider Minkowski spacetime in 1+1 dimensions with metric signature (+,-): ds\u00b2 = dt\u00b2 - dx\u00b2.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The metric is correctly stated for 1+1 Minkowski spacetime with the (+,-) signature.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "The metric is correctly stated for 1+1 Minkowski spacetime with the (+,-) signature.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:29:45.907349"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "Introduce the rapidity \u03c6(\u03c4) via dt/d\u03c4 = cosh \u03c6, dx/d\u03c4 = sinh \u03c6.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":4,\"verdict\":\"CONFIRMED\",\"explanation\":\"For timelike worldlines in 1+1 Minkowski with c=1, normalization \\\\((dt/d\\\\tau)^2-(dx/d\\\\tau)^2=1\\\\) implies parametrization by rapidity: \\\\(u^\\\\mu=(\\\\cosh\\\\phi,\\\\sinh\\\\phi)\\\\).\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 4,
+      "verdict": "CONFIRMED",
+      "explanation": "For timelike worldlines in 1+1 Minkowski with c=1, normalization \\((dt/d\\tau)^2-(dx/d\\tau)^2=1\\) implies parametrization by rapidity: \\(u^\\mu=(\\cosh\\phi,\\sinh\\phi)\\).",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T14:29:49.643227"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "This automatically satisfies u^\u03bc u_\u03bc = 1.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 5,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Defining u^\u03bc=dx^\u03bc/d\u03c4 (with \u03c4 as proper time) automatically ensures u^\u03bc u_\u03bc=1 in the (+,-,-,-) signature.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "CONFIRMED",
+      "explanation": "Defining u^\u03bc=dx^\u03bc/d\u03c4 (with \u03c4 as proper time) automatically ensures u^\u03bc u_\u03bc=1 in the (+,-,-,-) signature.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:30:03.877298"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "Differentiating and imposing constant proper acceleration yields d\u03c6/d\u03c4 = a.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":6,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"For hyperbolic parametrization \\(x=\\rho\\cosh\\phi,\\ ct=\\rho\\sinh\\phi\\), constant proper acceleration gives \\(\\rho=c^2/a\\) and \\(d\\phi/d\\tau=c/\\rho=a/c\\), not directly \\(a\\).\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T14:30:09.022482"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "Choosing \u03c6(0) = 0, we get \u03c6 = a\u03c4.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 7,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Integrating d\u03c6/d\u03c4 = a with \u03c6(0)=0 correctly gives \u03c6 = a\u03c4, in line with standard hyperbolic motion in special relativity.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 7,
+      "verdict": "CONFIRMED",
+      "explanation": "Integrating d\u03c6/d\u03c4 = a with \u03c6(0)=0 correctly gives \u03c6 = a\u03c4, in line with standard hyperbolic motion in special relativity.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:31:07.636704"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "Integration gives the worldline t(\u03c4) = (1/a)sinh(a\u03c4), x(\u03c4) = (1/a)cosh(a\u03c4).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"For constant proper acceleration in 1+1 Minkowski with c=1 and initial conditions t(0)=0, x(0)=1/a, integrating u^\u03bc=(cosh a\u03c4, sinh a\u03c4) gives this hyperbolic worldline.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 8,
+      "verdict": "CONFIRMED",
+      "explanation": "For constant proper acceleration in 1+1 Minkowski with c=1 and initial conditions t(0)=0, x(0)=1/a, integrating u^\u03bc=(cosh a\u03c4, sinh a\u03c4) gives this hyperbolic worldline.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T14:31:11.365812"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "Eliminating \u03c4 produces x\u00b2 - t\u00b2 = 1/a\u00b2, which is a hyperbola in Minkowski coordinates (one branch with x > |t|).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Eliminating \u03c4 from x = (1/a)cosh(a\u03c4) and t = (1/a)sinh(a\u03c4) correctly yields x\u00b2 - t\u00b2 = 1/a\u00b2, representing the right Rindler wedge.\",\n    \"confidence\": 0.99\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "CONFIRMED",
+      "explanation": "Eliminating \u03c4 from x = (1/a)cosh(a\u03c4) and t = (1/a)sinh(a\u03c4) correctly yields x\u00b2 - t\u00b2 = 1/a\u00b2, representing the right Rindler wedge.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T14:31:21.407669"
+  },
+  {
+    "claim_id": 10,
+    "claim_text": "Introduce Rindler coordinates (\u03b7, \u03be) via the explicit transformation t = (1/a)e^{a\u03be} sinh(a\u03b7), x = (1/a)e^{a\u03be} cosh(a\u03b7), where \u03b7 \u2208 (-\u221e,+\u221e) and \u03be \u2208 (-\u221e,+\u221e).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":10,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Transformation correctly parametrizes the right Rindler wedge \\(x>|t|\\), \\(x>0\\), but omits wedge/domain restrictions and dimensions/normalization of \\(\\eta,\\xi\\).\",\"confidence\":0.95}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T14:31:24.615923"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "At fixed \u03be = 0, this reduces exactly to the hyperbolic worldline above with proper time \u03c4 = \u03b7.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"At \u03be=0 the metric gives d\u03c4=d\u03b7, reproducing the standard hyperbola with proper time equal to \u03b7.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 11,
+      "verdict": "CONFIRMED",
+      "explanation": "At \u03be=0 the metric gives d\u03c4=d\u03b7, reproducing the standard hyperbola with proper time equal to \u03b7.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:31:35.912750"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "The inverse transformation is \u03b7 = (1/(2a))ln((x+t)/(x-t)), \u03be = (1/(2a))ln[a\u00b2(x\u00b2 - t\u00b2)].",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":12,\"verdict\":\"CONFIRMED\",\"explanation\":\"For right wedge \\(t=\\rho\\\\sinh(a\\\\eta), x=\\rho\\\\cosh(a\\\\eta), \\\\rho=e^{a\\\\xi}/a\\), inversion gives \\(\\\\eta=\\\\frac{1}{2a}\\\\ln\\\\frac{x+t}{x-t}\\), \\(\\\\xi=\\\\frac{1}{2a}\\\\ln[a^2(x^2-t^2)]\\).\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T14:31:39.671023"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "The differentials are dt = e^{a\u03be}[sinh(a\u03b7) d\u03be + cosh(a\u03b7) d\u03b7], dx = e^{a\u03be}[cosh(a\u03b7) d\u03be + sinh(a\u03b7) d\u03b7].",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 13,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Differentiating t=(1/a)e^(a\u03be)sinh(a\u03b7) and x=(1/a)e^(a\u03be)cosh(a\u03b7) via the chain rule exactly yields these differentials.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "CONFIRMED",
+      "explanation": "Differentiating t=(1/a)e^(a\u03be)sinh(a\u03b7) and x=(1/a)e^(a\u03be)cosh(a\u03b7) via the chain rule exactly yields these differentials.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:32:33.013707"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "Substituting into ds\u00b2 = dt\u00b2 - dx\u00b2 gives dt\u00b2 - dx\u00b2 = e^{2a\u03be}(d\u03b7\u00b2 - d\u03be\u00b2).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":14,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Correct only if units c=1 and transformation is t=a^{-1}e^{a\u03be}\\\\sinh(a\u03b7), x=a^{-1}e^{a\u03be}\\\\cosh(a\u03b7); otherwise missing overall c^2 and/or a^{-2} factors.\",\"confidence\":0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 14,
+      "verdict": "INCOMPLETE",
+      "explanation": "Correct only if units c=1 and transformation is t=a^{-1}e^{a\u03be}\\sinh(a\u03b7), x=a^{-1}e^{a\u03be}\\cosh(a\u03b7); otherwise missing overall c^2 and/or a^{-2} factors.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T14:32:36.601243"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "Thus (restoring transverse directions) ds\u00b2 = e^{2a\u03be}(d\u03b7\u00b2 - d\u03be\u00b2) - dy\u00b2 - dz\u00b2.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The form correctly reproduces the standard Rindler metric including transverse directions with the proper exponential conformal factor.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "The form correctly reproduces the standard Rindler metric including transverse directions with the proper exponential conformal factor.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:32:51.648369"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "For an observer at constant \u03be, d\u03be = dy = dz = 0, so ds\u00b2 = e^{2a\u03be} d\u03b7\u00b2.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":16,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Missing the overall factor: from the Rindler metric, \\(ds^2=c^2 e^{2a\\xi/c^2}d\\eta^2\\) (or equivalent conventions), not just \\(e^{2a\\xi}d\\eta^2\\).\",\"confidence\":0.9}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T14:32:56.221211"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "The proper time is therefore d\u03c4 = e^{a\u03be} d\u03b7.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 17,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Given the Rindler metric ds\u00b2 = e^(2a\u03be)(d\u03b7\u00b2\u2212d\u03be\u00b2) and fixed \u03be, the proper time differential is indeed d\u03c4 = e^(a\u03be)d\u03b7.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 17,
+      "verdict": "CONFIRMED",
+      "explanation": "Given the Rindler metric ds\u00b2 = e^(2a\u03be)(d\u03b7\u00b2\u2212d\u03be\u00b2) and fixed \u03be, the proper time differential is indeed d\u03c4 = e^(a\u03be)d\u03b7.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:33:13.486486"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "The 4-acceleration magnitude measured by this observer is a e^{-a\u03be}.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"For worldline at fixed \u03be in metric ds\u00b2=e^{2a\u03be}(d\u03b7\u00b2-d\u03be\u00b2), proper time d\u03c4=e^{a\u03be}d\u03b7 and x\u00b2\u2212t\u00b2=e^{2a\u03be}/a\u00b2, giving proper acceleration \u03b1=a e^{-a\u03be}.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 18,
+      "verdict": "CONFIRMED",
+      "explanation": "For worldline at fixed \u03be in metric ds\u00b2=e^{2a\u03be}(d\u03b7\u00b2-d\u03be\u00b2), proper time d\u03c4=e^{a\u03be}d\u03b7 and x\u00b2\u2212t\u00b2=e^{2a\u03be}/a\u00b2, giving proper acceleration \u03b1=a e^{-a\u03be}.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T14:33:19.241026"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "In particular, the observer at \u03be = 0 has proper acceleration exactly a.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n  \"claim_id\": 19,\n  \"verdict\": \"CONFIRMED\",\n  \"explanation\": \"With the standard Rindler normalization (t=(1/a+\u03be)sinh(a\u03b7), x=(1/a+\u03be)cosh(a\u03b7)), the worldline at \u03be=0 satisfies x\u00b2-t\u00b2=1/a\u00b2, yielding proper acceleration a.\",\n  \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "With the standard Rindler normalization (t=(1/a+\u03be)sinh(a\u03b7), x=(1/a+\u03be)cosh(a\u03b7)), the worldline at \u03be=0 satisfies x\u00b2-t\u00b2=1/a\u00b2, yielding proper acceleration a.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T14:34:17.227519"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "The Rindler horizon is the surface \u03be \u2192 -\u221e.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"INCOMPLETE\",\"explanation\":\"In standard coordinates horizon is approached as \u03be\u21920+ (or \u03c1\u21920); \u03be\u2192-\u221e only after redefining \u03be=\\u2113\\\\ln(a\\\\rho/c^2). Depends on chosen parametrization.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 20,
+      "verdict": "INCOMPLETE",
+      "explanation": "In standard coordinates horizon is approached as \u03be\u21920+ (or \u03c1\u21920); \u03be\u2192-\u221e only after redefining \u03be=\u2113\\ln(a\\rho/c^2). Depends on chosen parametrization.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T14:34:22.602503"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "In Rindler coordinates this appears as a coordinate singularity: g_{\u03b7\u03b7} = e^{2a\u03be} \u2192 0 while all curvature invariants remain zero (the spacetime is flat).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 21, \"verdict\": \"CONFIRMED\", \"explanation\": \"The statement accurately describes the Rindler horizon as a coordinate singularity without introducing curvature.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "CONFIRMED",
+      "explanation": "The statement accurately describes the Rindler horizon as a coordinate singularity without introducing curvature.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:34:32.540655"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "t + x = a^{-1} exp[a(\u03b7 + \u03be)], t - x = -a^{-1} exp[a(\u03be - \u03b7)].",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":22,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Equivalent to right-wedge Rindler transform only if \u03be is dimensionless and x>|t|. Missing wedge/domain and coordinate-dimension conventions; signs are otherwise consistent.\",\"confidence\":0.94}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 22,
+      "verdict": "INCOMPLETE",
+      "explanation": "Equivalent to right-wedge Rindler transform only if \u03be is dimensionless and x>|t|. Missing wedge/domain and coordinate-dimension conventions; signs are otherwise consistent.",
+      "confidence": 0.94
+    },
+    "timestamp": "2026-04-18T14:34:38.103855"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "As \u03be \u2192 -\u221e at fixed finite \u03b7, both t+x \u2192 0 and t-x \u2192 0, i.e., the surface approaches the lightlike lines x = \u00b1t.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T14:36:22.824574"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "These are null because ds\u00b2 = 0 along dt = \u00b1dx.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":24,\"verdict\":\"CONFIRMED\",\"explanation\":\"In 1+1 Minkowski spacetime, \\(ds^2=c^2dt^2-dx^2\\). Along \\(dt=\\pm dx/c\\) (or \\(c=1\\), \\(dt=\\pm dx\\)), \\(ds^2=0\\), so the surfaces are null.\",\"confidence\":0.96}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T14:36:27.427682"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "These are event horizons for the Rindler observers: signals from beyond \u03be = -\u221e can never reach them.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T14:38:32.124777"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "The coordinate singularity is removable by returning to Minkowski coordinates, where the geometry is regular across x = |t|.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"CONFIRMED\",\"explanation\":\"In flat Minkowski spacetime, x=\u00b1t are null horizons of the Rindler chart only. The metric is nonsingular there in Minkowski coordinates; the singularity is purely coordinate.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 26,
+      "verdict": "CONFIRMED",
+      "explanation": "In flat Minkowski spacetime, x=\u00b1t are null horizons of the Rindler chart only. The metric is nonsingular there in Minkowski coordinates; the singularity is purely coordinate.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T14:38:35.702144"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "Consider a massless scalar field \u03c6 obeying the wave equation \u25a1\u03c6 = 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 27,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard textbook assumption for a free massless scalar field in Minkowski spacetime.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 27,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard textbook assumption for a free massless scalar field in Minkowski spacetime.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:38:43.811408"
+  },
+  {
+    "claim_id": 30,
+    "claim_text": "A uniformly accelerating observer uses proper time \u03c4 \u221d \u03b7 and therefore regards modes that are positive-frequency with respect to Rindler time \u03b7 as defining his particles.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":30,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Proper time satisfies d\\\\tau=(\\\\xi/c)\\\\,d\\\\eta, so \\\\tau\\\\propto\\\\eta only along fixed \\\\xi worldlines. Particle definition uses boost Killing time in a chosen Rindler wedge/Fock representation.\",\"confidence\":0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 30,
+      "verdict": "INCOMPLETE",
+      "explanation": "Proper time satisfies d\\tau=(\\xi/c)\\,d\\eta, so \\tau\\propto\\eta only along fixed \\xi worldlines. Particle definition uses boost Killing time in a chosen Rindler wedge/Fock representation.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T14:38:47.544766"
+  },
+  {
+    "claim_id": 31,
+    "claim_text": "The Rindler mode functions (right wedge) satisfying the wave equation and positive-frequency condition \u2202_\u03b7 u_\u03c9^R \u221d -i\u03c9 u_\u03c9^R (\u03c9 > 0) are u_\u03c9^R(\u03b7,\u03be) = (1/\u221a(4\u03c0\u03c9)) e^{-i\u03c9\u03b7} f(\u03be).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T14:40:40.803227"
+  },
+  {
+    "claim_id": 32,
+    "claim_text": "The field admits an alternative expansion \u03c6(x) = \u222b\u2080^\u221e d\u03c9/\u221a(4\u03c0\u03c9) [b_\u03c9 u_\u03c9^R + b_\u03c9\u2020 (u_\u03c9^R)* + left-wedge terms], with associated vacuum |0_R\u27e9 annihilated by all b_\u03c9.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":32,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard Rindler quantization: expand field in complete positive-frequency right/left wedge modes with corresponding annihilation operators; the Rindler vacuum is defined by all wedge annihilators vanishing.\",\"confidence\":0.96}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 32,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard Rindler quantization: expand field in complete positive-frequency right/left wedge modes with corresponding annihilation operators; the Rindler vacuum is defined by all wedge annihilators vanishing.",
+      "confidence": 0.96
+    },
+    "timestamp": "2026-04-18T14:40:46.403903"
+  },
+  {
+    "claim_id": 36,
+    "claim_text": "The left-wedge modes must be included to obtain a complete basis across the full spacetime; they mix with the right-wedge modes through the horizon.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":36,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Left/right Rindler modes are needed for global Minkowski quantization, but they do not classically propagate through the horizon; mixing is via Bogoliubov/entanglement, not horizon crossing.\",\"confidence\":0.96}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 36,
+      "verdict": "INCOMPLETE",
+      "explanation": "Left/right Rindler modes are needed for global Minkowski quantization, but they do not classically propagate through the horizon; mixing is via Bogoliubov/entanglement, not horizon crossing.",
+      "confidence": 0.96
+    },
+    "timestamp": "2026-04-18T14:40:49.882315"
+  },
+  {
+    "claim_id": 37,
+    "claim_text": "The Minkowski vacuum is therefore not the Rindler vacuum.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 37,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Distinct mode decompositions yield different vacua; standard result via Bogoliubov transformations confirms Minkowski \u2260 Rindler vacuum.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 37,
+      "verdict": "CONFIRMED",
+      "explanation": "Distinct mode decompositions yield different vacua; standard result via Bogoliubov transformations confirms Minkowski \u2260 Rindler vacuum.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:40:59.071383"
+  },
+  {
+    "claim_id": 38,
+    "claim_text": "The expectation value of the Rindler number operator in the Minkowski vacuum is \u27e8N_\u03c9\u27e9 \u2261 \u27e80_M|b_\u03c9\u2020 b_\u03c9|0_M\u27e9 = \u222b\u2080^\u221e d\u03c9' |\u03b2_{\u03c9\u03c9'}|\u00b2.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":38,\"verdict\":\"INCOMPLETE\",\"explanation\":\"True for diagonalized independent modes, but generally needs sum/integral over all mode labels and wedge/species indices, with continuum normalization subtleties.\",\"confidence\":0.93}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 38,
+      "verdict": "INCOMPLETE",
+      "explanation": "True for diagonalized independent modes, but generally needs sum/integral over all mode labels and wedge/species indices, with continuum normalization subtleties.",
+      "confidence": 0.93
+    },
+    "timestamp": "2026-04-18T14:41:02.879935"
+  },
+  {
+    "claim_id": 41,
+    "claim_text": "Consequently \u27e8N_\u03c9\u27e9 = 1/(e^{2\u03c0\u03c9/a} - 1).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 41,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"It matches the conventional Unruh effect result, yielding a Bose-Einstein thermal distribution via the Bogoliubov transformation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 41,
+      "verdict": "CONFIRMED",
+      "explanation": "It matches the conventional Unruh effect result, yielding a Bose-Einstein thermal distribution via the Bogoliubov transformation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:41:17.714601"
+  },
+  {
+    "claim_id": 42,
+    "claim_text": "This is precisely a Bose-Einstein thermal distribution \u27e8N_\u03c9\u27e9 = 1/(e^{\u03c9/T} - 1).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":42,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For Unruh effect, exponent is dimensionless: \u27e8N_\u03c9\u27e9=1/(e^{\\hbar\\omega/(k_BT)}-1), or with Rindler frequency and c=\u210f=k_B=1 conventions explicitly stated.\",\"confidence\":0.96}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T14:41:21.485165"
+  },
+  {
+    "claim_id": 43,
+    "claim_text": "Comparing 2\u03c0\u03c9/a = \u03c9/T gives T = a/(2\u03c0) in natural units.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 43,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The step correctly cancels \u03c9, yielding T = a/(2\u03c0) in natural units, which matches the standard Unruh temperature result.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 43,
+      "verdict": "CONFIRMED",
+      "explanation": "The step correctly cancels \u03c9, yielding T = a/(2\u03c0) in natural units, which matches the standard Unruh temperature result.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:41:33.156968"
+  },
+  {
+    "claim_id": 44,
+    "claim_text": "Restoring \u210f, c, k_B gives the Unruh temperature T = \u210fa/(2\u03c0ck_B).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":44,\"verdict\":\"CONFIRMED\",\"explanation\":\"Dimensionally and physically correct: restoring constants to natural-units result $T=a/(2\\\\pi)$ gives $T=\\\\hbar a/(2\\\\pi c k_B)$ for proper acceleration.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 44,
+      "verdict": "CONFIRMED",
+      "explanation": "Dimensionally and physically correct: restoring constants to natural-units result $T=a/(2\\pi)$ gives $T=\\hbar a/(2\\pi c k_B)$ for proper acceleration.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T14:41:36.959987"
+  },
+  {
+    "claim_id": 47,
+    "claim_text": "All steps up to the explicit form of |\u03b2_{\u03c9\u03c9'}|\u00b2 are exact.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 47,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"Several steps (analytic continuation, contour choices) are heuristic, not rigorously exact.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 47,
+      "verdict": "ERROR",
+      "explanation": "Several steps (analytic continuation, contour choices) are heuristic, not rigorously exact.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:41:48.769113"
+  },
+  {
+    "claim_id": 48,
+    "claim_text": "The overlap integral itself is a standard but technical result (invoking analytic continuation across the Rindler horizon); it is invoked here without performing the contour integration explicitly.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":48,\"verdict\":\"CONFIRMED\",\"explanation\":\"Deriving Minkowski\u2013Rindler Bogoliubov coefficients commonly uses analytic continuation across the horizon and contour integration; omitting explicit calculation is acceptable if stated as invoked.\",\"confidence\":0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 48,
+      "verdict": "CONFIRMED",
+      "explanation": "Deriving Minkowski\u2013Rindler Bogoliubov coefficients commonly uses analytic continuation across the horizon and contour integration; omitting explicit calculation is acceptable if stated as invoked.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T14:41:52.065756"
+  },
+  {
+    "claim_id": 49,
+    "claim_text": "The Rindler coordinates cover the right Rindler wedge (x > |t|).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 49,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard transformation (x=\u03becosh\u03b7, t=\u03besinh\u03b7 with \u03be>0) indeed covers the right Rindler wedge (x > |t|).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 49,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard transformation (x=\u03becosh\u03b7, t=\u03besinh\u03b7 with \u03be>0) indeed covers the right Rindler wedge (x > |t|).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:42:03.938168"
+  },
+  {
+    "claim_id": 50,
+    "claim_text": "Transverse coordinates y, z are unchanged in the Rindler transformation.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":50,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard 1+1 Rindler transformation affects only \\(t,x\\); extending to 3+1 gives \\(y'=y,\\ z'=z\\), preserving flat transverse metric \\(-dy^2-dz^2\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T14:42:07.672599"
+  },
+  {
+    "claim_id": 51,
+    "claim_text": "The wedges \u03be > -\u221e and \u03be < -\u221e correspond to causally disconnected regions.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 51,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The expressions \u03be > -\u221e and \u03be < -\u221e are meaningless. Causally disconnected Rindler wedges are defined by Minkowski x regions, not limits of \u03be.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 51,
+      "verdict": "ERROR",
+      "explanation": "The expressions \u03be > -\u221e and \u03be < -\u221e are meaningless. Causally disconnected Rindler wedges are defined by Minkowski x regions, not limits of \u03be.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T14:43:08.324735"
+  },
+  {
+    "claim_id": 52,
+    "claim_text": "The final Unruh temperature is T = \u210fa/(2\u03c0ck_B).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":52,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard Unruh effect result: uniformly accelerated observer with proper acceleration a detects thermal bath at T=\u210fa/(2\u03c0 c k_B); dimensions and factors are correct.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 52,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard Unruh effect result: uniformly accelerated observer with proper acceleration a detects thermal bath at T=\u210fa/(2\u03c0 c k_B); dimensions and factors are correct.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T14:43:11.640585"
+  }
+]

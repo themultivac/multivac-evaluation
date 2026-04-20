@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776550683-CK9535WJ8I6xzujg7iu0",
+  "object": "chat.completion",
+  "created": 1776550683,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Assessing a claim about metrics**\n\nI\u2019m looking at the claim that \u201cthis can be rewritten as r (d\u03bb/dr) = 1 - e^\u03bb,\u201d which seems tied to deriving the Schwarzschild metric. I remember that the Schwarzschild solution involves understanding e^\u03bb and the metric function \u03bb. The Einstein field equations lead to an ordinary differential equation for the metric component. I\u2019ll recall that in Schwarzschild coordinates, the equation ds\u00b2 = -e^\u03bd dt\u00b2 + e^\u03bb dr\u00b2 + r\u00b2 d\u03a9\u00b2 is central to this derivation. There may also be a derivative relationship between r and e^{-\u03bb} here.**Recalling metric properties**\n\nI'm recalling the metric ds\u00b2 = -e^{\u03bd(r)} dt\u00b2 + e^{\u03bb(r)} dr\u00b2 + r\u00b2 d\u03a9\u00b2. The vacuum Einstein equations yield specific relationships, particularly for the G_tt component. So I have r e^{-\u03bb} \u03bb' = 1 - e^{\u03bb}, which matches the claim. If I multiply the terms correctly, I find that it simplifies consistently. It looks like I've confirmed that the expression is correct, but I want to ensure I don't overlook details within the algebra.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Assessing a claim about metrics**\n\nI\u2019m looking at the claim that \u201cthis can be rewritten as r (d\u03bb/dr) = 1 - e^\u03bb,\u201d which seems tied to deriving the Schwarzschild metric. I remember that the Schwarzschild solution involves understanding e^\u03bb and the metric function \u03bb. The Einstein field equations lead to an ordinary differential equation for the metric component. I\u2019ll recall that in Schwarzschild coordinates, the equation ds\u00b2 = -e^\u03bd dt\u00b2 + e^\u03bb dr\u00b2 + r\u00b2 d\u03a9\u00b2 is central to this derivation. There may also be a derivative relationship between r and e^{-\u03bb} here.**Recalling metric properties**\n\nI'm recalling the metric ds\u00b2 = -e^{\u03bd(r)} dt\u00b2 + e^{\u03bb(r)} dr\u00b2 + r\u00b2 d\u03a9\u00b2. The vacuum Einstein equations yield specific relationships, particularly for the G_tt component. So I have r e^{-\u03bb} \u03bb' = 1 - e^{\u03bb}, which matches the claim. If I multiply the terms correctly, I find that it simplifies consistently. It looks like I've confirmed that the expression is correct, but I want to ensure I don't overlook details within the algebra.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5AMsHVa3cBIM3Nqs9AmDOCo7OWlZaOdGDqsiWK8AbbcMbKMYmSoNgrVx67sjd12a6QG9Nl3HsBIqt4bFo26KINvb_-81MhnoBllBbkK06kWLg0CaRQD__NeKix_QlVgKmSw2qxKu7sric4Pnq648xjWSHRiJbP-pSbRWXp1hLD09VVEJzQxaQC051CaorNRQDVkjnnfnh19Xq1jjzYdjH0O3FWGaJ4RhxyyhLv3PZir3MF9OBYhvcznDaLf1KqUs6oVKrjYYAVgnNXyWd3hWC1i9y9MaHEkdYODk_KENB9SybMdehLK9uH0bAlnL7dANBsOVX-cxi0pXuoUZy8mfo3CYfQpcJRSZQ4tQcovq69zYNn7FBLzqHJl-3UCMId4eQw9u9Jf9v0wlpLmmRp9BbUlJpgifm0UCdG6-GeDIRxKWL3eoW7ojM_O2NyZdgm55x2gAqVFjNqfe9yZS_rRlhkzmebFIFfldn_gNs3tAJeF3RrUbYDcVvfb9dWpF8Mk3VzPThsTAuQ-0fArWtRuGAqiPSQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_0e038f625f6a9f390169e4031bece48196b15c7f21c4718fba",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 373,
+    "completion_tokens": 4096,
+    "total_tokens": 4469,
+    "cost": 0.0184327,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0184327,
+      "upstream_inference_prompt_cost": 0.0004103,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

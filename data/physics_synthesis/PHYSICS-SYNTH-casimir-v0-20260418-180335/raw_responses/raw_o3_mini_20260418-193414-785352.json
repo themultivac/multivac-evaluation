@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776558837-WNfAelQG7sYWd92Q7ve4",
+  "object": "chat.completion",
+  "created": 1776558837,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Reviewing energy expressions**\n\nI'm checking the details regarding the claim about regularized energy per unit area. The sum or integral formula aligns with the standard expression when using the exponential cutoff regulator. This matches the energy density derivation in the Casimir effect, which often uses a summation starting from 1 except for n=0, counted as half. So, the expression in claim 23 serves as a foundational statement for understanding the Casimir effect.**Analyzing energy derivations**\n\nI'm examining the derivation of energy density involving an exponential cutoff factor, which has a positive cutoff parameter. The sum over discrete mode numbers includes a prime indicating that n=0 is weighted half. There's integration over k_parallel, along with a measure of k_parallel dk_parallel. \n\nOne possible criticism could be regarding sign conventions or certain factor details. The zero-point energy per unit area is represented differently in this derivation, but it seems valid when I consider the polarization states. The energy per unit area aligns with established expressions when done correctly.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Reviewing energy expressions**\n\nI'm checking the details regarding the claim about regularized energy per unit area. The sum or integral formula aligns with the standard expression when using the exponential cutoff regulator. This matches the energy density derivation in the Casimir effect, which often uses a summation starting from 1 except for n=0, counted as half. So, the expression in claim 23 serves as a foundational statement for understanding the Casimir effect.**Analyzing energy derivations**\n\nI'm examining the derivation of energy density involving an exponential cutoff factor, which has a positive cutoff parameter. The sum over discrete mode numbers includes a prime indicating that n=0 is weighted half. There's integration over k_parallel, along with a measure of k_parallel dk_parallel. \n\nOne possible criticism could be regarding sign conventions or certain factor details. The zero-point energy per unit area is represented differently in this derivation, but it seems valid when I consider the polarization states. The energy per unit area aligns with established expressions when done correctly.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CMGc36wtntGaC5sz8fAOhQNviihklflMpFxoCW4Grbu_FFVeULffRhtP8e-ivspACLVGZKPQ7gYvMqgJbzESt9x4qG02W8NcVgYpToL5bVbMk928u-RQqhhZ6Ix_ft4bIyTWxzB9Yz8o7qiBpEL2D_myPkRNmavAuC2M-LhurR5BmSnOdaW9zBPxU5p6hOKfF9W8Er5Da228vr-PPwPYTxhRLYAZ7-og6yefL-hkCE_mP_O48ykBJdeWrYAflqIYMgIg8ip0Q5Jj6DvVdL9lT1aWxew5Oj6eS4PaEDOUJaJdVRERgGSAGdUZJGI52bV6zxoQd-X9wtezg9QYr_J_74fWK83eMNFH95IYjHTJhlckVHyOJSfS3nQ9WQM6ZUywAE8tp2fiYsXNdQpLWQ5rT7EvxISQS2QjPzdxWgzzGx-kN7Fc9F5JRZBrginyCOpkSoGvretlODj1i2vh329EjaeNQhrexrR2VtFWOceZFvEUXTTSyp2Gfxrz-FFc5wuV6NKMZd3Y0gkmM3572r44dzPDw==",
+            "format": "openai-responses-v1",
+            "id": "rs_048733afe4c28e840169e422f5c508819685d6e71e061c5bcf",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 601,
+    "completion_tokens": 4096,
+    "total_tokens": 4697,
+    "cost": 0.0186835,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0186835,
+      "upstream_inference_prompt_cost": 0.0006611,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

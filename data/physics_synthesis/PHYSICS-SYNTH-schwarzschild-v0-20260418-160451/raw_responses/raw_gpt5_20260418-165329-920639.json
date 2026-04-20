@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776549207-oRvXrtoTtnTgrk0GFisA",
+  "object": "chat.completion",
+  "created": 1776549207,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"For ds\u00b2=-A c\u00b2dt\u00b2+B dr\u00b2+r\u00b2d\u03a9\u00b2, \u0393^r_tt=-(1/2)g^{rr}\u2202_r g_tt=(1/2B)c\u00b2A'. Sign and factors are correct.\",\"confidence\":0.99}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 363,
+    "completion_tokens": 79,
+    "total_tokens": 442,
+    "cost": 0.0020925,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0020925,
+      "upstream_inference_prompt_cost": 0.0009075,
+      "upstream_inference_completions_cost": 0.001185
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776559976-Xn6hJwAOYmriVJZOd31B",
+  "object": "chat.completion",
+  "created": 1776559976,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Setting the plates at z=0 and z=d is the conventional choice to simplify boundary condition enforcement.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Assessing the claim**\n\nI\u2019m working on a physics problem about the Casimir force between two infinite, perfectly conducting plates separated by distance d in a vacuum. The claim states that we consider these plates in the $xy$-plane at $z=0$ and $z=d$. I realize this is a standard way to set coordinates for such plates, so it's valid. While it may seem arbitrary, it serves as a reasonable assumption for the derivation. Overall, I don\u2019t see any significant issues with this assumption.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Assessing the claim**\n\nI\u2019m working on a physics problem about the Casimir force between two infinite, perfectly conducting plates separated by distance d in a vacuum. The claim states that we consider these plates in the $xy$-plane at $z=0$ and $z=d$. I realize this is a standard way to set coordinates for such plates, so it's valid. While it may seem arbitrary, it serves as a reasonable assumption for the derivation. Overall, I don\u2019t see any significant issues with this assumption.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CdsojL7hKbZRxQwR23yFMvhE692GcdmZWa639P8gbB5wf-UMW6bWXXgNPlu-3VThm-Y-popnk7QqEx3lngwTz9tmXY7TU0W7OX57jdS5g-XbJzOXb4fNfTNrzajzFzziUTTChUGWsogsJGVpUzfs4vqmhV5BmepBF6PXvtIpQnNJ8M07FktgXl2SWrKgFUBLKiVlKe3VISaECKvp2eZIZB1VOWRt01Pj-Z9fSEFeakJScj2ivgevxPYzZEa17hsQ97k-I3K1vjBFd4aTtfi-EcLhlgOez-QwdSgeQq-D6lfT5Z-s-Z6oy7i55OU6ak_Ex5cnqzVkaM3jh2Rvw0S17RDujugauvK_b9GVrXBzfRKTqd0WMEU849NWUo1gvFVVtVaFLaWGHj5gW7g57RazHyQ9cDUVjCT9Hz2-6OFIsN84F8CW8DIdENU-N7IzT2WiqcuMHmvVNqCN_ZipIc5QqbzBgnQxZ4o9aSAuvjn91BTZMFAXS4S5otPKNlkQ32aO2Uj8m3BjGyFCZ0QPt-vHSq2JQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_004ff494cdc9b9c20169e4276897048190a14cdd39da308ae6",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 512,
+    "completion_tokens": 1280,
+    "total_tokens": 1792,
+    "cost": 0.0061952,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0061952,
+      "upstream_inference_prompt_cost": 0.0005632,
+      "upstream_inference_completions_cost": 0.005632
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 576,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

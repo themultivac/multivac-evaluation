@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776558663-WtjDCjr8ZTIEAABA9UOO",
+  "object": "chat.completion",
+  "created": 1776558663,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":12,\"verdict\":\"CONFIRMED\",\"explanation\":\"For infinite plates, translational invariance parallel to plates makes $k_x,k_y$ continuous; per-area state density is $d^2k_\\perp/(2\\\\pi)^2$, while boundary conditions discretize the normal mode index $n$.\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 524,
+    "completion_tokens": 79,
+    "total_tokens": 603,
+    "cost": 0.002495,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.002495,
+      "upstream_inference_prompt_cost": 0.00131,
+      "upstream_inference_completions_cost": 0.001185
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

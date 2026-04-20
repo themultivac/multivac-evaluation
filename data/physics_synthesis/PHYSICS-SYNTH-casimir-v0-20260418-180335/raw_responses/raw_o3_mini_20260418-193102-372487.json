@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776558657-TO2uPcmYgIQIhirEEfNj",
+  "object": "chat.completion",
+  "created": 1776558657,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Infinite plates yield divergent total energy; energy per unit area is the standard finite observable.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Assessing energy claims**\n\nI'm checking the claim about energy per unit area when dealing with infinite plates. The explanation requires me to affirm that it\u2019s a common approach in physics, where we compute energy per unit area to avoid divergence issues with total energy. \n\nMy verdict is CONFIRMED: the claim is accurate since energy per unit area is the meaningful quantity in such scenarios. I\u2019ll present my findings in the requested format, ensuring it includes a clear explanation.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Assessing energy claims**\n\nI'm checking the claim about energy per unit area when dealing with infinite plates. The explanation requires me to affirm that it\u2019s a common approach in physics, where we compute energy per unit area to avoid divergence issues with total energy. \n\nMy verdict is CONFIRMED: the claim is accurate since energy per unit area is the meaningful quantity in such scenarios. I\u2019ll present my findings in the requested format, ensuring it includes a clear explanation.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CJG0gKmFaDdTuf189S9ajhgym3vQxy-0namkTIeYUbuHvWp7lScRotQ14A2_Sqqd1w_tJ9s-g95n0SP8Lgby7iKVvA-HHUo6BribUzJ_KXbaF29E5knaDvOF8Cy5eNgCW2WN0AoQCP9-g4BIP0inLy5jC5JLdkx5UjSlU-zLUXu2fPdmOxJJjrdKSLwVPLVkCkMKJRyMWAgGCV0TZNTwrQEnNeF6dbJAiI0d14EoqFUtrhXwGr2AmuBnnk9JcJV3uL_KC3to6Yw9Ui56KGNv-bfcLA8Mqhfy_a6iAvukEQBo-8F5asqsb1dP-Vwfm9nTwXmXMkA-tU1lcTSiwHzcs6V8fn13GQsftC8XtgCHzO7CuHHvjC6XYS6hH14La_ihqlrgcib6wtRa2OpgRBJaRP-zq0KUm_F8TGQ-Sl9-113tsH3Jqbh9sZI08LOj4o9iGi8e5mGclCNqLkxJP2NFCqr2hICSW82-RA1L7wr4-ReGa8_yDXZf6FRzXqYD0VkEOjsQUdIu6E05Z0PD7_C1rYM3A==",
+            "format": "openai-responses-v1",
+            "id": "rs_0c91d3156e8613510169e4224246348194b316ceee0252b286",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 517,
+    "completion_tokens": 996,
+    "total_tokens": 1513,
+    "cost": 0.0049511,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0049511,
+      "upstream_inference_prompt_cost": 0.0005687,
+      "upstream_inference_completions_cost": 0.0043824
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 448,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

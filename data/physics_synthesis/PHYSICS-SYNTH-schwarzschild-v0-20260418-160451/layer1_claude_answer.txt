@@ -1,0 +1,154 @@
+# Derivation of the Schwarzschild Radius from the Einstein Field Equations
+
+## 1. Starting Point: The Einstein Field Equations
+
+The Einstein field equations (EFE) in vacuum (outside the mass distribution) are:
+
+$$
+R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} R = \frac{8\pi G}{c^4} T_{\mu\nu}
+$$
+
+In vacuum, $T_{\mu\nu} = 0$. Contracting with $g^{\mu\nu}$ gives $R = 0$, so the vacuum EFE reduce to:
+
+$$
+R_{\mu\nu} = 0.
+$$
+
+This is the equation we must solve.
+
+## 2. Physical Assumptions
+
+1. **Spherical symmetry**: the metric is invariant under spatial rotations.
+2. **Static**: the metric is time-independent ($\partial_t g_{\mu\nu}=0$) and has no time-space cross terms (no rotation, no time-reversal-violating structure).
+3. **Vacuum** outside the source: $T_{\mu\nu}=0$.
+4. **Asymptotic flatness**: as $r\to\infty$, the metric reduces to Minkowski in spherical coordinates.
+5. **Weak-field correspondence**: in the Newtonian limit, the metric reproduces $\Phi = -GM/r$.
+
+## 3. General Form of the Static, Spherically Symmetric Metric
+
+The most general line element consistent with assumptions (1) and (2) can be written (after a suitable radial coordinate redefinition so that $r$ is the areal radius, i.e. spheres of constant $r$ have area $4\pi r^2$) as:
+
+$$
+ds^2 = -e^{2\nu(r)}\,c^2 dt^2 + e^{2\lambda(r)}\,dr^2 + r^2\left(d\theta^2 + \sin^2\theta\, d\phi^2\right).
+$$
+
+Here $\nu(r)$ and $\lambda(r)$ are two unknown functions to be determined. The metric components are:
+
+$$
+g_{tt}= -e^{2\nu}c^2, \quad g_{rr}=e^{2\lambda},\quad g_{\theta\theta}=r^2,\quad g_{\phi\phi}=r^2\sin^2\theta.
+$$
+
+## 4. Christoffel Symbols
+
+Using $\Gamma^\alpha_{\mu\nu} = \tfrac{1}{2}g^{\alpha\beta}(\partial_\mu g_{\nu\beta}+\partial_\nu g_{\mu\beta}-\partial_\beta g_{\mu\nu})$, with primes denoting $d/dr$, the nonzero Christoffel symbols are:
+
+$$
+\begin{aligned}
+&\Gamma^t_{tr}=\nu',\quad \Gamma^r_{tt}=\nu' e^{2\nu-2\lambda}c^2,\quad \Gamma^r_{rr}=\lambda',\\
+&\Gamma^r_{\theta\theta}=-r e^{-2\lambda},\quad \Gamma^r_{\phi\phi}=-r\sin^2\theta\, e^{-2\lambda},\\
+&\Gamma^\theta_{r\theta}=\Gamma^\phi_{r\phi}=\frac{1}{r},\quad \Gamma^\theta_{\phi\phi}=-\sin\theta\cos\theta,\quad \Gamma^\phi_{\theta\phi}=\cot\theta.
+\end{aligned}
+$$
+
+## 5. Ricci Tensor Components
+
+Using $R_{\mu\nu} = \partial_\alpha\Gamma^\alpha_{\mu\nu}-\partial_\nu\Gamma^\alpha_{\mu\alpha}+\Gamma^\alpha_{\alpha\beta}\Gamma^\beta_{\mu\nu}-\Gamma^\alpha_{\nu\beta}\Gamma^\beta_{\mu\alpha}$, after a somewhat lengthy but standard computation:
+
+$$
+\begin{aligned}
+R_{tt} &= e^{2\nu-2\lambda}c^2\left[\nu''+(\nu')^2-\nu'\lambda'+\frac{2\nu'}{r}\right],\\[4pt]
+R_{rr} &= -\nu''-(\nu')^2+\nu'\lambda'+\frac{2\lambda'}{r},\\[4pt]
+R_{\theta\theta} &= 1 - e^{-2\lambda}\left[1+r(\nu'-\lambda')\right],\\[4pt]
+R_{\phi\phi} &= \sin^2\theta\, R_{\theta\theta}.
+\end{aligned}
+$$
+
+## 6. Solving the Vacuum Field Equations
+
+**Step A.** Consider the combination
+
+$$
+e^{2\lambda-2\nu}\frac{R_{tt}}{c^2}+R_{rr}=\frac{2(\nu'+\lambda')}{r}=0.
+$$
+
+Therefore $\nu'+\lambda'=0$, which integrates to $\nu+\lambda=\text{const}$. By asymptotic flatness ($\nu,\lambda\to 0$ at $r\to\infty$), the constant is zero:
+
+$$
+\boxed{\nu(r) = -\lambda(r)}.
+$$
+
+**Step B.** Use $R_{\theta\theta}=0$:
+
+$$
+1 = e^{-2\lambda}\left[1 + r(\nu'-\lambda')\right] = e^{2\nu}\left[1 + 2r\nu'\right],
+$$
+
+where we used $\lambda=-\nu$. Noting that $\dfrac{d}{dr}\!\left(r e^{2\nu}\right) = e^{2\nu}(1+2r\nu')$, this becomes
+
+$$
+\frac{d}{dr}\!\left(r e^{2\nu}\right)=1.
+$$
+
+Integrating:
+
+$$
+r\, e^{2\nu} = r + C \quad\Longrightarrow\quad e^{2\nu} = 1 + \frac{C}{r},
+$$
+
+with $C$ an integration constant.
+
+**Step C.** One can verify that $R_{rr}=0$ and $R_{tt}=0$ are then automatically satisfied.
+
+## 7. Fixing the Constant via the Newtonian Limit
+
+In the weak-field, slow-motion limit, general relativity must reproduce Newtonian gravity, which requires:
+
+$$
+g_{tt} \approx -c^2\left(1+\frac{2\Phi}{c^2}\right),\qquad \Phi(r)=-\frac{GM}{r}.
+$$
+
+Thus
+
+$$
+e^{2\nu}=1+\frac{2\Phi}{c^2}=1-\frac{2GM}{c^2 r}.
+$$
+
+Comparing with $e^{2\nu}=1+C/r$ yields
+
+$$
+C = -\frac{2GM}{c^2}.
+$$
+
+## 8. The Schwarzschild Metric
+
+Substituting back:
+
+$$
+\boxed{\,ds^2 = -\left(1-\frac{2GM}{c^2 r}\right)c^2\,dt^2 + \left(1-\frac{2GM}{c^2 r}\right)^{-1}dr^2 + r^2\left(d\theta^2+\sin^2\theta\, d\phi^2\right)\,}
+$$
+
+This is the unique spherically symmetric vacuum solution (Birkhoff's theorem guarantees uniqueness, even without the static assumption).
+
+## 9. Identifying the Schwarzschild Radius
+
+Inspect the metric coefficients. Two special radii appear:
+
+- $r=0$: $g_{tt}\to-\infty$. Computing the curvature scalar
+  $$R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}=\frac{48 G^2M^2}{c^4 r^6}$$
+  shows this is a **genuine physical (curvature) singularity**.
+
+- $r=r_s$ where $1-\dfrac{2GM}{c^2 r_s}=0$: $g_{rr}\to\infty$ and $g_{tt}\to 0$. The Kretschmann scalar is finite there, so this is a **coordinate singularity** (removable by, e.g., Kruskal–Szekeres coordinates). It defines the **event horizon**.
+
+Setting $1-\dfrac{2GM}{c^2 r_s}=0$:
+
+$$
+\boxed{\; r_s = \frac{2GM}{c^2} \;}
+$$
+
+## 10. Physical Interpretation
+
+- For $r>r_s$: the coordinate $t$ is timelike and $r$ spacelike; the exterior is static.
+- For $r<r_s$: the signs of $g_{tt}$ and $g_{rr}$ flip—$r$ becomes timelike—so decreasing $r$ is an inevitable future evolution, not a spatial choice. Nothing, not even light, can escape.
+- Numerically, $r_s \approx 2.95\text{ km}\times(M/M_\odot)$.
+
+The Schwarzschild radius thus emerges as the location at which the coordinate chart breaks down and, physically, as the event horizon of a non-rotating, uncharged black hole of mass $M$.

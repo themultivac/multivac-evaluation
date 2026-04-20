@@ -1,0 +1,59 @@
+{
+  "id": "gen-1776547918-cKRg2pGy8lVZOUuwtdKF",
+  "object": "chat.completion",
+  "created": 1776547918,
+  "model": "google/gemini-3.1-pro-preview-20260219",
+  "provider": "Google",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 7,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"For a diagonal metric, the inverse metric components are simply the reciprocals of the diagonal elements. The stated components are exactly correct.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Analyzing Metric Components**\n\nI'm currently examining the inverse metric components derived from a spherically symmetric spacetime. My focus is on the $g_{tt}$ term and its relationship to the exponential of the gravitational potential $\\Phi$.\n\n**Confirming Inverse Metric**\n\nI've confirmed the inverse metric components. Specifically, $g^{tt}$ indeed matches $-e^{-2\\Phi}/c^2$, and the other diagonal components are reciprocal as expected.\n\n",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "**Analyzing Metric Components**\n\nI'm currently examining the inverse metric components derived from a spherically symmetric spacetime. My focus is on the $g_{tt}$ term and its relationship to the exponential of the gravitational potential $\\Phi$.\n\n**Confirming Inverse Metric**\n\nI've confirmed the inverse metric components. Specifically, $g^{tt}$ indeed matches $-e^{-2\\Phi}/c^2$, and the other diagonal components are reciprocal as expected.\n\n",
+            "format": "google-gemini-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "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",
+            "format": "google-gemini-v1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 388,
+    "completion_tokens": 441,
+    "total_tokens": 829,
+    "cost": 0.006068,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.006068,
+      "upstream_inference_prompt_cost": 0.000776,
+      "upstream_inference_completions_cost": 0.005292
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 376,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

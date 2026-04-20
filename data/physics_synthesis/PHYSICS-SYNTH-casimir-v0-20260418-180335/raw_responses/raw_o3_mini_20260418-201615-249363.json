@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776561369-96L3xJ1WgJR8WbJXd0lP",
+  "object": "chat.completion",
+  "created": 1776561369,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\": 19, \"verdict\": \"INCOMPLETE\", \"explanation\": \"The statement omits detailed explanation of the analytic continuation process and explicit subtraction steps.\", \"confidence\": 0.9}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CzeUNmGHRwP86ygUuqSkMoBZwyySFH2LLAdEaGs8u1HhvubDG1C_az5fe77IIbmPVWq8nDxn9OoGBZvkUgofl27kxNzrq7R-sjuNFAqKEKlyCB4RVq9rIBKaO6esg5nkP_VbtJgWcSFXda5xm0xjUDiY3rYMTmcNq4mHONNzYXFvlsfR1YWOPP_tB2GilgHbrwojdChg7yZ5o-81rO0DOMD1MX4RrPWDrSpKx--ujl9DOxeEtRHsr34ighmTZi9YFNnprojxRmfgEswfEY8_PAwLRFG2YUZ7-G-rOwnKLKAawCqyX4K_cm0KX9E2Ps7CdfFTGXmNNeRwBza8DVNoBcFAZDoD6qoDgtFeQLBMpB6zRwU9Y4jMEQEUBzkFNf63SMnKdyE_zEzlh2txpKMztzKERWsp0OPcPkLV1yV-DSt02qh3kM5GFZK7LuxCa7YYEmD6pIC9xAXEuGC7xwIL2ZFku3ADV0Z9UcU3ynqdjxvzwc95zR-_6aUaCFjxpXjo9fx-Pt71hZ2tSO4MfZ4_AIJMQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_0f7bbf7c0ec4a32d0169e42cda51d48197b38a32e5c29a12fb",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 509,
+    "completion_tokens": 1396,
+    "total_tokens": 1905,
+    "cost": 0.0067023,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0067023,
+      "upstream_inference_prompt_cost": 0.0005599,
+      "upstream_inference_completions_cost": 0.0061424
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 640,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776536225-Dbg0hzPbTBzboxjGamxm",
+  "object": "chat.completion",
+  "created": 1776536225,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\": 41, \"verdict\": \"CONFIRMED\", \"explanation\": \"The Bogoliubov transformation implies the Minkowski and Rindler vacua are distinct physical states.\", \"confidence\": 1.0}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp48qp5bzjLHAf8L2UoB0pgRSfYRKAoKAqs5znNHLikKAwJpwhiQKctIxlEnRAoc3uC0CDQR7cct1LTBHj33ZQYPu7RY_jy0_JYALCl4Xb6fkQhhUABbZEoVJtgYjIlF6xBv410nIZGzJFIHclKhTptK3u3mYbWvfo1W2lf58Nk8i33aV07BQcQaIVQseEudRun3Edj_gD4chS-lD8iMZTSrWMS2FQmPs5exbDp8d9LwHmDfWHvYW80p55vufcSZzqMABHLnT0hami1TiGRd4t3MOuOrLEdvFVqcvgWxMZocT180miAefWCI5AjWqMS_tuSr2WmZbPN_FsGAHmf0xkIH-5A8ZGtqOk9HfMDIqQbsRuC6_PL0fnV3vUJiiWMmbEJA4i8DActDqqQVevOGKe6SwBe68IBDi80DizbddYs8_b3AYbSsdkuki64wrNo-EPxrYvVr1bNvqP-hJiV6_nfpy-xY7H7I6hEMeo1R1v1l3Yc9LoZwMzTg16Uox0vVE7lFb0L6voXYouUivUCaCrsV-kMg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0ff819277f760cf70169e3caa2917c819687a900ca955f9770",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 504,
+    "completion_tokens": 1737,
+    "total_tokens": 2241,
+    "cost": 0.0081972,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0081972,
+      "upstream_inference_prompt_cost": 0.0005544,
+      "upstream_inference_completions_cost": 0.0076428
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 832,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

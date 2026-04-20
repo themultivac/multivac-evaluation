@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776549806-5gTbJRZUo1EyDXbaJy2p",
+  "object": "chat.completion",
+  "created": 1776549806,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 23,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Field equations yield d/dr(log(AB))=0; asymptotic flatness (A, B \u2192 1) fixes the integration constant to 1.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Evaluating mathematical claims**\n\nI want to see if the answer \"constant AB = 1\" holds up under non-rotating static conditions. My analysis shows that with the derived relation d/dr (ln(A*B)) = 0, we find that A*B must be a constant. Using asymptotic flatness, I confirm the constant equals 1. The claim about A approaching 1 and B approaching 1 as r approaches infinity checks out. As r grows, the metric approaches Minkowski, reinforcing that the claim is indeed correct. But is my explanation thorough enough?",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Evaluating mathematical claims**\n\nI want to see if the answer \"constant AB = 1\" holds up under non-rotating static conditions. My analysis shows that with the derived relation d/dr (ln(A*B)) = 0, we find that A*B must be a constant. Using asymptotic flatness, I confirm the constant equals 1. The claim about A approaching 1 and B approaching 1 as r approaches infinity checks out. As r grows, the metric approaches Minkowski, reinforcing that the claim is indeed correct. But is my explanation thorough enough?",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_-6Ge4hI06iTwR0uGMIb0B0y0Q_LasHgnMnKB7f5H6-muhHFbYultBd4tyKHF0tSDUSJvClDDh1jUMKUEkBY6FPfAxHQCvQIBVTS9HhIO2P_d8JPGaBLn_7kjmTt5_Mzty1O1wQ-hS5QSQuuQoy1s9w0nNU0Y5AK6769szGf0DazqzNaFW1cjn4b5r0QfGS7DV10JaIl8Opoc-Bm4tJ-X40MoR5X9ERt1NW0kJwR4W3pZJjqJfLw30wn2FH40qVKeIoxDKbegsjqBTH9dmUhuTFqfMIENRmW8KxPxfeIS8Hzir0Od0KVRtKDSOaN1-mYWUFaZUCebIDB-u2U21L1mVWGWV_QLtobsJoYJPrBvaT_46Kls7cKLwCHn8Lu4aoeGk8T0ezaQRmyeT1CepsdN-qDjJaIQXRleelUe7Mq7hn-MysuW1tNUj9oFESxfqvKlg4-dIZN_OhxEAyhN-1tB6KHAVRTllKiETOk9EMMHJr88D1V3RkAy_DazguY7fyYXZ83h3fWcg8zxX5_8mNhBlFJg==",
+            "format": "openai-responses-v1",
+            "id": "rs_00355e3ceca36f9c0169e3ffaf66b88195ae93bb2480fda868",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 378,
+    "completion_tokens": 3058,
+    "total_tokens": 3436,
+    "cost": 0.013871,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.013871,
+      "upstream_inference_prompt_cost": 0.0004158,
+      "upstream_inference_completions_cost": 0.0134552
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1472,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

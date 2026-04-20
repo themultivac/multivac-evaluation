@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776560722-BUbvRdAdTjrVRRL3uxsm",
+  "object": "chat.completion",
+  "created": 1776560722,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":4,\"verdict\":\"CONFIRMED\",\"explanation\":\"Correct mode-sum per area: \\(d^2k_\\perp/(2\\\\pi)^2\\\\to k\\,dk/(2\\\\pi)\\), times \\\\(\\\\hbar c/2\\\\), with EM degeneracy \\(n\\\\ge1\\\\) doubled and \\(n=0\\\\) single.\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 620,
+    "completion_tokens": 90,
+    "total_tokens": 710,
+    "cost": 0.0029,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0029,
+      "upstream_inference_prompt_cost": 0.00155,
+      "upstream_inference_completions_cost": 0.00135
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

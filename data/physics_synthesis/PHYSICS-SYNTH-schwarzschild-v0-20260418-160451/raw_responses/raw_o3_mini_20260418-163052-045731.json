@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776547847-XSCRgJM1LNrNdS6eOQIK",
+  "object": "chat.completion",
+  "created": 1776547847,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 47,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The Schwarzschild radius indeed represents the event horizon for a non-rotating, uncharged black hole of mass M.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Assessing the Schwarzschild radius**\n\nI\u2019m looking into a physics claim that states the Schwarzschild radius is the event horizon of a non-rotating, uncharged black hole. It's essential to confirm that this interpretation is correct. The Schwarzschild radius, given by the formula \\( r_s = \\frac{2GM}{c^2} \\), indeed defines the event horizon perceived by a stationary observer. Textbooks can sometimes err, but this specific definition for a Schwarzschild black hole seems accurate: it's non-rotating and uncharged.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Assessing the Schwarzschild radius**\n\nI\u2019m looking into a physics claim that states the Schwarzschild radius is the event horizon of a non-rotating, uncharged black hole. It's essential to confirm that this interpretation is correct. The Schwarzschild radius, given by the formula \\( r_s = \\frac{2GM}{c^2} \\), indeed defines the event horizon perceived by a stationary observer. Textbooks can sometimes err, but this specific definition for a Schwarzschild black hole seems accurate: it's non-rotating and uncharged.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_gLCB5iGxNvAe3Tt9TpbVIeIh1mZdVaFwQsCw3q_cl-pbkFhKQA8Ts7zYdyDAqMbNef_7WtW3fca_lVkTrnnfcGCAHvR9Hxkvu9qZItzBQSpCnNrNjrgX4i1YupIgQdTSV9muHPMM4zocvFJiZEb60l3Cz-QO0sGmxBCJMZOgsMrVqIKx879wgDubmnmyXuRBV21VInjFxL7Hbm-QqApYqrcSZ5mcE0QM7EZaquvZs9PRwnNZeMP8c5Pnn-R5xQrmgVIFUdHgkp7AvbWmer_CW_BBDnffWfmuYpVuLvB5mO0becs3TGnmXTorsv2do7h5tsvD5zY1IVSiDPzfvCj4UFfaE96_nexTTv04CnRzxJHN_GDVDTDcJ01cmWWmZcUOQW_wSlA_u-5XeNI41sDjFMCGKRz4nsEg_Asa4OAWLEwoahnL4UEMsFWcEd_RkFjQ-hpUCHxnqmyOwX4PEeb2d5G-2hEEBjCf9DvDIAE92OWEJhHiUdmruWnrtt2CTyTZSIIzDZw4m24KlJLuANwOOHTw==",
+            "format": "openai-responses-v1",
+            "id": "rs_037bf07ab10651970169e3f80792dc819080c54ffee87aee6e",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 375,
+    "completion_tokens": 1145,
+    "total_tokens": 1520,
+    "cost": 0.0054505,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0054505,
+      "upstream_inference_prompt_cost": 0.0004125,
+      "upstream_inference_completions_cost": 0.005038
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 512,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

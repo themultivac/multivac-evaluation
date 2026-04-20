@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776559068-ldVNLPjASQ4X2UGQcX7L",
+  "object": "chat.completion",
+  "created": 1776559068,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is the standard result from quantizing the harmonic oscillator in field theory.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CPhuVMIiPyOhcBkv6LXIoVbZdZY_EGrRSnp7dj1VMUYX8U9nT5Kz5JqWLS7Mk9ycSAtkEEuKmHEnV87q9iLwh45xMuDHzCkCMuW7q_I3SkNNjP1bySveXKT_2K5LveWG8PW8EVkj3hfGYPjaXTKXUOLLSPQbe3-O16QxNZ8DIKI34uXVHBzAqduY81mMb4bT5fE87QZTTg9hPP2f6o-i3cdJCfEZ3FzcpfROurIRLdU50DuGgLQnTfICWO0fKix5ggTs7leqlABgvsk8JC-fwyglbIHbj1dYaVFD5ggC3jGKHW-QmFOdmS4J3L9yR638CHSNjWI4UqUpY8RpVLAu-3t2bou4F9kcZsj9j1r6amwMoWoXff7YX7_6CohPELmV5MBPZM9In-UiZtke11V0bm8efblT4I-ErpxQrPyC8_sTbZe1pGqULD0uMevRnZdCzFbh59VOdb0NqhteO1HLCL0uWWm4EwctzmKNuIMk6SxQ6vhMgz2s_fmAS7yA0cKJB50ESTUOaZQIAqa8FxIoHem3A==",
+            "format": "openai-responses-v1",
+            "id": "rs_08d2c022981f93f60169e423dd503481938ec106299d48f628",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 512,
+    "completion_tokens": 1146,
+    "total_tokens": 1658,
+    "cost": 0.0056056,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0056056,
+      "upstream_inference_prompt_cost": 0.0005632,
+      "upstream_inference_completions_cost": 0.0050424
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 512,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

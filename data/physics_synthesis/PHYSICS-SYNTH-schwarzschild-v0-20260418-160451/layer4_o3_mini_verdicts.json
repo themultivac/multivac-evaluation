@@ -1,0 +1,482 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "The spacetime is vacuum (outside the mass), so the energy\u2013momentum tensor vanishes: T_{\u03bc\u03bd} = 0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The problem explicitly specifies a vacuum outside the mass, which by definition means the energy-momentum tensor vanishes.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "The problem explicitly specifies a vacuum outside the mass, which by definition means the energy-momentum tensor vanishes.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:46:04.266997"
+  },
+  {
+    "claim_id": 2,
+    "claim_text": "Therefore the Einstein field equations reduce to R_{\u03bc\u03bd} = 0, where R_{\u03bc\u03bd} is the Ricci tensor.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":2,\"verdict\":\"CONFIRMED\",\"explanation\":\"In vacuum outside the mass, stress-energy vanishes: T_{\u03bc\u03bd}=0. Then EFE gives G_{\u03bc\u03bd}=0, which implies R_{\u03bc\u03bd}=0 after contracting to get R=0.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 2,
+      "verdict": "CONFIRMED",
+      "explanation": "In vacuum outside the mass, stress-energy vanishes: T_{\u03bc\u03bd}=0. Then EFE gives G_{\u03bc\u03bd}=0, which implies R_{\u03bc\u03bd}=0 after contracting to get R=0.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:46:07.641929"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "The spacetime is spherically symmetric, non-rotating, and uncharged.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"These are the exact assumptions specified in the problem statement required to derive the Schwarzschild metric.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "These are the exact assumptions specified in the problem statement required to derive the Schwarzschild metric.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:46:12.250421"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "The metric can depend only on the radial coordinate r and must reduce to the Minkowski metric at large r (asymptotic flatness).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":4,\"verdict\":\"CONFIRMED\",\"explanation\":\"For a spherically symmetric, static vacuum outside isolated mass, metric components depend only on r; asymptotic flatness follows from isolated source and no cosmological constant.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 4,
+      "verdict": "CONFIRMED",
+      "explanation": "For a spherically symmetric, static vacuum outside isolated mass, metric components depend only on r; asymptotic flatness follows from isolated source and no cosmological constant.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T16:46:15.730200"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "We assume the metric is static (time-independent).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 5,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"By Birkhoff's theorem, any spherically symmetric vacuum solution to the Einstein field equations is necessarily static, making this a perfectly valid and standard assumption.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "CONFIRMED",
+      "explanation": "By Birkhoff's theorem, any spherically symmetric vacuum solution to the Einstein field equations is necessarily static, making this a perfectly valid and standard assumption.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:46:22.592122"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "The line element takes the form ds\u00b2 = -e^{2\u03a6(r)} c\u00b2 dt\u00b2 + e^{2\u03bb(r)} dr\u00b2 + r\u00b2 d\u03b8\u00b2 + r\u00b2 sin\u00b2\u03b8 d\u03c6\u00b2.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":6,\"verdict\":\"CONFIRMED\",\"explanation\":\"This is the standard most-general static, spherically symmetric metric in areal radius coordinates after eliminating dt dr cross terms by time redefinition.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 6,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the standard most-general static, spherically symmetric metric in areal radius coordinates after eliminating dt dr cross terms by time redefinition.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T16:46:26.078756"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "Here \u03a6(r) and \u03bb(r) are functions to be determined.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 7,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard parameterization for a static, spherically symmetric metric ansatz where \u03a6(r) and \u03bb(r) are unknown functions of the radial coordinate.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 7,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard parameterization for a static, spherically symmetric metric ansatz where \u03a6(r) and \u03bb(r) are unknown functions of the radial coordinate.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:46:31.161708"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "Our goal is to find the functions \u03a6(r) and \u03bb(r) by inserting this ansatz into the vacuum Einstein equations.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard derivation starts with static spherical metric ansatz; in vacuum, substituting into Einstein equations R_{\u03bc\u03bd}=0 determines \u03a6(r) and \u03bb(r).\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 8,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard derivation starts with static spherical metric ansatz; in vacuum, substituting into Einstein equations R_{\u03bc\u03bd}=0 determines \u03a6(r) and \u03bb(r).",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:46:34.580915"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "The nontrivial components of the Ricci tensor for our metric lead to a set of differential equations for \u03a6(r) and \u03bb(r).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The non-zero Ricci tensor components for a spherically symmetric metric yield ordinary differential equations for the metric functions \\u03a6(r) and \\u03bb(r) when set to zero in vacuum.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "CONFIRMED",
+      "explanation": "The non-zero Ricci tensor components for a spherically symmetric metric yield ordinary differential equations for the metric functions \u03a6(r) and \u03bb(r) when set to zero in vacuum.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:46:40.034187"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "Integrate with respect to r: r(1 - e^{-2\u03bb(r)}) = constant.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The tt-component of the Einstein tensor in spherical symmetry is proportional to the derivative of r(1 - e^{-2\u03bb}). Setting it to zero in vacuum yields this exact integral.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 11,
+      "verdict": "CONFIRMED",
+      "explanation": "The tt-component of the Einstein tensor in spherical symmetry is proportional to the derivative of r(1 - e^{-2\u03bb}). Setting it to zero in vacuum yields this exact integral.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:46:47.067869"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "Let the constant be identified as 2GM/c\u00b2 (this choice guarantees that when we compare our result with the Newtonian potential in the weak-field limit we recover the expected behavior).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":12,\"verdict\":\"CONFIRMED\",\"explanation\":\"In Schwarzschild vacuum solution, matching g_tt\u2248-(1+2\u03a6/c\u00b2) with \u03a6=-GM/r gives g_tt=-(1-2GM/(c\u00b2r)); hence integration constant equals 2GM/c\u00b2.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 12,
+      "verdict": "CONFIRMED",
+      "explanation": "In Schwarzschild vacuum solution, matching g_tt\u2248-(1+2\u03a6/c\u00b2) with \u03a6=-GM/r gives g_tt=-(1-2GM/(c\u00b2r)); hence integration constant equals 2GM/c\u00b2.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T16:46:50.448481"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "Thus, 1 - e^{-2\u03bb(r)} = 2GM/(c\u00b2r).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 13,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The claim correctly expresses the spatial metric component relationship, following from integrating the vacuum field equations and applying the Newtonian limit to determine the integration constant.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "CONFIRMED",
+      "explanation": "The claim correctly expresses the spatial metric component relationship, following from integrating the vacuum field equations and applying the Newtonian limit to determine the integration constant.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:47:04.323697"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "Solving for e^{2\u03bb(r)}: e^{-2\u03bb(r)} = 1 - 2GM/(c\u00b2r).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":14,\"verdict\":\"CONFIRMED\",\"explanation\":\"For static spherical vacuum, Einstein equations give d/dr[r(1-e^{-2\\\\lambda})]=0; asymptotic flatness sets integration constant 2GM/c^2, yielding e^{-2\\\\lambda}=1-2GM/(c^2 r).\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 14,
+      "verdict": "CONFIRMED",
+      "explanation": "For static spherical vacuum, Einstein equations give d/dr[r(1-e^{-2\\lambda})]=0; asymptotic flatness sets integration constant 2GM/c^2, yielding e^{-2\\lambda}=1-2GM/(c^2 r).",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T16:47:07.762863"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "e^{2\u03bb(r)} = (1 - 2GM/(c\u00b2r))^{-1}.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This correctly identifies the radial metric component derived from the vacuum Einstein field equations and the Newtonian limit.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "This correctly identifies the radial metric component derived from the vacuum Einstein field equations and the Newtonian limit.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:47:13.209075"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "Another combination of R_{tt} and R_{rr} equations yields a relation involving \u03a6'(r) and \u03bb'(r).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":16,\"verdict\":\"CONFIRMED\",\"explanation\":\"For the static spherically symmetric metric, vacuum equations R_tt=0 and R_rr=0 are independent ODEs involving \u03a6' and \u03bb'; combining them gives a direct relation between these derivatives.\",\"confidence\":0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 16,
+      "verdict": "CONFIRMED",
+      "explanation": "For the static spherically symmetric metric, vacuum equations R_tt=0 and R_rr=0 are independent ODEs involving \u03a6' and \u03bb'; combining them gives a direct relation between these derivatives.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T16:47:16.557817"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "This integrates to give \u03a6(r) = -\u03bb(r) + constant.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"From the vacuum equation \u03bd'(r)+\u03bb'(r)=0 for the static spherical metric, integration gives \u03bd(r)=-\u03bb(r)+C; with \u03a6 identified as \u03bd, the claim follows.\",\"confidence\":0.93}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 18,
+      "verdict": "CONFIRMED",
+      "explanation": "From the vacuum equation \u03bd'(r)+\u03bb'(r)=0 for the static spherical metric, integration gives \u03bd(r)=-\u03bb(r)+C; with \u03a6 identified as \u03bd, the claim follows.",
+      "confidence": 0.93
+    },
+    "timestamp": "2026-04-18T16:47:20.039314"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "To ensure that the metric is asymptotically flat as r \u2192 \u221e (i.e. g_{tt} \u2192 -c\u00b2), we choose the constant so that e^{2\u03a6(r)} \u2192 1 as r \u2192 \u221e.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 19,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Asymptotic flatness requires the metric to approach the Minkowski metric at spatial infinity, meaning g_{tt} \\u2192 -c\\u00b2, which correctly implies e^{2\\u03a6(r)} \\u2192 1.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "Asymptotic flatness requires the metric to approach the Minkowski metric at spatial infinity, meaning g_{tt} \u2192 -c\u00b2, which correctly implies e^{2\u03a6(r)} \u2192 1.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:47:25.728498"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "Given that e^{2\u03bb(r)} \u2192 1 in that limit too, we set the constant to zero.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"Asymptotic flatness implies e^{2\u03bb}\\\\to1 at infinity, but one must first show the integration constant enters additively in \u03bb or multiplicatively in e^{2\u03bb}.\",\"confidence\":0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 20,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "Asymptotic flatness implies e^{2\u03bb}\\to1 at infinity, but one must first show the integration constant enters additively in \u03bb or multiplicatively in e^{2\u03bb}.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T16:47:30.690131"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "e^{2\u03a6(r)} = e^{-2\u03bb(r)} = 1 - 2GM/(c\u00b2r).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 21,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The metric components correctly satisfy e^{2\u03a6} = e^{-2\u03bb} = 1 - 2GM/(c\u00b2r), obtained by solving the vacuum field equations and matching the weak-field Newtonian limit.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "CONFIRMED",
+      "explanation": "The metric components correctly satisfy e^{2\u03a6} = e^{-2\u03bb} = 1 - 2GM/(c\u00b2r), obtained by solving the vacuum field equations and matching the weak-field Newtonian limit.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:47:36.168601"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "Substituting the results for \u03a6(r) and \u03bb(r) into our ansatz, the line element becomes ds\u00b2 = -(1 - 2GM/(c\u00b2r)) c\u00b2 dt\u00b2 + (1 - 2GM/(c\u00b2r))^{-1} dr\u00b2 + r\u00b2(d\u03b8\u00b2 + sin\u00b2\u03b8 d\u03c6\u00b2).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":22,\"verdict\":\"CONFIRMED\",\"explanation\":\"This is the Schwarzschild metric from the standard static, spherically symmetric vacuum ansatz, with e^{2\u03a6}=1-2GM/(c^2 r) and e^{2\u03bb}=(1-2GM/(c^2 r))^{-1}.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 22,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the Schwarzschild metric from the standard static, spherically symmetric vacuum ansatz, with e^{2\u03a6}=1-2GM/(c^2 r) and e^{2\u03bb}=(1-2GM/(c^2 r))^{-1}.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:47:39.496368"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "This is the Schwarzschild metric.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 23,\n    \"verdict\": \"UNJUSTIFIED\",\n    \"explanation\": \"The claim refers to an unspecified equation ('This'). Without the explicit mathematical expression, it is impossible to verify if it is the correct Schwarzschild metric.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 23,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "The claim refers to an unspecified equation ('This'). Without the explicit mathematical expression, it is impossible to verify if it is the correct Schwarzschild metric.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:47:49.122595"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "The coefficient of dt\u00b2 is g_{tt} = -(1 - 2GM/(c\u00b2r)).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":24,\"verdict\":\"CONFIRMED\",\"explanation\":\"In Schwarzschild coordinates for a static, spherically symmetric vacuum solution, the metric component is g_tt = -(1-2GM/(c^2 r)) when using signature (-,+,+,+).\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 24,
+      "verdict": "CONFIRMED",
+      "explanation": "In Schwarzschild coordinates for a static, spherically symmetric vacuum solution, the metric component is g_tt = -(1-2GM/(c^2 r)) when using signature (-,+,+,+).",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:47:52.500858"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "The coefficient of dr\u00b2 is g_{rr} = (1 - 2GM/(c\u00b2r))^{-1}.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 25,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The radial metric component g_{rr} is correctly stated. It follows directly from solving the vacuum Einstein field equations for a spherically symmetric mass.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 25,
+      "verdict": "CONFIRMED",
+      "explanation": "The radial metric component g_{rr} is correctly stated. It follows directly from solving the vacuum Einstein field equations for a spherically symmetric mass.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:48:04.277798"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "A coordinate singularity appears (i.e. the metric components diverge) when 1 - 2GM/(c\u00b2r) = 0.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"CONFIRMED\",\"explanation\":\"In Schwarzschild coordinates, g_tt=-(1-2GM/c^2r)c^2 vanishes and g_rr=(1-2GM/c^2r)^{-1} diverges at r=2GM/c^2, a coordinate singularity.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 26,
+      "verdict": "CONFIRMED",
+      "explanation": "In Schwarzschild coordinates, g_tt=-(1-2GM/c^2r)c^2 vanishes and g_rr=(1-2GM/c^2r)^{-1} diverges at r=2GM/c^2, a coordinate singularity.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:48:07.553560"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "1 - 2GM/(c\u00b2r) = 0 implies r = 2GM/c\u00b2.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 27,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The algebraic manipulation is correct. Solving 1 - 2GM/(c\u00b2r) = 0 for r directly yields the Schwarzschild radius r = 2GM/c\u00b2.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 27,
+      "verdict": "CONFIRMED",
+      "explanation": "The algebraic manipulation is correct. Solving 1 - 2GM/(c\u00b2r) = 0 for r directly yields the Schwarzschild radius r = 2GM/c\u00b2.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:48:12.059353"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "This radius is called the Schwarzschild radius r_S: r_S = 2GM/c\u00b2.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":28,\"verdict\":\"CONFIRMED\",\"explanation\":\"For the Schwarzschild vacuum solution, the coordinate singularity occurs at g_tt=0 and g_rr^{-1}=0, giving r_S=2GM/c^2.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 28,
+      "verdict": "CONFIRMED",
+      "explanation": "For the Schwarzschild vacuum solution, the coordinate singularity occurs at g_tt=0 and g_rr^{-1}=0, giving r_S=2GM/c^2.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:48:15.234521"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "This singularity is a coordinate artifact (the so-called 'coordinate singularity') and not a true physical singularity.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 29,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The singularity at the Schwarzschild radius is indeed a coordinate singularity, as scalar invariants like the Kretschmann scalar remain finite there.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 29,
+      "verdict": "CONFIRMED",
+      "explanation": "The singularity at the Schwarzschild radius is indeed a coordinate singularity, as scalar invariants like the Kretschmann scalar remain finite there.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:48:20.151236"
+  },
+  {
+    "claim_id": 31,
+    "claim_text": "We assumed vacuum (i.e., T_{\u03bc\u03bd}=0) so the Einstein equations become R_{\u03bc\u03bd} = 0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 31,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In vacuum, T_{\u03bc\u03bd}=0. Taking the trace of the Einstein field equations (assuming zero cosmological constant) yields Ricci scalar R=0, which simplifies the equations to R_{\u03bc\u03bd}=0.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 31,
+      "verdict": "CONFIRMED",
+      "explanation": "In vacuum, T_{\u03bc\u03bd}=0. Taking the trace of the Einstein field equations (assuming zero cosmological constant) yields Ricci scalar R=0, which simplifies the equations to R_{\u03bc\u03bd}=0.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:48:27.625277"
+  },
+  {
+    "claim_id": 32,
+    "claim_text": "We assumed spherical symmetry and static conditions, leading us to the metric ansatz with functions \u03a6(r) and \u03bb(r).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":32,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard derivation assumes spherical symmetry and time independence, yielding the most general diagonal metric with two radial functions, often written e^{2\u03a6(r)} and e^{2\u03bb(r)}.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 32,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard derivation assumes spherical symmetry and time independence, yielding the most general diagonal metric with two radial functions, often written e^{2\u03a6(r)} and e^{2\u03bb(r)}.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T16:48:30.901428"
+  },
+  {
+    "claim_id": 33,
+    "claim_text": "The integration constant emerging in the solution of the field equations was identified with the mass M via comparison with the Newtonian limit.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 33,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The integration constant in the Schwarzschild metric is correctly determined by matching the weak-field limit of general relativity to Newtonian gravity, yielding 2GM/c^2.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 33,
+      "verdict": "CONFIRMED",
+      "explanation": "The integration constant in the Schwarzschild metric is correctly determined by matching the weak-field limit of general relativity to Newtonian gravity, yielding 2GM/c^2.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:48:36.329371"
+  },
+  {
+    "claim_id": 34,
+    "claim_text": "Asymptotic flatness (requiring the metric to approach the Minkowski metric at infinity) fixes the integration constants.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":34,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Asymptotic flatness fixes only some constants; the remaining one is identified with mass via Newtonian weak-field matching, not asymptotic flatness alone.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 34,
+      "verdict": "INCOMPLETE",
+      "explanation": "Asymptotic flatness fixes only some constants; the remaining one is identified with mass via Newtonian weak-field matching, not asymptotic flatness alone.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T16:48:39.503595"
+  },
+  {
+    "claim_id": 35,
+    "claim_text": "The metric coefficient g_{rr} diverges when r = 2GM/c\u00b2, which is identified as the Schwarzschild radius.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 35,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In the Schwarzschild metric, g_{rr} = (1 - 2GM/rc^2)^{-1}, which diverges at r = 2GM/c^2. This coordinate singularity defines the Schwarzschild radius.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 35,
+      "verdict": "CONFIRMED",
+      "explanation": "In the Schwarzschild metric, g_{rr} = (1 - 2GM/rc^2)^{-1}, which diverges at r = 2GM/c^2. This coordinate singularity defines the Schwarzschild radius.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:48:44.161778"
+  }
+]

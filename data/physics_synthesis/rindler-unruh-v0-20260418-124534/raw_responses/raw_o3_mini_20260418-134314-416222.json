@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776537769-2rlcUuXeW33ylHUR6V94",
+  "object": "chat.completion",
+  "created": 1776537769,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Analyzing dimensions and relations**\n\nI\u2019m thinking about the relationship of different parameters. If \\( c \\neq 1 \\), I need to consider the dimensions of \\( c \\) and \\( \\xi_0 \\). First, \\( u_R \\) has dimensions of time, labeled as [T]. Then, \\( \\eta \\) is dimensionless as the Rindler boost parameter, but \\( c \\ln(\\xi/\\xi_0) \\) seems to have dimensions of [L/T]. \n\nThis inconsistency has me re-checking: since \\( c \\) is speed and has dimensions of [L/T], combining it with the dimensionless \\( \\ln \\) makes sense. I realize \\( \\eta \\) must also be in time units now.**Clarifying Rindler coordinates**\n\nI\u2019m considering the Rindler coordinate \\( \\eta \\), often known as \"Rindler time.\" It's typically defined in a metric where \\( ds\u00b2 = \u03be\u00b2 d\u03b7\u00b2 - d\u03be\u00b2 \\). This suggests that \\( \\eta \\) is dimensionless if \\( \u03be \\) carries dimensions of length. So, if \\( \u03be \\) measures length, it seems consistent to assert that \\( \\eta \\) must indeed be dimensionless. I need to ensure all the relationships align effectively in this context!",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Analyzing dimensions and relations**\n\nI\u2019m thinking about the relationship of different parameters. If \\( c \\neq 1 \\), I need to consider the dimensions of \\( c \\) and \\( \\xi_0 \\). First, \\( u_R \\) has dimensions of time, labeled as [T]. Then, \\( \\eta \\) is dimensionless as the Rindler boost parameter, but \\( c \\ln(\\xi/\\xi_0) \\) seems to have dimensions of [L/T]. \n\nThis inconsistency has me re-checking: since \\( c \\) is speed and has dimensions of [L/T], combining it with the dimensionless \\( \\ln \\) makes sense. I realize \\( \\eta \\) must also be in time units now.**Clarifying Rindler coordinates**\n\nI\u2019m considering the Rindler coordinate \\( \\eta \\), often known as \"Rindler time.\" It's typically defined in a metric where \\( ds\u00b2 = \u03be\u00b2 d\u03b7\u00b2 - d\u03be\u00b2 \\). This suggests that \\( \\eta \\) is dimensionless if \\( \u03be \\) carries dimensions of length. So, if \\( \u03be \\) measures length, it seems consistent to assert that \\( \\eta \\) must indeed be dimensionless. I need to ensure all the relationships align effectively in this context!",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49DCHgy-AhTmVcv__iYK84qj0ZYpdN1tdBPjj8istZ_cSUtNgJ1MHaz5ztsAHZTopVgfvt51CGom-jSRrRRETq-dhuHYjkJiF81QNrYOphPhSMu1ZrKG94UDD5rji4AYGaFfHHYtNRTVTDHSn_wa-5QoxSg0Z6fwqpylU-pbfiy-zwTxZCbghfJA93SyJ2vmlMSe1_K1XbLdezf7XSmwQWk_996OosQ9aHMU0UE1dxMB8sxuTjRVRLYxAjnbtGvFiTB1WvlHvl96xWg6wBHM-d0AkeGpJZU8kx94YKNKQ4x4zhcG1hLLG7afAhs5fTdQKg64XhTk2LiQ28nGP8ZjpQbc6bxwSyDLMUYb5kmHW_QKQhb4gPL9SpwNcx-z2i8Vq0jZVC4RNHgbM8nnx2_UNn1FHsJcqIiYnW6kFVW1EY-AvXfPAL07ZdFqO11S9_pG7jaxtRUZAoHO-RCPvjh3R_qjk94lKABEB-V8e9cLACdoc5LCEQiXYfCWNcdD7xBkGuOShu5pz0Vv3t53vwatjS5OkA==",
+            "format": "openai-responses-v1",
+            "id": "rs_0c90cee896810c110169e3d0a9d7d0819098f4b0f0ab255313",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 530,
+    "completion_tokens": 4096,
+    "total_tokens": 4626,
+    "cost": 0.0186054,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0186054,
+      "upstream_inference_prompt_cost": 0.000583,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

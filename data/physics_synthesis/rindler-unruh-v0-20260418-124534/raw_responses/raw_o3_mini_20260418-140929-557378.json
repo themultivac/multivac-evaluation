@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776539362-thOKHeWn026mVIRuvr6z",
+  "object": "chat.completion",
+  "created": 1776539362,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 25,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard result: constant \u03be yields proper acceleration 1/\u03be, so \u03be=1/a implies \u03b1 = a.\",\n    \"confidence\": 0.95\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49bpDm1bbRdDcB6yBffjcztmw2IZw3plQ2CZFIyezBQfTXn-3yS14TXi5hU6ENVna0B6w4mNOD1aAAlKpaU0OqfnISY49E6g5Zk6_RWx_qssOwki5vrf8RvZ8KvSATT1P5onGNhJVeko8CnOWF-ixVIKwi0evTe-kboopuHsMNDIns2qx2h6hdU1Q5Dm1dd--1IhaRJt0OQ9AHvDkH-bvBiqtWpKFuitsyItr8lHxAbar9q2SaMmddk2PFyBrt0M0sxDWxcZOP40DUcBpzial-PQMI1Ije9pUWxmzaoKpvkdgkLXeMXFIC0G_eF2sdnpxUhpAPoeBQB7iTS0xF8tCMKxr6Hs4cPNdJdAKapjVeh0lbRt9fIl1CY7EhE7Apj-vkeH6vXhlNcHQ6-CwlRbbrPXUS247RyRMFWFMaUE10BPD7wQr247sWKkpH9M6X3aCvaijSnABPFOa_GGtggFzacZAu2GtGml8A6D6GlHaPPefLz99elzmm5JhSYepX33UNNkSMqC8FIPAKd9wX3vVjDJDg==",
+            "format": "openai-responses-v1",
+            "id": "rs_01f35085fed8fbd60169e3d6e3336c8190a96c2eb3523d68b6",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 508,
+    "completion_tokens": 1739,
+    "total_tokens": 2247,
+    "cost": 0.0082104,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0082104,
+      "upstream_inference_prompt_cost": 0.0005588,
+      "upstream_inference_completions_cost": 0.0076516
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 832,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

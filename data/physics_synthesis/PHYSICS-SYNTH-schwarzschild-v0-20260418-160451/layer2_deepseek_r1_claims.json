@@ -1,0 +1,432 @@
+{
+  "model": "unknown",
+  "total_claims": 40,
+  "claims": [
+    {
+      "id": 1,
+      "text": "The derivation assumes spherical symmetry: the metric depends only on the radial coordinate r and the angular coordinates \u03b8, \u03c6.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "The derivation assumes staticity: the metric is time-independent and has no off-diagonal terms mixing time and space.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The derivation assumes vacuum: outside the mass, the energy-momentum tensor vanishes, T_{\u03bc\u03bd} = 0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "The derivation assumes asymptotic flatness: as r \u2192 \u221e, the metric approaches the Minkowski metric.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "The most general metric satisfying these conditions is ds\u00b2 = -A(r)c\u00b2dt\u00b2 + B(r)dr\u00b2 + r\u00b2d\u03b8\u00b2 + r\u00b2sin\u00b2\u03b8 d\u03c6\u00b2.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "notes": "This is the standard ansatz in Schwarzschild coordinates."
+    },
+    {
+      "id": 6,
+      "text": "In vacuum, the Einstein equations reduce to R_{\u03bc\u03bd} = 0.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        3
+      ],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "\u0393^t_{tr} = \u0393^t_{rt} = A'/(2A)",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "\u0393^r_{tt} = c\u00b2A'/(2B)",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "\u0393^r_{rr} = B'/(2B)",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "\u0393^r_{\u03b8\u03b8} = -r/B",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "\u0393^r_{\u03c6\u03c6} = -r sin\u00b2\u03b8 / B",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "\u0393^\u03b8_{r\u03b8} = \u0393^\u03b8_{\u03b8r} = 1/r",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "\u0393^\u03b8_{\u03c6\u03c6} = -sin\u03b8 cos\u03b8",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "\u0393^\u03c6_{r\u03c6} = \u0393^\u03c6_{\u03c6r} = 1/r",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "\u0393^\u03c6_{\u03b8\u03c6} = \u0393^\u03c6_{\u03c6\u03b8} = cot\u03b8",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "R_{tt} = (c\u00b2/2B)A'' - c\u00b2(A')\u00b2/(4AB) - c\u00b2A'B'/(4B\u00b2) + c\u00b2A'/(rB)",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "notes": "Should be verified against standard references."
+    },
+    {
+      "id": 17,
+      "text": "R_{rr} = -A''/(2A) + (A')\u00b2/(4A\u00b2) + A'B'/(4AB) + B'/(rB)",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "notes": "Should be verified against standard references."
+    },
+    {
+      "id": 18,
+      "text": "R_{\u03b8\u03b8} = 1 - 1/B + r/(2B)(B'/B - A'/A)",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "R_{\u03c6\u03c6} = sin\u00b2\u03b8 R_{\u03b8\u03b8}",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        18
+      ],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "From R_{tt}=0 and R_{rr}=0, after algebraic manipulation, we obtain A'/A + B'/B = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        6,
+        16,
+        17
+      ],
+      "notes": "Intermediate algebra not shown explicitly."
+    },
+    {
+      "id": 21,
+      "text": "A'/A + B'/B = 0 implies (AB)' = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        20
+      ],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "AB = constant follows from (AB)' = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        21
+      ],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "Asymptotic flatness requires A \u2192 1 and B \u2192 1 as r \u2192 \u221e, so the constant AB = 1.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        4,
+        22
+      ],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "Therefore B = 1/A.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        23
+      ],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "Substituting B = 1/A into R_{\u03b8\u03b8} = 0 gives 2(1/A - 1) + r(-2A'/A) = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        18,
+        24,
+        6
+      ],
+      "notes": "Intermediate substitution step; factor of 2 should be checked."
+    },
+    {
+      "id": 26,
+      "text": "This simplifies to 1/A - 1 - rA'/A = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        25
+      ],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "Multiplying by A gives 1 - A - rA' = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        26
+      ],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "1 - A - rA' = 0 can be rewritten as (rA)' = 1.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        27
+      ],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "Integrating (rA)' = 1 gives rA = r + C, so A = 1 + C/r.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        28
+      ],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "In the weak-field limit, general relativity must reduce to Newtonian gravity.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "For a point mass M, the Newtonian potential is \u03a6 = -GM/r.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "text": "The metric component g_{tt} is related to \u03a6 by g_{tt} \u2248 -(1 + 2\u03a6/c\u00b2)c\u00b2.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        30
+      ],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "Our solution gives g_{tt} = -Ac\u00b2 = -c\u00b2(1 + C/r) = -c\u00b2 - c\u00b2C/r.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        5,
+        29
+      ],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "text": "Comparing g_{tt} from the weak-field limit and our solution: -c\u00b2C/r = 2GM/r, so C = -2GM/c\u00b2.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        31,
+        32,
+        33
+      ],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "A = 1 - 2GM/(c\u00b2r) and B = 1/(1 - 2GM/(c\u00b2r)).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        24,
+        29,
+        34
+      ],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "text": "The Schwarzschild metric is ds\u00b2 = -(1 - 2GM/(c\u00b2r))c\u00b2dt\u00b2 + (1 - 2GM/(c\u00b2r))\u207b\u00b9dr\u00b2 + r\u00b2d\u03b8\u00b2 + r\u00b2sin\u00b2\u03b8 d\u03c6\u00b2.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        5,
+        35
+      ],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "The metric exhibits a coordinate singularity where g_{rr} diverges and g_{tt} vanishes.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [
+        36
+      ],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "text": "Setting 1 - 2GM/(c\u00b2r) = 0 gives r_s = 2GM/c\u00b2.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        37
+      ],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "r_s = 2GM/c\u00b2 defines the Schwarzschild radius.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        38
+      ],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "The Schwarzschild radius is a coordinate singularity, not a physical one, as can be shown by transforming to other coordinates (e.g., Kruskal-Szekeres).",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        39
+      ],
+      "notes": ""
+    }
+  ]
+}

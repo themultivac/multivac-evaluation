@@ -1,0 +1,424 @@
+```json
+{
+  "model": "unknown",
+  "total_claims": 52,
+  "claims": [
+    {
+      "id": 1,
+      "text": "We assume spherical symmetry.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "We assume static spacetime (time-independent, non-rotating).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "We assume vacuum outside the mass, so T_{μν}=0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "Einstein's equations reduce to R_{μν}=0 since G_{μν}=R_{μν}-½g_{μν}R=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [3],
+      "notes": "Requires taking trace to show R=0 first; step is compressed but correct."
+    },
+    {
+      "id": 5,
+      "text": "The most general static, spherically symmetric line element in coordinates (t,r,θ,φ) can be written as ds²=-e^{2Φ(r)}c²dt²+e^{2Λ(r)}dr²+r²dθ²+r²sin²θ dφ².",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [1, 2],
+      "notes": "Standard result; cross terms can be eliminated by coordinate choice."
+    },
+    {
+      "id": 6,
+      "text": "The metric is diagonal with g_{tt}=-e^{2Φ}c², g_{rr}=e^{2Λ}, g_{θθ}=r², g_{φφ}=r²sin²θ.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [5],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "The inverse metric has g^{tt}=-e^{-2Φ}/c², g^{rr}=e^{-2Λ}, g^{θθ}=1/r², g^{φφ}=1/(r²sin²θ).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "The nontrivial Ricci tensor components are R_{tt}=0, R_{rr}=0, R_{θθ}=0, with R_{φφ}=sin²θ R_{θθ}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [4, 6],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "R_{tt}=e^{2(Φ-Λ)}c²(Φ''+Φ'²-Φ'Λ'+2Φ'/r)=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6, 7, 8],
+      "notes": "Standard Ricci component for this ansatz; computation omitted."
+    },
+    {
+      "id": 10,
+      "text": "R_{rr}=-Φ''-Φ'²+Φ'Λ'+2Λ'/r=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6, 7, 8],
+      "notes": "Standard Ricci component for this ansatz; computation omitted."
+    },
+    {
+      "id": 11,
+      "text": "R_{θθ}=1-e^{-2Λ}(1-rΛ'+rΦ')=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6, 7, 8],
+      "notes": "Standard Ricci component for this ansatz; computation omitted."
+    },
+    {
+      "id": 12,
+      "text": "Primes denote derivatives with respect to r.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "From R_{tt}=0: Φ''+Φ'²-Φ'Λ'+2Φ'/r=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [9],
+      "notes": "Dividing out the prefactor e^{2(Φ-Λ)}c²."
+    },
+    {
+      "id": 14,
+      "text": "From R_{rr}=0: -Φ''-Φ'²+Φ'Λ'+2Λ'/r=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [10],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "Adding the equations from R_{tt}=0 and R_{rr}=0 gives (2/r)(Φ'+Λ')=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [13, 14],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "Hence Φ'+Λ'=0, so Φ(r)=-Λ(r)+const.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "The constant can be absorbed into a rescaling of the time coordinate t, so we take Φ(r)=-Λ(r).",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [16],
+      "notes": "Standard coordinate freedom argument."
+    },
+    {
+      "id": 18,
+      "text": "Thus e^{2Φ}=e^{-2Λ}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [17],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "Let f(r)≡e^{2Φ(r)}=e^{-2Λ(r)}.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [18],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "The metric becomes ds²=-f(r)c²dt²+dr²/f(r)+r²dΩ², where dΩ²=dθ²+sin²θ dφ².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [5, 19],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "Using R_{θθ}=0: 1-e^{-2Λ}(1-rΛ'+rΦ')=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [11],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "Since Φ'=-Λ', we have 1-rΛ'+rΦ'=1-2rΛ'.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [17, 21],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "Also e^{-2Λ}=f(r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [19],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "So R_{θθ}=0 becomes 1-f(r)(1-2rΛ')=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [21, 22, 23],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "Since f=e^{-2Λ}, differentiating gives f'=-2Λ'e^{-2Λ}=-2Λ'f.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [19],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "Hence Λ'=-f'/(2f).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [25],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "Substituting into R_{θθ}=0: 1-f(1+rf'/f)=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [24, 26],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "This simplifies to 1-f-rf'=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [27],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "Thus rf'+f=1, which is d/dr(rf)=1.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [28],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "Integrating gives rf=r+C, where C is an integration constant.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [29],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "Therefore f(r)=1+C/r.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [30],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "text": "The metric is ds²=-(1+C/r)c²dt²+dr²/(1+C/r)+r²dΩ².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [20, 31],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "Far from the mass, spacetime must approach flat Minkowski space, so f(r)→1 as r→∞.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Asymptotic flatness boundary condition."
+    },
+    {
+      "id": 34,
+      "text": "The form f(r)=1+C/r already satisfies f(r)→1 as r→∞.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [31, 33],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "In the weak-field Newtonian limit, g_{tt}≈-(1+2φ_N/c²), where φ_N is the Newtonian potential.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Standard weak-field limit of GR."
+    },
+    {
+      "id": 36,
+      "text": "The Newtonian potential outside a mass M is φ_N(r)=-GM/r.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "From the metric, g_{tt}/c²=-(1+C/r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [32],
+      "notes": "Model writes g_{tt}=-f(r)c²dt², seems to mean the coefficient."
+    },
+    {
+      "id": 38,
+      "text": "In the weak field, 1+C/r=1+2φ_N/c²=1-2GM/(c²r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [35, 36, 37],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "Hence C=-2GM/c².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [38],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "Therefore f(r)=1-2GM/(c²r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [31, 39],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "The Schwarzschild metric is ds²=-(1-2GM/(c²r))c²dt²+dr²/(1-2GM/(c²r))+r²(dθ²+sin²θ dφ²).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [20, 40],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "This is the unique static, spherically symmetric vacuum solution: Birkhoff's theorem guarantees this.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [41],
+      "notes": "Birkhoff's theorem also removes the static assumption."
+    },
+    {
+      "id": 43,
+      "text": "The metric coefficients become singular when 1-2GM/(c²r)=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [41],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "text": "Solving gives r=2GM/c².",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [43],
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "text": "This defines the Schwarzschild radius: r_s=2GM/c².",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [44],
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "text": "At r=r_s, g_{tt}=0 and g_{rr}→∞.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [41, 45],
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "text": "The singularity at r=r_s is a coordinate singularity, not a physical curvature singularity.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [45],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "text": "The true physical singularity is at r=0.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "text": "The Kretschner scalar is K=R_{μνρσ}R^{μνρσ}=48G²M²/(c⁴r⁶).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [41],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "text": "At r=r_s, the Kretschner scalar is finite; at r=0, it diverges.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [45, 49],
+      "notes": "Confirms r_s is coordinate singularity, r=0 is physical."
+    },
+    {
+      "id": 51,
+      "text": "The surface r=r_s is the event horizon of a Schwarzschild black hole.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [45],
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "text": "In regular coordinates (e.g. Eddington–Finkelstein or Kruskal–Szekeres), spacetime is smooth at r=r_s.",
+      "type": "physical_interpretation",
+      "provenance": "cited",
+      "depends_on": [47, 51],
+      "notes": ""
+    }
+  ]
+}
+```

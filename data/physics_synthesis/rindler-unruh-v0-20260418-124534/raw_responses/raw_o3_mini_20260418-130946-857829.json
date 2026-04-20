@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776535781-hHEFaQbX0jLZ3qNbiaCO",
+  "object": "chat.completion",
+  "created": 1776535781,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard derivation of hyperbolic motion with constant proper acceleration in Minkowski space.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp48jqyzs3ZqR3PsFCvDBO1nxhQb9h-whrJr73UGGqAWTbej2LoWxnSEX6clLAkrdL0UY8ugcdrlurmPNdZbMEAnKu-4gWc2rYTVCO9CNk9NK0HJrZUOLalgFfGClJ1k2-xoaU4vSIzvf7N5PvEAuhnzldjJ_MfPAIju5v0J_ZR2utU52wxVPYlogstBIhZPimeYmDi_JSBZusfzXF2cFxzvfsuMtX5jgofszc8XuvQagHYc5JfUwXN2YTEs9pVTw70MvpHILyNYnNOfY2fy--lYEbiPE07xrqFKdjJubWn4VEOg9ZqPVsI-0xQMALz2PgJeLCqKClqulSdz3lBU_wAA3v-8NMZrfJlhWRZZgOnB3_RQbLpESZY_l8QNKMOP5r1IabRLCCi4rsn_9qA8bGn2sz7D1IQFNk7TgWfkh0rrXOR7elN77_49hmI27EzxfU7n8P5M3T5SX3-GHb047_UoUQmSbb-fdl2KpAH60tXCaaxw8LeydgmU-XIAOvtKmMuDJAOHlwrNbvSEEu-bUhHm0uSA==",
+            "format": "openai-responses-v1",
+            "id": "rs_079d1cbf3ac533890169e3c8e5f7ac8193a944c0ca409109f5",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 549,
+    "completion_tokens": 1478,
+    "total_tokens": 2027,
+    "cost": 0.0071071,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0071071,
+      "upstream_inference_prompt_cost": 0.0006039,
+      "upstream_inference_completions_cost": 0.0065032
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 704,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

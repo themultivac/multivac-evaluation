@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776561460-WJX0YjgOJCN8Pk8Y9cdM",
+  "object": "chat.completion",
+  "created": 1776561460,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 29,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"Zeta regularization is a mathematical analytic continuation, not justified by real mirror imperfections.\",\n    \"confidence\": 0.95\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5C04q0kuFJKlqr_1WucbssdsljVFPuUJcXcDpzZRiI6dhyaZPLtXTy5YK73y7vCLJWfwUOYZYP-y9IVPFHYv7aWEUJHmcLY-E1ItVbrriiUXnCLImLLmGF_bXctJfbpxQ2wJaJmsfqwDdDog9KAvdd-93dnwuHffgEBuo7mqBOgbSm9Nkw5t3GU6BGLth08LjBuv7P6RL8lH1bY9x84tX0jRnWIRYNc8dA1YZeogo9tRFH9MANa7DQ1ymMulcqkqSWfyCMJpMySV4JRROtRAUTmPrkuYFCrt23hxZ94t00Y1r8Ae0vxTbaOfQbOK-rlGR6HfaF9lpxPzSBxIpUNDHWgDkFOcLmAqNy-6J2BsYNDQrsoOpfwjt3OG6MmN8p_OpMlFHxN3LzCqWMEDoPXUdxuwAVrdk5PADbaCnS0rEWovqjogsu5asXtfpXy9hLZ6Gluy3dgCZDSmOsCX9eR57BvcdsdJXFRhgT_jfWLMCDigtc2Hh22fjziAhNYGh96-qEpW-25fkpPiIWIT8PL7ojZbQg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0e757463fe3b7e8a0169e42d35365481949666702845830df5",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 512,
+    "completion_tokens": 1111,
+    "total_tokens": 1623,
+    "cost": 0.0054516,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0054516,
+      "upstream_inference_prompt_cost": 0.0005632,
+      "upstream_inference_completions_cost": 0.0048884
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 512,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

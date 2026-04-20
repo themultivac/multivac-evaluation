@@ -1,0 +1,424 @@
+```json
+{
+  "model": "o3",
+  "total_claims": 52,
+  "claims": [
+    {
+      "id": 1,
+      "text": "Two infinite, perfectly conducting, parallel plates lie at z=0 and z=d.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "The space between the plates is vacuum.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The tangential electric field vanishes on each plate: E_parallel = 0 at z=0,d.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [1],
+      "notes": "Standard boundary condition for perfect conductors."
+    },
+    {
+      "id": 4,
+      "text": "The field is quantized in the region between the plates.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "Edge effects are neglected because the plates are infinite.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [1],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "Only the change in vacuum energy due to the plates is computed; absolute vacuum energy is divergent and unobservable.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "The allowed electromagnetic modes are standing waves in the z-direction and plane waves in the transverse (x,y)-directions.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [1, 3],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "The allowed longitudinal wave numbers are k_z = nπ/d, n=0,1,2,...",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [3, 7],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "The mode frequencies are ω_{n,k_⊥} = c√(k_⊥² + (nπ/d)²).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "For n≥1, there are two polarizations (TE and TM).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [7, 8],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "For n=0, only one physical polarization contributes.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [7, 8],
+      "notes": "Actually n=0 TM mode is trivial; only TM gives E=0 identically."
+    },
+    {
+      "id": 12,
+      "text": "The zero-point energy per unit area is U(d)/A = (ℏ/2) ∫ d²k_⊥/(2π)² [ω_{0,k_⊥} + 2 Σ_{n=1}^∞ ω_{n,k_⊥}].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [9, 10, 11],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "This zero-point energy expression is formally divergent.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [12],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "An exponential cutoff e^{-ε ω} with ε>0 is introduced to suppress high-frequency modes.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Physically motivated UV regulator."
+    },
+    {
+      "id": 15,
+      "text": "The regulator will be removed by taking ε→0⁺ after subtraction of the free-vacuum contribution.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [14],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "The regularized zero-point energy per unit area is U_ε(d)/A = (ℏc/2) ∫ d²k_⊥/(2π)² [k_⊥ e^{-εc k_⊥} + 2 Σ_{n=1}^∞ √(k_⊥²+(nπ/d)²) e^{-εc√(k_⊥²+(nπ/d)²)}].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [12, 14, 9],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "The free-vacuum energy per unit area in a slab of width d is U^{(0)}_ε(d)/A = ℏ ∫ d²k_⊥/(2π)² (d/π) ∫_0^∞ dk_z c√(k_⊥²+k_z²) e^{-εc√(k_⊥²+k_z²)}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [14],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "The replacement rule for the continuum limit is Σ_{n=0}^∞' f(nπ/d) → (d/π) ∫_0^∞ dk_z f(k_z), where the prime means the n=0 term carries half weight.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "The Casimir energy is U_{Cas,ε}(d)/A = U_ε(d)/A - U^{(0)}_ε(d)/A.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [16, 17, 6],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "Define F(x) = ∫ d²k_⊥/(2π)² ℏc √(k_⊥²+x²) e^{-εc√(k_⊥²+x²)}.",
+      "type": "definition",
+      "provenance": "derived",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "U_ε(d)/A = Σ_{n=0}^∞' F(nπ/d), where the prime means half weight for n=0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [16, 20],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "U^{(0)}_ε(d)/A = (d/π) ∫_0^∞ dx F(x).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [17, 20],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "U_{Cas,ε}(d)/A = Σ_{n=0}^∞' F(an) - (1/a) ∫_0^∞ dx F(x), where a = π/d.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [19, 21, 22],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "The Euler–Maclaurin formula gives Σ_{n=0}^∞' F(an) = (1/a) ∫_0^∞ F(x) dx - Σ_{m=1}^∞ [B_{2m}/(2m)!] a^{2m-1} F^{(2m-1)}(0).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "After applying Euler–Maclaurin, U_{Cas,ε}(d)/A = -(a³/720) F^{(3)}(0) + ..., where omitted terms vanish or are canceled.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [23, 24],
+      "notes": "Model initially gets sign wrong, then corrects."
+    },
+    {
+      "id": 26,
+      "text": "B_4 = -1/30.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "The leading Euler–Maclaurin correction is -[B_4/4!] a³ F^{(3)}(0) = (a³/720) F^{(3)}(0).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [24, 26],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "Using polar coordinates, F(x) = (ℏc/2π) ∫_0^∞ k_⊥ dk_⊥ √(k_⊥²+x²) e^{-εc√(k_⊥²+x²)}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [20],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "Substituting u = √(k_⊥²+x²), so k_⊥ dk_⊥ = u du, gives F(x) = (ℏc/2π) ∫_x^∞ u² e^{-εcu} du.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [28],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "As ε→0, ∫_x^∞ u² e^{-εcu} du = (divergent terms independent of x or polynomial in x) - x³/3 + O(ε).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [29],
+      "notes": "Claim about the x-dependent finite piece."
+    },
+    {
+      "id": 31,
+      "text": "The x-dependent finite piece of F(x) is F(x) ~ -(ℏc/6π) x³ + (terms canceled by subtraction).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [29, 30],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "text": "F^{(3)}(0) = -ℏc/π.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [31],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "U_{Cas}(d)/A = (a³/720) F^{(3)}(0) = (a³/720)(-ℏc/π) = -ℏc a³/(720π).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [27, 32],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "text": "Substituting a = π/d gives U_{Cas}(d)/A = -(ℏc/(720π))(π/d)³ = -π²ℏc/(720 d³).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [33],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "The Casimir energy per unit area is U(d)/A = -π²ℏc/(720 d³).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [34],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "text": "The force per unit area is F(d)/A = -d/d(d) [U_{Cas}(d)/A].",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "d/d(d) [U_{Cas}(d)/A] = -(π²ℏc/720) d/d(d)(d^{-3}) = -(π²ℏc/720)(-3)d^{-4} = π²ℏc/(240 d⁴).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [35, 36],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "text": "F(d)/A = -π²ℏc/(240 d⁴).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [37],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "The negative sign of the force means the force is attractive.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [38],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "An exponential cutoff e^{-εω} was used to regulate the formally divergent zero-point sums/integrals.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [14],
+      "notes": "Restating the regularization choice."
+    },
+    {
+      "id": 41,
+      "text": "The subtraction of the free-vacuum contribution removes the divergent bulk vacuum energy, leaving a finite d-dependent remainder.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [19],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "The Euler–Maclaurin formula was used to extract the finite difference between the discrete mode sum and the continuum integral.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [24],
+      "notes": "Restating methodology."
+    },
+    {
+      "id": 43,
+      "text": "No explicit zeta-function regularization was required in the main derivation.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "text": "A shorter alternative derivation uses the known analytically continued value ζ(-3) = 1/120.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "text": "ζ(-3) = 1/120 is obtained by analytic continuation of the Riemann zeta function, not from the convergent series Σ n³.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [44],
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "text": "In free space there are 2 photon polarizations.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "text": "The density of states in k_z over an interval of length d is d/π for positive k_z.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "text": "The model initially writes U_{Cas,ε}(d)/A = -(a³/720)F^{(3)}(0) and then states 'the sign is clearly wrong'.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [25],
+      "notes": "Model catches its own sign error and corrects it."
+    },
+    {
+      "id": 49,
+      "text": "After correcting the sign, U_{Cas}(d)/A = (a³/720) F^{(3)}(0).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [48, 27],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "text": "The zero-point energy of each mode is ℏω/2.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Implicit in the energy expression."
+    },
+    {
+      "id": 51,
+      "text": "The Euler–Maclaurin formula requires F to be sufficiently smooth and the regulator to be present.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [14, 24],
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "text": "In the limit ε→0⁺, the omitted Euler–Maclaurin terms vanish or correspond to divergent pieces canceled by subtraction.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [25, 15],
+      "notes": "Stated without detailed justification."
+    }
+  ]
+}
+```

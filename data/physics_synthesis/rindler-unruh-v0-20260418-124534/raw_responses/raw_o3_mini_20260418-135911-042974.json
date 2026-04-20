@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776538745-gjJs6XWjFVu53f2DlSZp",
+  "object": "chat.completion",
+  "created": 1776538745,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 31,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard assumption in theoretical physics, valid for simplifying derivations and later restoring units.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49R-VtYEbOJbkQLC0NkIujydqpRvSbmjxVWVh7hloXnqA83uNOtImjkifrVWMT-DhkIa6EOUWORFwqb0E-X7QCupJoVYQ-VhPjCRh4IkWV2K6xwAbKEsGVhayegbTfXhhwfGi4YslZys7EBhnBgSY6RtViqqfF4leK0vStqoBi_w7ektqugDf91VxfTcz7TztVelOrjBu9xPlnamdzggwcjlmBkCD_xj5zV6NQ8_5grHwE1wwbe6eomqH8tEmUXtp7QDaVe67ciHz73cpBir8ax0ed3v-61syFEZcRdxmmyhos5q5fcKow-B41gLMkDLyvYRlDiWEWnlqJ-bfu0wl1Owx4mHMXVFuFVgqUx9YxCUbdACHxSGjKQ6DxLgv_MjGDe1LovgCuRQ-oPMH80-fSuYo_pFj0lW73Q7-uYtI-nIIY_zW2THu04umah1BOzPPHvBqDrdPy3OWNXOfizST31b2TFWBgE466tDaCHTwjCh4vELDOTeWcwFpnZANiXfZMRKM1N8215EBzxmQsFPodHYAw==",
+            "format": "openai-responses-v1",
+            "id": "rs_00ad0a92940b37e40169e3d47a6f208196b22eadb9f3a48d95",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 520,
+    "completion_tokens": 1016,
+    "total_tokens": 1536,
+    "cost": 0.0050424,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0050424,
+      "upstream_inference_prompt_cost": 0.000572,
+      "upstream_inference_completions_cost": 0.0044704
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 448,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776547853-MDcodVfjRLlSb0GyHskO",
+  "object": "chat.completion",
+  "created": 1776547853,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 49,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Identifying \u03bd(r) and \u03bb(r) as unknown functions is standard in the derivation of the Schwarzschild metric.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_gSxpx1QlbSsF4qbIOZkbwEu_Vs97lJOgHHz7lzv2xSvJuPNbCFy_bVRD1oEkDtFEVesZ2K553ljkFhGrdLJV_qERazomveeW2JtW6Hucfxt5T3fLFEghsj7gExmUogR5L6yMZCAR3oH00YtsoBsIbMi2n4cYNDTdzBWzPI0ybd39roCeolPJWxYyAKGBl3BeiOERvuhFgIxfBTKwCyFVCfFTDgGp6T-0E9_T5Kmynoeil04CAXHfGy-MuUUs5j3wUB9cVZGIWjnEKQ9xQ_nC7ryN0E1MeAURF4t-UF9w8CIPHhrFXVt5r6Z3NNEpTKSUhEYn7sUC3PTEWgZWguOSQ6mjmtaXWr2W1dQvtC8qNv1hKHRLoDANfoUdfkx-Gfk0KV3PTz0uKFUdhAZ7e0Wx3Vlp944WLgreyS_GdyyjF0-u9jtvK7jD25pz1T-dPWWdSk7IVbk0YPxw8dGbrScZhp2xXShVwtPo8NIJYsNV1DqqtGywvflXSR-7qPSPf3wqXQf5e1tSWomgS9JVgE5jzYXA==",
+            "format": "openai-responses-v1",
+            "id": "rs_0e99c2f70a5ba39a0169e3f80e403081908a459ad98909500d",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 361,
+    "completion_tokens": 1231,
+    "total_tokens": 1592,
+    "cost": 0.0058135,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0058135,
+      "upstream_inference_prompt_cost": 0.0003971,
+      "upstream_inference_completions_cost": 0.0054164
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 576,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

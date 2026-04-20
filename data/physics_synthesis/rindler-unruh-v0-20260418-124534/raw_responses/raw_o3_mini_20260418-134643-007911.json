@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776537996-ZTjgK8wfyAmXOB3ZkHOL",
+  "object": "chat.completion",
+  "created": 1776537996,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 66,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correctly uses the Bogoliubov relations to derive the Bose-Einstein factor.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49GSYqZEXhjd6Jwpxs7C_2a9FtycE6pz3BpGB4zJCphFJxmz8s6eCamrFWq75_ZVtgJqvT-jKXESxmTVgpVhpXRoE3c904y7l0lYE2qTI0YgxoaMZuswtX2uLeHZL4eKcdEBZohb7CYmaZzRCWHntalAmQvL0n3vBjLTm82VHOtaJmisy6PFn4EDZ3fpbgbI1HurYt7_UorjmW4tR3UOzeAsrhZGdAbvPmp48kjlY08MHqAaXRAk3M_CV3ZjZyrIFl2YT9PBXk_QfQb9-Pl2VyJTTq7YsIg2s7F2X1dIKXETriA_i4B7dZK1yanohpP4tMhBhrgQPsFsEBCOAD0PbY4oRZs0GI8iKv8fOP9s5oivuVGVfx8kFk5-kZdoWs00OqILTCmEu4pYLhDPo92fvgfmYfz2ZAPRw2Rq_7bZ7KbRqC7uNb-RLHoytTDWVAcluknfJU32I8OsTZzrFYqw8X7VcK5lFasMY--G9gcDQa9fOpA80t1qB4iegi5F_3XRcHfZqS3Optue0wNyPYF59_NpoQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_0a42fda4eb9bdeb70169e3d18d584c8190a79c2c60b6d34770",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 558,
+    "completion_tokens": 1731,
+    "total_tokens": 2289,
+    "cost": 0.0082302,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0082302,
+      "upstream_inference_prompt_cost": 0.0006138,
+      "upstream_inference_completions_cost": 0.0076164
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 832,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

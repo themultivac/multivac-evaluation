@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776539016-AA7tAIub3lNnJUFAycla",
+  "object": "chat.completion",
+  "created": 1776539016,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Considering proper acceleration**\n\nI\u2019m thinking about proper acceleration and its implications. If \"a\" represents constant proper acceleration, then its derivative should also be \"a.\" But this holds true only if we assume that \"t\" is coordinate time in Minkowski space. I wonder how this relationship plays out in different contexts or models. It seems essential to understand the underlying assumptions. This could get quite interesting!",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Considering proper acceleration**\n\nI\u2019m thinking about proper acceleration and its implications. If \"a\" represents constant proper acceleration, then its derivative should also be \"a.\" But this holds true only if we assume that \"t\" is coordinate time in Minkowski space. I wonder how this relationship plays out in different contexts or models. It seems essential to understand the underlying assumptions. This could get quite interesting!",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49WaYkZXD56oD9dEwP64VqztC6mEqkoADjtx365Kv_HJb3LM29GH5jI9wNInXMSGNpFZjCfGaJlDznttKlpXtBAixvSNVb-DRzcNnHSGEJvIRFeccKIucx9tzhY9l9-1AKWaf2DAfHpGgFqN2j_Ybs7lzyAA6nD9zqX4D8pQeigP99QvgfHNYY7Hy6J_P1R1n7AYwxPKQkAc53XLEGGU_LG8-Xic7CXvN4RD_Vl8WzoZ8ze1Jm_r-zUuU7KswFO8pog361YpkneeTqq1mgdpFo6UNWvpfODxkKJa7vzCvbz02noqctNHI6V_vr1CTQu9lr5R0-nreKo1ZgZ1N36hx_7kbMUv-4E_1eZLWZyKDNISx_ZgCdPVpS3mBknH4r1gY5QspdlVsbLH0AEd2gh1WHEgWXRfLwXwP93_Mz5j-_SZs1anzgNtd1P0BL6FtunTxtoHWjsonuW1V0EmFUJ0LoBcTA0NYYizPbpYpGpUHqJwiK75zDf_hB96gkR5w99S1SA0m1P3k4WGVuC03-iwZoH8VA==",
+            "format": "openai-responses-v1",
+            "id": "rs_05a1f91d3fe1df3b0169e3d588cb588193a794e059448842cf",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 525,
+    "completion_tokens": 4096,
+    "total_tokens": 4621,
+    "cost": 0.0185999,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0185999,
+      "upstream_inference_prompt_cost": 0.0005775,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

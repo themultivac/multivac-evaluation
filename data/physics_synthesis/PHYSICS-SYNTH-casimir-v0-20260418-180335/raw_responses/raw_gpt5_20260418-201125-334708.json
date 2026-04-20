@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776561083-rn5YNVn43rqoal9ZYL3x",
+  "object": "chat.completion",
+  "created": 1776561083,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":14,\"verdict\":\"CONFIRMED\",\"explanation\":\"Given \\(Z(s)=\\\\sum_n\\\\int_0^\\\\infty du\\\\,(u+n^2)^{-s/2}\\), substitution \\(u=n^2 t\\) gives \\(n^{2-s}\\\\int_0^\\\\infty(1+t)^{-s/2}dt=2n^{2-s}/(s-2)\\) for \\\\(\\\\Re s>2\\\\).\",\"confidence\":0.96}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 559,
+    "completion_tokens": 113,
+    "total_tokens": 672,
+    "cost": 0.0030925,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0030925,
+      "upstream_inference_prompt_cost": 0.0013975,
+      "upstream_inference_completions_cost": 0.001695
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

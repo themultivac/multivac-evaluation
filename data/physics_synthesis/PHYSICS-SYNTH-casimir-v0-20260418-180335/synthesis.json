@@ -1,0 +1,136 @@
+{
+  "problem": "casimir-v0",
+  "ground_truth": {
+    "casimir_force_per_area": "F/A = -\u03c0\u00b2 \u210f c / (240 d\u2074)",
+    "casimir_energy_per_area": "U/A = -\u03c0\u00b2 \u210f c / (720 d\u00b3)"
+  },
+  "models": {
+    "claude": {
+      "display_name": "Claude Opus 4.7",
+      "response_length": 5895,
+      "detected_answers": {
+        "casimir_force_per_area": null,
+        "casimir_energy_per_area": null
+      },
+      "completeness_score": null,
+      "total_claims": 52,
+      "valid_verdicts": 35,
+      "raw_verdict_count": 47,
+      "adversarial_confirmed": 24,
+      "adversarial_errors": 5,
+      "adversarial_unjustified": 3,
+      "adversarial_incomplete": 3,
+      "survival_rate": 0.828
+    },
+    "gpt5": {
+      "display_name": "GPT-5.4",
+      "response_length": 9364,
+      "detected_answers": {
+        "casimir_force_per_area": null,
+        "casimir_energy_per_area": null
+      },
+      "completeness_score": null,
+      "total_claims": 52,
+      "valid_verdicts": 34,
+      "raw_verdict_count": 42,
+      "adversarial_confirmed": 29,
+      "adversarial_errors": 3,
+      "adversarial_unjustified": 1,
+      "adversarial_incomplete": 1,
+      "survival_rate": 0.906
+    },
+    "o3_mini": {
+      "display_name": "OpenAI o3-mini (high)",
+      "response_length": 8127,
+      "detected_answers": {
+        "casimir_force_per_area": null,
+        "casimir_energy_per_area": null
+      },
+      "completeness_score": null,
+      "total_claims": 42,
+      "valid_verdicts": 24,
+      "raw_verdict_count": 33,
+      "adversarial_confirmed": 14,
+      "adversarial_errors": 5,
+      "adversarial_unjustified": 1,
+      "adversarial_incomplete": 4,
+      "survival_rate": 0.737
+    },
+    "gemini": {
+      "display_name": "Gemini 3.1 Pro Preview",
+      "response_length": 4106,
+      "detected_answers": {
+        "casimir_force_per_area": null,
+        "casimir_energy_per_area": null
+      },
+      "completeness_score": null,
+      "total_claims": 28,
+      "valid_verdicts": 16,
+      "raw_verdict_count": 25,
+      "adversarial_confirmed": 12,
+      "adversarial_errors": 2,
+      "adversarial_unjustified": 1,
+      "adversarial_incomplete": 1,
+      "survival_rate": 0.857
+    },
+    "deepseek_r1": {
+      "display_name": "DeepSeek R1",
+      "response_length": 5923,
+      "detected_answers": {
+        "casimir_force_per_area": null,
+        "casimir_energy_per_area": null
+      },
+      "completeness_score": null,
+      "total_claims": 42,
+      "valid_verdicts": 16,
+      "raw_verdict_count": 36,
+      "adversarial_confirmed": 10,
+      "adversarial_errors": 2,
+      "adversarial_unjustified": 3,
+      "adversarial_incomplete": 1,
+      "survival_rate": 0.833
+    },
+    "qwen": {
+      "display_name": "Qwen 3.6 Plus",
+      "response_length": 4345,
+      "detected_answers": {
+        "casimir_force_per_area": null,
+        "casimir_energy_per_area": null
+      },
+      "completeness_score": null,
+      "total_claims": 40,
+      "valid_verdicts": 23,
+      "raw_verdict_count": 34,
+      "adversarial_confirmed": 14,
+      "adversarial_errors": 1,
+      "adversarial_unjustified": 4,
+      "adversarial_incomplete": 4,
+      "survival_rate": 0.933
+    },
+    "grok": {
+      "display_name": "Grok 4.20",
+      "response_length": 3424,
+      "detected_answers": {
+        "casimir_force_per_area": null,
+        "casimir_energy_per_area": null
+      },
+      "completeness_score": null,
+      "total_claims": 30,
+      "valid_verdicts": 16,
+      "raw_verdict_count": 29,
+      "adversarial_confirmed": 11,
+      "adversarial_errors": 2,
+      "adversarial_unjustified": 1,
+      "adversarial_incomplete": 2,
+      "survival_rate": 0.846
+    }
+  },
+  "protocol_assessment": {
+    "models_with_complete_answers": 0,
+    "models_with_partial_answers": 0,
+    "models_unchecked": 7,
+    "total_models": 7,
+    "majority_vote_complete": false,
+    "synthesis_notes": "0/7 models found all answers, 0 partial. Completeness = fraction of ground-truth answers detected. Survival rate = CONFIRMED / (CONFIRMED + ERROR); UNJUSTIFIED and INCOMPLETE indicate missing justification rather than error."
+  }
+}

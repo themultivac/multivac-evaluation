@@ -1,0 +1,344 @@
+```json
+{
+  "model": "unknown",
+  "total_claims": 42,
+  "claims": [
+    {
+      "id": 1,
+      "text": "Outside the mass, the energy-momentum tensor vanishes ($T_{\\mu\\nu} = 0$).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "The spacetime is invariant under rotations (spherical symmetry).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "The metric coefficients are independent of time $t$, and there are no cross-terms (e.g., $dt dr$).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "Far from the mass ($r \\to \\infty$), spacetime approaches the Minkowski metric (asymptotic flatness).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "The Einstein Field Equations are $R_{\\mu\\nu} - \\frac{1}{2}R g_{\\mu\\nu} = \\frac{8\\pi G}{c^4} T_{\\mu\\nu}$.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "Given $T_{\\mu\\nu} = 0$, the equations reduce to the vacuum condition $R_{\\mu\\nu} = 0$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [1, 5],
+      "notes": "Requires taking trace and substituting back; step is standard."
+    },
+    {
+      "id": 7,
+      "text": "Based on spherical symmetry and static conditions, the general line element is $ds^2 = -e^{\\nu(r)} c^2 dt^2 + e^{\\lambda(r)} dr^2 + r^2 (d\\theta^2 + \\sin^2\\theta d\\phi^2)$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [2, 3],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "The metric tensor is $g_{\\mu\\nu} = \\text{diag}(-e^{\\nu}, e^{\\lambda}, r^2, r^2\\sin^2\\theta)$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [7],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "The inverse metric is $g^{\\mu\\nu} = \\text{diag}(-e^{-\\nu}, e^{-\\lambda}, r^{-2}, (r\\sin\\theta)^{-2})$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "The Christoffel symbols are defined as $\\Gamma^\\sigma_{\\mu\\nu} = \\frac{1}{2}g^{\\sigma\\rho}(\\partial_\\mu g_{\\nu\\rho} + \\partial_\\nu g_{\\mu\\rho} - \\partial_\\rho g_{\\mu\\nu})$.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "$\\Gamma^r_{tt} = \\frac{1}{2}\\nu' e^{\\nu-\\lambda}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8, 9, 10],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "$\\Gamma^r_{rr} = \\frac{1}{2}\\lambda'$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8, 9, 10],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "$\\Gamma^r_{\\theta\\theta} = -re^{-\\lambda}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8, 9, 10],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "$\\Gamma^t_{tr} = \\frac{1}{2}\\nu'$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8, 9, 10],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "$\\Gamma^\\theta_{r\\theta} = \\frac{1}{r}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8, 9, 10],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "$\\Gamma^\\phi_{r\\phi} = \\frac{1}{r}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [8, 9, 10],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "The Ricci tensor is $R_{\\mu\\nu} = \\partial_\\rho \\Gamma^\\rho_{\\mu\\nu} - \\partial_\\nu \\Gamma^\\rho_{\\mu\\rho} + \\Gamma^\\rho_{\\rho\\lambda}\\Gamma^\\lambda_{\\mu\\nu} - \\Gamma^\\rho_{\\nu\\lambda}\\Gamma^\\lambda_{\\mu\\rho}$.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "$R_{tt} = e^{\\nu-\\lambda} \\left[ \\frac{\\nu''}{2} + \\frac{(\\nu')^2}{4} - \\frac{\\nu'\\lambda'}{4} + \\frac{\\nu'}{r} \\right] = 0$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6, 11, 12, 13, 14, 15, 16, 17],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "$R_{rr} = -\\frac{\\nu''}{2} - \\frac{(\\nu')^2}{4} + \\frac{\\nu'\\lambda'}{4} + \\frac{\\lambda'}{r} = 0$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6, 11, 12, 13, 14, 15, 16, 17],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "$R_{\\theta\\theta} = 1 - e^{-\\lambda} - \\frac{r}{2}e^{-\\lambda}(\\nu' - \\lambda') = 0$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6, 11, 12, 13, 14, 15, 16, 17],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "Multiply $R_{tt}$ by $e^{-\\nu}$ and $R_{rr}$ by $e^{-\\lambda}$ and add them.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [18, 19],
+      "notes": "Should be multiply R_tt by e^{λ-ν} or equivalent manipulation."
+    },
+    {
+      "id": 22,
+      "text": "$e^{-\\nu}R_{tt} + e^{-\\lambda}R_{rr} = \\frac{\\nu' + \\lambda'}{r} = 0$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [21],
+      "notes": "The stated combination doesn't directly yield this; needs verification."
+    },
+    {
+      "id": 23,
+      "text": "$\\nu' + \\lambda' = 0$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [22],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "Integrating $\\nu' + \\lambda' = 0$ gives $\\nu(r) + \\lambda(r) = C$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [23],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "Applying asymptotic flatness ($\\nu, \\lambda \\to 0$ as $r \\to \\infty$), we find $C=0$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [4, 24],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "$\\lambda(r) = -\\nu(r)$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [25],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "Substituting $\\lambda = -\\nu$ into $R_{\\theta\\theta} = 0$ gives $1 - e^{\\nu} - r e^{\\nu} \\nu' = 0$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [20, 26],
+      "notes": "Model wrote e^ν but with λ=-ν, e^{-λ}=e^ν; needs sign check."
+    },
+    {
+      "id": 28,
+      "text": "Using $\\nu = -\\lambda$ in $R_{\\theta\\theta}=0$ gives $1 - e^{-\\lambda} + r e^{-\\lambda} \\lambda' = 0$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [20, 26],
+      "notes": "Equivalent rewriting; sign on λ' term needs verification."
+    },
+    {
+      "id": 29,
+      "text": "This can be rewritten as $r \\frac{d\\lambda}{dr} = 1 - e^\\lambda$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [28],
+      "notes": "Rearrangement step; needs algebraic verification."
+    },
+    {
+      "id": 30,
+      "text": "Separating variables and integrating: $\\int \\frac{d\\lambda}{1 - e^\\lambda} = \\int \\frac{dr}{r}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [29],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "$\\ln\\left( \\frac{e^\\lambda}{1 - e^\\lambda} \\right) = \\ln r + \\text{const}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [30],
+      "notes": "Integration result needs verification."
+    },
+    {
+      "id": 32,
+      "text": "Solving for $e^\\lambda$ gives $e^\\lambda = \\frac{1}{1 + \\frac{k}{r}}$ where $k$ is an integration constant.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [31],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "For large $r$, $g_{tt} \\approx -(1 + \\frac{2\\Phi}{c^2})$, where $\\Phi = -\\frac{GM}{r}$ is the Newtonian potential.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": "Standard weak-field/Newtonian limit of GR."
+    },
+    {
+      "id": 34,
+      "text": "Since $g_{tt} = -e^\\nu = -e^{-\\lambda} = -(1 + \\frac{k}{r})$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [26, 32],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "$-(1 + \\frac{k}{r}) \\approx -(1 - \\frac{2GM}{c^2 r})$ implies $k = -\\frac{2GM}{c^2}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [33, 34],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "text": "Defining the Schwarzschild radius $R_s = \\frac{2GM}{c^2}$.",
+      "type": "definition",
+      "provenance": "derived",
+      "depends_on": [35],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "The Schwarzschild metric is $ds^2 = -\\left(1 - \\frac{R_s}{r}\\right) c^2 dt^2 + \\left(1 - \\frac{R_s}{r}\\right)^{-1} dr^2 + r^2 d\\Omega^2$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [7, 32, 35, 36],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "text": "$g_{rr} \\to \\infty$ as $r \\to R_s$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [37],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "$g_{tt} \\to 0$ as $r \\to R_s$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [37],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "The Schwarzschild radius is a coordinate singularity where the metric coefficients diverge or vanish.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [38, 39],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "This radius defines the event horizon of a non-rotating black hole.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [40],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "The final result is $R_s = \\frac{2GM}{c^2}$.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [36],
+      "notes": ""
+    }
+  ]
+}
+```

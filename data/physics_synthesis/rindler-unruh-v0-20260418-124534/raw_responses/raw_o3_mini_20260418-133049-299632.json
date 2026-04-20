@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776537030-4FfKMjvOxcrnXupQVgk3",
+  "object": "chat.completion",
+  "created": 1776537030,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Evaluating derived transformation**\n\nI see that the claim is lacking the acceleration constant, which means it\u2019s missing a scaling factor. The paper mentions a transformation derived from first principles involving (t, x) and (\u03b7, \u03be). So the derived transformation should look something like c t = \u03be sinh(\u03b7) and x = \u03be cosh(\u03b7), possibly with an acceleration factor included. I\u2019ll check the units to confirm that \u03b7/c is dimensionless. It turns out we can represent \u03b7 as a product of a constant and proper time, which might change our transformation form.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Evaluating derived transformation**\n\nI see that the claim is lacking the acceleration constant, which means it\u2019s missing a scaling factor. The paper mentions a transformation derived from first principles involving (t, x) and (\u03b7, \u03be). So the derived transformation should look something like c t = \u03be sinh(\u03b7) and x = \u03be cosh(\u03b7), possibly with an acceleration factor included. I\u2019ll check the units to confirm that \u03b7/c is dimensionless. It turns out we can represent \u03b7 as a product of a constant and proper time, which might change our transformation form.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp483ZdnkahPv9AX60US7lN-NdOoDzHVv_hzh_vIFOczesaypHIjVIk78Z3JdTsaQeMAV7UFzXmbzkQjuOm3LI8vYd2oyAsoW65zLNPsGLm_aidWW9T5tXDMAz5BryOqI1yTrd1QfoXlKCXlXwzDu-moSAS2E5Zf2L9DqrUcbH1x7lW-n-s-wC_uyIW2aBjZ1EVU7achyuk9T8kCrhe55ZoFfGk0i2218tP6Lg-0ZwIghggok_RqC2FOFAoLD_q0ISuDPFLDJBp70UNOmQxVDdmGAQylnTt0M2tLa0JxsVbvFr50ANTO2tYoJ522UYaVEgyRrOdg6BsB1hm8rJfj4Ljtb0dCAnmxW07yq3hX2qROaITAaC1gW7r62Y-uuyhqUBM8oUQz7nVQ5j3ToTMYCHo9uslBizUaPRpuzmE6a5uteOI3RGntAGmGu8luGzhHMEqAe4Q0PhsDZoU1f6vXMRUUoGoQxut1QTSaDUR0YStqO9P2hht1uir33Ouf0Op5PXD45rKb2fqAnmV7MsNJVlH4YmSw==",
+            "format": "openai-responses-v1",
+            "id": "rs_01a694d23e5831190169e3cdc70a3081938e12e893a2213ac1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 519,
+    "completion_tokens": 4096,
+    "total_tokens": 4615,
+    "cost": 0.0185933,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0185933,
+      "upstream_inference_prompt_cost": 0.0005709,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

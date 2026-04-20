@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776551082-mbMOqc0zp4szrEGDBqHB",
+  "object": "chat.completion",
+  "created": 1776551082,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 17,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"It's the standard static, spherically symmetric metric ansatz leading to the Schwarzschild solution.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5AS1bIlzjIYEEXy1sXJi4crVE0XCDe83AIhF-vnNEcRwrS5HG8ZAsIKWsZz8QpMVFi_xVRtJ9CIIMkUjVxbSqHvK0n3vLjdgBXOuFpcD420OLmbfwEnRIBqM9jmDjizlUCSs2l4br8m1PHVodAsb8KdnIflx5spHk0xPvEn93_7ucDFW5UCJNsP8lmznlGIoDcYdn3M9MV9z4vJp1WbkU8QZW_frlikGmgZGcYyieSjEdrCi54rp3A_F-eRGJ71vuMZbdbuY23f2vgmRKDarRd4cVDnShF7fy1yuXxGreRBG8FujW6ZiEu9rUtJ7aEjqBJpP0wckdedHx2Zvmd4O6kCUqrDyoLbZ5wEemQ-ahY2hkVsZZM1--LZTxI7N0y3hpAyV7fQJIdnH8GZ1Yf3oS2ZzFw2e-Kc46VPHdUnecF_nwT0ruR7Ww6q_ChGhkSz2YY4eaWK2_AfCIiVrVXYWY7miUsxbOChPKMftkGB3s84vLsPv46LvQHjLngwU8qDBQo3fldW3JuTwS4PJMj3oVnwFXw==",
+            "format": "openai-responses-v1",
+            "id": "rs_0e01f472745476610169e404ab2b208195a0dc6fc36f158cea",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 384,
+    "completion_tokens": 3161,
+    "total_tokens": 3545,
+    "cost": 0.0143308,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0143308,
+      "upstream_inference_prompt_cost": 0.0004224,
+      "upstream_inference_completions_cost": 0.0139084
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1536,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

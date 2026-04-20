@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776550294-LJiO2Lmwpd410msUmgW3",
+  "object": "chat.completion",
+  "created": 1776550294,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":12,\"verdict\":\"CONFIRMED\",\"explanation\":\"For metric \\(g_{rr}=e^{\\lambda(r)}\\), \\(g^{rr}=e^{-\\lambda}\\). Then \\(\\Gamma^r_{rr}=\\tfrac12 g^{rr}\\partial_r g_{rr}=\\tfrac12 e^{-\\lambda}(e^\\lambda\\lambda')=\\tfrac12\\lambda'\\).\",\"confidence\":0.99}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 366,
+    "completion_tokens": 99,
+    "total_tokens": 465,
+    "cost": 0.0024,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0024,
+      "upstream_inference_prompt_cost": 0.000915,
+      "upstream_inference_completions_cost": 0.001485
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

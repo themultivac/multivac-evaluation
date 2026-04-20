@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776549166-PiR36SCAZw0bdiKPOu46",
+  "object": "chat.completion",
+  "created": 1776549166,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\": 3, \"verdict\": \"CONFIRMED\", \"explanation\": \"Vacuum assumption (T_{\u03bc\u03bd} = 0) outside the mass is standard for deriving the Schwarzschild metric.\", \"confidence\": 1.0}",
+        "refusal": null,
+        "reasoning": "**Confirming data accuracy**\n\nI\u2019m checking if \"CONFIRMED\" is the right verdict. I see that the assumption of T_{\u03bc\u03bd}=0 for the vacuum solution is indeed correct. I'll create a JSON structure to reflect that, ensuring the explanation stays under 30 words. It should say, \"Vacuum assumption (T_{\u03bc\u03bd}=0) is standard for Schwarzschild derivation outside a mass,\" which keeps it concise. I\u2019m feeling confident about this, so it\u2019s time to finalize that JSON output!",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Confirming data accuracy**\n\nI\u2019m checking if \"CONFIRMED\" is the right verdict. I see that the assumption of T_{\u03bc\u03bd}=0 for the vacuum solution is indeed correct. I'll create a JSON structure to reflect that, ensuring the explanation stays under 30 words. It should say, \"Vacuum assumption (T_{\u03bc\u03bd}=0) is standard for Schwarzschild derivation outside a mass,\" which keeps it concise. I\u2019m feeling confident about this, so it\u2019s time to finalize that JSON output!",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_0z18qx31ky9IDVkCmSrxRxV0P4zGPCH3z-4I-7Y0ozOiRaWuM3Q6onru1nmsc6uS5nIqn5QebeBVVtEMLNnUhSoaIgqgapk3epGn3rgwutQSlTNkRAwTvT5XoVymxFOctvLcw5BMWdK6g2t2vwo0QiM21bHjLN70aMyMjFNxZ1Z1824PP0MAkUC7m1CVaeSebC9686Nu5hwKgys4pTV3mArtEgDmEhC5TOmMP7FUA10WAQQzjz_rsWqydIqno9tpsIMOuPCXD-RFSpGL5_dgrU65e-vGqvYwP9Y3jC86I42fahMThJu8G4VRM_ShHsBZqhbt-VYp20CJ3gI8moyMPcHGPaDfsouonsPjiESqq_p0TTgn87SdSta1FO89bZUI6qIGsg6-YH5NeZ0eNQUWr-OywyI4OxRsVE6uce39JcwQFCPv1tleM-tTxys52o6jIDMsm1yzAFQqf1jlFVQCDOYb2BqVAB2VwNYnsdO3IFDlpUI596SucNkVS6ER6qf2ODtkyvufCpueufECml2CARuw==",
+            "format": "openai-responses-v1",
+            "id": "rs_0ced6c3a058c49390169e3fd2ebac081948a03a2760c8f9afa",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 373,
+    "completion_tokens": 1089,
+    "total_tokens": 1462,
+    "cost": 0.0052019,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0052019,
+      "upstream_inference_prompt_cost": 0.0004103,
+      "upstream_inference_completions_cost": 0.0047916
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 512,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

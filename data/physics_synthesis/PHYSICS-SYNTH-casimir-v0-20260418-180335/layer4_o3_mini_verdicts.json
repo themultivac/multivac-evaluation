@@ -1,0 +1,452 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "The Casimir force per unit area between two perfectly conducting, infinite, parallel plates separated by distance d is F/A = -\u03c0\u00b2\u210fc/(240 d\u2074)",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The stated formula is the correct standard result for the Casimir force per unit area, corresponding to the derivative of the Casimir energy E/A = -\u03c0\u00b2\u210fc/(720 d\u00b3).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "The stated formula is the correct standard result for the Casimir force per unit area, corresponding to the derivative of the Casimir energy E/A = -\u03c0\u00b2\u210fc/(720 d\u00b3).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:25:27.215016"
+  },
+  {
+    "claim_id": 2,
+    "claim_text": "The negative sign indicates an attractive force.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":2,\"verdict\":\"CONFIRMED\",\"explanation\":\"With the usual convention \\(F/A=-\\,\\partial(U/A)/\\partial d\\), a negative pressure means plates are pulled together, i.e. an attractive Casimir force.\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:25:30.491186"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "The plates are assumed to be infinite and located at z=0 and z=d.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is the standard geometric setup, directly matching the problem statement's requirement of infinite parallel plates separated by distance d.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the standard geometric setup, directly matching the problem statement's requirement of infinite parallel plates separated by distance d.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:25:35.714207"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "The allowed modes in the z direction are quantized with mode functions proportional to sin(n\u03c0z/d).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":6,\"verdict\":\"INCOMPLETE\",\"explanation\":\"TM modes have sin(n\u03c0z/d), but TE modes involve cos(n\u03c0z/d) and include no n=0 physical mode. Boundary conditions quantize k_z=n\u03c0/d, not universally sine mode functions.\",\"confidence\":0.96}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 6,
+      "verdict": "INCOMPLETE",
+      "explanation": "TM modes have sin(n\u03c0z/d), but TE modes involve cos(n\u03c0z/d) and include no n=0 physical mode. Boundary conditions quantize k_z=n\u03c0/d, not universally sine mode functions.",
+      "confidence": 0.96
+    },
+    "timestamp": "2026-04-18T19:25:38.990390"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "k_z = n\u03c0/d, with n = 1, 2, 3, ...",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 7,\n    \"verdict\": \"INCOMPLETE\",\n    \"explanation\": \"The claim misses the n=0 mode, which has one allowed polarization (TM). Excluding it leads to an incorrect zero-point energy sum.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 7,
+      "verdict": "INCOMPLETE",
+      "explanation": "The claim misses the n=0 mode, which has one allowed polarization (TM). Excluding it leads to an incorrect zero-point energy sum.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:25:50.897557"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "In the x and y directions the wave-vectors k_x and k_y are continuous because the plates are infinite.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"Infinite plate extent preserves translational invariance parallel to plates, so no boundary quantization in x,y; allowed k_x,k_y form a continuum in the infinite-area limit.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 8,
+      "verdict": "CONFIRMED",
+      "explanation": "Infinite plate extent preserves translational invariance parallel to plates, so no boundary quantization in x,y; allowed k_x,k_y form a continuum in the infinite-area limit.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T19:25:53.879534"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "There is a subtlety regarding the n=0 mode and how the two physical polarizations are counted, but these details do not affect the final result.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The n=0 mode has only one polarization. This correctly provides the 1/2 factor needed in the Euler-Maclaurin formula; ignoring it yields an incorrect finite term.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "ERROR",
+      "explanation": "The n=0 mode has only one polarization. This correctly provides the 1/2 factor needed in the Euler-Maclaurin formula; ignoring it yields an incorrect finite term.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:26:05.618063"
+  },
+  {
+    "claim_id": 10,
+    "claim_text": "The dispersion relation is \u03c9_n(k_\u22a5) = c\u221a(k_\u22a5\u00b2 + (n\u03c0/d)\u00b2).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":10,\"verdict\":\"CONFIRMED\",\"explanation\":\"For perfectly conducting parallel plates, allowed longitudinal wave numbers are \\(k_z=n\\pi/d\\); Maxwell modes then satisfy \\(\\omega=c\\sqrt{k_\\perp^2+k_z^2}\\).\",\"confidence\":0.98}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:26:09.414588"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "The energy per unit area is U(d)/A = (\u210f/2) \u03a3_modes \u03c9.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":12,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Bare mode sum gives divergent total zero-point energy per area. Need explicit division by plate area, mode density, two polarizations, and later vacuum subtraction/regularization.\",\"confidence\":0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 12,
+      "verdict": "INCOMPLETE",
+      "explanation": "Bare mode sum gives divergent total zero-point energy per area. Need explicit division by plate area, mode density, two polarizations, and later vacuum subtraction/regularization.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T19:26:12.681229"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "U(d)/A = (\u210f/2) \u03a3_{n=1}^\u221e \u222b d\u00b2k_\u22a5/(2\u03c0)\u00b2 c\u221a(k_\u22a5\u00b2 + (n\u03c0/d)\u00b2)",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 13,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"Missing a factor of 2 for the two polarization states of n \\u2265 1 modes, and completely omits the n=0 mode (which has one polarization).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "ERROR",
+      "explanation": "Missing a factor of 2 for the two polarization states of n \u2265 1 modes, and completely omits the n=0 mode (which has one polarization).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:26:21.398798"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "This sum/integral is divergent.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":14,\"verdict\":\"CONFIRMED\",\"explanation\":\"The zero-point mode sum/integral over all electromagnetic frequencies diverges in the ultraviolet; without regularization, the vacuum energy is formally infinite.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 14,
+      "verdict": "CONFIRMED",
+      "explanation": "The zero-point mode sum/integral over all electromagnetic frequencies diverges in the ultraviolet; without regularization, the vacuum energy is formally infinite.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T19:26:24.559449"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "A physically motivated regularization is to introduce an exponential cutoff factor e^{-\u03bb\u03c9} with \u03bb > 0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"An exponential cutoff reflects the physical reality that real metals become transparent at high frequencies, naturally suppressing the contribution of high-energy modes to the Casimir force.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "An exponential cutoff reflects the physical reality that real metals become transparent at high frequencies, naturally suppressing the contribution of high-energy modes to the Casimir force.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:26:30.411888"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "The regularized energy is U(d,\u03bb)/A = (\u210f/2) \u03a3_{n=1}^\u221e \u222b d\u00b2k_\u22a5/(2\u03c0)\u00b2 c\u221a(k_\u22a5\u00b2+(n\u03c0/d)\u00b2) e^{-\u03bbc\u221a(k_\u22a5\u00b2+(n\u03c0/d)\u00b2)}",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":16,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Captures one polarized mode sum with exponential cutoff, but omits EM polarization degeneracy/TE-TM mode counting and subtle n=0 treatment needed for full Casimir energy.\",\"confidence\":0.96}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 16,
+      "verdict": "INCOMPLETE",
+      "explanation": "Captures one polarized mode sum with exponential cutoff, but omits EM polarization degeneracy/TE-TM mode counting and subtle n=0 treatment needed for full Casimir energy.",
+      "confidence": 0.96
+    },
+    "timestamp": "2026-04-18T19:26:33.527774"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "Converting the k_\u22a5 integration to polar coordinates gives d\u00b2k_\u22a5 = 2\u03c0 k dk.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"In the two-dimensional transverse momentum plane, polar coordinates give \\(d^2k_\\perp = k\\,dk\\,d\\\\phi\\); integrating over angle \\(0\\\\to2\\\\pi\\) yields \\(2\\\\pi k\\,dk\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:26:36.627262"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "U(d,\u03bb)/A = (\u210fc)/(4\u03c0) \u03a3_{n=1}^\u221e \u222b_0^\u221e k dk \u221a(k\u00b2+(n\u03c0/d)\u00b2) e^{-\u03bbc\u221a(k\u00b2+(n\u03c0/d)\u00b2)}",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "```json\n{\n    \"claim_id\": 19,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"Omits the n=0 mode contribution (one polarization) and misses a factor of 2 for the two polarization states of the n>=1 modes.\",\n    \"confidence\": 1.0\n}\n```",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "ERROR",
+      "explanation": "Omits the n=0 mode contribution (one polarization) and misses a factor of 2 for the two polarization states of the n>=1 modes.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:26:49.754138"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "Substituting \u03c9 = \u221a(k\u00b2+(n\u03c0/d)\u00b2), when k runs from 0 to \u221e, \u03c9 runs from n\u03c0/d to \u221e.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"CONFIRMED\",\"explanation\":\"For fixed \\(n,d\\), \\(\\omega(k)=\\sqrt{k^2+(n\\pi/d)^2}\\) is monotone increasing on \\(k\\ge0\\), so \\(k:0\\to\\infty\\) maps to \\(\\omega:n\\pi/d\\to\\infty\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:26:52.773351"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "Under this substitution, k dk = \u03c9 d\u03c9.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 21,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"Dimensionally incorrect. It misses a factor of c^2; the correct relation is k dk = \\u03c9 d\\u03c9 / c^2, derived from \\u03c9^2 = c^2(k^2 + k_z^2).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "ERROR",
+      "explanation": "Dimensionally incorrect. It misses a factor of c^2; the correct relation is k dk = \u03c9 d\u03c9 / c^2, derived from \u03c9^2 = c^2(k^2 + k_z^2).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:27:02.035220"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "U(d,\u03bb)/A = (\u210fc)/(4\u03c0) \u03a3_{n=1}^\u221e \u222b_{n\u03c0/d}^\u221e d\u03c9 \u03c9\u00b2 e^{-\u03bbc\u03c9}",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":22,\"verdict\":\"CONFIRMED\",\"explanation\":\"Correct after integrating over transverse modes and doubling TE/TM degeneracy for n\u22651: \\(E/A=(\\\\hbar c/4\\\\pi)\\\\sum_n\\\\int_{n\\\\pi/d}^\\\\infty \\\\omega^2 e^{-\\\\lambda c\\\\omega}d\\\\omega\\).\",\"confidence\":0.94}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:27:05.453051"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "Substituting x = \u03bbc\u03c9 transforms the integral to (1/(\u03bbc)\u00b3) \u222b_{\u03bbcn\u03c0/d}^\u221e x\u00b2 e^{-x} dx.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\\json_output}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:27:23.649262"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "U(d,\u03bb)/A = (\u210fc)/(4\u03c0(\u03bbc)\u00b3) \u03a3_{n=1}^\u221e e^{-\u03bbc(n\u03c0/d)} [(\u03bbcn\u03c0/d)\u00b2 + 2\u03bbc(n\u03c0/d) + 2]",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "```json\n{\n    \"claim_id\": 25,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The expression misses the n=0 term (which contributes to the Casimir energy) and has an incorrect prefactor (4\u03c0 instead of 2\u03c0) by omitting the two polarization states for n\u22651.\",\n    \"confidence\": 1.0\n",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:27:41.670945"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "The regulated energy still contains divergences as \u03bb\u21920.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"CONFIRMED\",\"explanation\":\"A cutoff-regularized zero-point energy generally has terms diverging like powers of 1/\\\\lambda as \\\\lambda\\\\to0; only after vacuum subtraction or renormalization does a finite Casimir term remain.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 26,
+      "verdict": "CONFIRMED",
+      "explanation": "A cutoff-regularized zero-point energy generally has terms diverging like powers of 1/\\lambda as \\lambda\\to0; only after vacuum subtraction or renormalization does a finite Casimir term remain.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T19:27:44.841582"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "These divergences are independent of the plate separation d and are present also in free space.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "```json\n{\n    \"claim_id\": 27,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The leading divergence in the zero-point energy per unit area is proportional to the plate separation d (representing volume energy), not independent of it.\",\n    \"confidence\": 1.0\n}\n```",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 27,
+      "verdict": "ERROR",
+      "explanation": "The leading divergence in the zero-point energy per unit area is proportional to the plate separation d (representing volume energy), not independent of it.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:27:57.439645"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "The finite Casimir energy per unit area is defined as U_Casimir(d)/A = U(d)/A - U(d\u2192\u221e)/A.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":28,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Equivalent in spirit, but \\(U(d\\\\to\\\\infty)/A\\) is itself divergent/ill-defined; one must subtract the free-space mode vacuum energy using the same regularization before taking limits.\",\"confidence\":0.96}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:28:00.816740"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "Only the d-dependent part is physically observable (in the form of a force).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 29,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In the Casimir effect, absolute vacuum energy is unobservable; only changes in energy with respect to plate separation d yield a measurable physical force.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 29,
+      "verdict": "CONFIRMED",
+      "explanation": "In the Casimir effect, absolute vacuum energy is unobservable; only changes in energy with respect to plate separation d yield a measurable physical force.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:28:05.630867"
+  },
+  {
+    "claim_id": 30,
+    "claim_text": "After subtracting the d-independent divergent terms, one obtains U_Casimir(d)/A = -\u03c0\u00b2\u210fc/(720 d\u00b3).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":30,\"verdict\":\"CONFIRMED\",\"explanation\":\"For two infinite perfectly conducting plates at zero temperature, standard regularized mode summation gives Casimir energy per area \\\\(U/A=-\\\\pi^2\\\\hbar c/(720 d^3)\\\\).\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 30,
+      "verdict": "CONFIRMED",
+      "explanation": "For two infinite perfectly conducting plates at zero temperature, standard regularized mode summation gives Casimir energy per area \\(U/A=-\\pi^2\\hbar c/(720 d^3)\\).",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T19:28:10.442684"
+  },
+  {
+    "claim_id": 31,
+    "claim_text": "The summation is recast in terms of Riemann zeta functions; one encounters sums of the form \u03a3_{n=1}^\u221e n\u00b3.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 31,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Integrating over transverse momenta yields a term proportional to n\u00b3, leading directly to the divergent sum \u03a3n\u00b3, which is regularized to \u03b6(-3).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 31,
+      "verdict": "CONFIRMED",
+      "explanation": "Integrating over transverse momenta yields a term proportional to n\u00b3, leading directly to the divergent sum \u03a3n\u00b3, which is regularized to \u03b6(-3).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:28:18.015850"
+  },
+  {
+    "claim_id": 34,
+    "claim_text": "F(d)/A = -\u2202/\u2202d [-\u03c0\u00b2\u210fc/(720 d\u00b3)]",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":34,\"verdict\":\"CONFIRMED\",\"explanation\":\"Derivative is correct: with U/A=-\\\\pi^2\\\\hbar c/(720 d^3), F/A=-\\\\partial_d(U/A)=-\\\\pi^2\\\\hbar c/(240 d^4), attractive.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 34,
+      "verdict": "CONFIRMED",
+      "explanation": "Derivative is correct: with U/A=-\\pi^2\\hbar c/(720 d^3), F/A=-\\partial_d(U/A)=-\\pi^2\\hbar c/(240 d^4), attractive.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T19:28:21.196906"
+  },
+  {
+    "claim_id": 35,
+    "claim_text": "The derivative of -\u03c0\u00b2\u210fc/(720 d\u00b3) with respect to d is -\u03c0\u00b2\u210fc/(720) \u00b7 (-3)/d\u2074 = \u03c0\u00b2\u210fc/(240 d\u2074).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 35,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The mathematical differentiation of the expression with respect to d is completely correct.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 35,
+      "verdict": "CONFIRMED",
+      "explanation": "The mathematical differentiation of the expression with respect to d is completely correct.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:28:28.465946"
+  },
+  {
+    "claim_id": 36,
+    "claim_text": "F(d)/A = -\u03c0\u00b2\u210fc/(240 d\u2074)",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":36,\"verdict\":\"CONFIRMED\",\"explanation\":\"For ideal perfectly conducting parallel plates at zero temperature in vacuum, differentiating \\(U/A=-\\pi^2\\hbar c/(720d^3)\\) gives \\(F/A=-\\pi^2\\hbar c/(240d^4)\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T19:28:31.845565"
+  },
+  {
+    "claim_id": 37,
+    "claim_text": "The plates are assumed to be perfectly conducting and infinite in extent.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 37,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is a standard assumption explicitly stated in the problem prompt for the ideal Casimir effect derivation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 37,
+      "verdict": "CONFIRMED",
+      "explanation": "This is a standard assumption explicitly stated in the problem prompt for the ideal Casimir effect derivation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:28:36.455321"
+  },
+  {
+    "claim_id": 38,
+    "claim_text": "The electromagnetic field is quantized in the region between the plates with boundary conditions that force the tangential electric field to vanish at the plate surfaces.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":38,\"verdict\":\"CONFIRMED\",\"explanation\":\"For perfectly conducting plates, Maxwell boundary conditions require \\\\(\\\\mathbf{n}\\\\times\\\\mathbf{E}=0\\\\) at each surface, so tangential electric field vanishes, determining allowed EM modes between plates.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 38,
+      "verdict": "CONFIRMED",
+      "explanation": "For perfectly conducting plates, Maxwell boundary conditions require \\(\\mathbf{n}\\times\\mathbf{E}=0\\) at each surface, so tangential electric field vanishes, determining allowed EM modes between plates.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T19:28:39.832483"
+  },
+  {
+    "claim_id": 40,
+    "claim_text": "An exponential cutoff factor e^{-\u03bb\u03c9} with subsequent removal via \u03bb\u21920 was used to regularize the divergent sums.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":40,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"Plausible regularization, but not justified unless shown applied consistently to both plate and free-vacuum energies and yielding cutoff-independent finite remainder.\",\"confidence\":0.92}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 40,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "Plausible regularization, but not justified unless shown applied consistently to both plate and free-vacuum energies and yielding cutoff-independent finite remainder.",
+      "confidence": 0.92
+    },
+    "timestamp": "2026-04-18T19:28:45.282661"
+  },
+  {
+    "claim_id": 41,
+    "claim_text": "The subtraction of the free-vacuum (d\u2192\u221e) contribution isolates the physically observable, d-dependent piece.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 41,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Subtracting the continuous free-space zero-point energy from the discrete cavity energy removes the unobservable bulk divergence, leaving the finite, d-dependent Casimir energy.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 41,
+      "verdict": "CONFIRMED",
+      "explanation": "Subtracting the continuous free-space zero-point energy from the discrete cavity energy removes the unobservable bulk divergence, leaving the finite, d-dependent Casimir energy.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T19:28:50.585160"
+  }
+]

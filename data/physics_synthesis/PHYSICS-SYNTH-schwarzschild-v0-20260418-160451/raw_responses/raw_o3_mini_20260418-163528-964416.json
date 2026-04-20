@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776548111-XqCIIYLYrHZi5a4NxVJ9",
+  "object": "chat.completion",
+  "created": 1776548111,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Analyzing Christoffel symbols**\n\nI'm working through the nonzero Christoffel symbols, and it looks like they lead to the R_{rr} component. I\u2019m checking the known result from standard texts, which indicates R_{rr} relates to \u03a6 and \u039b derivatives. However, I notice a discrepancy due to different sign conventions in various sources, like Weinberg or Carroll. I'm remembering how the metrics and their relationships matter, especially with B and A defined. It's a complex but intriguing puzzle worth untangling!",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Analyzing Christoffel symbols**\n\nI'm working through the nonzero Christoffel symbols, and it looks like they lead to the R_{rr} component. I\u2019m checking the known result from standard texts, which indicates R_{rr} relates to \u03a6 and \u039b derivatives. However, I notice a discrepancy due to different sign conventions in various sources, like Weinberg or Carroll. I'm remembering how the metrics and their relationships matter, especially with B and A defined. It's a complex but intriguing puzzle worth untangling!",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_kgXMf7W9O9lCgqZRaOyKnYzKeH04T7taUPw4MN9p8_cZYtfq-L47IrqE10mFC5AdyrAw7QWclYLPzE_3Nt2bhiukQ3NclsqR4XhN5O-WI74WCCyzesm3d48yTCYoSWIjhiU5ch7kDgKlnIV2Z6JoR8w_0pUsyK68MHxsWRdhO7SEA6UKaeiVxJmkSk_iKT1juxm2ieztxxWpkN8eqJ0LGVwXMxVvc4Fm8LzQ-ExbZ9zLvM5sjVosGjjLReMLLzS5iEGwcNU6dhfYucgQVnyhBc8_kENL_z28YU-64sHyEYB6E5StGesGy64p2AwWPqmNOhZTqgHYwTxMB2L3v7LoU6w8dx3yDFh7v_lVKYQ-qw6a-rU89I5rkSWxp22qvyiE-XasfJGaBB-iFYnMGE3vcpMVmU2T1FrXlxIxAAe4iL_YOmvfSpYP4kNAr7XZHzyZzebRSQvJb_MukM3WMWidoAUCmO982t3dgIqk7DXxeztMAvzF_P1uu0SKHSUnoJn5uAYAuOjZp66myV8fAMkBBPxA==",
+            "format": "openai-responses-v1",
+            "id": "rs_0d44308c4a3caf090169e3f90fc16c819599de870fba4f3cb4",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 371,
+    "completion_tokens": 4096,
+    "total_tokens": 4467,
+    "cost": 0.0184305,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0184305,
+      "upstream_inference_prompt_cost": 0.0004081,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

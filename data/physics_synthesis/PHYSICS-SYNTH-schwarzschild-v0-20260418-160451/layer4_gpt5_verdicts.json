@@ -1,0 +1,617 @@
+[
+  {
+    "claim_id": 1,
+    "claim_text": "We assume spherical symmetry.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Spherical symmetry is explicitly given as an assumption in the problem statement.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "Spherical symmetry is explicitly given as an assumption in the problem statement.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:31:17.709778"
+  },
+  {
+    "claim_id": 2,
+    "claim_text": "We assume static spacetime (time-independent, non-rotating).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 2,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Assuming a static, non-rotating spacetime is standard and justified for Schwarzschild metric derivation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 2,
+      "verdict": "CONFIRMED",
+      "explanation": "Assuming a static, non-rotating spacetime is standard and justified for Schwarzschild metric derivation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:31:28.445324"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "We assume vacuum outside the mass, so T_{\u03bc\u03bd}=0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 3,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The problem explicitly specifies a vacuum solution outside the mass, which correctly implies the stress-energy tensor is zero.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "The problem explicitly specifies a vacuum solution outside the mass, which correctly implies the stress-energy tensor is zero.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:31:33.443377"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "Einstein's equations reduce to R_{\u03bc\u03bd}=0 since G_{\u03bc\u03bd}=R_{\u03bc\u03bd}-\u00bdg_{\u03bc\u03bd}R=0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 4,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In vacuum, contracting Einstein's equations yields R = 0, so indeed R_{\u03bc\u03bd} = 0.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 4,
+      "verdict": "CONFIRMED",
+      "explanation": "In vacuum, contracting Einstein's equations yields R = 0, so indeed R_{\u03bc\u03bd} = 0.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:31:42.045175"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "The metric is diagonal with g_{tt}=-e^{2\u03a6}c\u00b2, g_{rr}=e^{2\u039b}, g_{\u03b8\u03b8}=r\u00b2, g_{\u03c6\u03c6}=r\u00b2sin\u00b2\u03b8.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 6,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The ansatz is standard for static spherically symmetric spacetimes, matching the Schwarzschild metric form.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 6,
+      "verdict": "CONFIRMED",
+      "explanation": "The ansatz is standard for static spherically symmetric spacetimes, matching the Schwarzschild metric form.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:31:56.687757"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "The inverse metric has g^{tt}=-e^{-2\u03a6}/c\u00b2, g^{rr}=e^{-2\u039b}, g^{\u03b8\u03b8}=1/r\u00b2, g^{\u03c6\u03c6}=1/(r\u00b2sin\u00b2\u03b8).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 7,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"For a diagonal metric, the inverse metric components are simply the reciprocals of the diagonal elements. The stated components are exactly correct.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 7,
+      "verdict": "CONFIRMED",
+      "explanation": "For a diagonal metric, the inverse metric components are simply the reciprocals of the diagonal elements. The stated components are exactly correct.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:32:03.036236"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "The nontrivial Ricci tensor components are R_{tt}=0, R_{rr}=0, R_{\u03b8\u03b8}=0, with R_{\u03c6\u03c6}=sin\u00b2\u03b8 R_{\u03b8\u03b8}.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:34:06.945909"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "R_{tt}=e^{2(\u03a6-\u039b)}c\u00b2(\u03a6''+\u03a6'\u00b2-\u03a6'\u039b'+2\u03a6'/r)=0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expression for the R_{tt} component of the Ricci tensor for a static, spherically symmetric metric is correct and matches standard textbook derivations.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "CONFIRMED",
+      "explanation": "The expression for the R_{tt} component of the Ricci tensor for a static, spherically symmetric metric is correct and matches standard textbook derivations.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:34:17.902231"
+  },
+  {
+    "claim_id": 10,
+    "claim_text": "R_{rr}=-\u03a6''-\u03a6'\u00b2+\u03a6'\u039b'+2\u039b'/r=0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:35:28.968753"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "R_{\u03b8\u03b8}=1-e^{-2\u039b}(1-r\u039b'+r\u03a6')=0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expression for the Ricci tensor component R_{\u03b8\u03b8} correctly matches the standard derivation for a spherically symmetric metric, and it vanishes in vacuum.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 11,
+      "verdict": "CONFIRMED",
+      "explanation": "The expression for the Ricci tensor component R_{\u03b8\u03b8} correctly matches the standard derivation for a spherically symmetric metric, and it vanishes in vacuum.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:35:53.298857"
+  },
+  {
+    "claim_id": 12,
+    "claim_text": "Primes denote derivatives with respect to r.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 12, \"verdict\": \"CONFIRMED\", \"explanation\": \"This is standard notation where primes denote derivatives with respect to the radial coordinate r.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 12,
+      "verdict": "CONFIRMED",
+      "explanation": "This is standard notation where primes denote derivatives with respect to the radial coordinate r.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:36:01.742080"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "From R_{tt}=0: \u03a6''+\u03a6'\u00b2-\u03a6'\u039b'+2\u03a6'/r=0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 13,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expression correctly represents the R_{tt} component of the Ricci tensor for a static, spherically symmetric metric set to zero in vacuum.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 13,
+      "verdict": "CONFIRMED",
+      "explanation": "The expression correctly represents the R_{tt} component of the Ricci tensor for a static, spherically symmetric metric set to zero in vacuum.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:36:13.512191"
+  },
+  {
+    "claim_id": 14,
+    "claim_text": "From R_{rr}=0: -\u03a6''-\u03a6'\u00b2+\u03a6'\u039b'+2\u039b'/r=0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:37:18.638953"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "Adding the equations from R_{tt}=0 and R_{rr}=0 gives (2/r)(\u03a6'+\u039b')=0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Setting R_{tt}=0 and R_{rr}=0 yields two equations whose sum exactly cancels the second derivative and non-linear terms, leaving (2/r)(\\u03a6'+\\u039b')=0.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "Setting R_{tt}=0 and R_{rr}=0 yields two equations whose sum exactly cancels the second derivative and non-linear terms, leaving (2/r)(\u03a6'+\u039b')=0.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:37:30.823608"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "Hence \u03a6'+\u039b'=0, so \u03a6(r)=-\u039b(r)+const.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 16,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Integration of d/dr(\u03a6+\u039b)=0 yields \u03a6+\u039b=constant, so rearranging gives \u03a6 = -\u039b + constant, which is standard in the Schwarzschild derivation.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 16,
+      "verdict": "CONFIRMED",
+      "explanation": "Integration of d/dr(\u03a6+\u039b)=0 yields \u03a6+\u039b=constant, so rearranging gives \u03a6 = -\u039b + constant, which is standard in the Schwarzschild derivation.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T16:37:44.443641"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "The constant can be absorbed into a rescaling of the time coordinate t, so we take \u03a6(r)=-\u039b(r).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 17,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Integrating \\u03a6' + \\u039b' = 0 yields \\u03a6 + \\u039b = C. Rescaling time t \\u2192 t e^(C/2) sets C=0, correctly yielding \\u03a6(r) = -\\u039b(r).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 17,
+      "verdict": "CONFIRMED",
+      "explanation": "Integrating \u03a6' + \u039b' = 0 yields \u03a6 + \u039b = C. Rescaling time t \u2192 t e^(C/2) sets C=0, correctly yielding \u03a6(r) = -\u039b(r).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:37:50.488314"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "Thus e^{2\u03a6}=e^{-2\u039b}.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 18, \"verdict\": \"CONFIRMED\", \"explanation\": \"Vacuum field equations give \u03a6' = -\u039b'; with asymptotic flatness the integration constant is zero, so e^(2\u03a6) = e^(-2\u039b).\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 18,
+      "verdict": "CONFIRMED",
+      "explanation": "Vacuum field equations give \u03a6' = -\u039b'; with asymptotic flatness the integration constant is zero, so e^(2\u03a6) = e^(-2\u039b).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:38:05.430948"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "Let f(r)\u2261e^{2\u03a6(r)}=e^{-2\u039b(r)}.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 19,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This correctly reflects the consequence of the field equations implying \u03a6' + \u039b' = 0, allowing the metric components to be expressed via a single function f(r).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "This correctly reflects the consequence of the field equations implying \u03a6' + \u039b' = 0, allowing the metric components to be expressed via a single function f(r).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:38:11.273752"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "The metric becomes ds\u00b2=-f(r)c\u00b2dt\u00b2+dr\u00b2/f(r)+r\u00b2d\u03a9\u00b2, where d\u03a9\u00b2=d\u03b8\u00b2+sin\u00b2\u03b8 d\u03c6\u00b2.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 20,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"It simply states the standard Schwarzschild metric ansatz used for a spherically symmetric, static vacuum solution.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 20,
+      "verdict": "CONFIRMED",
+      "explanation": "It simply states the standard Schwarzschild metric ansatz used for a spherically symmetric, static vacuum solution.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:38:26.838197"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "Using R_{\u03b8\u03b8}=0: 1-e^{-2\u039b}(1-r\u039b'+r\u03a6')=0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 21,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expression for the Ricci tensor component R_{\u03b8\u03b8} correctly matches the standard derivation for a spherically symmetric metric, yielding 1 - e^{-2\u039b}(1 - r\u039b' + r\u03a6') = 0.\",\n    \"confidence",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:38:43.428206"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "Since \u03a6'=-\u039b', we have 1-r\u039b'+r\u03a6'=1-2r\u039b'.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 22,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Substituting \u03a6' = -\u039b' into 1 - r\u039b' + r\u03a6' correctly gives 1 - 2r\u039b', making the step valid.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 22,
+      "verdict": "CONFIRMED",
+      "explanation": "Substituting \u03a6' = -\u039b' into 1 - r\u039b' + r\u03a6' correctly gives 1 - 2r\u039b', making the step valid.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T16:39:45.821609"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "Also e^{-2\u039b}=f(r).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 23,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard result from vacuum field equations (R_tt and R_rr) showing g_tt and g_rr are inverses, making e^{-2\u039b} equal to the time component f(r).\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 23,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard result from vacuum field equations (R_tt and R_rr) showing g_tt and g_rr are inverses, making e^{-2\u039b} equal to the time component f(r).",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T16:39:54.186278"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "So R_{\u03b8\u03b8}=0 becomes 1-f(r)(1-2r\u039b')=0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:41:11.699117"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "Since f=e^{-2\u039b}, differentiating gives f'=-2\u039b'e^{-2\u039b}=-2\u039b'f.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 25,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The differentiation correctly applies the chain rule to the exponential function, yielding the stated result.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 25,
+      "verdict": "CONFIRMED",
+      "explanation": "The differentiation correctly applies the chain rule to the exponential function, yielding the stated result.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:41:17.415638"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "Hence \u039b'=-f'/(2f).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 26,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using f=exp(2\u03a6) so that f'=2f\u03a6' and \u039b'=-\u03a6' directly leads to \u039b'=-f'/(2f), consistent with standard derivations.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 26,
+      "verdict": "CONFIRMED",
+      "explanation": "Using f=exp(2\u03a6) so that f'=2f\u03a6' and \u039b'=-\u03a6' directly leads to \u039b'=-f'/(2f), consistent with standard derivations.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T16:42:43.044847"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "Substituting into R_{\u03b8\u03b8}=0: 1-f(1+rf'/f)=0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "```json\n{\n    \"claim_id\": 27,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expression correctly represents R_{\u03b8\u03b8}=0 for a metric where g_{tt}=-f(r) and g_{rr}=1/f(r), simplifying to 1 - f - rf' = 0.\",\n    \"",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:43:00.147144"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "This simplifies to 1-f-rf'=0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 28,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"It is equivalent to r*f' + f = 1, derived from d/dr[r(1-f)] = 0 in the standard Schwarzschild derivation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 28,
+      "verdict": "CONFIRMED",
+      "explanation": "It is equivalent to r*f' + f = 1, derived from d/dr[r(1-f)] = 0 in the standard Schwarzschild derivation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:43:13.453112"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "Thus rf'+f=1, which is d/dr(rf)=1.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 29,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The product rule d/dr(rf) = rf' + f is mathematically correct and a standard step in solving the vacuum Einstein field equations for the Schwarzschild metric.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 29,
+      "verdict": "CONFIRMED",
+      "explanation": "The product rule d/dr(rf) = rf' + f is mathematically correct and a standard step in solving the vacuum Einstein field equations for the Schwarzschild metric.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:43:23.427426"
+  },
+  {
+    "claim_id": 30,
+    "claim_text": "Integrating gives rf=r+C, where C is an integration constant.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 30, \"verdict\": \"ERROR\", \"explanation\": \"This integration step is oversimplified and ignores detailed metric forms required in the Schwarzschild derivation.\", \"confidence\": 0.9}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 30,
+      "verdict": "ERROR",
+      "explanation": "This integration step is oversimplified and ignores detailed metric forms required in the Schwarzschild derivation.",
+      "confidence": 0.9
+    },
+    "timestamp": "2026-04-18T16:43:29.640958"
+  },
+  {
+    "claim_id": 31,
+    "claim_text": "Therefore f(r)=1+C/r.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 31,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This correctly solves the vacuum field equation R_{\\\\theta\\\\theta}=0, which reduces to (r f(r))' = 1, yielding f(r) = 1 + C/r with integration constant C.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 31,
+      "verdict": "CONFIRMED",
+      "explanation": "This correctly solves the vacuum field equation R_{\\theta\\theta}=0, which reduces to (r f(r))' = 1, yielding f(r) = 1 + C/r with integration constant C.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:43:35.884375"
+  },
+  {
+    "claim_id": 32,
+    "claim_text": "The metric is ds\u00b2=-(1+C/r)c\u00b2dt\u00b2+dr\u00b2/(1+C/r)+r\u00b2d\u03a9\u00b2.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 32,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The metric's factor should be 1 - (2GM/(c\u00b2r)), not 1 + C/r, thus incorrectly identifying the coordinate singularity.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 32,
+      "verdict": "ERROR",
+      "explanation": "The metric's factor should be 1 - (2GM/(c\u00b2r)), not 1 + C/r, thus incorrectly identifying the coordinate singularity.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:43:45.919126"
+  },
+  {
+    "claim_id": 33,
+    "claim_text": "Far from the mass, spacetime must approach flat Minkowski space, so f(r)\u21921 as r\u2192\u221e.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 33,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Asymptotic flatness is the correct physical boundary condition for an isolated mass, requiring the metric to approach the Minkowski metric as r approaches infinity.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 33,
+      "verdict": "CONFIRMED",
+      "explanation": "Asymptotic flatness is the correct physical boundary condition for an isolated mass, requiring the metric to approach the Minkowski metric as r approaches infinity.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:43:50.834135"
+  },
+  {
+    "claim_id": 34,
+    "claim_text": "The form f(r)=1+C/r already satisfies f(r)\u21921 as r\u2192\u221e.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 34,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Since C/r tends to zero as r\u2192\u221e, f(r)=1+C/r correctly approaches 1, satisfying asymptotic flatness.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 34,
+      "verdict": "CONFIRMED",
+      "explanation": "Since C/r tends to zero as r\u2192\u221e, f(r)=1+C/r correctly approaches 1, satisfying asymptotic flatness.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:44:04.965700"
+  },
+  {
+    "claim_id": 37,
+    "claim_text": "From the metric, g_{tt}/c\u00b2=-(1+C/r).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 37,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is a standard intermediate result for the time component of the vacuum spherically symmetric metric before evaluating the integration constant C using the Newtonian limit.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 37,
+      "verdict": "CONFIRMED",
+      "explanation": "This is a standard intermediate result for the time component of the vacuum spherically symmetric metric before evaluating the integration constant C using the Newtonian limit.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:44:11.930194"
+  },
+  {
+    "claim_id": 38,
+    "claim_text": "In the weak field, 1+C/r=1+2\u03c6_N/c\u00b2=1-2GM/(c\u00b2r).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 38,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The weak-field expansion correctly uses \u03c6_N = -GM/r, so 1+2\u03c6_N/c\u00b2 equals 1-2GM/(c\u00b2r), matching the standard Schwarzschild limit.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 38,
+      "verdict": "CONFIRMED",
+      "explanation": "The weak-field expansion correctly uses \u03c6_N = -GM/r, so 1+2\u03c6_N/c\u00b2 equals 1-2GM/(c\u00b2r), matching the standard Schwarzschild limit.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T16:44:47.973764"
+  },
+  {
+    "claim_id": 39,
+    "claim_text": "Hence C=-2GM/c\u00b2.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 39,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Matches the weak-field Newtonian limit where g_00 \\u2248 -(1 - 2GM/rc\\u00b2), correctly identifying the integration constant.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 39,
+      "verdict": "CONFIRMED",
+      "explanation": "Matches the weak-field Newtonian limit where g_00 \u2248 -(1 - 2GM/rc\u00b2), correctly identifying the integration constant.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:44:53.509038"
+  },
+  {
+    "claim_id": 40,
+    "claim_text": "Therefore f(r)=1-2GM/(c\u00b2r).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 40,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Matches the standard Schwarzschild metric factor derived from Einstein\u2019s equations, with singularity at r = 2GM/c\u00b2.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 40,
+      "verdict": "CONFIRMED",
+      "explanation": "Matches the standard Schwarzschild metric factor derived from Einstein\u2019s equations, with singularity at r = 2GM/c\u00b2.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:45:03.737247"
+  },
+  {
+    "claim_id": 41,
+    "claim_text": "The Schwarzschild metric is ds\u00b2=-(1-2GM/(c\u00b2r))c\u00b2dt\u00b2+dr\u00b2/(1-2GM/(c\u00b2r))+r\u00b2(d\u03b8\u00b2+sin\u00b2\u03b8 d\u03c6\u00b2).",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 41,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The stated equation is the correct standard form of the Schwarzschild metric in spherical coordinates.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 41,
+      "verdict": "CONFIRMED",
+      "explanation": "The stated equation is the correct standard form of the Schwarzschild metric in spherical coordinates.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:45:09.410174"
+  },
+  {
+    "claim_id": 43,
+    "claim_text": "The metric coefficients become singular when 1-2GM/(c\u00b2r)=0.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 43,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The radial metric coefficient g_rr = (1 - 2GM/c^2r)^(-1) diverges when 1 - 2GM/c^2r = 0, defining the coordinate singularity at the Schwarzschild radius.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 43,
+      "verdict": "CONFIRMED",
+      "explanation": "The radial metric coefficient g_rr = (1 - 2GM/c^2r)^(-1) diverges when 1 - 2GM/c^2r = 0, defining the coordinate singularity at the Schwarzschild radius.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:45:16.032104"
+  },
+  {
+    "claim_id": 44,
+    "claim_text": "Solving gives r=2GM/c\u00b2.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 44,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The Schwarzschild radius is correctly given by r = 2GM/c\u00b2, matching the standard derivation.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 44,
+      "verdict": "CONFIRMED",
+      "explanation": "The Schwarzschild radius is correctly given by r = 2GM/c\u00b2, matching the standard derivation.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:45:26.471452"
+  },
+  {
+    "claim_id": 45,
+    "claim_text": "This defines the Schwarzschild radius: r_s=2GM/c\u00b2.",
+    "adversary": "Gemini 3.1 Pro Preview",
+    "adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 45,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The formula r_s = 2GM/c\\u00b2 correctly identifies the Schwarzschild radius, corresponding to the coordinate singularity in the metric where the g_rr component diverges.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 45,
+      "verdict": "CONFIRMED",
+      "explanation": "The formula r_s = 2GM/c\u00b2 correctly identifies the Schwarzschild radius, corresponding to the coordinate singularity in the metric where the g_rr component diverges.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:45:31.701130"
+  },
+  {
+    "claim_id": 46,
+    "claim_text": "At r=r_s, g_{tt}=0 and g_{rr}\u2192\u221e.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 46,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"At r=r_s, the Schwarzschild metric yields 1 - r_s/r = 0, so g_tt vanishes and g_rr diverges, indicating the coordinate singularity.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 46,
+      "verdict": "CONFIRMED",
+      "explanation": "At r=r_s, the Schwarzschild metric yields 1 - r_s/r = 0, so g_tt vanishes and g_rr diverges, indicating the coordinate singularity.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:45:43.681045"
+  },
+  {
+    "claim_id": 50,
+    "claim_text": "At r=r_s, the Kretschner scalar is finite; at r=0, it diverges.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 50, \"verdict\": \"CONFIRMED\", \"explanation\": \"The Schwarzschild Kretschmann scalar is finite at r=r_s and diverges at r=0, confirming r=0 as a true curvature singularity.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 50,
+      "verdict": "CONFIRMED",
+      "explanation": "The Schwarzschild Kretschmann scalar is finite at r=r_s and diverges at r=0, confirming r=0 as a true curvature singularity.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:45:52.897006"
+  }
+]

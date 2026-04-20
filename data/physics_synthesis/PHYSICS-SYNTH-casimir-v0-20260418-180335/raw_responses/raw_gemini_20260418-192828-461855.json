@@ -1,0 +1,59 @@
+{
+  "id": "gen-1776558503-yGLNM2OgNjObIVSnRQFo",
+  "object": "chat.completion",
+  "created": 1776558503,
+  "model": "google/gemini-3.1-pro-preview-20260219",
+  "provider": "Google",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 35,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The mathematical differentiation of the expression with respect to d is completely correct.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Verifying the Calculation**\n\nI'm currently scrutinizing the provided differentiation. My initial check suggests a discrepancy in the final exponent of 'd', and I'm recalculating to confirm the exact coefficient and power.\n\n**Confirming the Derivation**\n\nMy analysis confirms the mathematical correctness of the derivative calculation. I have verified the steps and the resulting expression for the given term, and my confidence in this specific aspect is high.\n\n",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "**Verifying the Calculation**\n\nI'm currently scrutinizing the provided differentiation. My initial check suggests a discrepancy in the final exponent of 'd', and I'm recalculating to confirm the exact coefficient and power.\n\n**Confirming the Derivation**\n\nMy analysis confirms the mathematical correctness of the derivative calculation. I have verified the steps and the resulting expression for the given term, and my confidence in this specific aspect is high.\n\n",
+            "format": "google-gemini-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "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",
+            "format": "google-gemini-v1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 530,
+    "completion_tokens": 453,
+    "total_tokens": 983,
+    "cost": 0.006496,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.006496,
+      "upstream_inference_prompt_cost": 0.00106,
+      "upstream_inference_completions_cost": 0.005436
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 399,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

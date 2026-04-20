@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776559057-33iYMMteiuQR02kBmEdV",
+  "object": "chat.completion",
+  "created": 1776559057,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 1,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The assumption is standard and necessary to simplify mode summation in the Casimir effect derivation.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CPW-MKUmp1rC_KnDjpr5rX4kwFJWQ0LbZhOtQrL38FEEbWhc58-2ttdhoKMDwtWbLGd90pjHAn8RQmha8nMmVGfVYRXP0ytDVXRdND47eCiuCjJAAg9VOBpTo0ftFC8vxhTsoOYj_h-94EG1-35jiqDv6_sRVKRP69lyTQYeC2OyfDUyPwnKIR11pHUc0k5HByxaKWZE_pO0n4aDAvnOrzV5fjJU-2L2zOShxo9C4mZ4XQj9TyolX0Gqp6L4Sa4p6U-10fY_jP3q70rOwoPVSrJsdw3MM_VvMquh1ckZ_WYXc1KddqpqIEYNefQZhyFxy9mitbLsv9iOh46mizU7zfG-pIUkKfjalpLuyT3pFMowRlGwoX8MFPIP7GYSgBVX0YP5cI9sHitZaVhAtpzQvPmpRwQikwdtta2oG6JAfXiQtQmoPJhTdJdkmci4AaSWYotBBXdmdQ3VUsHWv1Ql8OIqliE6vK-fxOdzUCywzZXfp27K-Hb5V8KdDqZLUpgd32gLxYj2s9h6qFpkiCQCMGrAA==",
+            "format": "openai-responses-v1",
+            "id": "rs_03d580ed868ea4450169e423d20acc819383fee3a8c58b847d",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 501,
+    "completion_tokens": 1344,
+    "total_tokens": 1845,
+    "cost": 0.0064647,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0064647,
+      "upstream_inference_prompt_cost": 0.0005511,
+      "upstream_inference_completions_cost": 0.0059136
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 640,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gen-1776538089-cCsyO5tRRbWTW2Inmkhm",
+  "object": "chat.completion",
+  "created": 1776538089,
+  "model": "google/gemini-3.1-pro-preview-20260219",
+  "provider": "Google AI Studio",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 5,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Constant proper acceleration in Minkowski spacetime yields the worldline x^2 - c^2t^2 = c^4/a^2, which is indeed a hyperbola.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Confirming the Worldline**\n\nI've confirmed the claim about the worldline being a hyperbola in Minkowski space. The derivation clearly shows that with constant proper acceleration, the worldline is indeed $x^2 - t^2 = 1/a^2$. This is a standard result and the reasoning appears sound.\n\n\n",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "**Confirming the Worldline**\n\nI've confirmed the claim about the worldline being a hyperbola in Minkowski space. The derivation clearly shows that with constant proper acceleration, the worldline is indeed $x^2 - t^2 = 1/a^2$. This is a standard result and the reasoning appears sound.\n\n\n",
+            "format": "google-gemini-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "EpUFCpIFAQw51scv9ogfwI8FSaJVC3zXTTlIXeenLKpd9tVodyTQIIb8NXQwpYHRkI1PbE+1VGHZgda+1Z5QuxST/VitZqGlOB4uoLMZe18VBANAubjUmpqm0jLLiXGW4NuNPQdnOf2xQHMXiD7H3rjQhRR338GAeF/XYWFMQ18kNHK2owhxPrUhDlCdJZXXKBoogyW0vz5j1gZhmxzwmFwvML4dIijDUPMp0hxphb8vALS3aFjfV+JqWJIxhNmit5n9JSIfxRGvVcLc90gw4eurf4+kxvD8Mx9wTaFoeoKd7DtK7qFpCLY/5rlbB2DhhI2N1UQwhr5dNSWsX+wOm60ZMrhLDowQgTbaQ2M53cPBbvmFjCkgc6TT77CJigVCf1wEU2tKoiU7T5ch+lIFXzWSWW7QNBYkprP8h3wAK9GCz4HREvV5HmdiCOmpl27AR7/npKOBR5WJxTdb6gDy6Y1ACRpPUyXNUnFy95Fsca0xMNZD17g+5WfOMACPBg4C+UCCttg/IkrgAHQ0XmC3dRLcw0YVw+dCdVCFumeJXd4jMYoGpBiUqeA4FngCAjIyFuwoDTafUeZfKAYDUKETXMozrNqYiulsHzLJ4tJM+Fu9WITJOnnq6bctgcp22XR0W9o1IFQ8dESsb0zMKZY1Ic6ZEQ/QN7g+yTzUXZx7pT0ibONSugdd0O4Z3Sn/P2ZblTeq/6zrm7ifXGMjh4n/mt4taZ2LWut+FzguEfJdmO5T0bGOy7ey+/HeDa78VyZAcJPrv4QfSi23tcuwSXVC9tN0vjJqDC1DL0ZOUyQEnPG5n75Jj6/fM8Dy3ga0vzNQmr6LFELoj/RQdKkF2zAmiDTjTnS1tQXa18WjlLfmKJeY6FJzt6dz6w==",
+            "format": "google-gemini-v1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 494,
+    "completion_tokens": 222,
+    "total_tokens": 716,
+    "cost": 0.003652,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.003652,
+      "upstream_inference_prompt_cost": 0.000988,
+      "upstream_inference_completions_cost": 0.002664
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 147,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

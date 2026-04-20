@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776539925-CVWXmTez62t5O6q0d4fR",
+  "object": "chat.completion",
+  "created": 1776539925,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"These are the standard rest initial conditions ensuring u\u00b7u = c\u00b2 in Minkowski space.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49kiEwbKm0o3wqCv5L7lgYkXXRFidUcdWd3kmKSABWsnrnlyY-1_lgu2IVu6hUTTtzpwEOv5B5RmvzP9x5xxfCzBHAUpGweF2GEgL2WJyL67KcpqGM3a9vLxWBmJRjFoHxWcrWFVS0t1u4Iz4NP1S39WOYfVzv9pnhj76By9NvP1-whT6KIMe_ZQIefvJzhUtdfnFblyhXzzMdLoHsHp8dXBPCEvdtsvgiJPpir8TRCRV1yojKOqUAyZvlr5LeJaRxa1HzMCVRMtsNOOmH1-AKKz6_a2CUP3XzpyuEuxdp9f4ZaqSGfJU2pOUIFWxySrjelUSJ6WHrRpWTrSgOpkgzz6nRxMcSrdRvpqTpKY-ujp_7G4Xnw_7YsQ57UL0nCHhZXjq9LdqMxqrQR6FpDH3qEeD2a3Qi6oPudwoL22Zu-DJqvxkuW8WikGX8MeFJYDmt_5nxA8Nhv32EC7pNR5KYCIvSbHChTkp-1X_Ar6ujRuaC1QfR0PkcRY3b7MBMNOuieQK81hrJaRnusby8_8041nUw==",
+            "format": "openai-responses-v1",
+            "id": "rs_0b92ec1d8250edf40169e3d91590948194b4dff3390060c196",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 521,
+    "completion_tokens": 3835,
+    "total_tokens": 4356,
+    "cost": 0.0174471,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0174471,
+      "upstream_inference_prompt_cost": 0.0005731,
+      "upstream_inference_completions_cost": 0.016874
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1856,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

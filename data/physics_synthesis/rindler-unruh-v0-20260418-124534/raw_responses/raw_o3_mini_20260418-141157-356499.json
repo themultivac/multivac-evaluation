@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776539512-7LQgnmjjIce6X1P81BOL",
+  "object": "chat.completion",
+  "created": 1776539512,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 33,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Using natural units (\u210f = c = k_B = 1) is a standard, valid simplification in relativistic quantum theories.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Assessing a physics claim**\n\nI'm looking at the claim that \"we use units where \u210f = c = k_B = 1.\" It\u2019s common in physics, especially in quantum field theory and relativity. The instructions say to stress-test this assumption and verify if it\u2019s well-known or if there's a need for conversion explanation. I\u2019ll need to draft a JSON structure with keys like claim_id, verdict, and explanation, confirming that using these units is plausible while considering its physical validity.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Assessing a physics claim**\n\nI'm looking at the claim that \"we use units where \u210f = c = k_B = 1.\" It\u2019s common in physics, especially in quantum field theory and relativity. The instructions say to stress-test this assumption and verify if it\u2019s well-known or if there's a need for conversion explanation. I\u2019ll need to draft a JSON structure with keys like claim_id, verdict, and explanation, confirming that using these units is plausible while considering its physical validity.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49d9tQXoyhTy_2pnHxv6gwr1XJBxXrSZQgwkW9HQLDwhHy9QdWl9DLZgpL4Ki2Ffa3TvRJU-5HlQhYwWYUV7an5Wi_7SzH7JCwCpUiPCKj8_hA8j3y-fzuvhYgolV8WN3QhOp-S4kKZ51FuxYFMQt6J-2Bg-NZMEggQXHwDbdyxOStupB_5tt987DJcv-PtioLPIai6RzHnPzDLIiUjT20gBsqr2BtoNw0Od6NEke8pJBOroyz6QPjVPCRNv4w6h8jCUcQOyguTXHXtg5N4yBT9lJvMxyerIZEdBLHnTxAP61UdNS3alxPmqgAlOmm0p9Uce-4yFH-OnmRrNBzCbqdU6GgTtDlubBEGmq4Hkysfx7SsLb5Y_IRuHiYYcBqi7g197is2ndJFHRa6HHlbOUu8yz7T2ypb0nyFmFYuKZAZr21mKYQ6cdTBThEM8upkPAxP3Kbko7NFEoodJdFKti4tBt1TGuUcKgjZ86HOHSkbUPclthRdjHXkYBLtqOERS1ku_IWVyd-ugTQiMLhMUlBkYmw==",
+            "format": "openai-responses-v1",
+            "id": "rs_06272d7cffd892670169e3d77a54688195b4a37923005d691b",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 508,
+    "completion_tokens": 988,
+    "total_tokens": 1496,
+    "cost": 0.004906,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.004906,
+      "upstream_inference_prompt_cost": 0.0005588,
+      "upstream_inference_completions_cost": 0.0043472
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 448,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

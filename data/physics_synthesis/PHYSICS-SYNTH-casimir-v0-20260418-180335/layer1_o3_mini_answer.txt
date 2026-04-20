@@ -1,0 +1,174 @@
+We wish to show that the Casimir force per unit area between two perfectly conducting, infinite, parallel plates separated by a distance \( d \) in vacuum is given by
+
+\[
+\frac{F}{A} = -\frac{\pi^2}{240}\frac{\hbar c}{d^4}\,,
+\]
+
+with the negative sign indicating an attractive force. In what follows we describe a derivation starting from the zero‐point energy of the quantized electromagnetic (EM) field.
+
+──────────────────────────────
+Step (1): Setting Up the Quantized EM Field
+
+The plates are assumed to be infinite and located at \( z=0 \) and \( z=d \). For a perfectly conducting surface the tangential components of the electric field must vanish. (One may also state that the magnetic field normal to the surface vanishes.) As a consequence, the allowed modes in the \( z \) direction are quantized. In fact, one finds that the mode functions along \( z \) are proportional to
+\[
+\sin\Bigl(\frac{n\pi z}{d}\Bigr),
+\]
+with
+\[
+k_z=\frac{n\pi}{d}\,, \quad n=1,2,3,\dots \,.
+\]
+In the \( x \) and \( y \) directions the plates being infinite mean that the wave-vectors \( k_x \) and \( k_y \) are continuous. (There is a subtlety regarding the \( n=0 \) mode and how the two physical polarizations are counted, but these details—when handled carefully—do not affect the final result.)
+
+Thus, the dispersion relation for a mode with transverse momentum \(\mathbf{k}_\perp=(k_x,k_y)\) and longitudinal index \( n \) is
+\[
+\omega_n(k_\perp) = c\sqrt{k_\perp^2 + \Bigl(\frac{n\pi}{d}\Bigr)^2}\,.
+\]
+
+──────────────────────────────
+Step (2): Writing the Zero‐Point Energy Density
+
+The vacuum (zero‐point) energy is obtained by summing the usual \( \tfrac{1}{2}\hbar\omega \) for every mode. Since there is a continuum of transverse modes, the energy per unit area, \( U(d)/A \), is given by
+
+\[
+\frac{U(d)}{A} = \frac{1}{2}\hbar \sum_{\text{modes}} \omega \,.
+\]
+
+Explicitly, including a sum over the longitudinal modes (with \( n=1,2,\dots \)) and an integration over the 2D transverse momenta \( \mathbf{k}_\perp \), we write
+
+\[
+\frac{U(d)}{A} = \frac{\hbar}{2} \sum_{n=1}^{\infty} \int \frac{d^2 k_\perp}{(2\pi)^2}\; \omega_n(k_\perp)
+= \frac{\hbar}{2} \sum_{n=1}^{\infty} \int \frac{d^2 k_\perp}{(2\pi)^2}\; c\,\sqrt{k_\perp^2+\Bigl(\frac{n\pi}{d}\Bigr)^2}\,.
+\]
+
+It is immediately clear that this sum/integral is divergent.
+
+──────────────────────────────
+Step (3): Regularization of the Divergent Sum
+
+A common and physically motivated regularization is to introduce an exponential cutoff factor \( e^{-\lambda\,\omega} \) (with \(\lambda>0\)) so that
+
+\[
+\frac{U(d,\lambda)}{A} = \frac{\hbar}{2}\sum_{n=1}^\infty \int\frac{d^2 k_\perp}{(2\pi)^2}\; c\,\sqrt{k_\perp^2+\Bigl(\frac{n\pi}{d}\Bigr)^2}\; e^{-\lambda c\,\sqrt{k_\perp^2+ (n\pi/d)^2}}\,.
+\]
+
+It is also possible to use zeta-function regularization or dimensional regularization. In what follows we indicate the use of an exponential cutoff and explicitly state that in evaluating divergent sums we will later use analytic continuation properties such as the well known result
+
+\[
+\zeta(-3) = \frac{1}{120}\,,
+\]
+
+where \(\zeta(s)\) is the Riemann zeta function.
+
+To proceed we convert the \( \mathbf{k}_\perp \) integration into polar coordinates,
+\[
+d^2k_\perp = 2\pi\, k\, dk\,,
+\]
+so that
+
+\[
+\frac{U(d,\lambda)}{A} = \frac{\hbar c}{2}\sum_{n=1}^{\infty} \int_0^\infty \frac{2\pi\, k\,dk}{(2\pi)^2}\, \sqrt{k^2+\Bigl(\frac{n\pi}{d}\Bigr)^2}\; e^{-\lambda c\,\sqrt{k^2+ (n\pi/d)^2}}\,.
+\]
+
+This simplifies to
+
+\[
+\frac{U(d,\lambda)}{A} = \frac{\hbar c}{4\pi} \sum_{n=1}^{\infty} \int_0^\infty k\,dk\; \sqrt{k^2+\Bigl(\frac{n\pi}{d}\Bigr)^2}\; e^{-\lambda c\,\sqrt{k^2+ (n\pi/d)^2}}\,.
+\]
+
+Now, make the substitution
+
+\[
+\omega = \sqrt{k^2+\Bigl(\frac{n\pi}{d}\Bigr)^2}\,,
+\]
+so that when \( k \) runs from \( 0 \) to \( \infty \), \( \omega \) runs from \( \frac{n\pi}{d} \) to \( \infty \). Note that
+\[
+k \, dk = \omega \, d\omega\,.
+\]
+Thus, the expression becomes
+
+\[
+\frac{U(d,\lambda)}{A} = \frac{\hbar c}{4\pi} \sum_{n=1}^{\infty} \int_{n\pi/d}^\infty d\omega\; \omega^2\, e^{-\lambda c\,\omega}\,.
+\]
+
+The \(\omega\) integral can be expressed in terms of standard functions. One may perform the integration by a change of variable \( x = \lambda c\,\omega \), after which the result (before summing over \( n \)) is
+
+\[
+\int_{n\pi/d}^\infty \omega^2\, e^{-\lambda c\,\omega}\, d\omega = \frac{1}{(\lambda c)^3} \int_{\lambda c\, n\pi/d}^\infty x^2\, e^{-x}\, dx \,.
+\]
+
+It is known that
+
+\[
+\int_a^\infty x^2\, e^{-x}\, dx = e^{-a}\,(a^2 + 2a +2)\,.
+\]
+
+Thus, we have
+
+\[
+\frac{U(d,\lambda)}{A} = \frac{\hbar c}{4\pi\, (\lambda c)^3} \sum_{n=1}^{\infty} e^{-\lambda c\, (n\pi/d)} \left[\Bigl(\lambda c\,\frac{n\pi}{d}\Bigr)^2 +2\,\lambda c\,\frac{n\pi}{d}+2\right]\,.
+\]
+
+At this point the regulated energy still contains divergences as \(\lambda\to0\). However, these divergences are independent of the plate separation \( d \) and are present also when the plates are not present (i.e. in free space). 
+
+──────────────────────────────
+Step (4): Subtraction of the Free-Vacuum Contribution
+
+The idea is to subtract the (divergent) vacuum energy “without plates” (or with the plates at an infinite separation) from the energy with the plates at a finite separation \( d \). Since only the \( d\)–dependent part is physically observable (in the form of a force), one defines the finite Casimir energy per unit area as
+
+\[
+\frac{U_{\rm Casimir}(d)}{A} = \frac{U(d)}{A} - \frac{U(d\to\infty)}{A}\,.
+\]
+
+A detailed calculation [which one may perform using either the above cutoff procedure or via zeta–function regularization] shows that after subtracting the \( d \)–independent divergent terms, one obtains the finite result
+
+\[
+\frac{U_{\rm Casimir}(d)}{A} = -\frac{\pi^2}{720}\frac{\hbar c}{d^3}\,.
+\]
+
+In many treatments the summation is recast in terms of Riemann zeta functions; for example, one encounters sums of the form \( \sum_{n=1}^\infty n^3 \), which are assigned a finite value by analytic continuation using
+
+\[
+\zeta(-3)= \frac{1}{120}\,.
+\]
+
+This result is taken as known in many presentations.
+
+──────────────────────────────
+Step (5): Differentiating to Obtain the Force
+
+The Casimir force per unit area is obtained by differentiating the energy with respect to the separation \( d \) (i.e. taking the negative derivative):
+
+\[
+\frac{F(d)}{A} = -\frac{\partial}{\partial d}\left(\frac{U_{\rm Casimir}(d)}{A}\right)\,.
+\]
+
+Thus,
+
+\[
+\frac{F(d)}{A} = -\frac{\partial}{\partial d}\left[-\frac{\pi^2}{720}\frac{\hbar c}{d^3}\right]
+= -\left[-\frac{\pi^2}{720}\frac{\hbar c}{d^3}\cdot(-3)\frac{1}{d}\right]
+= -\frac{\pi^2}{240}\frac{\hbar c}{d^4}\,.
+\]
+
+The negative sign indicates the force is attractive.
+
+──────────────────────────────
+Final Result
+
+We have shown that, after setting up the mode sum for the quantized EM field, regulating the divergent zero–point energy (by, e.g., an exponential cutoff or zeta–function regularization), subtracting the free–vacuum contribution, and differentiating with respect to \( d \), the Casimir force per unit area is
+
+\[
+\boxed{\frac{F(d)}{A} = -\frac{\pi^2}{240}\frac{\hbar c}{d^4}\,.}
+\]
+
+──────────────────────────────
+Assumptions and Regularization Choices
+
+1. The plates are assumed to be perfectly conducting and infinite in extent.
+2. The electromagnetic field is quantized in the region between the plates with boundary conditions that force the tangential electric field to vanish at the plate surfaces.
+3. The zero–point energy per mode is taken to be \( \tfrac{1}{2}\hbar\omega \).
+4. An exponential cutoff factor \( e^{-\lambda\omega} \) (with subsequent removal of the cutoff via \(\lambda\to 0\)) was used to regularize the otherwise divergent sums.
+5. The subtraction of the free–vacuum \( (d\to\infty) \) contribution isolates the physically observable, \( d \)–dependent piece.
+6. In evaluating divergent sums such as \( \sum n^3 \), the analytic continuation of the Riemann zeta function (e.g. using \( \zeta(-3)=1/120 \)) is employed.
+
+This derivation, with all these steps and assumptions, yields the well-known Casimir formula for the force between two parallel plates.

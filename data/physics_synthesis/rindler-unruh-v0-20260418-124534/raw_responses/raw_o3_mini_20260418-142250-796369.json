@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776540159-K3JBdnkVw046i2oPHeLM",
+  "object": "chat.completion",
+  "created": 1776540159,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 29,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard procedure in Unruh derivations; relating Minkowski and Rindler modes via a Bogoliubov transformation is correct.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49oKIVtP7TFjjNssEZFkDv75nvW750Q-ld4KXRg9DSL5Fz1p7_1_gXHpX7dWL0zeV47DTcpv80AoNF3tqaZzXV1SuBG-ggoAJXdhpfDGxVIU8-FgMKsQezRvaDvn8V_1RNYzjkm-Nm1moe8g7m-dSSwijVuF5h5itLJVrpzeQP4EtRCvcsnv5G8qQtBxY9mdnhd8BvBMRIy8EotyrEgNSu1Hcx7wW9hzTYI9yh5f390t600ZPSyU9T0p4MmQKdtbXQ6_E_rrPKnN65-Qhdg8MpPh4G_fSEJwyHsbZGpCvGEk2FOV5TOZ5jyQXX78we84WuUX7aM6voNx0ueJhVNf8k1IShaH_qDws6grd0aAjtOWIsF7ByrEKJeXr00yzO6S9SAQ64zdK_v8F9qKOEn0iyUe68V4NINFnMB9H4NpWpgKgac79dd2XHrG4D1AYHv4fFKv_VCcXTi9wM3AbGqGOYh7fPAFZQZiaGs77y8Z7VqyT_CdXFA6xhb4wR4KJnfHDzdGQWjR_Nir1sB06IU7AC14kA==",
+            "format": "openai-responses-v1",
+            "id": "rs_0eec306dbcc0f5170169e3d9ff84cc8196be03a8e6a14fcc3a",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 520,
+    "completion_tokens": 3412,
+    "total_tokens": 3932,
+    "cost": 0.0155848,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0155848,
+      "upstream_inference_prompt_cost": 0.000572,
+      "upstream_inference_completions_cost": 0.0150128
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1664,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

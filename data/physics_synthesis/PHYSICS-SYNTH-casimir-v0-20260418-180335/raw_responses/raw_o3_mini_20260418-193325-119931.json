@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776558798-mAUNhW9wtAxkvE3xRkDV",
+  "object": "chat.completion",
+  "created": 1776558798,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"claim_id\": 17,\n  \"verdict\": \"ERROR\",\n  \"explanation\": \"It misinterprets the divergence; the infinite zero-point energy is subtracted via renormalization to yield finite differences.\",\n  \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5CLUxLTv6GbiR3EbOFd85Jl90bRk7gxNrHedAwLTvhuCyddVVBaIrRvfdY_wNJVoq4I8zSFJ4kwNS8nvdrfy68_SiZVzsD0cTzfs4yzrWTQyEBXAuqEBl46ZZ2gQS6YYSifDu4Ot3sO8NuXz_RI2zmt5p4AjdwBbNtrMbeXBoD-0WvMuEMO0evV3etIXPz6unPLxwEpyYFctBATCPbfzGxK3pkF68C0B1a8csrCVa-jR_5EW613oXvxWvPJNI7-w2zAqvFoKkVvcj5aM6bHQtCxeQKmGn0-j96hpbAfH17ammGdwQVBRz2JIPbOgEy-2dDbyj2CbsWSSjaCt-Nudo4cTonZ-KHXmfEe3EJnrIkFjvVmkvVTlWZX9hlqnV8Ia1z9rhs2ZZpPW4N7UnNT8I86dqXiUrRLgcuUewF-uOubYX870dzYiL73eiZWohr7C1ONmTKGC3sNs-mry0Se3UszJHg7_XWJfL-6oJKVmXIF90aHZWbCW9_uTUL9SthdhpsNzhf_im_05XxZnp_t5lN67zw==",
+            "format": "openai-responses-v1",
+            "id": "rs_0a2cee72b1cec3610169e422cf67848197868be00cfcceb209",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 501,
+    "completion_tokens": 1794,
+    "total_tokens": 2295,
+    "cost": 0.0084447,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0084447,
+      "upstream_inference_prompt_cost": 0.0005511,
+      "upstream_inference_completions_cost": 0.0078936
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 832,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

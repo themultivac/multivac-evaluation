@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776549823-ctaWeJZLjKN1z16fuiBS",
+  "object": "chat.completion",
+  "created": 1776549823,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Assessing mathematical claims**\n\nIt looks like we're checking a claim that seems mathematically consistent. The claim is shorthand and might be incomplete without all the intermediate steps. By substituting B=1/A into R_{\u03b8\u03b8}=0, it appears valid, although the question asks for assessing the claim rather than detailing the full derivation. I see the standard derivation does give rA' = 1 - A. I'll have to consider if the factor of 2 is just an arbitrary choice and if this substitution is commonly accepted.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Assessing mathematical claims**\n\nIt looks like we're checking a claim that seems mathematically consistent. The claim is shorthand and might be incomplete without all the intermediate steps. By substituting B=1/A into R_{\u03b8\u03b8}=0, it appears valid, although the question asks for assessing the claim rather than detailing the full derivation. I see the standard derivation does give rA' = 1 - A. I'll have to consider if the factor of 2 is just an arbitrary choice and if this substitution is commonly accepted.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4__SgIsZsiTyGKL6Wv5c9LJH0jGbmlDmAOhKxApL7d7DLOmphRJVaBuIon-LmJcYrDlgGaVEKYY3K_leaoaZ_RlgO3O3_vaxe5Sx1tqa7nBK63Aa9pXHNNUl1X_Tq4VlRGmB4v5z8nrHiqZ5NJK2uA0fKymSMkq2YpbZigg0ox6Y-4toBSuy4-CRiN2mi-dDkF-gldahODeYE0XZNsd80_WUogwic2WLUIMLWc0Fpchal6PadbGcVFru0QAFWuN_5JtdLqyNFE5igw7b7kCjlCmNxtAWhg6uovXHSvYEdLOJm6pcCJ-E5WhheDoXae4CBQhlMPKH4K9nJzc0jWF48Vs6T9jxGQhcZCqaIIO63mcKgbHRmuIkex0mZFlIatudDbLespaVclR7dPvBvV31x-x9TESpOFv0t5B1LXQfbQIvLiSmFDgCswK4WgXMRRREFW9oIL98MuX4sF6CAEf2SHwSgV_AgHSgsoMTYO_pOLEPqwIQF_lwNTEJYrpxOeJPfCe9g0FoE4RwcrI9RkUCeoGijw==",
+            "format": "openai-responses-v1",
+            "id": "rs_0dadab943f02df230169e3ffc0146c8190ba378dd58ac7918b",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 387,
+    "completion_tokens": 4096,
+    "total_tokens": 4483,
+    "cost": 0.0184481,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0184481,
+      "upstream_inference_prompt_cost": 0.0004257,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

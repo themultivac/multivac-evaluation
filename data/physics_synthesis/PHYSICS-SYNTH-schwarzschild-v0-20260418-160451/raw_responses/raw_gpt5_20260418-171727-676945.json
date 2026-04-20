@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776550645-m4TOT1NERwgfIVfDMUL3",
+  "object": "chat.completion",
+  "created": 1776550645,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":28,\"verdict\":\"CONFIRMED\",\"explanation\":\"For ds\u00b2=-e^\u03bdc\u00b2dt\u00b2+e^\u03bbdr\u00b2+r\u00b2d\u03a9\u00b2, vacuum gives R_{\u03b8\u03b8}=1-e^{-\u03bb}+(r/2)e^{-\u03bb}(\u03bb'-\u03bd'). With \u03bd=-\u03bb, this becomes 1-e^{-\u03bb}+r e^{-\u03bb}\u03bb'=0.\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 390,
+    "completion_tokens": 95,
+    "total_tokens": 485,
+    "cost": 0.0024,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0024,
+      "upstream_inference_prompt_cost": 0.000975,
+      "upstream_inference_completions_cost": 0.001425
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

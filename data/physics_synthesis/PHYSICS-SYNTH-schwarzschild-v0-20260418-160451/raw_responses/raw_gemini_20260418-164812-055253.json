@@ -1,0 +1,59 @@
+{
+  "id": "gen-1776548889-tBkgNp9TBmCyK4ZbATav",
+  "object": "chat.completion",
+  "created": 1776548889,
+  "model": "google/gemini-3.1-pro-preview-20260219",
+  "provider": "Google",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "STOP",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 27,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The algebraic manipulation is correct. Solving 1 - 2GM/(c\u00b2r) = 0 for r directly yields the Schwarzschild radius r = 2GM/c\u00b2.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Confirming the Calculation**\n\nI've confirmed the algebraic manipulation of the equation 1 - 2GM/(c\u00b2r) = 0. The derivation to r = 2GM/c\u00b2 is mathematically sound and I'm confident in its correctness.\n\n**Validating the Equation**\n\nI've verified the algebraic steps leading from 1 - 2GM/(c\u00b2r) = 0 to the expression r = 2GM/c\u00b2. The derivation is straightforward and robust.\n\n",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "**Confirming the Calculation**\n\nI've confirmed the algebraic manipulation of the equation 1 - 2GM/(c\u00b2r) = 0. The derivation to r = 2GM/c\u00b2 is mathematically sound and I'm confident in its correctness.\n\n**Validating the Equation**\n\nI've verified the algebraic steps leading from 1 - 2GM/(c\u00b2r) = 0 to the expression r = 2GM/c\u00b2. The derivation is straightforward and robust.\n\n",
+            "format": "google-gemini-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "CiQBjz1rX+sw+8aOqy+mxmURl5sTn+Hm+zaRj7huGRoRtHQ1EH4KSgGPPWtfgevARwMT8gZ1FbTkIJAtdCMM3jfuiYX3BNZe0RjaojZ7EblbLL7VsmbUGzuIql1vpu2RQT/dxzLM5yjMAfa3YpuVKg+bCmABjz1rXw9h+1LIGZpmazQqTV9fu9T/7HlnUmZHZtHM9aG21hozj6Dt1ab4pvnzo1E6RbGQfZpibL1RR7ZWCtnXw9g4oojQrB0Hgh/hzTP3kWYAjHcJ/EpLh5mpuX9EMJkKQQGPPWtfJUJCFAoF1kkA1NWlXz8JbRUK6rrG/6NHEpqOWBM9q5OBtgwEYdedAT0c2Z+r7ZqXsnoiv1y00PxWn4mVCnkBjz1rXzg4B3DU/HhaI5XeRqPJ2uGnIovvNdz5ZMFi1+ueKd+tv9eBqjr6SqAoGlRLplgieVgolMQAzrCT8hnSXYq8knbhfHQY+VQIvyTXqRjNAFg8ZJQ1WkVEVvqoPjF6Uk9eVAfMfWoJRBpBe9R+S3WM0BwRy7iNCmoBjz1rX14jC+fKjGsu11VlyDG7p38tQKGYydRHZGI/AB1T4sEFUtqkgfv3gBJqCyHL4TnHI1o2/djzTH1jCGlCB9fRmvjYt54AsOThC4ew0WBhSWzj0GD6P4XkjMq2LdDufTFF1VDUoIqaCmkBjz1rX3QKCiWYlnyeqUVHzicgsS3bUf1A3TMqQyciN423pVP45c3WvgsHUrHWV/bty5dKEQEY6PnrhtioU7jIXbq7dp/PpCMIZA0ur7pXYXyaCTp4D99Vig8jHpNRAMIpxlE0hmTHrik=",
+            "format": "google-gemini-v1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 366,
+    "completion_tokens": 216,
+    "total_tokens": 582,
+    "cost": 0.003324,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.003324,
+      "upstream_inference_prompt_cost": 0.000732,
+      "upstream_inference_completions_cost": 0.002592
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 139,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

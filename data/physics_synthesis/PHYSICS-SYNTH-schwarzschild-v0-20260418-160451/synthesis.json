@@ -1,0 +1,128 @@
+{
+  "problem": "schwarzschild-v0",
+  "ground_truth": {
+    "schwarzschild_radius": "r_s = 2GM/c^2"
+  },
+  "models": {
+    "claude": {
+      "display_name": "Claude Opus 4.7",
+      "response_length": 5622,
+      "detected_answers": {
+        "schwarzschild_radius": null
+      },
+      "completeness_score": null,
+      "total_claims": 52,
+      "valid_verdicts": 36,
+      "raw_verdict_count": 42,
+      "adversarial_confirmed": 28,
+      "adversarial_errors": 3,
+      "adversarial_unjustified": 2,
+      "adversarial_incomplete": 3,
+      "survival_rate": 0.903
+    },
+    "gpt5": {
+      "display_name": "GPT-5.4",
+      "response_length": 5918,
+      "detected_answers": {
+        "schwarzschild_radius": null
+      },
+      "completeness_score": null,
+      "total_claims": 52,
+      "valid_verdicts": 37,
+      "raw_verdict_count": 43,
+      "adversarial_confirmed": 35,
+      "adversarial_errors": 2,
+      "adversarial_unjustified": 0,
+      "adversarial_incomplete": 0,
+      "survival_rate": 0.946
+    },
+    "o3_mini": {
+      "display_name": "OpenAI o3-mini (high)",
+      "response_length": 5463,
+      "detected_answers": {
+        "schwarzschild_radius": null
+      },
+      "completeness_score": null,
+      "total_claims": 35,
+      "valid_verdicts": 32,
+      "raw_verdict_count": 32,
+      "adversarial_confirmed": 29,
+      "adversarial_errors": 0,
+      "adversarial_unjustified": 2,
+      "adversarial_incomplete": 1,
+      "survival_rate": 1.0
+    },
+    "gemini": {
+      "display_name": "Gemini 3.1 Pro Preview",
+      "response_length": 4070,
+      "detected_answers": {
+        "schwarzschild_radius": null
+      },
+      "completeness_score": null,
+      "total_claims": 40,
+      "valid_verdicts": 20,
+      "raw_verdict_count": 21,
+      "adversarial_confirmed": 16,
+      "adversarial_errors": 3,
+      "adversarial_unjustified": 0,
+      "adversarial_incomplete": 1,
+      "survival_rate": 0.842
+    },
+    "deepseek_r1": {
+      "display_name": "DeepSeek R1",
+      "response_length": 4331,
+      "detected_answers": {
+        "schwarzschild_radius": null
+      },
+      "completeness_score": null,
+      "total_claims": 40,
+      "valid_verdicts": 33,
+      "raw_verdict_count": 37,
+      "adversarial_confirmed": 27,
+      "adversarial_errors": 2,
+      "adversarial_unjustified": 2,
+      "adversarial_incomplete": 2,
+      "survival_rate": 0.931
+    },
+    "qwen": {
+      "display_name": "Qwen 3.6 Plus",
+      "response_length": 4619,
+      "detected_answers": {
+        "schwarzschild_radius": null
+      },
+      "completeness_score": null,
+      "total_claims": 42,
+      "valid_verdicts": 31,
+      "raw_verdict_count": 38,
+      "adversarial_confirmed": 25,
+      "adversarial_errors": 2,
+      "adversarial_unjustified": 2,
+      "adversarial_incomplete": 2,
+      "survival_rate": 0.926
+    },
+    "grok": {
+      "display_name": "Grok 4.20",
+      "response_length": 4915,
+      "detected_answers": {
+        "schwarzschild_radius": null
+      },
+      "completeness_score": null,
+      "total_claims": 38,
+      "valid_verdicts": 29,
+      "raw_verdict_count": 31,
+      "adversarial_confirmed": 22,
+      "adversarial_errors": 2,
+      "adversarial_unjustified": 1,
+      "adversarial_incomplete": 4,
+      "survival_rate": 0.917
+    }
+  },
+  "protocol_assessment": {
+    "models_with_complete_answers": 0,
+    "models_with_partial_answers": 0,
+    "models_unchecked": 7,
+    "total_models": 7,
+    "majority_vote_complete": false,
+    "synthesis_notes": "0/7 models found all answers, 0 partial. Completeness = fraction of ground-truth answers detected. Survival rate = CONFIRMED / (CONFIRMED + ERROR); UNJUSTIFIED and INCOMPLETE indicate missing justification rather than error."
+  }
+}

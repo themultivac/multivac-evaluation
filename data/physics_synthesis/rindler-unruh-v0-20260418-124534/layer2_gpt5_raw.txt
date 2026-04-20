@@ -1,0 +1,584 @@
+```json
+{
+  "model": "unknown",
+  "total_claims": 72,
+  "claims": [
+    {
+      "id": 1,
+      "text": "We work in 1+1 dimensions first, since the essential physics is in the (t,x) plane.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "We use Minkowski metric with signature (+,-): ds² = c²dt² - dx².",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "A worldline x^μ(τ) = (ct(τ), x(τ)) parameterized by proper time τ has four-velocity u^μ = dx^μ/dτ.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "The four-velocity has normalization u^μ u_μ = c².",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [2, 3],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "The four-acceleration is a^μ = du^μ/dτ.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [3],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "Constant proper acceleration means -a^μ a_μ = a², where a > 0.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [5],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "In 1+1 dimensions, the four-velocity can be written as u^μ = (c cosh θ, c sinh θ) in terms of rapidity θ(τ).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [4],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "u^μ u_μ = c² cosh²θ - c² sinh²θ = c², confirming the normalization.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [2, 7],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "a^μ = du^μ/dτ = c θ̇ (sinh θ, cosh θ), where θ̇ = dθ/dτ.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [5, 7],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "a^μ a_μ = c² θ̇² (sinh²θ - cosh²θ) = -c² θ̇².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [2, 9],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "-a^μ a_μ = c² θ̇² = a², so for constant proper acceleration θ̇ = a/c.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [6, 10],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "θ(τ) = aτ/c + θ₀.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [11],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "We choose initial conditions so that at τ = 0, the observer is instantaneously at rest, so θ₀ = 0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [12],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "u^μ = (c cosh(aτ/c), c sinh(aτ/c)).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [7, 13],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "dt/dτ = cosh(aτ/c) and dx/dτ = c sinh(aτ/c).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [3, 14],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "Integrating: t(τ) = (c/a) sinh(aτ/c) + t₀ and x(τ) = (c²/a) cosh(aτ/c) + x₀.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [15],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "A standard convenient choice is t₀ = 0, x₀ = 0 shifted so that x(0) = c²/a.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [16],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "The worldline is ct(τ) = (c²/a) sinh(aτ/c), x(τ) = (c²/a) cosh(aτ/c).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [16, 17],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "Eliminating τ: x² - c²t² = (c²/a)²(cosh²(aτ/c) - sinh²(aτ/c)) = (c²/a)².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [18],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "The worldline is the hyperbola x² - c²t² = c⁴/a².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [19],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "The right Rindler wedge is defined as x > |ct|.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "Define a spatial coordinate ξ > 0 by x² - c²t² = ξ².",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [21],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "Points of fixed ξ lie on hyperbolae, and each hyperbola corresponds to a uniformly accelerated observer with proper acceleration a(ξ) = c²/ξ.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [20, 22],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "The coordinate transformation is x = ξ cosh(η/c), ct = ξ sinh(η/c), ξ > 0.",
+      "type": "definition",
+      "provenance": "derived",
+      "depends_on": [22],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "The inverse transformation is ξ = √(x² - c²t²), η = (c/2) ln((x + ct)/(x - ct)).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [24],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "dx = cosh(η/c) dξ + (ξ/c) sinh(η/c) dη.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [24],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "c dt = sinh(η/c) dξ + (ξ/c) cosh(η/c) dη.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [24],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "Substituting into ds² = c²dt² - dx² and using cosh² - sinh² = 1, the cross terms cancel.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [2, 26, 27],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "The Rindler metric is ds² = (ξ²/c²) dη² - dξ² - dy² - dz².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [28],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "text": "For an observer at fixed ξ = ξ₀, ds² = c²dτ² = (ξ₀²/c²) dη².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [29],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "Hence dτ = (ξ₀/c²) dη.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [30],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "text": "η is proportional to the proper time along each constant-ξ worldline.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [31],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "Comparing the constant-ξ₀ worldline with the uniformly accelerated trajectory, we identify ξ₀ = c²/a.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [18, 24, 31],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "text": "Thus a = c²/ξ.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [33],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "Each ξ = const worldline is uniformly accelerated, with larger acceleration as ξ → 0.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [34],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "text": "The Rindler coordinate patch only covers x > |ct|. The boundaries are x = ct and x = -ct.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [21, 24],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "The boundaries x = ±ct are null lines in Minkowski spacetime because ds² = c²dt² - dx² = 0 when dx = ±c dt.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [2, 36],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "text": "In null coordinates U = ct - x, V = ct + x, the right wedge is characterized by U < 0, V > 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [21],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "The Rindler horizons are U = 0 (x = ct) and V = 0 (x = -ct).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [36, 38],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "On the horizon x² - c²t² = 0, so ξ = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [22, 36],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "At ξ = 0, the coefficient g_{ηη} = ξ²/c² vanishes, making the metric appear singular.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [29, 40],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "Minkowski spacetime is perfectly regular at the horizon; the apparent singularity is only because the coordinates break down at the wedge boundary.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [41],
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "text": "The horizon is a coordinate singularity, not a curvature singularity, since the spacetime is flat everywhere with Riemann tensor zero.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [42],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "text": "The key physical assumption is: the field can be decomposed into positive-frequency modes with respect to Minkowski time t, and also into positive-frequency modes with respect to Rindler time η, related by a Bogoliubov transformation, and the Minkowski vacuum is not the Rindler vacuum.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "text": "A massless scalar field satisfies □φ = 0.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "text": "In 1+1 dimensions this is (1/c² ∂²_t - ∂²_x)φ = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [2, 45],
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "text": "In Minkowski null coordinates U = ct - x, V = ct + x, the general solution splits into left- and right-moving parts: φ(t,x) = φ_R(U) + φ_L(V).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [46],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "text": "It is enough to analyze one chiral sector, say the right-moving part depending on U.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [47],
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "text": "In the right wedge, U = ct - x = ξ(sinh(η/c) - cosh(η/c)) = -ξ e^{-η/c}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [24, 38],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "text": "V = ct + x = ξ(sinh(η/c) + cosh(η/c)) = ξ e^{η/c}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [24, 38],
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "text": "In the right wedge, U = -ξ e^{-η/c} < 0 and V = ξ e^{η/c} > 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [49, 50],
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "text": "A Rindler null time variable is u_R = η - c ln(ξ/ξ₀), so that U = -ξ₀ e^{-u_R/c}.",
+      "type": "definition",
+      "provenance": "derived",
+      "depends_on": [49],
+      "notes": ""
+    },
+    {
+      "id": 53,
+      "text": "The crucial point is that Minkowski null coordinate U is exponential in Rindler null coordinate u_R.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [52],
+      "notes": ""
+    },
+    {
+      "id": 54,
+      "text": "A positive-frequency Minkowski right-moving mode has the form f_Ω(U) ∝ e^{-iΩU/c} with Ω > 0.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 55,
+      "text": "A positive-frequency Rindler mode has the form g_ω(u_R) ∝ e^{-iωu_R/c} with ω > 0.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 56,
+      "text": "Since U = -ξ₀ e^{-u_R/c}, a Minkowski mode restricted to the right wedge becomes f_Ω ∝ exp(iΩξ₀/c · e^{-u_R/c}).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [52, 54],
+      "notes": ""
+    },
+    {
+      "id": 57,
+      "text": "This is not a pure Fourier mode in u_R; it contains both positive and negative Rindler frequencies, which is the origin of the Bogoliubov mixing.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [56],
+      "notes": ""
+    },
+    {
+      "id": 58,
+      "text": "The field can be expanded in Minkowski modes: φ = Σ_i (a_i^M f_i + a_i^{M†} f_i*) or in Rindler modes: φ = Σ_j (a_j^R g_j + a_j^{R†} g_j*).",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [44],
+      "notes": ""
+    },
+    {
+      "id": 59,
+      "text": "The mode sets are related by g_j = Σ_i (α_{ji} f_i + β_{ji} f_i*), and correspondingly a_j^R = Σ_i (α_{ji}* a_i^M - β_{ji}* a_i^{M†}).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [58],
+      "notes": ""
+    },
+    {
+      "id": 60,
+      "text": "The Minkowski vacuum is defined by a_i^M |0_M⟩ = 0.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [58],
+      "notes": ""
+    },
+    {
+      "id": 61,
+      "text": "The number of Rindler quanta in mode j seen in |0_M⟩ is ⟨0_M| a_j^{R†} a_j^R |0_M⟩ = Σ_i |β_{ji}|².",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [59, 60],
+      "notes": ""
+    },
+    {
+      "id": 62,
+      "text": "u_R = -c ln(-U/ξ₀), hence e^{-iωu_R/c} = exp(iω ln(-U/ξ₀)) = (-U/ξ₀)^{iω}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [52, 55],
+      "notes": ""
+    },
+    {
+      "id": 63,
+      "text": "This expression is naturally defined in the right wedge where U < 0. To continue it across the horizon U = 0, one must choose a branch of the logarithm.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [62],
+      "notes": ""
+    },
+    {
+      "id": 64,
+      "text": "The analyticity condition appropriate to positive Minkowski frequency leads to |β_ω|² = e^{-2πωc/a} |α_ω|².",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [63],
+      "notes": "Invoked without full derivation; standard analytic continuation result."
+    },
+    {
+      "id": 65,
+      "text": "The Bogoliubov identity for bosons is |α_ω|² - |β_ω|² = 1.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 66,
+      "text": "From |β_ω|² = e^{-2πωc/a} |α_ω|² and |α_ω|² - |β_ω|² = 1, we get |β_ω|² = 1/(e^{2πωc/a} - 1).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [64, 65],
+      "notes": ""
+    },
+    {
+      "id": 67,
+      "text": "This is exactly the Bose-Einstein occupation number at temperature T if ℏω/(k_B T) = 2πωc/a.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [66],
+      "notes": ""
+    },
+    {
+      "id": 68,
+      "text": "Therefore T = ℏa/(2πck_B).",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [67],
+      "notes": ""
+    },
+    {
+      "id": 69,
+      "text": "An equivalent derivation via Euclidean periodicity: Wick rotating the Rindler metric to Euclidean time gives ds²_E = dρ² + (aρ/c)²c²dτ_E² near ρ = 0, which is flat plane in polar coordinates.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [29],
+      "notes": "Some notational inconsistency with earlier Rindler metric form."
+    },
+    {
+      "id": 70,
+      "text": "To avoid a conical singularity at ρ = 0, one requires periodicity τ_E ~ τ_E + 2πc/a.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [69],
+      "notes": ""
+    },
+    {
+      "id": 71,
+      "text": "In finite-temperature QFT, imaginary time periodicity βℏ corresponds to temperature T, so βℏ = 2πc/a, giving T = ℏa/(2πck_B).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [70],
+      "notes": "Invokes finite-temperature QFT periodicity result."
+    },
+    {
+      "id": 72,
+      "text": "A uniformly accelerated observer does not have access to the full Minkowski spacetime, only one Rindler wedge. The Minkowski vacuum restricted to one wedge, with inaccessible modes traced over, is thermal with respect to Rindler time evolution.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [44, 68],
+      "notes": ""
+    }
+  ]
+}
+```

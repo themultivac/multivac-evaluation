@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776550222-YyqtW7sAhLACNkmJ7TD5",
+  "object": "chat.completion",
+  "created": 1776550222,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 39,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The formula correctly represents the event horizon in Schwarzschild geometry.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5AFR8KQQDB7FIfkkgDVGVnSDo7UqiBsnhEIBMgcSk3YLCOkZqTz5GMB7yOw_aHk5vRDPsO9JgpUZ0S7HHE9wXg5P-IMIQdvFPi7IUWpoll0pMVO-ZLwU6F0QyO5ro6YRs1NzO1CZ0FM3MXs8LlDxLHE4eZETcT5otXbxPpjZNOR3Af9Ai__iOo1tdFaS9INxkYQm-AzeeiGQZ5Pzf4lUzJWO-vzfshDAgX1fQRnmxs8bhKDEFDXPw38AtlafGWGOymsC-eD_qpmqy-qITVD7yGOxPjgAJmoG_nRKU7FePiXxCmMNhFz-vRU4blTza9FQvszryCJRP8TfXUlv-XX5rtjqJo6iDIedDyViwZtvH9uRxN3MeBGAY95ylVYa9Ptx2ePK1nv3m_kQedXrl3lr-1QlVIdutvgS6u9qeeyffL_1JXC9iuFCtZZ5lP4f7td1adsgomanF1Tlifnb_ivdMnYpRfqSBTXO78TqPG6XLYXJHRAURDcix76WRj75ajgiw3-InzlaEDc9o2BiNGvQ9BwvRQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_0574066b96d1db780169e4014f4a84819798ba67dd941bb154",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 361,
+    "completion_tokens": 752,
+    "total_tokens": 1113,
+    "cost": 0.0037059,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0037059,
+      "upstream_inference_prompt_cost": 0.0003971,
+      "upstream_inference_completions_cost": 0.0033088
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 320,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776539283-H8A8Q0UiORBXJ3rJUXEf",
+  "object": "chat.completion",
+  "created": 1776539283,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard Rindler coordinates indeed cover the right wedge defined by x > |t|.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": "**Verifying Rindler wedge details**\n\nI need to clarify some details about the right Rindler wedge. It's defined as the region where x > |t|, specifically in Minkowski spacetime. The coordinates (\u03b7, \u03be) indeed cover this wedge, given their definitions in relation to t and x. The claim about these coordinates correctly covering the right Rindler wedge is relevant. However, I should note that the focus should be on the right Rindler wedge rather than the entire Minkowski space.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Verifying Rindler wedge details**\n\nI need to clarify some details about the right Rindler wedge. It's defined as the region where x > |t|, specifically in Minkowski spacetime. The coordinates (\u03b7, \u03be) indeed cover this wedge, given their definitions in relation to t and x. The claim about these coordinates correctly covering the right Rindler wedge is relevant. However, I should note that the focus should be on the right Rindler wedge rather than the entire Minkowski space.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49aag6kVECKLXfp_qPJD84o5HBqw8vFypJtPQUXh7mUgZBhjNYFJaEc4gpS8KyyFpO5oc3-ziylnerdY1uFwX2i3R6A5Cqv-bs7i0y5iVg9k3EUGOKQiTFrSsP3iB-ECDfU_w5mgUD5nsO0BCFNHj_mq0yE_8nQ6BFA6Zk5I-eC_7NusAKR1uozQnXNxi03v5pEZESW5f1gl9UoXDy6Fss4d7lbBOBfjROoaFjhWAIef-Bz94wT6O6KxLZ83QO5zJsrqiNXorzjUwJum7yKo_IiaavzADHDld4YSfo3bEiLU7Z9NbmVI6RtuQmBEPZKqjPtdXbmPR42Z2O7Jdp8QFLxrXn8rhtJ2VpsXNrtcrFS2LGyVw9j0jfAQa9qHaO8imv_AynCO_zIgf6B1PJA979xyFWfbeZMqteF_kwo32c1LWxCSl3km1fbndQ-xzZdhH8pUuzq-ZicgdinTF818KlMMXuMg-RW-CFlAOfYeL2Pqgp7q824rgVJYX2OWgD148gzO0tV8xa_5QWeZslupjDT66w==",
+            "format": "openai-responses-v1",
+            "id": "rs_0d6626a5dbc6f3c40169e3d6944bdc8190a8c1755d56f77485",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 515,
+    "completion_tokens": 2043,
+    "total_tokens": 2558,
+    "cost": 0.0095557,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0095557,
+      "upstream_inference_prompt_cost": 0.0005665,
+      "upstream_inference_completions_cost": 0.0089892
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 960,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

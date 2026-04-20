@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776539798-eSNUpDPuduNMqbizNgTc",
+  "object": "chat.completion",
+  "created": 1776539798,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim",
+        "refusal": null,
+        "reasoning": "**Exploring equations and constraints**\n\nI'm considering a situation where we have constraints and maybe some assumptions about hyperbola, which could imply certain ordering. But we've got one equation with two unknown functions, which complicates things. The constraint involving projections of acceleration onto velocity doesn't directly tell us the proportional relationships of acceleration components. Differentiating the constraint reveals that acceleration is orthogonal to velocity in a Minkowski sense, but it doesn't mean there's a direct proportionality between the components.**Analyzing hyperbolic motion**\n\nI'm looking into hyperbolic motion with constant acceleration. If we define \\(u^0\\) and \\(u^1\\) as hyperbolic functions, we see that their derivatives have a specific proportionality. However, I'm questioning whether that conclusion can be generalized from the constraint's derivative. While the conditions allow solving one component, they're not convincing enough for outright integration without more justification. The proportionality claims made in the model's answer seem not entirely justified; additional details about the hyperbolic trajectory are necessary for full clarity.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Exploring equations and constraints**\n\nI'm considering a situation where we have constraints and maybe some assumptions about hyperbola, which could imply certain ordering. But we've got one equation with two unknown functions, which complicates things. The constraint involving projections of acceleration onto velocity doesn't directly tell us the proportional relationships of acceleration components. Differentiating the constraint reveals that acceleration is orthogonal to velocity in a Minkowski sense, but it doesn't mean there's a direct proportionality between the components.**Analyzing hyperbolic motion**\n\nI'm looking into hyperbolic motion with constant acceleration. If we define \\(u^0\\) and \\(u^1\\) as hyperbolic functions, we see that their derivatives have a specific proportionality. However, I'm questioning whether that conclusion can be generalized from the constraint's derivative. While the conditions allow solving one component, they're not convincing enough for outright integration without more justification. The proportionality claims made in the model's answer seem not entirely justified; additional details about the hyperbolic trajectory are necessary for full clarity.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49ikhYg3DEgSfjCVlleBIxmcWtP4SQPcBL6QWTnQJBbrxrvxknQzaaLeR_ZNjlJjUqEfHrEnKkBrT7y0xrrLtK2SG6YlrjG2q205JyIWaGxIkrUVroQW5Omz0kYWddi-p35B1e-0s4u-I_7A38noUTQFrgQULm8S33rbmuKYBjm0RSw_EDgDFbvhKMG83z0qYkrQ9zQH3lPRcPP61aG27OUakG8zFaZ1HucLA9QdiACKMa8qKlumKSWWV_1yoMq1rhUhgJ5gwywTqHIeLQv8AgG0xjk08UnEPoQjytPyvjD2uAjOx5ilA7kbgCIZlhRsUNJGur1CtqotYO9lT-vxRvYIXvbgSMdhkWmNCPGnHV87cr88N5f8eegzh5CWaAaYFW7YRyqHq5soxPBsW4--hJi_w3v7tq-0G6d5h4hZM9KOu_OF0pVT8JFvUqlaLc8PqnVnlr46JVZR4JbQVTXg5wWonuQ8ntnnZXPMTKB9aqWZb96Xzr48SAGO8pazoAy2x3ZnYFTb7Or5XBLv5xB6Lz82lg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0d964b35f54138130169e3d897327c81938751a57a4200babd",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 559,
+    "completion_tokens": 4032,
+    "total_tokens": 4591,
+    "cost": 0.0183557,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0183557,
+      "upstream_inference_prompt_cost": 0.0006149,
+      "upstream_inference_completions_cost": 0.0177408
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1984,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776550954-FqeMmJYCKnN6aFj87aoa",
+  "object": "chat.completion",
+  "created": 1776550954,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Verifying mathematical symbols**\n\nI'm checking the ordering of indices related to specific symbols from a metric. They compute \u0393^r_{tt}, which includes a factor of c\u00b2 and is consistent with the metric coefficient of -A c\u00b2 dt\u00b2. I've confirmed \u0393^t_{tr} = A'/(2A) is correct, but they might have omitted \u0393^r_{rt} = A' c\u00b2/(2B). Since Christoffel symbols are symmetric, the ones shown can be considered nonvanishing. Overall, the claim appears to be correct based on well-known properties.**Confirming Christoffel symbols**\n\nI need to verify that the nonvanishing Christoffel symbols in the Schwarzschild metric depend on functions A and B. For \u0393^r_{\u03b8\u03b8} = -r/B, this checks out correctly. Similarly, \u0393^t_{tr} = A'/(2A) appears accurate. The c\u00b2 factor in \u0393^r_{tt} is legitimate since the metric coefficient g_{tt} = -A c\u00b2. However, I should note that some symbols might be missing, but the listed symbols align with standard expressions for a spherically symmetric metric. Overall, everything matches, so I feel confident confirming this.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Verifying mathematical symbols**\n\nI'm checking the ordering of indices related to specific symbols from a metric. They compute \u0393^r_{tt}, which includes a factor of c\u00b2 and is consistent with the metric coefficient of -A c\u00b2 dt\u00b2. I've confirmed \u0393^t_{tr} = A'/(2A) is correct, but they might have omitted \u0393^r_{rt} = A' c\u00b2/(2B). Since Christoffel symbols are symmetric, the ones shown can be considered nonvanishing. Overall, the claim appears to be correct based on well-known properties.**Confirming Christoffel symbols**\n\nI need to verify that the nonvanishing Christoffel symbols in the Schwarzschild metric depend on functions A and B. For \u0393^r_{\u03b8\u03b8} = -r/B, this checks out correctly. Similarly, \u0393^t_{tr} = A'/(2A) appears accurate. The c\u00b2 factor in \u0393^r_{tt} is legitimate since the metric coefficient g_{tt} = -A c\u00b2. However, I should note that some symbols might be missing, but the listed symbols align with standard expressions for a spherically symmetric metric. Overall, everything matches, so I feel confident confirming this.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5AQ9c1tO3WBuFQ-a4rcWwbJH7NnY3T6X5hDPymbgkLSEub0Tcn_yG2Qg86UNKSDfgAlzyQLumXtKsJkosWhzPGebhdMpIo_tLnlBvQmHE01mR3vyUqKGdUiiwXCYWM3SRBzJnEGrwtLjYVFa5xAOJiFtax38ovUEIhOvJrmGq7GXkz5R2-HpVw2cQR7m5c5Zk_blVJjloyyf1Bp9UXiiWo8TXBGtppsG5VXpsfzzgp9KdcCbFjYQ5bdimCmbz5KRHPPK1aVV2gB30-azIVS5J3ojfMa1_xLGSHVNEu_TgAtt3yPX1_S84Ldz3dxA9SzJq2WFsq1VWEEpRBs3RCeWEaXj3opR-_3tZDJXf7XIjS4MHFZ-aO_KajTX_Jwx5SsvciO5swqBMf1DsAqaZO1dbXfQC0iWh3kOXrSpI4R3N6TQA9cr_IlxF9u5M0YIqEgGqENhvcwHYM16FQd9Xi1Whprj9uUyRIpXIUeev4dcX87EOLImiuf9eW3Xhsl5F7d7Te3U_1TH6twYrZ8WFE3yK8k87Q==",
+            "format": "openai-responses-v1",
+            "id": "rs_0cfad18afef923f60169e4042b418c819387dacc1306cc92d3",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 477,
+    "completion_tokens": 4096,
+    "total_tokens": 4573,
+    "cost": 0.0185471,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0185471,
+      "upstream_inference_prompt_cost": 0.0005247,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

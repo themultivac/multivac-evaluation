@@ -1,0 +1,602 @@
+[
+  {
+    "claim_id": 2,
+    "claim_text": "In vacuum, T_{\u03bc\u03bd} = 0.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":2,\"verdict\":\"CONFIRMED\",\"explanation\":\"For the vacuum exterior region in Einstein\u2019s equations, no matter-energy is present, so the stress-energy tensor vanishes: T_{\u03bc\u03bd}=0.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 2,
+      "verdict": "CONFIRMED",
+      "explanation": "For the vacuum exterior region in Einstein\u2019s equations, no matter-energy is present, so the stress-energy tensor vanishes: T_{\u03bc\u03bd}=0.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:21:58.202584"
+  },
+  {
+    "claim_id": 3,
+    "claim_text": "Contracting R_{\u03bc\u03bd} - (1/2) g_{\u03bc\u03bd} R = 0 with g^{\u03bc\u03bd} gives R = 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 3, \"verdict\": \"CONFIRMED\", \"explanation\": \"Contracting the vacuum equations yields R - 2R = -R = 0; hence R=0.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 3,
+      "verdict": "CONFIRMED",
+      "explanation": "Contracting the vacuum equations yields R - 2R = -R = 0; hence R=0.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:22:04.952615"
+  },
+  {
+    "claim_id": 4,
+    "claim_text": "The vacuum EFE reduce to R_{\u03bc\u03bd} = 0.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":4,\"verdict\":\"CONFIRMED\",\"explanation\":\"In vacuum, stress-energy tensor vanishes and with zero cosmological constant Einstein equations give G_{\u03bc\u03bd}=0, implying R_{\u03bc\u03bd}=0 in four dimensions by tracing.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 4,
+      "verdict": "CONFIRMED",
+      "explanation": "In vacuum, stress-energy tensor vanishes and with zero cosmological constant Einstein equations give G_{\u03bc\u03bd}=0, implying R_{\u03bc\u03bd}=0 in four dimensions by tracing.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:22:08.523633"
+  },
+  {
+    "claim_id": 5,
+    "claim_text": "Assumption 1: The metric is invariant under spatial rotations (spherical symmetry).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 5, \"verdict\": \"CONFIRMED\", \"explanation\": \"Spherical symmetry is a standard assumption for a static, non-rotating, uncharged mass, making the claim valid.\", \"confidence\": 1.0}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 5,
+      "verdict": "CONFIRMED",
+      "explanation": "Spherical symmetry is a standard assumption for a static, non-rotating, uncharged mass, making the claim valid.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:22:21.423350"
+  },
+  {
+    "claim_id": 6,
+    "claim_text": "Assumption 2: The metric is time-independent (\u2202_t g_{\u03bc\u03bd}=0) and has no time-space cross terms (static).",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":6,\"verdict\":\"CONFIRMED\",\"explanation\":\"For a spherically symmetric vacuum exterior of a non-rotating mass, Birkhoff\u2019s theorem implies stationarity; choosing static coordinates sets g_{ti}=0 and \u2202_t g_{\u03bc\u03bd}=0.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 6,
+      "verdict": "CONFIRMED",
+      "explanation": "For a spherically symmetric vacuum exterior of a non-rotating mass, Birkhoff\u2019s theorem implies stationarity; choosing static coordinates sets g_{ti}=0 and \u2202_t g_{\u03bc\u03bd}=0.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T16:22:24.715070"
+  },
+  {
+    "claim_id": 7,
+    "claim_text": "Assumption 3: Vacuum outside the source, T_{\u03bc\u03bd}=0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 7,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Vacuum (T_{\u03bc\u03bd}=0) is standard for Schwarzschild derivation, correctly assuming no matter/energy outside the source.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 7,
+      "verdict": "CONFIRMED",
+      "explanation": "Vacuum (T_{\u03bc\u03bd}=0) is standard for Schwarzschild derivation, correctly assuming no matter/energy outside the source.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:22:35.402188"
+  },
+  {
+    "claim_id": 8,
+    "claim_text": "Assumption 4: Asymptotic flatness \u2014 as r\u2192\u221e, the metric reduces to Minkowski in spherical coordinates.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"Standard for isolated spherically symmetric vacuum solutions: impose g_tt\u2192-c^2, g_rr\u21921, angular part unchanged as r\u2192\u221e, yielding asymptotic Minkowski spacetime.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 8,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard for isolated spherically symmetric vacuum solutions: impose g_tt\u2192-c^2, g_rr\u21921, angular part unchanged as r\u2192\u221e, yielding asymptotic Minkowski spacetime.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T16:22:40.512288"
+  },
+  {
+    "claim_id": 9,
+    "claim_text": "Assumption 5: Weak-field correspondence \u2014 in the Newtonian limit, the metric reproduces \u03a6 = -GM/r.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 9,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard weak-field limit ensures g00 recovers the Newtonian potential \u03a6 = -GM/r, a well-established correspondence.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 9,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard weak-field limit ensures g00 recovers the Newtonian potential \u03a6 = -GM/r, a well-established correspondence.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:22:54.889938"
+  },
+  {
+    "claim_id": 11,
+    "claim_text": "The metric components are g_{tt} = -e^{2\u03bd}c\u00b2, g_{rr} = e^{2\u03bb}, g_{\u03b8\u03b8} = r\u00b2, g_{\u03c6\u03c6} = r\u00b2sin\u00b2\u03b8.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is the standard ansatz for a static, spherically symmetric metric as used in deriving the Schwarzschild solution.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 11,
+      "verdict": "CONFIRMED",
+      "explanation": "This is the standard ansatz for a static, spherically symmetric metric as used in deriving the Schwarzschild solution.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:23:02.775407"
+  },
+  {
+    "claim_id": 13,
+    "claim_text": "The nonzero Christoffel symbols are: \u0393^t_{tr}=\u03bd', \u0393^r_{tt}=\u03bd' e^{2\u03bd-2\u03bb}c\u00b2, \u0393^r_{rr}=\u03bb', \u0393^r_{\u03b8\u03b8}=-r e^{-2\u03bb}, \u0393^r_{\u03c6\u03c6}=-r sin\u00b2\u03b8 e^{-2\u03bb}, \u0393^\u03b8_{r\u03b8}=\u0393^\u03c6_{r\u03c6}=1/r, \u0393^\u03b8_{\u03c6\u03c6}=-sin\u03b8 cos\u03b8, \u0393^\u03c6_{\u03b8\u03c6}=cot\u03b8.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:24:05.348145"
+  },
+  {
+    "claim_id": 15,
+    "claim_text": "R_{tt} = e^{2\u03bd-2\u03bb}c\u00b2[\u03bd'' + (\u03bd')\u00b2 - \u03bd'\u03bb' + 2\u03bd'/r].",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 15,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expression correctly matches the standard R_tt form for a static, spherically symmetric metric in Schwarzschild coordinates.\",\n    \"confidence\": 0.95\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "The expression correctly matches the standard R_tt form for a static, spherically symmetric metric in Schwarzschild coordinates.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T16:24:19.481705"
+  },
+  {
+    "claim_id": 16,
+    "claim_text": "R_{rr} = -\u03bd'' - (\u03bd')\u00b2 + \u03bd'\u03bb' + 2\u03bb'/r.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":16,\"verdict\":\"ERROR\",\"explanation\":\"For ds\u00b2=e^\u03bdc\u00b2dt\u00b2\u2212e^\u03bbdr\u00b2\u2212r\u00b2d\u03a9\u00b2, R_rr = \u03bd''/2 + \u03bd'^2/4 \u2212 \u03bd'\u03bb'/4 \u2212 \u03bb'/r, up to convention-dependent signs/factors; stated expression is incorrect.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 16,
+      "verdict": "ERROR",
+      "explanation": "For ds\u00b2=e^\u03bdc\u00b2dt\u00b2\u2212e^\u03bbdr\u00b2\u2212r\u00b2d\u03a9\u00b2, R_rr = \u03bd''/2 + \u03bd'^2/4 \u2212 \u03bd'\u03bb'/4 \u2212 \u03bb'/r, up to convention-dependent signs/factors; stated expression is incorrect.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T16:24:23.199292"
+  },
+  {
+    "claim_id": 17,
+    "claim_text": "R_{\u03b8\u03b8} = 1 - e^{-2\u03bb}[1 + r(\u03bd' - \u03bb')].",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 17,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The expression is the standard result for the R\u03b8\u03b8 component in a spherically symmetric metric.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 17,
+      "verdict": "CONFIRMED",
+      "explanation": "The expression is the standard result for the R\u03b8\u03b8 component in a spherically symmetric metric.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:24:37.250471"
+  },
+  {
+    "claim_id": 18,
+    "claim_text": "R_{\u03c6\u03c6} = sin\u00b2\u03b8 R_{\u03b8\u03b8}.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"For any spherically symmetric metric with angular sector r\u00b2(d\u03b8\u00b2+sin\u00b2\u03b8 d\u03c6\u00b2), rotational symmetry implies Ricci angular components satisfy R_{\u03c6\u03c6}=sin\u00b2\u03b8\\,R_{\u03b8\u03b8}.\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:24:40.908052"
+  },
+  {
+    "claim_id": 19,
+    "claim_text": "The combination e^{2\u03bb-2\u03bd} R_{tt}/c\u00b2 + R_{rr} = 2(\u03bd' + \u03bb')/r.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 19,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard expressions for R_tt and R_rr cancel second derivatives appropriately, yielding 2(\u03bd' + \u03bb')/r with correct exponential and c\u00b2 factors.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard expressions for R_tt and R_rr cancel second derivatives appropriately, yielding 2(\u03bd' + \u03bb')/r with correct exponential and c\u00b2 factors.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:25:17.885048"
+  },
+  {
+    "claim_id": 20,
+    "claim_text": "Setting this combination to zero gives \u03bd' + \u03bb' = 0.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":20,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"From vacuum Einstein equations one can derive \u03bd'+\u03bb'=0 only after specifying which combination of field equations is used and showing algebraic cancellation.\",\"confidence\":0.91}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 20,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "From vacuum Einstein equations one can derive \u03bd'+\u03bb'=0 only after specifying which combination of field equations is used and showing algebraic cancellation.",
+      "confidence": 0.91
+    },
+    "timestamp": "2026-04-18T16:25:22.440952"
+  },
+  {
+    "claim_id": 21,
+    "claim_text": "Integrating \u03bd' + \u03bb' = 0 gives \u03bd + \u03bb = const.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 21,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Since d/dr(\u03bd+\u03bb) = 0, integrating correctly yields \u03bd+\u03bb = constant, with the constant later set by boundary conditions.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 21,
+      "verdict": "CONFIRMED",
+      "explanation": "Since d/dr(\u03bd+\u03bb) = 0, integrating correctly yields \u03bd+\u03bb = constant, with the constant later set by boundary conditions.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:25:32.198606"
+  },
+  {
+    "claim_id": 22,
+    "claim_text": "By asymptotic flatness (\u03bd, \u03bb \u2192 0 at r \u2192 \u221e), the constant is zero.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":22,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"Asymptotic flatness makes additive constants in \u03bd, \u03bb vanish after fixing time/radial coordinate normalization; this requires explicit gauge/coordinate choice, not stated here.\",\"confidence\":0.93}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 22,
+      "verdict": "UNJUSTIFIED",
+      "explanation": "Asymptotic flatness makes additive constants in \u03bd, \u03bb vanish after fixing time/radial coordinate normalization; this requires explicit gauge/coordinate choice, not stated here.",
+      "confidence": 0.93
+    },
+    "timestamp": "2026-04-18T16:25:35.860427"
+  },
+  {
+    "claim_id": 23,
+    "claim_text": "Therefore \u03bd(r) = -\u03bb(r).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 23,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Under vacuum Einstein equations and asymptotically flat conditions, the relation e^(\u03bd+\u03bb)=1 holds, implying \u03bd(r) = -\u03bb(r).\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 23,
+      "verdict": "CONFIRMED",
+      "explanation": "Under vacuum Einstein equations and asymptotically flat conditions, the relation e^(\u03bd+\u03bb)=1 holds, implying \u03bd(r) = -\u03bb(r).",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:25:44.767372"
+  },
+  {
+    "claim_id": 24,
+    "claim_text": "Using R_{\u03b8\u03b8} = 0: 1 = e^{-2\u03bb}[1 + r(\u03bd' - \u03bb')].",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":24,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"For the static spherical metric, the precise \\(R_{\\\\theta\\\\theta}\\) expression depends on sign conventions and derivation details; this equation can be correct but is not established without showing them.\",\"confidence\":0.78}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:25:51.118097"
+  },
+  {
+    "claim_id": 25,
+    "claim_text": "Substituting \u03bb = -\u03bd gives 1 = e^{2\u03bd}[1 + 2r\u03bd'].",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:27:18.977231"
+  },
+  {
+    "claim_id": 26,
+    "claim_text": "Noting that d/dr(r e^{2\u03bd}) = e^{2\u03bd}(1 + 2r\u03bd').",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":26,\"verdict\":\"CONFIRMED\",\"explanation\":\"By product and chain rules: d[r e^{2\u03bd}]/dr = e^{2\u03bd} + r(2\u03bd' e^{2\u03bd}) = e^{2\u03bd}(1+2r\u03bd').\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 26,
+      "verdict": "CONFIRMED",
+      "explanation": "By product and chain rules: d[r e^{2\u03bd}]/dr = e^{2\u03bd} + r(2\u03bd' e^{2\u03bd}) = e^{2\u03bd}(1+2r\u03bd').",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:27:22.048533"
+  },
+  {
+    "claim_id": 27,
+    "claim_text": "The equation becomes d/dr(r e^{2\u03bd}) = 1.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:28:49.913406"
+  },
+  {
+    "claim_id": 28,
+    "claim_text": "Integrating gives r e^{2\u03bd} = r + C, so e^{2\u03bd} = 1 + C/r, with C an integration constant.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":28,\"verdict\":\"CONFIRMED\",\"explanation\":\"From vacuum equations for static spherical metric, one obtains d(r e^{2\\\\nu})/dr=1; integrating yields r e^{2\\\\nu}=r+C, hence e^{2\\\\nu}=1+C/r.\",\"confidence\":0.97}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 28,
+      "verdict": "CONFIRMED",
+      "explanation": "From vacuum equations for static spherical metric, one obtains d(r e^{2\\nu})/dr=1; integrating yields r e^{2\\nu}=r+C, hence e^{2\\nu}=1+C/r.",
+      "confidence": 0.97
+    },
+    "timestamp": "2026-04-18T16:28:54.006469"
+  },
+  {
+    "claim_id": 29,
+    "claim_text": "R_{rr} = 0 and R_{tt} = 0 are then automatically satisfied.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 29,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"R_tt and R_rr require explicit differential equations verification; they do not vanish automatically without imposing necessary consistency conditions.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 29,
+      "verdict": "ERROR",
+      "explanation": "R_tt and R_rr require explicit differential equations verification; they do not vanish automatically without imposing necessary consistency conditions.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:29:07.316553"
+  },
+  {
+    "claim_id": 31,
+    "claim_text": "Thus e^{2\u03bd} = 1 + 2\u03a6/c\u00b2 = 1 - 2GM/(c\u00b2r).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 31,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correctly uses the weak-field limit where g_tt matches 1+2\u03a6/c\u00b2, substituting \u03a6 = -GM/r to yield the Schwarzschild term.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 31,
+      "verdict": "CONFIRMED",
+      "explanation": "Correctly uses the weak-field limit where g_tt matches 1+2\u03a6/c\u00b2, substituting \u03a6 = -GM/r to yield the Schwarzschild term.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:29:24.012866"
+  },
+  {
+    "claim_id": 32,
+    "claim_text": "Comparing e^{2\u03bd} = 1 + C/r with e^{2\u03bd} = 1 - 2GM/(c\u00b2r) yields C = -2GM/c\u00b2.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":32,\"verdict\":\"CONFIRMED\",\"explanation\":\"In vacuum spherical symmetry, integrating gives e^{2\u03bd}=1+C/r. Matching the weak-field/Newtonian limit g_tt\u2248-(1-2GM/c\u00b2r) fixes C=-2GM/c\u00b2.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 32,
+      "verdict": "CONFIRMED",
+      "explanation": "In vacuum spherical symmetry, integrating gives e^{2\u03bd}=1+C/r. Matching the weak-field/Newtonian limit g_tt\u2248-(1-2GM/c\u00b2r) fixes C=-2GM/c\u00b2.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T16:29:27.387388"
+  },
+  {
+    "claim_id": 33,
+    "claim_text": "The Schwarzschild metric is ds\u00b2 = -(1 - 2GM/(c\u00b2r))c\u00b2 dt\u00b2 + (1 - 2GM/(c\u00b2r))\u207b\u00b9 dr\u00b2 + r\u00b2(d\u03b8\u00b2 + sin\u00b2\u03b8 d\u03c6\u00b2).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 33,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Standard Schwarzschild metric form with r=2GM/c\u00b2 as the coordinate singularity; no error found.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 33,
+      "verdict": "CONFIRMED",
+      "explanation": "Standard Schwarzschild metric form with r=2GM/c\u00b2 as the coordinate singularity; no error found.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:29:33.060532"
+  },
+  {
+    "claim_id": 35,
+    "claim_text": "At r = 0, g_{tt} \u2192 -\u221e.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 35,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"Schwarzschild g_tt = -(1-2GM/(rc^2)) \u2192 +\u221e as r \u2192 0, so the sign is incorrectly stated.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 35,
+      "verdict": "ERROR",
+      "explanation": "Schwarzschild g_tt = -(1-2GM/(rc^2)) \u2192 +\u221e as r \u2192 0, so the sign is incorrectly stated.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:29:46.949266"
+  },
+  {
+    "claim_id": 37,
+    "claim_text": "At r = r_s where 1 - 2GM/(c\u00b2r_s) = 0, g_{rr} \u2192 \u221e and g_{tt} \u2192 0.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 37,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"At r = r_s, g_tt goes to zero and g_rr diverges, matching the Schwarzschild coordinate singularity in the metric.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 37,
+      "verdict": "CONFIRMED",
+      "explanation": "At r = r_s, g_tt goes to zero and g_rr diverges, matching the Schwarzschild coordinate singularity in the metric.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:29:52.007518"
+  },
+  {
+    "claim_id": 39,
+    "claim_text": "The coordinate singularity at r = r_s defines the event horizon.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 39,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"In Schwarzschild coordinates, r=r_s is the coordinate singularity that identifies the event horizon in the standard black hole solution.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 39,
+      "verdict": "CONFIRMED",
+      "explanation": "In Schwarzschild coordinates, r=r_s is the coordinate singularity that identifies the event horizon in the standard black hole solution.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:30:06.916148"
+  },
+  {
+    "claim_id": 40,
+    "claim_text": "Setting 1 - 2GM/(c\u00b2r_s) = 0 gives r_s = 2GM/c\u00b2.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":40,\"verdict\":\"CONFIRMED\",\"explanation\":\"In Schwarzschild coordinates, the horizon/coordinate singularity occurs where g_tt=0 (equivalently g_rr diverges): 1-2GM/(c^2 r)=0, yielding r_s=2GM/c^2.\",\"confidence\":0.99}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 40,
+      "verdict": "CONFIRMED",
+      "explanation": "In Schwarzschild coordinates, the horizon/coordinate singularity occurs where g_tt=0 (equivalently g_rr diverges): 1-2GM/(c^2 r)=0, yielding r_s=2GM/c^2.",
+      "confidence": 0.99
+    },
+    "timestamp": "2026-04-18T16:30:10.396404"
+  },
+  {
+    "claim_id": 41,
+    "claim_text": "For r > r_s, the coordinate t is timelike and r is spacelike; the exterior is static.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 41,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"For r > r_s the Schwarzschild metric has g_tt < 0 and g_rr > 0, ensuring t is timelike, r is spacelike, and the exterior is static.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 41,
+      "verdict": "CONFIRMED",
+      "explanation": "For r > r_s the Schwarzschild metric has g_tt < 0 and g_rr > 0, ensuring t is timelike, r is spacelike, and the exterior is static.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:30:20.228900"
+  },
+  {
+    "claim_id": 42,
+    "claim_text": "For r < r_s, the signs of g_{tt} and g_{rr} flip \u2014 r becomes timelike.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":42,\"verdict\":\"INCOMPLETE\",\"explanation\":\"In Schwarzschild coordinates inside the horizon, g_tt>0 and g_rr<0 so coordinate roles interchange, but only for r>0; at r=0 singularity and globally this is coordinate-dependent.\",\"confidence\":0.95}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 42,
+      "verdict": "INCOMPLETE",
+      "explanation": "In Schwarzschild coordinates inside the horizon, g_tt>0 and g_rr<0 so coordinate roles interchange, but only for r>0; at r=0 singularity and globally this is coordinate-dependent.",
+      "confidence": 0.95
+    },
+    "timestamp": "2026-04-18T16:30:23.513624"
+  },
+  {
+    "claim_id": 43,
+    "claim_text": "For r < r_s, decreasing r is an inevitable future evolution, not a spatial choice.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n  \"claim_id\": 43,\n  \"verdict\": \"CONFIRMED\",\n  \"explanation\": \"Inside the horizon, r becomes the timelike coordinate, making decreasing r inevitable along any timelike path.\",\n  \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 43,
+      "verdict": "CONFIRMED",
+      "explanation": "Inside the horizon, r becomes the timelike coordinate, making decreasing r inevitable along any timelike path.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:30:31.584119"
+  },
+  {
+    "claim_id": 44,
+    "claim_text": "Nothing, not even light, can escape from r < r_s.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":44,\"verdict\":\"INCOMPLETE\",\"explanation\":\"True for the Schwarzschild black-hole event horizon, assuming future-directed causal curves in the maximally extended spacetime. 'Escape' and r<r_s require that collapse/horizon context.\",\"confidence\":0.91}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 44,
+      "verdict": "INCOMPLETE",
+      "explanation": "True for the Schwarzschild black-hole event horizon, assuming future-directed causal curves in the maximally extended spacetime. 'Escape' and r<r_s require that collapse/horizon context.",
+      "confidence": 0.91
+    },
+    "timestamp": "2026-04-18T16:30:35.393850"
+  },
+  {
+    "claim_id": 45,
+    "claim_text": "Numerically, r_s \u2248 2.95 km \u00d7 (M/M_\u2609).",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 45,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The value follows directly from r_s = 2GM/c^2 with M\u2609 \u2248 2x10^30 kg, yielding approximately 2.95 km.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 45,
+      "verdict": "CONFIRMED",
+      "explanation": "The value follows directly from r_s = 2GM/c^2 with M\u2609 \u2248 2x10^30 kg, yielding approximately 2.95 km.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:30:41.936314"
+  },
+  {
+    "claim_id": 46,
+    "claim_text": "The Schwarzschild radius is the location at which the coordinate chart breaks down.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":46,\"verdict\":\"INCOMPLETE\",\"explanation\":\"At r=2GM/c^2 Schwarzschild coordinates break down, but this is a removable coordinate singularity, not a physical breakdown; other charts remain regular there.\",\"confidence\":0.98}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 46,
+      "verdict": "INCOMPLETE",
+      "explanation": "At r=2GM/c^2 Schwarzschild coordinates break down, but this is a removable coordinate singularity, not a physical breakdown; other charts remain regular there.",
+      "confidence": 0.98
+    },
+    "timestamp": "2026-04-18T16:30:45.321844"
+  },
+  {
+    "claim_id": 47,
+    "claim_text": "Physically, the Schwarzschild radius is the event horizon of a non-rotating, uncharged black hole of mass M.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 47,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The Schwarzschild radius indeed represents the event horizon for a non-rotating, uncharged black hole of mass M.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 47,
+      "verdict": "CONFIRMED",
+      "explanation": "The Schwarzschild radius indeed represents the event horizon for a non-rotating, uncharged black hole of mass M.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:30:52.050361"
+  },
+  {
+    "claim_id": 49,
+    "claim_text": "\u03bd(r) and \u03bb(r) are two unknown functions to be determined.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 49,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Identifying \u03bd(r) and \u03bb(r) as unknown functions is standard in the derivation of the Schwarzschild metric.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 49,
+      "verdict": "CONFIRMED",
+      "explanation": "Identifying \u03bd(r) and \u03bb(r) as unknown functions is standard in the derivation of the Schwarzschild metric.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:30:58.610638"
+  },
+  {
+    "claim_id": 51,
+    "claim_text": "The static assumption means no time-space cross terms, i.e., no rotation and no time-reversal-violating structure.",
+    "adversary": "OpenAI o3-mini (high)",
+    "adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 51,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Static metrics require hypersurface-orthogonal timelike Killing fields and thus lack time-space cross terms, ensuring no rotation or time-reversal asymmetry.\",\n    \"confidence\": 1.0\n}",
+    "parse_succeeded": true,
+    "verdict": {
+      "claim_id": 51,
+      "verdict": "CONFIRMED",
+      "explanation": "Static metrics require hypersurface-orthogonal timelike Killing fields and thus lack time-space cross terms, ensuring no rotation or time-reversal asymmetry.",
+      "confidence": 1.0
+    },
+    "timestamp": "2026-04-18T16:31:09.151500"
+  },
+  {
+    "claim_id": 52,
+    "claim_text": "The final result for the Schwarzschild radius is r_s = 2GM/c\u00b2.",
+    "adversary": "GPT-5.4",
+    "adversary_family": "openai",
+    "raw_response": "{\"claim_id\":52,\"verdict\":\"CONFIRMED\",\"explanation\":\"For the Schwarzschild vacuum solution, the event-horizon/coordinate-singularity radius is exactly \\(r_s=2GM/c^2\\).\",\"confidence\":0.99}",
+    "parse_succeeded": false,
+    "verdict": null,
+    "timestamp": "2026-04-18T16:31:12.222976"
+  }
+]

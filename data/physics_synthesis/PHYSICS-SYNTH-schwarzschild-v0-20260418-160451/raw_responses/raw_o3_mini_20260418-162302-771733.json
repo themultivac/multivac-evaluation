@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776547376-MslyncvBpabBh7MiO2HW",
+  "object": "chat.completion",
+  "created": 1776547376,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 11,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"This is the standard ansatz for a static, spherically symmetric metric as used in deriving the Schwarzschild solution.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_Y2pBh9J_WkI0uN_LyzMImcUZgRUa2Y_lPC7a_vu8yHt7RZzwMKz_uA6t701V4izuFyrOQEs0AF4ycmTT5rlVfPNGwAgyEb3BSZbp4t4rqVPIA1uXAP3pDMqrLGi0QIZqWjUNTXveC5PudrN2zgub28qbTrLIgSWvG28PM6g8ESuVY24UQeXuTip79HRhdZtO9TfKEgUnIj0-xhS64QwB9b9RDw9HAzTFUNL5JzMZHJx5baFb-uqjp_3xH0I9rqn6vA9A4Qes09-5NuTqx8qohBq-5Q-RXY9dRJUV3CalnSqJFVLpMOPjWPvdnQRDeGni8oal_TUrOnHr1iEvUqJHnxRO2ys0AjIfi75E5_w69LlR16_iwOdy1NQm8nNtPuFpipCujUhWIki6igkS9q80NiKNercbJfad5M0876e6kaHrPsnpLdcmhGcxL6BJ4Jc7HIEGPrzRNXIhcVZQEzVeKacPGKcb7KatP8qGOH1kydVgQTfbMSXaMwzMoFg5HQw5D4sl0svT86iY7Qy_IhC-JsSA==",
+            "format": "openai-responses-v1",
+            "id": "rs_0cef6e2e07c55d850169e3f6312e0481959d9d2df4293b24ae",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 397,
+    "completion_tokens": 1733,
+    "total_tokens": 2130,
+    "cost": 0.0080619,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0080619,
+      "upstream_inference_prompt_cost": 0.0004367,
+      "upstream_inference_completions_cost": 0.0076252
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 832,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

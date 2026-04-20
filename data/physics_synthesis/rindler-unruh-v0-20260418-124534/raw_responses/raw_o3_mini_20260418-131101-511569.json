@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776535853-hiH2neLhnP0tpsEqoo2a",
+  "object": "chat.completion",
+  "created": 1776535853,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"claim_id\": 17,\n  \"verdict\": \"CONFIRMED\",\n  \"explanation\": \"Matches standard Rindler coordinates derivation with correct exponential mapping yielding hyperbolic worldlines and a horizon.\",\n  \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp48k1wykN74OeqCgLpdDAOvXzf6KZxOQZeWC5KRxst5OvPO4OL7eFxWA0M9JCnFzbqfZ7D-fvDnU_CqqDLQfzB9zY9FZ4pq7TqrhF_oJ3u0_w6kYNFxLlCqJ1qiWUs0Mvs-W-OJ-8V0oHP5kzY8DRS5pz26aRgr0CnU4nP86mE2aJsrqf-7BXlXr2oHAZNUbAPgvhvo-WvLbB6i6r5oO9aJits--Nith3hlOg4s_VgVn7vOpDrj8rg_vC6ooYW3BngWMIvM3N1urusaWIPixqJ2wT0QirpLQNaEHImdxE2mQ1EpmGhRXXr-FAlBGFmMAgqZf6ZC5QizpUTTUg5uMi_ZOvJCfDnGjR9pr5R19fR4jvOWfUWAnYNvr25HvGtSVGDvcF2Y1TRtF3MOg_0MOInrXpIP2ywYmfqiSA1jRqCouWisIvLudew0ViKwQVZbTjIWVna0bGrYE915ofa3oakq-J0rz0a3GACvAPo1gZZGMt-2mpbUeJdkbIxMmIGrT6GYiwjsm8JGmfKvxau0QsTVFTVg==",
+            "format": "openai-responses-v1",
+            "id": "rs_03e73fedc6376f6f0169e3c92d8c588190863ef17f40fcf350",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 548,
+    "completion_tokens": 1768,
+    "total_tokens": 2316,
+    "cost": 0.008382,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.008382,
+      "upstream_inference_prompt_cost": 0.0006028,
+      "upstream_inference_completions_cost": 0.0077792
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 832,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

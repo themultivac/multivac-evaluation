@@ -1,0 +1,329 @@
+Below is a compact but complete derivation of the Schwarzschild radius from the Einstein field equations under the stated assumptions.
+
+---
+
+# 1. Assumptions and setup
+
+We assume:
+
+1. **Spherical symmetry**
+2. **Static spacetime** (time-independent, non-rotating)
+3. **Vacuum outside the mass**, so
+   \[
+   T_{\mu\nu}=0
+   \]
+   and therefore Einstein’s equations reduce to
+   \[
+   R_{\mu\nu}=0
+   \]
+   since
+   \[
+   G_{\mu\nu}=R_{\mu\nu}-\frac12 g_{\mu\nu}R=0.
+   \]
+
+We seek the most general static, spherically symmetric line element. In standard coordinates \((t,r,\theta,\phi)\), it can be written as
+\[
+ds^2=-e^{2\Phi(r)}c^2dt^2+e^{2\Lambda(r)}dr^2+r^2d\theta^2+r^2\sin^2\theta\,d\phi^2.
+\]
+
+Here \(\Phi(r)\) and \(\Lambda(r)\) are functions to be determined from \(R_{\mu\nu}=0\).
+
+---
+
+# 2. Metric components
+
+The metric is diagonal:
+\[
+g_{\mu\nu}=
+\begin{pmatrix}
+-e^{2\Phi}c^2 & 0 & 0 & 0\\
+0 & e^{2\Lambda} & 0 & 0\\
+0 & 0 & r^2 & 0\\
+0 & 0 & 0 & r^2\sin^2\theta
+\end{pmatrix}.
+\]
+
+The inverse metric is
+\[
+g^{\mu\nu}=
+\begin{pmatrix}
+-\dfrac{e^{-2\Phi}}{c^2} & 0 & 0 & 0\\
+0 & e^{-2\Lambda} & 0 & 0\\
+0 & 0 & \dfrac1{r^2} & 0\\
+0 & 0 & 0 & \dfrac1{r^2\sin^2\theta}
+\end{pmatrix}.
+\]
+
+---
+
+# 3. Vacuum Einstein equations
+
+For this metric, the nontrivial Ricci tensor components lead to the standard equations:
+
+\[
+R_{tt}=0,\qquad R_{rr}=0,\qquad R_{\theta\theta}=0
+\]
+(with \(R_{\phi\phi}=\sin^2\theta\,R_{\theta\theta}\)).
+
+Evaluating these gives:
+
+\[
+R_{tt}=e^{2(\Phi-\Lambda)}c^2\left(\Phi''+\Phi'^2-\Phi'\Lambda'+\frac{2\Phi'}{r}\right)=0,
+\]
+\[
+R_{rr}= -\Phi''-\Phi'^2+\Phi'\Lambda'+\frac{2\Lambda'}{r}=0,
+\]
+\[
+R_{\theta\theta}=1-e^{-2\Lambda}\left(1-r\Lambda'+r\Phi'\right)=0.
+\]
+
+Primes denote derivatives with respect to \(r\).
+
+---
+
+# 4. First simplification: relation between \(\Phi\) and \(\Lambda\)
+
+Add the \(R_{tt}=0\) and \(R_{rr}=0\) equations in a convenient way. The first has
+\[
+\Phi''+\Phi'^2-\Phi'\Lambda'+\frac{2\Phi'}{r}=0,
+\]
+and the second gives
+\[
+-\Phi''-\Phi'^2+\Phi'\Lambda'+\frac{2\Lambda'}{r}=0.
+\]
+
+Adding them:
+\[
+\frac{2}{r}(\Phi'+\Lambda')=0.
+\]
+
+Hence
+\[
+\Phi'+\Lambda'=0,
+\]
+so
+\[
+\Phi(r)=-\Lambda(r)+\text{const}.
+\]
+
+The constant can be absorbed into a rescaling of the time coordinate \(t\), so we take
+\[
+\Phi(r)=-\Lambda(r).
+\]
+
+Thus
+\[
+e^{2\Phi}=e^{-2\Lambda}.
+\]
+
+Let
+\[
+f(r)\equiv e^{2\Phi(r)}=e^{-2\Lambda(r)}.
+\]
+
+Then the metric becomes
+\[
+ds^2=-f(r)c^2dt^2+\frac{dr^2}{f(r)}+r^2d\Omega^2,
+\]
+where
+\[
+d\Omega^2=d\theta^2+\sin^2\theta\,d\phi^2.
+\]
+
+---
+
+# 5. Solve for \(f(r)\)
+
+Now use \(R_{\theta\theta}=0\):
+\[
+1-e^{-2\Lambda}\left(1-r\Lambda'+r\Phi'\right)=0.
+\]
+
+Since \(\Phi'=-\Lambda'\),
+\[
+1-r\Lambda'+r\Phi'=1-2r\Lambda'.
+\]
+
+Also
+\[
+e^{-2\Lambda}=f(r).
+\]
+
+So
+\[
+1-f(r)\left(1-2r\Lambda'\right)=0.
+\]
+
+Now relate \(\Lambda'\) to \(f\). Since
+\[
+f=e^{-2\Lambda},
+\]
+differentiate:
+\[
+f'=-2\Lambda' e^{-2\Lambda}=-2\Lambda' f.
+\]
+Hence
+\[
+\Lambda'=-\frac{f'}{2f}.
+\]
+
+Substitute into the \(R_{\theta\theta}=0\) equation:
+\[
+1-f\left(1-2r\left(-\frac{f'}{2f}\right)\right)=0
+\]
+\[
+1-f\left(1+\frac{rf'}{f}\right)=0
+\]
+\[
+1-f-rf'=0.
+\]
+
+Thus
+\[
+rf'+f=1.
+\]
+
+This is
+\[
+\frac{d}{dr}(rf)=1.
+\]
+
+Integrate:
+\[
+rf=r+C,
+\]
+where \(C\) is an integration constant. Therefore
+\[
+f(r)=1+\frac{C}{r}.
+\]
+
+So the metric is
+\[
+ds^2=-\left(1+\frac{C}{r}\right)c^2dt^2+\frac{dr^2}{1+\frac{C}{r}}+r^2d\Omega^2.
+\]
+
+---
+
+# 6. Determine the constant using the Newtonian limit
+
+Far from the mass, spacetime must approach flat Minkowski space, so
+\[
+f(r)\to 1 \quad \text{as } r\to\infty.
+\]
+That is already satisfied.
+
+To identify \(C\), compare \(g_{tt}\) with the weak-field Newtonian limit:
+\[
+g_{tt}\approx -\left(1+\frac{2\phi_N}{c^2}\right),
+\]
+where the Newtonian potential outside a mass \(M\) is
+\[
+\phi_N(r)=-\frac{GM}{r}.
+\]
+
+From the metric,
+\[
+g_{tt}=-f(r)c^2dt^2 \quad \Rightarrow \quad \frac{g_{tt}}{c^2}=-\left(1+\frac{C}{r}\right).
+\]
+
+So in weak field,
+\[
+1+\frac{C}{r}=1+\frac{2\phi_N}{c^2}
+=1-\frac{2GM}{c^2r}.
+\]
+
+Hence
+\[
+C=-\frac{2GM}{c^2}.
+\]
+
+Therefore
+\[
+f(r)=1-\frac{2GM}{c^2r}.
+\]
+
+---
+
+# 7. Schwarzschild metric
+
+Substituting this into the line element gives the Schwarzschild solution:
+
+\[
+\boxed{
+ds^2=
+-\left(1-\frac{2GM}{c^2r}\right)c^2dt^2
++\frac{dr^2}{1-\frac{2GM}{c^2r}}
++r^2(d\theta^2+\sin^2\theta\,d\phi^2)
+}
+\]
+
+This is the unique static, spherically symmetric vacuum solution: **Birkhoff’s theorem** guarantees this.
+
+---
+
+# 8. Identify the Schwarzschild radius
+
+The metric coefficients become singular when
+\[
+1-\frac{2GM}{c^2r}=0.
+\]
+
+Solving,
+\[
+r=\frac{2GM}{c^2}.
+\]
+
+This defines the **Schwarzschild radius**:
+\[
+\boxed{r_s=\frac{2GM}{c^2}}.
+\]
+
+At this radius:
+
+- \(g_{tt}=0\)
+- \(g_{rr}\to \infty\)
+
+In Schwarzschild coordinates, this looks singular, but it is a **coordinate singularity**, not a physical curvature singularity. The true physical singularity is at
+\[
+r=0.
+\]
+
+Indeed, curvature invariants such as the Kretschmann scalar remain finite at \(r=r_s\) and diverge only at \(r=0\):
+\[
+K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
+=\frac{48G^2M^2}{c^4r^6}.
+\]
+
+At \(r=r_s\), this is finite; at \(r=0\), it diverges.
+
+---
+
+# 9. Physical interpretation
+
+The surface \(r=r_s\) is the **event horizon** of a Schwarzschild black hole. In Schwarzschild coordinates, it appears as a singularity, but in regular coordinates (e.g. Eddington–Finkelstein or Kruskal–Szekeres), spacetime is smooth there.
+
+Thus the radius at which the vacuum Schwarzschild metric develops its horizon is
+
+\[
+\boxed{r_s=\frac{2GM}{c^2}}.
+\]
+
+---
+
+# Final result
+
+Starting from the vacuum Einstein equations \(R_{\mu\nu}=0\) under the assumptions of static spherical symmetry, one obtains the Schwarzschild metric
+\[
+\boxed{
+ds^2=
+-\left(1-\frac{2GM}{c^2r}\right)c^2dt^2
++\left(1-\frac{2GM}{c^2r}\right)^{-1}dr^2
++r^2d\Omega^2
+}
+\]
+and the coordinate singularity occurs at
+\[
+\boxed{r_s=\frac{2GM}{c^2}}.
+\]
+
+That is the Schwarzschild radius.

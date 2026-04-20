@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776540067-9ulv4mydocz0yAapvADm",
+  "object": "chat.completion",
+  "created": 1776540067,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"For \\(t=\\xi\\sinh\\eta,\\ x=\\xi\\cosh\\eta\\), substituting \\(dt,d x\\) into \\(ds^2=dt^2-dx^2\\) cancels \\(d\\eta\\,d\\xi\\) terms and yields \\(ds^2=\\xi^2 d\\eta^2-d\\xi^2\\).\",\"confidence\":0.99}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 543,
+    "completion_tokens": 105,
+    "total_tokens": 648,
+    "cost": 0.0029325,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0029325,
+      "upstream_inference_prompt_cost": 0.0013575,
+      "upstream_inference_completions_cost": 0.001575
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

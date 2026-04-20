@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776540446-Pi8DxGLEaAu8G4siC3RH",
+  "object": "chat.completion",
+  "created": 1776540446,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Clarifying mathematical claims**\n\nI'm working through the equation |e^{-i\u03c0/2(1+i\u03a9)}|^2 = e^{\u03c0\u03a9} and it seems correct if I stick to the right branch. However, I'm wondering about potential sign issues. The claim mentions a proportionality constant, which could actually be missing a k factor. I need to make sure I consider all aspects, including that constant, to ensure the accuracy of the claim. Rethinking this detail is important!",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Clarifying mathematical claims**\n\nI'm working through the equation |e^{-i\u03c0/2(1+i\u03a9)}|^2 = e^{\u03c0\u03a9} and it seems correct if I stick to the right branch. However, I'm wondering about potential sign issues. The claim mentions a proportionality constant, which could actually be missing a k factor. I need to make sure I consider all aspects, including that constant, to ensure the accuracy of the claim. Rethinking this detail is important!",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49swkThLeLvdzlx0zk2Qe67oRGNFvt8-zVx1XkjspZakkE5Iky_gPg2N3WTkCyb6Pf1ffU1nvLvGHMj1FryWnLatT3JYRmUjE7hCenD59AcHr1pRe45MlTvjePpGqAFZGuelsQvpEtiVhwojPBot-YxG1vzix3DBvNXGsey1RZOHwsQvMj4rrFqIi27HKIPGGn6S4VIrTKjOKsu5_6vEnJ4WMsx-bSFZAbcfaZh4U3EIaG8voOgTukPeouVDe5IqkuuGi4Paoaknk6YuaNHckycPv_M7E1DsqNvf37OQ7C-qsX40dG0FDbV_0UghdhrLadYtvxDmA9j2l-QFeoB4Wc2vlRWoXn0eCcM1ATgDn7uy0bDJORHK7uGRL-8EYTBJDSv2U3wKT1MxZZEIfQCQLTDdasJsjFG_0hU6lZ2IEeWln-RCZdHFm6VYtP4Lp-y02SssZf0NA1PsdDwu-vBn1COm22wYb70th2PZdiRVLPYBqsRi1MsmLobZW3sV2G1e-kWe0QxZujI8lWZ7-aQySs3VgQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_02da6678d07686c90169e3db1f467881958e611f7778fc1998",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 539,
+    "completion_tokens": 4096,
+    "total_tokens": 4635,
+    "cost": 0.0186153,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0186153,
+      "upstream_inference_prompt_cost": 0.0005929,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

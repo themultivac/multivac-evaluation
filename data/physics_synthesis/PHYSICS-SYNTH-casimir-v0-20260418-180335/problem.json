@@ -1,0 +1,29 @@
+{
+  "id": "casimir-v0",
+  "question": "Derive the Casimir force per unit area between two parallel, perfectly conducting, infinite plates separated by distance d in vacuum. Start from the zero-point energy of the electromagnetic quantum vacuum. \n\nSpecifically: (1) Set up the quantized EM field between the plates with appropriate boundary conditions. (2) Compute the zero-point energy density, which is formally divergent. (3) Apply a physically motivated regularization (e.g., exponential cutoff, zeta-function regularization, or dimensional regularization) to extract the finite, physically meaningful part. (4) Subtract the free-vacuum (no plates) contribution to obtain the finite Casimir energy per unit area U(d)/A. (5) Differentiate to obtain the force per unit area F(d)/A. \n\nExpress the final result in terms of \u210f, c, and d. State all regularization choices and physical assumptions explicitly. Use LaTeX for equations. If any step invokes a known result without derivation (e.g., analytic continuation of the Riemann zeta function), state this explicitly.",
+  "ground_truth": {
+    "final_answers": {
+      "casimir_force_per_area": "F/A = -\u03c0\u00b2 \u210f c / (240 d\u2074)",
+      "casimir_energy_per_area": "U/A = -\u03c0\u00b2 \u210f c / (720 d\u00b3)"
+    },
+    "key_steps": [
+      "Quantize EM field between plates with boundary conditions E_parallel = 0, B_perp = 0",
+      "Mode frequencies: \u03c9_n = c \u221a(k_x\u00b2 + k_y\u00b2 + (n\u03c0/d)\u00b2) for n = 1,2,3...",
+      "Zero-point energy per unit area: U(d)/A = (\u210f/2) \u2211_n \u222b d\u00b2k/(2\u03c0)\u00b2 \u03c9_n",
+      "Apply regularization: exponential cutoff e^(-\u03bb\u03c9), zeta regularization via \u03b6(-3) = 1/120, or dimensional regularization",
+      "Subtract continuum vacuum: U(d)/A - U_free/A, interpreting the sum-vs-integral difference via Euler-Maclaurin or Abel-Plana",
+      "Result: U/A = -\u03c0\u00b2 \u210f c / (720 d\u00b3)",
+      "Force: F/A = -dU/d(d) = -\u03c0\u00b2 \u210f c / (240 d\u2074) (attractive, negative)"
+    ],
+    "key_assumptions": [
+      "Perfect conductor boundary conditions (idealization)",
+      "Zero temperature (thermal contributions neglected)",
+      "Zero plate thickness, infinite extent (edge effects ignored)",
+      "Regularization scheme choice (zeta function regularization or equivalent)",
+      "Subtraction of free-vacuum zero-point energy to obtain physical result"
+    ]
+  },
+  "domain": "quantum_field_theory",
+  "difficulty": "graduate",
+  "source": "Milonni 'The Quantum Vacuum' Ch. 2; Bordag et al. Rev. Mod. Phys. 2009"
+}

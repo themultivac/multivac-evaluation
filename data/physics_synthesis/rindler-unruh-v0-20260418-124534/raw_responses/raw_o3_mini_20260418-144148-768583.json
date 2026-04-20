@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776541298-MYlQah4vQFP9mYKNq6tZ",
+  "object": "chat.completion",
+  "created": 1776541298,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 47,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"Several steps (analytic continuation, contour choices) are heuristic, not rigorously exact.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4958B_1S64BjW57Ml8NyJWGRuffUlOeROTe8ZJQTJazs4FNVO9mqfDl8r_0TzFoeopEgt-8IS1ogMed_T07t2iu---fRTNnahvZmziHTZ4VV9YgK_NFeO8-F1nIULSR7BH3Clp2kzjbR_iQtCQ5hbmnlYcJZOBwh4Wt3eDt54IfdmsWdeXSYutePrjPHk8aHrigMoCHEqLeAoJQiCMnYJr-hmT2H6U4yQwpXlhM_psPr1Jf8mAiYpJJTwf8IeMEQem2sHHApqecE_uzpqKtSVYEZkDSG_4w_OULLoF7PSnr_7wklRj0CfJdAJt5B_Cp-2rbp5AsdOpYFQwL57L7Rui4zkAFIJm8KYnelk-qtwrzm4hWA7fa0uBYfHeDMxqnbURfWY06XJWXXEA4y0hmEpo_DI5IJFja0ZyOcCrhksCxp--w-1wljyctQ35MwKasLBL6Zexj1M2jOr-EfEZY3w7YYEn9b_PttzimWJxQdQ7smOgExfL_gOzUVnYAqy-11a3ESTC9BXd7UmW1GiJEdLgI9uA==",
+            "format": "openai-responses-v1",
+            "id": "rs_046aba00bb7bf28b0169e3de73193c8194b83bf81f38ac0197",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 512,
+    "completion_tokens": 2109,
+    "total_tokens": 2621,
+    "cost": 0.0098428,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0098428,
+      "upstream_inference_prompt_cost": 0.0005632,
+      "upstream_inference_completions_cost": 0.0092796
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1024,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

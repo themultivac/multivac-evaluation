@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776560726-C7R13MvDTYlw6FOpkFug",
+  "object": "chat.completion",
+  "created": 1776560726,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 5,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Indeed, the zero-point energy sum over modes diverges formally without regularization and subtraction of the free-vacuum contribution.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5Cpc3fbJNpHv0LCgqEjpom_IxwDx1T_ejPW5dErKr7RMZ6z9A1Boh8TQcOqliLxtY5UyTMYCoftThZRlU-jaPe3Ki3cxzF-8wXupBVROMYC7a2ksHj1peDcya_msgC4vuyx_mlAA9MNIyb95QJ-WaGsG2GADMisHD7HWMfm_tAajohoy4FFUmKkJC5Kn5UqKe0QrRqoVcxS8n3N9QAWFq3vh4WZEBsWEpTu6IsoJOLp68BEPSOC06-lLKhL93bBKD0PeeWlYzrbKTCgC1R2P1_yCBzIglxazx6BclCpX56b2MGKdyzh929RWMNccos-Hrju9aLu8CqOYLnA2_X45FgrqExsvplJny8-7EF4cdeZ4B2FpIcFDjIAOXRE0tv0ToBt9NA_FNnF4xMUb8euVbX2CxXQ0DaVOBW1oqjlAmJ019_1YNkmO3WFY_99qA9CEttuOUAU-j7r0O1Oj-JVWjrDgeZRP2n-2tjFrQttgV9DLzyBNZdWidscDWNP90Dei_83H_FLucPyzDtbOGSPFisEM-w==",
+            "format": "openai-responses-v1",
+            "id": "rs_071b75d397141d020169e42a56f15c8197b8c09a460a62887f",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 497,
+    "completion_tokens": 1611,
+    "total_tokens": 2108,
+    "cost": 0.0076351,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0076351,
+      "upstream_inference_prompt_cost": 0.0005467,
+      "upstream_inference_completions_cost": 0.0070884
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 768,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,530 @@
+{
+  "model": "unknown",
+  "total_claims": 52,
+  "claims": [
+    {
+      "id": 1,
+      "text": "The Einstein field equations in vacuum (outside the mass distribution) are: R_{\u03bc\u03bd} - (1/2) g_{\u03bc\u03bd} R = (8\u03c0G/c\u2074) T_{\u03bc\u03bd}",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "In vacuum, T_{\u03bc\u03bd} = 0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "Contracting R_{\u03bc\u03bd} - (1/2) g_{\u03bc\u03bd} R = 0 with g^{\u03bc\u03bd} gives R = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        1,
+        2
+      ],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "The vacuum EFE reduce to R_{\u03bc\u03bd} = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        1,
+        2,
+        3
+      ],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "Assumption 1: The metric is invariant under spatial rotations (spherical symmetry).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "Assumption 2: The metric is time-independent (\u2202_t g_{\u03bc\u03bd}=0) and has no time-space cross terms (static).",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "Assumption 3: Vacuum outside the source, T_{\u03bc\u03bd}=0.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "Assumption 4: Asymptotic flatness \u2014 as r\u2192\u221e, the metric reduces to Minkowski in spherical coordinates.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "text": "Assumption 5: Weak-field correspondence \u2014 in the Newtonian limit, the metric reproduces \u03a6 = -GM/r.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "The most general line element consistent with spherical symmetry and staticity, using areal radius r, is ds\u00b2 = -e^{2\u03bd(r)} c\u00b2 dt\u00b2 + e^{2\u03bb(r)} dr\u00b2 + r\u00b2(d\u03b8\u00b2 + sin\u00b2\u03b8 d\u03c6\u00b2).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        5,
+        6
+      ],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "The metric components are g_{tt} = -e^{2\u03bd}c\u00b2, g_{rr} = e^{2\u03bb}, g_{\u03b8\u03b8} = r\u00b2, g_{\u03c6\u03c6} = r\u00b2sin\u00b2\u03b8.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "The Christoffel symbol formula is \u0393^\u03b1_{\u03bc\u03bd} = (1/2)g^{\u03b1\u03b2}(\u2202_\u03bc g_{\u03bd\u03b2} + \u2202_\u03bd g_{\u03bc\u03b2} - \u2202_\u03b2 g_{\u03bc\u03bd}).",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "The nonzero Christoffel symbols are: \u0393^t_{tr}=\u03bd', \u0393^r_{tt}=\u03bd' e^{2\u03bd-2\u03bb}c\u00b2, \u0393^r_{rr}=\u03bb', \u0393^r_{\u03b8\u03b8}=-r e^{-2\u03bb}, \u0393^r_{\u03c6\u03c6}=-r sin\u00b2\u03b8 e^{-2\u03bb}, \u0393^\u03b8_{r\u03b8}=\u0393^\u03c6_{r\u03c6}=1/r, \u0393^\u03b8_{\u03c6\u03c6}=-sin\u03b8 cos\u03b8, \u0393^\u03c6_{\u03b8\u03c6}=cot\u03b8.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        11,
+        12
+      ],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "The Ricci tensor is R_{\u03bc\u03bd} = \u2202_\u03b1 \u0393^\u03b1_{\u03bc\u03bd} - \u2202_\u03bd \u0393^\u03b1_{\u03bc\u03b1} + \u0393^\u03b1_{\u03b1\u03b2} \u0393^\u03b2_{\u03bc\u03bd} - \u0393^\u03b1_{\u03bd\u03b2} \u0393^\u03b2_{\u03bc\u03b1}.",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "R_{tt} = e^{2\u03bd-2\u03bb}c\u00b2[\u03bd'' + (\u03bd')\u00b2 - \u03bd'\u03bb' + 2\u03bd'/r].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        13,
+        14
+      ],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "R_{rr} = -\u03bd'' - (\u03bd')\u00b2 + \u03bd'\u03bb' + 2\u03bb'/r.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        13,
+        14
+      ],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "text": "R_{\u03b8\u03b8} = 1 - e^{-2\u03bb}[1 + r(\u03bd' - \u03bb')].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        13,
+        14
+      ],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "R_{\u03c6\u03c6} = sin\u00b2\u03b8 R_{\u03b8\u03b8}.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        13,
+        14,
+        17
+      ],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "The combination e^{2\u03bb-2\u03bd} R_{tt}/c\u00b2 + R_{rr} = 2(\u03bd' + \u03bb')/r.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        15,
+        16
+      ],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "text": "Setting this combination to zero gives \u03bd' + \u03bb' = 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        4,
+        19
+      ],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "Integrating \u03bd' + \u03bb' = 0 gives \u03bd + \u03bb = const.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        20
+      ],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "By asymptotic flatness (\u03bd, \u03bb \u2192 0 at r \u2192 \u221e), the constant is zero.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        8,
+        21
+      ],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "Therefore \u03bd(r) = -\u03bb(r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        22
+      ],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "Using R_{\u03b8\u03b8} = 0: 1 = e^{-2\u03bb}[1 + r(\u03bd' - \u03bb')].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        4,
+        17
+      ],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "Substituting \u03bb = -\u03bd gives 1 = e^{2\u03bd}[1 + 2r\u03bd'].",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        23,
+        24
+      ],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "text": "Noting that d/dr(r e^{2\u03bd}) = e^{2\u03bd}(1 + 2r\u03bd').",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "text": "The equation becomes d/dr(r e^{2\u03bd}) = 1.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        25,
+        26
+      ],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "text": "Integrating gives r e^{2\u03bd} = r + C, so e^{2\u03bd} = 1 + C/r, with C an integration constant.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        27
+      ],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "text": "R_{rr} = 0 and R_{tt} = 0 are then automatically satisfied.",
+      "type": "derivation_step",
+      "provenance": "asserted",
+      "depends_on": [
+        23,
+        28,
+        15,
+        16
+      ],
+      "notes": "Stated without explicit verification."
+    },
+    {
+      "id": 30,
+      "text": "In the weak-field, slow-motion limit, general relativity requires g_{tt} \u2248 -c\u00b2(1 + 2\u03a6/c\u00b2) with \u03a6(r) = -GM/r.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        9
+      ],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "text": "Thus e^{2\u03bd} = 1 + 2\u03a6/c\u00b2 = 1 - 2GM/(c\u00b2r).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        30
+      ],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "text": "Comparing e^{2\u03bd} = 1 + C/r with e^{2\u03bd} = 1 - 2GM/(c\u00b2r) yields C = -2GM/c\u00b2.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        28,
+        31
+      ],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "text": "The Schwarzschild metric is ds\u00b2 = -(1 - 2GM/(c\u00b2r))c\u00b2 dt\u00b2 + (1 - 2GM/(c\u00b2r))\u207b\u00b9 dr\u00b2 + r\u00b2(d\u03b8\u00b2 + sin\u00b2\u03b8 d\u03c6\u00b2).",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        10,
+        23,
+        28,
+        32
+      ],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "text": "Birkhoff's theorem guarantees uniqueness of this spherically symmetric vacuum solution, even without the static assumption.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        33
+      ],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "text": "At r = 0, g_{tt} \u2192 -\u221e.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        33
+      ],
+      "notes": "Actually g_{tt} \u2192 +\u221e as (1-2GM/(c\u00b2r)) \u2192 -\u221e and multiplied by -c\u00b2."
+    },
+    {
+      "id": 36,
+      "text": "The Kretschner scalar at r = 0 is R_{\u03bc\u03bd\u03c1\u03c3}R^{\u03bc\u03bd\u03c1\u03c3} = 48 G\u00b2M\u00b2/(c\u2074 r\u2076), which diverges, showing r = 0 is a genuine physical (curvature) singularity.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        33
+      ],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "text": "At r = r_s where 1 - 2GM/(c\u00b2r_s) = 0, g_{rr} \u2192 \u221e and g_{tt} \u2192 0.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        33
+      ],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "text": "The Kretschmann scalar is finite at r = r_s, so this is a coordinate singularity (removable by, e.g., Kruskal\u2013Szekeres coordinates).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        36,
+        37
+      ],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "text": "The coordinate singularity at r = r_s defines the event horizon.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        38
+      ],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "text": "Setting 1 - 2GM/(c\u00b2r_s) = 0 gives r_s = 2GM/c\u00b2.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        37
+      ],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "text": "For r > r_s, the coordinate t is timelike and r is spacelike; the exterior is static.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        33,
+        40
+      ],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "text": "For r < r_s, the signs of g_{tt} and g_{rr} flip \u2014 r becomes timelike.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [
+        33,
+        40
+      ],
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "text": "For r < r_s, decreasing r is an inevitable future evolution, not a spatial choice.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        42
+      ],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "text": "Nothing, not even light, can escape from r < r_s.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        43
+      ],
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "text": "Numerically, r_s \u2248 2.95 km \u00d7 (M/M_\u2609).",
+      "type": "numerical_result",
+      "provenance": "asserted",
+      "depends_on": [
+        40
+      ],
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "text": "The Schwarzschild radius is the location at which the coordinate chart breaks down.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        38,
+        40
+      ],
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "text": "Physically, the Schwarzschild radius is the event horizon of a non-rotating, uncharged black hole of mass M.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        39,
+        40
+      ],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "text": "Spheres of constant r have area 4\u03c0r\u00b2 (definition of areal radius).",
+      "type": "definition",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "text": "\u03bd(r) and \u03bb(r) are two unknown functions to be determined.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "text": "The Kretschmann scalar for the Schwarzschild metric is R_{\u03bc\u03bd\u03c1\u03c3}R^{\u03bc\u03bd\u03c1\u03c3} = 48 G\u00b2M\u00b2/(c\u2074 r\u2076).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        33
+      ],
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "text": "The static assumption means no time-space cross terms, i.e., no rotation and no time-reversal-violating structure.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "text": "The final result for the Schwarzschild radius is r_s = 2GM/c\u00b2.",
+      "type": "numerical_result",
+      "provenance": "derived",
+      "depends_on": [
+        40
+      ],
+      "notes": ""
+    }
+  ]
+}

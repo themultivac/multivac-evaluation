@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776548417-rgvaEfZMt0nWnNazl9Ay",
+  "object": "chat.completion",
+  "created": 1776548417,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Verifying Ricci tensor components**\n\nI\u2019m trying to confirm the components of the Ricci tensor in the Schwarzschild metric. It looks like R_{\u03b8\u03b8} equates to zero, but the steps yield a different outcome than expected. The adjustment implies a relationship between e^{-2\u039b} and the derivatives of potential functions. I\u2019m considering if f(r) could relate to the typical function used in the Schwarzschild metric, but it seems there\u2019s some confusion around its definition. I'll need to work through the equation more carefully.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Verifying Ricci tensor components**\n\nI\u2019m trying to confirm the components of the Ricci tensor in the Schwarzschild metric. It looks like R_{\u03b8\u03b8} equates to zero, but the steps yield a different outcome than expected. The adjustment implies a relationship between e^{-2\u039b} and the derivatives of potential functions. I\u2019m considering if f(r) could relate to the typical function used in the Schwarzschild metric, but it seems there\u2019s some confusion around its definition. I'll need to work through the equation more carefully.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4_pTvlK__tjJuHS1bpBK6FaKWtCMBRjpohjFPwGayRZeVzoDWVSMQb0i7YrDC1AP32jlip8t_qZM1ygMLMM03Aet9dQE33VN_PlqPYQb6u5fyjmrtRboJKFWtSC4DfcSIZj10OE3yHrjwLSMXQ19TabIP3RgX1T3GvGBbcafKlG3s5IL9R4KYE6feSvlEzRPP4noU7by-wuqLTVVyhX6Dw9dn3xQgYKlgwykr4rv2qvrmVazj4oVWCNEJSC8i5KlZkdE_O4Pl3Y0gsdFJObo2HStatwC5Za7G4rEthHw1EZY0pWMcKnAFUOnyC-nf81LjTU8smh7OqSyRFeQnbhv9v2wp8dYKHoOfOVtT6KVs9shCOdtNRwphlnKBBVYXD3gOWI-fAYxnXN3P8EoXs4QnKxpSHZuqDBj2X7PErCGVhHANrQRLnI6mg8wb6tE6EX589DmI-DzsZCXt4jeBh8BfU_jZmHyZL5HwVZr7QKctv02RDjXxggrS3Ki6Rfwb9bwKvEgvguC9uEhcPM7y4Kuul3HiQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_0127aa38b3afaf210169e3fa424f1481979c27d11588f78b6e",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 370,
+    "completion_tokens": 4096,
+    "total_tokens": 4466,
+    "cost": 0.0184294,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0184294,
+      "upstream_inference_prompt_cost": 0.000407,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

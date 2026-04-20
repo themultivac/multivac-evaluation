@@ -1,0 +1,61 @@
+{
+  "id": "gen-1776556870-UemsR6GAIVqB2cUilWyb",
+  "object": "chat.completion",
+  "created": 1776556870,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "length",
+      "native_finish_reason": "max_output_tokens",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "reasoning": "**Confirming mathematical claims**\n\nI'm analyzing a claim that involves terms and the Euler-Maclaurin formula. It seems to be applying this to compute mode summation differences in the context of the Casimir force, which makes physical sense. While I initially thought of marking it as CONFIRMED, I noticed a potential sign mistake regarding the expression for the Euler-Maclaurin approximation. The text has a negative sign indicating a difference between the sum and integral. Since that aligns correctly, I feel confident about the claim.**Verifying the claim**\n\nI'm evaluating a claim that involves an equation with a series and an integral. The Euler-Maclaurin formula indicates a relationship between sums and integrals, and I'm confirming that F(0) aligns correctly with f(0). When rearranging the terms, it seems that the expected outcome includes a term of -1/12 for F\u2019(0). I need to be cautious about the sign as it appears there's a flip in the formula. So, this needs careful consideration to ensure everything adds up correctly.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "**Confirming mathematical claims**\n\nI'm analyzing a claim that involves terms and the Euler-Maclaurin formula. It seems to be applying this to compute mode summation differences in the context of the Casimir force, which makes physical sense. While I initially thought of marking it as CONFIRMED, I noticed a potential sign mistake regarding the expression for the Euler-Maclaurin approximation. The text has a negative sign indicating a difference between the sum and integral. Since that aligns correctly, I feel confident about the claim.**Verifying the claim**\n\nI'm evaluating a claim that involves an equation with a series and an integral. The Euler-Maclaurin formula indicates a relationship between sums and integrals, and I'm confirming that F(0) aligns correctly with f(0). When rearranging the terms, it seems that the expected outcome includes a term of -1/12 for F\u2019(0). I need to be cautious about the sign as it appears there's a flip in the formula. So, this needs careful consideration to ensure everything adds up correctly.",
+            "format": "openai-responses-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5BtbJZVXXTl6ZIUdh7TlRmZypQnniOAOeeqTBD6NAYiXTH1YVfXkMEG_ZzzptFi660O9trd0T9ga9SfP0mVOu7viYKY8vgZDDR9z2ioYQru2zHjGzWnqQ-UsT8RjeptjzeTs9JrADQFC-IZ_kjJ5FNSydKCJN9EMKWCUbAnYRe3w4C28rm2VcTMHn6IHBwuE_O3nrnbJ4FusqFPC4g1jgeeI-kw0m0x5eW4WilNFsZFLzXIsH1fl9dlIX4HmznUdvD4oLOr8AN7jLtohotFNXj7rLNlDVzQMA3mj6GxiMM1DpKlBzV7ruZ5_etciMBc73OmHCEALy6neFdrYNOwLak9ApQTXoPeD8sqFpWlll4Q5kQci9m1g10eUOEqTIwv2K3W5sUSZCxAkHOkaqLZTOq8mwYRSse7BUteUPoFpa9JHQc_bQdGSSQhSJAuciIVhXt6_6AunmDI9KFBnDheoXGcTRzYydiCg5UfpknLjVzQMNlr9GnT4cTxi0A9YRvTFrLBeE-nyoocFQC92fOQGvW5kSg==",
+            "format": "openai-responses-v1",
+            "id": "rs_062ac05d1f4465990169e41b48050481958787a7a6e6e024e0",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 563,
+    "completion_tokens": 4096,
+    "total_tokens": 4659,
+    "cost": 0.0186417,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0186417,
+      "upstream_inference_prompt_cost": 0.0006193,
+      "upstream_inference_completions_cost": 0.0180224
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2048,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776550198-loWyMUQ5GTDTUd5JRYDP",
+  "object": "chat.completion",
+  "created": 1776550198,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 35,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"These metric coefficients match the standard Schwarzschild solution derived from the Einstein field equations.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5AE_JPpyjKN29v9a6ZrEn-VYuVPPivKxIKBdRLFhl4HTjWwau3DnuncZUDtxmZVF69oVsRzv9KxOHwX7p6ISQ2B_tbyKP50VzxFdyyUYcqba9ZqvTLirNLWAAF0wex1tNZJ2jcZQSbaFg46V_Ede05NKPS5TLSnP1nU-pN8lnWRqUMzBUJ08NPGLMOLLzSQZR2cBlm2Dfp5SrHpeNV2pbUBQocGrDuUF0KQ9bkcZjnTikmgXnz13Mz0r4jKV9V9m-WBY9ya4EzBgUE6q32h3jdJ32AoLCzFrn3FPq13NYs0eDmes0Fu-t-yjixwpvYTaIN0uaIIbhpF6ZJ2-PfxebZdL6tfbfJkpBRh_Fnlmkaa58YMNLyFmMwI-sYjhjdD9muBxR3l2HTaUkvyC1A-wcSkp3ZrYzIrnu-9LV0MufcRYdq4CUntyIfbcqkPafciyMvW5dD1nrmTYdO6W1mmFEz1SIrpQZ0xZ1G1KPmqGPCcs7elA43RSoEpnqhZi7wVHQIHDREYwY4ArfVA6MFm5SX2icQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_0df2231208b809ab0169e40136e490819082048175c62aa887",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 378,
+    "completion_tokens": 2660,
+    "total_tokens": 3038,
+    "cost": 0.0121198,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0121198,
+      "upstream_inference_prompt_cost": 0.0004158,
+      "upstream_inference_completions_cost": 0.011704
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1280,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

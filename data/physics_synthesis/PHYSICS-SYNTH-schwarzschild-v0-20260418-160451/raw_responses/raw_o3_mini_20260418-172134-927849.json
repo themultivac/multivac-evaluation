@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776550886-ndsS2sanzNVZhVF98NuF",
+  "object": "chat.completion",
+  "created": 1776550886,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 37,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The form matches the standard Schwarzschild metric when Rs is defined as 2GM/c^2.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp5APu5Z_nBEm_iREcpXZ1x0VZt83Ha-jNYTjs5zZkwmGMQl56ezYXbqDSWJUY3g1g85IdezbXeoa4ocfZQcf8wocertJTx6NRut3nTB3n508TddPO_HvYq7jj1xSQiNcbAANvvNPdspTIGZKQwuM0H5g4j4KeasWGVpBcEAKIm8-4qshcqMbkOOomFAYYg9uIrF5pv-TMha6_r6UmwXxAkOEvqH4Q-yPGqQ7GfdXfrbmv0Nunud0HnMwap29QbxxagWiaW6IgxaAik2uM529CU00QLiDzeVJHenL3SdmD7HFJR8knZqpH6ca22D7NkfH50NM8X0qg3Tcnj7jxUF5doOkxdYRrAhytkkLTrGHHWRtfb4oJUtPuzM89EToDzwfUtV0qZRtc4aGhhdLwmSsdoNXtxN3rbsuTv01AoqI9TNGigCAkCleX01_Xm3TPAZVmDf9-8dIGafhgtypA6cW9CPrWv_fum-lnu5PVIvmd9G39W-N4c2Yfi-RXslzzHGkqo1gYT9aC-He4uaryFrwimNUeEA==",
+            "format": "openai-responses-v1",
+            "id": "rs_0fc186cee448f3b90169e403e6e8748195aa66746f70fabe7e",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 413,
+    "completion_tokens": 2412,
+    "total_tokens": 2825,
+    "cost": 0.0110671,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0110671,
+      "upstream_inference_prompt_cost": 0.0004543,
+      "upstream_inference_completions_cost": 0.0106128
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1152,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

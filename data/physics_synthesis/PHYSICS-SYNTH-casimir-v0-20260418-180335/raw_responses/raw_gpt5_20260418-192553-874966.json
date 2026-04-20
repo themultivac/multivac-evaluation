@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776558352-TPrbSYRzeMjc1HVL324F",
+  "object": "chat.completion",
+  "created": 1776558352,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":8,\"verdict\":\"CONFIRMED\",\"explanation\":\"Infinite plate extent preserves translational invariance parallel to plates, so no boundary quantization in x,y; allowed k_x,k_y form a continuum in the infinite-area limit.\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 513,
+    "completion_tokens": 61,
+    "total_tokens": 574,
+    "cost": 0.0021975,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0021975,
+      "upstream_inference_prompt_cost": 0.0012825,
+      "upstream_inference_completions_cost": 0.000915
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

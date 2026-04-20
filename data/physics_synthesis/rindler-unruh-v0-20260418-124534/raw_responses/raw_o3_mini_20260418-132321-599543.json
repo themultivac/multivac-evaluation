@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776536595-WeHABcTsFH1llK0Agi8D",
+  "object": "chat.completion",
+  "created": 1776536595,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 61,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correct: In 2D, the massless scalar field shows IR divergences (zero mode issues) making only its derivatives physically meaningful.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp48wZfmJOlZdNzHKqtO2mkijP8OnzHGaq_TEec1qPD0a3XrcN-2ZpXWTN0NIjZQGHNpwyb7r0LDE-kyKdUMjwsxfjoT8LGXQtrUtUIfQYfPtVy0BpMCpbwaz5mfw0PWDvFjY9uMEIi90P_NFRhRwJC824KQqaRFmLlZpb-BZs6RFVEOP32-IwZDaSAQJg4Za8K82byUySe9KXECtEASKLp2oUYXESkIf5i8dPol1fR9G-aSGWGa72_kItjM-M2Fay5hXe24zCr_aL5IbSwXXWMczMn1GOE38TdoKB7pAjGWUHq1WkIN_S99jYH2GQpNsNLCN1Kfjrsc07-9iV0fklEonj9laLOiofHzlNMvz0CtmBUfYQLuURTotHAqgHoOiA9bHLQN8oPoPV-FmrLwwu3WhJTypj3JlinyKwSPGM6LmlQk2kNVNpv3neXDuYHNIGJFo8PMKCZJhjOGfwlDngySLzFCT-iuPf2CX4PNUVymTwhwx3vyR1eLsTuLMrs5FkYJrSUqUGZEeSDO-BaCvLGAHHtg==",
+            "format": "openai-responses-v1",
+            "id": "rs_01eb541cc4deff8c0169e3cc13f1688194b056a5a91b99e2b8",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 521,
+    "completion_tokens": 1644,
+    "total_tokens": 2165,
+    "cost": 0.0078067,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0078067,
+      "upstream_inference_prompt_cost": 0.0005731,
+      "upstream_inference_completions_cost": 0.0072336
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 768,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

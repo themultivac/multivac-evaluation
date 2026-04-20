@@ -1,0 +1,142 @@
+# Uniformly Accelerated Observers and the Unruh Effect
+
+## Part 1: Rindler Coordinates from First Principles
+
+### Setup and Assumptions
+
+We work in (1+1)-dimensional Minkowski spacetime (the transverse directions are trivial spectators) with signature $(+,-,-,-)$ and metric
+$$ds^2 = c^2 dt^2 - dx^2.$$
+For convenience set $c = 1$ in intermediate steps and restore at the end.
+
+**Constant proper acceleration** means: the magnitude of the 4-acceleration $a^\mu = du^\mu/d\tau$ (with $u^\mu = dx^\mu/d\tau$ the 4-velocity, $\tau$ proper time) is constant:
+$$a_\mu a^\mu = -a^2 \quad (\text{spacelike, with magnitude } a).$$
+
+### Derivation of the Hyperbolic Worldline
+
+The 4-velocity satisfies $u_\mu u^\mu = 1$. Parametrize
+$$u^\mu = (\cosh\phi(\tau),\; \sinh\phi(\tau)),$$
+which automatically satisfies the normalization. Then
+$$a^\mu = \dot\phi(\tau)\,(\sinh\phi,\;\cosh\phi),$$
+and $a_\mu a^\mu = -\dot\phi^2$. Constant proper acceleration $a$ requires $\dot\phi = a$, so
+$$\phi(\tau) = a\tau \quad (\text{absorbing an integration constant}).$$
+
+Integrating $u^\mu = dx^\mu/d\tau$:
+$$t(\tau) = \frac{1}{a}\sinh(a\tau), \qquad x(\tau) = \frac{1}{a}\cosh(a\tau),$$
+choosing integration constants so the worldline passes through $(t,x) = (0, 1/a)$ with zero coordinate velocity. Eliminating $\tau$:
+$$\boxed{x^2 - t^2 = \frac{1}{a^2}}$$
+— a hyperbola asymptoting to the null lines $x = \pm t$.
+
+### Constructing Rindler Coordinates
+
+We want coordinates $(\eta, \xi)$ adapted to a *family* of uniformly accelerated observers. Each observer at "Rindler position" $\xi$ has proper acceleration $1/\xi$ and worldline
+$$x^2 - t^2 = \xi^2.$$
+Parametrize each hyperbola with a parameter $\eta$ such that $\eta$ equals the boost rapidity (and equals proper time on the worldline $\xi = 1/a$). Define
+$$\boxed{\;t = \xi \sinh(\eta), \qquad x = \xi \cosh(\eta)\;}$$
+with $\xi > 0$ (right Rindler wedge, $x > |t|$).
+
+The induced metric is
+$$dt = \sinh\eta\,d\xi + \xi\cosh\eta\,d\eta,\quad dx = \cosh\eta\,d\xi + \xi\sinh\eta\,d\eta,$$
+$$ds^2 = dt^2 - dx^2 = \xi^2\,d\eta^2 - d\xi^2.$$
+
+It is conventional to use the **conformally flat form**. Define $\xi = \frac{1}{a}e^{a\bar\xi}$ (let me redefine to call the new coordinate $\xi$ again, with $-\infty < \xi < \infty$ now):
+$$t = \frac{1}{a}e^{a\xi}\sinh(a\eta),\qquad x = \frac{1}{a}e^{a\xi}\cosh(a\eta),$$
+giving
+$$\boxed{\;ds^2 = e^{2a\xi}\bigl(d\eta^2 - d\xi^2\bigr)\;}.$$
+
+In this form: an observer at fixed $\xi$ has proper time $d\tau = e^{a\xi}d\eta$ and proper acceleration $a\,e^{-a\xi}$. The fiducial observer at $\xi = 0$ has proper acceleration $a$ and $\eta = \tau$.
+
+### Inverse Transformation
+
+From $t = \xi\sinh\eta,\; x = \xi\cosh\eta$ (using the simpler form):
+$$\xi = \sqrt{x^2 - t^2},\qquad \eta = \tanh^{-1}(t/x) = \tfrac{1}{2}\ln\frac{x+t}{x-t}.$$
+
+### The Rindler Horizon
+
+The Rindler coordinates only cover the **right wedge** $R = \{x > |t|\}$. As we approach $x \to t^+$ (with $x,t \to \infty$), $\xi \to 0$ and $\eta \to +\infty$. Similarly $x \to -t^+$ gives $\xi \to 0,\; \eta \to -\infty$.
+
+The null lines $x = \pm t$ form the **Rindler horizon** $\mathcal{H}$.
+
+**Null in Minkowski coordinates:** The surface $x = t$ has tangent vector $\partial_t + \partial_x$, whose norm is $1 - 1 = 0$. The surface is null. ✓
+
+**Coordinate singularity in Rindler:** The metric component $g_{\eta\eta} = \xi^2$ vanishes at $\xi = 0$, so $\sqrt{-g} = \xi \to 0$ — the coordinate system degenerates. However, all curvature invariants vanish (Minkowski space is flat), confirming this is only a coordinate singularity, not a physical one. The horizon is precisely analogous to the event horizon of a Schwarzschild black hole in Schwarzschild coordinates: a coordinate artifact masking a null surface.
+
+The boost Killing vector $\partial_\eta = x\,\partial_t + t\,\partial_x$ has norm $x^2 - t^2 = \xi^2$, which is timelike in $R$, null on $\mathcal{H}$, and spacelike beyond — i.e., $\mathcal{H}$ is a **Killing horizon**.
+
+---
+
+## Part 2: The Unruh Effect
+
+### Field Setup
+
+Consider a massless scalar field obeying $\Box\phi = 0$. In Minkowski coordinates:
+$$(\partial_t^2 - \partial_x^2)\phi = 0.$$
+In conformal Rindler coordinates $(\eta,\xi)$ in wedge $R$ (and similarly in left wedge $L$ with $t = -\xi e^{a\xi}\sinh(a\eta_L)/a$ etc.), the equation has the same form because the metric is conformally flat in 2D and the massless scalar is conformally invariant in 2D:
+$$(\partial_\eta^2 - \partial_\xi^2)\phi = 0.$$
+
+### Two Mode Expansions
+
+**Minkowski modes** (positive frequency w.r.t. $\partial_t$):
+$$u_k^M(t,x) = \frac{1}{\sqrt{4\pi\omega}}e^{-i\omega t + i k x},\quad \omega = |k|.$$
+Field expansion:
+$$\phi = \int dk\,\bigl(a_k^M u_k^M + a_k^{M\dagger}u_k^{M*}\bigr).$$
+Minkowski vacuum: $a_k^M|0_M\rangle = 0$.
+
+**Rindler modes** (positive frequency w.r.t. boost Killing vector $\partial_\eta$): in wedge $R$,
+$$u_\Omega^R(\eta,\xi) = \frac{1}{\sqrt{4\pi\Omega}}e^{-i\Omega\eta + i K\xi}$$
+(with appropriate dispersion; in null coordinates $u = \eta - \xi$, $v = \eta + \xi$, modes are $e^{-i\Omega u}$ etc.). These are defined only in $R$. Analogous left-wedge modes $u_\Omega^L$ are defined in $L$, with positive frequency w.r.t. $-\partial_\eta$ (because the boost Killing vector is past-directed in $L$).
+
+Field expansion:
+$$\phi = \int_0^\infty d\Omega\,\bigl(b_\Omega^R u_\Omega^R + b_\Omega^L u_\Omega^L + \text{h.c.}\bigr).$$
+Rindler vacuum: $b_\Omega^{R,L}|0_R\rangle = 0$.
+
+### The Key Physical Assumption
+
+The two vacua are **inequivalent**. The Bogoliubov transformation
+$$b_\Omega^R = \int dk\,\bigl(\alpha_{\Omega k}a_k^M - \beta_{\Omega k}^* a_k^{M\dagger}\bigr)$$
+has $\beta \ne 0$, so the Minkowski vacuum contains Rindler particles:
+$$\langle 0_M|b_\Omega^{R\dagger}b_\Omega^R|0_M\rangle = \int dk\,|\beta_{\Omega k}|^2.$$
+
+### Computing the Bogoliubov Coefficients (Unruh's Trick)
+
+Direct computation of $\alpha,\beta$ is tedious. Unruh's elegant shortcut: construct combinations of Rindler modes that are **analytic and bounded in the lower half** of complex Minkowski null coordinates. Such combinations share the Minkowski vacuum.
+
+Use light-cone coordinates $U = t - x,\; V = t + x$ in Minkowski, and $u = \eta - \xi,\; v = \eta + \xi$ in Rindler. In wedge $R$:
+$$U = -\frac{1}{a}e^{-au},\qquad V = \frac{1}{a}e^{av}.$$
+In wedge $L$: $U = +\frac{1}{a}e^{-au_L},\; V = -\frac{1}{a}e^{av_L}$.
+
+Consider the right-moving Rindler mode (function of $u$ only):
+$$\phi_\Omega^R = \frac{1}{\sqrt{4\pi\Omega}}e^{-i\Omega u} = \frac{1}{\sqrt{4\pi\Omega}}(-aU)^{i\Omega/a}\quad (U<0).$$
+Analytically continue to $U > 0$ through the **lower half** complex $U$-plane: $-U = e^{-i\pi}U$, giving an extra factor $e^{\pi\Omega/a}$ relative to the value $(aU)^{i\Omega/a}$. Then the combination
+$$\Phi_\Omega = \frac{1}{\sqrt{2\sinh(\pi\Omega/a)}}\bigl(e^{\pi\Omega/(2a)}\phi_\Omega^R + e^{-\pi\Omega/(2a)}\phi_\Omega^{L*}\bigr)$$
+is analytic and bounded in the lower-half $U$ plane. By a theorem (which I'm invoking without proof: positive-frequency Minkowski modes are precisely those analytic and bounded in the lower-half complex null coordinate plane — this follows from the Fourier representation), $\Phi_\Omega$ is a positive-frequency Minkowski mode. Hence $\Phi_\Omega$ annihilates $|0_M\rangle$.
+
+Inverting:
+$$b_\Omega^R = \frac{1}{\sqrt{2\sinh(\pi\Omega/a)}}\bigl(e^{\pi\Omega/(2a)}d_\Omega - e^{-\pi\Omega/(2a)}d_\Omega^{L\dagger}\bigr)$$
+where $d_\Omega$ are Minkowski-like annihilation operators (linear combinations of $a_k^M$) annihilating $|0_M\rangle$.
+
+### Thermal Spectrum
+
+The number of Rindler quanta in the Minkowski vacuum:
+$$\langle 0_M|b_\Omega^{R\dagger}b_\Omega^R|0_M\rangle = \frac{e^{-\pi\Omega/a}}{2\sinh(\pi\Omega/a)}\langle 0_M|d_\Omega^L d_\Omega^{L\dagger}|0_M\rangle.$$
+
+Using $[d_\Omega^L, d_{\Omega'}^{L\dagger}] = \delta(\Omega - \Omega')$:
+$$\langle N_\Omega\rangle = \frac{e^{-\pi\Omega/a}}{2\sinh(\pi\Omega/a)} = \frac{e^{-\pi\Omega/a}}{e^{\pi\Omega/a} - e^{-\pi\Omega/a}} = \frac{1}{e^{2\pi\Omega/a} - 1}.$$
+
+This is the **Bose-Einstein distribution** at temperature
+$$k_B T = \frac{\Omega}{2\pi\Omega/a\,\cdot\,1} \implies k_B T = \frac{a}{2\pi}.$$
+
+### Restoring Units
+
+Reinstating $\hbar$ and $c$: $\Omega$ (a frequency conjugate to dimensionless $\eta$) has units of inverse time when associated with proper time of the fiducial observer. The exponent $2\pi\Omega/a$ becomes $2\pi\hbar\Omega/(k_B T \cdot k_B)\cdots$ — more carefully, energy is $\hbar\Omega$ and acceleration carries $c$:
+$$\boxed{\;k_B T = \frac{\hbar a}{2\pi c}\;\Longleftrightarrow\; T_{\rm Unruh} = \frac{\hbar a}{2\pi c\,k_B}\;}$$
+
+### Physical Interpretation
+
+The Minkowski vacuum, when restricted to the right Rindler wedge (tracing out degrees of freedom in $L$, which are causally inaccessible behind the Rindler horizon), is a **thermal density matrix** at temperature $T_{\rm Unruh}$ with respect to the boost Hamiltonian. An accelerated observer's particle detector — coupled to $\phi$ along its worldline — therefore registers an isotropic thermal bath. This is the Unruh effect.
+
+### Honest Caveats
+
+- I invoked without full proof the **theorem that positive-frequency Minkowski modes are precisely those analytic and bounded in the lower-half complex null-coordinate plane**. This is standard (Bisognano-Wichmann theorem provides the rigorous version).
+- The 2D massless scalar has IR subtleties (the field itself isn't well-defined, only its derivatives); the calculation properly proceeds in higher dimensions or with an IR regulator, but the resulting Planckian spectrum is unchanged.
+- The "particle" content is observer-dependent: $|0_M\rangle$ is a perfectly good vacuum for inertial observers; only an accelerated observer (with detector responding to proper time) sees the thermal bath.
+- The full 3+1 dimensional calculation produces the same Planck factor $1/(e^{2\pi\Omega/a}-1)$, with additional grey-body factors from the transverse mode structure that do not alter the temperature.

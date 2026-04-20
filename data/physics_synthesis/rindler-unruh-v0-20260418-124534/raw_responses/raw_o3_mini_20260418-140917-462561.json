@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776539346-XHyeyYqWiP30ljnsQBS6",
+  "object": "chat.completion",
+  "created": 1776539346,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\": 23, \"verdict\": \"CONFIRMED\", \"explanation\": \"The metric correctly transforms Minkowski coordinates to standard Rindler form with proper sign conventions.\", \"confidence\": 1.0}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp49bddb0hEa0MPKz28bT1eVs7CsQR-3mKrGz4lNHrC-BEr1LSJyX47om7BAVOyb-0oEFFH_nVcxTYDu9OK7LEp9kz6keWHEAYdlYwO_sKATf68kaG7GZn1AV8nC2SZaWtpAAToYdyJBYfAeGaNBBAh_F4EHtJQh0oOV3bOLEyKJNsd3fGRW_A3i5lPMeDTOX18VdbZwIJ7_2bJ7tfbe-Dgzb5Z3IEM_bwSx5R4Is17aT-LFDAKK6CPc4LGWi0ojoz2o9TEGGOXwveRf_nCmiwq93Wse_Ze3IbiKEMQioMHw4Jgw1_9rHNtKWiiIQf-LyvyUEgY2S-Hw_syCDByF7SminjPDH6pCQk7OjTlPDAHdNs7h4c8Wi7eYaZNpjbA0yAKiL0h1ofoSKjM5K4_JhwXhhM7J2a2np_7TZI3ry7U1BeqWXIUq_m-K7xdV4lkbtsjH28TW6kaGqvv8OERxnbiWGst-hHhnkfQQa6_L6E1zIUKQ6dDj-_Y2alLa8VDC6HyqUa6X4E2aNeFZkYB3QaSkaEcQ==",
+            "format": "openai-responses-v1",
+            "id": "rs_02d7f02e2bb9f2190169e3d6d2eed88194b923ff887ed804ba",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 509,
+    "completion_tokens": 3010,
+    "total_tokens": 3519,
+    "cost": 0.0138039,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0138039,
+      "upstream_inference_prompt_cost": 0.0005599,
+      "upstream_inference_completions_cost": 0.013244
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1472,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776536608-bdjiFNmKpGpQiaFxj7xO",
+  "object": "chat.completion",
+  "created": 1776536608,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\n    \"claim_id\": 63,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"Correct: The Unruh effect shows that the Minkowski vacuum appears thermal only to accelerating observers.\",\n    \"confidence\": 1.0\n}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp48woqhYQfcd3a05XFYgSzx07MUmBr302z3hEgr2Y0LOIOtd40Nag4hOj6LeHSmSQVhSJeTqXi_ckSF4X9xs29AyVagLZ8gR3sbCwCPFCTGWnobQgwnFYyn2rANvrI4W6s8tF1cZJLC-8-PsGgEtJx4ivgI8ALTVnU9XrftBYGv8Z-1itTP_zmwoTfWSzxyXQ5XwQfccpBLIgNb9n-WMiM9fyVW_9E2ZLmPTs6ED2X0Tx-5cwolWav5UnUGnbYK0p_GTItDvFP-cwRADL46knQYtqn5ckGLlN2q5HoH11dxXnTZEylNHnsiTgaCFZwT9_91U1pP4pL57WdGXjGWovLKvlJH6OGDgmImcwtJNOleJEWq8FguUH0vaE4t4QsYO8G8i_OruMDhFkVVhRpMyHK_ixhHiZl6ZXEz8FrPaSr2JftPI9S22zhYRPysW5btBsxYefnVM3D2d66rvTHp9E9lo_nxl7Hzn634zIf1EUTU7iyQwr4ARgp-cLvNhhFeQxY_5_QlmJvk5keB5FMbJob3VwTg==",
+            "format": "openai-responses-v1",
+            "id": "rs_0aaeae3b0ae6899e0169e3cc20c948819386ee8dfe6a8c5260",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 531,
+    "completion_tokens": 1476,
+    "total_tokens": 2007,
+    "cost": 0.0070785,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0070785,
+      "upstream_inference_prompt_cost": 0.0005841,
+      "upstream_inference_completions_cost": 0.0064944
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 704,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

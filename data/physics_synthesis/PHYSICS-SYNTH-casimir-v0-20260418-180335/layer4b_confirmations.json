@@ -1,0 +1,317 @@
+[
+  {
+    "contestant_key": "claude",
+    "verdict_index": 19,
+    "claim_id": 21,
+    "claim_text": "$F'(n) = -2n^2\\, f(\\pi c n/(d\\omega_c))$.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":21,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"As written, \\(F'(n)\\) is undefined: \\(F\\) wasn\u2019t specified and differentiating discrete mode index \\(n\\) needs continuum/extension. Formula could hold for a particular \\(F(n)\\), but lacks context.\",\"confidence\":0.9}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:25:28.963374"
+  },
+  {
+    "contestant_key": "claude",
+    "verdict_index": 21,
+    "claim_id": 23,
+    "claim_text": "$F'(0) = 0$.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":23,\"verdict\":\"ERROR\",\"explanation\":\"For ideal plates, \\(F/A=-\\pi^2\\hbar c/(240\\,d^4)\\). Thus \\(d(F/A)/dd=+\\pi^2\\hbar c/(60\\,d^5)\\), which diverges as \\(d\\\\to0\\); it is not zero.\",\"confidence\":0.99}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:25:32.631166"
+  },
+  {
+    "contestant_key": "claude",
+    "verdict_index": 23,
+    "claim_id": 25,
+    "claim_text": "$F'''(0) = -4$.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":25,\"verdict\":\"ERROR\",\"explanation\":\"Casimir pressure is \\(F/A=-\\pi^2\\hbar c/(240\\,d^4)\\). Its third derivative behaves like \\(d^{-7}\\) and is undefined at \\(d=0\\); \\(-4\\) confuses scaling exponent with derivative value.\",\"confidence\":0.99}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:25:35.911395"
+  },
+  {
+    "contestant_key": "claude",
+    "verdict_index": 25,
+    "claim_id": 27,
+    "claim_text": "All higher-order Euler\u2013Maclaurin corrections vanish, so the answer is independent of the cutoff (justifying the regularization).",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":27,\"verdict\":\"ERROR\",\"explanation\":\"Euler\u2013Maclaurin higher-order terms generally involve nonzero odd-derivative boundary terms. For Casimir sums, cutoff independence comes from subtracting divergent pieces and taking regulator limits, not automatic vanishing of all corrections.\",\"confidence\":0.98}",
+    "confirmation_verdict": {
+      "claim_id": 27,
+      "verdict": "ERROR",
+      "explanation": "Euler\u2013Maclaurin higher-order terms generally involve nonzero odd-derivative boundary terms. For Casimir sums, cutoff independence comes from subtracting divergent pieces and taking regulator limits, not automatic vanishing of all corrections.",
+      "confidence": 0.98
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T20:25:39.329485"
+  },
+  {
+    "contestant_key": "claude",
+    "verdict_index": 26,
+    "claim_id": 28,
+    "claim_text": "$\\tfrac{1}{2}F(0) + \\sum_{n=1}^\\infty F(n) - \\int_0^\\infty F(n)\\,dn = \\frac{1}{720}(-4) = -\\frac{1}{180}$.",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 28,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"It omits the necessary F'''(0) factor from the Euler-Maclaurin expansion, misapplying the Bernoulli term correction.\",\n    \"confidence\": 0.95\n}",
+    "confirmation_verdict": {
+      "claim_id": 28,
+      "verdict": "ERROR",
+      "explanation": "It omits the necessary F'''(0) factor from the Euler-Maclaurin expansion, misapplying the Bernoulli term correction.",
+      "confidence": 0.95
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T20:25:53.522627"
+  },
+  {
+    "contestant_key": "gpt5",
+    "verdict_index": 26,
+    "claim_id": 32,
+    "claim_text": "F^{(3)}(0) = -\u210fc/\u03c0.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary_family": "google",
+    "raw_response": "{\\pi/d})$.\nSo $G^{(3)}(0) = (\\pi/d)^3 (-\\hbar c / \\pi) = -\\frac{\\pi^2 \\hbar c}{d^3}$.\nThen the energy difference is $-\\frac{B_4}{4!} G^{(3)}(0) = -\\frac{-1/30}{24} (-\\frac{\\pi",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:26:11.601186"
+  },
+  {
+    "contestant_key": "gpt5",
+    "verdict_index": 27,
+    "claim_id": 33,
+    "claim_text": "U_{Cas}(d)/A = (a\u00b3/720) F^{(3)}(0) = (a\u00b3/720)(-\u210fc/\u03c0) = -\u210fc a\u00b3/(720\u03c0).",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 33,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The formula incorrectly uses a\u00b3 and F^(3)(0), leading to wrong dimensions and factor; it does not yield the proper -\u03c0\u00b2\u0127c/(720d\u00b3) energy per unit area.\",\n    \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 33,
+      "verdict": "ERROR",
+      "explanation": "The formula incorrectly uses a\u00b3 and F^(3)(0), leading to wrong dimensions and factor; it does not yield the proper -\u03c0\u00b2\u0127c/(720d\u00b3) energy per unit area.",
+      "confidence": 1.0
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T20:26:26.802504"
+  },
+  {
+    "contestant_key": "gpt5",
+    "verdict_index": 38,
+    "claim_id": 48,
+    "claim_text": "The model initially writes U_{Cas,\u03b5}(d)/A = -(a\u00b3/720)F^{(3)}(0) and then states 'the sign is clearly wrong'.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 48,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The Casimir energy is physically negative, which correctly yields an attractive force between the plates. Asserting that the negative sign is wrong is incorrect.\",\n    \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 48,
+      "verdict": "ERROR",
+      "explanation": "The Casimir energy is physically negative, which correctly yields an attractive force between the plates. Asserting that the negative sign is wrong is incorrect.",
+      "confidence": 1.0
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T20:26:38.513106"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 6,
+    "claim_id": 9,
+    "claim_text": "There is a subtlety regarding the n=0 mode and how the two physical polarizations are counted, but these details do not affect the final result.",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":9,\"verdict\":\"CONFIRMED\",\"explanation\":\"For perfect conductors, the \\(n=0\\) sector indeed has reduced polarization degeneracy, but TE/TM bookkeeping or equivalent regularizations yield the same Casimir force after vacuum subtraction.\",\"confidence\":0.9}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:26:42.060133"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 9,
+    "claim_id": 13,
+    "claim_text": "U(d)/A = (\u210f/2) \u03a3_{n=1}^\u221e \u222b d\u00b2k_\u22a5/(2\u03c0)\u00b2 c\u221a(k_\u22a5\u00b2 + (n\u03c0/d)\u00b2)",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":13,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For perfect conductors, \\(n\\\\ge1\\) modes have TE and TM polarizations, giving overall factor 2. The omitted \\(n=0\\) TE mode has zero frequency, so contributes no energy; only factor 2 is missing.\",\"confidence\":0.98}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:26:45.558352"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 14,
+    "claim_id": 19,
+    "claim_text": "U(d,\u03bb)/A = (\u210fc)/(4\u03c0) \u03a3_{n=1}^\u221e \u222b_0^\u221e k dk \u221a(k\u00b2+(n\u03c0/d)\u00b2) e^{-\u03bbc\u221a(k\u00b2+(n\u03c0/d)\u00b2)}",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":19,\"verdict\":\"CONFIRMED\",\"explanation\":\"For perfect-conductor plates, TE/TM counting gives one combined mode per n>=1 after 1/2 zero-point factor and angular integration. The n=0 TE mode is absent; omitted n=0 adds only d-independent constant.\",\"confidence\":0.95}",
+    "confirmation_verdict": {
+      "claim_id": 19,
+      "verdict": "CONFIRMED",
+      "explanation": "For perfect-conductor plates, TE/TM counting gives one combined mode per n>=1 after 1/2 zero-point factor and angular integration. The n=0 TE mode is absent; omitted n=0 adds only d-independent constant.",
+      "confidence": 0.95
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:26:49.227426"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 16,
+    "claim_id": 21,
+    "claim_text": "Under this substitution, k dk = \u03c9 d\u03c9.",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":21,\"verdict\":\"ERROR\",\"explanation\":\"From dispersion \\u03c9^2=c^2(k^2+k_z^2), at fixed k_z: 2\\u03c9 d\\u03c9=2c^2 k dk, so k\\,dk=\\u03c9\\,d\\u03c9/c^2. Claim omits c^2 unless units set c=1.\",\"confidence\":0.99}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:26:53.836524"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 21,
+    "claim_id": 27,
+    "claim_text": "These divergences are independent of the plate separation d and are present also in free space.",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":27,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Bulk UV divergence matches free space and scales with volume, hence with d per unit area. Boundary self-energy divergences are d-independent. Claim omits this distinction, so is oversimplified.\",\"confidence\":0.97}",
+    "confirmation_verdict": {
+      "claim_id": 27,
+      "verdict": "INCOMPLETE",
+      "explanation": "Bulk UV divergence matches free space and scales with volume, hence with d per unit area. Boundary self-energy divergences are d-independent. Claim omits this distinction, so is oversimplified.",
+      "confidence": 0.97
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:26:57.454885"
+  },
+  {
+    "contestant_key": "gemini",
+    "verdict_index": 3,
+    "claim_id": 5,
+    "claim_text": "In the $z$-direction, the field must form standing waves, which quantizes the $z$-component of the wave vector: $k_z = \\frac{n\\pi}{d}, \\quad \\text{where } n = 0, 1, 2, \\dots$",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":5,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Allowed perpendicular wavenumbers are \\(k_z=n\\pi/d\\), but EM polarizations differ: TE modes exclude \\(n=0\\), TM \\(n=0\\) is special/nondegenerate. Stating \\(n=0,1,\\dots\\) without qualification is incomplete.\",\"confidence\":0.97}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:27:00.833332"
+  },
+  {
+    "contestant_key": "gemini",
+    "verdict_index": 13,
+    "claim_id": 17,
+    "claim_text": "This is the infinite energy of the quantum vacuum.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":17,\"verdict\":\"INCOMPLETE\",\"explanation\":\"The regularized mode sum diverges and represents formal vacuum zero-point energy, but only energy differences are physical; calling it simply 'the' infinite vacuum energy omits plate-dependent divergence structure and subtraction context.\",\"confidence\":0.91}",
+    "confirmation_verdict": {
+      "claim_id": 17,
+      "verdict": "INCOMPLETE",
+      "explanation": "The regularized mode sum diverges and represents formal vacuum zero-point energy, but only energy differences are physical; calling it simply 'the' infinite vacuum energy omits plate-dependent divergence structure and subtraction context.",
+      "confidence": 0.91
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:27:05.202494"
+  },
+  {
+    "contestant_key": "deepseek_r1",
+    "verdict_index": 14,
+    "claim_id": 15,
+    "claim_text": "The zero-point energy in free space for a volume of area \\(A\\) and thickness \\(d\\) is \\(\\frac{U_0(d,\\alpha)}{A} = d \\cdot \\hbar \\int \\frac{d^3k}{(2\\pi)^3} \\, \\omega e^{-\\alpha \\omega}\\).",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":15,\"verdict\":\"CONFIRMED\",\"explanation\":\"Correct for electromagnetic free space: two photon polarizations cancel the per-mode 1/2, giving degeneracy factor 2\u00d7(1/2)\u0127\u03c9=\u0127\u03c9. Multiplying energy density by thickness d yields this expression.\",\"confidence\":0.97}",
+    "confirmation_verdict": {
+      "claim_id": 15,
+      "verdict": "CONFIRMED",
+      "explanation": "Correct for electromagnetic free space: two photon polarizations cancel the per-mode 1/2, giving degeneracy factor 2\u00d7(1/2)\u0127\u03c9=\u0127\u03c9. Multiplying energy density by thickness d yields this expression.",
+      "confidence": 0.97
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:27:08.684616"
+  },
+  {
+    "contestant_key": "deepseek_r1",
+    "verdict_index": 20,
+    "claim_id": 21,
+    "claim_text": "\\(g(k_n) = \\frac{c}{2\\pi} e^{-a n} \\left( \\frac{\\pi^2 n^2}{d^2 \\beta} + \\frac{2\\pi n}{d \\beta^2} + \\frac{2}{\\beta^3} \\right)\\).",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":21,\"verdict\":\"ERROR\",\"explanation\":\"Exponential regulator should yield factors of the cutoff parameter, typically \\\\(\\\\alpha\\\\), not mixed undefined \\\\(a\\\\) and \\\\(\\\\beta\\\\). Notation is inconsistent and dimensions of terms are unclear.\",\"confidence\":0.98}",
+    "confirmation_verdict": {
+      "claim_id": 21,
+      "verdict": "ERROR",
+      "explanation": "Exponential regulator should yield factors of the cutoff parameter, typically \\(\\alpha\\), not mixed undefined \\(a\\) and \\(\\beta\\). Notation is inconsistent and dimensions of terms are unclear.",
+      "confidence": 0.98
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T20:27:12.076217"
+  },
+  {
+    "contestant_key": "qwen",
+    "verdict_index": 22,
+    "claim_id": 27,
+    "claim_text": "$f'''(0) = -\\frac{\\pi^2}{d^3}$",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":27,\"verdict\":\"UNJUSTIFIED\",\"explanation\":\"Could be correct if \\(f(\\epsilon)=1/(e^{\\pi\\epsilon/d}-1)\\), giving \\(f'''(0)=-6(d/\\pi)^3\\sum n^3= -\\pi^2 d^3/120\\). Without defining \\(f\\), value is uncheckable; dimensions alone don\u2019t refute it.\",\"confidence\":0.78}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:27:16.672632"
+  },
+  {
+    "contestant_key": "grok",
+    "verdict_index": 10,
+    "claim_id": 11,
+    "claim_text": "The regularized energy per unit area is then identified with the analytic continuation of \\[\\frac{U(d,s)}{A} = \\frac{\\hbar c \\pi^2}{4 d^3} \\, Z(s)\\] evaluated at \\(s = -1\\).",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":11,\"verdict\":\"ERROR\",\"explanation\":\"For parallel plates, zeta regularization gives mode sum proportional to \\\\(\\\\sum n^{3-s}\\\\), analytically continued to \\\\(\\\\zeta(-3)\\\\), not evaluation at \\\\(s=-1\\\\). Prefactor also mismatches standard derivation.\",\"confidence\":0.98}",
+    "confirmation_verdict": {
+      "claim_id": 11,
+      "verdict": "ERROR",
+      "explanation": "For parallel plates, zeta regularization gives mode sum proportional to \\(\\sum n^{3-s}\\), analytically continued to \\(\\zeta(-3)\\), not evaluation at \\(s=-1\\). Prefactor also mismatches standard derivation.",
+      "confidence": 0.98
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T20:27:20.358988"
+  },
+  {
+    "contestant_key": "grok",
+    "verdict_index": 27,
+    "claim_id": 29,
+    "claim_text": "The zeta regularization is also justified by the physical interpretation that real mirrors are imperfect at high frequencies.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":29,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Real-mirror transparency motivates introducing a high-frequency cutoff, not zeta regularization itself. Zeta can match cutoff-independent finite parts, but saying physical imperfections directly justify zeta is overstated.\",\"confidence\":0.96}",
+    "confirmation_verdict": {
+      "claim_id": 29,
+      "verdict": "INCOMPLETE",
+      "explanation": "Real-mirror transparency motivates introducing a high-frequency cutoff, not zeta regularization itself. Zeta can match cutoff-independent finite parts, but saying physical imperfections directly justify zeta is overstated.",
+      "confidence": 0.96
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T20:27:23.738357"
+  }
+]

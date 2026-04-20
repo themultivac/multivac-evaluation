@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776539503-eu6a7ySWhUWpguEDojdm",
+  "object": "chat.completion",
+  "created": 1776539503,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":30,\"verdict\":\"CONFIRMED\",\"explanation\":\"For Minkowski metric \\(ds^2=c^2dt^2-dx^2-dy^2-dz^2\\), surfaces \\(t=\\pm x/c\\) have tangent vectors with \\(ds^2=0\\) (holding \\(y,z\\) constant), hence are null horizons.\",\"confidence\":0.99}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 520,
+    "completion_tokens": 89,
+    "total_tokens": 609,
+    "cost": 0.002635,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.002635,
+      "upstream_inference_prompt_cost": 0.0013,
+      "upstream_inference_completions_cost": 0.001335
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

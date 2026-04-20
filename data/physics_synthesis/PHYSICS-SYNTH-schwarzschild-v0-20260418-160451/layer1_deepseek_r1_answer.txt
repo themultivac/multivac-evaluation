@@ -1,0 +1,103 @@
+We derive the Schwarzschild metric and the Schwarzschild radius from the vacuum Einstein field equations under the assumptions of spherical symmetry, staticity, and asymptotic flatness. The steps are as follows:
+
+### 1. Assumptions and Metric Ansatz
+- **Spherical symmetry**: The metric depends only on the radial coordinate \(r\) and the angular coordinates \(\theta, \phi\).
+- **Staticity**: The metric is time-independent and has no off-diagonal terms mixing time and space.
+- **Vacuum**: Outside the mass, the energy-momentum tensor vanishes, \(T_{\mu\nu} = 0\).
+- **Asymptotic flatness**: As \(r \to \infty\), the metric approaches the Minkowski metric.
+
+The most general metric satisfying these conditions is:
+\[
+ds^2 = -A(r)c^2 dt^2 + B(r) dr^2 + r^2 d\theta^2 + r^2 \sin^2\theta \, d\phi^2,
+\]
+where \(A(r)\) and \(B(r)\) are unknown functions to be determined.
+
+### 2. Einstein Field Equations in Vacuum
+In vacuum, the Einstein equations reduce to \(R_{\mu\nu} = 0\), where \(R_{\mu\nu}\) is the Ricci tensor. We compute the Christoffel symbols, Riemann tensor, and Ricci tensor for the metric.
+
+#### Christoffel Symbols (non-zero components)
+\[
+\begin{aligned}
+\Gamma^t_{tr} &= \Gamma^t_{rt} = \frac{A'}{2A}, \\
+\Gamma^r_{tt} &= \frac{c^2 A'}{2B}, \quad
+\Gamma^r_{rr} = \frac{B'}{2B}, \quad
+\Gamma^r_{\theta\theta} = -\frac{r}{B}, \quad
+\Gamma^r_{\phi\phi} = -\frac{r\sin^2\theta}{B}, \\
+\Gamma^\theta_{r\theta} &= \Gamma^\theta_{\theta r} = \frac{1}{r}, \quad
+\Gamma^\theta_{\phi\phi} = -\sin\theta\cos\theta, \\
+\Gamma^\phi_{r\phi} &= \Gamma^\phi_{\phi r} = \frac{1}{r}, \quad
+\Gamma^\phi_{\theta\phi} = \Gamma^\phi_{\phi\theta} = \cot\theta.
+\end{aligned}
+\]
+
+#### Ricci Tensor Components
+After computation:
+\[
+\begin{aligned}
+R_{tt} &= \frac{c^2}{2B} A'' - \frac{c^2 (A')^2}{4AB} - \frac{c^2 A' B'}{4B^2} + \frac{c^2 A'}{rB}, \\
+R_{rr} &= -\frac{A''}{2A} + \frac{(A')^2}{4A^2} + \frac{A' B'}{4AB} + \frac{B'}{rB}, \\
+R_{\theta\theta} &= 1 - \frac{1}{B} + \frac{r}{2B}\left( \frac{B'}{B} - \frac{A'}{A} \right), \\
+R_{\phi\phi} &= \sin^2\theta \, R_{\theta\theta}.
+\end{aligned}
+\]
+
+### 3. Solving \(R_{\mu\nu} = 0\)
+We set each component to zero.
+
+#### From \(R_{tt}=0\) and \(R_{rr}=0\)
+After algebraic manipulation (adding suitable combinations), we obtain:
+\[
+\frac{A'}{A} + \frac{B'}{B} = 0 \quad \Rightarrow \quad (AB)' = 0.
+\]
+Thus, \(AB = \text{constant}\). Asymptotic flatness requires \(A \to 1\) and \(B \to 1\) as \(r \to \infty\), so the constant is 1:
+\[
+B = \frac{1}{A}.
+\]
+
+#### From \(R_{\theta\theta}=0\)
+Substitute \(B = 1/A\):
+\[
+2\left( \frac{1}{A} - 1 \right) + r\left( -2\frac{A'}{A} \right) = 0 \quad \Rightarrow \quad \frac{1}{A} - 1 - r\frac{A'}{A} = 0.
+\]
+Multiply by \(A\):
+\[
+1 - A - r A' = 0 \quad \Rightarrow \quad (rA)' = 1.
+\]
+Integrate:
+\[
+rA = r + C \quad \Rightarrow \quad A = 1 + \frac{C}{r},
+\]
+where \(C\) is an integration constant.
+
+### 4. Weak-Field Limit and Determination of \(C\)
+In the weak-field limit, general relativity must reduce to Newtonian gravity. For a point mass \(M\), the Newtonian potential is \(\Phi = -GM/r\). The metric component \(g_{tt}\) is related to \(\Phi\) by:
+\[
+g_{tt} \approx -\left(1 + \frac{2\Phi}{c^2}\right)c^2 = -c^2 + \frac{2GM}{r}.
+\]
+Our solution gives:
+\[
+g_{tt} = -A c^2 = -c^2 \left(1 + \frac{C}{r}\right) = -c^2 - \frac{c^2 C}{r}.
+\]
+Comparing, we identify:
+\[
+-\frac{c^2 C}{r} = \frac{2GM}{r} \quad \Rightarrow \quad C = -\frac{2GM}{c^2}.
+\]
+Thus:
+\[
+A = 1 - \frac{2GM}{c^2 r}, \quad B = \frac{1}{1 - \frac{2GM}{c^2 r}}.
+\]
+
+### 5. Schwarzschild Metric
+Substituting \(A\) and \(B\):
+\[
+\boxed{ds^2 = -\left(1 - \frac{2GM}{c^2 r}\right)c^2 dt^2 + \left(1 - \frac{2GM}{c^2 r}\right)^{-1} dr^2 + r^2 d\theta^2 + r^2 \sin^2\theta \, d\phi^2}.
+\]
+
+### 6. Schwarzschild Radius
+The metric exhibits a coordinate singularity where \(g_{rr}\) diverges (and \(g_{tt}\) vanishes):
+\[
+1 - \frac{2GM}{c^2 r} = 0 \quad \Rightarrow \quad \boxed{r_s = \frac{2GM}{c^2}}.
+\]
+This defines the Schwarzschild radius. It is a coordinate singularity, not a physical one, as can be shown by transforming to other coordinates (e.g., Kruskal-Szekeres).
+
+Thus, starting from the Einstein field equations and the assumptions of spherical symmetry and staticity, we have derived the Schwarzschild metric and identified the Schwarzschild radius \(r_s = 2GM/c^2\).

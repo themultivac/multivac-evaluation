@@ -1,0 +1,55 @@
+{
+  "id": "gen-1776537261-llZF7KH5ybXGdpLHdRES",
+  "object": "chat.completion",
+  "created": 1776537261,
+  "model": "openai/o3-mini-high-2025-01-31",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\": 32, \"verdict\": \"CONFIRMED\", \"explanation\": \"For fixed \u03be, the line element gives d\u03c4 = \u03be d\u03b7, so proper time is linearly related to \u03b7.\", \"confidence\": 1.0}",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABp4866cXr8gb324lioDrUyjc60wMgP-TcyPtBHe0xd9WjuW7CHsF0gCg1abz89yjSwYFTeUiPhneuypPPdAMofh1Z1YgPeG_MPR1DSsAmdUA8GbPy-O2V9qEHgstQH-dC6dV13SOrjWbwZ7KB8sccdSkWfOaC8h-fCth9ofU1VKgfJsZct-avPCPnCNWZD_Xx05gq2nLG6fzv8VLvRIdNF3WBEHoUVOUHlQPPJiNtMW3s8iN7ewoTdBchtf8HFu6hBmOLkE70Q5vRAdVWZS9f8JKcPlwP9vFfn9pMezeUNjAal-1dG-zVYz5a2xTGVZWTEKnE5jnKK2He0yky27N2GGHBM-kq_eVYbiomKJGONxlxAImSyP-wBgPF_gB1-fah7WnatHjRNS91BMVdk5PBv4L6eWfBA5jA-t-zRX0z_Usi2UhFFH-m0riCi1mVnrervOCjQKdBkXaW4tOC8A5MOpQ4zlJOD37NwZcdRmZyxqNjvuz5vnb7FgBvo8moq0uTyvy9ShVYdloW3XG3bGE06sNZ-LA==",
+            "format": "openai-responses-v1",
+            "id": "rs_039ae3a603ba3e990169e3ceae322c819088251cad146ccfbd",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 511,
+    "completion_tokens": 3960,
+    "total_tokens": 4471,
+    "cost": 0.0179861,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0179861,
+      "upstream_inference_prompt_cost": 0.0005621,
+      "upstream_inference_completions_cost": 0.017424
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1920,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

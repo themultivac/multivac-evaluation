@@ -1,0 +1,105 @@
+We derive the Casimir force per unit area between two parallel, perfectly conducting, infinite plates separated by a distance \(d\) in vacuum, starting from the zero-point energy of the electromagnetic quantum vacuum. The plates impose boundary conditions that discretize the wavevector component perpendicular to the plates. The zero-point energy is formally divergent, so we employ an exponential cutoff regularization, subtract the free-vacuum contribution, and then remove the cutoff to obtain a finite result.
+
+### Assumptions
+- The plates are perfectly conducting, infinite in extent, and parallel.
+- The electromagnetic field satisfies the boundary conditions: tangential electric field vanishes on the plates.
+- The quantum vacuum exhibits zero-point energy \(\frac{1}{2}\hbar\omega\) per mode.
+- Regularization: an exponential cutoff \(e^{-\alpha \omega}\) (with \(\alpha \to 0^+\)) is used to handle divergences.
+- The Casimir energy is the difference between the zero-point energy with plates and that in free space for the same volume.
+
+### Derivation
+
+#### 1. Mode frequencies and zero-point energy
+For plates at \(z=0\) and \(z=d\), the boundary conditions lead to discrete wave numbers \(k_z = n\pi/d\) with \(n = 0, 1, 2, \ldots\). The modes are:
+- For \(n = 0\): one polarization (TEM mode).
+- For \(n \geq 1\): two independent polarizations.
+The frequency for a given transverse wavevector \(\mathbf{k}_\parallel = (k_x, k_y)\) and integer \(n\) is
+\[
+\omega_{\mathbf{k}_\parallel, n} = c \sqrt{k_\parallel^2 + \left(\frac{n\pi}{d}\right)^2},
+\]
+where \(k_\parallel = |\mathbf{k}_\parallel|\). The zero-point energy per unit area is
+\[
+\frac{U(d)}{A} = \frac{1}{2} \sum_{\text{modes}} \hbar \omega = \hbar \sum_{n=0}^\infty{}' \int \frac{d^2k_\parallel}{(2\pi)^2} \, \omega_{\mathbf{k}_\parallel, n},
+\]
+where the prime indicates that the \(n=0\) term is weighted by \(1/2\) (one polarization) and \(n \geq 1\) terms are weighted by \(1\) (two polarizations). Explicitly,
+\[
+\frac{U(d)}{A} = \hbar \left[ \frac{1}{2} \int \frac{d^2k_\parallel}{(2\pi)^2} \, \omega_{\mathbf{k}_\parallel,0} + \sum_{n=1}^\infty \int \frac{d^2k_\parallel}{(2\pi)^2} \, \omega_{\mathbf{k}_\parallel, n} \right].
+\]
+
+#### 2. Regularization with exponential cutoff
+To handle divergences, we introduce a cutoff factor \(e^{-\alpha \omega_{\mathbf{k}_\parallel, n}}\) with \(\alpha > 0\). The regularized energy per unit area is
+\[
+\frac{U(d,\alpha)}{A} = \hbar \left[ \frac{1}{2} \int \frac{d^2k_\parallel}{(2\pi)^2} \, \omega_{\mathbf{k}_\parallel,0} e^{-\alpha \omega_{\mathbf{k}_\parallel,0}} + \sum_{n=1}^\infty \int \frac{d^2k_\parallel}{(2\pi)^2} \, \omega_{\mathbf{k}_\parallel, n} e^{-\alpha \omega_{\mathbf{k}_\parallel, n}} \right].
+\]
+Define \(k_n = n\pi/d\) and \(\beta = \alpha c\). The integrals can be performed:
+\[
+\int \frac{d^2k_\parallel}{(2\pi)^2} \, \omega_{\mathbf{k}_\parallel, n} e^{-\alpha \omega_{\mathbf{k}_\parallel, n}} = \frac{c}{2\pi} e^{-\beta k_n} \left( \frac{k_n^2}{\beta} + \frac{2k_n}{\beta^2} + \frac{2}{\beta^3} \right) \equiv g(k_n).
+\]
+Thus,
+\[
+\frac{U(d,\alpha)}{A} = \hbar \left[ \frac{1}{2} g(0) + \sum_{n=1}^\infty g(k_n) \right] \equiv \hbar S',
+\]
+where \(S' = \frac{1}{2} g(0) + \sum_{n=1}^\infty g(k_n)\).
+
+#### 3. Free-vacuum contribution
+The zero-point energy in free space (no plates) for a volume of area \(A\) and thickness \(d\) is
+\[
+\frac{U_0(d,\alpha)}{A} = d \cdot \hbar \int \frac{d^3k}{(2\pi)^3} \, \omega e^{-\alpha \omega} = \hbar d \int \frac{d^2k_\parallel}{(2\pi)^2} \int_0^\infty \frac{dk_z}{\pi} \, \omega e^{-\alpha \omega}.
+\]
+Expressing this in terms of \(g(k_z)\),
+\[
+\frac{U_0(d,\alpha)}{A} = \hbar d \int_0^\infty \frac{dk_z}{\pi} \, g(k_z) = \hbar \int_0^\infty dn \, g\left(\frac{\pi n}{d}\right) \equiv \hbar I,
+\]
+where we changed variables to \(n = d k_z/\pi\). The integral \(I\) evaluates exactly to
+\[
+I = \frac{3 c d}{\pi^2 \beta^4}.
+\]
+
+#### 4. Casimir energy per unit area
+The Casimir energy is the difference:
+\[
+\frac{E_{\text{Cas}}(d,\alpha)}{A} = \frac{U(d,\alpha)}{A} - \frac{U_0(d,\alpha)}{A} = \hbar (S' - I).
+\]
+We compute \(S'\) by evaluating the sum and expanding in powers of \(\beta\). Let \(a = \beta \pi / d\). Then
+\[
+g(k_n) = \frac{c}{2\pi} e^{-a n} \left( \frac{\pi^2 n^2}{d^2 \beta} + \frac{2\pi n}{d \beta^2} + \frac{2}{\beta^3} \right).
+\]
+Define \(f(n) = g(k_n)\). Using series expansions for the sums:
+\[
+\sum_{n=1}^\infty e^{-a n} = \frac{1}{e^a - 1} = a^{-1} - \frac{1}{2} + \frac{a}{12} - \frac{a^3}{720} + \cdots,
+\]
+\[
+\sum_{n=1}^\infty n e^{-a n} = \frac{e^{-a}}{(1-e^{-a})^2} = a^{-2} - \frac{1}{12} + \frac{a^2}{240} - \cdots,
+\]
+\[
+\sum_{n=1}^\infty n^2 e^{-a n} = \frac{e^{-a}(1+e^{-a})}{(1-e^{-a})^3} = 2a^{-3} - \frac{a}{120} + \cdots.
+\]
+We find
+\[
+\sum_{n=1}^\infty f(n) = \frac{3 c d}{\pi^2 \beta^4} - \frac{c}{2\pi \beta^3} - \frac{c \pi^2}{720 d^3} + \mathcal{O}(\beta).
+\]
+Also, \(g(0) = c/(\pi \beta^3)\). Thus,
+\[
+S' = \frac{1}{2} g(0) + \sum_{n=1}^\infty f(n) = \frac{3 c d}{\pi^2 \beta^4} - \frac{c \pi^2}{720 d^3} + \mathcal{O}(\beta).
+\]
+Subtracting \(I = 3 c d/(\pi^2 \beta^4)\) gives
+\[
+S' - I = -\frac{c \pi^2}{720 d^3} + \mathcal{O}(\beta).
+\]
+Taking \(\beta \to 0\) (i.e., \(\alpha \to 0\)), the \(\mathcal{O}(\beta)\) terms vanish. Therefore,
+\[
+\frac{E_{\text{Cas}}(d)}{A} = \hbar (S' - I) = -\frac{\pi^2 \hbar c}{720 d^3}.
+\]
+
+#### 5. Casimir force per unit area
+The force per unit area is the negative derivative of the energy per unit area with respect to \(d\):
+\[
+\frac{F(d)}{A} = -\frac{d}{dd} \left( \frac{E_{\text{Cas}}(d)}{A} \right) = -\frac{d}{dd} \left( -\frac{\pi^2 \hbar c}{720 d^3} \right) = -\frac{\pi^2 \hbar c}{240 d^4}.
+\]
+The negative sign indicates an attractive force.
+
+### Final Result
+The Casimir force per unit area between two parallel, perfectly conducting plates separated by distance \(d\) in vacuum is
+\[
+\boxed{\frac{F}{A} = -\frac{\pi^2 \hbar c}{240 d^4}}.
+\]

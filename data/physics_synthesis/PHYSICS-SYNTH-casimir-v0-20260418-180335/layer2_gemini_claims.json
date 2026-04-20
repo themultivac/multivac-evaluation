@@ -1,0 +1,293 @@
+{
+  "model": "unknown",
+  "total_claims": 28,
+  "claims": [
+    {
+      "id": 1,
+      "text": "Consider two infinite, perfectly conducting plates placed parallel to each other in a vacuum. Let the plates lie in the $xy$-plane at $z = 0$ and $z = d$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "text": "For a perfectly conducting surface, the boundary conditions require that the tangential components of the electric field and the normal component of the magnetic field vanish at the boundaries: $E_x(z=0, d) = E_y(z=0, d) = 0, \\quad B_z(z=0, d) = 0$",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        1
+      ],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "text": "In the $x$ and $y$ directions, the space is infinite, so $k_x$ and $k_y$ are continuous.",
+      "type": "physical_interpretation",
+      "provenance": "derived",
+      "depends_on": [
+        1
+      ],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "text": "We define the transverse wave vector as $\\mathbf{k}_\\parallel = (k_x, k_y)$ with magnitude $k_\\parallel = \\sqrt{k_x^2 + k_y^2}$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "text": "In the $z$-direction, the field must form standing waves, which quantizes the $z$-component of the wave vector: $k_z = \\frac{n\\pi}{d}, \\quad \\text{where } n = 0, 1, 2, \\dots$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        1,
+        2
+      ],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "text": "The angular frequency of each mode is given by the vacuum dispersion relation $\\omega = c|\\mathbf{k}|$: $\\omega_n(k_\\parallel) = c \\sqrt{k_\\parallel^2 + \\left(\\frac{n\\pi}{d}\\right)^2}$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        4,
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "text": "For each mode with $n \\geq 1$, there are two independent polarization states (Transverse Electric and Transverse Magnetic).",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [
+        2,
+        5
+      ],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "text": "For $n = 0$, $k_z = 0$, the electric field must be entirely perpendicular to the plates (in the $z$-direction) to satisfy the boundary conditions, leaving only one allowed polarization state.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        2,
+        5
+      ],
+      "notes": "TM mode with n=0 is the surviving one, not E perpendicular."
+    },
+    {
+      "id": 9,
+      "text": "In quantum electrodynamics, the vacuum state has a zero-point energy of $\\frac{1}{2}\\hbar\\omega$ per mode.",
+      "type": "invocation_of_known_result",
+      "provenance": "cited",
+      "depends_on": [],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "text": "The total zero-point energy $E(d)$ is the sum over all allowed modes.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        9
+      ],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "text": "Because the plates are infinite, we consider the energy per unit area, $\\mathcal{E}(d) = E(d)/A$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [
+        1,
+        10
+      ],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "text": "We integrate over the continuous transverse wave vectors (with density of states $1/(2\\pi)^2$) and sum over the discrete mode number $n$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        3,
+        5,
+        11
+      ],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "text": "$\\mathcal{E}(d) = \\int \\frac{d^2k_\\parallel}{(2\\pi)^2} \\sum_{n=0}^{\\infty} \\! ' \\, \\left( 2 \\times \\frac{1}{2} \\hbar \\omega_n(k_\\parallel) \\right)$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        6,
+        7,
+        8,
+        9,
+        12
+      ],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "text": "The prime on the summation $\\sum'$ indicates that the $n=0$ term is multiplied by $\\frac{1}{2}$ to account for its single polarization state.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        8,
+        13
+      ],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "text": "Converting the 2D integral over $\\mathbf{k}_\\parallel$ to polar coordinates ($d^2k_\\parallel = 2\\pi k_\\parallel dk_\\parallel$), we get: $\\mathcal{E}(d) = \\frac{\\hbar c}{2\\pi} \\sum_{n=0}^{\\infty} \\! ' \\int_0^\\infty k_\\parallel \\sqrt{k_\\parallel^2 + \\left(\\frac{n\\pi}{d}\\right)^2} \\, dk_\\parallel$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        6,
+        13,
+        14
+      ],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "text": "This integral diverges quartically as $k_\\parallel \\to \\infty$.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        15
+      ],
+      "notes": "Divergence is cubic in k_parallel, not quartic."
+    },
+    {
+      "id": 17,
+      "text": "This is the infinite energy of the quantum vacuum.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        16
+      ],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "text": "To extract the physically meaningful part, we must regularize this divergence. We apply an exponential cutoff regularization.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [
+        16
+      ],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "text": "Real metals are not perfect conductors at all frequencies. At very high frequencies (e.g., X-rays, well above the metal's plasma frequency), the plates become transparent and no longer impose boundary conditions on the EM field. Therefore, high-frequency modes should not contribute to the force.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Physical motivation for the cutoff."
+    },
+    {
+      "id": 20,
+      "text": "We introduce a cutoff function $e^{-\\omega/\\omega_c}$, where $\\omega_c$ is a very large cutoff frequency.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [
+        18,
+        19
+      ],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "text": "At the end of the calculation, we will take the limit $\\omega_c \\to \\infty$.",
+      "type": "assumption",
+      "provenance": "asserted",
+      "depends_on": [
+        20
+      ],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "text": "Let $\\alpha = c/\\omega_c$.",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        20
+      ],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "text": "The regularized energy per unit area is: $\\mathcal{E}_{\\text{reg}}(d) = \\frac{\\hbar c}{2\\pi} \\sum_{n=0}^{\\infty} \\! ' \\int_0^\\infty k_\\parallel \\sqrt{k_\\parallel^2 + \\left(\\frac{n\\pi}{d}\\right)^2} \\, e^{-\\alpha \\sqrt{k_\\parallel^2 + (n\\pi/d)^2}} \\, dk_\\parallel$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        15,
+        20,
+        22
+      ],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "text": "Define a function $F(x) = \\int_0^\\infty k_\\parallel \\sqrt{k_\\parallel^2 + x^2} \\, e^{-\\alpha \\sqrt{k_\\parallel^2 + x^2}} \\, dk_\\parallel$",
+      "type": "definition",
+      "provenance": "asserted",
+      "depends_on": [
+        23
+      ],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "text": "We can change the integration variable from $k_\\parallel$ to $w = \\sqrt{k_\\parallel^2 + x^2}$.",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        24
+      ],
+      "notes": "Derivation is cut off here; answer is incomplete."
+    },
+    {
+      "id": 26,
+      "text": "Then $w dw = ...$",
+      "type": "derivation_step",
+      "provenance": "derived",
+      "depends_on": [
+        25
+      ],
+      "notes": "Answer truncated; substitution not completed."
+    },
+    {
+      "id": 27,
+      "text": "The derivation is incomplete: steps (4) subtraction of free-vacuum contribution and (5) differentiation to obtain force per unit area are missing.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [],
+      "notes": "Model answer was truncated before reaching final result."
+    },
+    {
+      "id": 28,
+      "text": "The final Casimir force per unit area result $F/A = -\\frac{\\pi^2 \\hbar c}{240 d^4}$ was never stated.",
+      "type": "physical_interpretation",
+      "provenance": "asserted",
+      "depends_on": [
+        27
+      ],
+      "notes": "Expected final result is absent from the model's answer."
+    }
+  ]
+}

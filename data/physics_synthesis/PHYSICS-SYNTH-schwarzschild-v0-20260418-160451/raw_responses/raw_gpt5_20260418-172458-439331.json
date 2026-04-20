@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776551095-i13t9bhdpwdo8mZzOjEb",
+  "object": "chat.completion",
+  "created": 1776551095,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":18,\"verdict\":\"CONFIRMED\",\"explanation\":\"For ds\u00b2=-A(r)dt\u00b2+B(r)dr\u00b2+r\u00b2d\u03a9\u00b2 with (-,+,+,+) signature, direct computation gives R_{\u03b8\u03b8}=1-1/B-rA'/(2AB)+rB'/(2B\u00b2).\",\"confidence\":0.98}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 378,
+    "completion_tokens": 81,
+    "total_tokens": 459,
+    "cost": 0.00216,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00216,
+      "upstream_inference_prompt_cost": 0.000945,
+      "upstream_inference_completions_cost": 0.001215
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

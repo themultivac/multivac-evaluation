@@ -1,0 +1,345 @@
+[
+  {
+    "contestant_key": "claude",
+    "verdict_index": 0,
+    "claim_id": 1,
+    "claim_text": "We work in (1+1)-dimensional Minkowski spacetime with signature $(+,-,-,-)$ and metric $ds^2 = c^2 dt^2 - dx^2$.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":1,\"verdict\":\"CONFIRMED\",\"explanation\":\"In 1+1 dimensions, restricting 3+1 Minkowski with signature (+,-,-,-) to the t-x sector gives metric ds^2=c^2dt^2-dx^2. This dimensional reduction is standard and consistent.\",\"confidence\":0.98}",
+    "confirmation_verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "In 1+1 dimensions, restricting 3+1 Minkowski with signature (+,-,-,-) to the t-x sector gives metric ds^2=c^2dt^2-dx^2. This dimensional reduction is standard and consistent.",
+      "confidence": 0.98
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:54:55.280908"
+  },
+  {
+    "contestant_key": "claude",
+    "verdict_index": 6,
+    "claim_id": 8,
+    "claim_text": "Constant proper acceleration $a$ requires $\\dot\\phi = a$, so $\\phi(\\tau) = a\\tau$.",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 8,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The claim omits the factor c; correct relation is d\u03c6/d\u03c4 = a/c unless natural units (c=1) are assumed.\",\n    \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 8,
+      "verdict": "ERROR",
+      "explanation": "The claim omits the factor c; correct relation is d\u03c6/d\u03c4 = a/c unless natural units (c=1) are assumed.",
+      "confidence": 1.0
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T17:55:03.260419"
+  },
+  {
+    "contestant_key": "gpt5",
+    "verdict_index": 23,
+    "claim_id": 25,
+    "claim_text": "The inverse transformation is \u03be = \u221a(x\u00b2 - c\u00b2t\u00b2), \u03b7 = (c/2) ln((x + ct)/(x - ct)).",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\"claim_id\": 25, \"verdict\": \"ERROR\", \"explanation\": \"Missing the acceleration factor; the correct inverse is \u03b7 = (c/(2a)) ln((x+ct)/(x-ct)).\", \"confidence\": 1.0}",
+    "confirmation_verdict": {
+      "claim_id": 25,
+      "verdict": "ERROR",
+      "explanation": "Missing the acceleration factor; the correct inverse is \u03b7 = (c/(2a)) ln((x+ct)/(x-ct)).",
+      "confidence": 1.0
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T17:55:16.580191"
+  },
+  {
+    "contestant_key": "gpt5",
+    "verdict_index": 24,
+    "claim_id": 26,
+    "claim_text": "dx = cosh(\u03b7/c) d\u03be + (\u03be/c) sinh(\u03b7/c) d\u03b7.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 26,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The hyperbolic argument \\u03b7/c is dimensionally inconsistent. It must be a\\u03b7/c to be dimensionless, which also introduces a factor of a in the d\\u03b7 term.\",\n    \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 26,
+      "verdict": "ERROR",
+      "explanation": "The hyperbolic argument \u03b7/c is dimensionally inconsistent. It must be a\u03b7/c to be dimensionless, which also introduces a factor of a in the d\u03b7 term.",
+      "confidence": 1.0
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T17:55:25.696292"
+  },
+  {
+    "contestant_key": "gpt5",
+    "verdict_index": 27,
+    "claim_id": 29,
+    "claim_text": "The Rindler metric is ds\u00b2 = (\u03be\u00b2/c\u00b2) d\u03b7\u00b2 - d\u03be\u00b2 - dy\u00b2 - dz\u00b2.",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": null,
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:57:05.421983"
+  },
+  {
+    "contestant_key": "gpt5",
+    "verdict_index": 29,
+    "claim_id": 31,
+    "claim_text": "Hence d\u03c4 = (\u03be\u2080/c\u00b2) d\u03b7.",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\n    \"claim_id\": 31,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"Dimensional analysis shows d\u03c4 should be (\u03be\u2080/c) d\u03b7, not (\u03be\u2080/c\u00b2) d\u03b7, ensuring proper time has units of seconds.\",\n    \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 31,
+      "verdict": "ERROR",
+      "explanation": "Dimensional analysis shows d\u03c4 should be (\u03be\u2080/c) d\u03b7, not (\u03be\u2080/c\u00b2) d\u03b7, ensuring proper time has units of seconds.",
+      "confidence": 1.0
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T17:57:39.341230"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 4,
+    "claim_id": 6,
+    "claim_text": "We have chosen the initial conditions so that the observer is at rest at \u03c4=0 in the Rindler frame.",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 6,\n    \"verdict\": \"ERROR\",\n    \"explanation\": \"The observer is always at rest in the Rindler frame by definition. The standard initial condition actually sets the observer at rest in the Minkowski frame at \u03c4=0.\",\n    \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 6,
+      "verdict": "ERROR",
+      "explanation": "The observer is always at rest in the Rindler frame by definition. The standard initial condition actually sets the observer at rest in the Minkowski frame at \u03c4=0.",
+      "confidence": 1.0
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T17:57:58.115049"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 11,
+    "claim_id": 13,
+    "claim_text": "ds\u00b2 = dt\u00b2 - dx\u00b2 = (sinh\u00b2\u03b7 - cosh\u00b2\u03b7) d\u03be\u00b2 - \u03be\u00b2(cosh\u00b2\u03b7 - sinh\u00b2\u03b7) d\u03b7\u00b2",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":13,\"verdict\":\"CONFIRMED\",\"explanation\":\"Using \\(t=\\xi\\sinh\\eta,\\ x=\\xi\\cosh\\eta\\): \\(dt=\\sinh\\eta\\,d\\xi+\\xi\\cosh\\eta\\,d\\eta\\), \\(dx=\\cosh\\eta\\,d\\xi+\\xi\\sinh\\eta\\,d\\eta\\). Then \\(ds^2=dt^2-dx^2=-(d\\xi)^2+\\xi^2(d\\eta)^2\\). Claim\u2019s intermediate signs are correct.\",\"confidence\":0.98}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:58:01.864137"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 12,
+    "claim_id": 14,
+    "claim_text": "Using the hyperbolic identity cosh\u00b2\u03b7 - sinh\u00b2\u03b7 = 1, this simplifies to ds\u00b2 = -d\u03be\u00b2 + \u03be\u00b2 d\u03b7\u00b2.",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary_family": "google",
+    "raw_response": "{\n    \"claim_id\": 14,\n    \"verdict\": \"CONFIRMED\",\n    \"explanation\": \"The derivation is algebraically correct. The expression -d\u03be\u00b2 + \u03be\u00b2 d\u03b7\u00b2 is identical to \u03be\u00b2 d\u03b7\u00b2 - d\u03be\u00b2, correctly reflecting the (+,-,-,-) signature with \u03b7 as the time coordinate.\",\n    \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 14,
+      "verdict": "CONFIRMED",
+      "explanation": "The derivation is algebraically correct. The expression -d\u03be\u00b2 + \u03be\u00b2 d\u03b7\u00b2 is identical to \u03be\u00b2 d\u03b7\u00b2 - d\u03be\u00b2, correctly reflecting the (+,-,-,-) signature with \u03b7 as the time coordinate.",
+      "confidence": 1.0
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:58:12.939698"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 17,
+    "claim_id": 19,
+    "claim_text": "Along a worldline of constant \u03be the proper time \u03c4 is related to \u03b7 by d\u03c4 = \u03be d\u03b7 = d\u03b7/a.",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":19,\"verdict\":\"INCOMPLETE\",\"explanation\":\"For constant \u03be, indeed d\u03c4=\u03be\\,d\u03b7. But d\u03c4=d\u03b7/a only after identifying the specific trajectory \u03be=1/a, whose proper acceleration is 1/\u03be=a.\",\"confidence\":0.99}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:58:16.115378"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 21,
+    "claim_id": 23,
+    "claim_text": "The surfaces x = t and x = -t are precisely the null planes in Minkowski spacetime.",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":23,\"verdict\":\"ERROR\",\"explanation\":\"In 1+1 Minkowski, \\(x=\\\\pm t\\) are null lines. In higher dimensions they are null hyperplanes, but not uniquely \u2018the\u2019 null planes; e.g. \\(x-t=c\\) are also null.\",\"confidence\":0.99}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:58:20.117290"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 33,
+    "claim_id": 39,
+    "claim_text": "The basic physical assumption is that one may relate the Minkowski and Rindler mode decompositions via a Bogoliubov transformation.",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":39,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Bogoliubov relations follow mathematically from complete mode bases. The real physical input is quantizing in Rindler modes and taking Minkowski vacuum; calling the transformation itself the assumption is imprecise.\",\"confidence\":0.95}",
+    "confirmation_verdict": {
+      "claim_id": 39,
+      "verdict": "INCOMPLETE",
+      "explanation": "Bogoliubov relations follow mathematically from complete mode bases. The real physical input is quantizing in Rindler modes and taking Minkowski vacuum; calling the transformation itself the assumption is imprecise.",
+      "confidence": 0.95
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:58:23.699576"
+  },
+  {
+    "contestant_key": "o3_mini",
+    "verdict_index": 35,
+    "claim_id": 41,
+    "claim_text": "Some of the steps\u2014in particular the analytic continuation leading to the result for the Bogoliubov coefficients\u2014are heuristic in that they invoke properties of the mode functions in the complex plane.",
+    "original_adversary": "Gemini 3.1 Pro Preview",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":41,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Analytic continuation can be made rigorous with Bisognano-Wichmann/KMS or explicit mode analyticity, but in many pedagogical Unruh derivations it is invoked without full proof, so calling it heuristic needs qualification.\",\"confidence\":0.89}",
+    "confirmation_verdict": {
+      "claim_id": 41,
+      "verdict": "INCOMPLETE",
+      "explanation": "Analytic continuation can be made rigorous with Bisognano-Wichmann/KMS or explicit mode analyticity, but in many pedagogical Unruh derivations it is invoked without full proof, so calling it heuristic needs qualification.",
+      "confidence": 0.89
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:58:27.382037"
+  },
+  {
+    "contestant_key": "gemini",
+    "verdict_index": 0,
+    "claim_id": 1,
+    "claim_text": "We work in 1+1 dimensional Minkowski spacetime with coordinates $(t, x)$ and signature $(+, -, -, -)$.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":1,\"verdict\":\"CONFIRMED\",\"explanation\":\"Restricting 4D Minkowski with signature (+,-,-,-) to the 1+1 t-x sector gives induced metric signature (+,-). This is standard shorthand, not a contradiction.\",\"confidence\":0.98}",
+    "confirmation_verdict": {
+      "claim_id": 1,
+      "verdict": "CONFIRMED",
+      "explanation": "Restricting 4D Minkowski with signature (+,-,-,-) to the 1+1 t-x sector gives induced metric signature (+,-). This is standard shorthand, not a contradiction.",
+      "confidence": 0.98
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:58:30.826722"
+  },
+  {
+    "contestant_key": "gemini",
+    "verdict_index": 17,
+    "claim_id": 21,
+    "claim_text": "At $\\xi = 0$, we recover the observer's worldline, and $\\eta = \\tau$.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":21,\"verdict\":\"INCOMPLETE\",\"explanation\":\"Depends on coordinate convention. With \\(x=\\xi\\cosh(a\\eta),\\, t=\\xi\\sinh(a\\eta)\\), observer is at \\(\\xi=1/a\\). With shifted form \\(x=\\xi\\cosh\\eta,\\, t=\\xi\\sinh\\eta\\), \\(\\xi=0\\) can label the observer after translation.\",\"confidence\":0.89}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:58:34.672939"
+  },
+  {
+    "contestant_key": "gemini",
+    "verdict_index": 23,
+    "claim_id": 27,
+    "claim_text": "In Minkowski coordinates: Substituting $\\xi = -c^2/a$ into our transformation gives $ct = 0$ and $x = 0$.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":27,\"verdict\":\"ERROR\",\"explanation\":\"Using standard Rindler forms \\(ct=(\\xi+c^2/a)\\sinh(a\\eta/c)\\), \\(x=(\\xi+c^2/a)\\cosh(a\\eta/c)-c^2/a\\), setting \\(\\xi=-c^2/a\\) gives \\(ct=0\\), \\(x=-c^2/a\\), not \\(x=0\\).\",\"confidence\":0.99}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:58:38.347776"
+  },
+  {
+    "contestant_key": "deepseek_r1",
+    "verdict_index": 38,
+    "claim_id": 47,
+    "claim_text": "For the left wedge (where U>0, V<0), we define positive-frequency modes v_\u03a9^{(L)} = N_\u03a9 \u03b8(V) V^{-i\u03a9}.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":47,\"verdict\":\"ERROR\",\"explanation\":\"Left wedge has \\(V<0\\), so \\u03b8(V) vanishes there. Support must use \\u03b8(-V)\\u2009(-V)^{-i\\\\Omega}\\u2009(or equivalent analytic branch), not \\u03b8(V)\\u2009V^{-i\\\\Omega}.\",\"confidence\":0.99}",
+    "confirmation_verdict": null,
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:58:42.035623"
+  },
+  {
+    "contestant_key": "qwen",
+    "verdict_index": 31,
+    "claim_id": 35,
+    "claim_text": "Substituting $\\eta = -\\ln(-U/\\xi)$, we find the dependence on the Minkowski null coordinate: $v_\\Omega \\propto e^{-i\\Omega (-\\ln(-U))} = (-U)^{i\\Omega}$",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":35,\"verdict\":\"CONFIRMED\",\"explanation\":\"With fixed Rindler spatial coordinate \u03be (along a detector/worldline or mode restriction), \u03be contributes only a constant phase/amplitude. The U-dependence is correctly isolated as \\\\((-U)^{i\\\\Omega}\\\\).\",\"confidence\":0.92}",
+    "confirmation_verdict": {
+      "claim_id": 35,
+      "verdict": "CONFIRMED",
+      "explanation": "With fixed Rindler spatial coordinate \u03be (along a detector/worldline or mode restriction), \u03be contributes only a constant phase/amplitude. The U-dependence is correctly isolated as \\((-U)^{i\\Omega}\\).",
+      "confidence": 0.92
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:58:45.431356"
+  },
+  {
+    "contestant_key": "qwen",
+    "verdict_index": 39,
+    "claim_id": 44,
+    "claim_text": "$| (-ik)^{-1-i\\Omega} |^2 \\propto | e^{i\\frac{\\pi}{2}(1+i\\Omega)} |^2 = e^{-\\pi \\Omega}$",
+    "original_adversary": "GPT-5.4",
+    "confirmation_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary_family": "openai_reasoning",
+    "raw_response": "{\n  \"claim_id\": 44,\n  \"verdict\": \"CONFIRMED\",\n  \"explanation\": \"Omitting the k^{-2} factor is acceptable; only the \u03a9-dependence matters, so the proportionality statement is correct.\",\n  \"confidence\": 1.0\n}",
+    "confirmation_verdict": {
+      "claim_id": 44,
+      "verdict": "CONFIRMED",
+      "explanation": "Omitting the k^{-2} factor is acceptable; only the \u03a9-dependence matters, so the proportionality statement is correct.",
+      "confidence": 1.0
+    },
+    "both_agree_error": false,
+    "timestamp": "2026-04-18T17:59:44.709366"
+  },
+  {
+    "contestant_key": "grok",
+    "verdict_index": 35,
+    "claim_id": 47,
+    "claim_text": "All steps up to the explicit form of |\u03b2_{\u03c9\u03c9'}|\u00b2 are exact.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":47,\"verdict\":\"ERROR\",\"explanation\":\"Deriving Unruh thermality before explicit |\u03b2_{\\\\omega\\\\omega'}|^2 invokes nontrivial analyticity/KMS assumptions, mode completeness, distributional normalization, and contour prescriptions; not all steps are exact from first principles.\",\"confidence\":0.97}",
+    "confirmation_verdict": {
+      "claim_id": 47,
+      "verdict": "ERROR",
+      "explanation": "Deriving Unruh thermality before explicit |\u03b2_{\\omega\\omega'}|^2 invokes nontrivial analyticity/KMS assumptions, mode completeness, distributional normalization, and contour prescriptions; not all steps are exact from first principles.",
+      "confidence": 0.97
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T17:59:48.813330"
+  },
+  {
+    "contestant_key": "grok",
+    "verdict_index": 39,
+    "claim_id": 51,
+    "claim_text": "The wedges \u03be > -\u221e and \u03be < -\u221e correspond to causally disconnected regions.",
+    "original_adversary": "OpenAI o3-mini (high)",
+    "confirmation_adversary": "GPT-5.4",
+    "confirmation_adversary_family": "openai",
+    "raw_response": "{\"claim_id\":51,\"verdict\":\"ERROR\",\"explanation\":\"Inequalities with \u00b1\u221e are ill-defined: \u03be is finite within a wedge and \u03be\u2192-\u221e only approaches horizons. Causally disconnected regions are the left/right Rindler wedges, e.g. x>|t| and x<-|t|.\",\"confidence\":0.99}",
+    "confirmation_verdict": {
+      "claim_id": 51,
+      "verdict": "ERROR",
+      "explanation": "Inequalities with \u00b1\u221e are ill-defined: \u03be is finite within a wedge and \u03be\u2192-\u221e only approaches horizons. Causally disconnected regions are the left/right Rindler wedges, e.g. x>|t| and x<-|t|.",
+      "confidence": 0.99
+    },
+    "both_agree_error": true,
+    "timestamp": "2026-04-18T17:59:52.184514"
+  }
+]

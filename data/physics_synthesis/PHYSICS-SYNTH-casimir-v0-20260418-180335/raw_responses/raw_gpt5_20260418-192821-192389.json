@@ -1,0 +1,46 @@
+{
+  "id": "gen-1776558499-ItBf4NcqgQE5dYRpxFAO",
+  "object": "chat.completion",
+  "created": 1776558499,
+  "model": "openai/gpt-5.4-20260305",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "{\"claim_id\":34,\"verdict\":\"CONFIRMED\",\"explanation\":\"Derivative is correct: with U/A=-\\\\pi^2\\\\hbar c/(720 d^3), F/A=-\\\\partial_d(U/A)=-\\\\pi^2\\\\hbar c/(240 d^4), attractive.\",\"confidence\":0.99}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 514,
+    "completion_tokens": 74,
+    "total_tokens": 588,
+    "cost": 0.002395,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.002395,
+      "upstream_inference_prompt_cost": 0.001285,
+      "upstream_inference_completions_cost": 0.00111
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
