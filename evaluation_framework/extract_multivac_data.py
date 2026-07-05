@@ -268,16 +268,24 @@ def generate_self_bias_analysis(evals):
             if jk and rk and jk != rk and ws and ws > 0 and not err:
                 judge_resp_scores[jk][rk].append(ws)
     
-    # Define model families
+    # Define model families.
+    # CANONICAL MAP — must stay identical to `families` in statistical_analysis.py,
+    # which defines the published family-bias numbers. A truncated map here was the
+    # cause of the "family = unknown" rows in earlier table_5_5 output.
     families = {
-        "anthropic": ["claude_opus_46", "claude_sonnet_46"],
-        "openai": ["gpt_5_4", "gpt_oss_120b"],
-        "google": ["gemini_31_pro"],
-        "xai": ["grok_420"],
-        "deepseek": ["deepseek_v4"],
+        "anthropic": ["claude_opus_46", "claude_sonnet_46", "claude_opus", "claude_sonnet", "judge_claude_sonnet"],
+        "openai": ["gpt_5_4", "gpt_oss_120b", "gpt_codex", "gpt_oss_legal", "judge_gpt54"],
+        "google": ["gemini_31_pro", "gemini_3_flash", "gemini_3_pro", "gemini_2_5_flash",
+                    "gemini_25_flash", "gemini_2_5_flash_lite", "gemma3_27b", "gemma_3n_4b"],
+        "xai": ["grok_420", "grok_direct", "grok_4_1_fast", "grok_code_fast"],
+        "deepseek": ["deepseek_v4", "deepseek_v3"],
+        "qwen": ["qwen3_8b", "qwen3_32b", "qwen3_coder_next", "qwen35_9b", "qwen35_27b",
+                 "qwen35_35b_a3b", "qwen35_122b_a10b", "qwen35_397b_a17b"],
+        "minimax": ["minimax_01", "minimax_m1", "minimax_m2", "minimax_m21", "minimax_m25", "minimax_m27"],
         "xiaomi": ["mimo_v2_flash"],
-        "mistral": ["mistral_small_creative"],
-        "bytedance": ["seed_16_flash"],
+        "mistral": ["mistral_small_creative", "mistral_nemo", "devstral"],
+        "bytedance": ["seed_16_flash", "seed_1_6_flash"],
+        "meta": ["llama31_8b", "llama4_scout"],
     }
     
     model_to_family = {}

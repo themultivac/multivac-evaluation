@@ -218,17 +218,19 @@ def bootstrap_family_bias(evals, n_bootstrap=10000):
     
     print(f"  Total judgments with known families: {len(judgment_data)}")
     
-    # Per-family analysis
+    # Per-family analysis. Collect first, then apply the family-wise
+    # Bonferroni correction (the paper reports "7 of 8 survive Bonferroni").
+    results = []
     for fam in sorted(families.keys()):
         fam_judgments = [(jk, rk, ws, same) for jk, rk, ws, same, jf in judgment_data if jf == fam]
         same_scores = [ws for _, _, ws, same in fam_judgments if same]
         other_scores = [ws for _, _, ws, same in fam_judgments if not same]
-        
+
         if len(same_scores) < 5 or len(other_scores) < 5:
             continue
-        
+
         observed_bias = np.mean(same_scores) - np.mean(other_scores)
-        
+
         # Bootstrap
         np.random.seed(42)
         bootstrap_biases = []
@@ -236,18 +238,49 @@ def bootstrap_family_bias(evals, n_bootstrap=10000):
             boot_same = np.random.choice(same_scores, size=len(same_scores), replace=True)
             boot_other = np.random.choice(other_scores, size=len(other_scores), replace=True)
             bootstrap_biases.append(np.mean(boot_same) - np.mean(boot_other))
-        
+
         ci_lower = np.percentile(bootstrap_biases, 2.5)
         ci_upper = np.percentile(bootstrap_biases, 97.5)
-        p_value = np.mean([b <= 0 for b in bootstrap_biases]) if observed_bias > 0 else np.mean([b >= 0 for b in bootstrap_biases])
-        
-        sig = "***" if p_value < 0.001 else "**" if p_value < 0.01 else "*" if p_value < 0.05 else "n.s."
-        
-        print(f"\n  {fam.upper():12s}: bias = {observed_bias:+.3f}  "
-              f"95% CI [{ci_lower:+.3f}, {ci_upper:+.3f}]  "
-              f"p = {p_value:.4f} {sig}")
-        print(f"    same-family: n={len(same_scores)}, mean={np.mean(same_scores):.3f}")
-        print(f"    other-family: n={len(other_scores)}, mean={np.mean(other_scores):.3f}")
+        # One-sided bootstrap p (fraction of resamples on the opposite side of 0).
+        # This is the method behind the published numbers, so it stays the default.
+        tail = np.mean([b <= 0 for b in bootstrap_biases]) if observed_bias > 0 else np.mean([b >= 0 for b in bootstrap_biases])
+        p_one = tail
+        p_two = 2 * tail  # two-sided sensitivity, reported alongside
+        # A bootstrap can't resolve p below 1/n_bootstrap; report that as a floor
+        # instead of a misleading "0.0000".
+        p_floor = 1.0 / n_bootstrap
+        results.append({
+            "family": fam, "bias": observed_bias, "ci_lower": ci_lower, "ci_upper": ci_upper,
+            "p_one": max(p_one, p_floor), "p_two": max(p_two, p_floor),
+            "p_is_floor_one": p_one < p_floor, "p_is_floor_two": p_two < p_floor,
+            "n_same": len(same_scores), "n_other": len(other_scores),
+            "mean_same": float(np.mean(same_scores)), "mean_other": float(np.mean(other_scores)),
+        })
+
+    # Bonferroni correction across the families actually tested, reported for
+    # BOTH the one-sided p (published method) and the two-sided sensitivity.
+    n_tests = len(results)
+    bonf_alpha = 0.05 / n_tests if n_tests else 0.05
+    surv_one = surv_two = 0
+    for r in results:
+        s1 = r["p_one"] < bonf_alpha
+        s2 = r["p_two"] < bonf_alpha
+        surv_one += s1
+        surv_two += s2
+        p1s = f"<{r['p_one']:.4f}" if r["p_is_floor_one"] else f"={r['p_one']:.4f}"
+        p2s = f"<{r['p_two']:.4f}" if r["p_is_floor_two"] else f"={r['p_two']:.4f}"
+        marg = "  <- MARGINAL" if s1 and r["p_one"] > 0.5 * bonf_alpha else ""
+        print(f"\n  {r['family'].upper():12s}: bias = {r['bias']:+.3f}  "
+              f"95% CI [{r['ci_lower']:+.3f}, {r['ci_upper']:+.3f}]")
+        print(f"    1-sided p {p1s} -> Bonferroni {'PASS' if s1 else 'fail'}{marg}   "
+              f"|   2-sided p {p2s} -> Bonferroni {'PASS' if s2 else 'fail'}")
+        print(f"    same-family: n={r['n_same']}, mean={r['mean_same']:.3f}   "
+              f"other-family: n={r['n_other']}, mean={r['mean_other']:.3f}")
+
+    print(f"\n  Bonferroni: {n_tests} families tested, corrected alpha = 0.05/{n_tests} = {bonf_alpha:.5f}")
+    print(f"  ONE-SIDED (published method): {surv_one} of {n_tests} survive.")
+    print(f"  TWO-SIDED (sensitivity):      {surv_two} of {n_tests} survive.")
+    return results
 
 
 # ═════════════════════════════════════════════
