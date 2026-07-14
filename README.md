@@ -49,9 +49,9 @@ multivac-evaluation/
 
 1. **No single model dominates all categories** — 7 different models lead 9 category pools (by distinct model; `scripts/bradley_terry_ranking.py`)
 2. **Same-vendor bias, corrected, is robust for only 2 of 8 families** — under a within-response fixed-effects model with judge-clustered SEs, Anthropic (+0.41) and MiniMax (+0.40) show significant favoritism; Qwen (+0.56) is significant but fragile. The large *naive* estimates — including Mistral −1.02 and Google −0.59 — are artifacts of judge leniency and respondent quality, not favoritism, and do not survive controls. See `paper_tables/FOUR_CELL_DECOMPOSITION_FINDINGS.md` and `WITHIN_RESPONSE_FINDINGS.md`. *(Supersedes the earlier "significant bias in all families" claim.)*
-3. **Top 4 models are statistically indistinguishable** — overlapping bootstrap confidence intervals (p > 0.07) *(finding 1; not yet reproduced by a script in this repo — pending an aggregate-ranking script)*
+3. **Top 4 models are statistically indistinguishable** — the top-ranked model is not significantly separated from ranks 2–4 (bootstrap p = 0.27, 0.073, 0.071) but is from rank 5 (p = 0.027); `evaluation_framework/statistical_analysis.py`
 4. **Judge disagreement is category-dependent** — code σ=1.27 vs meta-alignment σ=0.63 (ratio 2.01×; `scripts/category_disagreement.py`)
-5. **Overall inter-annotator agreement**: Krippendorff's α = 0.618 *(not reproduced by a script in this repo — verify before citing)*
+5. **Overall inter-annotator agreement**: Krippendorff's α = 0.618 (`evaluation_framework/statistical_analysis.py`)
 
 ## Intended Uses
 

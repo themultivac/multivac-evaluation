@@ -46,26 +46,25 @@ are artifacts). Fixed in:
 
 ---
 
-## C. Traceable to an EXISTING script, but NOT re-verified this session
-`evaluation_framework/statistical_analysis.py` contains the functions, but they were not re-run
-this session (Krippendorff needs `pip install krippendorff`), so per the "re-run before asserting"
-rule they are unverified:
-- **Krippendorff's α = 0.618** (README #5) — `compute_krippendorff_alpha`.
-- **"Top four statistically indistinguishable, p>0.07"** (README #3, corrected-sections abstract `[VERIFY]`) — bootstrap model-ranking CIs.
-
-Recommend: re-run and confirm, or mark as pending.
+## C. RESOLVED — re-run and VERIFIED this session (`evaluation_framework/statistical_analysis.py`)
+- **Krippendorff's α = 0.618** (README #5) — computed 0.6177. ✓ Kept.
+- **"Top four statistically indistinguishable, p>0.07"** (README #3, corrected-sections abstract) —
+  reproduced exactly: rank-1 (Grok 4.1 Fast) is n.s. vs ranks 2–4 (p=0.266/0.073/0.071) but
+  significant vs rank 5 (Mistral, p=0.027). ✓ `[VERIFY]` removed. *(Caveat: this uses the naive
+  aggregate that §5.5 shows is leniency-confounded; the "indistinguishable" conclusion still holds.)*
 
 ---
 
-## D. In NO script — untraceable, must compute or remove before shipping
-On `themultivac.github.io/judges/index.html` (per-**individual-judge** stats; only per-**family**
-leniency is scripted, via `four_cell_decomposition.py`):
-- "**2.5-point spread**" across judges (line ~634).
-- Per-judge means: **GPT-5.4 7.19 / 7.2**, **Mistral Small 9.70 / 9.7** (chart + headline).
-- Per-judge score SD: **GPT-5.4 2.22**, **Granite 4.0 Micro 0.49** (line ~634).
+## D. RESOLVED — scripted and VERIFIED this session (`scripts/judge_leniency_stats.py`)
+Judges-page per-individual-judge stats, all reproduced from the frozen data:
+- **GPT-5.4 mean 7.19** → 7.187 ✓ · **SD 2.22** → 2.215 ✓
+- **Mistral Small mean 9.70** → 9.695 ✓
+- **Granite 4.0 Micro SD 0.49** → 0.488 ✓
+- **"2.5-point spread"** → 7.187→9.695 = 2.508 within the 15-frontier set ✓
 
-These are plausibly from an earlier per-judge analysis but no committed script reproduces them.
-Left in place (not clearly wrong); flagged for you to back with a script or remove.
+One nuance to keep honest: Mistral Small is "most lenient" only within the curated frontier set;
+across all 48 judges, Gemini 2.5 Flash-Lite (9.77) is higher. The page's "15 frontier LLMs"
+framing makes the claim defensible. **Kept, now traceable.**
 
 ---
 

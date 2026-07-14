@@ -4,7 +4,7 @@ Rebuilt on the verified four-cell decomposition and strict-within FE estimates w
 
 **Changes from v1:** real numbers throughout; Mistral corrected (it does not flip sign, it collapses toward zero); the estimand is now defined precisely, because A minus C and the FE estimate are different quantities; Qwen demoted out of the abstract.
 
-> **Number provenance (verified 2026-07-13).** Every §5.5 / Table 1 / Conclusion figure below is reproduced by the scripts in this repo (`within_response_bias.py`, `four_cell_decomposition.py`, `parse_failure_analysis.py`, `count_reconciliation.py`, `category_disagreement.py`) and re-run this session. `scripts/reproduce_section_5_5.py` regenerates the whole section in one command; `scripts/make_figure4.py` builds Figure 4 from the JSON. `[VERIFY: ...]` marks the one remaining figure (finding 1's "top four indistinguishable") that no script yet computes — resolve before shipping.
+> **Number provenance (verified 2026-07-13).** Every figure below is reproduced by a script in this repo and re-run this session: §5.5 / Table 1 by `within_response_bias.py`, `four_cell_decomposition.py`, `count_reconciliation.py` (one command: `reproduce_section_5_5.py`); Figure 4 by `make_figure4.py`; parse stats by `parse_failure_analysis.py`; finding 3 by `category_disagreement.py`; **Krippendorff α = 0.618 and the "top four indistinguishable" (p > 0.07) by `evaluation_framework/statistical_analysis.py`** (re-verified this session); per-judge leniency (§judges page) by `judge_leniency_stats.py`. No `[VERIFY]` markers remain.
 > **Valid-judgment count (Task 1 resolved):** of 27,540 total judgment slots, **22,252** carry a usable in-range score (this is the successor to the previously published 22,254, which double-counted 2 pre-clamp score>10 rows); **23,356** parsed successfully (`error is None`, includes 1,104 valid zero-scores for refused responses); 2,781 self-excluded; 1,403 genuine judge failures. The abstract uses the usable-scored figure; §4.3 and the dataset cards must carry the full breakdown.
 
 ---
@@ -13,7 +13,7 @@ Rebuilt on the verified four-cell decomposition and strict-within FE estimates w
 
 Single-judge evaluation of large language models introduces systematic bias. We propose the Blind Peer Matrix, a multi-judge methodology in which N frontier models both generate responses and evaluate each other's outputs in a fully blinded N x N matrix, with self-judgments excluded. We apply it across 286 evaluations spanning 198 unique questions in nine category pools, producing 22,252 valid judgments from 55 models across 11 vendor families.
 
-Three findings stand out. First, no single model dominates across all categories: seven different models hold the top position across the nine pools (by distinct model, both naive and Bradley-Terry ranking; `bradley_terry_ranking.py`), and the top four are statistically indistinguishable in aggregate `[VERIFY: the "top four indistinguishable" claim is not computed by any script in this repo — needs an aggregate ranking with confidence intervals before shipping]`, contradicting aggregate leaderboard rankings.
+Three findings stand out. First, no single model dominates across all categories: seven different models hold the top position across the nine pools (by distinct model, both naive and Bradley-Terry ranking; `bradley_terry_ranking.py`), and the top four are statistically indistinguishable in aggregate — the top-ranked model is not significantly separated from ranks two through four (bootstrap p = 0.27, 0.073, 0.071) but is from rank five (p = 0.027; `evaluation_framework/statistical_analysis.py`) — contradicting aggregate leaderboard rankings.
 
 Second, and centrally, we show that the standard estimator for same-vendor judge bias is confounded. Estimating bias as the difference between a judge family's mean score to its own siblings and to other vendors conflates three distinct quantities: judge favoritism, respondent quality, and judge leniency. We decompose all eight testable families algebraically and re-estimate with a within-response fixed-effects model with judge-clustered standard errors. Only two families show robust same-vendor favoritism (Anthropic +0.41, MiniMax +0.40); a third (Qwen +0.56) is significant but identified from only 22 responses and is not relied upon. No family shows significant negative bias. The naive estimator errs in both directions: it reports a strong negative bias for Mistral (-1.02) that is an artifact of Mistral judges' leniency toward all respondents, a strong negative bias for Google (-0.59) that is an artifact of Google's weaker responses, and a strong positive bias for xAI (+0.75) that does not survive controls.
 
@@ -98,6 +98,44 @@ Bold = significant under FE with judge-clustered SEs and Bonferroni correction. 
 Second, we show that the standard estimator for same-vendor judge bias is confounded by respondent quality and judge leniency, and that correcting for both substantially changes the conclusions. Under a within-response fixed-effects specification with judge-clustered standard errors, only two of eight vendor families show robust same-vendor favoritism (Anthropic +0.41, MiniMax +0.40), a third is significant but fragile (Qwen +0.56, identified from 22 responses), and no family shows significant negative bias. The naive estimator misreports in both directions: an apparent -1.02 for Mistral is an artifact of that family's judges being lenient toward all respondents, an apparent -0.59 for Google is an artifact of Google's weaker responses, and an apparent +0.75 for xAI does not survive controls. We provide the algebraic decomposition, the corrected estimates, and a one-command reproduction pipeline.
 
 ---
+
+## §4.4 Data validity and the filter chain (new / rewrite)
+
+Every reported number derives from an explicit, reproducible filter over the 27,540 raw
+judgment slots (`scripts/count_reconciliation.py`, run against the frozen dataset):
+
+```
+27,540  total judgment slots            (= 286 evals' N×N matrices = Σ meta_analysis.total_judgments)
+ −2,781  intentional self-exclusions     (matrix diagonal: judge == respondent)
+========
+24,759  attempted cross-model judgments
+ −1,403  judge failures                  (930 malformed/unparseable JSON + 260 empty no-score
+                                          + 211 API/infra errors + 2 Phase-1 score>10 clamps)
+========
+23,356  successfully parsed judgments    (error field is null)
+ −1,104  valid zero-scores               (judge parsed fine and scored a refused/empty response 0;
+                                          excluded from bias analysis as uninformative, not a failure)
+========
+22,252  usable scored judgments          (the "valid" set; = the previously published 22,254 minus
+                                          the 2 score>10 rows that meta_analysis counted pre-clamp)
+ −  839  judgments with an unmapped vendor on either side
+========
+21,413  same-vendor analysis set         (§5.5; non-self, both vendor families known, score > 0)
+```
+
+| Bucket | n | % of 27,540 |
+|---|---:|---:|
+| Usable scored (analysis input) | 22,252 | 80.8 |
+| Valid zero-scores (refused/empty response) | 1,104 | 4.0 |
+| Self-excluded (intentional) | 2,781 | 10.1 |
+| Judge failures (parse/API) | 1,403 | 5.1 |
+| **Total** | **27,540** | **100** |
+
+This supersedes the earlier description of "22,254 valid judgments (5,286 self-excluded)": the
+5,286 was the complement 27,540 − 22,254 and conflated 2,781 self-exclusions with 1,403 failures
+and 1,104 valid zero-scores. The true self-exclusion count is **2,781**. Genuine judge-failure
+rate is 1,403 / 24,759 = **5.7%** of attempted cross-model judgments (and 4.9% by the
+model-attributable parse-only measure of §4.3).
 
 ## Other required edits elsewhere in the paper
 
