@@ -136,7 +136,17 @@ def components(groups):
 
 def main():
     groups, groups_cat, naive = load()
-    print(f"{len(groups):,} (eval,judge) comparison groups\n")
+    # within-judge pairwise comparison count + tie fraction (ties -> half-wins in bt_fit)
+    n_pairs = n_ties = 0
+    for sc in groups:
+        v = list(sc.values())
+        for a in range(len(v)):
+            for b in range(a + 1, len(v)):
+                n_pairs += 1
+                n_ties += (v[a] == v[b])
+    print(f"{len(groups):,} (eval,judge) comparison groups; "
+          f"{n_pairs:,} within-judge pairwise comparisons, {n_ties:,} ties "
+          f"({100*n_ties/n_pairs:.1f}%)\n")
 
     # ---- CONNECTIVITY: is a single global ranking even identifiable? ----
     comps = components(groups)
