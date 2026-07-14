@@ -69,3 +69,6 @@ orchestrator_state_backup_*.json
 
 # Backups
 models_backup_v1/
+
+# Local virtualenv (analysis toolchain)
+.venv/

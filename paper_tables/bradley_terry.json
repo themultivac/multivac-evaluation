@@ -1,0 +1,436 @@
+{
+  "n_components": 2,
+  "components": [
+    [
+      "claude_opus",
+      "claude_opus_46",
+      "claude_sonnet",
+      "claude_sonnet_46",
+      "deepseek_v3",
+      "deepseek_v4",
+      "gemini_25_flash",
+      "gemini_2_5_flash",
+      "gemini_2_5_flash_lite",
+      "gemini_31_pro",
+      "gemini_3_flash",
+      "gemini_3_pro",
+      "glm_4_7",
+      "gpt_5_4",
+      "gpt_codex",
+      "gpt_oss_120b",
+      "gpt_oss_legal",
+      "grok_420",
+      "grok_4_1_fast",
+      "grok_code_fast",
+      "grok_direct",
+      "judge_claude_sonnet",
+      "judge_gpt54",
+      "mimo_v2_flash",
+      "minimax_01",
+      "minimax_m1",
+      "minimax_m2",
+      "minimax_m21",
+      "minimax_m25",
+      "minimax_m27",
+      "mistral_small_creative",
+      "olmo_think",
+      "seed_16_flash",
+      "seed_1_6_flash"
+    ],
+    [
+      "devstral",
+      "gemma3_27b",
+      "gemma_3n_4b",
+      "granite_40",
+      "kimi_k25",
+      "llama31_8b",
+      "llama4_scout",
+      "mistral_nemo",
+      "nemotron_3_super",
+      "phi4",
+      "qwen35_122b_a10b",
+      "qwen35_27b",
+      "qwen35_35b_a3b",
+      "qwen35_397b_a17b",
+      "qwen35_9b",
+      "qwen3_32b",
+      "qwen3_8b",
+      "qwen3_coder_next"
+    ]
+  ],
+  "per_model": {
+    "gpt_5_4": {
+      "component": 0,
+      "naive": 8.953211859172331,
+      "bt": -4.752900539604165,
+      "naive_rank": 10,
+      "bt_rank": 1
+    },
+    "mistral_small_creative": {
+      "component": 0,
+      "naive": 9.030260047281342,
+      "bt": -4.837103179332832,
+      "naive_rank": 9,
+      "bt_rank": 2
+    },
+    "grok_420": {
+      "component": 0,
+      "naive": 8.707088607594942,
+      "bt": -4.910607054542054,
+      "naive_rank": 17,
+      "bt_rank": 3
+    },
+    "grok_code_fast": {
+      "component": 0,
+      "naive": 9.19679487179487,
+      "bt": -4.92950437604175,
+      "naive_rank": 4,
+      "bt_rank": 4
+    },
+    "judge_gpt54": {
+      "component": 0,
+      "naive": 9.108333333333333,
+      "bt": -5.013893687336074,
+      "naive_rank": 5,
+      "bt_rank": 5
+    },
+    "claude_opus_46": {
+      "component": 0,
+      "naive": 8.530328376703844,
+      "bt": -5.0318327759662465,
+      "naive_rank": 20,
+      "bt_rank": 6
+    },
+    "gemini_3_flash": {
+      "component": 0,
+      "naive": 8.767115804806993,
+      "bt": -5.1099727734325935,
+      "naive_rank": 14,
+      "bt_rank": 7
+    },
+    "claude_sonnet_46": {
+      "component": 0,
+      "naive": 8.496898263027301,
+      "bt": -5.121972310070262,
+      "naive_rank": 21,
+      "bt_rank": 8
+    },
+    "judge_claude_sonnet": {
+      "component": 0,
+      "naive": 8.709659090909092,
+      "bt": -5.134687028599052,
+      "naive_rank": 16,
+      "bt_rank": 9
+    },
+    "claude_sonnet": {
+      "component": 0,
+      "naive": 9.073467230443972,
+      "bt": -5.207133533860327,
+      "naive_rank": 7,
+      "bt_rank": 10
+    },
+    "grok_direct": {
+      "component": 0,
+      "naive": 8.910947712418297,
+      "bt": -5.280036376021077,
+      "naive_rank": 13,
+      "bt_rank": 11
+    },
+    "gpt_oss_120b": {
+      "component": 0,
+      "naive": 8.544822256568787,
+      "bt": -5.288156049716319,
+      "naive_rank": 19,
+      "bt_rank": 12
+    },
+    "claude_opus": {
+      "component": 0,
+      "naive": 9.096687370600414,
+      "bt": -5.300133654524528,
+      "naive_rank": 6,
+      "bt_rank": 13
+    },
+    "mimo_v2_flash": {
+      "component": 0,
+      "naive": 8.489968814968822,
+      "bt": -5.315360714428175,
+      "naive_rank": 22,
+      "bt_rank": 14
+    },
+    "grok_4_1_fast": {
+      "component": 0,
+      "naive": 9.197411003236242,
+      "bt": -5.353297423545102,
+      "naive_rank": 3,
+      "bt_rank": 15
+    },
+    "deepseek_v3": {
+      "component": 0,
+      "naive": 9.033227848101264,
+      "bt": -5.393032509666846,
+      "naive_rank": 8,
+      "bt_rank": 16
+    },
+    "minimax_m1": {
+      "component": 0,
+      "naive": 8.449193548387097,
+      "bt": -5.4831789524806105,
+      "naive_rank": 24,
+      "bt_rank": 17
+    },
+    "seed_1_6_flash": {
+      "component": 0,
+      "naive": 9.427272727272724,
+      "bt": -5.662753209150329,
+      "naive_rank": 1,
+      "bt_rank": 18
+    },
+    "gpt_codex": {
+      "component": 0,
+      "naive": 8.934297520661154,
+      "bt": -5.675049569529454,
+      "naive_rank": 11,
+      "bt_rank": 19
+    },
+    "gemini_2_5_flash": {
+      "component": 0,
+      "naive": 8.93047210300429,
+      "bt": -5.767241237861153,
+      "naive_rank": 12,
+      "bt_rank": 20
+    },
+    "deepseek_v4": {
+      "component": 0,
+      "naive": 8.231592039800995,
+      "bt": -5.786221156822518,
+      "naive_rank": 25,
+      "bt_rank": 21
+    },
+    "gemini_25_flash": {
+      "component": 0,
+      "naive": 7.62766666666667,
+      "bt": -5.829155848969775,
+      "naive_rank": 30,
+      "bt_rank": 22
+    },
+    "seed_16_flash": {
+      "component": 0,
+      "naive": 8.551339285714288,
+      "bt": -5.829214722257315,
+      "naive_rank": 18,
+      "bt_rank": 23
+    },
+    "gpt_oss_legal": {
+      "component": 0,
+      "naive": 9.344999999999997,
+      "bt": -5.837074742039498,
+      "naive_rank": 2,
+      "bt_rank": 24
+    },
+    "minimax_m25": {
+      "component": 0,
+      "naive": 7.934787234042554,
+      "bt": -5.848723186101646,
+      "naive_rank": 28,
+      "bt_rank": 25
+    },
+    "minimax_m27": {
+      "component": 0,
+      "naive": 8.460655737704919,
+      "bt": -5.871091942451374,
+      "naive_rank": 23,
+      "bt_rank": 26
+    },
+    "olmo_think": {
+      "component": 0,
+      "naive": 7.940816326530614,
+      "bt": -6.066188309176176,
+      "naive_rank": 27,
+      "bt_rank": 27
+    },
+    "minimax_m2": {
+      "component": 0,
+      "naive": 7.2133663366336656,
+      "bt": -6.224032949441819,
+      "naive_rank": 32,
+      "bt_rank": 28
+    },
+    "gemini_2_5_flash_lite": {
+      "component": 0,
+      "naive": 8.745238095238095,
+      "bt": -6.266705357170144,
+      "naive_rank": 15,
+      "bt_rank": 29
+    },
+    "minimax_01": {
+      "component": 0,
+      "naive": 7.986813186813188,
+      "bt": -6.359925072542887,
+      "naive_rank": 26,
+      "bt_rank": 30
+    },
+    "glm_4_7": {
+      "component": 0,
+      "naive": 7.787943262411348,
+      "bt": -6.686051286741752,
+      "naive_rank": 29,
+      "bt_rank": 31
+    },
+    "gemini_3_pro": {
+      "component": 0,
+      "naive": 7.20671834625323,
+      "bt": -6.7595553440753084,
+      "naive_rank": 33,
+      "bt_rank": 32
+    },
+    "minimax_m21": {
+      "component": 0,
+      "naive": 7.526190476190477,
+      "bt": -6.941929753152528,
+      "naive_rank": 31,
+      "bt_rank": 33
+    },
+    "gemini_31_pro": {
+      "component": 0,
+      "naive": 6.531801007556672,
+      "bt": -6.991501672271531,
+      "naive_rank": 34,
+      "bt_rank": 34
+    },
+    "qwen35_122b_a10b": {
+      "component": 1,
+      "naive": 9.230909090909092,
+      "bt": 12.27421377986207,
+      "naive_rank": 2,
+      "bt_rank": 1
+    },
+    "qwen35_397b_a17b": {
+      "component": 1,
+      "naive": 9.293103448275861,
+      "bt": 12.262905593367002,
+      "naive_rank": 1,
+      "bt_rank": 2
+    },
+    "qwen35_35b_a3b": {
+      "component": 1,
+      "naive": 9.192982456140353,
+      "bt": 12.077918511584953,
+      "naive_rank": 4,
+      "bt_rank": 3
+    },
+    "qwen3_8b": {
+      "component": 1,
+      "naive": 9.147560975609755,
+      "bt": 12.008039882926706,
+      "naive_rank": 5,
+      "bt_rank": 4
+    },
+    "gemma3_27b": {
+      "component": 1,
+      "naive": 9.066666666666663,
+      "bt": 11.914129558211085,
+      "naive_rank": 7,
+      "bt_rank": 5
+    },
+    "qwen35_27b": {
+      "component": 1,
+      "naive": 9.219298245614034,
+      "bt": 11.83324941010483,
+      "naive_rank": 3,
+      "bt_rank": 6
+    },
+    "qwen3_coder_next": {
+      "component": 1,
+      "naive": 8.500000000000002,
+      "bt": 11.713306460678558,
+      "naive_rank": 11,
+      "bt_rank": 7
+    },
+    "qwen3_32b": {
+      "component": 1,
+      "naive": 9.133663366336634,
+      "bt": 11.560698321106658,
+      "naive_rank": 6,
+      "bt_rank": 8
+    },
+    "kimi_k25": {
+      "component": 1,
+      "naive": 8.62816901408451,
+      "bt": 11.538888261607498,
+      "naive_rank": 10,
+      "bt_rank": 9
+    },
+    "phi4": {
+      "component": 1,
+      "naive": 8.917142857142856,
+      "bt": 11.278322291405015,
+      "naive_rank": 8,
+      "bt_rank": 10
+    },
+    "devstral": {
+      "component": 1,
+      "naive": 8.738317757009346,
+      "bt": 10.954665639751068,
+      "naive_rank": 9,
+      "bt_rank": 11
+    },
+    "qwen35_9b": {
+      "component": 1,
+      "naive": 8.227380952380953,
+      "bt": 10.744208485601073,
+      "naive_rank": 15,
+      "bt_rank": 12
+    },
+    "llama4_scout": {
+      "component": 1,
+      "naive": 8.446875,
+      "bt": 10.72051668116488,
+      "naive_rank": 12,
+      "bt_rank": 13
+    },
+    "granite_40": {
+      "component": 1,
+      "naive": 8.350000000000001,
+      "bt": 10.485634855500328,
+      "naive_rank": 14,
+      "bt_rank": 14
+    },
+    "mistral_nemo": {
+      "component": 1,
+      "naive": 8.423809523809519,
+      "bt": 10.396564582212505,
+      "naive_rank": 13,
+      "bt_rank": 15
+    },
+    "llama31_8b": {
+      "component": 1,
+      "naive": 7.577522935779818,
+      "bt": 9.593393858679104,
+      "naive_rank": 16,
+      "bt_rank": 16
+    }
+  },
+  "naive_winners": {
+    "analysis": "claude_sonnet",
+    "code": "grok_code_fast",
+    "communication": "claude_sonnet",
+    "edge_cases": "grok_direct",
+    "meta_alignment": "claude_sonnet",
+    "minimax": "judge_gpt54",
+    "qwen": "qwen3_32b",
+    "reasoning": "claude_opus",
+    "slm": "qwen3_8b"
+  },
+  "bt_winners": {
+    "analysis": "gpt_5_4",
+    "code": "gpt_5_4",
+    "communication": "mistral_small_creative",
+    "edge_cases": "gemini_3_flash",
+    "meta_alignment": "claude_opus_46",
+    "minimax": "judge_gpt54",
+    "qwen": "qwen35_122b_a10b",
+    "reasoning": "gpt_5_4",
+    "slm": "qwen3_8b"
+  },
+  "n_pools_changed": 7
+}

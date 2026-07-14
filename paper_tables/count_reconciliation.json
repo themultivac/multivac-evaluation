@@ -1,0 +1,16 @@
+{
+  "total": 27540,
+  "meta_total": 27540,
+  "meta_valid": 22254,
+  "err_none": 23356,
+  "valid_scored": 22252,
+  "zero_score": 1104,
+  "zero_score_justified": 1100,
+  "self_excl": 2781,
+  "api": 211,
+  "empty": 260,
+  "over10": 2,
+  "parse": 930,
+  "within_input": 21413,
+  "genuine_failures": 1403
+}
