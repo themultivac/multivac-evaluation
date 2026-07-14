@@ -12,11 +12,11 @@ Following Gebru et al. (2021), "Datasheets for Datasets."
 
 **What do the instances represent?** Each instance is a judgment: one LLM (judge) evaluating another LLM's (respondent's) response to a question, producing scores across five dimensions (correctness, completeness, clarity, depth, usefulness).
 
-**How many instances?** 27,540 total judgments. 22,254 valid (after excluding 5,286 self-judgments).
+**How many instances?** 27,540 total judgment slots. Of these: 23,356 parsed successfully (`error is None`), of which 22,252 carry a usable in-range score (the analysis set); 2,781 are intentional self-exclusions (the matrix diagonal); and 1,403 are genuine judge failures (parse/API errors). The previously stated "22,254 valid / 5,286 self-excluded" mislabelled the complement: only 2,781 are self-judgments. See `scripts/count_reconciliation.py`.
 
 **What data does each instance contain?** Judge identity, respondent identity, question text, response text, five dimension scores (0–10), weighted composite score, raw judgment text, error flag.
 
-**Is any information missing?** Judgments that failed to parse into structured scores are flagged with an error field. Approximately 10% of Phase 2 judgments have parse failures; Phase 1 had ~41.5% before protocol improvements.
+**Is any information missing?** Judgments that failed to parse into structured scores are flagged with an error field. Over the frozen dataset, the model-attributable parse-failure rate is 4.9% of attempted non-self judgments, and it is strongly systematic across judge models (χ²(49)=7122, p≈0) and categories (χ²(8)=673.1, p=4.3e-140): a few judges fail most of the time (e.g. olmo_think 85.6%, gemini_3_pro 56.0%) while others never fail. See `scripts/parse_failure_analysis.py` and `paper_tables/PARSE_FAILURE_FINDINGS.md`.
 
 **Are there errors or sources of noise?** Two Phase 1 judgments contained scores of 100 (on a 0–10 scale) due to absent range clamping in the early parser. Both are explicitly flagged as `parse_error_excluded_score_over_10`.
 

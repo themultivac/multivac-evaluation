@@ -4,7 +4,7 @@
 
 ## Overview
 
-This dataset contains **27,540 LLM judgments** (22,254 valid after self-exclusion) from a blind peer matrix evaluation of **55 frontier language models** across **286 evaluations** and **198 unique questions** in 9 category pools. To our knowledge, this is the largest publicly available multi-judge LLM evaluation dataset with full provenance.
+This dataset contains **27,540 LLM judgments** from a blind peer matrix evaluation of **55 frontier language models** across **286 evaluations** and **198 unique questions** in 9 category pools. Of the 27,540: **23,356 parsed successfully** and **22,252 carry a usable score** (the analysis set); **2,781** are intentional self-exclusions (the matrix diagonal) and **1,403** are judge failures (parse/API errors). To our knowledge, this is the largest publicly available multi-judge LLM evaluation dataset with full provenance. See `scripts/count_reconciliation.py` for the exact breakdown.
 
 **Paper:** [The Multivac: Blind Peer Matrix Evaluation of Frontier Language Models](https://arxiv.org/abs/TODO)
 
@@ -35,7 +35,10 @@ multivac-evaluation/
 | Peer matrix evaluations | 286 |
 | Unique questions | 198 |
 | Total judgments | 27,540 |
-| Valid judgments (self-excluded) | 22,254 |
+| Parsed judgments | 23,356 |
+| Usable-scored (analysis set) | 22,252 |
+| Self-excluded (diagonal) | 2,781 |
+| Judge failures (parse/API) | 1,403 |
 | Unique models | 55 |
 | Model families | 11 |
 | Category pools | 9 |
@@ -44,11 +47,11 @@ multivac-evaluation/
 
 ## Key Findings
 
-1. **No single model dominates all categories** — 6 different models lead 9 category pools
-2. **Same-family rating bias is real in all directions** — ranges from +0.91 (Qwen) to −1.02 (Mistral), all statistically significant
-3. **Top 4 models are statistically indistinguishable** — overlapping bootstrap confidence intervals (p > 0.07)
-4. **Judge disagreement is category-dependent** — code σ=1.27 vs meta-alignment σ=0.71
-5. **Overall inter-annotator agreement**: Krippendorff's α = 0.618
+1. **No single model dominates all categories** — 7 different models lead 9 category pools (by distinct model; `scripts/bradley_terry_ranking.py`)
+2. **Same-vendor bias, corrected, is robust for only 2 of 8 families** — under a within-response fixed-effects model with judge-clustered SEs, Anthropic (+0.41) and MiniMax (+0.40) show significant favoritism; Qwen (+0.56) is significant but fragile. The large *naive* estimates — including Mistral −1.02 and Google −0.59 — are artifacts of judge leniency and respondent quality, not favoritism, and do not survive controls. See `paper_tables/FOUR_CELL_DECOMPOSITION_FINDINGS.md` and `WITHIN_RESPONSE_FINDINGS.md`. *(Supersedes the earlier "significant bias in all families" claim.)*
+3. **Top 4 models are statistically indistinguishable** — overlapping bootstrap confidence intervals (p > 0.07) *(finding 1; not yet reproduced by a script in this repo — pending an aggregate-ranking script)*
+4. **Judge disagreement is category-dependent** — code σ=1.27 vs meta-alignment σ=0.63 (ratio 2.01×; `scripts/category_disagreement.py`)
+5. **Overall inter-annotator agreement**: Krippendorff's α = 0.618 *(not reproduced by a script in this repo — verify before citing)*
 
 ## Intended Uses
 

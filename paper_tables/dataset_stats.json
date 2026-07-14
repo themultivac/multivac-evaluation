@@ -13,8 +13,12 @@
     "minimax": 13
   },
   "total_judgments": 27540,
-  "valid_judgments": 22254,
-  "self_excluded": 5286,
+  "parsed_judgments": 23356,
+  "usable_scored_judgments": 22252,
+  "self_excluded": 2781,
+  "genuine_failures": 1403,
+  "valid_judgments": 22252,
+  "_note": "Corrected 2026-07-13: prior 'valid_judgments':22254 was meta_analysis.valid (=usable-scored 22252 + 2 pre-clamp); prior 'self_excluded':5286 was the mislabelled complement 27540-22254. Real self-exclusions = 2781. See scripts/count_reconciliation.py.",
   "unique_models": 55,
   "models": [
     "claude_opus",

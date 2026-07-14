@@ -15,13 +15,17 @@ in *The Multivac: Blind Peer Matrix Evaluation of Frontier Language Models*.
 
 ## Judgment Counts
 
-- **Total judgments:** 27,540
-- **Valid judgments (after self-exclusion):** 22,254
-- **Self-excluded judgments:** 5,286
+- **Total judgment slots:** 27,540
+- **Parsed successfully (`error is None`):** 23,356
+- **Usable-scored (analysis set, score > 0):** 22,252
+- **Self-excluded (intentional matrix diagonal):** 2,781
+- **Genuine judge failures (parse/API errors):** 1,403
 
-Self-exclusion criteria are defined per-batch in each `results.json` file's
-`meta_analysis` field. The valid-judgment count reflects these criteria
-applied across all 286 batches.
+The `meta_analysis.valid_judgments` field sums to 22,254 (= 22,252 usable-scored
+plus 2 pre-clamp score>10 rows), which is the figure previously published as
+"valid." The earlier label "5,286 self-excluded" was the mislabelled complement
+27,540 − 22,254; the real self-exclusion count is **2,781**. Run
+`../scripts/count_reconciliation.py` for the exact breakdown.
 
 ## Reproduction
 
@@ -35,15 +39,17 @@ python extract_multivac_data.py ../data/
 The script writes summary statistics to `paper_tables/dataset_stats.json`.
 Expected values:
 
-| Metric                 | Value  |
-| ---------------------- | ------ |
-| Total judgments        | 27,540 |
-| Valid judgments        | 22,254 |
-| Self-excluded          |  5,286 |
-| Evaluation batches     |    286 |
-| Unique questions       |    198 |
-| Unique models          |     55 |
-| Category pools         |      9 |
+| Metric                       | Value  |
+| ---------------------------- | ------ |
+| Total judgment slots         | 27,540 |
+| Parsed (`error is None`)     | 23,356 |
+| Usable-scored (analysis set) | 22,252 |
+| Self-excluded (diagonal)     |  2,781 |
+| Judge failures (parse/API)   |  1,403 |
+| Evaluation batches           |    286 |
+| Unique questions             |    198 |
+| Unique models                |     55 |
+| Category pools               |      9 |
 
 ## Scope
 
