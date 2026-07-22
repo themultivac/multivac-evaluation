@@ -1,0 +1,508 @@
+{
+  "rows": [
+    {
+      "model": "Gemini 3 Pro Preview",
+      "key": "gemini_3_pro",
+      "refusal": 0.08293838862559241,
+      "n": 422,
+      "mean_incl": 6.609004739336493,
+      "mean_excl": 7.20671834625323,
+      "bt": -1.2034946939653215,
+      "frontier": true
+    },
+    {
+      "model": "Claude Sonnet 4.5",
+      "key": "claude_sonnet",
+      "refusal": 0.0,
+      "n": 473,
+      "mean_incl": 9.073467230443994,
+      "mean_excl": 9.073467230443974,
+      "bt": 0.40012767860782383,
+      "frontier": true
+    },
+    {
+      "model": "GPT-5.2-Codex",
+      "key": "gpt_codex",
+      "refusal": 0.0,
+      "n": 242,
+      "mean_incl": 8.934297520661149,
+      "mean_excl": 8.934297520661156,
+      "bt": -0.05660271683641645,
+      "frontier": true
+    },
+    {
+      "model": "GPT-OSS-120B",
+      "key": "gpt_oss_120b",
+      "refusal": 0.04852941176470588,
+      "n": 2040,
+      "mean_incl": 8.130147058823475,
+      "mean_excl": 8.544822256568779,
+      "bt": 0.24035310457587966,
+      "frontier": true
+    },
+    {
+      "model": "Gemini 3 Flash Preview",
+      "key": "gemini_3_flash",
+      "refusal": 0.00362844702467344,
+      "n": 1378,
+      "mean_incl": 8.73530478955008,
+      "mean_excl": 8.767115804806991,
+      "bt": 0.49860863261441907,
+      "frontier": true
+    },
+    {
+      "model": "DeepSeek V3.2",
+      "key": "deepseek_v3",
+      "refusal": 0.0,
+      "n": 474,
+      "mean_incl": 9.033227848101285,
+      "mean_excl": 9.033227848101266,
+      "bt": 0.2202254210697852,
+      "frontier": true
+    },
+    {
+      "model": "MiMo-V2-Flash",
+      "key": "mimo_v2_flash",
+      "refusal": 0.011813045711350795,
+      "n": 1947,
+      "mean_incl": 8.389676425269572,
+      "mean_excl": 8.489968814968815,
+      "bt": 0.30392637050361365,
+      "frontier": true
+    },
+    {
+      "model": "Grok 4.1 Fast",
+      "key": "grok_4_1_fast",
+      "refusal": 0.0,
+      "n": 309,
+      "mean_incl": 9.197411003236246,
+      "mean_excl": 9.197411003236246,
+      "bt": 0.24474699671818517,
+      "frontier": true
+    },
+    {
+      "model": "Grok 3 (Direct)",
+      "key": "grok_direct",
+      "refusal": 0.0,
+      "n": 306,
+      "mean_incl": 8.910947712418308,
+      "mean_excl": 8.9109477124183,
+      "bt": 0.34109012915672354,
+      "frontier": true
+    },
+    {
+      "model": "Claude Opus 4.5",
+      "key": "claude_opus",
+      "refusal": 0.002066115702479339,
+      "n": 484,
+      "mean_incl": 9.077892561983486,
+      "mean_excl": 9.096687370600414,
+      "bt": 0.3056990586159859,
+      "frontier": true
+    },
+    {
+      "model": "Gemini 2.5 Flash",
+      "key": "gemini_2_5_flash",
+      "refusal": 0.0,
+      "n": 233,
+      "mean_incl": 8.930472103004282,
+      "mean_excl": 8.930472103004291,
+      "bt": -0.17009401584842285,
+      "frontier": true
+    },
+    {
+      "model": "Olmo 3.1 32B Think",
+      "key": "olmo_think",
+      "refusal": 0.3717948717948718,
+      "n": 78,
+      "mean_incl": 4.988461538461539,
+      "mean_excl": 7.940816326530613,
+      "bt": -1.0383739310576123,
+      "frontier": true
+    },
+    {
+      "model": "MiniMax M2",
+      "key": "minimax_m2",
+      "refusal": 0.4161849710982659,
+      "n": 173,
+      "mean_incl": 4.21127167630058,
+      "mean_excl": 7.213366336633664,
+      "bt": -1.014400874042258,
+      "frontier": true
+    },
+    {
+      "model": "GLM 4.7",
+      "key": "glm_4_7",
+      "refusal": 0.17543859649122806,
+      "n": 171,
+      "mean_incl": 6.421637426900583,
+      "mean_excl": 7.787943262411347,
+      "bt": -1.3283125225003865,
+      "frontier": true
+    },
+    {
+      "model": "Grok Code Fast 1",
+      "key": "grok_code_fast",
+      "refusal": 0.0,
+      "n": 78,
+      "mean_incl": 9.19679487179487,
+      "mean_excl": 9.19679487179487,
+      "bt": 0.6944540567777109,
+      "frontier": true
+    },
+    {
+      "model": "GPT-OSS-120B (Legal)",
+      "key": "gpt_oss_legal",
+      "refusal": 0.0,
+      "n": 80,
+      "mean_incl": 9.344999999999997,
+      "mean_excl": 9.344999999999999,
+      "bt": -0.24498920899268528,
+      "frontier": true
+    },
+    {
+      "model": "Seed 1.6 Flash",
+      "key": "seed_1_6_flash",
+      "refusal": 0.0,
+      "n": 88,
+      "mean_incl": 9.427272727272724,
+      "mean_excl": 9.427272727272726,
+      "bt": -0.09147485428353344,
+      "frontier": true
+    },
+    {
+      "model": "Mistral Small Creative",
+      "key": "mistral_small_creative",
+      "refusal": 0.0,
+      "n": 423,
+      "mean_incl": 9.030260047281342,
+      "mean_excl": 9.030260047281322,
+      "bt": 0.796437803132222,
+      "frontier": true
+    },
+    {
+      "model": "Gemini 2.5 Flash-Lite",
+      "key": "gemini_2_5_flash_lite",
+      "refusal": 0.023255813953488372,
+      "n": 86,
+      "mean_incl": 8.54186046511628,
+      "mean_excl": 8.745238095238095,
+      "bt": -0.7434632880174139,
+      "frontier": true
+    },
+    {
+      "model": "Kimi K2.5",
+      "key": "kimi_k25",
+      "refusal": 0.4274193548387097,
+      "n": 124,
+      "mean_incl": 4.940322580645162,
+      "mean_excl": 8.628169014084508,
+      "bt": -0.5083866228385613,
+      "frontier": false
+    },
+    {
+      "model": "Gemma 3 27B",
+      "key": "gemma3_27b",
+      "refusal": 0.02631578947368421,
+      "n": 114,
+      "mean_incl": 8.828070175438592,
+      "mean_excl": 9.066666666666665,
+      "bt": 0.9355420273856441,
+      "frontier": false
+    },
+    {
+      "model": "Llama 4 Scout",
+      "key": "llama4_scout",
+      "refusal": 0.0,
+      "n": 112,
+      "mean_incl": 8.446875,
+      "mean_excl": 8.446875,
+      "bt": -0.07524124163547657,
+      "frontier": false
+    },
+    {
+      "model": "Phi-4 14B",
+      "key": "phi4",
+      "refusal": 0.0,
+      "n": 105,
+      "mean_incl": 8.917142857142856,
+      "mean_excl": 8.917142857142856,
+      "bt": 0.4469184033871085,
+      "frontier": false
+    },
+    {
+      "model": "Granite 4.0 Micro",
+      "key": "granite_40",
+      "refusal": 0.0,
+      "n": 110,
+      "mean_incl": 8.350000000000001,
+      "mean_excl": 8.350000000000001,
+      "bt": -0.24060060373746747,
+      "frontier": false
+    },
+    {
+      "model": "Qwen 3 8B",
+      "key": "qwen3_8b",
+      "refusal": 0.0,
+      "n": 164,
+      "mean_incl": 9.147560975609748,
+      "mean_excl": 9.147560975609755,
+      "bt": 1.0748037610917427,
+      "frontier": false
+    },
+    {
+      "model": "Llama 3.1 8B",
+      "key": "llama31_8b",
+      "refusal": 0.0,
+      "n": 109,
+      "mean_incl": 7.577522935779818,
+      "mean_excl": 7.577522935779817,
+      "bt": -0.9718443342635723,
+      "frontier": false
+    },
+    {
+      "model": "Qwen 3 32B",
+      "key": "qwen3_32b",
+      "refusal": 0.4161849710982659,
+      "n": 173,
+      "mean_incl": 5.332369942196529,
+      "mean_excl": 9.13366336633663,
+      "bt": -0.3191691772770319,
+      "frontier": false
+    },
+    {
+      "model": "Mistral Nemo 12B",
+      "key": "mistral_nemo",
+      "refusal": 0.0,
+      "n": 105,
+      "mean_incl": 8.423809523809519,
+      "mean_excl": 8.423809523809524,
+      "bt": -0.332215410201366,
+      "frontier": false
+    },
+    {
+      "model": "Devstral Small",
+      "key": "devstral",
+      "refusal": 0.0,
+      "n": 107,
+      "mean_incl": 8.738317757009346,
+      "mean_excl": 8.738317757009346,
+      "bt": 0.12436869798842254,
+      "frontier": false
+    },
+    {
+      "model": "Qwen 3.5 9B",
+      "key": "qwen35_9b",
+      "refusal": 0.3114754098360656,
+      "n": 61,
+      "mean_incl": 5.664754098360656,
+      "mean_excl": 8.227380952380951,
+      "bt": -0.5197668239402539,
+      "frontier": false
+    },
+    {
+      "model": "Qwen 3 Coder Next",
+      "key": "qwen3_coder_next",
+      "refusal": 0.0,
+      "n": 58,
+      "mean_incl": 8.500000000000002,
+      "mean_excl": 8.500000000000002,
+      "bt": 0.740021107649833,
+      "frontier": false
+    },
+    {
+      "model": "Qwen 3.5 35B-A3B",
+      "key": "qwen35_35b_a3b",
+      "refusal": 0.16176470588235295,
+      "n": 68,
+      "mean_incl": 7.705882352941178,
+      "mean_excl": 9.192982456140351,
+      "bt": 0.7766161722350255,
+      "frontier": false
+    },
+    {
+      "model": "Qwen 3.5 27B",
+      "key": "qwen35_27b",
+      "refusal": 0.09523809523809523,
+      "n": 63,
+      "mean_incl": 8.341269841269842,
+      "mean_excl": 9.219298245614034,
+      "bt": 0.661538575526939,
+      "frontier": false
+    },
+    {
+      "model": "Qwen 3.5 122B-A10B",
+      "key": "qwen35_122b_a10b",
+      "refusal": 0.16666666666666666,
+      "n": 66,
+      "mean_incl": 7.692424242424244,
+      "mean_excl": 9.230909090909092,
+      "bt": 0.9064504804042481,
+      "frontier": false
+    },
+    {
+      "model": "Qwen 3.5 397B-A17B",
+      "key": "qwen35_397b_a17b",
+      "refusal": 0.09375,
+      "n": 64,
+      "mean_incl": 8.421875,
+      "mean_excl": 9.293103448275861,
+      "bt": 1.0433251601292137,
+      "frontier": false
+    },
+    {
+      "model": "MiniMax M2.5",
+      "key": "minimax_m25",
+      "refusal": 0.31735657225853303,
+      "n": 1377,
+      "mean_incl": 5.416630355846044,
+      "mean_excl": 7.934787234042553,
+      "bt": -0.7710626949460451,
+      "frontier": true
+    },
+    {
+      "model": "MiniMax M2.1",
+      "key": "minimax_m21",
+      "refusal": 0.5333333333333333,
+      "n": 90,
+      "mean_incl": 3.5122222222222224,
+      "mean_excl": 7.526190476190475,
+      "bt": -1.3695509034647233,
+      "frontier": true
+    },
+    {
+      "model": "MiniMax M1",
+      "key": "minimax_m1",
+      "refusal": 0.3111111111111111,
+      "n": 90,
+      "mean_incl": 5.820555555555556,
+      "mean_excl": 8.449193548387097,
+      "bt": -0.12230516786878186,
+      "frontier": true
+    },
+    {
+      "model": "MiniMax-01",
+      "key": "minimax_01",
+      "refusal": 0.0,
+      "n": 91,
+      "mean_incl": 7.986813186813188,
+      "mean_excl": 7.986813186813188,
+      "bt": -0.0644873210556242,
+      "frontier": true
+    },
+    {
+      "model": "Claude Sonnet 4.6",
+      "key": "judge_claude_sonnet",
+      "refusal": 0.0,
+      "n": 88,
+      "mean_incl": 8.709659090909092,
+      "mean_excl": 8.709659090909092,
+      "bt": 0.9431608982101295,
+      "frontier": true
+    },
+    {
+      "model": "GPT-5.4",
+      "key": "judge_gpt54",
+      "refusal": 0.0,
+      "n": 90,
+      "mean_incl": 9.108333333333333,
+      "mean_excl": 9.108333333333333,
+      "bt": 1.0535121518749118,
+      "frontier": true
+    },
+    {
+      "model": "MiniMax M2.7",
+      "key": "minimax_m27",
+      "refusal": 0.3146067415730337,
+      "n": 89,
+      "mean_incl": 5.798876404494382,
+      "mean_excl": 8.460655737704917,
+      "bt": -0.39074261020936557,
+      "frontier": true
+    },
+    {
+      "model": "GPT-5.4",
+      "key": "gpt_5_4",
+      "refusal": 0.004917025199754148,
+      "n": 1627,
+      "mean_incl": 8.90918869084198,
+      "mean_excl": 8.95321185917233,
+      "bt": 0.8693576859789266,
+      "frontier": true
+    },
+    {
+      "model": "Claude Sonnet 4.6",
+      "key": "claude_sonnet_46",
+      "refusal": 0.0018575851393188853,
+      "n": 1615,
+      "mean_incl": 8.481114551083571,
+      "mean_excl": 8.496898263027296,
+      "bt": 0.5145187253921193,
+      "frontier": true
+    },
+    {
+      "model": "Grok 4.20",
+      "key": "grok_420",
+      "refusal": 0.009404388714733543,
+      "n": 1595,
+      "mean_incl": 8.625203761755444,
+      "mean_excl": 8.707088607594937,
+      "bt": 0.7046579184394556,
+      "frontier": true
+    },
+    {
+      "model": "Claude Opus 4.6",
+      "key": "claude_opus_46",
+      "refusal": 0.011635027556644213,
+      "n": 1633,
+      "mean_incl": 8.431077770973653,
+      "mean_excl": 8.530328376703842,
+      "bt": 0.5806225229031369,
+      "frontier": true
+    },
+    {
+      "model": "DeepSeek V3",
+      "key": "deepseek_v4",
+      "refusal": 0.0043343653250774,
+      "n": 1615,
+      "mean_incl": 8.195913312693477,
+      "mean_excl": 8.231592039800995,
+      "bt": -0.12770077438760172,
+      "frontier": true
+    },
+    {
+      "model": "Gemini 3.1 Pro",
+      "key": "gemini_31_pro",
+      "refusal": 0.014276846679081317,
+      "n": 1611,
+      "mean_incl": 6.438547486033522,
+      "mean_excl": 6.531801007556675,
+      "bt": -1.2496377237057537,
+      "frontier": true
+    },
+    {
+      "model": "Gemini 2.5 Flash",
+      "key": "gemini_25_flash",
+      "refusal": 0.013157894736842105,
+      "n": 304,
+      "mean_incl": 7.527302631578951,
+      "mean_excl": 7.627666666666667,
+      "bt": -0.09068504139102111,
+      "frontier": true
+    },
+    {
+      "model": "Seed 1.6 Flash",
+      "key": "seed_16_flash",
+      "refusal": 0.011764705882352941,
+      "n": 340,
+      "mean_incl": 8.45073529411765,
+      "mean_excl": 8.551339285714285,
+      "bt": -0.18569693228075507,
+      "frontier": true
+    }
+  ],
+  "components": [
+    34,
+    18
+  ]
+}

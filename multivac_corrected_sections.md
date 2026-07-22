@@ -23,6 +23,47 @@ We release the complete evaluation dataset, an open-source evaluation framework,
 
 ---
 
+## 5.1 Model rankings and Finding 1 (rebuilt) — `scripts/finding1_leaderboard.py`
+
+Two corrections resolve the internal inconsistency a reviewer would flag (Finding 1 used naive
+means that §5.5 shows are leniency-confounded) and a data-handling issue (genuine zero-scores were
+dropped):
+
+1. **Genuine zero-scores are included.** The 1,104 `error`-null / `weighted_score`==0 judgments are
+   real judge decisions (the parser in `multivac.py` only returns a score when ≥3 of 5 dimensions
+   are explicitly present; parse failures set an error). 88% score refused/empty responses, 12%
+   score real-but-broken answers. Excluding them inflated refusing models by up to +4 points. We
+   include them and report each model's **refusal rate**. (§5.5 family bias still excludes them:
+   on an all-zero response every judge gives 0, so they carry no within-response information.)
+2. **Rankings are reported by Bradley-Terry** (leniency-adjusted, within-judge pairwise), with the
+   naive mean shown alongside as the confounded quantity BT corrects.
+
+**The naive leaderboard is leniency-driven.** By naive mean (zeros incl.) the top is Seed 1.6 Flash
+(9.43), GPT-OSS-120B-Legal (9.35), Grok 4.1 Fast / Grok Code Fast (9.20) — models that were scored
+by lenient judges. **Under BT (per pool), GPT-5.4 tops the frontier pool** (bootstrap over 150
+resamples: 70% probability of rank 1, rank 95% CI [1,3]), rising from a middling naive rank; the
+naive-#1 Grok 4.1 Fast falls out of the BT top tier. The BT frontier top tier — GPT-5.4, Claude
+Sonnet 4.6, Mistral Small Creative, Grok 4.20, Grok Code Fast — has overlapping rank CIs and is
+statistically indistinguishable.
+
+**Both original conclusions survive, restated on BT:**
+- *No single model dominates.* Seven distinct models top the nine category pools under BT; GPT-5.4,
+  the strongest single model, tops at most three of nine.
+- *The top tier is statistically indistinguishable.* True under BT, but the membership differs from
+  the naive tier — it is a leniency-adjusted cluster led by GPT-5.4, not the naive Grok-led four.
+  The naive "top four" (Grok 4.1 Fast, Grok 3 Direct, Claude Opus 4.5, Claude Sonnet 4.5) was an
+  artifact of judge leniency.
+
+**Refusal rates matter and were previously hidden.** Including zeros sinks high-refusal models:
+MiniMax M2.1 (53% refusal, naive mean 7.53→3.51), Kimi K2.5 (43%, 8.63→4.94), MiniMax M2 (42%,
+7.21→4.21), Qwen 3 32B (42%, 9.13→5.33), Olmo 3.1 32B Think (37%, 7.94→4.99). The scored-only
+leaderboard rewarded refusal; the corrected leaderboard reports it.
+
+*Caveat:* Bradley-Terry strengths are only comparable **within** a connected component. The
+comparison graph splits into a 34-model frontier pool and an 18-model small-model pool with no
+cross-pool comparisons (see `BRADLEY_TERRY_FINDINGS.md`), so there is no single 55-model BT
+leaderboard; rankings are within-pool and per-category.
+
 ## 5.5 Same-Vendor Rating Bias (rewritten)
 
 ### 5.5.1 The naive estimator is confounded
@@ -136,6 +177,12 @@ This supersedes the earlier description of "22,254 valid judgments (5,286 self-e
 and 1,104 valid zero-scores. The true self-exclusion count is **2,781**. Genuine judge-failure
 rate is 1,403 / 24,759 = **5.7%** of attempted cross-model judgments (and 4.9% by the
 model-attributable parse-only measure of §4.3).
+
+The 1,104 valid zero-scores are genuine judge ratings of refused/empty/broken responses (not
+failures). They are **included in the §5.1 leaderboard** (a refusal is a legitimate 0; §5.1 reports
+per-model refusal rates) but **excluded from the §5.5 same-vendor analysis**, where an all-zero
+response carries no within-response information about judge favoritism. Both uses are stated where
+they occur.
 
 ## Other required edits elsewhere in the paper
 
