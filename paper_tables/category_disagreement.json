@@ -1,5 +1,5 @@
 {
-  "per_category_sd": {
+  "per_category_mean_sd": {
     "code": 1.2685521537555833,
     "edge_cases": 1.0334993230043208,
     "reasoning": 0.9933670050342395,
@@ -9,6 +9,17 @@
     "qwen": 0.7253673847396697,
     "communication": 0.723617565582154,
     "meta_alignment": 0.6323000944132918
+  },
+  "per_category_median_sd": {
+    "code": 1.0806355910090208,
+    "edge_cases": 0.6652067347825037,
+    "reasoning": 0.6120888642817953,
+    "minimax": 0.6952217871538073,
+    "slm": 0.6020426539231726,
+    "analysis": 0.5716126935509495,
+    "qwen": 0.561805126356106,
+    "communication": 0.5417811234385024,
+    "meta_alignment": 0.5285593627966494
   },
   "code_over_meta_ratio": 2.006250141291955
 }

@@ -35,19 +35,21 @@ def main():
     cat_sd = defaultdict(list)
     for rid, sc in by_resp.items():
         if len(sc) >= 2:
-            cat_sd[rid.split("::")[0] and cat_of[rid]].append(float(np.std(sc, ddof=1)))
+            cat_sd[cat_of[rid]].append(float(np.std(sc, ddof=1)))
 
-    rows = sorted(((c, float(np.mean(v)), len(v)) for c, v in cat_sd.items()), key=lambda x: -x[1])
-    print(f"{'category':16s} {'mean within-resp SD':>20s} {'n_resp':>8s}")
-    for c, sd, n in rows:
-        print(f"{c:16s} {sd:>20.3f} {n:>8d}")
-    d = {c: sd for c, sd, _ in rows}
+    rows = sorted(((c, float(np.mean(v)), float(np.median(v)), len(v)) for c, v in cat_sd.items()),
+                  key=lambda x: -x[1])
+    print(f"{'category':16s} {'mean SD':>10s} {'median SD':>10s} {'n_resp':>8s}")
+    for c, mean, med, n in rows:
+        print(f"{c:16s} {mean:>10.3f} {med:>10.3f} {n:>8d}")
+    d = {c: mean for c, mean, _, _ in rows}
+    med = {c: m for c, _, m, _ in rows}
     print(f"\ncode = {d['code']:.3f},  meta_alignment = {d['meta_alignment']:.3f},  "
           f"ratio = {d['code']/d['meta_alignment']:.2f}x")
 
     out = os.path.join(os.path.dirname(__file__), "..", "paper_tables", "category_disagreement.json")
-    json.dump({"per_category_sd": d, "code_over_meta_ratio": d["code"] / d["meta_alignment"]},
-              open(out, "w"), indent=2)
+    json.dump({"per_category_mean_sd": d, "per_category_median_sd": med,
+               "code_over_meta_ratio": d["code"] / d["meta_alignment"]}, open(out, "w"), indent=2)
     print(f"\nWrote {out}")
 
 
