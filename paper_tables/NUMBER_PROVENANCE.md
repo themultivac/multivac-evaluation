@@ -18,18 +18,17 @@ are listed at the bottom.
 | §5.4 disagreement: code σ 1.269, meta-alignment 0.632, ratio 2.01×, edge_cases mean 1.033/median 0.665 | `category_disagreement.py` | `category_disagreement.json` |
 | §4.3 parse: 4.9% rate, χ²(49)=7122, χ²(8)=673.1 p=4.3e-140, olmo 85.6%, gemini_3_pro 56.0%, SLM 9.4%/reasoning 7.1%/communication 1.6% | `parse_failure_analysis.py` | `parse_failure.json` |
 | §6.6 Krippendorff α=0.618; reasoning 0.687, MiniMax 0.673, communication 0.354, edge 0.436; §5.1 top-four p=0.266/0.073/0.071, rank-5 p=0.027 | `evaluation_framework/statistical_analysis.py` | (stdout; run `... data/peer_matrix`) |
+| §4.2 SLM pool means (Qwen 3 8B 9.343, Phi-4 8.917, Gemma 8.828; Qwen 3 32B 8.93→5.44, Kimi →4.94 with refusal) | `slm_pool_means.py` | `slm_pool_means.json` |
+| §4.2 dimension means (clarity 8.583, depth 7.622; largest gap Llama 3.1 8B +1.780; 25 of 33 >0.8) | `dimension_means.py` | `dimension_means.json` |
+| §4.1 participation ranges (core 163–238, extended 30–60, focused 1–25) | `participation_ranges.py` | `participation_ranges.json` |
+| §5.6 H2H (Qwen 3.6 Plus 107–11, 26 ties, 151 q; 185 total, 5 batches) | `h2h_results.py` | `h2h_results.json` |
+| §5.1 refusal-effect table (MiniMax M2.1 53% 7.53→3.51, Kimi 43% 8.63→4.94, MiniMax M2 42% 7.21→4.21, Qwen 32B 42% 9.13→5.33, Olmo 37% 7.94→4.99) | `finding1_leaderboard.py` | `finding1_leaderboard.json` |
 
-## NOT produced by any repo script (must compute or mark descriptive before submission)
+## NOT produced by any repo script (operational / external — footnote as such)
 
-These are pre-existing paper numbers I did **not** touch; they come from the frozen data but no
-committed script reproduces them:
+Only two classes remain, neither derivable from the evaluation data:
 
-1. **§4.2 SLM-pool category means** — Qwen 3 8B 9.328, Phi-4 14B 8.924, Gemma 3 27B 8.853 (line ~198).
-2. **§4.2 dimension means** — depth 8.45, clarity 9.40, clarity–depth gap >0.8 for 17 of 55 models, GPT-5.2-Codex Δ=1.438 (line ~200).
-3. **§4.1 model participation ranges** — 116–230 / 30–99 / 1–29 evaluations (line ~160).
-4. **§5.6 head-to-head** — Qwen 107–11 with 25 ties, 180 H2H questions, 5 batches (line ~240).
-5. **Operational/cost** — \$2–3 per eval, \$700–850 total, 90 preference pairs, <\$0.01/sample, 70% distillation estimate.
-6. **External-citation figures** (not our data; from cited works) — 80% agreement, 23% unanimity, 112% Arena gain, 27 Llama variants, 57 MMLU domains.
+1. **Operational/cost** — \$2–3 per eval, \$700–850 total, 90 preference pairs, <\$0.01/sample, 70% distillation estimate.
+2. **External-citation figures** (from cited works, not our data) — 80% agreement, 23% unanimity, 112% Arena gain, 27 Llama variants, 57 MMLU domains.
 
-Items 1–4 are reproducible from the frozen data with a small script if you want them traceable;
-5–6 are operational or external and should be footnoted as such. Say which and I will script 1–4.
+All data-derived numbers in the paper are now mapped to a script above.

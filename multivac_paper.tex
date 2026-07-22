@@ -25,7 +25,7 @@
 \maketitle
 
 \begin{abstract}
-Single-judge evaluation of large language models introduces systematic bias \citep{zheng2023judging}. We propose the \textbf{Blind Peer Matrix}, a multi-judge evaluation methodology in which $N$ frontier models both generate responses and evaluate each other's outputs in a fully blinded $N \times N$ matrix, with self-judgments excluded. We apply this method across 286 evaluations spanning 198 unique questions in 9 category pools (code generation, reasoning, analysis, communication, meta-alignment, edge cases, and three focused model-family batches), producing 22,252 valid scored judgments (23,356 parsed) from 55 models across 11 vendor families. Three findings stand out. First, no single model dominates across all categories: seven different models hold the top position across the nine pools, and under a leniency-adjusted Bradley--Terry ranking the top tier is statistically indistinguishable, contradicting aggregate leaderboard rankings. Second, and centrally, we show that the standard estimator for same-vendor judge bias is confounded by respondent quality and judge leniency. Decomposing all eight testable families algebraically and re-estimating with a within-response fixed-effects model with judge-clustered standard errors, only two families show robust same-vendor favoritism (Anthropic $+0.41$, MiniMax $+0.40$); a third (Qwen $+0.56$) is significant but identified from only 22 responses. No family shows significant negative bias: the naive estimator's strong negatives for Mistral ($-1.02$) and Google ($-0.59$), and its positive for xAI ($+0.75$), are artifacts of judge leniency and respondent quality that do not survive controls. Third, judge disagreement is category-dependent, with code evaluation producing just over double the disagreement of meta-alignment tasks ($\sigma = 1.27$ vs.\ $0.63$). We release the complete evaluation dataset (27,540 judgments including self-exclusions), an open-source evaluation framework, all question prompts, and a one-command reproduction pipeline under MIT license.
+Single-judge evaluation of large language models introduces systematic bias \citep{zheng2023judging}. We propose the \textbf{Blind Peer Matrix}, a multi-judge evaluation methodology in which $N$ frontier models both generate responses and evaluate each other's outputs in a fully blinded $N \times N$ matrix, with self-judgments excluded. We apply this method across 286 evaluations spanning 198 unique questions in 9 category pools (code generation, reasoning, analysis, communication, meta-alignment, edge cases, and three focused model-family batches), producing 22,252 valid scored judgments (23,356 parsed) from 55 models across 11 vendor families. Three findings stand out. First, no single model dominates across all categories: seven different models hold the top position across the nine pools, and under a leniency-adjusted Bradley--Terry ranking the top tier is statistically indistinguishable, contradicting aggregate leaderboard rankings. Second, and centrally, we show that the standard estimator for same-vendor judge bias is confounded by respondent quality and judge leniency. Decomposing all eight testable families algebraically and re-estimating with a within-response fixed-effects model with judge-clustered standard errors, only two families show robust same-vendor favoritism (Anthropic $+0.41$, MiniMax $+0.40$); a third (Qwen $+0.56$) is significant but identified from only 22 responses. No family shows significant negative bias: the naive estimator's strong negatives for Mistral ($-1.02$) and Google ($-0.59$), and its positive for xAI ($+0.75$), are artifacts of judge leniency and respondent quality that do not survive controls. The same pattern---a routine estimator confounded and exposed by counterexample---recurs in aggregate scoring itself: silently discarding non-responses, standard practice in leaderboard construction, inflates the mean of models that frequently refuse by up to four points on a ten-point scale, systematically favoring them. Third, judge disagreement is category-dependent, with code evaluation producing just over double the disagreement of meta-alignment tasks ($\sigma = 1.27$ vs.\ $0.63$). We release the complete evaluation dataset (27,540 judgments including self-exclusions), an open-source evaluation framework, all question prompts, and a one-command reproduction pipeline under MIT license.
 \end{abstract}
 
 \textbf{Keywords:} LLM evaluation, peer evaluation, multi-judge, model comparison, benchmark contamination, judge disagreement
@@ -157,7 +157,7 @@ The evaluation framework is implemented in Python, orchestrating API calls via O
 
 \subsection{Models}
 
-A total of 55 distinct models participated. The core pool of 10 frontier models (GPT-5.4, Claude Opus 4.6, Claude Sonnet 4.6, GPT-OSS-120B, MiMo-V2-Flash, Grok 4.20, DeepSeek V3, Gemini 3.1 Pro, Gemini 3 Flash Preview, MiniMax M2.5) appears in 116--230 evaluations each. An extended pool of 11 models participates in 30--99 evaluations, and 34 focused batch models appear in 1--29 evaluations. The full model list is in Appendix~A.
+A total of 55 distinct models participated. The core pool of 10 frontier models (GPT-5.4, Claude Opus 4.6, Claude Sonnet 4.6, GPT-OSS-120B, MiMo-V2-Flash, Grok 4.20, DeepSeek V3, Gemini 3.1 Pro, Gemini 3 Flash Preview, MiniMax M2.5) appears in 163--238 evaluations each. An extended pool of 11 models participates in 30--60 evaluations, and 34 focused batch models appear in 1--25 evaluations. The full model list is in Appendix~A.
 
 \subsection{Question Design}
 
@@ -206,16 +206,33 @@ Rankings depend heavily on how judgments are aggregated, and two corrections to 
 
 \textbf{No single model dominates, and the top tier is statistically indistinguishable.} Both conclusions hold under the corrected ranking. Seven distinct models top the nine category pools; GPT-5.4, the strongest single model, tops at most three. The BT top tier of the frontier pool---GPT-5.4, Claude Sonnet 4.6, Mistral Small Creative, Grok 4.20, Grok Code Fast---has overlapping bootstrap rank confidence intervals and is statistically indistinguishable. The comparison graph is not fully connected: the 34-model frontier pool and the 18-model small-model batch pool share no cross-pool comparisons, so no single 55-model leaderboard is identifiable; rankings are reported within pool and per category.
 
-\textbf{Refusal rates were previously hidden.} The scored-only leaderboard rewarded refusal. High-refusal models---MiniMax M2.1 (53\%), Kimi K2.5 (43\%), MiniMax M2 (42\%), Qwen 3 32B (42\%), Olmo 3.1 32B Think (37\%)---rank near the bottom once their zero-scores are counted.
+\textbf{Dropping non-responses is a confounded practice.} This is a general methodological point, not a per-model curiosity. Standard leaderboard construction silently discards judgments that failed to yield a score---but genuine ratings of refused or empty responses are among them (\S4.4), and discarding them systematically favors models that refuse or fail to produce parseable output. It is structurally the same failure as the same-vendor estimator (\S\ref{sec:bias}): a routine aggregation confounded by a nuisance factor, demonstrated by counterexample. Table~\ref{tab:refusal} quantifies the effect. The frontier top tier (near-zero refusal) is unaffected, while high-refusal models fall by up to four points once their zero-scores are counted.
+
+\begin{table}[h]
+\centering
+\caption{Effect of counting non-responses on the mean composite score, for the highest-refusal models. ``Scored-only'' is the mean over judgments with a positive score (the previously standard aggregation); ``incl.\ non-responses'' adds the genuine zero-scores of refused/empty responses. The frontier top tier (GPT-5.4, both Claudes, Grok, Mistral Small; 0\% refusal) is unchanged.}
+\label{tab:refusal}
+\begin{tabular}{lrrr}
+\toprule
+Model & Refusal rate & Scored-only & Incl.\ non-responses \\
+\midrule
+MiniMax M2.1        & 53\% & 7.53 & 3.51 \\
+Kimi K2.5           & 43\% & 8.63 & 4.94 \\
+MiniMax M2          & 42\% & 7.21 & 4.21 \\
+Qwen 3 32B          & 42\% & 9.13 & 5.33 \\
+Olmo 3.1 32B Think  & 37\% & 7.94 & 4.99 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Category-Specific Analysis}
 \label{sec:category}
 
 Under the leniency-adjusted Bradley--Terry ranking, seven distinct models top the nine pools. GPT-5.4 leads analysis, code, and reasoning; Mistral Small Creative leads communication; Claude Opus 4.6 leads meta-alignment; and Gemini 3 Flash leads edge cases, with the three focused batch pools led within family. The naive mean produces a different winner in seven of the nine pools---for instance, by naive mean Claude Sonnet 4.5 tops analysis and communication and Grok-family models top code and edge cases---illustrating how judge leniency reshapes per-category rankings, not only the aggregate.
 
-\textbf{Small Language Models.} Within the SLM pool ($\leq$32B parameters), Qwen 3 8B (9.328) outperforms models with 2--4$\times$ its parameter count, including Phi-4 14B (8.924) and Gemma 3 27B (8.853).
+\textbf{Small Language Models.} Within the SLM pool ($\leq$32B parameters, zero-scores included), Qwen 3 8B (9.343) outperforms models with 2--4$\times$ its parameter count, including Phi-4 14B (8.917) and Gemma 3 27B (8.828). Including refused responses sharpens this: the larger Qwen 3 32B falls from 8.934 to 5.438 (39\% refusal rate) and Kimi K2.5 from 8.628 to 4.940 (43\%), so the 8B model outscores its 32B sibling by nearly four points once non-responses are counted.
 
-\textbf{Dimension-level analysis.} Across all models, depth is consistently the lowest-scoring dimension (mean: 8.45) while clarity is the highest (mean: 9.40). The clarity--depth gap exceeds 0.8 points for 17 of 55 models, with GPT-5.2-Codex showing the largest gap ($\Delta = 1.438$). This suggests current frontier models are better calibrated for well-structured output than for deep analytical engagement.
+\textbf{Dimension-level analysis.} Across all judgments (zero-scores included), depth is consistently the lowest-scoring dimension (mean: 7.622) while clarity is the highest (mean: 8.583). The clarity--depth gap exceeds 0.8 points for 25 of the 33 models with $\geq 100$ judgments, with Llama 3.1 8B showing the largest gap ($\Delta = 1.780$), ahead of Mistral Nemo 12B ($1.505$) and GPT-5.2-Codex ($1.504$). This suggests current models are better calibrated for well-structured output than for deep analytical engagement.
 
 \subsection{Judge Behavior Analysis}
 
@@ -239,21 +256,20 @@ The respondent-quality term $(C-D)$ measures how good a family's answers are, as
 
 \begin{table}[h]
 \centering
-\caption{Same-vendor bias: four-cell decomposition ($A$/$B$/$C$/$D$ are mean composite scores, 0--10) and corrected within-response estimate. Bold = significant under the fixed-effects model with judge-clustered SEs and Bonferroni correction ($\alpha = 0.00625$). Qwen is significant but fragile (22 identifying responses; see text).}
+\caption{Same-vendor bias: naive estimate ($A-B$) vs.\ corrected within-response estimate. Bold = significant under the fixed-effects model with judge-clustered SEs and Bonferroni correction ($\alpha = 0.00625$). $n_\text{id}$ is the number of responses judged by both a sibling and a non-sibling (which identify the corrected estimate); Qwen is significant but fragile. The full four-cell decomposition ($A$/$B$/$C$/$D$ and all three component terms) is in Appendix~F.}
 \label{tab:family_bias}
-\begin{tabular}{lrrrrrrrrr}
+\begin{tabular}{lrrrr}
 \toprule
-Family & $A$ & $B$ & $C$ & $D$ & Naive & Favor. & RespQ & Corr. & $p$ \\
-       &     &     &     &     & $A{-}B$ & $A{-}C$ & $C{-}D$ & (FE) & (jc) \\
+Family & Naive ($A{-}B$) & Corrected (FE) & $p$ (judge-clust.) & $n_\text{id}$ \\
 \midrule
-Anthropic & 8.803 & 8.187 & 8.624 & 8.437 & $+0.616$ & $+0.179$ & $+0.187$ & $\mathbf{+0.406}$ & $<0.001$ \\
-MiniMax   & 8.488 & 8.175 & 7.787 & 8.491 & $+0.314$ & $+0.701$ & $-0.704$ & $\mathbf{+0.397}$ & $<0.001$ \\
-Qwen      & 9.007 & 8.095 & 9.268 & 8.420 & $+0.913$ & $-0.261$ & $+0.848$ & $+0.557$ & $0.002$ \\
-Google    & 8.404 & 8.997 & 7.581 & 8.519 & $-0.593$ & $+0.823$ & $-0.938$ & $+0.209$ & $0.058$ \\
-Meta      & 8.440 & 9.121 & 7.978 & 8.433 & $-0.681$ & $+0.463$ & $-0.456$ & $+0.195$ & $0.108$ \\
-OpenAI    & 7.737 & 7.508 & 8.873 & 8.560 & $+0.229$ & $-1.136$ & $+0.313$ & $-0.137$ & $0.307$ \\
-xAI       & 9.149 & 8.405 & 8.802 & 8.388 & $+0.745$ & $+0.347$ & $+0.414$ & $-0.095$ & $0.549$ \\
-Mistral   & 8.470 & 9.487 & 8.921 & 8.393 & $-1.017$ & $-0.451$ & $+0.527$ & $-0.164$ & $0.345$ \\
+Anthropic & $+0.616$ & $\mathbf{+0.406}$ & $<0.001$ & 482 \\
+MiniMax   & $+0.314$ & $\mathbf{+0.397}$ & $<0.001$ & 50 \\
+Qwen      & $+0.913$ & $+0.557$ & $0.002$ & 22 \\
+Google    & $-0.593$ & $+0.209$ & $0.058$ & 394 \\
+Meta      & $-0.681$ & $+0.195$ & $0.108$ & 26 \\
+OpenAI    & $+0.229$ & $-0.137$ & $0.307$ & 385 \\
+xAI       & $+0.745$ & $-0.095$ & $0.549$ & 59 \\
+Mistral   & $-1.017$ & $-0.164$ & $0.345$ & 25 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -267,14 +283,14 @@ Mistral   & 8.470 & 9.487 & 8.921 & 8.393 & $-1.017$ & $-0.451$ & $+0.527$ & $-0
 
 Two mechanisms produce large but spurious naive estimates. \textbf{Google} ($-0.593$ naive) is a respondent-quality artifact: neutral judges score Google's responses $0.938$ below others ($C - D$), so Google judges score them lower simply because they are weaker; corrected, $+0.209$ ($p = 0.058$, not significant). \textbf{Mistral} ($-1.017$ naive, the largest absolute value) is a judge-leniency artifact: Mistral judges score all respondents $1.094$ above the neutral baseline ($B - D$), and Mistral's own responses are above average ($C - D = +0.527$); corrected, $-0.164$ ($p = 0.345$)---the apparent bias does not reverse under controls, it collapses toward zero. \textbf{xAI} ($+0.745$ naive) is a false positive driven by strong responses, corrected $-0.095$ ($p = 0.549$).
 
-\textbf{Corrected estimates.} Only two families show robust same-vendor favoritism: Anthropic ($+0.406$, $p < 0.001$, 482 identifying responses) and MiniMax ($+0.397$, $p < 0.001$, 50). Qwen ($+0.557$, $p = 0.002$) is significant but rests on 22 identifying responses from a focused Qwen-family pool in which same-vendor membership is nearly collinear with pool composition, and its raw $A-C$ gap is negative; we report it but do not rely on it. Google, OpenAI, xAI, Meta, and Mistral show no significant effect. The naive estimator called five families positive and three negative; under controls, two are robustly positive, one is fragile, and none are negative.
+\textbf{Corrected estimates.} Only two families show robust same-vendor favoritism (Table~\ref{tab:family_bias}): Anthropic ($+0.406$, $p < 0.001$, 482 identifying responses) and MiniMax ($+0.397$, $p < 0.001$, 50). Qwen ($+0.557$, $p = 0.002$) is significant but rests on 22 identifying responses from a focused Qwen-family pool in which same-vendor membership is nearly collinear with pool composition, and its raw $A-C$ gap is negative; we report it but do not rely on it. Google, OpenAI, xAI, Meta, and Mistral show no significant effect. The naive estimator called five families positive and three negative; under controls, two are robustly positive, one is fragile, and none are negative.
 
 \textbf{Robustness and power.} Excluding the five judges that fail to produce parseable output more than 30\% of the time and re-fitting leaves every family verdict unchanged. xAI (59 same-vendor judgments), Meta (26), Mistral (25), and Qwen (22 identifying responses) have small samples; their null results should be read as an absence of demonstrated bias, not demonstrated absence of bias. Meta's corrected estimate ($+0.195$, $p = 0.108$) is positive and directionally suggestive but underpowered.
 
 \subsection{Head-to-Head Validation}
 \label{sec:h2h}
 
-Five H2H batches (180 total questions) using Claude Opus 4.6 as single judge validate the peer matrix results. The largest batch (Qwen 3.6 Plus vs.\ DeepSeek V3.2, 150 questions) showed Qwen winning 107--11 with 25 ties. H2H batches serve as rapid signals subject to single-judge biases (\S5.3).
+Head-to-head batches (185 recorded questions, of which two batches---151 and 31 questions---carry substantive volume) using Claude Opus 4.6 as single judge validate the peer matrix results. The largest batch (Qwen 3.6 Plus vs.\ DeepSeek V3.2, 151 questions) showed Qwen winning 107--11 with 26 ties (7 incomplete). H2H batches serve as rapid signals subject to single-judge biases (\S5.3).
 
 
 %═══════════════════════════════════════════════
@@ -291,7 +307,7 @@ The methodology evaluates final output quality without examining the reasoning p
 
 \subsection{Sample Size and Statistical Power}
 
-Per-category and per-model sample sizes vary considerably. Core pool models participate in 116--230 evaluations; focused batch models may appear in as few as 7--10. Bootstrap confidence intervals (\S5.1) quantify ranking uncertainty for the 21 models with $\geq 30$ evaluations.
+Per-category and per-model sample sizes vary considerably. Core pool models participate in 163--238 evaluations; focused batch models may appear in as few as one. Bootstrap confidence intervals quantify ranking uncertainty for the 21 models with $\geq 30$ evaluations.
 
 \subsection{Question Design Bias}
 
@@ -476,5 +492,30 @@ The exact judge system prompt and a detailed comparison of Phase~1 vs.\ Phase~2 
 \section{Per-Model Dimension Breakdown}
 
 Mean scores by dimension (correctness, completeness, clarity, depth, usefulness) for all 30 models with $N \geq 100$ judgment observations are provided in supplementary materials.
+
+\section{Four-Cell Decomposition of Same-Vendor Bias}
+\label{app:fourcell}
+
+Table~\ref{tab:fourcell} gives the full decomposition underlying Table~\ref{tab:family_bias}. For each family, $A$/$B$/$C$/$D$ are mean composite scores (0--10): $A$ = same-vendor judge scoring a same-vendor respondent, $B$ = same-vendor judge / other respondent, $C$ = other judge / same-vendor respondent, $D$ = other judge / other respondent. The naive estimate decomposes exactly as $A-B = (A-C) + (C-D) - (B-D)$, verified to $10^{-9}$; the corrected within-response estimate is reproduced for reference.
+
+\begin{table}[h]
+\centering
+\caption{Full four-cell decomposition of same-vendor bias. Favor.\ $= A-C$; RespQ $= C-D$; Leniency $= B-D$.}
+\label{tab:fourcell}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Family & $A$ & $B$ & $C$ & $D$ & Favor.\ & RespQ & Leniency & Corr.\ (FE) \\
+\midrule
+Anthropic & 8.803 & 8.187 & 8.624 & 8.437 & $+0.179$ & $+0.187$ & $-0.250$ & $+0.406$ \\
+MiniMax   & 8.488 & 8.175 & 7.787 & 8.491 & $+0.701$ & $-0.704$ & $-0.316$ & $+0.397$ \\
+Qwen      & 9.007 & 8.095 & 9.268 & 8.420 & $-0.261$ & $+0.848$ & $-0.325$ & $+0.557$ \\
+Google    & 8.404 & 8.997 & 7.581 & 8.519 & $+0.823$ & $-0.938$ & $+0.478$ & $+0.209$ \\
+Meta      & 8.440 & 9.121 & 7.978 & 8.433 & $+0.463$ & $-0.456$ & $+0.688$ & $+0.195$ \\
+OpenAI    & 7.737 & 7.508 & 8.873 & 8.560 & $-1.136$ & $+0.313$ & $-1.052$ & $-0.137$ \\
+xAI       & 9.149 & 8.405 & 8.802 & 8.388 & $+0.347$ & $+0.414$ & $+0.017$ & $-0.095$ \\
+Mistral   & 8.470 & 9.487 & 8.921 & 8.393 & $-0.451$ & $+0.527$ & $+1.094$ & $-0.164$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \end{document}
