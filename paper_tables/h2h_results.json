@@ -1,0 +1,51 @@
+{
+  "batches": {
+    "GEMMA4-H2H-20260404": {
+      "n": 31,
+      "wins": {
+        "Qwen 3.5 27B": 14,
+        "Gemma 4 26B-A4B": 4,
+        "Gemma 4 31B": 12
+      },
+      "ties": 1,
+      "contestants": [
+        "Gemma 4 26B-A4B",
+        "Gemma 4 31B",
+        "Qwen 3.5 27B"
+      ]
+    },
+    "H2H-BATCH-20260403": {
+      "n": 151,
+      "wins": {
+        "Qwen 3.6 Plus": 107,
+        "DeepSeek V3.2": 11,
+        "incomplete": 7
+      },
+      "ties": 26,
+      "contestants": [
+        "DeepSeek V3.2",
+        "Qwen 3.6 Plus"
+      ]
+    },
+    "MINIMAX-BATCH-20260318": {
+      "n": 1,
+      "wins": {},
+      "ties": 1,
+      "contestants": []
+    },
+    "QWEN-BATCH-20260317": {
+      "n": 1,
+      "wins": {},
+      "ties": 1,
+      "contestants": []
+    },
+    "SLM-BATCH-20260315": {
+      "n": 1,
+      "wins": {},
+      "ties": 1,
+      "contestants": []
+    }
+  },
+  "total_questions": 185,
+  "n_batches": 5
+}
