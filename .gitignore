@@ -72,3 +72,14 @@ models_backup_v1/
 
 # Local virtualenv (analysis toolchain)
 .venv/
+
+# LaTeX build outputs (paper is regenerated from multivac_paper.tex via tectonic)
+multivac_paper.pdf
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.xdv
+*.synctex.gz
+# note: *.log is already ignored above (covers multivac_paper.log)

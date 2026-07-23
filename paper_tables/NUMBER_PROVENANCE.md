@@ -9,7 +9,13 @@ are listed at the bottom.
 | Paper numbers | Script | Output |
 |---|---|---|
 | 27,540 total; 23,356 parsed; 22,252 usable-scored; 2,781 self-excluded; 1,403 failures; 1,104 zero-scores; 839 unmapped; 21,413 analysis set (abstract, §1.3, §4.4, §5, Conclusion) | `count_reconciliation.py` | `count_reconciliation.json` |
-| 286 evals, 198 questions, 9 pools, 55 models, 11 families; category question counts | (dataset facts) | `dataset_stats.json` |
+| 286 evals, 198 questions, 9 pools, 55 model configurations (50 distinct by display name), 17 vendor families; category question counts | `make_appendices.py` (config/family diagnostics), `dataset_stats.json` | `appendix_A_models.tex` |
+| Figure 1 (§5.1): naive-mean rank vs BT rank, 34-model frontier pool; 4 naive leaders → BT ranks 20/25/14/6; GPT-5.4 naive 5 → BT 1 | `make_fig_ranks.py` | `fig_ranks_naive_vs_bt.pdf` |
+| Figure 2 (§5.1): refusal — scored-only vs incl. non-responses (5 highest-refusal + 0%-refusal frontier control) | `make_fig_refusal.py` | `fig_refusal_paired.pdf` |
+| Figure 3 (§5.4): within-response disagreement σ by category, mean + median | `make_fig_disagreement.py` | `fig_disagreement_by_category.pdf` |
+| Figure 4 (§5.5): naive (A−B) vs corrected FE same-vendor estimate, per family (renamed from `make_figure4.py`) | `make_fig_bias.py` | `fig_bias_naive_vs_corrected.pdf` |
+| Appendix A/C/E tables (55-config model list, EVAL-20260403-112809 score matrix, per-model dimensions for 33 models ≥100 judgments) | `make_appendices.py` | `appendix_A_models.tex`, `appendix_C_matrix.tex`, `appendix_E_dimensions.tex` |
+| Appendix B (12 sample questions), Appendix D (judge prompt, anonymized) | `questions.py`, `engine/multivac.py` (extracted) | `appendix_B_questions.tex`, `appendix_D_prompt.tex` |
 | Table 1: all A/B/C/D cells, Naive (A−B), Favor (A−C), RespQ (C−D); the identity to 1e-9; Google C−D=−0.938, Mistral B−D=+1.094/C−D=+0.527, OpenAI A−C=−1.136/leniency=−1.052, xAI | `four_cell_decomposition.py` | `four_cell_decomposition.json` |
 | Table 1: Corrected (FE) column + judge-clustered p (Anthropic +0.406, MiniMax +0.397, Qwen +0.557, Google +0.209/0.058, OpenAI −0.137/0.307, xAI −0.095/0.549, Mistral −0.164/0.345, Meta +0.195/0.108); n_ident (482, 50, 22, …); "5 judges >30% dropped, verdicts unchanged" | `within_response_bias.py`, `robustness_check.py` | `within_response_bias.json` |
 | §5.1 refusal rates + naive means (MiniMax M2.1 53% 7.53→3.51, Qwen 32B 42% 9.13→5.33, Kimi 43% 8.63→4.94, MiniMax M2 42%, Olmo 37%); naive top (Seed 9.43, GPT-OSS-Legal 9.35, Grok 4.1 Fast 9.20); BT frontier top tier; 34/18 pools; 7 distinct pool winners | `finding1_leaderboard.py`, `bradley_terry_ranking.py` | `finding1_leaderboard.json`, `bradley_terry.json` |

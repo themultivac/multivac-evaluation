@@ -1,10 +1,8 @@
 \documentclass{article}
 
-% TMLR double-blind submission: compiling tmlr.sty WITHOUT the `accepted`
-% or `preprint` option renders the anonymized title block
-% ("Anonymous authors / Paper under double-blind review") and the
-% "Under review as submission to TMLR" running head automatically.
-\usepackage{tmlr}
+% Non-anonymous preprint build: the `preprint` option renders the author block
+% and drops the "Under review as submission to TMLR" running head.
+\usepackage[preprint]{tmlr}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -15,13 +13,19 @@
 \usepackage{fvextra}
 \usepackage{xcolor}
 % TMLR-style clickable links: colored (not boxed), long URLs breakable via xurl.
-% pdfauthor is left empty so no identity leaks into PDF metadata under double-blind.
 \usepackage[colorlinks=true,linkcolor={blue!45!black},citecolor={blue!45!black},%
-            urlcolor={blue!55!black},pdfauthor={},%
-            pdftitle={Blind Peer Matrix: Symmetric Multi-Judge Evaluation of Frontier Language Models}]{hyperref}
+            urlcolor={blue!55!black},pdfauthor={Yash Darji},%
+            pdftitle={The Multivac: Blind Peer Matrix Evaluation of Frontier Language Models}]{hyperref}
 \usepackage{xurl}
 
-\title{Blind Peer Matrix: Symmetric Multi-Judge Evaluation\\of Frontier Language Models}
+\title{The Multivac: Blind Peer Matrix Evaluation\\of Frontier Language Models}
+
+\author{
+  Yash Darji \\
+  Independent Researcher \\
+  ORCID: \href{https://orcid.org/0009-0009-6895-842X}{0009-0009-6895-842X} \\
+  \texttt{yashdarji2378@gmail.com}
+}
 
 \begin{document}
 
@@ -34,7 +38,7 @@ Single-judge evaluation of large language models introduces systematic bias \cit
 \textbf{Keywords:} LLM evaluation, peer evaluation, multi-judge, model comparison, benchmark contamination, judge disagreement
 
 \begin{center}
-\fbox{\parbox{0.92\textwidth}{\centering \textbf{Anonymized artifact} (code, dataset, and one-command reproduction pipeline):\\ \url{https://anonymous.4open.science/r/multivac-evaluation-6F8B/README.md}}}
+\fbox{\parbox{0.92\textwidth}{\centering \textbf{Code, data, and reproduction pipeline:} \url{https://github.com/themultivac/multivac-evaluation}\\ Interactive platform: \url{https://app.themultivac.com}}}
 \end{center}
 
 %═══════════════════════════════════════════════
@@ -155,7 +159,7 @@ As a complement, we implement head-to-head evaluation with a single external jud
 
 \subsection{Implementation}
 
-The evaluation framework is implemented in Python, orchestrating API calls via OpenRouter and direct provider APIs. Results are stored as structured JSON with full provenance. The complete pipeline, dataset (27,540 judgments), all 198 question prompts, and scoring rubric are released under MIT license.\footnote{Code, dataset, and one-command reproduction pipeline (anonymized for review): \url{https://anonymous.4open.science/r/multivac-evaluation-6F8B/README.md}.}
+The evaluation framework is implemented in Python, orchestrating API calls via OpenRouter and direct provider APIs. Results are stored as structured JSON with full provenance. The complete pipeline, dataset (27,540 judgments), all 198 question prompts, and scoring rubric are released under MIT license.\footnote{Code and dataset: \url{https://github.com/themultivac/multivac-evaluation}. Platform: \url{https://app.themultivac.com}.}
 
 
 %═══════════════════════════════════════════════
@@ -526,9 +530,9 @@ Table~\ref{tab:matrix} gives a complete score matrix from evaluation EVAL-202604
 
 \section{Judge System Prompt and Protocol Evolution}
 
-The exact judge system prompt and user-prompt template are reproduced below (the product name in the system prompt is redacted for double-blind review).
+The exact judge system prompt and user-prompt template are reproduced below.
 
-\input{paper_tables/appendix_D_prompt}
+\input{paper_tables/appendix_D_prompt_nonanon}
 
 \textbf{Protocol evolution.} Phase~1 (February--March 2026) iteratively refined the scoring rubric, judgment prompt, and parsing logic; Phase~2 (March--April) applied the mature protocol at scale (\S4.3). Two Phase~1 judgments with out-of-range scores of 100 were identified and excluded once 0--10 range clamping was added. A structured per-change Phase~1/Phase~2 comparison table is not reconstructible from the frozen data---the repository retains only the final (Phase~2) prompt and parser---so the changes are described narratively here rather than tabulated.
 

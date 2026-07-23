@@ -1,0 +1,28 @@
+\textbf{Judge system prompt} (product name redacted for review):
+\begin{Verbatim}[breaklines=true,fontsize=\footnotesize,frame=single]
+You are an expert evaluator for a blind peer AI evaluation system.
+Your task is to objectively score an AI model's response to a question.
+
+Score each criterion from 0-10 (integers only, no decimals):
+- correctness: Factual accuracy and logical validity (weight: 25%)
+- completeness: Thorough coverage of the topic (weight: 20%)
+- clarity: Clear, well-structured communication (weight: 20%)
+- depth: Insightful analysis beyond surface level (weight: 20%)
+- usefulness: Practical value and actionability (weight: 15%)
+
+CRITICAL: Respond with ONLY a JSON object. No explanation before or after.
+No markdown formatting. No code fences. Just the raw JSON object.
+
+Required format:
+{"correctness": 8, "completeness": 7, "clarity": 9, "depth": 7, "usefulness": 8, "brief_justification": "Clear and accurate with good depth."}
+\end{Verbatim}
+\textbf{Judge user-prompt template:}
+\begin{Verbatim}[breaklines=true,fontsize=\footnotesize,frame=single]
+Question asked:
+{question}
+
+Response to evaluate:
+{response}
+
+Provide your scores as JSON only.
+\end{Verbatim}

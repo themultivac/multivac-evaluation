@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Figure 4: naive (A-B) vs corrected (strict-within FE) same-vendor estimate, per family.
+Finding 2 figure (§5.5): naive (A-B) vs corrected (strict-within FE) same-vendor estimate, per family.
 
 Paired slope plot generated ENTIRELY from paper_tables/four_cell_decomposition.json and
 within_response_bias.json -- no hand-entered numbers. A connecting segment that crosses the
 x=0 axis is a sign flip (highlighted). Mistral does NOT cross zero (it collapses toward zero)
 and is annotated as such, per the paper.
 
-Output: paper_tables/figure4_naive_vs_corrected.png (+ .pdf)
+Output: paper_tables/fig_bias_naive_vs_corrected.png (+ .pdf)
 """
 
 import json
@@ -66,9 +66,8 @@ def main():
     ax.set_yticks([])
     ax.set_ylim(-0.8, len(rows) - 0.2)
     ax.set_xlabel("Same-vendor estimate (0–10 composite units)")
-    ax.set_title("Figure 4.  Naive (A−B, open) vs corrected within-response FE (filled) estimate\n"
-                 f"green = significant (judge-clustered, Bonferroni);  red = sign flip "
-                 f"({', '.join(flips)})", fontsize=10)
+    # No baked-in title: the LaTeX \caption is the sole figure label (avoids a
+    # duplicate "Figure 4" that conflicts with the compiled figure number).
     # legend proxies
     from matplotlib.lines import Line2D
     leg = [Line2D([0], [0], marker="o", color="w", markerfacecolor="white",
@@ -81,7 +80,7 @@ def main():
     ax.grid(axis="x", color="#eee", zorder=0)
     fig.tight_layout()
 
-    out = os.path.join(HERE, "..", "paper_tables", "figure4_naive_vs_corrected")
+    out = os.path.join(HERE, "..", "paper_tables", "fig_bias_naive_vs_corrected")
     fig.savefig(out + ".png", dpi=200)
     fig.savefig(out + ".pdf")
     print(f"Wrote {out}.png and .pdf")
