@@ -32,9 +32,9 @@ def main():
     scored = [r["mean_excl"] for r in group]
     incl = [r["mean_incl"] for r in group]
     ax.bar(x - w / 2, scored, w, label="scored-only (non-responses discarded)", color="#9aa0a6")
-    ax.bar(x + w / 2, incl, w, label="incl.\\ non-responses (genuine zeros counted)", color="#1a7f37")
+    ax.bar(x + w / 2, incl, w, label="incl. non-responses (genuine zeros counted)", color="#1a7f37")
     for xi, r in zip(x, group):
-        ax.text(xi, max(r["mean_excl"], r["mean_incl"]) + 0.12, f"{100*r['refusal']:.0f}\\%",
+        ax.text(xi, max(r["mean_excl"], r["mean_incl"]) + 0.12, f"{100*r['refusal']:.0f}%",
                 ha="center", va="bottom", fontsize=8.5, color="#5f6368")
     n_high = len(high)
     ax.axvline(n_high - 0.5, color="#ccc", ls="--", lw=1)

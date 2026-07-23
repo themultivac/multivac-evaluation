@@ -43,7 +43,7 @@ def main():
     ax.set_xlim(-0.75, 1.75)
     ax.set_ylim(N + 0.5, 0.5)                         # rank 1 at top
     ax.set_xticks([0, 1])
-    ax.set_xticklabels(["Naive-mean\nrank", "Bradley--Terry\nrank"], fontsize=11)
+    ax.set_xticklabels(["Naive-mean\nrank", "Bradley–Terry\nrank"], fontsize=11)
     ax.set_yticks([1, 5, 10, 15, 20, 25, 30, N])
     ax.set_ylabel(f"Rank within the {N}-model frontier pool")
     for s in ("top", "right"):
