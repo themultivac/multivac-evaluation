@@ -13,7 +13,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 HERE = os.path.dirname(__file__)
-FALLERS = {"seed_16_flash", "gpt_oss_legal", "grok_4_1_fast", "grok_code_fast"}
+# Three naive leaders that collapse under BT (red); two that hold/rise into the
+# top tier (green): Grok Code Fast 1 (naive 4 -> BT 6) and GPT-5.4 (naive 5 -> BT 1).
+FALLERS = {"seed_16_flash", "gpt_oss_legal", "grok_4_1_fast"}
+HOLDERS = {"grok_code_fast"}
 
 
 def main():
@@ -28,15 +31,16 @@ def main():
     fig, ax = plt.subplots(figsize=(7.2, 8.2))
     for r in fr:
         k = r["key"]; y0, y1 = nrank[k], brank[k]
+        held = k in HOLDERS or (r["model"] == "GPT-5.4" and y1 == 1)
         if k in FALLERS:
             c, lw, z = "#d1495b", 2.6, 4
-        elif r["model"] == "GPT-5.4" and y1 == 1:
+        elif held:
             c, lw, z = "#1a7f37", 2.6, 4
         else:
             c, lw, z = "#c7ccd1", 1.2, 2
         ax.plot([0, 1], [y0, y1], color=c, lw=lw, zorder=z, solid_capstyle="round")
         ax.scatter([0, 1], [y0, y1], s=[26, 26], color=c, zorder=z + 1)
-        if k in FALLERS or (r["model"] == "GPT-5.4" and y1 == 1):
+        if k in FALLERS or held:
             ax.text(-0.03, y0, f"{r['model']}", ha="right", va="center", fontsize=8.5, color=c)
             ax.text(1.03, y1, f"{r['model']}", ha="left", va="center", fontsize=8.5, color=c)
 
