@@ -26,8 +26,8 @@ def main():
     means = [mean[c] for c in cats]; meds = [med[c] for c in cats]
 
     fig, ax = plt.subplots(figsize=(8.4, 5.2))
-    ax.barh(y, means, color="#c7ccd1", height=0.6, label="mean $\\sigma$", zorder=2)
-    ax.scatter(meds, y, color="#d1495b", s=55, zorder=4, label="median $\\sigma$")
+    ax.barh(y, means, color="#c7ccd1", height=0.6, label="mean σ", zorder=2)
+    ax.scatter(meds, y, color="#d1495b", s=55, zorder=4, label="median σ")
     for yi, c in zip(y, cats):
         ax.plot([med[c], mean[c]], [yi, yi], color="#d1495b", lw=1, ls=":", zorder=3)
     # highlight the headline extremes: code (highest) and meta-alignment (lowest)
@@ -37,7 +37,7 @@ def main():
 
     ax.set_yticks(y); ax.set_yticklabels([LABEL[c] for c in cats], fontsize=10)
     ax.invert_yaxis()
-    ax.set_xlabel("Within-response disagreement $\\sigma$ (composite-score SD)")
+    ax.set_xlabel("Within-response disagreement σ (composite-score SD)")
     ax.set_xlim(0, 1.5)
     ax.legend(loc="lower right", fontsize=9, frameon=True)
     for s in ("top", "right"):

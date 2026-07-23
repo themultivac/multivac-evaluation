@@ -42,7 +42,7 @@ def main():
     ax.text(n_high + (len(ctrl) - 1) / 2, 10.2, "zero-refusal frontier (control)",
             ha="center", fontsize=9, style="italic")
     ax.set_xticks(x); ax.set_xticklabels(labels, rotation=30, ha="right", fontsize=9)
-    ax.set_ylabel("Mean composite score (0--10)")
+    ax.set_ylabel("Mean composite score (0–10)")
     ax.set_ylim(0, 11); ax.set_yticks(range(0, 11, 2))
     ax.legend(loc="lower left", fontsize=9, frameon=True)
     for s in ("top", "right"):
