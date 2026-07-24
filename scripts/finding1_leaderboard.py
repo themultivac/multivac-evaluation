@@ -44,6 +44,8 @@ def load_incl_zeros():
             rk, ws = j["respondent_key"], float(j.get("weighted_score") or 0.0)
             if j.get("respondent_name"):
                 names[rk] = j["respondent_name"]
+            if j.get("judge_name"):
+                names.setdefault(j["judge_key"], j["judge_name"])
             if ws > 0:
                 received[rk]["scored"].append(ws)
             else:
@@ -55,11 +57,32 @@ def load_incl_zeros():
     return received, names, groups
 
 
+def collapse_by_name(groups, names):
+    """Collapse per-(eval,judge) score dicts from registry keys to distinct display
+    names (averaging any within-group duplicates), so connectivity is computed over
+    the 50 distinct models the paper reports -- not the 55 raw registry keys. Without
+    this, duplicate keys (e.g. gpt_5_4 + judge_gpt54 -> 'GPT-5.4') split the frontier
+    into 34 nodes instead of the paper's 30."""
+    out = []
+    for g in groups:
+        agg = defaultdict(list)
+        for k, v in g.items():
+            agg[names.get(k, k)].append(v)
+        d = {nm: float(np.mean(vs)) for nm, vs in agg.items()}
+        if len(d) >= 2:
+            out.append(d)
+    return out
+
+
 def main():
     received, names, groups = load_incl_zeros()
     bt, _, _ = bt_fit(groups, min_comparisons=30)
-    comps = components(groups)
-    frontier = max(comps, key=len)
+    # Connectivity / frontier membership are reported over distinct display names
+    # (the paper's 30-model frontier + 18-model small pool), so the released cache
+    # matches the paper rather than the 55-key graph.
+    groups_named = collapse_by_name(groups, names)
+    comps = components(groups_named)
+    frontier = max(comps, key=len)                 # set of display names
 
     rows = []
     for m, d in received.items():
@@ -70,13 +93,14 @@ def main():
         rows.append({"model": names.get(m, m), "key": m, "refusal": n0 / (n1 + n0),
                      "n": n1 + n0, "mean_incl": mean_incl,
                      "mean_excl": (np.mean(d["scored"]) if n1 else 0.0),
-                     "bt": bt.get(m), "frontier": m in frontier})
+                     "bt": bt.get(m), "frontier": names.get(m, m) in frontier})
 
     naive_rank = {r["key"]: i for i, r in enumerate(sorted(rows, key=lambda x: -x["mean_incl"]))}
-    # BT rank is only valid WITHIN a connected component (pools are disconnected).
+    # BT rank is only valid WITHIN a connected component (pools are disconnected);
+    # components are over display names, so group rows by their display name.
     bt_rank = {}
     for cset in comps:
-        comp_rows = [r for r in rows if r["bt"] is not None and r["key"] in cset]
+        comp_rows = [r for r in rows if r["bt"] is not None and r["model"] in cset]
         for i, r in enumerate(sorted(comp_rows, key=lambda x: -x["bt"])):
             bt_rank[r["key"]] = i
 
@@ -96,7 +120,16 @@ def main():
     print("refusal% = share of received judgments that were genuine 0-scores (refused/empty/broken)")
 
     out = os.path.join(os.path.dirname(__file__), "..", "paper_tables", "finding1_leaderboard.json")
-    json.dump({"rows": rows, "components": [len(c) for c in comps]}, open(out, "w"), indent=2)
+    small = min(comps, key=len) if len(comps) > 1 else []
+    json.dump({
+        "rows": rows,                                   # one row per registry key (55 -> 50 with n>=30)
+        "components": [len(c) for c in comps],          # over distinct display names: [30, 18]
+        "frontier_models": sorted(frontier),            # the 30 distinct frontier models (paper's figure)
+        "small_models": sorted(small),                  # the 18 distinct small-pool models
+        "note": ("components/frontier are over distinct display names (the paper's 30-model frontier "
+                 "and 18-model small pool); rows are keyed by the 55 raw registry keys, so a display "
+                 "name with duplicate keys (e.g. GPT-5.4) yields more than one frontier=true row."),
+    }, open(out, "w"), indent=2)
     print(f"\nWrote {out}")
 
 

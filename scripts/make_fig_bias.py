@@ -32,7 +32,7 @@ def main():
     for r in fc:
         f = r["family"]
         rows.append(dict(family=f, naive=r["naive_AB"], corr=r["fe"],
-                         p=wr[f]["p_judge"], n_ident=wr[f]["n_responses_identifying"]))
+                         p=wr[f]["p_twoway"], n_ident=wr[f]["n_responses_identifying"]))
     rows.sort(key=lambda x: x["naive"])                       # ascending naive, most-negative at bottom
 
     fig, ax = plt.subplots(figsize=(9, 6))

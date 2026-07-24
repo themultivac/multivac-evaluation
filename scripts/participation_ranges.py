@@ -29,7 +29,8 @@ def main():
             if j.get("respondent_name"):
                 names[j["respondent_key"]] = j["respondent_name"]
 
-    rows = sorted(count.items(), key=lambda x: -x[1])
+    # count desc, then display name asc as a stable tiebreak so re-runs are byte-identical
+    rows = sorted(count.items(), key=lambda x: (-x[1], names.get(x[0], x[0])))
     print(f"{len(rows)} models participate. Distribution of evaluation counts:")
     print(f"  {'model':26s} {'evals':>6s}")
     for m, c in rows:

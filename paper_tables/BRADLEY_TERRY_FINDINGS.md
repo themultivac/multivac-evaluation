@@ -14,14 +14,17 @@ Two findings, one of them a hard limitation of the benchmark itself.
 
 The comparison graph has **2 disconnected components**:
 
+Registry keys are collapsed to the 50 distinct display names first (so duplicate keys such as
+`gpt_5_4` + `judge_gpt54` → GPT-5.4 count once), matching the paper's model accounting:
+
 | component | n models | who |
 |---|---:|---|
-| 0 — frontier pool | 34 | claude*, gpt*, gemini*, grok*, deepseek*, minimax*, seed*, mimo … |
-| 1 — small-model pool | 18 | qwen* (all), gemma*, llama*, kimi, phi4, devstral, granite, mistral_nemo |
+| 0 — frontier pool | 30 | Claude Opus/Sonnet, GPT-5.4, Gemini, Grok, DeepSeek, MiniMax, Seed, MiMo … |
+| 1 — small-model pool | 18 | Qwen (all), Gemma, Llama, Kimi, Phi-4, Devstral, Granite, Mistral Nemo |
 
-`gpt_5_4` and `qwen35_122b_a10b` are **never** judged head-to-head — the small-model category
+GPT-5.4 and Qwen 3.5 122B-A10B are **never** judged head-to-head — the small-model category
 pools (qwen/minimax/slm/edge_cases) were run against each other, never against frontier models.
-**A single 55-model leaderboard is therefore not identifiable** — the models live on two
+**A single 48-model leaderboard is therefore not identifiable** — the models live on two
 scales that share no anchor. (A naive first BT pass "proved" every Qwen beats every frontier
 model by ~20-million×; that was pure component-floating, and is exactly what a reviewer would
 pounce on.) This belongs in the paper as a stated limitation and a design fix for Paper 2:
@@ -29,20 +32,20 @@ seed cross-pool comparisons so the graph connects.
 
 ## Finding 2 — within a rankable pool, correction reorders heavily
 
-**Frontier pool (34 models):** Spearman(naive-mean, BT) = **0.621** — substantial disagreement.
+**Frontier pool (30 models):** Spearman(naive-mean, BT) = **0.647** — substantial disagreement.
 The naive leaderboard is leniency/difficulty-driven. Biggest corrections:
 
 | model | naive rank | BT rank | move |
 |---|---:|---:|---:|
-| gpt_5_4 | 10 | **1** | +9 |
-| claude_opus_46 | 20 | 6 | +14 |
-| grok_420 | 17 | 3 | +14 |
-| seed_1_6_flash | **1** | 18 | −17 |
-| gpt_oss_legal | 2 | 24 | −22 |
-| grok_4_1_fast | 3 | 15 | −12 |
-| gemini_2_5_flash_lite | 15 | 29 | −14 |
+| GPT-5.4 | 8 | **1** | +7 |
+| Grok 4.20 | 14 | 3 | +11 |
+| Claude Opus 4.6 | 16 | 5 | +11 |
+| Claude Sonnet 4.6 | 17 | 7 | +10 |
+| GPT-OSS-120B (Legal) | **1** | 22 | −21 |
+| Gemini 2.5 Flash-Lite | 12 | 26 | −14 |
+| Grok 4.1 Fast | 2 | 13 | −11 |
 
-`gpt_5_4` ranks only **10th of 34 by naive average** (8.95) but has the **best head-to-head win
+GPT-5.4 ranks only **8th of 30 by naive average** (8.96) but has the **best head-to-head win
 rate** — it is systematically judged by harsher judges / on harder questions, so averaging held it
 back. That is precisely the confound BT removes. (Small-model pool by contrast is stable, Spearman
 0.912 — a homogeneous pool has little leniency spread to correct.)
@@ -55,15 +58,15 @@ Regardless, the **identity of the winner flips in 7 of 9 pools**:
 
 | pool | naive winner | BT winner |
 |---|---|---|
-| analysis | claude_sonnet | **gpt_5_4** |
-| code | grok_code_fast | **gpt_5_4** |
-| communication | claude_sonnet | **mistral_small_creative** |
-| edge_cases | grok_direct | **gemini_3_flash** |
-| meta_alignment | claude_sonnet | **claude_opus_46** |
-| reasoning | claude_opus | **gpt_5_4** |
-| qwen | qwen3_32b | **qwen35_122b_a10b** |
-| minimax | judge_gpt54 | judge_gpt54 (same) |
-| slm | qwen3_8b | qwen3_8b (same) |
+| analysis | Claude Sonnet 4.5 | **GPT-5.4** |
+| code | Grok Code Fast 1 | **GPT-5.4** |
+| communication | Claude Sonnet 4.5 | **Mistral Small Creative** |
+| edge_cases | Grok 3 (Direct) | **Gemini 3 Flash Preview** |
+| meta_alignment | Claude Sonnet 4.5 | **Claude Opus 4.6** |
+| reasoning | Claude Opus 4.5 | **GPT-5.4** |
+| qwen | Qwen 3 32B | **Qwen 3.5 122B-A10B** |
+| minimax | GPT-5.4 | GPT-5.4 (same) |
+| slm | Qwen 3 8B | Qwen 3 8B (same) |
 
 **All 5 well-sampled categories (analysis, code, communication, meta_alignment, reasoning) change
 winner.** So the paper's specific "model X tops pool Y" statements are artifacts of naive

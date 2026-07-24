@@ -1,0 +1,21 @@
+\begin{table}[h]\centering\small
+\caption{Per-category Bradley--Terry winner vs.\ runner-up, question-clustered bootstrap. ``Win vs.\ 2nd'' is the top model's pairwise win probability over second place; the difference CI is the 95\% interval on that win probability. No pool has a separated winner---every interval spans 50\%.}
+\label{tab:percat}
+\begin{tabular}{llrrl}
+\toprule
+Pool & Winner (2nd) & Win vs.\ 2nd & 95\% CI on win & Separated? \\
+\midrule
+code & GPT-5.4 (Grok Code Fast 1) & 53\% & [38\%, 65\%] & no \\
+reasoning & GPT-5.4 (Claude Opus 4.6) & 53\% & [42\%, 63\%] & no \\
+analysis & GPT-5.4 (Grok 4.20) & 51\% & [44\%, 58\%] & no \\
+communication & Mistral Small Creative (Claude Sonnet 4.6) & 51\% & [42\%, 61\%] & no \\
+meta-alignment & Claude Opus 4.6 (GPT-5.4) & 52\% & [46\%, 58\%] & no \\
+edge cases & Gemini 3 Flash Preview (Claude Opus 4.5) & 50\% & [37\%, 62\%] & no \\
+MiniMax & GPT-5.4 (Claude Sonnet 4.6) & 53\% & [45\%, 60\%] & no \\
+Qwen & Qwen 3.5 397B-A17B (Qwen 3.5 122B-A10B) & 53\% & [34\%, 73\%] & no \\
+SLM & Qwen 3 8B (Gemma 3 27B) & 58\% & [48\%, 71\%] & no \\
+\midrule
+\multicolumn{5}{l}{Separated winners: 0 of 9 pools} \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -93,6 +93,7 @@ def load_judgments():
                 continue
             rows.append({
                 "response_id": f"{eid}::{rk}",
+                "question_id": ev.get("question_id") or eid,
                 "judge_key": jk,
                 "judge_family": jf,
                 "respondent_family": rf,
@@ -170,15 +171,19 @@ def fit_within_fe(df):
     g = df["response_id"]
     Xd = X - X.groupby(g).transform("mean")          # absorb response fixed effects
     yd = y - y.groupby(g).transform("mean")
-    m = sm.OLS(yd.values, Xd.values).fit(cov_type="cluster",
-                                         cov_kwds={"groups": df["judge_key"].values})
+    mj = sm.OLS(yd.values, Xd.values).fit(cov_type="cluster",
+                                          cov_kwds={"groups": df["judge_key"].values})
+    # PRIMARY spec: two-way clustering by judge AND question (repeated questions correlate)
+    jq = np.column_stack([df["judge_key"].astype("category").cat.codes.values,
+                          df["question_id"].astype("category").cat.codes.values])
+    mjq = sm.OLS(yd.values, Xd.values).fit(cov_type="cluster", cov_kwds={"groups": jq})
     names = list(X.columns)
     out = {}
     for f in fams:
         i = names.index(f"same_{f}")
-        b, se = float(m.params[i]), float(m.bse[i])
-        out[f] = {"fe": b, "se_judge": se,
-                  "p_judge": float(2 * stats.norm.sf(abs(b / se)))}
+        b = float(mj.params[i]); se_j = float(mj.bse[i]); se_jq = float(mjq.bse[i])
+        out[f] = {"fe": b, "se_judge": se_j, "p_judge": float(2 * stats.norm.sf(abs(b / se_j))),
+                  "se_twoway": se_jq, "p_twoway": float(2 * stats.norm.sf(abs(b / se_jq)))}
     return out
 
 
@@ -191,7 +196,8 @@ def full_table(df):
         f = r["family"]
         rows.append({**r,                          # naive_bias, within_bias(=RE), n_same, n_other, n_responses_identifying, p(RE)
                      "re_bias": r["within_bias"], "p_re": r["p"],
-                     "fe_bias": fe[f]["fe"], "se_judge": fe[f]["se_judge"], "p_judge": fe[f]["p_judge"]})
+                     "fe_bias": fe[f]["fe"], "se_judge": fe[f]["se_judge"], "p_judge": fe[f]["p_judge"],
+                     "se_twoway": fe[f]["se_twoway"], "p_twoway": fe[f]["p_twoway"]})
     return rows, bonf
 
 

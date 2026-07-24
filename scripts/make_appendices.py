@@ -59,7 +59,7 @@ def main():
                     if j.get(d) is not None:
                         dims[rk][d].append(float(j[d]))
 
-    keys = sorted(evals_of, key=lambda k: (fam(k), -len(evals_of[k])))
+    keys = sorted(evals_of, key=lambda k: (fam(k), -len(evals_of[k]), k))
     # ---- diagnostics ----
     fams = defaultdict(list)
     for k in keys:

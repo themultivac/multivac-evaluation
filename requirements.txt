@@ -12,6 +12,8 @@ numpy>=1.24.0
 jupyter>=1.0.0
 matplotlib>=3.7.0
 seaborn>=0.12.0
+scipy>=1.10.0        # required by scripts/reproduce_all.sh (FE + Bradley-Terry stats)
+statsmodels>=0.14.0  # required by scripts/reproduce_all.sh (within-response fixed-effects model)
 
 # Optional: Development
 pytest>=7.4.0

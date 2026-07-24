@@ -32,28 +32,49 @@ from scipy import stats
 DATA_GLOB = os.path.join(os.path.dirname(__file__), "..", "data", "peer_matrix", "EVAL-*")
 
 
+def _key2name():
+    """Map every registry key to its display name, so ranking is over the paper's
+    50 distinct models (30-model frontier + 18-model small pool) rather than the 55
+    raw keys. Without this, duplicate keys (e.g. gpt_5_4 + judge_gpt54 -> 'GPT-5.4')
+    inflate the frontier component to 34."""
+    k2n = {}
+    for p in sorted(glob.glob(DATA_GLOB)):
+        ev = json.load(open(os.path.join(p, "results.json")))
+        for j in ev.get("judgments", []):
+            if j.get("respondent_name"):
+                k2n[j["respondent_key"]] = j["respondent_name"]
+            if j.get("judge_name"):
+                k2n.setdefault(j["judge_key"], j["judge_name"])
+    return k2n
+
+
 def load(exclude_judges=None):
-    """Per (eval, judge): list of (respondent, score). Plus naive sums per category.
+    """Per (eval, judge): list of (respondent, score), collapsed to display names.
+    Plus naive sums per category (also by display name).
     exclude_judges: optional iterable of judge_keys to drop entirely (robustness check)."""
     exclude_judges = set(exclude_judges or ())
-    groups = []                                   # list of dict{respondent: score} per (eval,judge)
+    k2n = _key2name()
+    groups = []                                   # list of dict{respondent_name: score} per (eval,judge)
     groups_cat = []                               # parallel category label
-    naive = defaultdict(lambda: defaultdict(lambda: [0.0, 0]))  # cat -> resp -> [sum, n]
+    naive = defaultdict(lambda: defaultdict(lambda: [0.0, 0]))  # cat -> resp_name -> [sum, n]
     for p in sorted(glob.glob(DATA_GLOB)):
         ev = json.load(open(os.path.join(p, "results.json")))
         cat = ev.get("category")
-        by_judge = defaultdict(dict)
+        by_judge = defaultdict(lambda: defaultdict(list))     # judge_name -> resp_name -> [scores]
         for j in ev.get("judgments", []):
             if j.get("judge_key") in exclude_judges:      # robustness: drop high-failure judges
                 continue
             if j.get("error") is None and j.get("weighted_score") and j["weighted_score"] > 0:
-                rk, ws = j["respondent_key"], float(j["weighted_score"])
-                by_judge[j["judge_key"]][rk] = ws
-                naive[cat][rk][0] += ws
-                naive[cat][rk][1] += 1
-        for jk, scores in by_judge.items():
-            if len(scores) >= 2:
-                groups.append(scores)
+                rn = k2n.get(j["respondent_key"], j["respondent_key"])
+                jn = k2n.get(j["judge_key"], j["judge_key"])
+                ws = float(j["weighted_score"])
+                by_judge[jn][rn].append(ws)
+                naive[cat][rn][0] += ws
+                naive[cat][rn][1] += 1
+        for jn, scores in by_judge.items():
+            collapsed = {rn: sum(v) / len(v) for rn, v in scores.items()}
+            if len(collapsed) >= 2:
+                groups.append(collapsed)
                 groups_cat.append(cat)
     return groups, groups_cat, naive
 
