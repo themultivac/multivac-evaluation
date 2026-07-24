@@ -4,6 +4,15 @@
 Every number below is emitted by that script (`paper_tables/within_response_bias.json`). This revision
 **supersedes** the earlier random-intercept-only writeup, which overstated significance.
 
+> **Spec & status (added 2026-07-24).** This is a dated record of the **judge-clustered** (one-way,
+> 46-cluster) strict-within FE fit. It **predates the two-way (judge + question) clustering** adopted as
+> the paper's primary specification (`multivac_paper.tex` §5.5, Table 3). The numbers below are accurate
+> for the judge-clustered fit; the paper's published verdicts use the two-way spec, under which:
+> **Anthropic +0.41 is robust** (worst-case leave-one-judge-out *p* < 10⁻⁴); **MiniMax +0.40 is
+> significant (*p* = 0.001) but judge-dependent** under leave-one-judge-out (worst-case *p* ≈ 0.02); and
+> **Qwen +0.56 does not survive two-way clustering (*p* = 0.018) and is not counted.** See the paper for
+> the version of record.
+
 ## What changed and why
 
 The earlier version fit a random-**intercept** model and reported google (+0.21) and openai (−0.14) as
