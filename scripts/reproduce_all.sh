@@ -26,7 +26,8 @@ echo "== 1/3  Compute tables from raw (data/peer_matrix) =="
 for s in count_reconciliation participation_ranges parse_failure_analysis \
          dimension_means judge_leniency_stats slm_pool_means category_disagreement \
          within_response_bias four_cell_decomposition bradley_terry_ranking \
-         finding1_leaderboard h2h_results ranking_settled make_appendices; do
+         finding1_leaderboard h2h_results ranking_settled make_appendices \
+         make_appendix_modelids; do
   echo "   -> scripts/$s.py"
   "$PY" "scripts/$s.py" >/dev/null
 done

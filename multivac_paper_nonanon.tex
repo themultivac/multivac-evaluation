@@ -9,6 +9,7 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{multirow}
+\usepackage{array}
 \usepackage{longtable}
 \usepackage{fvextra}
 \usepackage{xcolor}
@@ -147,7 +148,7 @@ Correctness receives the highest weight; usefulness the lowest due to susceptibi
 
 \textbf{Blinding protocol.} Three measures remove explicit identity cues, but they cannot eliminate \emph{stylistic} identification---a judge may still recognize the characteristic style of a model, or of its own family, from the response text alone: (1)~\emph{Identity masking}---judges receive only raw response text, stripped of model names, vendor labels, and metadata; (2)~\emph{Order randomization}---response order is randomized per judge per evaluation; (3)~\emph{Low-temperature judging}---response generation uses temperature 0.7 (default) to preserve natural diversity, while judge API calls use temperature 0.3 to reduce stochastic variation in scoring while avoiding edge-case behavior some providers exhibit at temperature~0. That residual stylistic identification does occur is precisely what our corrected same-vendor analysis detects (\S\ref{sec:bias}): with explicit cues removed, two families still score their own siblings' responses above others' under the within-response fixed-effects estimate (Anthropic $+0.41$, robust; MiniMax $+0.40$, significant but judge-dependent; \S\ref{sec:bias}), evidence that judges partially identify sibling outputs from style.
 
-\textbf{Anti-contamination.} All 198 questions are written de novo (no existing benchmarks) and designed to require cross-domain synthesis. Because they are authored fresh rather than drawn from public benchmarks, training-set contamination is structurally avoided; a subset (66 of the 198) were re-evaluated across different model pools or on different dates, which does not reintroduce contamination since the questions never appear in training data. The question bank grew from 60 to 198 questions over the evaluation period.
+\textbf{Anti-contamination.} All 198 questions are written de novo (no existing benchmarks) and designed to require cross-domain synthesis. Because they are authored fresh rather than drawn from public benchmarks, training-set contamination is substantially reduced---but not eliminated, for two reasons. First, several providers train on API traffic, so questions submitted through their endpoints may enter future training corpora. Second, all 198 questions are released publicly under MIT with this paper, which makes contamination of \emph{future} model generations a certainty rather than a risk; the dataset is a snapshot whose discriminative power will decay, and re-use of these questions to evaluate later models should not be assumed valid. A subset (66 of the 198) were re-evaluated across different model pools or on different dates, which does not itself reintroduce contamination. The question bank grew from 60 to 198 questions over the evaluation period.
 
 \subsection{Category-Specific Model Pools}
 
@@ -155,7 +156,7 @@ We compose category-specific pools of $N = 10$ models: six primary categories (c
 
 \subsection{Head-to-Head Protocol}
 
-As a complement, we implement head-to-head evaluation with a single external judge (Claude Opus 4.6) for rapid pairwise comparison. H2H results are reported separately (\S\ref{sec:h2h}) as validation.
+Separately from the peer matrix, we also ran head-to-head evaluation with a single external judge (Claude Opus 4.6) for rapid pairwise comparison. Because it is single-judge, it does not validate the peer matrix; H2H results are reported (\S\ref{sec:h2h}) as a preliminary side experiment only.
 
 \subsection{Implementation}
 
@@ -291,24 +292,24 @@ A - B = \underbrace{(A - C)}_{\text{favoritism}} + \underbrace{(C - D)}_{\text{r
 \]
 The respondent-quality term $(C-D)$ measures how good a family's answers are, as judged by neutral judges; the leniency term $(B-D)$ measures how generous its judges are toward everyone. Neither is favoritism. We verify this identity holds to $10^{-9}$ across all eight families and confirm our $A-B$ values reproduce the previously published naive estimates exactly.
 
-\textbf{Defining the estimand.} Our reported estimate is the coefficient on the same-vendor indicator in a within-response fixed-effects model that absorbs the response and adjusts for judge-level baseline strictness, with standard errors clustered by judge. This isolates a judge's differential treatment of a sibling's output, holding both the output and judge strictness fixed. The distinction matters: for OpenAI the raw $A - C$ gap is $-1.136$, but OpenAI judges are the strictest in the pool (leniency $-1.052$), so the corrected estimate is $-0.137$ and not significant.
+\textbf{Defining the estimand.} Our reported estimate is the coefficient on the same-vendor indicator in a within-response fixed-effects model that absorbs the response and adjusts for judge-level baseline strictness, with standard errors clustered two-way by judge and question---the primary specification throughout (Table~\ref{tab:family_bias}). Where judge-only clustering would change a verdict, we say so explicitly. This isolates a judge's differential treatment of a sibling's output, holding both the output and judge strictness fixed. The distinction matters: for OpenAI the raw $A - C$ gap is $-1.136$, but OpenAI judges are the strictest in the pool (leniency $-1.052$), so the corrected estimate is $-0.137$ and not significant.
 
 \begin{table}[h]
 \centering
-\caption{Same-vendor bias: naive estimate ($A-B$) vs.\ corrected within-response estimate. Bold = significant under the within-response fixed-effects model with standard errors clustered \emph{two-way by judge and question} (the primary specification, since 66 questions are re-evaluated and their judgments correlate) and Bonferroni correction ($\alpha = 0.00625$). $n_\text{id}$ is the number of responses judged by both a sibling and a non-sibling. Only Anthropic and MiniMax survive; Qwen ($p = 0.018$) does not. The full four-cell decomposition ($A$/$B$/$C$/$D$) is in Appendix~F.}
+\caption{Same-vendor bias: naive estimate ($A-B$) vs.\ corrected within-response estimate. Bold = significant under the within-response fixed-effects model with standard errors clustered \emph{two-way by judge and question} (the primary specification, since 66 questions are re-evaluated and their judgments correlate) and Bonferroni correction ($\alpha = 0.00625$). $n_\text{id}$ is the number of responses judged by both a sibling and a non-sibling. Only Anthropic and MiniMax survive; Qwen ($p = 0.018$) does not. Intervals are uncorrected 95\% CIs on the corrected estimate under the same two-way specification; because significance is judged at the Bonferroni level $\alpha = 0.00625$, an interval may exclude zero while the family is still not counted (Qwen). The full four-cell decomposition ($A$/$B$/$C$/$D$) is in Appendix~F.}
 \label{tab:family_bias}
-\begin{tabular}{lrrrr}
+\begin{tabular}{lrrlrr}
 \toprule
-Family & Naive ($A{-}B$) & Corrected (FE) & $p$ (judge+question) & $n_\text{id}$ \\
+Family & Naive ($A{-}B$) & Corrected (FE) & 95\% CI (two-way) & $p$ (judge+question) & $n_\text{id}$ \\
 \midrule
-Anthropic & $+0.616$ & $\mathbf{+0.406}$ & $<0.001$ & 482 \\
-MiniMax   & $+0.314$ & $\mathbf{+0.397}$ & $0.001$ & 50 \\
-Qwen      & $+0.913$ & $+0.557$ & $0.018$ & 22 \\
-Google    & $-0.593$ & $+0.209$ & $0.070$ & 394 \\
-Meta      & $-0.681$ & $+0.195$ & $0.166$ & 26 \\
-OpenAI    & $+0.229$ & $-0.137$ & $0.316$ & 385 \\
-xAI       & $+0.745$ & $-0.095$ & $0.554$ & 59 \\
-Mistral   & $-1.017$ & $-0.164$ & $0.336$ & 25 \\
+Anthropic & $+0.616$ & $\mathbf{+0.406}$ & $[+0.312, +0.500]$ & $<0.001$ & 482 \\
+MiniMax   & $+0.314$ & $\mathbf{+0.397}$ & $[+0.154, +0.641]$ & $0.001$ & 50 \\
+Qwen      & $+0.913$ & $+0.557$ & $[+0.096, +1.017]$ & $0.018$ & 22 \\
+Google    & $-0.593$ & $+0.209$ & $[-0.017, +0.435]$ & $0.070$ & 394 \\
+Meta      & $-0.681$ & $+0.195$ & $[-0.081, +0.472]$ & $0.166$ & 26 \\
+OpenAI    & $+0.229$ & $-0.137$ & $[-0.404, +0.130]$ & $0.316$ & 385 \\
+xAI       & $+0.745$ & $-0.095$ & $[-0.409, +0.219]$ & $0.554$ & 59 \\
+Mistral   & $-1.017$ & $-0.164$ & $[-0.497, +0.170]$ & $0.336$ & 25 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -322,14 +323,16 @@ Mistral   & $-1.017$ & $-0.164$ & $0.336$ & 25 \\
 
 Two mechanisms produce large but spurious naive estimates. \textbf{Google} ($-0.593$ naive) is a respondent-quality artifact: neutral judges score Google's responses $0.938$ below others ($C - D$), so Google judges score them lower simply because they are weaker; corrected, $+0.209$ ($p = 0.058$, not significant). \textbf{Mistral} ($-1.017$ naive, the largest absolute value) is a judge-leniency artifact: Mistral judges score all respondents $1.094$ above the neutral baseline ($B - D$), and Mistral's own responses are above average ($C - D = +0.527$); corrected, $-0.164$ ($p = 0.345$)---the apparent bias does not reverse under controls, it collapses toward zero. \textbf{xAI} ($+0.745$ naive) is a false positive driven by strong responses, corrected $-0.095$ ($p = 0.549$).
 
-\textbf{Corrected estimates.} Under the primary specification---standard errors clustered two-way by judge and question, since 66 questions recur (\S4.2)---only two families show same-vendor favoritism that survives the controls (Table~\ref{tab:family_bias}, Figure~\ref{fig:paired}): Anthropic ($+0.406$, $p < 0.001$, 482 identifying responses) and MiniMax ($+0.397$, $p = 0.001$, 50). The two positives are not equally robust. Anthropic's estimate survives dropping any single sibling judge---its worst-case leave-one-judge-out $p$ stays below $10^{-4}$, on 482 identifying responses spread across four Claude judges. MiniMax's two-way significance is judge-dependent: it rests on 50 identifying responses in a MiniMax-heavy pool where six sibling judges overlap on the same responses, and removing individual MiniMax judges raises its worst-case two-way $p$ to $\approx 0.02$ (dropping the MiniMax M2.5 judge), just past the Bonferroni threshold. We therefore report MiniMax as a positive with this stated fragility, not as robust on par with Anthropic. Qwen ($+0.557$) is significant under judge-clustering alone ($p = 0.002$) but not once question-level correlation is admitted ($p = 0.018$), and it rests on 22 identifying responses from a focused Qwen-family pool with a negative raw $A-C$ gap; we do not count it. Google, OpenAI, xAI, Meta, and Mistral show no significant effect. The naive estimator called five families positive and three negative; under controls, two are robustly positive and none are negative.
+\textbf{Corrected estimates.} Under the primary specification---standard errors clustered two-way by judge and question, since 66 questions recur (\S4.2)---only two families show same-vendor favoritism that survives the controls (Table~\ref{tab:family_bias}, Figure~\ref{fig:paired}): Anthropic ($+0.406$, $p < 0.001$, 482 identifying responses) and MiniMax ($+0.397$, $p = 0.001$, 50). The two positives are not equally robust. Anthropic's estimate survives dropping any single sibling judge---its worst-case leave-one-judge-out $p$ stays below $10^{-4}$, on 482 identifying responses spread across four Claude judges. MiniMax's two-way significance is judge-dependent: it rests on 50 identifying responses in a MiniMax-heavy pool where six sibling judges overlap on the same responses, and removing individual MiniMax judges raises its worst-case two-way $p$ to $\approx 0.02$ (dropping the MiniMax M2.5 judge), just past the Bonferroni threshold. We therefore report MiniMax as a positive with this stated fragility, not as robust on par with Anthropic. Qwen ($+0.557$) is significant under judge-clustering alone ($p = 0.002$) but not once question-level correlation is admitted ($p = 0.018$), and it rests on 22 identifying responses from a focused Qwen-family pool with a negative raw $A-C$ gap; we do not count it. Google, OpenAI, xAI, Meta, and Mistral show no significant effect. The naive estimator called five families positive and three negative; under controls, one is robustly positive (Anthropic), one is positive with stated judge-dependence (MiniMax), and none are negative.
+
+\textbf{What the estimator cannot separate.} We name the interpretation this design cannot rule out. After the response is absorbed as a fixed effect and judge leniency is adjusted for, sibling judges still score sibling outputs higher. That residual is consistent with \emph{favoritism}---a judge treating a sibling's output preferentially---but it is equally consistent with \emph{stylistic affinity that tracks genuine quality}: models drawn from a shared training distribution may parse a sibling's formatting, notation, and argument structure more accurately, and so score it more correctly rather than more generously. Our estimator separates favoritism from respondent quality and from judge leniency, which is what the four-cell decomposition establishes; it does not separate favoritism from same-distribution comprehension. Distinguishing the two requires an external anchor---human judgments on the same responses, against which sibling and non-sibling scores could be checked for differential accuracy rather than differential level. We do not have that anchor here, and \S\ref{sec:limitations_llm} flags it as the necessary next study. The corrected estimates should therefore be read as an upper bound on same-vendor favoritism, not as a point measurement of it.
 
 \textbf{Robustness and power.} Excluding the five judges that fail to produce parseable output more than 30\% of the time and re-fitting leaves every family verdict unchanged. The per-category rankings (\S\ref{sec:overall}) are likewise robust to the same-vendor effect: dropping all same-vendor judgments and refitting each pool leaves every pool's point-estimate leader unchanged (the single-family Qwen batch has no cross-vendor judgments and is excluded from this check). xAI (59 identifying responses), Meta (26), Mistral (25), and Qwen (22) have small samples; their null results should be read as an absence of demonstrated bias, not demonstrated absence of bias. Meta's corrected estimate ($+0.195$, $p = 0.108$) is positive and directionally suggestive but underpowered.
 
-\subsection{Head-to-Head Validation}
+\subsection{Head-to-Head Side Experiment}
 \label{sec:h2h}
 
-Head-to-head batches (185 recorded questions, of which two batches---151 and 31 questions---carry substantive volume) using Claude Opus 4.6 as single judge validate the peer matrix results. The largest batch (Qwen 3.6 Plus vs.\ DeepSeek V3.2, 151 questions) showed Qwen winning 107--11 with 26 ties (7 incomplete). H2H batches serve as rapid signals subject to single-judge biases (\S5.3).
+As a preliminary side experiment---not part of the peer-matrix results, and not a validation of them---we ran head-to-head batches with Claude Opus 4.6 as a single judge (185 recorded questions; two batches, of 151 and 31 questions, carry substantive volume). The largest batch paired Qwen 3.6 Plus against DeepSeek V3.2 over 151 questions, with Qwen winning 107--11 and 26 ties (7 incomplete). Two limits bound what this can show. First, it is \emph{single-judge}, and is therefore subject to precisely the leniency and idiosyncrasy effects documented in \S5.3---the failure mode the peer matrix exists to avoid---so it cannot corroborate the peer-matrix rankings. Second, Qwen 3.6 Plus is not part of the peer-matrix registry: it appears in no peer-matrix evaluation and is absent from Table~\ref{tab:models}, so this comparison does not involve the study's model set. We report the batches only to document the released head-to-head files.
 
 
 %═══════════════════════════════════════════════
@@ -337,8 +340,9 @@ Head-to-head batches (185 recorded questions, of which two batches---151 and 31 
 %═══════════════════════════════════════════════
 
 \subsection{LLMs Evaluating LLMs}
+\label{sec:limitations_llm}
 
-Multi-judge aggregation reduces individual biases but does not eliminate biases shared across all judges. The clarity--depth gap (\S\ref{sec:category}) may reflect exactly this kind of shared bias. A human correlation study is needed.
+Multi-judge aggregation reduces individual biases but does not eliminate biases shared across all judges. The clarity--depth gap (\S\ref{sec:category}) may reflect exactly this kind of shared bias. A human correlation study is needed---and is also what would be required to separate same-vendor favoritism from same-distribution comprehension in \S\ref{sec:bias}, where the two are observationally equivalent under our design.
 
 \subsection{Output Quality vs.\ Reasoning Process}
 
@@ -353,7 +357,7 @@ The per-category rankings are underpowered, and we are explicit about what that 
 
 \subsection{Question Design Bias}
 
-The first author wrote all 198 questions, introducing unavoidable perspective bias. We mitigate through category diversity and volume; questions were authored fresh (not drawn from existing benchmarks) over the evaluation period, though a subset were re-evaluated across pools (\S4.2).
+The first author wrote all 198 questions, introducing unavoidable perspective bias. We mitigate through category diversity and volume; questions were authored fresh (not drawn from existing benchmarks) over the evaluation period, though a subset were re-evaluated across pools (\S4.2). Releasing the question bank is itself a limitation: publishing all 198 questions under MIT guarantees that future models may be trained on them, so this benchmark's discriminative power decays from the moment of release (\S3.3). The frozen results reported here are valid for the models and dates evaluated; re-running these questions against later model generations should not be assumed to measure the same thing.
 
 \subsection{Cost and Throughput}
 
@@ -554,7 +558,7 @@ Table~\ref{tab:dims} reports mean scores by dimension (correctness, completeness
 \section{Four-Cell Decomposition of Same-Vendor Bias}
 \label{app:fourcell}
 
-Table~\ref{tab:fourcell} gives the full decomposition underlying Table~\ref{tab:family_bias}. For each family, $A$/$B$/$C$/$D$ are mean composite scores (0--10): $A$ = same-vendor judge scoring a same-vendor respondent, $B$ = same-vendor judge / other respondent, $C$ = other judge / same-vendor respondent, $D$ = other judge / other respondent. The naive estimate decomposes exactly as $A-B = (A-C) + (C-D) - (B-D)$, verified to $10^{-9}$; the corrected within-response estimate is reproduced for reference.
+Table~\ref{tab:fourcell} gives the full decomposition underlying Table~\ref{tab:family_bias}. For each family, $A$/$B$/$C$/$D$ are mean composite scores (0--10): $A$ = same-vendor judge scoring a same-vendor respondent, $B$ = same-vendor judge / other respondent, $C$ = other judge / same-vendor respondent, $D$ = other judge / other respondent. The naive estimate decomposes exactly as $A-B = (A-C) + (C-D) - (B-D)$, verified to $10^{-9}$; the corrected within-response estimate is reproduced for reference. That estimate is a point coefficient and is identical under either clustering scheme---only the standard errors differ---so the column is not specific to the two-way primary specification.
 
 \begin{table}[h]
 \centering
@@ -575,5 +579,22 @@ Mistral   & 8.470 & 9.487 & 8.921 & 8.393 & $-0.451$ & $+0.527$ & $+1.094$ & $-0
 \bottomrule
 \end{tabular}
 \end{table}
+
+%═══════════════════════════════════════════════
+\section{Exact Model Identifiers}
+\label{app:modelids}
+%═══════════════════════════════════════════════
+
+Display names such as ``GPT-5.4 via OpenRouter, April 2026'' are not sufficient to reproduce a
+call. Table~\ref{tab:modelids} pins, for every registry entry of Table~\ref{tab:models}, the exact
+API model string, the routing provider, and the range of dates on which the key was called. These
+are read from the frozen data---the per-evaluation \texttt{model\_metadata.json} records and the
+evaluation timestamps---not from the registry display names. The per-evaluation metadata file was
+added to the pipeline partway through the campaign, so for 32 of the 55 registry keys no API model
+string exists anywhere in the frozen dataset. We list those keys explicitly rather than
+reconstructing an identifier we cannot evidence; for them, only the display name and the call dates
+are known, and exact reproduction of those specific calls is not possible from this release.
+
+\input{paper_tables/appendix_G_modelids}
 
 \end{document}

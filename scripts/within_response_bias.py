@@ -197,7 +197,11 @@ def full_table(df):
         rows.append({**r,                          # naive_bias, within_bias(=RE), n_same, n_other, n_responses_identifying, p(RE)
                      "re_bias": r["within_bias"], "p_re": r["p"],
                      "fe_bias": fe[f]["fe"], "se_judge": fe[f]["se_judge"], "p_judge": fe[f]["p_judge"],
-                     "se_twoway": fe[f]["se_twoway"], "p_twoway": fe[f]["p_twoway"]})
+                     "se_twoway": fe[f]["se_twoway"], "p_twoway": fe[f]["p_twoway"],
+                     # 95% CI on the corrected (FE) estimate under the PRIMARY two-way
+                     # (judge + question) specification -- reported in Table 3.
+                     "ci_twoway_lower": fe[f]["fe"] - 1.96 * fe[f]["se_twoway"],
+                     "ci_twoway_upper": fe[f]["fe"] + 1.96 * fe[f]["se_twoway"]})
     return rows, bonf
 
 

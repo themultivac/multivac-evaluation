@@ -1,0 +1,69 @@
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.12\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}}
+\caption{Exact model identifiers for the registry entries of Table~\ref{tab:models}, taken from the frozen data. \emph{API model string} and \emph{routing} are read from \texttt{model\_metadata.json}; \emph{call dates} are the first and last peer-matrix evaluation timestamps in which the key appears. Entries whose identifier was not recorded in the frozen data are listed in the second block and are \emph{not} reconstructed.}\label{tab:modelids}\\
+\toprule
+Registry key & API model string & Routing & Call dates \\
+\midrule
+\endfirsthead
+\toprule Registry key & API model string & Routing & Call dates \\ \midrule \endhead
+\texttt{claude\_opus\_46} & \texttt{anthropic/\allowbreak claude-\allowbreak opus-\allowbreak 4.\allowbreak 6} & openrouter & 2026-04-01 to 2026-04-03 \\
+\texttt{claude\_sonnet\_46} & \texttt{anthropic/\allowbreak claude-\allowbreak sonnet-\allowbreak 4.\allowbreak 6} & openrouter & 2026-04-01 to 2026-04-03 \\
+\texttt{deepseek\_v4} & \texttt{deepseek/\allowbreak deepseek-\allowbreak chat-\allowbreak v3-\allowbreak 0324} & openrouter & 2026-04-01 to 2026-04-03 \\
+\texttt{devstral} & \texttt{mistralai/\allowbreak devstral-\allowbreak small} & openrouter & 2026-03-15 to 2026-04-03 \\
+\texttt{gemini\_25\_flash} & \texttt{google/\allowbreak gemini-\allowbreak 2.\allowbreak 5-\allowbreak flash} & openrouter & 2026-04-02 to 2026-04-03 \\
+\texttt{gemini\_31\_pro} & \texttt{google/\allowbreak gemini-\allowbreak 3.\allowbreak 1-\allowbreak pro-\allowbreak preview} & openrouter & 2026-04-01 to 2026-04-03 \\
+\texttt{gemini\_3\_flash} & \texttt{google/\allowbreak gemini-\allowbreak 3-\allowbreak flash-\allowbreak preview} & openrouter & 2026-02-07 to 2026-04-03 \\
+\texttt{gemma3\_27b} & \texttt{google/\allowbreak gemma-\allowbreak 3-\allowbreak 27b-\allowbreak it} & openrouter & 2026-03-15 to 2026-04-03 \\
+\texttt{gemma\_3n\_4b} & \texttt{google/\allowbreak gemma-\allowbreak 3n-\allowbreak e4b-\allowbreak it} & openrouter & 2026-04-03 \\
+\texttt{gpt\_5\_4} & \texttt{openai/\allowbreak gpt-\allowbreak 5.\allowbreak 4} & openrouter & 2026-04-01 to 2026-04-03 \\
+\texttt{gpt\_oss\_120b} & \texttt{openai/\allowbreak gpt-\allowbreak oss-\allowbreak 120b} & openrouter & 2026-02-07 to 2026-04-03 \\
+\texttt{granite\_40} & \texttt{ibm-\allowbreak granite/\allowbreak granite-\allowbreak 4.\allowbreak 0-\allowbreak h-\allowbreak micro} & openrouter & 2026-03-15 to 2026-04-03 \\
+\texttt{grok\_420} & \texttt{x-\allowbreak ai/\allowbreak grok-\allowbreak 4.\allowbreak 20} & openrouter & 2026-04-01 to 2026-04-03 \\
+\texttt{kimi\_k25} & \texttt{moonshotai/\allowbreak kimi-\allowbreak k2.\allowbreak 5} & openrouter & 2026-03-15 to 2026-04-03 \\
+\texttt{llama4\_scout} & \texttt{meta-\allowbreak llama/\allowbreak llama-\allowbreak 4-\allowbreak scout} & openrouter & 2026-03-15 to 2026-04-03 \\
+\texttt{mimo\_v2\_flash} & \texttt{xiaomi/\allowbreak mimo-\allowbreak v2-\allowbreak flash} & openrouter & 2026-02-07 to 2026-04-03 \\
+\texttt{minimax\_m25} & \texttt{minimax/\allowbreak minimax-\allowbreak m2.\allowbreak 5} & openrouter & 2026-03-18 to 2026-04-03 \\
+\texttt{mistral\_small\_creative} & \texttt{mistralai/\allowbreak mistral-\allowbreak small-\allowbreak creative} & openrouter & 2026-02-07 to 2026-04-03 \\
+\texttt{nemotron\_3\_super} & \texttt{nvidia/\allowbreak nemotron-\allowbreak 3-\allowbreak super-\allowbreak 120b-\allowbreak a12b:\allowbreak free} & openrouter & 2026-04-03 \\
+\texttt{qwen3\_32b} & \texttt{qwen/\allowbreak qwen3-\allowbreak 32b} & openrouter & 2026-03-15 to 2026-04-03 \\
+\texttt{qwen3\_8b} & \texttt{qwen/\allowbreak qwen3-\allowbreak 8b} & openrouter & 2026-03-15 to 2026-04-03 \\
+\texttt{qwen3\_next\_80b} & \texttt{qwen/\allowbreak qwen3-\allowbreak next-\allowbreak 80b-\allowbreak a3b-\allowbreak instruct:\allowbreak free} & openrouter & 2026-04-03 \\
+\texttt{seed\_16\_flash} & \texttt{bytedance-\allowbreak seed/\allowbreak seed-\allowbreak 1.\allowbreak 6-\allowbreak flash} & openrouter & 2026-04-02 to 2026-04-03 \\
+\bottomrule
+\end{longtable}
+
+\noindent\textbf{Identifiers not recorded in the frozen data (32 of 55 registry keys).} The per-evaluation \texttt{model\_metadata.json} file was added to the pipeline partway through the campaign and is present in 186 of 286 peer-matrix evaluations. For the following keys no API model string is recorded anywhere in the frozen dataset, and we do not reconstruct one; only the display name and call dates are known:
+
+\begin{small}\begin{itemize}\setlength\itemsep{0pt}
+  \item \texttt{claude\_opus} (Claude Opus 4.5) --- 2026-02-07
+  \item \texttt{claude\_sonnet} (Claude Sonnet 4.5) --- 2026-02-07
+  \item \texttt{deepseek\_v3} (DeepSeek V3.2) --- 2026-02-07
+  \item \texttt{gemini\_2\_5\_flash} (Gemini 2.5 Flash) --- 2026-02-07
+  \item \texttt{gemini\_2\_5\_flash\_lite} (Gemini 2.5 Flash-Lite) --- 2026-02-07
+  \item \texttt{gemini\_3\_pro} (Gemini 3 Pro Preview) --- 2026-02-07
+  \item \texttt{glm\_4\_7} (GLM 4.7) --- 2026-02-07
+  \item \texttt{gpt\_codex} (GPT-5.2-Codex) --- 2026-02-07
+  \item \texttt{gpt\_oss\_legal} (GPT-OSS-120B (Legal)) --- 2026-02-07
+  \item \texttt{grok\_4\_1\_fast} (Grok 4.1 Fast) --- 2026-02-07
+  \item \texttt{grok\_code\_fast} (Grok Code Fast 1) --- 2026-02-07
+  \item \texttt{grok\_direct} (Grok 3 (Direct)) --- 2026-02-07
+  \item \texttt{judge\_claude\_sonnet} (Claude Sonnet 4.6) --- 2026-03-18
+  \item \texttt{judge\_gemini} (Gemini 3.1 Pro) --- 2026-03-18
+  \item \texttt{judge\_gpt54} (GPT-5.4) --- 2026-03-18
+  \item \texttt{llama31\_8b} (Llama 3.1 8B) --- 2026-03-15
+  \item \texttt{minimax\_01} (MiniMax-01) --- 2026-03-18
+  \item \texttt{minimax\_m1} (MiniMax M1) --- 2026-03-18
+  \item \texttt{minimax\_m2} (MiniMax M2) --- 2026-02-07 to 2026-03-18
+  \item \texttt{minimax\_m21} (MiniMax M2.1) --- 2026-03-18
+  \item \texttt{minimax\_m27} (MiniMax M2.7) --- 2026-03-18
+  \item \texttt{mistral\_nemo} (Mistral Nemo 12B) --- 2026-03-15
+  \item \texttt{olmo\_think} (Olmo 3.1 32B Think) --- 2026-02-07
+  \item \texttt{phi4} (Phi-4 14B) --- 2026-03-15
+  \item \texttt{qwen35\_122b\_a10b} (Qwen 3.5 122B-A10B) --- 2026-03-17
+  \item \texttt{qwen35\_27b} (Qwen 3.5 27B) --- 2026-03-17
+  \item \texttt{qwen35\_35b\_a3b} (Qwen 3.5 35B-A3B) --- 2026-03-17
+  \item \texttt{qwen35\_397b\_a17b} (Qwen 3.5 397B-A17B) --- 2026-03-17
+  \item \texttt{qwen35\_9b} (Qwen 3.5 9B) --- 2026-03-17
+  \item \texttt{qwen3\_235b\_a22b} (Qwen 3 235B-A22B) --- 2026-03-17
+  \item \texttt{qwen3\_coder\_next} (Qwen 3 Coder Next) --- 2026-03-17
+  \item \texttt{seed\_1\_6\_flash} (Seed 1.6 Flash) --- 2026-02-07
+\end{itemize}\end{small}
