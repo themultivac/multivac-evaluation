@@ -77,6 +77,9 @@ FAMILIES = {
 MODEL_TO_FAMILY = {m: fam for fam, ms in FAMILIES.items() for m in ms}
 
 
+# Bonferroni-adjusted two-sided critical value at alpha = 0.05/8 = 0.00625
+_ZBONF = stats.norm.ppf(1 - 0.00625 / 2)
+
 def load_judgments():
     """Flat table of valid non-self judgments with known families on both sides."""
     rows = []
@@ -201,7 +204,12 @@ def full_table(df):
                      # 95% CI on the corrected (FE) estimate under the PRIMARY two-way
                      # (judge + question) specification -- reported in Table 3.
                      "ci_twoway_lower": fe[f]["fe"] - 1.96 * fe[f]["se_twoway"],
-                     "ci_twoway_upper": fe[f]["fe"] + 1.96 * fe[f]["se_twoway"]})
+                     "ci_twoway_upper": fe[f]["fe"] + 1.96 * fe[f]["se_twoway"],
+                     # Family-wise (Bonferroni) adjusted interval at alpha = 0.00625,
+                     # i.e. a 99.375% interval. This is the interval that AGREES with the
+                     # significance verdict: it excludes zero iff the family is counted.
+                     "ci_bonf_lower": fe[f]["fe"] - _ZBONF * fe[f]["se_twoway"],
+                     "ci_bonf_upper": fe[f]["fe"] + _ZBONF * fe[f]["se_twoway"]})
     return rows, bonf
 
 

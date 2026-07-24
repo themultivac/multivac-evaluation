@@ -22,7 +22,9 @@
       "se_twoway": 0.047993827996682024,
       "p_twoway": 2.5044607023726333e-17,
       "ci_twoway_lower": 0.31232585779650274,
-      "ci_twoway_upper": 0.5004616635434963
+      "ci_twoway_upper": 0.5004616635434963,
+      "ci_bonf_lower": 0.27516093544963005,
+      "ci_bonf_upper": 0.5376265858903689
     },
     {
       "family": "google",
@@ -45,7 +47,9 @@
       "se_twoway": 0.11537001364938249,
       "p_twoway": 0.06959697687281746,
       "ci_twoway_lower": -0.016783482329348037,
-      "ci_twoway_upper": 0.43546697117623134
+      "ci_twoway_upper": 0.43546697117623134,
+      "ci_bonf_lower": -0.10612241980133644,
+      "ci_bonf_upper": 0.5248059086482197
     },
     {
       "family": "meta",
@@ -68,7 +72,9 @@
       "se_twoway": 0.1408923434878503,
       "p_twoway": 0.16558368479260377,
       "ci_twoway_lower": -0.08079686662802851,
-      "ci_twoway_upper": 0.4715011198443446
+      "ci_twoway_upper": 0.4715011198443446,
+      "ci_bonf_lower": -0.18989949968653072,
+      "ci_bonf_upper": 0.5806037529028468
     },
     {
       "family": "minimax",
@@ -91,7 +97,9 @@
       "se_twoway": 0.12424902957055246,
       "p_twoway": 0.0013795382306274098,
       "ci_twoway_lower": 0.15393191189376385,
-      "ci_twoway_upper": 0.6409881078103294
+      "ci_twoway_upper": 0.6409881078103294,
+      "ci_bonf_lower": 0.057717341637290254,
+      "ci_bonf_upper": 0.7372026780668031
     },
     {
       "family": "mistral",
@@ -114,7 +122,9 @@
       "se_twoway": 0.1699659805229291,
       "p_twoway": 0.33605910708750963,
       "ci_twoway_lower": -0.49663737962676285,
-      "ci_twoway_upper": 0.16962926402311923
+      "ci_twoway_upper": 0.16962926402311923,
+      "ci_bonf_lower": -0.6282537297162252,
+      "ci_bonf_upper": 0.3012456141125815
     },
     {
       "family": "openai",
@@ -137,7 +147,9 @@
       "se_twoway": 0.1362466623160445,
       "p_twoway": 0.31616353867503744,
       "ci_twoway_lower": -0.4036134164849787,
-      "ci_twoway_upper": 0.13047349979391562
+      "ci_twoway_upper": 0.13047349979391562,
+      "ci_bonf_lower": -0.5091185790518497,
+      "ci_bonf_upper": 0.23597866236078655
     },
     {
       "family": "qwen",
@@ -160,7 +172,9 @@
       "se_twoway": 0.23517231536685312,
       "p_twoway": 0.017959325259209763,
       "ci_twoway_lower": 0.0955871192399998,
-      "ci_twoway_upper": 1.017462595478064
+      "ci_twoway_upper": 1.017462595478064,
+      "ci_bonf_lower": -0.08652298123682789,
+      "ci_bonf_upper": 1.1995726959548918
     },
     {
       "family": "xai",
@@ -183,7 +197,9 @@
       "se_twoway": 0.16030274113846246,
       "p_twoway": 0.554323881354924,
       "ci_twoway_lower": -0.408979318208679,
-      "ci_twoway_upper": 0.21940742705409383
+      "ci_twoway_upper": 0.21940742705409383,
+      "ci_bonf_lower": -0.5331127573420121,
+      "ci_bonf_upper": 0.343540866187427
     }
   ]
 }
