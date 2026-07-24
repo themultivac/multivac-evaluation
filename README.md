@@ -40,23 +40,23 @@ multivac-evaluation/
 | Self-excluded (diagonal) | 2,781 |
 | Judge failures (parse/API) | 1,403 |
 | Unique models | 55 |
-| Model families | 11 |
+| Vendor families | 17 |
 | Category pools | 9 |
-| H2H questions | 180 |
+| H2H questions (recorded) | 185 |
 | Date range | Feb–Apr 2026 |
 
 ## Key Findings
 
-1. **No single model dominates all categories** — 7 different models lead 9 category pools (by distinct model; `scripts/bradley_terry_ranking.py`)
+1. **No category has a statistically separated winner** — in all nine pools the top model beats second place in only 50–58% of matched comparisons, with the 95% interval spanning 50%. Four distinct models lead the six primary pools by point estimate, but none separates from its runner-up (`scripts/make_finding1.py`)
 2. **A same-vendor scoring premium survives correction for only 2 of 8 families** — under a within-response fixed-effects model with standard errors clustered two-way by judge and question, Anthropic (+0.41) is robust (worst-case leave-one-judge-out *p* < 10⁻⁴) and MiniMax (+0.40) is significant under the primary specification (*p* = 0.001) but judge-dependent (its two-way significance does not survive leave-one-judge-out, worst-case *p* ≈ 0.02); Qwen (+0.56) does not survive the two-way clustering and is not counted. The large *naive* estimates — including Mistral −1.02 and Google −0.59 — are artifacts of judge leniency and respondent quality, not a same-vendor premium, and do not survive controls. The two surviving premiums are an upper bound on favoritism, not a measurement of it: the estimator cannot separate preferential scoring from a sibling judge parsing same-distribution output more accurately. See `paper_tables/FOUR_CELL_DECOMPOSITION_FINDINGS.md` and `WITHIN_RESPONSE_FINDINGS.md`. *(Supersedes the earlier "significant bias in all families" claim.)*
-3. **Top 4 models are statistically indistinguishable** — the top-ranked model is not significantly separated from ranks 2–4 (bootstrap p = 0.27, 0.073, 0.071) but is from rank 5 (p = 0.027); `evaluation_framework/statistical_analysis.py`
+3. **The "overall" champion is an artifact of the aggregation** — naive mean, leniency-adjusted Bradley–Terry, and exposure-restricted BT each crown a different model. Among broad-participation generalists GPT-5.4 holds rank 1 in 99% of question-clustered resamples, with a 54% per-comparison edge over the runner-up (`scripts/make_finding1.py`). *(An earlier bootstrap on the **naive-mean** leaderboard — where rank 1 is Grok 4.1 Fast — gave p = 0.266/0.073/0.071 vs ranks 2–4; that aggregate is leniency-confounded and is superseded by the BT rankings.)*
 4. **Judge disagreement is category-dependent** — code σ=1.27 vs meta-alignment σ=0.63 (ratio 2.01×; `scripts/category_disagreement.py`)
 5. **Overall inter-annotator agreement**: Krippendorff's α = 0.618 (`evaluation_framework/statistical_analysis.py`)
 
 ## Intended Uses
 
 - Model selection: Category-specific rankings for task-appropriate model choice
-- DPO/RLHF training data: 90 preference pairs per evaluation at <$0.01/sample
+- DPO/RLHF training data: 90 scored judgments per evaluation, convertible to preference pairs, at <$0.01/sample
 - Judge bias research: Analysis of systematic judge behavior and family bias
 - Evaluation methodology research: Comparing single-judge vs multi-judge approaches
 - Safety monitoring: Tracking alignment behavior across model versions
@@ -65,7 +65,7 @@ multivac-evaluation/
 
 - All judgments are from LLMs, not humans. Shared biases across models are not captured.
 - Question selection reflects one author's judgment of what constitutes a good evaluation prompt.
-- Model participation is non-uniform (10–230 evaluations per model).
+- Model participation is non-uniform: core-pool models appear in 163–238 evaluations, focused-batch models in as few as 1.
 - See §6 of the paper for full limitations discussion.
 
 ## Citation
