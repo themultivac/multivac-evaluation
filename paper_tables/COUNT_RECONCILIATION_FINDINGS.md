@@ -5,7 +5,7 @@ Every number below is emitted by that script (`paper_tables/count_reconciliation
 
 ## The conflict
 
-- Paper (`dataset_stats.json`, `DATASHEET.md`, `README.md`): **27,540 total, 22,254 valid, "5,286 self-excluded."**
+- Paper, as originally published (`dataset_stats.json`; and `DATASHEET.md` / `README.md` before their correction): **27,540 total, 22,254 valid, "5,286 self-excluded."** (Those docs now report 23,356 parsed / 22,252 usable-scored, per the verdicts below.)
 - `parse_failure_analysis.py`: **23,356 valid.**
 
 Both "valid" numbers are real; they use different definitions. The **"5,286 self-excluded" label is false.**
