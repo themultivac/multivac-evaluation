@@ -4,7 +4,7 @@
 
 ## Overview
 
-This dataset contains **27,540 LLM judgments** from a blind peer matrix evaluation of **55 frontier language models** across **286 evaluations** and **198 unique questions** in 9 category pools. Of the 27,540: **23,356 parsed successfully** and **22,252 carry a usable score** (the analysis set); **2,781** are intentional self-exclusions (the matrix diagonal) and **1,403** are judge failures (parse/API errors). To our knowledge, this is the largest publicly available multi-judge LLM evaluation dataset with full provenance. See `scripts/count_reconciliation.py` for the exact breakdown.
+This dataset contains **27,540 LLM judgments** from a blind peer matrix evaluation of **55 frontier language models** across **286 evaluations** and **198 unique questions** in 9 category pools. Of the 27,540: **23,356 parsed successfully** and **22,252 carry a usable score** (the analysis set); **2,781** are intentional self-exclusions (the matrix diagonal) and **1,403** are judge failures (parse/API errors). To our knowledge, it is one of the largest publicly available multi-judge LLM evaluation datasets with full provenance. See `scripts/count_reconciliation.py` for the exact breakdown.
 
 **Status:** Completed project, not being pursued for publication. The peer-matrix method is retired: without ground truth, it cannot separate a judge's bias from correct judgments. The framework and dataset stay available under the MIT License.
 
@@ -14,7 +14,7 @@ This dataset contains **27,540 LLM judgments** from a blind peer matrix evaluati
 multivac-evaluation/
 ├── README.md                          # This file
 ├── LICENSE                            # MIT License
-├── DATASHEET.md                       # NeurIPS Datasheet for Datasets
+├── DATASHEET.md                       # Datasheet (Datasheets for Datasets format)
 ├── CITATION.cff                       # Citation metadata
 ├── evaluation_framework/
 │   ├── multivac.py                    # Core evaluation engine
