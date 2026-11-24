@@ -6,7 +6,7 @@
 
 This dataset contains **27,540 LLM judgments** from a blind peer matrix evaluation of **55 frontier language models** across **286 evaluations** and **198 unique questions** in 9 category pools. Of the 27,540: **23,356 parsed successfully** and **22,252 carry a usable score** (the analysis set); **2,781** are intentional self-exclusions (the matrix diagonal) and **1,403** are judge failures (parse/API errors). To our knowledge, this is the largest publicly available multi-judge LLM evaluation dataset with full provenance. See `scripts/count_reconciliation.py` for the exact breakdown.
 
-**Paper:** [The Multivac: Blind Peer Matrix Evaluation of Frontier Language Models](https://arxiv.org/abs/TODO)
+**Status:** Completed project, not being pursued for publication. The peer-matrix method is retired: without ground truth, it cannot separate a judge's bias from correct judgments. The framework and dataset stay available under the MIT License.
 
 ## Dataset Structure
 
@@ -25,7 +25,7 @@ multivac-evaluation/
 ├── data/
 │   ├── peer_matrix/                   # 286 EVAL-* folders
 │   └── head_to_head/                  # H2H batch folders
-└── paper_tables/                      # Pre-computed tables from the paper
+└── paper_tables/                      # Pre-computed analysis tables and figures
 ```
 
 ## Key Statistics
@@ -66,16 +66,16 @@ multivac-evaluation/
 - All judgments are from LLMs, not humans. Shared biases across models are not captured.
 - Question selection reflects one author's judgment of what constitutes a good evaluation prompt.
 - Model participation is non-uniform: core-pool models appear in 163–238 evaluations, focused-batch models in as few as 1.
-- See §6 of the paper for full limitations discussion.
+- Without ground truth, the method cannot tell a biased judge from one that is simply right. This is why it is retired.
 
 ## Citation
 
 ```bibtex
-@article{darji2026multivac,
-  title={The Multivac: Blind Peer Matrix Evaluation of Frontier Language Models},
+@misc{darji2026multivac,
+  title={The Multivac: Blind Peer Matrix Evaluation Dataset and Framework},
   author={Darji, Yash},
-  journal={arXiv preprint arXiv:TODO},
-  year={2026}
+  year={2026},
+  howpublished={\url{https://github.com/themultivac/multivac-evaluation}}
 }
 ```
 

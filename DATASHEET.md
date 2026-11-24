@@ -40,7 +40,7 @@ Following Gebru et al. (2021), "Datasheets for Datasets."
 
 ## Uses
 
-**Has the dataset been used for tasks already?** Yes, for the analyses reported in the accompanying paper.
+**Has the dataset been used for tasks already?** Yes, for the analyses in this repository (`scripts/` and `paper_tables/`).
 
 **What other tasks could it be used for?** DPO/RLHF preference pair generation, reward model training, judge calibration research, model selection for specific task types, AI safety alignment monitoring.
 
